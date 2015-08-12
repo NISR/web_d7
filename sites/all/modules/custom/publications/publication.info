@@ -1,0 +1,11 @@
+name = Publications
+description = Handle publication entities.
+package = NISR
+version = 7.x-1.x
+core = 7.x
+
+dependencies[] = entity
+
+files[] = publication.module
+files[] = publication.install
+files[] = publication.controller.inc
