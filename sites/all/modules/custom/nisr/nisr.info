@@ -1,0 +1,7 @@
+name = NISR 
+description = This module handles NISR's overall configuration .
+package = NISR
+version = 7.x-1.x
+core = 7.x
+
+

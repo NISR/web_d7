@@ -15,7 +15,7 @@ function publication_uninstall() {
     ->execute()
     ->fetchAllAssoc('name');
 
-  foreach ($types as $name => $type) {
+  foreach ($types as $name => $info) {
     field_attach_delete_bundle('publication', $name);
   }
 }
@@ -39,6 +39,13 @@ function publication_schema() {
         'description' => 'The type (bundle) of this publication.',
         'type' => 'varchar',
         'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'language' => array(
+        'description' => 'The {languages}.language of this publication.',
+        'type' => 'varchar',
+        'length' => 12,
         'not null' => TRUE,
         'default' => '',
       ),
@@ -67,6 +74,19 @@ function publication_schema() {
         'not null' => TRUE,
         'default' => 0,
       ),
+      'tpid' => array(
+        'description' => 'The translation set id for this publication, which equals the publication id of the source post in each set.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'translate' => array(
+        'description' => 'A boolean indicating whether this translation page needs to be updated.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
       'description' => array(
         'description' => 'publication description.',
         'type' => 'text',
@@ -83,7 +103,7 @@ function publication_schema() {
       ),
       'type' => array(
         'table' => 'publication_type',
-        'columns' => array('type' => 'name')
+        'columns' => array('type' => 'type')
       ),
     ),
   );
@@ -156,7 +176,7 @@ function publication_schema() {
     ),
     'primary key' => array('id'),
     'unique keys' => array(
-      'name' => array('name'),
+      'type' => array('type'),
     ),
   );
 

@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * Overall configuration and hooks
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function nisr_menu(){
+	$items = array();
+		
+	
+	return $items;
+}

@@ -100,12 +100,20 @@ function publication_entity_info_alter(&$entity_info) {
 function publication_menu() {
   $items = array();
 
+  $items['admin/content/publication'] = array(
+    'title' => t('Publications'),
+    'description' => 'Find and manage publications',
+    'page callback' => 'drupal_goto',
+    'page arguments' => array('admin/publications'),
+    'access arguments' => array('administer publication entities'),
+    'type' => MENU_LOCAL_TASK | MENU_NORMAL_ITEM,
+  );
   $items['publication/add'] = array(
     'title' => 'Add publication',
     'page callback' => 'publication_admin_add_page',
     'access arguments' => array('administer publication entities'),
     'file' => 'publication.admin.inc',
-    'type' => MENU_LOCAL_ACTION,
+    'type' => MENU_NORMAL_ITEM,
     'tab_parent' => 'publication',
     'tab_root' => 'publication',
   );
@@ -153,7 +161,7 @@ function publication_menu() {
 
   foreach (publication_types() as $type => $info) {
     $items['publication/add/' . $type] = array(
-      'title' => 'Add publication',
+      'title' => 'Add ' . $info->label ,
       'page callback' => 'publication_add',
       'page arguments' => array(2),
       'access callback' => 'entity_access',
@@ -186,6 +194,13 @@ function publication_permission() {
       'description' => t('Allows users to configure publication types and their fields.'),
       'restrict access' => TRUE,
     ),
+    'administer publications' => array(
+      'title' => t('Administer publications'),
+      'restrict access' => TRUE,
+    ),
+    'access publications overview' => array(
+      'title' => t('Access the publications overview page'),
+    ),    
     'create publication entities' => array(
       'title' => t('Create publication'),
       'description' => t('Allows users to create publications.'),

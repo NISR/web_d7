@@ -238,3 +238,5 @@ function publication_delete_form_submit($form, &$form_state) {
 
   $form_state['redirect'] = '<front>';
 }
+
+
