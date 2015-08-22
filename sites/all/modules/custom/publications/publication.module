@@ -1,19 +1,12 @@
 <?php
 
 /**
- * @file
- * Publication module
- */
-
-/**
  * Implements hook_entity_info().
  */
 function publication_entity_info() {
   $return = array(
     'publication' => array(
       'label' => t('Publication'),
-      'plural label' => t('Publications'),
-      'description' => t('Publication entity type.'),
       'entity class' => 'Publication',
       'controller class' => 'PublicationController',
       'base table' => 'publication',
@@ -22,58 +15,45 @@ function publication_entity_info() {
         'id' => 'pub_id',
         'bundle' => 'type',
       ),
-      // Make use the class' label() and uri() implementation by default.
-      'label callback' => 'entity_class_label',
-      'uri callback' => 'entity_class_uri',
-      'bundles' => array(),
-      'load hook' => 'publication_load',
       'bundle keys' => array(
         'bundle' => 'type',
       ),
-      'module' => 'publication',
-    ),
-    'publication_type' => array(
-      'label' => t('Publication type'),
-      'entity class' => 'PublicationType',
-      'controller class' => 'PublicationTypeController',
-      'base table' => 'publication_type',
-      'fieldable' => FALSE,
-      'bundle of' => 'publication',
-      'exportable' => TRUE,
-      'entity keys' => array(
-        'id' => 'id',
-        'name' => 'type',
-        'label' => 'label',
+      'bundles' => array(),
+      'load hook' => 'publication_load',
+      'view modes' => array(
+        'full' => array(
+          'label' => t('Default'),
+          'custom settings' => FALSE,
+        ),
       ),
+      'label callback' => 'entity_class_label',
+      'uri callback' => 'entity_class_uri',
       'module' => 'publication',
-      // Enable the entity API's admin UI.
-	   'admin ui' => array(
-	     'path' => 'admin/structure/publication-types',
-	     'file' => 'publication.admin.inc',
-	     'controller class' => 'PublicationTypeUIController',
-	   ),
-	   'access callback' => 'publication_type_access',
+      'access callback' => 'publication_access',
     ),
-
   );
-
-  // Add bundle info but bypass entity_load() as we cannot use it here.
-  $types = db_select('publication_type', 'pt')
-    ->fields('pt')
-    ->execute()
-    ->fetchAllAssoc('type');
-
-  foreach ($types as $type => $info) {
-    $return['publication']['bundles'][$type] = array(
-      'label' => $info->label,
-    );
-  }
-
-  // Support entity cache module.
-  if (module_exists('entitycache')) {
-    $return['publication']['field cache'] = FALSE;
-    $return['publication']['entity cache'] = TRUE;
-  }
+  $return['publication_type'] = array(
+    'label' => t('Publication Type'),
+    'entity class' => 'PublicationType',
+    'controller class' => 'PublicationTypeController',
+    'base table' => 'publication_type',
+    'fieldable' => FALSE,
+    'bundle of' => 'publication',
+    'exportable' => TRUE,
+    'entity keys' => array(
+      'id' => 'id',
+      'name' => 'type',
+      'label' => 'label',
+    ),
+    'module' => 'publication',
+    // Enable the entity API's admin UI.
+    'admin ui' => array(
+      'path' => 'admin/structure/publication-types',
+      'file' => 'publication.admin.inc',
+      'controller class' => 'PublicationTypeUIController',
+    ),
+    'access callback' => 'publication_type_access',
+  );
 
   return $return;
 }
@@ -87,7 +67,7 @@ function publication_entity_info_alter(&$entity_info) {
       'label' => $info->label,
       'admin' => array(
         'path' => 'admin/structure/publication-types/manage/%publication_type',
-        'real path' => 'admin/structure/publication-types/manage/' . $type,
+        'real path' => 'admin/structure/Publication-types/manage/' . $type,
         'bundle argument' => 4,
       ),
     );
@@ -100,20 +80,12 @@ function publication_entity_info_alter(&$entity_info) {
 function publication_menu() {
   $items = array();
 
-  $items['admin/content/publication'] = array(
-    'title' => t('Publications'),
-    'description' => 'Find and manage publications',
-    'page callback' => 'drupal_goto',
-    'page arguments' => array('admin/publications'),
-    'access arguments' => array('administer publication entities'),
-    'type' => MENU_LOCAL_TASK | MENU_NORMAL_ITEM,
-  );
   $items['publication/add'] = array(
     'title' => 'Add publication',
     'page callback' => 'publication_admin_add_page',
-    'access arguments' => TRUE,//array('administer publication entities'),
+    'access arguments' => array('administer publication entities'),
     'file' => 'publication.admin.inc',
-    'type' => MENU_NORMAL_ITEM,
+    'type' => MENU_LOCAL_ACTION,
     'tab_parent' => 'publication',
     'tab_root' => 'publication',
   );
@@ -161,7 +133,7 @@ function publication_menu() {
 
   foreach (publication_types() as $type => $info) {
     $items['publication/add/' . $type] = array(
-      'title' => 'Add ' . $info->label ,
+      'title' => 'Add publication',
       'page callback' => 'publication_add',
       'page arguments' => array(2),
       'access callback' => 'entity_access',
@@ -183,7 +155,6 @@ function publication_menu() {
   return $items;
 }
 
-
 /**
  * Implements hook_permission().
  */
@@ -194,15 +165,8 @@ function publication_permission() {
       'description' => t('Allows users to configure publication types and their fields.'),
       'restrict access' => TRUE,
     ),
-    'administer publications' => array(
-      'title' => t('Administer publications'),
-      'restrict access' => TRUE,
-    ),
-    'access publications overview' => array(
-      'title' => t('Access the publications overview page'),
-    ),    
     'create publication entities' => array(
-      'title' => t('Create publication'),
+      'title' => t('Create publications'),
       'description' => t('Allows users to create publications.'),
       'restrict access' => TRUE,
     ),
@@ -217,7 +181,7 @@ function publication_permission() {
       'restrict access' => TRUE,
     ),
     'edit own publication entities' => array(
-      'title' => t('Edit own publication'),
+      'title' => t('Edit own publications'),
       'description' => t('Allows users to edit own publications.'),
       'restrict access' => TRUE,
     ),
@@ -225,6 +189,7 @@ function publication_permission() {
 
   return $permissions;
 }
+
 
 /**
  * Implements hook_entity_property_info_alter().
@@ -236,7 +201,7 @@ function publication_entity_property_info_alter(&$info) {
     'type' => 'date',
     'description' => t("The date the node was posted."),
     'setter callback' => 'entity_property_verbatim_set',
-    'setter permission' => 'administer publication entities',
+    'setter permission' => 'administer nodes',
     'schema field' => 'created',
   );
   $properties['changed'] = array(
@@ -248,7 +213,7 @@ function publication_entity_property_info_alter(&$info) {
   $properties['uid'] = array(
     'label' => t("Author"),
     'type' => 'user',
-    'description' => t("The author of the publication."),
+    'description' => t("The author of the Publication."),
     'setter callback' => 'entity_property_verbatim_set',
     'setter permission' => 'administer publication entities',
     'required' => TRUE,
@@ -256,12 +221,13 @@ function publication_entity_property_info_alter(&$info) {
   );
 }
 
+
 /*******************************************************************************
  ********************************* Publication API's **********************************
  ******************************************************************************/
- 
+
 /**
- * Access callback for publication.
+ * Access callback for Publication.
  */
 function publication_access($op, $publication, $account = NULL, $entity_type = NULL) {
   global $user;
@@ -284,7 +250,7 @@ function publication_access($op, $publication, $account = NULL, $entity_type = N
 }
 
 /**
- * Load a publication.
+ * Load a Publication.
  */
 function publication_load($pub_id, $reset = FALSE) {
   $publications = publication_load_multiple(array($pub_id), array(), $reset);
@@ -292,54 +258,54 @@ function publication_load($pub_id, $reset = FALSE) {
 }
 
 /**
- * Load multiple publications based on certain conditions.
+ * Load multiple Publications based on certain conditions.
  */
 function publication_load_multiple($pub_ids = array(), $conditions = array(), $reset = FALSE) {
   return entity_load('publication', $pub_ids, $conditions, $reset);
 }
 
 /**
- * Save publication.
+ * Save Publication.
  */
-function publication_save($pub) {
-  entity_save('publication', $pub);
+function publication_save($publication) {
+  entity_save('publication', $publication);
 }
 
 /**
- * Delete single publication.
+ * Delete single Publication.
  */
-function publication_delete($pub) {
-  entity_delete('publication', entity_id('publication' ,$pub));
+function publication_delete($publication) {
+  entity_delete('publication', entity_id('publication' ,$publication));
 }
 
 /**
- * Delete multiple publications.
+ * Delete multiple Publications.
  */
-function publication_delete_multiple($pub_ids) {
-  entity_delete_multiple('publication', $pub_ids);
+function publication_delete_multiple($publication_ids) {
+  entity_delete_multiple('publication', $publication_ids);
 }
 
 
 /*******************************************************************************
- ****************************** Publication Type API's *************************
+ ****************************** Publication Type API's ********************************
  ******************************************************************************/
 
 /**
- * Access callback for publication type.
+ * Access callback for Publication Type.
  */
 function publication_type_access($op, $entity = NULL) {
   return user_access('administer publication types');
 }
 
 /**
- * Load publication Type.
+ * Load Publication Type.
  */
 function publication_type_load($publication_type) {
   return publication_types($publication_type);
 }
 
 /**
- * List of publication Types.
+ * List of Publication Types.
  */
 function publication_types($type_name = NULL) {
   $types = entity_load_multiple_by_name('publication_type', isset($type_name) ? array($type_name) : FALSE);
@@ -347,24 +313,24 @@ function publication_types($type_name = NULL) {
 }
 
 /**
- * Save publication type entity.
+ * Save Publication type entity.
  */
 function publication_type_save($publication_type) {
   entity_save('publication_type', $publication_type);
 }
 
 /**
- * Delete single case publication type.
+ * Delete single case type.
  */
 function publication_type_delete($publication_type) {
   entity_delete('publication_type', entity_id('publication_type' ,$publication_type));
 }
 
 /**
- * Delete multiple case publication types.
+ * Delete multiple case types.
  */
-function publication_type_delete_multiple($pub_type_ids) {
-  entity_delete_multiple('publication_type', $pub_type_ids);
+function publication_type_delete_multiple($publication_type_ids) {
+  entity_delete_multiple('publication_type', $publication_type_ids);
 }
 
 /**

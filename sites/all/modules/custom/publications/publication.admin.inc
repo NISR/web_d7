@@ -123,7 +123,7 @@ function publication_add($type) {
   drupal_set_title(t('Create @name', array('@name' => entity_label('publication_type', $publication_type))));
 
   $output = drupal_get_form('publication_form', $publication);
-
+  
   return $output;
 }
 
@@ -179,7 +179,7 @@ function publication_form($form, &$form_state, $publication) {
   }
 
   $form['#validate'][] = 'publication_form_validate';
-
+  
   return $form;
 }
 
@@ -238,5 +238,3 @@ function publication_delete_form_submit($form, &$form_state) {
 
   $form_state['redirect'] = '<front>';
 }
-
-
