@@ -111,7 +111,7 @@ function publication_menu() {
   $items['publication/add'] = array(
     'title' => 'Add publication',
     'page callback' => 'publication_admin_add_page',
-    'access arguments' => array('administer publication entities'),
+    'access arguments' => TRUE,//array('administer publication entities'),
     'file' => 'publication.admin.inc',
     'type' => MENU_NORMAL_ITEM,
     'tab_parent' => 'publication',
