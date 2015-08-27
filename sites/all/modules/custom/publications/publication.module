@@ -14,17 +14,23 @@ function publication_entity_info() {
       'entity keys' => array(
         'id' => 'pub_id',
         'bundle' => 'type',
-      ),
+		  'uuid' => 'uuid',
+      	),
       'bundle keys' => array(
         'bundle' => 'type',
-      ),
+      	),
       'bundles' => array(),
       'load hook' => 'publication_load',
+      'uuid' => TRUE,
       'view modes' => array(
         'full' => array(
-          'label' => t('Default'),
+          'label' => t('Full'),
           'custom settings' => FALSE,
-        ),
+        	),
+        'teaser' => array(
+          'label' => t('Teaser'),
+          'custom settings' => FALSE,
+        	),
       ),
       'label callback' => 'entity_class_label',
       'uri callback' => 'entity_class_uri',
@@ -165,15 +171,20 @@ function publication_permission() {
       'description' => t('Allows users to configure publication types and their fields.'),
       'restrict access' => TRUE,
     ),
+    'administer publication entities' => array(
+      'title' => t('Administer publication entities'),
+      'description' => t('Allows users to administer publication entities.'),
+      'restrict access' => TRUE,
+    ),
     'create publication entities' => array(
       'title' => t('Create publications'),
       'description' => t('Allows users to create publications.'),
-      'restrict access' => TRUE,
+      'restrict access' => FALSE,
     ),
     'view publication entities' => array(
       'title' => t('View publications'),
       'description' => t('Allows users to view publications.'),
-      'restrict access' => TRUE,
+      'restrict access' => FALSE,
     ),
     'edit any publication entities' => array(
       'title' => t('Edit any publications'),
@@ -183,7 +194,7 @@ function publication_permission() {
     'edit own publication entities' => array(
       'title' => t('Edit own publications'),
       'description' => t('Allows users to edit own publications.'),
-      'restrict access' => TRUE,
+      'restrict access' => FALSE,
     ),
   );
 
@@ -199,9 +210,9 @@ function publication_entity_property_info_alter(&$info) {
   $properties['created'] = array(
     'label' => t("Date created"),
     'type' => 'date',
-    'description' => t("The date the node was posted."),
+    'description' => t("The date the publication was posted."),
     'setter callback' => 'entity_property_verbatim_set',
-    'setter permission' => 'administer nodes',
+    'setter permission' => 'create publication entities',
     'schema field' => 'created',
   );
   $properties['changed'] = array(
@@ -221,6 +232,55 @@ function publication_entity_property_info_alter(&$info) {
   );
 }
 
+/*
+ * Implements hook_field_extra_fields()
+ */
+function publication_field_extra_fields(){
+	$extra = array();
+	foreach (publication_types() as $type => $info) {
+		$extra['publication'][$type] = array(
+			'form' => array(
+      		'title' => array(
+        			'label' => t('Title'),
+        			'description' => t('Publication module element'),
+        			'weight' => -4,
+      		),
+      	 ),
+      	/*
+      	'display' => array(
+      		'title' => array(
+        			'label' => t('Title'),
+        			'description' => t('Publication module element'),
+        			'weight' => -4,
+      	 	),
+			),
+			*/
+		);
+  	}
+  	return $extra;
+}
+
+/*
+ * Implements hook_entity_view().
+ */
+
+function publication_entity_view($entity, $type, $view_mode, $langcode) {
+ // Extra fields for publications
+  if ($type == 'publication' ) {
+    $extra_fields = field_extra_fields_get_display('publication', $entity->type, $view_mode);
+    // Get extrafield visibility.
+    if (!empty($extra_fields['title']) && $extra_fields['title']['visible'] == TRUE) {
+      // Do something awesome depending on the $view_mode (I've just added a default for all view_modes)
+      switch ($view_mode) {
+        default:
+          $entity->content['title'] = array(
+            '#markup' => $entity->title
+          	);
+      }
+    }
+  }
+  unset($entity->content['author']);
+}
 
 /*******************************************************************************
  ********************************* Publication API's **********************************
@@ -229,13 +289,15 @@ function publication_entity_property_info_alter(&$info) {
 /**
  * Access callback for Publication.
  */
-function publication_access($op, $publication, $account = NULL, $entity_type = NULL) {
+function publication_access($op, $publication = NULL, $account = NULL, $entity_type = NULL) {
   global $user;
 
   if (!isset($account)) {
     $account = $user;
   }
   switch ($op) {
+  	 case 'administrer':
+      return user_access('administer publication entities', $account);
     case 'create':
       return user_access('administer publication entities', $account)
           || user_access('create publication entities', $account);
@@ -284,7 +346,6 @@ function publication_delete($publication) {
 function publication_delete_multiple($publication_ids) {
   entity_delete_multiple('publication', $publication_ids);
 }
-
 
 /*******************************************************************************
  ****************************** Publication Type API's ********************************

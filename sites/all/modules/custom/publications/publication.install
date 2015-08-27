@@ -42,13 +42,6 @@ function publication_schema() {
         'not null' => TRUE,
         'default' => '',
       ),
-      'language' => array(
-        'description' => 'The {languages}.language of this publication.',
-        'type' => 'varchar',
-        'length' => 12,
-        'not null' => TRUE,
-        'default' => '',
-      ),
       'title' => array(
         'description' => 'The title of the publication.',
         'type' => 'varchar',
@@ -73,23 +66,6 @@ function publication_schema() {
         'type' => 'int',
         'not null' => TRUE,
         'default' => 0,
-      ),
-      'tpid' => array(
-        'description' => 'The translation set id for this publication, which equals the publication id of the source post in each set.',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-        'default' => 0,
-      ),
-      'translate' => array(
-        'description' => 'A boolean indicating whether this translation page needs to be updated.',
-        'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0,
-      ),
-      'description' => array(
-        'description' => 'publication description.',
-        'type' => 'text',
       ),
     ),
     'primary key' => array('pub_id'),

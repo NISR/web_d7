@@ -1,0 +1,15 @@
+name = Notice
+description = This module handles NISR notice entities.
+package = NISR
+version = 7.x-1.x
+core = 7.x
+
+dependencies[] = entity
+dependencies[] = uuid
+dependencies[] = nisr
+
+files[] = notice.module
+files[] = notice.install
+files[] = notice.controller.inc
+files[] = notice.admin.inc
+files[] = notice.pages.inc

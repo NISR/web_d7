@@ -132,20 +132,21 @@ function publication_add($type) {
  */
 function publication_form($form, &$form_state, $publication) {
   $form_state['publication'] = $publication;
-
+  
   $form['title'] = array(
     '#type' => 'textfield',
     '#required' => TRUE,
-    '#title' => t('Name'),
+    '#title' => t('Title'),
     '#default_value' => $publication->title,
   );
-
+/*
   $form['description'] = array(
     '#type' => 'textarea',
     '#title' => t('Description'),
     '#default_value' => $publication->description,
   );
-
+  
+*/  
   $form['uid'] = array(
     '#type' => 'value',
     '#value' => $publication->uid,

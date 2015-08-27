@@ -17,7 +17,7 @@ class PublicationController extends EntityAPIController {
   public function buildContent($entity, $view_mode = 'full', $langcode = NULL, $content = array()) {
     $wrapper = entity_metadata_wrapper('publication', $entity);
     $content['author'] = array('#markup' => t('Created by: !author', array('!author' => $wrapper->uid->name->value(array('sanitize' => TRUE)))));
-
+    /*
     // Make Description and Status themed like default fields.
     $content['description'] = array(
       '#theme' => 'field',
@@ -35,7 +35,7 @@ class PublicationController extends EntityAPIController {
       '#formatter' => 'text_default',
       0 => array('#markup' => check_plain($entity->description))
     );
-
+    */
     return parent::buildContent($entity, $view_mode, $langcode, $content);
   }
 }
@@ -60,6 +60,7 @@ class PublicationController extends EntityAPIController {
     variable_set('menu_rebuild_needed', TRUE);
   }
 }
+
 
 /**
  * UI controller for Publication Type.
