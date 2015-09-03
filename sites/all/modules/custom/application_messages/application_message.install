@@ -1,0 +1,86 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the application_message module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function application_message_uninstall() {
+
+}
+
+/**
+ * Implements hook_schema().
+ */
+function application_message_schema() {
+  $schema = array();
+  
+  $schema['application_message'] = array(
+    'description' => 'The base table for application_messages.',
+    'fields' => array(
+      'mid' => array(
+        'description' => 'The primary identifier for the application\'s message.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'message' => array(
+        'description' => 'The message text.',
+        'type' => 'longtext',
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'aid' => array(
+        'description' => 'The parent application id',
+        'type' => 'int',
+        'not null' => TRUE,
+        
+      ),
+      'uid' => array(
+        'description' => 'The {users}.uid of the associated user.',
+        'type' => 'int',
+        'not null' => TRUE,
+        
+      ),
+      'created' => array(
+        'description' => 'The Unix timestamp when the message was created.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'changed' => array(
+        'description' => 'The Unix timestamp when the message was most recently saved.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('mid'),
+    'indexes' => array(
+      'aid' => array('aid'),    
+      'uid' => array('uid'),
+    ),
+    'foreign keys' => array(
+      'aid' => array(
+        'table' => 'application',
+        'columns' => array('aid' => 'aid')
+      ),
+      'uid' => array(
+        'table' => 'users',
+        'columns' => array('uid' => 'uid')
+      ),
+
+    ),
+  );
+ 
+  if (module_exists('uuid')) {
+    $uuid_field = uuid_schema_field_definition();
+    $schema['application_message']['fields']['uuid'] = $uuid_field;
+    $schema['application_message']['indexes']['uuid'] = array('uuid');
+  }
+
+  return $schema;
+}

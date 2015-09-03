@@ -3,6 +3,11 @@
 /**
  * Implements hook_entity_info().
  */
+ 
+DEFINE('MODULE_PATH',drupal_get_path('module', 'publication'));
+
+drupal_add_css(MODULE_PATH. '/publication.css', array('group' => CSS_DEFAULT, 'every_page' => FALSE));
+
 function publication_entity_info() {
   $return = array(
     'publication' => array(
@@ -31,6 +36,14 @@ function publication_entity_info() {
           'label' => t('Teaser'),
           'custom settings' => FALSE,
         	),
+        'title_only' => array(
+          'label' => t('Title only'),
+          'custom settings' => FALSE,
+        	),
+        'title_cover' => array(
+          'label' => t('Title + Cover'),
+          'custom settings' => FALSE,
+        	),
       ),
       'label callback' => 'entity_class_label',
       'uri callback' => 'entity_class_uri',
@@ -39,7 +52,7 @@ function publication_entity_info() {
     ),
   );
   $return['publication_type'] = array(
-    'label' => t('Publication Type'),
+    'label' => t('Publication type'),
     'entity class' => 'PublicationType',
     'controller class' => 'PublicationTypeController',
     'base table' => 'publication_type',
@@ -85,7 +98,27 @@ function publication_entity_info_alter(&$entity_info) {
  */
 function publication_menu() {
   $items = array();
+  
+  $items['publications'] = array(
+	 'title' => t('Publications'),
+	 'page callback' => 'get_subjects',
+	 //'page arguments' => array('user'),
+	 'access arguments' => array('view publication entities'),
+	 'menu_name' => 'main-menu',
+	 'weight' => -40,
+	 'type' => MENU_NORMAL_ITEM,
 
+	);
+	
+	$items['publications/%/%'] = array(
+	  'title callback' => 'get_subject_title',
+	  'title arguments'=> array(1,2),
+	  'page callback'  => 'subject_page',
+	  'page arguments' => array(1,2),	
+	  'access arguments'=> TRUE,
+
+	);
+		
   $items['publication/add'] = array(
     'title' => 'Add publication',
     'page callback' => 'publication_admin_add_page',
@@ -157,9 +190,16 @@ function publication_menu() {
     'type' => MENU_NORMAL_ITEM,
     'file' => 'publication.admin.inc',
   );
-
+  
   return $items;
 }
+
+function publication_menu_alter(&$items) {
+  if (!empty($items['taxonomy/term/%taxonomy_term'])) {
+    $items['taxonomy/term/%taxonomy_term']['page callback'] = 'publication_term_page';
+  }
+}
+
 
 /**
  * Implements hook_permission().
@@ -246,7 +286,6 @@ function publication_field_extra_fields(){
         			'weight' => -4,
       		),
       	 ),
-      	/*
       	'display' => array(
       		'title' => array(
         			'label' => t('Title'),
@@ -254,7 +293,6 @@ function publication_field_extra_fields(){
         			'weight' => -4,
       	 	),
 			),
-			*/
 		);
   	}
   	return $extra;
@@ -265,6 +303,7 @@ function publication_field_extra_fields(){
  */
 
 function publication_entity_view($entity, $type, $view_mode, $langcode) {
+ /*
  // Extra fields for publications
   if ($type == 'publication' ) {
     $extra_fields = field_extra_fields_get_display('publication', $entity->type, $view_mode);
@@ -280,6 +319,7 @@ function publication_entity_view($entity, $type, $view_mode, $langcode) {
     }
   }
   unset($entity->content['author']);
+  */
 }
 
 /*******************************************************************************
@@ -403,3 +443,111 @@ function publication_views_api() {
     'path' => drupal_get_path('module', 'publication'),
   );
 }
+
+
+/*
+ * Get all Subjects/Areas as a renderable array
+ */
+function get_subjects(){
+	$voc = taxonomy_vocabulary_machine_name_load('subjects');	
+	$subjects = taxonomy_get_tree($voc->vid);
+	
+	$terms = array();
+	
+	foreach($subjects as $subject){
+		if($subject->depth == 0){
+			$terms[$subject->tid] = array('name' => $subject->name,'children' => array());
+		}else{
+			$terms[$subject->parents[0]]['children'][$subject->tid] = $subject->name; 		
+		}
+	} 
+
+	$render = array();
+	
+	foreach($terms as $key => $value){
+		$render[$key] = array(
+								'#prefix' => "<div class='subject-parent-box';'>",
+								'#suffix' => "</div>",
+								'markup' => array(
+											  '#theme' => 'link',
+											  '#text' => $value['name'],
+											  '#path' => drupal_get_path_alias('taxonomy/term/' . $key),
+											  '#options' => array(
+											  							 'attributes' => array('title' => $value['name'],),
+											  							 'html' => TRUE
+											  							),
+											  
+											)
+					 		);		
+		if(count($value['children'])){		
+			foreach($value['children'] as $k => $v){
+				$render[$key]['children'][] = array(
+													 '#theme' => 'link',
+												    '#text' => $v,
+												    '#path' => drupal_get_path_alias('taxonomy/term/' . $k),
+												    '#options' => array(
+												    						'attributes' => array('title' => $v),
+												    						'html' => TRUE
+												    					),
+												    '#prefix' => "<div class='subject-child-box'>",
+												    '#suffix' => "</div>",
+												  );		
+			}	
+		}
+	}
+	
+	return $render;
+}
+
+
+/*
+ * Callback for publication term 
+ */  
+function publication_term_page($term){
+	if($term->vocabulary_machine_name == 'subjects'){
+		$content = array(
+								'description' => array(
+										'#markup' => $term->description,
+										'#prefix' => "<div class='subject-description'>",
+										'#suffix'=> '</div>',
+								),				
+					);
+							
+		$children_terms = taxonomy_get_children($term->tid);
+		if(count($children_terms)){
+			foreach($children_terms as $child_term){
+				$children[] = array(
+										'title' => array(
+															'#theme' => 'link',
+															'#text'  => $child_term->name,
+															'#path'  => drupal_get_path_alias('taxonomy/term/' . $child_term->tid),
+															'#options'=> array('attributes' => array('title' => ''),'html'=>TRUE),
+															'#prefix'=> '<h3>',
+															'#suffix'=> '</h3>',
+															),
+										'description' => array(
+															'#markup' => $child_term->description,
+															'#prefix'=> '',
+															'#suffix'=> '</br>',
+															),					
+										);	
+				}
+			$content['children'] = $children;
+		}else{
+			$content['reports'] = array(
+											'title' => array('#markup' => t('Reports'),'#prefix' => '<h2><b>','#suffix' => '</b></h2>'),
+											'items' => array('#markup' => views_embed_view('publications','latest_reports_minimal',$term->tid)),
+											'more'  => array('#theme' => 'link','#text' => t('More >>'),'#path' => 'publications/' . $term->name . '/reports','#options' => array('attributes' => array(),'html' => TRUE)),
+												);
+			$content['articles'] = array(
+											'title' => array('#markup' => t('Articles'),'#prefix' => '<h2><b>','#suffix' => '</b></h2>'),
+											'items' => array('#markup' => views_embed_view('publications','latest_articles_minimal',$term->tid)),
+											'more'  => array('#theme' => 'link','#text' => t('More >>'),'#path' => 'publications/' . $term->name . '/articles','#options' => array('attributes' => array(),'html' => TRUE)),		
+												);
+		}	
+		
+		return $content;
+	}
+	return taxonomy_term_page($term);
+}
+

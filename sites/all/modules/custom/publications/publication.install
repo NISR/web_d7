@@ -13,10 +13,10 @@ function publication_uninstall() {
   $types = db_select('publication_type', 'pt')
     ->fields('pt')
     ->execute()
-    ->fetchAllAssoc('name');
+    ->fetchAllAssoc('type');
 
-  foreach ($types as $name => $info) {
-    field_attach_delete_bundle('publication', $name);
+  foreach ($types as $type => $info) {
+    field_attach_delete_bundle('publication', $type);
   }
 }
 
@@ -83,7 +83,12 @@ function publication_schema() {
       ),
     ),
   );
-
+  if (module_exists('uuid')) {
+    $uuid_field = uuid_schema_field_definition();
+    $schema['publication']['fields']['uuid'] = $uuid_field;
+    $schema['publication']['indexes']['uuid'] = array('uuid');
+  }
+  
   $schema['publication_type'] = array(
     'description' => 'Stores information about all defined publication types.',
     'fields' => array(

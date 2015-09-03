@@ -1,0 +1,394 @@
+<?php
+
+/**
+ * Implements hook_entity_info().
+ */
+function application_entity_info() {
+  $return = array(
+    'application' => array(
+      'label' => t('Application'),
+      'entity class' => 'Application',
+      'controller class' => 'ApplicationController',
+      'base table' => 'application',
+      'fieldable' => TRUE,
+      'entity keys' => array(
+        'id' => 'aid',
+        'bundle' => 'type',
+		  'uuid' => 'uuid',
+      	),
+      'bundle keys' => array(
+        'bundle' => 'type',
+      	),
+      'bundles' => array(),
+      'load hook' => 'application_load',
+      'uuid' => TRUE,
+      'view modes' => array(
+        'full' => array(
+          'label' => t('Full'),
+          'custom settings' => FALSE,
+        	),
+        'teaser' => array(
+          'label' => t('Teaser'),
+          'custom settings' => FALSE,
+        	),
+      ),
+      'label callback' => 'entity_class_label',
+      'uri callback' => 'entity_class_uri',
+      'module' => 'application',
+      'access callback' => 'application_access',
+    ),
+  );
+  $return['application_type'] = array(
+    'label' => t('Application type'),
+    'entity class' => 'ApplicationType',
+    'controller class' => 'ApplicationTypeController',
+    'base table' => 'application_type',
+    'fieldable' => FALSE,
+    'bundle of' => 'application',
+    'exportable' => TRUE,
+    'entity keys' => array(
+      'id' => 'id',
+      'name' => 'type',
+      'label' => 'label',
+    ),
+    'module' => 'application',
+    // Enable the entity API's admin UI.
+    'admin ui' => array(
+      'path' => 'admin/structure/application-types',
+      'file' => 'application.admin.inc',
+      'controller class' => 'ApplicationTypeUIController',
+    ),
+    'access callback' => 'application_type_access',
+  );
+
+  return $return;
+}
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function application_entity_info_alter(&$entity_info) {
+  foreach (application_types() as $type => $info) {
+    $entity_info['application']['bundles'][$type] = array(
+      'label' => $info->label,
+      'admin' => array(
+        'path' => 'admin/structure/application-types/manage/%application_type',
+        'real path' => 'admin/structure/application-types/manage/' . $type,
+        'bundle argument' => 4,
+      ),
+    );
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function application_menu() {
+  $items = array();
+
+  $items['application/add'] = array(
+    'title' => 'Add application',
+    'page callback' => 'application_admin_add_page',
+    'access arguments' => array('administer application entities'),
+    'file' => 'application.admin.inc',
+    'type' => MENU_LOCAL_ACTION,
+    'tab_parent' => 'application',
+    'tab_root' => 'application',
+  );
+
+  $application_uri = 'application/%application';
+  $application_uri_argument_position = 1;
+
+  $items[$application_uri] = array(
+    'title callback' => 'entity_label',
+    'title arguments' => array('application', $application_uri_argument_position),
+    'page callback' => 'application_view',
+    'page arguments' => array($application_uri_argument_position),
+    'access callback' => 'entity_access',
+    'access arguments' => array('view', 'application', $application_uri_argument_position),
+    'file' => 'application.pages.inc',
+  );
+
+  $items[$application_uri . '/view'] = array(
+    'title' => 'View',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -10,
+  );
+
+  $items[$application_uri . '/delete'] = array(
+    'title' => 'Delete application',
+    'title callback' => 'application_label',
+    'title arguments' => array($application_uri_argument_position),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('application_delete_form', $application_uri_argument_position),
+    'access callback' => 'entity_access',
+    'access arguments' => array('edit', 'application', $application_uri_argument_position),
+    'file' => 'application.admin.inc',
+  );
+
+  $items[$application_uri . '/edit'] = array(
+    'title' => 'Edit',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('application_form', $application_uri_argument_position),
+    'access callback' => 'entity_access',
+    'access arguments' => array('edit', 'application', $application_uri_argument_position),
+    'file' => 'application.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+    'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+  );
+
+  foreach (application_types() as $type => $info) {
+    $items['application/add/' . $type] = array(
+      'title' => 'Add application',
+      'page callback' => 'application_add',
+      'page arguments' => array(2),
+      'access callback' => 'entity_access',
+      'access arguments' => array('create', 'application', $type),
+      'file' => 'application.admin.inc',
+    );
+  }
+
+  $items['admin/structure/application-types/%application_type/delete'] = array(
+    'title' => 'Delete',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('application_type_form_delete_confirm', 4),
+    'access arguments' => array('administer application types'),
+    'weight' => 1,
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'application.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function application_permission() {
+  $permissions = array(
+    'administer application types' => array(
+      'title' => t('Administer application types'),
+      'description' => t('Allows users to configure application types and their fields.'),
+      'restrict access' => TRUE,
+    ),
+    'administer application entities' => array(
+      'title' => t('Administer application entities'),
+      'description' => t('Allows users to administer application entities.'),
+      'restrict access' => TRUE,
+    ),
+    'create application entities' => array(
+      'title' => t('Create applications'),
+      'description' => t('Allows users to create applications.'),
+      'restrict access' => FALSE,
+    ),
+    'view application entities' => array(
+      'title' => t('View applications'),
+      'description' => t('Allows users to view applications.'),
+      'restrict access' => FALSE,
+    ),
+    'edit any application entities' => array(
+      'title' => t('Edit any applications'),
+      'description' => t('Allows users to edit any applications.'),
+      'restrict access' => TRUE,
+    ),
+    'edit own application entities' => array(
+      'title' => t('Edit own applications'),
+      'description' => t('Allows users to edit own applications.'),
+      'restrict access' => FALSE,
+    ),
+  );
+
+  return $permissions;
+}
+
+
+/**
+ * Implements hook_entity_property_info_alter().
+ */
+function application_entity_property_info_alter(&$info) {
+  $properties = &$info['application']['properties'];
+  $properties['created'] = array(
+    'label' => t("Date created"),
+    'type' => 'date',
+    'description' => t("The date the application was posted."),
+    'setter callback' => 'entity_property_verbatim_set',
+    'setter permission' => 'create application entities',
+    'schema field' => 'created',
+  );
+  $properties['changed'] = array(
+    'label' => t("Date changed"),
+    'type' => 'date',
+    'schema field' => 'changed',
+    'description' => t("The date the node was most recently updated."),
+  );
+  $properties['uid'] = array(
+    'label' => t("Author"),
+    'type' => 'user',
+    'description' => t("The author of the application."),
+    'setter callback' => 'entity_property_verbatim_set',
+    'setter permission' => 'administer application entities',
+    'required' => TRUE,
+    'schema field' => 'uid',
+  );
+}
+
+/*
+ * Implements hook_field_extra_fields()
+ */
+function application_field_extra_fields(){
+	$extra = array();
+	foreach (application_types() as $type => $info) {
+		$extra['application'][$type] = array(
+			'form' => array(
+      		'title' => array(
+        			'label' => t('Title'),
+        			'description' => t('Application module element'),
+        			'weight' => -4,
+      		),
+      	 ),
+		);
+  	}
+  	return $extra;
+}
+
+/*
+ * Implements hook_entity_view().
+ */
+
+function application_entity_view($entity, $type, $view_mode, $langcode){
+  //unset($entity->content['author']);
+}
+
+
+/*
+ * Implements hook_application_insert()
+ */
+ 
+function application_application_insert(Application $application){
+	if(!is_dir('public://resources/' . $application->uuid)){;
+		drupal_mkdir('public://resources/' . $application->uuid);
+	}
+}
+
+
+/*******************************************************************************
+ ********************************* application API's **********************************
+ ******************************************************************************/
+
+/**
+ * Access callback for application.
+ */
+function application_access($op, $application = NULL, $account = NULL, $entity_type = NULL) {
+  global $user;
+
+  if (!isset($account)) {
+    $account = $user;
+  }
+  switch ($op) {
+  	 case 'administrer':
+      return user_access('administer application entities', $account);
+    case 'create':
+      return user_access('administer application entities', $account)
+          || user_access('create application entities', $account);
+    case 'view':
+      return user_access('administer application entities', $account)
+          || user_access('view application entities', $account);
+    case 'edit':
+      return user_access('administer application entities')
+          || user_access('edit any application entities')
+          || (user_access('edit own application entities') && ($application->uid == $account->uid));
+  }
+}
+
+/**
+ * Load a application.
+ */
+function application_load($aid, $reset = FALSE) {
+  $applications = application_load_multiple(array($aid), array(), $reset);
+  return reset($applications);
+}
+
+/**
+ * Load multiple applications based on certain conditions.
+ */
+function application_load_multiple($aids = array(), $conditions = array(), $reset = FALSE) {
+  return entity_load('application', $aids, $conditions, $reset);
+}
+
+/**
+ * Save application.
+ */
+function application_save($application) {
+  entity_save('application', $application);
+}
+
+/**
+ * Delete single application.
+ */
+function application_delete($application) {
+  entity_delete('application', entity_id('application' ,$application));
+}
+
+/**
+ * Delete multiple applications.
+ */
+function application_delete_multiple($application_ids) {
+  entity_delete_multiple('application', $application_ids);
+}
+
+/*******************************************************************************
+ ****************************** application Type API's ********************************
+ ******************************************************************************/
+
+/**
+ * Access callback for application Type.
+ */
+function application_type_access($op, $entity = NULL) {
+  return user_access('administer application types');
+}
+
+/**
+ * Load application Type.
+ */
+function application_type_load($application_type) {
+  return application_types($application_type);
+}
+
+/**
+ * List of application Types.
+ */
+function application_types($type_name = NULL) {
+  $types = entity_load_multiple_by_name('application_type', isset($type_name) ? array($type_name) : FALSE);
+  return isset($type_name) ? reset($types) : $types;
+}
+
+/**
+ * Save application type entity.
+ */
+function application_type_save($application_type) {
+  entity_save('application_type', $application_type);
+}
+
+/**
+ * Delete single case type.
+ */
+function application_type_delete($application_type) {
+  entity_delete('application_type', entity_id('application_type' ,$application_type));
+}
+
+/**
+ * Delete multiple case types.
+ */
+function application_type_delete_multiple($application_type_ids) {
+  entity_delete_multiple('application_type', $application_type_ids);
+}
+
+/**
+  * Implements hook_views_api().
+  */
+function application_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'application'),
+  );
+}

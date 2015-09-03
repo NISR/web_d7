@@ -1,0 +1,15 @@
+name = Survey
+description = This module handles NISR survey entities.
+package = NISR
+version = 7.x-1.x
+core = 7.x
+
+dependencies[] = entity
+dependencies[] = uuid
+dependencies[] = nisr
+
+files[] = survey.module
+files[] = survey.install
+files[] = survey.controller.inc
+files[] = survey.admin.inc
+files[] = survey.pages.inc

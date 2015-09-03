@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Publication view callback.
+ * Notice view callback.
  */
 function notice_view($notice) {
   drupal_set_title(entity_label('notice', $notice));

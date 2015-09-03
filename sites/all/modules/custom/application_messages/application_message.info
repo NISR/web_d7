@@ -1,0 +1,16 @@
+name = Application's Message
+description = This module handles NISR application's message sent back and forth within application requests.
+package = NISR
+version = 7.x-1.x
+core = 7.x
+
+dependencies[] = entity
+dependencies[] = uuid
+dependencies[] = application
+dependencies[] = nisr
+
+files[] = application_message.module
+files[] = application_message.install
+files[] = application_message.controller.inc
+files[] = application_message.admin.inc
+files[] = application_message.pages.inc

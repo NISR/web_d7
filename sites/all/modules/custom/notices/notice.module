@@ -256,7 +256,7 @@ function notice_field_extra_fields(){
  */
 
 function notice_entity_view($entity, $type, $view_mode, $langcode){
-  unset($entity->content['author']);
+  //unset($entity->content['author']);
 }
 
 

@@ -1,0 +1,226 @@
+<?php
+
+/**
+ * Implements hook_entity_info().
+ */
+function application_message_entity_info() {
+  $return = array(
+    'application_message' => array(
+      'label' => t('Application message'),
+      'entity class' => 'ApplicationMessage',
+      'controller class' => 'ApplicationMessageController',
+      'base table' => 'application_message',
+      'fieldable' => FALSE,
+      'entity keys' => array(
+        'id' => 'mid',
+		  'uuid' => 'uuid',
+      	),
+      'load hook' => 'application_message_load',
+      'uuid' => TRUE,
+      'view modes' => array(
+        'full' => array(
+          'label' => t('Full'),
+          'custom settings' => FALSE,
+        	),
+      ),
+      'label callback' => 'entity_class_label',
+      'uri callback' => 'entity_class_uri',
+      'module' => 'application_message',
+      'access callback' => 'application_message_access',
+    ),
+  );
+
+  return $return;
+}
+
+/**
+ * Implements hook_menu().
+ */
+function application_message_menu() {
+  $items = array();
+
+  $items['application_message/add'] = array(
+    'title' => 'Add application_message',
+    'page callback' => 'application_message_admin_add_page',
+    'access arguments' => array('administer application_message entities'),
+    'file' => 'application_message.admin.inc',
+    'type' => MENU_LOCAL_ACTION,
+    'tab_parent' => 'application_message',
+    'tab_root' => 'application_message',
+  );
+
+  $application_message_uri = 'application_message/%application_message';
+  $application_message_uri_argument_position = 1;
+
+  $items[$application_message_uri] = array(
+    'title callback' => 'entity_label',
+    'title arguments' => array('application_message', $application_message_uri_argument_position),
+    'page callback' => 'application_message_view',
+    'page arguments' => array($application_message_uri_argument_position),
+    'access callback' => 'entity_access',
+    'access arguments' => array('view', 'application_message', $application_message_uri_argument_position),
+    'file' => 'application_message.pages.inc',
+  );
+
+  $items[$application_message_uri . '/view'] = array(
+    'title' => 'View',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -10,
+  );
+
+  $items[$application_message_uri . '/delete'] = array(
+    'title' => 'Delete application_message',
+    'title callback' => 'application_message_label',
+    'title arguments' => array($application_message_uri_argument_position),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('application_message_delete_form', $application_message_uri_argument_position),
+    'access callback' => 'entity_access',
+    'access arguments' => array('edit', 'application_message', $application_message_uri_argument_position),
+    'file' => 'application_message.admin.inc',
+  );
+
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function application_message_permission() {
+  $permissions = array(
+    'administer application_message entities' => array(
+      'title' => t('Administer application_message entities'),
+      'description' => t('Allows users to administer application message entities.'),
+      'restrict access' => TRUE,
+    ),
+    'create application_message entities' => array(
+      'title' => t('Create application_messages'),
+      'description' => t('Allows users to create application messages.'),
+      'restrict access' => FALSE,
+    ),
+    'view application_message entities' => array(
+      'title' => t('View application_messages'),
+      'description' => t('Allows users to view application messages.'),
+      'restrict access' => FALSE,
+    ),
+    'edit any application_message entities' => array(
+      'title' => t('Edit any application_messages'),
+      'description' => t('Allows users to edit any application messages.'),
+      'restrict access' => TRUE,
+    ),
+    'edit own application_message entities' => array(
+      'title' => t('Edit own application_messages'),
+      'description' => t('Allows users to edit own application messages.'),
+      'restrict access' => FALSE,
+    ),
+  );
+
+  return $permissions;
+}
+
+
+/**
+ * Implements hook_entity_property_info_alter().
+ */
+function application_message_entity_property_info_alter(&$info) {
+  $properties = &$info['application_message']['properties'];
+  $properties['created'] = array(
+    'label' => t("Date created"),
+    'type' => 'date',
+    'description' => t("The date the message was posted."),
+    'setter callback' => 'entity_property_verbatim_set',
+    'setter permission' => 'create application_message entities',
+    'schema field' => 'created',
+  );
+  $properties['changed'] = array(
+    'label' => t("Date changed"),
+    'type' => 'date',
+    'schema field' => 'changed',
+    'description' => t("The date the message was most recently updated."),
+  );
+  $properties['uid'] = array(
+    'label' => t("Author"),
+    'type' => 'user',
+    'description' => t("The author of the message."),
+    'setter callback' => 'entity_property_verbatim_set',
+    'setter permission' => 'administer application_message entities',
+    'required' => TRUE,
+    'schema field' => 'uid',
+  );
+}
+
+
+/*******************************************************************************
+ ********************************* application_message API's **********************************
+ ******************************************************************************/
+
+/**
+ * Access callback for application_message.
+ */
+function application_message_access($op, $application_message = NULL, $account = NULL, $entity_type = NULL) {
+  global $user;
+
+  if (!isset($account)) {
+    $account = $user;
+  }
+  switch ($op) {
+  	 case 'administrer':
+      return user_access('administer application_message entities', $account);
+    case 'create':
+      return user_access('administer application_message entities', $account)
+          || user_access('create application_message entities', $account);
+    case 'view':
+      return user_access('administer application_message entities', $account)
+          || user_access('view application_message entities', $account);
+    case 'edit':
+      return user_access('administer application_message entities')
+          || user_access('edit any application_message entities')
+          || (user_access('edit own application_message entities') && ($application_message->uid == $account->uid));
+  }
+}
+
+/**
+ * Load a application_message.
+ */
+function application_message_load($mid, $reset = FALSE) {
+  $application_messages = application_message_load_multiple(array($mid), array(), $reset);
+  return reset($application_messages);
+}
+
+/**
+ * Load multiple application_messages based on certain conditions.
+ */
+function application_message_load_multiple($mids = array(), $conditions = array(), $reset = FALSE) {
+  return entity_load('application_message', $mids, $conditions, $reset);
+}
+
+/**
+ * Save application_message.
+ */
+function application_message_save($application_message) {
+  entity_save('application_message', $application_message);
+}
+
+/**
+ * Delete single application_message.
+ */
+function application_message_delete($application_message) {
+  entity_delete('application_message', entity_id('application_message' ,$application_message));
+}
+
+/**
+ * Delete multiple application_messages.
+ */
+function application_message_delete_multiple($application_message_ids) {
+  entity_delete_multiple('application_message', $application_message_ids);
+}
+
+/**
+  * Implements hook_views_api().
+  */
+function application_message_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'application_message'),
+  );
+}

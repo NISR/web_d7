@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Overall configuration and hooks
+ * Global configuration
  */
 
 /**
@@ -10,7 +10,6 @@
  */
 function nisr_menu(){
 	$items = array();
-		
 	
 	return $items;
 }

@@ -13,10 +13,10 @@ function notice_uninstall() {
   $types = db_select('notice_type', 'pt')
     ->fields('pt')
     ->execute()
-    ->fetchAllAssoc('name');
+    ->fetchAllAssoc('type');
 
-  foreach ($types as $name => $info) {
-    field_attach_delete_bundle('notice', $name);
+  foreach ($types as $type => $info) {
+    field_attach_delete_bundle('notice', $type);
   }
 }
 
