@@ -4,7 +4,9 @@
  * @file
  * Global configuration
  */
+DEFINE('NISR_MODULE_PATH',drupal_get_path('module', 'nisr'));
 
+drupal_add_css(NISR_MODULE_PATH. '/nisr.css', array('group' => CSS_DEFAULT, 'every_page' => FALSE));
 /**
  * Implements hook_menu().
  */
@@ -13,3 +15,4 @@ function nisr_menu(){
 	
 	return $items;
 }
+
