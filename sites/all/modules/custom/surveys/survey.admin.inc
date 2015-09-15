@@ -174,8 +174,6 @@ function survey_form($form, &$form_state, $survey) {
 
   $form['#validate'][] = 'survey_form_validate';
   
-  dpm($form);
-  
   return $form;
 }
 

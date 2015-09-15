@@ -12,3 +12,4 @@ files[] = publication.install
 files[] = publication.controller.inc
 files[] = publication.admin.inc
 files[] = publication.pages.inc
+files[] = includes/callback.inc

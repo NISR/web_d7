@@ -29,7 +29,7 @@ function survey_schema() {
   $schema['survey'] = array(
     'description' => 'The base table for surveys.',
     'fields' => array(
-      'nid' => array(
+      'sid' => array(
         'description' => 'The primary identifier for the survey.',
         'type' => 'serial',
         'unsigned' => TRUE,

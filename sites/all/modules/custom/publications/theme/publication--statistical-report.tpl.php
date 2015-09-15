@@ -52,8 +52,11 @@
    	</div>
 	</div>
   <div class="content publication-item-body"<?php print $content_attributes; ?>>
-    <?php
-      print render($content);
-    ?>
+  		<div class=""><?php print render($content['field_pub_publication_date'])?></div>
+  		<br/>
+    	<?php
+    		unset($content['field_pub_subject']);
+      	print render($content);
+    	?>
   </div>
 </div>

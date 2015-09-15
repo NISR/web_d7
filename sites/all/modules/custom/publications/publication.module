@@ -577,6 +577,18 @@ function publication_theme($existing, $type, $theme, $path) {
 }
 
 /**
+ * Implements hook_search_api_alter_callback_info().
+ */
+function publication_search_api_alter_callback_info() {
+  $callbacks['publication_alter_add_period'] = array(
+    'name' => t('Period'),
+    'description' => t('Retrieve the year out of survey incidence covered period end date value.'),
+    'class' => 'PublicationAlterAddPeriod',
+  );
+  return $callbacks;
+}
+
+/**
  * Implements hook_theme_registry_alter().
  */
 function publication_theme_registry_alter(&$theme_registry) {
