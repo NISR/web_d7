@@ -1,3 +1,9 @@
+/* ----------- Search Form ------------------- */
+.form-item-search-block-form input{
+	min-width: 38em;
+	margin-left:0.8em;
+}
+
 .button, input[type="button"], input[type="submit"] {
 	border: 0 none;
 	border-radius: 2px;
@@ -12,3 +18,14 @@
 }
 
 .button .line-color {border: 1px solid #5F8CB4;}
+
+/* ----------------- Featured ----------------- */
+
+#featured{
+	padding: 20px 0 0px;		
+}
+
+.entity-profile {float:right;width:37%;border-left:1px solid #ededed;margin-left:10px;padding:10px 10px 0 10px}
+
+
+

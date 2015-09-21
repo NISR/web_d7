@@ -8,6 +8,32 @@ DEFINE('PUB_MODULE_PATH',drupal_get_path('module', 'publication'));
 
 drupal_add_css(PUB_MODULE_PATH. '/publication.css', array('group' => CSS_DEFAULT, 'every_page' => FALSE));
 
+/*
+ * Implements hook_block_info()
+ */
+function publication_block_info(){
+	$blocks['subjects'] = array(
+		'info' => t('Subjects/Areas'),
+		'weight' => 100,
+		'cache' => DRUPAL_NO_CACHE,
+		);
+	
+	return $blocks;
+}
+
+/*
+ * Implements hook_block_info()
+ */
+function publication_block_view($delta = ''){
+	if($delta == 'subjects'){
+		$block['title'] = '';
+		$block['content'] = get_subjects();
+	}
+	return $block;
+}
+/*
+ * Implements hook_entity_info()
+ */
 function publication_entity_info() {
   $return = array(
     'publication' => array(
@@ -98,7 +124,7 @@ function publication_entity_info_alter(&$entity_info) {
  */
 function publication_menu() {
   $items = array();
-  
+  /*
   $items['publications'] = array(
 	 'title' => t('Publications'),
 	 'page callback' => 'get_subjects',
@@ -109,6 +135,8 @@ function publication_menu() {
 	 'type' => MENU_NORMAL_ITEM,
 
 	);
+	*/
+		
 	
 	$items['publications/%/%'] = array(
 	  'title callback' => 'get_subject_title',
@@ -196,7 +224,7 @@ function publication_menu() {
 
 function publication_menu_alter(&$items) {
   if (!empty($items['taxonomy/term/%taxonomy_term'])) {
-    $items['taxonomy/term/%taxonomy_term']['page callback'] = 'publication_term_page';
+    $items['taxonomy/term/%taxonomy_term']['page callback'] = 'subject_page';
   }
 }
 
@@ -303,27 +331,280 @@ function publication_field_extra_fields(){
  */
 
 function publication_entity_view($entity, $type, $view_mode, $langcode) {
-  if ($entity->type == 'statistical_report' && $view_mode == 'full'){
+  if ($type == 'publication' && ($entity->type == 'statistical_report' && $view_mode == 'full')){
  		$wrapper = entity_metadata_wrapper('publication',$entity);
- 		$term = $wrapper->field_pub_subject->tid->value();
- 		if(!is_array($term)){
- 			$parents = taxonomy_get_parents_all($term);
- 		}
- 		foreach(array_reverse($parents) as $key => $parent){
-			$subjects['child'][] = array('#theme' => 'link','#text' => $parent->name,'#path' => drupal_get_path_alias('taxonomy/term/' . $parent->tid),'#options' => array('attributes'=> array('title'=>''),'html'=>FALSE));
-		}
-		$subjects['#separator'] = ' > ';
-		$subjects['#theme'] = 'render_publication_subjects';
-		$entity->content['field_pub_subject'] = $subjects;
-		//Transform PDF file link
-		$file = $wrapper->field_pub_file->value();
-		$file_path = file_create_url($file['uri']);
-		$file_size = format_size($file['filesize']);
+ 		$term_id = $wrapper->field_pub_subject->tid->value();
+ 		$term_name = $wrapper->field_pub_subject->name->value();
 		
-		$entity->content['field_pub_file'] = array('#theme' => 'link','#text' => t('Download') . ' (' . $file_size .') ','#path' => $file_path,'#options' => array('attributes'=> array('title'=>t('Download'),'class' => array('button','line-color')),'html'=>TRUE));
+		// Set breadcrumb in the form
+		// Home > Publications > Statistics > reports > Subject > Title 
+		$breadcrumb = array();
+		$breadcrumb[] = l(t('Home'),'<front>');
+		$breadcrumb[] = l(t('Publications'),'publications');
+		$breadcrumb[] = l(t('Statistics'),'publications/statistics');
+		$breadcrumb[] = l(t('Reports'),'publications/statistics/reports/showAll');
+		$breadcrumb[] = l(t($term_name),drupal_get_path_alias('publications/statistics/reports/' . $term_id));
+		$breadcrumb[] = l(drupal_get_title(), base_path() . request_uri()); 
+
+		drupal_set_breadcrumb($breadcrumb);		
   	} 
 
 }
+
+/*
+ * Implements hook_preprocess_page()
+ */
+function publication_preprocess_node(&$variables){ 
+	//dpm($variables); 
+}
+
+
+/**
+  * Implements hook_views_api().
+  */
+function publication_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'publication'),
+  );
+}
+
+/*
+ * Implements hook_views_pre_render(&$view)
+ */
+function publication_views_pre_render(&$view){
+	if($view->name == 'statistical_reports'){
+		// Build breadcrumb
+		count($view->args)? $parents  = taxonomy_get_parents_all($view->args[0]) : $parents = array();
+		$breadcrumb = array();
+		$breadcrumb[] = l(t('Home'),'<front>');
+		$breadcrumb[] = l(t('Publications'),'publications');
+		$breadcrumb[] = l(t('Statistics'),'publications/statistics');
+		$breadcrumb[] = l(t('Reports'),'publications/statistics/reports/showAll');		
+		foreach(array_reverse($parents) as $parent){
+			$breadcrumb[] = l(t($parent->name),drupal_get_path_alias('taxonomy/term/' . $parent->tid));
+		}
+		
+		drupal_set_breadcrumb($breadcrumb);
+	}
+}
+
+/*
+ * Get all Subjects/Areas as a renderable array
+ */
+function get_subjects(){
+	$voc = taxonomy_vocabulary_machine_name_load('subjects');	
+	$subjects = taxonomy_get_tree($voc->vid);
+	
+	$terms = array();
+	
+	foreach($subjects as $subject){
+		if($subject->depth == 0){
+			$terms[$subject->tid] = array('name' => $subject->name,'children' => array());
+		}else{
+			$terms[$subject->parents[0]]['children'][$subject->tid] = $subject->name; 		
+		}
+	} 
+
+	$render = array();
+	
+	foreach($terms as $key => $value){
+		$render[$key] = array(
+								'#prefix' => "<div class='subject-parent-box';'>",
+								'#suffix' => "</div>",
+								'markup' => array(
+											  '#theme' => 'link',
+											  '#text' => $value['name'],
+											  '#path' => drupal_get_path_alias('taxonomy/term/' . $key),
+											  '#options' => array(
+											  							 'attributes' => array('title' => $value['name'],),
+											  							 'html' => TRUE
+											  							),
+											  
+											)
+					 		);		
+		if(count($value['children'])){		
+			foreach($value['children'] as $k => $v){
+				$render[$key]['children'][] = array(
+													 '#theme' => 'link',
+												    '#text' => $v,
+												    '#path' => drupal_get_path_alias('taxonomy/term/' . $k),
+												    '#options' => array(
+												    						'attributes' => array('title' => $v),
+												    						'html' => TRUE
+												    					),
+												    '#prefix' => "<div class='subject-child-box'>",
+												    '#suffix' => "</div>",
+												  );		
+			}	
+		}
+	}
+	
+	return $render;
+}
+
+/*
+ * Callback for subjects term 
+ */  
+function subject_page($term){
+	if($term->vocabulary_machine_name == 'subjects'){
+		$content = array(
+								'description' => array(
+										'#markup' => $term->description,
+										'#prefix' => "<div class=''>",
+										'#suffix'=> '</div>',
+								),				
+					);
+							
+		$children_terms = taxonomy_get_children($term->tid);
+		if(count($children_terms)){
+			foreach($children_terms as $child_term){
+				$children[] = array(
+										'title' => array(
+															'#theme' => 'link',
+															'#text'  => $child_term->name,
+															'#path'  => drupal_get_path_alias('taxonomy/term/' . $child_term->tid),
+															'#options'=> array('attributes' => array('title' => ''),'html'=>TRUE),
+															'#prefix'=> '<h2>',
+															'#suffix'=> '</h2>',
+															),
+										/*
+										'description' => array(
+															'#markup' => $child_term->description,
+															'#prefix'=> '',
+															'#suffix'=> '</br>',
+															),					
+										*/										
+										);	
+				}
+			$content['children'] = $children;
+		}else{
+			$reports  = get_embed_view('publications','latest_reports_minimal',array($term->tid));
+			$articles = get_embed_view('publications','latest_articles_minimal',array($term->tid));
+			
+			$content['reports'] = array(
+											'title' => array('#markup' => t('Reports'),'#prefix' => '<h2><b>','#suffix' => '</b></h2>'),
+											'items' => array('#markup' => $reports['result']),
+												);
+			if($reports['count']){
+				$content['reports']['more'] = array('#theme' => 'link','#text' => t('More >>'),'#path' => 'publications/statistics/reports/' . $term->tid ,'#options' => array('attributes' => array(),'html' => TRUE));
+			}	
+					
+			$content['articles'] = array(
+											'title' => array('#markup' => t('Articles'),'#prefix' => '<h2><b>','#suffix' => '</b></h2>'),
+											'items' => array('#markup' => $articles['result']),
+												);
+			if($articles['count']){
+				$content['articles']['more'] = array('#theme' => 'link','#text' => t('More >>'),'#path' => 'publications/statistics/articles/' . $term->tid,'#options' => array('attributes' => array(),'html' => TRUE));
+			}
+		}	
+		
+		// Set the breadcrumb
+		// In the form  : Home > Publications > Statistics > Subjects > Economy > GDP
+		$parent_terms = array_reverse(taxonomy_get_parents_all($term->tid));
+	   $breadcrumb = array();
+	   
+	   $breadcrumb[] = l(t('Home'),'<front>');
+	   $breadcrumb[] = l(t('Publications'),'publications');
+	   $breadcrumb[] = l(t('Statistics'),'publications/statistics');
+	   foreach($parent_terms as $parent){
+	   	$breadcrumb[] = l(t($parent->name),drupal_get_path_alias('taxonomy/term/' . $parent->tid));
+	   } 
+		//$breadcrumb[] = l(t($term->name),drupal_get_path_alias('taxonomy/term/' . $term->tid));	   
+	   
+	   drupal_set_breadcrumb($breadcrumb);
+		
+		
+		return $content;
+	}
+	return taxonomy_term_page($term);
+}
+
+/**
+ * Implements hook_theme().
+ */
+function publication_theme($existing, $type, $theme, $path) {
+  $items = array(
+    'render_publication_subjects' => array(
+      'render element' => 'element',
+    ),
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_search_api_alter_callback_info().
+ */
+function publication_search_api_alter_callback_info() {
+  $callbacks['publication_alter_add_period'] = array(
+    'name' => t('Period'),
+    'description' => t('Retrieve the year out of survey incidence covered period end date value.'),
+    'class' => 'PublicationAlterAddPeriod',
+  );
+  return $callbacks;
+}
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function publication_theme_registry_alter(&$theme_registry) {
+    // Defined path to the current module.
+    $module_path = drupal_get_path('module', 'publication');
+    // Find all .tpl.php files in this module's folder recursively.
+    $template_file_objects = drupal_find_theme_templates($theme_registry, '.tpl.php', $module_path);
+    // Iterate through all found template file objects.
+    foreach ($template_file_objects as $key => $template_file_object) {
+        // If the template has not already been overridden by a theme.
+        if (!isset($theme_registry[$key]['theme path']) || !preg_match('#/themes/#', $theme_registry[$key]['theme path'])) {
+            // Alter the theme path and template elements.
+            $theme_registry[$key]['theme path'] = $module_path;
+            $theme_registry[$key] = array_merge($theme_registry[$key], $template_file_object);
+            $theme_registry[$key]['type'] = 'module';
+        }
+    }
+}
+
+
+/*
+ * Get a view result with its row count to check 
+ * whether one should add a more button under the result list
+ *  
+ * param
+ *		@name : the view name
+ *	param
+ *		@display : the view display name
+ * param
+ *		@filters : array of contextual filters
+ *	return
+ *		array made of view result and view row count
+ */
+function get_embed_view($name,$display,$filters){
+	$view = views_get_view($name);
+	
+	$view->set_display($display);
+	$view->set_arguments($filters);
+	
+	//$view->execute();
+	
+	return array('result' => $view->preview(),'count' => count($view->result));
+	
+}
+
+/**
+ * A #theme function.
+ *
+ * This #theme function has the responsibility of consolidating/rendering the
+ * children's markup and returning it, where it will be placed in the
+ * element's #children property.
+ */
+function theme_render_publication_subjects(&$variables) {
+  $output = '';
+  foreach (element_children($variables['element']['child']) as $item) {
+    //$output .= render($variables['element']['child'][$item]) . $variables['element']['#separator'];
+  }
+  return $output;
+}
+
 
 /*******************************************************************************
  ********************************* Publication API's **********************************
@@ -435,216 +716,4 @@ function publication_type_delete($publication_type) {
  */
 function publication_type_delete_multiple($publication_type_ids) {
   entity_delete_multiple('publication_type', $publication_type_ids);
-}
-
-/**
-  * Implements hook_views_api().
-  */
-function publication_views_api() {
-  return array(
-    'api' => 3,
-    'path' => drupal_get_path('module', 'publication'),
-  );
-}
-
-
-/*
- * Get all Subjects/Areas as a renderable array
- */
-function get_subjects(){
-	$voc = taxonomy_vocabulary_machine_name_load('subjects');	
-	$subjects = taxonomy_get_tree($voc->vid);
-	
-	$terms = array();
-	
-	foreach($subjects as $subject){
-		if($subject->depth == 0){
-			$terms[$subject->tid] = array('name' => $subject->name,'children' => array());
-		}else{
-			$terms[$subject->parents[0]]['children'][$subject->tid] = $subject->name; 		
-		}
-	} 
-
-	$render = array();
-	
-	foreach($terms as $key => $value){
-		$render[$key] = array(
-								'#prefix' => "<div class='subject-parent-box';'>",
-								'#suffix' => "</div>",
-								'markup' => array(
-											  '#theme' => 'link',
-											  '#text' => $value['name'],
-											  '#path' => drupal_get_path_alias('taxonomy/term/' . $key),
-											  '#options' => array(
-											  							 'attributes' => array('title' => $value['name'],),
-											  							 'html' => TRUE
-											  							),
-											  
-											)
-					 		);		
-		if(count($value['children'])){		
-			foreach($value['children'] as $k => $v){
-				$render[$key]['children'][] = array(
-													 '#theme' => 'link',
-												    '#text' => $v,
-												    '#path' => drupal_get_path_alias('taxonomy/term/' . $k),
-												    '#options' => array(
-												    						'attributes' => array('title' => $v),
-												    						'html' => TRUE
-												    					),
-												    '#prefix' => "<div class='subject-child-box'>",
-												    '#suffix' => "</div>",
-												  );		
-			}	
-		}
-	}
-	
-	return $render;
-}
-
-
-/*
- * Callback for publication term 
- */  
-function publication_term_page($term){
-	if($term->vocabulary_machine_name == 'subjects'){
-		$content = array(
-								'description' => array(
-										'#markup' => $term->description,
-										'#prefix' => "<div class='subject-description'>",
-										'#suffix'=> '</div>',
-								),				
-					);
-							
-		$children_terms = taxonomy_get_children($term->tid);
-		if(count($children_terms)){
-			foreach($children_terms as $child_term){
-				$children[] = array(
-										'title' => array(
-															'#theme' => 'link',
-															'#text'  => $child_term->name,
-															'#path'  => drupal_get_path_alias('taxonomy/term/' . $child_term->tid),
-															'#options'=> array('attributes' => array('title' => ''),'html'=>TRUE),
-															'#prefix'=> '<h2>',
-															'#suffix'=> '</h2>',
-															),
-										/*
-										'description' => array(
-															'#markup' => $child_term->description,
-															'#prefix'=> '',
-															'#suffix'=> '</br>',
-															),					
-										*/										
-										);	
-				}
-			$content['children'] = $children;
-		}else{
-			$reports  = get_embed_view('publications','latest_reports_minimal',array($term->tid));
-			$articles = get_embed_view('publications','latest_articles_minimal',array($term->tid));
-			
-			$content['reports'] = array(
-											'title' => array('#markup' => t('Reports'),'#prefix' => '<h2><b>','#suffix' => '</b></h2>'),
-											'items' => array('#markup' => $reports['result']),
-												);
-			if($reports['count']){
-				$content['reports']['more'] = array('#theme' => 'link','#text' => t('More >>'),'#path' => 'publications/' . $term->tid . '/reports','#options' => array('attributes' => array(),'html' => TRUE));
-			}	
-					
-			$content['articles'] = array(
-											'title' => array('#markup' => t('Articles'),'#prefix' => '<h2><b>','#suffix' => '</b></h2>'),
-											'items' => array('#markup' => $articles['result']),
-												);
-			if($articles['count']){
-				$content['articles']['more'] = array('#theme' => 'link','#text' => t('More >>'),'#path' => 'publications/' . $term->tid . '/articles','#options' => array('attributes' => array(),'html' => TRUE));
-			}
-		}	
-		
-		return $content;
-	}
-	return taxonomy_term_page($term);
-}
-
-/**
- * Implements hook_theme().
- */
-function publication_theme($existing, $type, $theme, $path) {
-  $items = array(
-    'render_publication_subjects' => array(
-      'render element' => 'element',
-    ),
-  );
-  return $items;
-}
-
-/**
- * Implements hook_search_api_alter_callback_info().
- */
-function publication_search_api_alter_callback_info() {
-  $callbacks['publication_alter_add_period'] = array(
-    'name' => t('Period'),
-    'description' => t('Retrieve the year out of survey incidence covered period end date value.'),
-    'class' => 'PublicationAlterAddPeriod',
-  );
-  return $callbacks;
-}
-
-/**
- * Implements hook_theme_registry_alter().
- */
-function publication_theme_registry_alter(&$theme_registry) {
-    // Defined path to the current module.
-    $module_path = drupal_get_path('module', 'publication');
-    // Find all .tpl.php files in this module's folder recursively.
-    $template_file_objects = drupal_find_theme_templates($theme_registry, '.tpl.php', $module_path);
-    // Iterate through all found template file objects.
-    foreach ($template_file_objects as $key => $template_file_object) {
-        // If the template has not already been overridden by a theme.
-        if (!isset($theme_registry[$key]['theme path']) || !preg_match('#/themes/#', $theme_registry[$key]['theme path'])) {
-            // Alter the theme path and template elements.
-            $theme_registry[$key]['theme path'] = $module_path;
-            $theme_registry[$key] = array_merge($theme_registry[$key], $template_file_object);
-            $theme_registry[$key]['type'] = 'module';
-        }
-    }
-}
-
-
-/*
- * Get a view result with its row count to check 
- * whether one should add a more button under the result list
- *  
- * param
- *		@name : the view name
- *	param
- *		@display : the view display name
- * param
- *		@filters : array of contextual filters
- *	return
- *		array made of view result and view row count
- */
-function get_embed_view($name,$display,$filters){
-	$view = views_get_view($name);
-	
-	$view->set_display($display);
-	$view->set_arguments($filters);
-	
-	//$view->execute();
-	
-	return array('result' => $view->preview(),'count' => count($view->result));
-	
-}
-
-/**
- * A #theme function.
- *
- * This #theme function has the responsibility of consolidating/rendering the
- * children's markup and returning it, where it will be placed in the
- * element's #children property.
- */
-function theme_render_publication_subjects(&$variables) {
-  $output = '';
-  foreach (element_children($variables['element']['child']) as $item) {
-    //$output .= render($variables['element']['child'][$item]) . $variables['element']['#separator'];
-  }
-  return $output;
 }

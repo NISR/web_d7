@@ -257,6 +257,21 @@ function survey_field_extra_fields(){
 
 function survey_entity_view($entity, $type, $view_mode, $langcode){
   //unset($entity->content['author']);
+	if($type == 'survey'){
+	  // Set breadrumb
+	  $breadcrumb = array();
+	  $breadcrumb[] = l(t('Home'),'</front>');
+	  $breadcrumb[] = l(t('Surveys'),'surveys');
+	
+	  if($entity->type == 'survey_incidence'){
+			$survey = entity_metadata_wrapper('survey',$entity);
+			$breadcrumb[] = l($survey->field_survey_type->title->value(),'surveys/' . $survey->field_survey_type->sid->value());
+	  }
+	  
+	  $breadcrumb[] = l(drupal_get_title(),base_path() . request_uri());
+	  
+	  drupal_set_breadcrumb($breadcrumb);
+  }
 }
 
 
