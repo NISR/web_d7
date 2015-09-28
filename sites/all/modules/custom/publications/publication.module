@@ -331,6 +331,8 @@ function publication_field_extra_fields(){
  */
 
 function publication_entity_view($entity, $type, $view_mode, $langcode) {
+  $breadcrumb = array();
+  $breadcrumb[] = l(t('Home'),'<front>');
   if ($type == 'publication' && ($entity->type == 'statistical_report' && $view_mode == 'full')){
  		$wrapper = entity_metadata_wrapper('publication',$entity);
  		$term_id = $wrapper->field_pub_subject->tid->value();
@@ -338,17 +340,16 @@ function publication_entity_view($entity, $type, $view_mode, $langcode) {
 		
 		// Set breadcrumb in the form
 		// Home > Publications > Statistics > Subject > Reports > Title 
-		$breadcrumb = array();
-		$breadcrumb[] = l(t('Home'),'<front>');
+
+
 		$breadcrumb[] = l(t('Statistical publications'),'statistical_publications');
 		$breadcrumb[] = l(t($term_name),drupal_get_path_alias('statistical_publications/' . $term_id));
 		$breadcrumb[] = l(t('Statistical reports'),'statistical_publications/' . $term_id . '/reports');
-
-		$breadcrumb[] = l(drupal_get_title(), base_path() . request_uri()); 
-
-		drupal_set_breadcrumb($breadcrumb);		
   	} 
-
+	
+	$breadcrumb[] = drupal_get_title();
+	
+	drupal_set_breadcrumb($breadcrumb);		
 }
 
 /*
@@ -373,17 +374,17 @@ function publication_views_api() {
  * Implements hook_views_pre_render(&$view)
  */
 function publication_views_pre_render(&$view){
-	if($view->name == 'publications_search' && $view->current_display == 'statistical_reports'){
+	if($view->name == 'statistical_reports_search' && $view->current_display == 'page'){
 		// Build breadcrumb
-		count($view->args)? $parents  = taxonomy_get_parents_all($view->args[0]) : $parents = array();
+		count($view->args)? $parents  = taxonomy_get_parents_all($view->args[0]) : $parents = array();		
 		$breadcrumb = array();
 		$breadcrumb[] = l(t('Home'),'<front>');
-		$breadcrumb[] = l(t('Statistical publications'),'publications');
+		$breadcrumb[] = l(t('Statistical publications'),'statistical_publications');
 		foreach(array_reverse($parents) as $parent){
 			$breadcrumb[] = l(t($parent->name),drupal_get_path_alias('taxonomy/term/' . $parent->tid));
 		}
 		
-		if(count($view->args)) $breadcrumb[] = l(t('Statistical reports'),'statistical_publications/' . $view->args[0] . '/reports');
+		if(count($view->args)) $breadcrumb[] = t('Statistical reports');
 		drupal_set_breadcrumb($breadcrumb);
 	}
 }
@@ -409,7 +410,7 @@ function get_subjects(){
 	
 	foreach($terms as $key => $value){
 		$render[$key] = array(
-								'#prefix' => "<div class='subject-parent-box';'>",
+								'#prefix' => "<div class='subject-box'>",
 								'#suffix' => "</div>",
 								'markup' => array(
 											  '#theme' => 'link',
@@ -419,6 +420,8 @@ function get_subjects(){
 											  							 'attributes' => array('title' => $value['name'],),
 											  							 'html' => TRUE
 											  							),
+											  '#prefix' => '<h2>',
+											  '#suffix' => '</h2>'
 											  
 											)
 					 		);		
@@ -432,7 +435,7 @@ function get_subjects(){
 												    						'attributes' => array('title' => $v),
 												    						'html' => TRUE
 												    					),
-												    '#prefix' => "<div class='subject-child-box'>",
+												    '#prefix' => "<div class='subject-box-child'>",
 												    '#suffix' => "</div>",
 												  );		
 			}	
@@ -459,59 +462,60 @@ function subject_page($term){
 		if(count($children_terms)){
 			foreach($children_terms as $child_term){
 				$children[] = array(
+										"#prefix" => "<div class='subject-box'>",
+										"#suffix" => "</div>",
 										'title' => array(
 															'#theme' => 'link',
 															'#text'  => $child_term->name,
 															'#path'  => drupal_get_path_alias('taxonomy/term/' . $child_term->tid),
 															'#options'=> array('attributes' => array('title' => ''),'html'=>TRUE),
-															'#prefix'=> '<h2>',
-															'#suffix'=> '</h2>',
+															'#prefix'=> "<h2>",
+															'#suffix'=> "</h2>",
 															),
-										/*
+										
 										'description' => array(
-															'#markup' => $child_term->description,
-															'#prefix'=> '',
-															'#suffix'=> '</br>',
+															'#markup' => text_summary($child_term->description,null,300) . '...',
 															),					
-										*/										
+																				
 										);	
 				}
 			$content['children'] = $children;
 		}else{
-			$reports  = get_embed_view('publications','latest_reports_minimal',array($term->tid));
+			$reports  = get_embed_view('statistical_reports_search','latest',array($term->tid));
 			$articles = get_embed_view('publications','latest_articles_minimal',array($term->tid));
 			
 			$content['reports'] = array(
 											'title' => array('#markup' => t('Statistical Reports'),'#prefix' => '<h2><b>','#suffix' => '</b></h2>'),
-											'items' => array('#markup' => $reports['result']),
+											'items' => array('#markup' => $reports['result'],'#prefix' => "<div class='clearfix'>",'#suffix' => '</div></br>'),
 												);
 			if($reports['count']){
-				$content['reports']['more'] = array('#theme' => 'link','#text' => t('More >>'),'#path' => 'statistical_publications/' . $term->tid . '/reports' ,'#options' => array('attributes' => array(),'html' => TRUE));
+				$content['reports']['more'] = array('#theme' => 'link','#text' => t('More >>'),'#path' => 'statistical_publications/' . $term->tid . '/reports' ,'#options' => array('attributes' => array('class' => array('input','button','clearfix')),'html' => TRUE));
 			}	
 					
 			$content['articles'] = array(
 											'title' => array('#markup' => t('Statistical Articles'),'#prefix' => '<h2><b>','#suffix' => '</b></h2>'),
-											'items' => array('#markup' => $articles['result']),
+											'items' => array('#markup' => $articles['result'],'#prefix' => "<div class='clearfix'>",'#suffix' => '</div></br>'),
 												);
 			if($articles['count']){
-				$content['articles']['more'] = array('#theme' => 'link','#text' => t('More >>'),'#path' => 'statistical_publications/' . $term->tid . '/articles','#options' => array('attributes' => array(),'html' => TRUE));
+				$content['articles']['more'] = array('#theme' => 'link','#text' => t('More >>'),'#path' => 'statistical_publications/' . $term->tid . '/articles','#options' => array('attributes' => array('class' => array('input','button','clearfix')),'html' => TRUE));
 			}
 		}	
 		
 		// Set the breadcrumb
-		// In the form  : Home > Publications > Statistics > Subjects > Economy > GDP
-		$parent_terms = array_reverse(taxonomy_get_parents_all($term->tid));
+		// In the form  : Home > Statistical publications > Economy > Price and inflation
+		$parent_terms = taxonomy_get_parents_all($term->tid);
+		unset($parent_terms[0]); // Remove the first element including the term object
+		
 	   $breadcrumb = array();
 	   
 	   $breadcrumb[] = l(t('Home'),'<front>');
 	   $breadcrumb[] = l(t('Statistical publications'),'statistical_publications');
-	   foreach($parent_terms as $parent){
+	   foreach(array_reverse($parent_terms) as $parent){
 	   	$breadcrumb[] = l(t($parent->name),drupal_get_path_alias('taxonomy/term/' . $parent->tid));
 	   } 
-		//$breadcrumb[] = l(t($term->name),drupal_get_path_alias('taxonomy/term/' . $term->tid));	   
 	   
-	   drupal_set_breadcrumb($breadcrumb);
-		
+	   $breadcrumb[] = drupal_get_title();
+	   drupal_set_breadcrumb($breadcrumb);		
 		
 		return $content;
 	}

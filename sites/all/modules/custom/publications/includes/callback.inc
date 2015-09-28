@@ -14,11 +14,13 @@ class PublicationAlterAddPeriod extends SearchApiAbstractAlterCallback {
   		switch($item->type){
   			case 'statistical_report':
   				if(count($item->field_pub_source)){
-  					$item->period = format_date($pub->field_pub_source->field_survey_period->value2->value(),'custom','Y');		
+  					$item->period = $pub->field_pub_source->field_survey_period->value2->value();		
 				}
   				if(count($item->field_pub_period)){
-  					$item->period = $pub->field_pub_period->value();		
-				}				  				
+  					$item->period = $pub->field_pub_period->value2->value();		
+				}				  		
+				
+				$item->period = format_date($item->period,'custom','Y'); 		
   				break;
   			case 'article':
   				break;
