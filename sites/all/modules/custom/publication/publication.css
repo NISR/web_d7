@@ -1,0 +1,22 @@
+/* Fonts */
+
+.bigger{font-size:1.8em;}
+.big{font-size: 1.3em}
+.normal{font-size: 1em;}
+
+/* End fonts*/
+
+.subject-box {width:30%;min-height:120px;float:left;padding-right:5px;border:0 none;}
+.subject-box-child  {font-size:1.2em;margin-left:0px;text-decoration:underline}
+.subject-description {font-size:1.5em;margin-bottom:5px;border-bottom:1px solid #ccc;  }
+
+/* Publication page */
+.publication-item-profile{float:right;width:37%;background:#ededed;margin-left:10px;padding:10px 10px 0 10px}
+.publication-item-cover-wrapper{float:left;}
+.publication-item-row{float:left;width:50%;padding:;}
+.publication-item-cover{border:0px;margin-top:0px;margin-right: 15px;}
+.publication-item-title{display: table-cell;vertical-align: middle;padding-right: 5px;}
+.publication-item-sheet{font-size:1em; border:0 none;width: 100%}
+.publication-item-sheet-row{padding-bottom:2px;border: 1px solid #ccc;}
+.publication-item-body{margin-right: 10px;float: left;width: 55%}
+.publication-item-label{font-size:1.5em;padding-bottom: 5px;}

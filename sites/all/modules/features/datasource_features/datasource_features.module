@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Datasource features feature.
+ */
+
+include_once 'datasource_features.features.inc';

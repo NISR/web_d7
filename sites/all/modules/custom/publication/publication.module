@@ -1,0 +1,772 @@
+<?php
+
+DEFINE('PUB_MODULE_PATH',drupal_get_path('module', 'publication'));
+
+drupal_add_css(PUB_MODULE_PATH. '/publication.css', array('group' => CSS_DEFAULT, 'every_page' => FALSE));
+
+/*
+ * Implements hook_block_info()
+ */
+function publication_block_info(){
+	$weight = 100;
+	$blocks['subjects'] = array(
+		'info' => t('Subjects/Areas'),
+		'weight' => $weight,
+		'cache' => DRUPAL_NO_CACHE,
+		);
+		
+	// Declare blocks from document subjects vocabulary
+	$voc = taxonomy_vocabulary_machine_name_load('document_subjects');	
+	$subjects = taxonomy_get_tree($voc->vid);
+	
+	foreach($subjects as $subject){
+		$blocks[str_replace(' ','_',strtolower($subject->name))] =  array(
+			'info' => t($subject->name) . ' documents',
+			//'weight' => ++$weight, 
+			'cache' => DRUPAL_NO_CACHE		
+			);
+	} 
+	
+	return $blocks;
+}
+
+/*
+ * Implements hook_block_view()
+ */
+function publication_block_view($delta = ''){
+	if($delta == 'subjects'){
+		$block['title'] = '';
+		$block['content'] = get_subjects();
+	}
+	
+	// Feed the dynamically declared blocks from document subjects vocabulary with view embed display
+	$voc = taxonomy_vocabulary_machine_name_load('document_subjects');	
+	$subjects = taxonomy_get_tree($voc->vid);
+	
+	foreach($subjects as $subject){
+		if($delta == str_replace(' ','_',strtolower($subject->name))){
+			$view =  get_embed_view('publications_search','documents',array($subject->tid));			
+			$block['title'] = '';
+			$block['content'] = $view['result'];
+		}
+	} 	
+		
+	return $block;
+}
+
+/*
+ * Implements hook_entity_info()
+ */
+function publication_entity_info() {
+  $return = array(
+    'publication' => array(
+      'label' => t('Publication'),
+      'entity class' => 'Publication',
+      'controller class' => 'PublicationController',
+      'base table' => 'publication',
+      'fieldable' => TRUE,
+      'entity keys' => array(
+        'id' => 'pub_id',
+        'bundle' => 'type',
+		  'uuid' => 'uuid',
+      	),
+      'bundle keys' => array(
+        'bundle' => 'type',
+      	),
+      'bundles' => array(),
+      'load hook' => 'publication_load',
+      'uuid' => TRUE,
+      'view modes' => array(
+        'full' => array(
+          'label' => t('Full'),
+          'custom settings' => FALSE,
+        	),
+        'teaser' => array(
+          'label' => t('Teaser'),
+          'custom settings' => FALSE,
+        	),
+        'title_only' => array(
+          'label' => t('Title only'),
+          'custom settings' => FALSE,
+        	),
+        'title_cover' => array(
+          'label' => t('Title + Cover'),
+          'custom settings' => FALSE,
+        	),
+      ),
+      'label callback' => 'entity_class_label',
+      'uri callback' => 'entity_class_uri',
+      'module' => 'publication',
+      'access callback' => 'publication_access',
+    ),
+  );
+  $return['publication_type'] = array(
+    'label' => t('Publication type'),
+    'entity class' => 'PublicationType',
+    'controller class' => 'PublicationTypeController',
+    'base table' => 'publication_type',
+    'fieldable' => FALSE,
+    'bundle of' => 'publication',
+    'exportable' => TRUE,
+    'entity keys' => array(
+      'id' => 'id',
+      'name' => 'type',
+      'label' => 'label',
+    ),
+    'module' => 'publication',
+    // Enable the entity API's admin UI.
+    'admin ui' => array(
+      'path' => 'admin/structure/publication-types',
+      'file' => 'publication.admin.inc',
+      'controller class' => 'PublicationTypeUIController',
+    ),
+    'access callback' => 'publication_type_access',
+  );
+
+  return $return;
+}
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function publication_entity_info_alter(&$entity_info) {
+  foreach (publication_types() as $type => $info) {
+    $entity_info['publication']['bundles'][$type] = array(
+      'label' => $info->label,
+      'admin' => array(
+        'path' => 'admin/structure/publication-types/manage/%publication_type',
+        'real path' => 'admin/structure/Publication-types/manage/' . $type,
+        'bundle argument' => 4,
+      ),
+    );
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function publication_menu() {
+  $items = array();
+
+  $items['admin/content/publications/add'] = array(
+    'title' => 'Add publication',
+    'page callback' => 'publication_admin_add_page',
+    'access arguments' => array('administer publication entities'),
+    'file' => 'publication.admin.inc',
+    'type' => MENU_LOCAL_ACTION,
+  );
+  	
+	$items['publications/%/%'] = array(
+	  'title callback' => 'get_subject_title',
+	  'title arguments'=> array(1,2),
+	  'page callback'  => 'subject_page',
+	  'page arguments' => array(1,2),	
+	  'access arguments'=> TRUE,
+
+	);
+		
+
+  
+  $publication_uri = 'publication/%publication';
+  $publication_uri_argument_position = 1;
+
+  $items[$publication_uri] = array(
+    'title callback' => 'entity_label',
+    'title arguments' => array('publication', $publication_uri_argument_position),
+    'page callback' => 'publication_view',
+    'page arguments' => array($publication_uri_argument_position),
+    'access callback' => 'entity_access',
+    'access arguments' => array('view', 'publication', $publication_uri_argument_position),
+    'file' => 'publication.pages.inc',
+  );
+
+  $items[$publication_uri . '/view'] = array(
+    'title' => 'View',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -10,
+  );
+
+  $items[$publication_uri . '/delete'] = array(
+    'title' => 'Delete publication',
+    'title callback' => 'publication_label',
+    'title arguments' => array($publication_uri_argument_position),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('publication_delete_form', $publication_uri_argument_position),
+    'access callback' => 'entity_access',
+    'access arguments' => array('edit', 'publication', $publication_uri_argument_position),
+    'file' => 'publication.admin.inc',
+  );
+
+  $items[$publication_uri . '/edit'] = array(
+    'title' => 'Edit',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('publication_form', $publication_uri_argument_position),
+    'access callback' => 'entity_access',
+    'access arguments' => array('edit', 'publication', $publication_uri_argument_position),
+    'file' => 'publication.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+    'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+  );
+
+  foreach (publication_types() as $type => $info) {
+    $items['publication/add/' . $type] = array(
+      'title' => 'Add publication',
+      'page callback' => 'publication_add',
+      'page arguments' => array(2),
+      'access callback' => 'entity_access',
+      'access arguments' => array('create', 'publication', $type),
+      'file' => 'publication.admin.inc',
+    );
+  }
+
+  $items['admin/structure/publication-types/%publication_type/delete'] = array(
+    'title' => 'Delete',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('publication_type_form_delete_confirm', 4),
+    'access arguments' => array('administer publication types'),
+    'weight' => 1,
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'publication.admin.inc',
+  );
+  
+  return $items;
+}
+
+function publication_menu_alter(&$items) {
+  if (!empty($items['taxonomy/term/%taxonomy_term'])) {
+    $items['taxonomy/term/%taxonomy_term']['page callback'] = 'subject_page';
+  }
+}
+
+
+/**
+ * Implements hook_permission().
+ */
+function publication_permission() {
+  $permissions = array(
+    'administer publication types' => array(
+      'title' => t('Administer publication types'),
+      'description' => t('Allows users to configure publication types and their fields.'),
+      'restrict access' => TRUE,
+    ),
+    'administer publication entities' => array(
+      'title' => t('Administer publication entities'),
+      'description' => t('Allows users to administer publication entities.'),
+      'restrict access' => TRUE,
+    ),
+    'create publication entities' => array(
+      'title' => t('Create publications'),
+      'description' => t('Allows users to create publications.'),
+      'restrict access' => FALSE,
+    ),
+    'view publication entities' => array(
+      'title' => t('View publications'),
+      'description' => t('Allows users to view publications.'),
+      'restrict access' => FALSE,
+    ),
+    'edit any publication entities' => array(
+      'title' => t('Edit any publications'),
+      'description' => t('Allows users to edit any publications.'),
+      'restrict access' => TRUE,
+    ),
+    'edit own publication entities' => array(
+      'title' => t('Edit own publications'),
+      'description' => t('Allows users to edit own publications.'),
+      'restrict access' => FALSE,
+    ),
+    'delete any publication entities' => array(
+      'title' => t('Delete any publications'),
+      'description' => t('Allows users to delete any publications.'),
+      'restrict access' => TRUE,
+    ),
+    'delete own publication entities' => array(
+      'title' => t('Delete own publications'),
+      'description' => t('Allows users to delete own publications.'),
+      'restrict access' => FALSE,
+    ),
+  );
+
+  return $permissions;
+}
+
+
+/**
+ * Implements hook_entity_property_info_alter().
+ */
+function publication_entity_property_info_alter(&$info) {
+  $properties = &$info['publication']['properties'];
+  $properties['created'] = array(
+    'label' => t("Date created"),
+    'type' => 'date',
+    'description' => t("The date the publication was posted."),
+    'setter callback' => 'entity_property_verbatim_set',
+    'setter permission' => 'create publication entities',
+    'schema field' => 'created',
+  );
+  $properties['changed'] = array(
+    'label' => t("Date changed"),
+    'type' => 'date',
+    'schema field' => 'changed',
+    'description' => t("The date the node was most recently updated."),
+  );
+  $properties['uid'] = array(
+    'label' => t("Author"),
+    'type' => 'user',
+    'description' => t("The author of the Publication."),
+    'setter callback' => 'entity_property_verbatim_set',
+    'setter permission' => 'administer publication entities',
+    'required' => TRUE,
+    'schema field' => 'uid',
+  );
+}
+
+/*
+ * Implements hook_field_extra_fields()
+ */
+function publication_field_extra_fields(){
+	$extra = array();
+	foreach (publication_types() as $type => $info) {
+		$extra['publication'][$type] = array(
+			'form' => array(
+      		'title' => array(
+        			'label' => t('Title'),
+        			'description' => t('Publication module element'),
+        			'weight' => -4,
+      		),
+      	 ),
+      	'display' => array(
+      		'title' => array(
+        			'label' => t('Title'),
+        			'description' => t('Publication module element'),
+        			'weight' => -4,
+      	 	),
+			),
+		);
+  	}
+  	return $extra;
+}
+
+/*
+ * Implements hook_form_FORM_ID_alter()
+ */
+function publication_form_publication_form_alter(&$form,&$form_state,$form_id){
+	// Hide the elapsed periods field which is populated automatically during indexing
+	$form['field_pub_elapsed_periods']['#prefix'] = "<div style='visibility:hidden'>";
+	$form['field_pub_elapsed_periods']['#suffix'] = "</div>";
+	return $form;
+}
+ 
+
+/*
+ * Implements hook_entity_view().
+ */
+
+function publication_entity_view($entity, $type, $view_mode, $langcode) {
+  $breadcrumb = array();
+  $breadcrumb[] = l(t('Home'),'<front>');
+  if ($type == 'publication' && $entity->type == 'statistical_report' && $view_mode == 'full' && count($entity->field_pub_subject)){
+ 		$wrapper = entity_metadata_wrapper('publication',$entity);
+ 		$term_id = $wrapper->field_pub_subject[0]->tid->value();
+ 		$term_name = $wrapper->field_pub_subject[0]->name->value();
+ 		 		
+		$parent_terms = taxonomy_get_parents_all($term_id);
+		unset($parent_terms[0]); // Remove the first element including the term object 		
+		
+		// Set breadcrumb in the form
+		// Home > Publications > Statistics > Subject > Reports > Title 
+
+
+		$breadcrumb[] = l(t('Statistical publications'),'statistical_publications');
+	   foreach(array_reverse($parent_terms) as $parent){
+	   	$breadcrumb[] = l(t($parent->name),drupal_get_path_alias('taxonomy/term/' . $parent->tid));
+	   } 
+	   
+		$breadcrumb[] = l(t($term_name),drupal_get_path_alias('taxonomy/term/' . $term_id));
+		$breadcrumb[] = l(t('Statistical reports'),'statistical_publications/' . $term_id . '/reports');
+  	} 
+	
+	$breadcrumb[] = drupal_get_title();
+	
+	drupal_set_breadcrumb($breadcrumb);		
+}
+
+/**
+ *  Implements hook_pathauto_entity_alias_settings_alter().
+ */
+function publication_pathauto_entity_alias_settings_alter(&$entity_forms) {
+  $entity_forms += array(
+      'publication' => 'publication_form',
+  );
+}
+
+/**
+  * Implements hook_views_api().
+  */
+function publication_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'publication'),
+  );
+}
+
+/*
+ * Implements hook_views_pre_render(&$view)
+ */
+function publication_views_pre_render(&$view){
+	if($view->name == 'publications_search' && $view->current_display == 'statistical_reports'){
+		// Build breadcrumb
+		count($view->args)? $parents  = taxonomy_get_parents_all($view->args[0]) : $parents = array();		
+		$breadcrumb = array();
+		$breadcrumb[] = l(t('Home'),'<front>');
+		$breadcrumb[] = l(t('Statistical publications'),'statistical_publications');
+		foreach(array_reverse($parents) as $parent){
+			$breadcrumb[] = l(t($parent->name),drupal_get_path_alias('taxonomy/term/' . $parent->tid));
+		}
+		
+		if(count($view->args)) $breadcrumb[] = t('Statistical reports');
+		drupal_set_breadcrumb($breadcrumb);
+	}
+}
+
+/*
+ * Get all Subjects/Areas as a renderable array
+ */
+function get_subjects(){
+	$voc = taxonomy_vocabulary_machine_name_load('subjects');	
+	$subjects = taxonomy_get_tree($voc->vid,0,2); // stop to 2-level
+	
+	$terms = array();
+	
+	foreach($subjects as $subject){
+		if($subject->depth == 0){
+			$terms[$subject->tid] = array('name' => $subject->name,'children' => array());
+		}else{
+			$terms[$subject->parents[0]]['children'][$subject->tid] = $subject->name; 		
+		}
+	} 
+
+	$render = array();
+	
+	foreach($terms as $key => $value){
+		$render[$key] = array(
+								'#prefix' => "<div class='subject-box'>",
+								'#suffix' => "</div>",
+								'markup' => array(
+											  '#theme' => 'link',
+											  '#text' => strlen($value['name']) > 30 ? substr($value['name'],0,27) . '...' : $value['name'],
+											  '#path' => drupal_get_path_alias('taxonomy/term/' . $key),
+											  '#options' => array(
+											  							 'attributes' => array('title' => $value['name'],),
+											  							 'html' => TRUE
+											  							),
+											  '#prefix' => '<h2>',
+											  '#suffix' => '</h2>'
+											  
+											)
+					 		);		
+		if(count($value['children'])){		
+			foreach($value['children'] as $k => $v){
+				$render[$key]['children'][] = array(
+													 '#theme' => 'link',
+												    '#text' => strlen($v) > 30 ? substr($v,0,27) . '...' : $v,
+												    '#path' => drupal_get_path_alias('taxonomy/term/' . $k),
+												    '#options' => array(
+												    						'attributes' => array('title' => $v),
+												    						'html' => TRUE
+												    					),
+												    '#prefix' => "<div class='subject-box-child'>",
+												    '#suffix' => "</div>",
+												  );		
+			}	
+		}
+	}
+	
+	return $render;
+}
+
+/*
+ * Callback for subjects term 
+ */  
+function subject_page($term){
+	if($term->vocabulary_machine_name == 'subjects'){
+		$content = array(
+								'description' => array(
+										'#markup' => $term->description,
+										'#prefix' => "<div class=''>",
+										'#suffix'=> '</div>',
+								),				
+					);
+							
+		$children_terms = taxonomy_get_children($term->tid);
+		if(count($children_terms)){
+			foreach($children_terms as $child_term){
+				$children[] = array(
+										"#prefix" => "<div class='subject-box'>",
+										"#suffix" => "</div>",
+										'title' => array(
+															'#theme' => 'link',
+															'#text'  => $child_term->name,
+															'#path'  => drupal_get_path_alias('taxonomy/term/' . $child_term->tid),
+															'#options'=> array('attributes' => array('title' => ''),'html'=>TRUE),
+															'#prefix'=> "<h2>",
+															'#suffix'=> "</h2>",
+															),
+										
+										'description' => array(
+															'#markup' => text_summary($child_term->description,null,300) . '...',
+															),					
+																				
+										);	
+				}
+			$content['children'] = $children;
+		}else{
+			$reports  = get_embed_view('publications_search','latest_statistical_reports',array($term->tid));
+			$articles = get_embed_view('publications_search','latest_statistical_articles',array($term->tid));
+			
+			$content['reports'] = array(
+											'title' => array('#markup' => t('Statistical Reports'),'#prefix' => '<h2><b>','#suffix' => '</b></h2>'),
+											'items' => array('#markup' => $reports['result'],'#prefix' => "<div class='clearfix'>",'#suffix' => '</div></br>'),
+												);
+			if($reports['count']){
+				$content['reports']['more'] = array('#theme' => 'link','#text' => t('More >>'),'#path' => 'publications/statistical_reports/' . $term->tid ,'#options' => array('attributes' => array('class' => array('input','button','clearfix')),'html' => TRUE));
+			}	
+					
+			$content['articles'] = array(
+											'title' => array('#markup' => t('Statistical Articles'),'#prefix' => '<h2><b>','#suffix' => '</b></h2>'),
+											'items' => array('#markup' => $articles['result'],'#prefix' => "<div class='clearfix'>",'#suffix' => '</div></br>'),
+												);
+			if($articles['count']){
+				$content['articles']['more'] = array('#theme' => 'link','#text' => t('More >>'),'#path' => 'publications/statistical_articles/' . $term->tid,'#options' => array('attributes' => array('class' => array('input','button','clearfix')),'html' => TRUE));
+			}
+		}	
+		
+		// Set the breadcrumb
+		// In the form  : Home > Statistical publications > Economy > Price and inflation
+		$parent_terms = taxonomy_get_parents_all($term->tid);
+		unset($parent_terms[0]); // Remove the first element including the term object
+		
+	   $breadcrumb = array();
+	   
+	   $breadcrumb[] = l(t('Home'),'<front>');
+	   $breadcrumb[] = l(t('Statistical publications'),'statistical_publications');
+	   foreach(array_reverse($parent_terms) as $parent){
+	   	$breadcrumb[] = l(t($parent->name),drupal_get_path_alias('taxonomy/term/' . $parent->tid));
+	   } 
+	   
+	   $breadcrumb[] = drupal_get_title();
+	   drupal_set_breadcrumb($breadcrumb);		
+		
+		return $content;
+	}
+	return taxonomy_term_page($term);
+}
+
+/**
+ * Implements hook_search_api_alter_callback_info().
+ */
+function publication_search_api_alter_callback_info() {
+  $callbacks['publication_alter_add_period'] = array(
+    'name' => t('Period'),
+    'description' => t('Get the days between the today and of datasource incidence covered period end date value.'),
+    'class' => 'PublicationAlterAddPeriod',
+  );
+  return $callbacks;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function publication_theme($existing, $type, $theme, $path) {
+
+  $module_path = drupal_get_path('module','publication');
+  $items = array();
+
+  $items['render_publication_subjects']  = array(
+      			'render element' => 'element',
+    				);
+  
+  return $items;
+}
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function publication_theme_registry_alter(&$theme_registry) {
+    // Defined path to the current module.
+    $module_path = drupal_get_path('module', 'publication');
+    // Find all .tpl.php files in this module's folder recursively.
+    $template_file_objects = drupal_find_theme_templates($theme_registry, '.tpl.php', $module_path);
+    // Iterate through all found template file objects.
+    foreach ($template_file_objects as $key => $template_file_object) {
+        // If the template has not already been overridden by a theme.
+        if (!isset($theme_registry[$key]['theme path']) || !preg_match('#/themes/#', $theme_registry[$key]['theme path'])) {
+            // Alter the theme path and template elements.
+            $theme_registry[$key]['theme path'] = $module_path;
+            $theme_registry[$key] = array_merge($theme_registry[$key], $template_file_object);
+            $theme_registry[$key]['type'] = 'module';
+        }
+    }
+}
+
+
+/*
+ * Get a view result with its row count to check 
+ * whether one should add a more button under the result list
+ *  
+ * param
+ *		@name : the view name
+ *	param
+ *		@display : the view display name
+ * param
+ *		@filters : array of contextual filters
+ *	return
+ *		array made of view result and view row count
+ */
+function get_embed_view($name,$display,$filters){
+	$view = views_get_view($name);
+	
+	$view->set_display($display);
+	$view->set_arguments($filters);
+	
+	//$view->execute();
+	
+	return array('result' => $view->preview(),'count' => count($view->result));
+	
+}
+
+/**
+ ***************************************************************************************
+ * Theme functions
+ ***************************************************************************************
+ */
+/* This #theme function has the responsibility of consolidating/rendering the
+ * children's markup and returning it, where it will be placed in the
+ * element's #children property.
+ */
+function theme_render_publication_subjects(&$variables) {
+  $output = '';
+  foreach (element_children($variables['element']['child']) as $item) {
+    //$output .= render($variables['element']['child'][$item]) . $variables['element']['#separator'];
+  }
+  return $output;
+}
+
+
+/*******************************************************************************
+ ********************************* Publication API's **********************************
+ ******************************************************************************/
+
+/**
+ * Access callback for Publication.
+ */
+function publication_access($op, $publication = NULL, $account = NULL, $entity_type = NULL) {
+  global $user;
+
+  if (!isset($account)) {
+    $account = $user;
+  }
+
+  switch ($op) {
+  	 case 'administrer':
+      return user_access('administer publication entities', $account);
+    case 'create':
+      return user_access('administer publication entities', $account)
+          || user_access('create publication entities', $account);
+    case 'view':
+      return user_access('administer publication entities', $account)
+          || user_access('view publication entities', $account);
+    case 'insert':
+    case 'edit' :
+    case 'update' :
+    case 'delete':
+      return user_access('administer publication entities')
+          || user_access('edit any publication entities')
+          || (user_access('edit own publication entities') && ($publication->uid == $account->uid));
+    default:
+		//return TRUE;    
+    
+  }
+}
+
+/**
+ * Load a Publication.
+ */
+function publication_load($pub_id, $reset = FALSE) {
+  $publications = publication_load_multiple(array($pub_id), array(), $reset);
+  return reset($publications);
+}
+
+/**
+ * Load multiple Publications based on certain conditions.
+ */
+function publication_load_multiple($pub_ids = array(), $conditions = array(), $reset = FALSE) {
+  return entity_load('publication', $pub_ids, $conditions, $reset);
+}
+
+/**
+ * Save Publication.
+ */
+function publication_save($publication) {
+  entity_save('publication', $publication);
+}
+
+/**
+ * Delete single Publication.
+ */
+function publication_delete($publication) {
+  entity_delete('publication', entity_id('publication' ,$publication));
+}
+
+/**
+ * Delete multiple Publications.
+ */
+function publication_delete_multiple($publication_ids) {
+  entity_delete_multiple('publication', $publication_ids);
+}
+
+/*******************************************************************************
+ ****************************** Publication Type API's ********************************
+ ******************************************************************************/
+
+/**
+ * Access callback for Publication Type.
+ */
+function publication_type_access($op, $entity = NULL) {
+  return user_access('administer publication types');
+}
+
+/**
+ * Load Publication Type.
+ */
+function publication_type_load($publication_type) {
+  return publication_types($publication_type);
+}
+
+/**
+ * List of Publication Types.
+ */
+function publication_types($type_name = NULL) {
+  $types = entity_load_multiple_by_name('publication_type', isset($type_name) ? array($type_name) : FALSE);
+  return isset($type_name) ? reset($types) : $types;
+}
+
+/**
+ * Save Publication type entity.
+ */
+function publication_type_save($publication_type) {
+  entity_save('publication_type', $publication_type);
+}
+
+/**
+ * Delete single case type.
+ */
+function publication_type_delete($publication_type) {
+  entity_delete('publication_type', entity_id('publication_type' ,$publication_type));
+}
+
+/**
+ * Delete multiple case types.
+ */
+function publication_type_delete_multiple($publication_type_ids) {
+  entity_delete_multiple('publication_type', $publication_type_ids);
+}

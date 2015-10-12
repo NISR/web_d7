@@ -53,6 +53,28 @@ function publication_features_image_default_styles() {
         ),
         'weight' => 1,
       ),
+      2 => array(
+        'name' => 'canvasactions_definecanvas',
+        'data' => array(
+          'RGB' => array(
+            'HEX' => '#333333',
+          ),
+          'under' => 1,
+          'exact' => array(
+            'width' => '102%',
+            'height' => '102%',
+            'xpos' => 'center',
+            'ypos' => 'center',
+          ),
+          'relative' => array(
+            'leftdiff' => '',
+            'rightdiff' => '',
+            'topdiff' => '',
+            'bottomdiff' => '',
+          ),
+        ),
+        'weight' => 2,
+      ),
     ),
   );
 
@@ -64,14 +86,21 @@ function publication_features_image_default_styles() {
  */
 function publication_features_default_publication_type() {
   $items = array();
-  $items['article'] = entity_import('publication_type', '{
-    "type" : "article",
-    "label" : "Article",
+  $items['document'] = entity_import('publication_type', '{
+    "type" : "document",
+    "label" : "Document",
     "weight" : "0",
-    "description" : "A statistical article",
+    "description" : "",
     "locked" : "0",
-    "data" : null,
-    "rdf_mapping" : []
+    "data" : null
+  }');
+  $items['statistical_article'] = entity_import('publication_type', '{
+    "type" : "statistical_article",
+    "label" : "Statistical article",
+    "weight" : "0",
+    "description" : "",
+    "locked" : "0",
+    "data" : null
   }');
   $items['statistical_report'] = entity_import('publication_type', '{
     "type" : "statistical_report",
@@ -79,8 +108,7 @@ function publication_features_default_publication_type() {
     "weight" : "0",
     "description" : "",
     "locked" : "0",
-    "data" : null,
-    "rdf_mapping" : []
+    "data" : null
   }');
   return $items;
 }
@@ -90,50 +118,60 @@ function publication_features_default_publication_type() {
  */
 function publication_features_default_search_api_index() {
   $items = array();
-  $items['statistical_reports'] = entity_import('search_api_index', '{
-    "name" : "Statistical reports",
-    "machine_name" : "statistical_reports",
+  $items['publications'] = entity_import('search_api_index', '{
+    "name" : "Publications",
+    "machine_name" : "publications",
     "description" : null,
     "server" : "db_index_server",
     "item_type" : "publication",
     "options" : {
-      "datasource" : { "bundles" : [ "statistical_report" ] },
-      "index_directly" : 0,
+      "datasource" : { "bundles" : [] },
+      "index_directly" : 1,
       "cron_limit" : "50",
       "fields" : {
         "changed" : { "type" : "date" },
         "created" : { "type" : "date" },
+        "field_doc_subject" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_pub_datasource" : { "type" : "integer", "entity_type" : "datasource" },
+        "field_pub_elapsed_periods" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_pub_publication_date" : { "type" : "date" },
-        "field_pub_source" : { "type" : "integer", "entity_type" : "survey" },
-        "field_pub_subject" : { "type" : "integer", "entity_type" : "taxonomy_term" },
+        "field_pub_pubsource" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "publication" },
+        "field_pub_related" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "publication" },
+        "field_pub_subject" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_pub_tags" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "old_nid" : { "type" : "integer" },
         "period" : { "type" : "integer" },
         "pub_id" : { "type" : "integer" },
         "search_api_language" : { "type" : "string" },
-        "search_api_url" : { "type" : "uri" },
-        "title" : { "type" : "text" },
+        "title" : { "type" : "string" },
         "type" : { "type" : "string" },
         "uid" : { "type" : "integer", "entity_type" : "user" },
         "url" : { "type" : "uri" },
-        "uuid" : { "type" : "text" }
+        "uuid" : { "type" : "string" }
       },
       "data_alter_callbacks" : {
+        "search_api_alter_bundle_filter" : {
+          "status" : 0,
+          "weight" : "-10",
+          "settings" : { "default" : "1", "bundles" : [] }
+        },
         "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
         "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
-        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_url" : { "status" : 1, "weight" : "0", "settings" : [] },
-        "publication_alter_add_period" : { "status" : 1, "weight" : "0", "settings" : [] }
+        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "publication_alter_add_period" : { "status" : 1, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] }
       },
       "processors" : {
         "search_api_case_ignore" : {
           "status" : 0,
           "weight" : "0",
-          "settings" : { "fields" : { "title" : true, "uuid" : true } }
+          "settings" : { "fields" : { "title" : true } }
         },
         "search_api_html_filter" : {
           "status" : 0,
           "weight" : "10",
           "settings" : {
-            "fields" : { "title" : true, "uuid" : true },
+            "fields" : { "title" : true },
             "title" : 0,
             "alt" : 1,
             "tags" : "h1 = 5\\r\\nh2 = 3\\r\\nh3 = 2\\r\\nstrong = 2\\r\\nb = 2\\r\\nem = 1.5\\r\\nu = 1.5"
@@ -143,7 +181,7 @@ function publication_features_default_search_api_index() {
           "status" : 0,
           "weight" : "20",
           "settings" : {
-            "fields" : { "title" : true, "uuid" : true },
+            "fields" : { "title" : true },
             "spaces" : "[^[:alnum:]]",
             "ignorable" : "[\\u0027]"
           }
@@ -152,7 +190,7 @@ function publication_features_default_search_api_index() {
           "status" : 0,
           "weight" : "30",
           "settings" : {
-            "fields" : { "title" : true, "uuid" : true },
+            "fields" : { "title" : true },
             "file" : "",
             "stopwords" : "but\\r\\ndid\\r\\nthe this that those\\r\\netc"
           }
@@ -172,8 +210,7 @@ function publication_features_default_search_api_index() {
       }
     },
     "enabled" : "1",
-    "read_only" : "0",
-    "rdf_mapping" : []
+    "read_only" : "0"
   }');
   return $items;
 }

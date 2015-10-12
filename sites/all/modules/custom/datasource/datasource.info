@@ -1,0 +1,15 @@
+name = Datasource
+description = This module handles NISR datasource entities.
+package = NISR
+version = 7.x-1.x
+core = 7.x
+
+dependencies[] = entity
+dependencies[] = uuid
+dependencies[] = nisr
+
+files[] = datasource.module
+files[] = datasource.install
+files[] = datasource.controller.inc
+files[] = datasource.admin.inc
+files[] = datasource.pages.inc

@@ -1,0 +1,7 @@
+<?php
+
+/**
+ * @file
+ * Utility functions
+ */
+ 

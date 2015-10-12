@@ -1,0 +1,542 @@
+diff --git a/includes/pathauto_entity.admin.inc b/includes/pathauto_entity.admin.inc
+new file mode 100644
+index 0000000..1df5aff
+--- /dev/null
++++ b/includes/pathauto_entity.admin.inc
+@@ -0,0 +1,53 @@
++<?php
++
++/**
++ * Form for selected which enetities to use with Pathauto
++ */
++function pathauto_entity_available_entities_form($form, &$form_state) {
++  $form = array();
++  
++  $form['description'] = array(
++    '#type' => 'markup',
++    '#markup' => '<p><strong>Choose which entities form the list below that you would like to use with pathauto.</strong></p>',
++  );
++  
++  $available_entities = array();
++  foreach (pathauto_entity_supported_entity_types() as $entity_type => $entity_info) {
++    $available_entities[$entity_type] = $entity_info['label'];
++  }
++  
++  $active = variable_get('pathauto_entity_available_entities');
++  $bundles = variable_get('pathauto_entity_bundles');
++  
++  $form['entities'] = array(
++    '#type' => 'fieldset',
++    '#title' => t('Available Entities'),
++    '#weight' => 0,
++    '#collapsible' => TRUE,
++    '#collapsed' => FALSE,
++  );
++  
++  $form['entities']['pathauto_entity_available_entities'] = array(
++    '#type' => 'checkboxes',
++    '#ttiel' => t('Select Entities'),
++    '#options' => $available_entities,
++    '#default_value' => !empty($active) ? $active : array(),
++  );
++  
++  $form['advanced'] = array(
++    '#type' => 'fieldset',
++    '#title' => t('Advanced Settings'),
++    '#weight' => 5,
++    '#collapsible' => TRUE,
++    '#collapsed' => TRUE,
++  );
++  
++  $form['advanced']['pathauto_entity_bundles'] = array(
++    '#type' => 'checkbox',
++    '#title' => t('Expose Bundles to Delete Aliases'),
++    '#description' => 'If your custom entites defaultUri is setup to use the Bundle Type as the default root path and not the Entity Type. Example: bundle/1 <br/> Then select this option, but either way it does not hurt to have this selected.<br/> Note: You will know that you should select this option if you have generated aliases for your custom entities but still see a 0 listed on the Delete Aliases tab. ',
++    '#default_value' => !empty($bundles) ? $bundles : array(),
++  );
++  
++  return system_settings_form($form); 
++}
+diff --git a/includes/pathauto_entity.batch.inc b/includes/pathauto_entity.batch.inc
+new file mode 100644
+index 0000000..a3e3992
+--- /dev/null
++++ b/includes/pathauto_entity.batch.inc
+@@ -0,0 +1,53 @@
++<?php
++/**
++ * @file
++ * Pathauto callback implementations.
++ */
++
++/**
++ * Batch processing callback; Generate aliases for entities.
++ */
++function pathauto_entity_bulk_update_batch_process(&$context) {
++  $available = variable_get('pathauto_entity_available_entities');
++  
++  if (!isset($context['sandbox']['count']) && !empty($available)) {
++    // First pass. Build an array with all the pairs of id and entity type to process.
++    $context['sandbox']['count'] = 0;
++    $context['sandbox']['items'] = array();
++    
++    foreach ($available as $entity_type => $entity_info) {
++      $query = new EntityFieldQuery();
++      $query->entityCondition('entity_type', $entity_type);
++      $result = $query->execute();
++      $ids = isset($result[$entity_type]) ? array_keys($result[$entity_type]) : array();
++      
++      foreach ($ids as $id) {
++        $context['sandbox']['items'][] = array('id' => $id, 'type' => $entity_type);
++      }
++    }
++    $context['sandbox']['total'] = count($context['sandbox']['items']);
++
++    // If there are no items to update, stop immediately.
++    if (!$context['sandbox']['total']) {
++      $context['finished'] = 1;
++      return;
++    }
++  }
++  
++
++  // Extract 25 items to be processed in this pass.
++  $items_to_process = array_slice($context['sandbox']['items'], $context['sandbox']['count'], 25);
++  module_load_include('inc', 'pathauto');
++    
++  foreach ($items_to_process as $item) {
++    $entity = entity_load($item['type'], array($item['id']));
++    $entity = reset($entity);
++    pathauto_entity_update_alias($item['type'], $entity, 'bulkupdate');
++  }
++
++  // Update progress stats.
++  $context['sandbox']['count'] += count($items_to_process);
++  if ($context['sandbox']['count'] != $context['sandbox']['total']) {
++    $context['finished'] = $context['sandbox']['count'] / $context['sandbox']['total'];
++  }
++}
+diff --git a/pathauto_entity.api.php b/pathauto_entity.api.php
+new file mode 100644
+index 0000000..95f108f
+--- /dev/null
++++ b/pathauto_entity.api.php
+@@ -0,0 +1,26 @@
++<?php
++
++/**
++ * @file
++ * Documentation for pathauto_entity API.
++ *
++ * @see hook_token_info
++ * @see hook_tokens
++ */
++
++/**
++ * Modify the list of supported entity types.
++ */ 
++function hook_pathauto_entity_supported_entity_types_alter(&$entity_infos) {
++}
++
++/**
++ * Allows you to define a key => value array of entity forms.
++ * This will allow the "URL path settings" to appear on the entity form defined here.
++ */
++function hook_pathauto_entity_alias_settings_alter(&$entity_forms) {
++  $entity_forms += array(
++    'entity_type' => 'form_id',
++    'entity_type' => 'form_id',
++  );
++}
+diff --git a/pathauto_entity.install b/pathauto_entity.install
+new file mode 100644
+index 0000000..b4a105a
+--- /dev/null
++++ b/pathauto_entity.install
+@@ -0,0 +1,29 @@
++<?php
++
++/**
++ * Implements hook_uninstall().
++ */
++function pathauto_entity_uninstall() {
++  $entities = variable_get('pathauto_entity_available_entities');
++  if (isset($entities)) {
++    foreach ($entities as $type => $status) {
++      // Remove all variables.
++      $results = db_select('variable', 'v')
++        ->fields('v', array('name'))
++        ->condition('name', 'pathauto_'. $type .'_%', 'LIKE')
++        ->execute();
++      foreach ($results as $result) {
++        variable_del($result->name);
++      }
++    }
++  }
++  
++  // Remove all variables.
++  $results = db_select('variable', 'v')
++    ->fields('v', array('name'))
++    ->condition('name', 'pathauto_entity_%', 'LIKE')
++    ->execute();
++  foreach ($results as $result) {
++    variable_del($result->name);
++  }
++}
+diff --git a/pathauto_entity.module b/pathauto_entity.module
+index 9c10e37..8e34aa0 100644
+--- a/pathauto_entity.module
++++ b/pathauto_entity.module
+@@ -1,4 +1,58 @@
+ <?php
++/**
++ * @file
++ * Implements custom entity support with Pathauto module.
++ */
++
++/**
++ * Implement hook_menu().
++ */
++function pathauto_entity_menu() {
++  $items = array();
++  
++  $items['admin/config/search/path/entities'] = array(
++    'title' => 'Entities',
++    'page callback' => 'drupal_get_form',
++    'page arguments' => array('pathauto_entity_available_entities_form'),
++    'access arguments' => array('administer pathauto'),
++    'type' => MENU_LOCAL_TASK,
++    'weight' => 12,
++    'file' => 'includes/pathauto_entity.admin.inc',
++  );
++  
++  return $items;
++}
++
++/**
++ * @file
++ * Documentation for pathauto API.
++ *
++ * @see hook_token_info
++ * @see hook_tokens
++ */
++
++function pathauto_entity_path_alias_types() {
++  $objects = NULL;
++  $available = variable_get('pathauto_entity_available_entities');
++  
++  if (!empty($available)) {
++    foreach ($available as $entity_type => $status) {
++      if ($status != '0') {
++        $entity_info = entity_get_info($entity_type);
++        $objects[$entity_type .'/'] = t($entity_info['label']);
++      
++        // Bundles 
++        if (variable_get('pathauto_entity_bundles', 0)  == '1' && !empty($entity_info['bundles'])) {
++          foreach ($entity_info['bundles'] as $bundle => $values) {
++            $objects[$bundle .'/'] = t($values['label']);
++          }
++        }      
++      }
++    }
++  }
++  
++  return $objects;
++}
+ 
+ /**
+  * Helper function: return a list of supported entity types.
+@@ -27,37 +81,114 @@ function pathauto_entity_pathauto($op) {
+   switch ($op) {
+     case 'settings':
+       $settings = array();
+-      foreach (pathauto_entity_supported_entity_types() as $entity_type => $entity_info) {
+-        $settings[$entity_type] = (object) array(
+-          'module' => $entity_type,
+-          'token_type' => $entity_info['token type'],
+-          'groupheader' => $entity_info['label'],
+-          'patterndescr' => t('Default pattern'),
+-          'patterndefault' => '',
+-          'batch_update_callback' => 'user_pathauto_bulk_update_batch_process',
+-          'batch_file' => drupal_get_path('module', 'pathauto_entity') . '/pathauto_entity.pathauto.inc',
+-        );
++      $available = variable_get('pathauto_entity_available_entities');
++      
++      if (!empty($available)) {
++        foreach ($available as $entity_type => $status) {
++          if ($status != '0') {
++            $entity_info = entity_get_info($entity_type);
++        
++            $settings[$entity_type] = (object) array(
++              'module' => $entity_type,
++              'token_type' => $entity_info['token type'],
++              'groupheader' => $entity_info['label'],
++              'patterndescr' => t('Default path pattern (applies to all entity types with blank patterns below)'),
++              'patterndefault' => '',
++              'batch_update_callback' => 'pathauto_entity_bulk_update_batch_process',
++              'batch_file' => drupal_get_path('module', 'pathauto_entity') . '/includes/pathauto_entity.batch.inc',
++            );
++        
++            // Sort through each Entity Type to add support for bundles
++            if (!empty($entity_info['bundles'])) {
++              foreach ($entity_info['bundles'] as $bundle => $values) {
++                $settings[$entity_type]->patternitems[$bundle] = t('Pattern for all @bundle paths', array('@bundle' => $values['label']));
++              }
++            }
++          }
++        }
+       }
++      
+       return $settings;
+     default:
+       break;
+   }
+ }
+ 
++if (!function_exists('path_field_extra_fields')) {
++/**
++ * Implements hook_field_extra_fields() on behalf of path.module.
++ *
++ * Add support for the 'URL path settings' to be re-ordered by the user on the
++ * 'Manage Fields' tab of content types and vocabularies.
++ */
++function pathauto_entity_field_extra_fields() {
++  $info = array();
++  $available = variable_get('pathauto_entity_available_entities');
++  
++  if (!empty($available)) {
++    foreach ($available as $entity_type => $status) {
++      if ($status != '0') {
++        $entity_info = entity_get_info($entity_type);
++      
++        foreach ($entity_info['bundles'] as $bundle => $values) {
++          if (!isset($info[$entity_type][$bundle]['form']['path'])) {
++            $info[$entity_type][$bundle]['form']['path'] = array(
++              'label' => t('URL path settings'),
++              'description' => t('Path module form elements'),
++              'weight' => 30,
++            );
++          }
++        }
++      }
++    }
++  }
++
++  return $info;
++}
++}
++
+ /**
+  * Implements hook_entity_insert().
+  */
+ function pathauto_entity_entity_insert($entity, $entity_type) {
+-  // @todo Remove the next line when http://drupal.org/node/1025870 is fixed.
+-  unset($entity->uri);
+-  pathauto_entity_update_alias($entity_type, $entity, 'insert');
++  // If using an Alternative or custom URL alias 
++  if (isset($entity->path) && isset($entity->path['pathauto']) && $entity->path['pathauto'] == '0') {
++    $path = $entity->path;
++    $path['alias'] = trim($path['alias']);
++    // Only save a non-empty alias.
++    if (!empty($path['alias'])) {
++      // Ensure fields for programmatic executions.
++      $langcode = entity_language($entity_type, $entity);
++      $default_uri = entity_uri($entity_type, $entity);
++      $path['source'] = $default_uri['path'];
++      $path['language'] = isset($langcode) ? $langcode : LANGUAGE_NONE;
++      path_save($path);
++    }
++  }
++  else {
++    // Use Pathauto generaed path alias
++    pathauto_entity_update_alias($entity_type, $entity, 'insert');
++  }
+ }
+ 
+ /**
+  * Implements hook_entity_update().
+  */
+ function pathauto_entity_entity_update($entity, $entity_type) {
+-  pathauto_entity_update_alias($entity_type, $entity, 'update');
++  // If using an Alternative or custom URL alias 
++  if (isset($entity->path) && isset($entity->path['pathauto']) && $entity->path['pathauto'] == '0') {
++    $path = $entity->path;
++    $path['alias'] = trim($path['alias']);
++    // Delete old alias if user erased it.
++    if (!empty($path['pid']) && empty($path['alias'])) {
++      path_delete($path['pid']);
++    }
++    pathauto_entity_entity_insert($entity, $entity_type);
++  }
++  else {
++    // Use Pathauto generaed path alias
++    pathauto_entity_update_alias($entity_type, $entity, 'update');
++  }
+ }
+ 
+ /**
+@@ -67,18 +198,20 @@ function pathauto_entity_entity_delete($entity, $entity_type) {
+   pathauto_entity_path_delete_all($entity_type, $entity);
+ }
+ 
++/**
++ * Update Entity Alias.
++ */
+ function pathauto_entity_update_alias($entity_type, $entity, $op) {
+   // Skip processing if we are not managing this entity type.
+   $types = pathauto_entity_supported_entity_types();
+   if (!isset($types[$entity_type])) {
+     return;
+   }
+-
+-  // Skip processing if the user has disabled pathauto for the node.
++  
++  // Skip processing if the user has disabled pathauto for the entity.
+   if (isset($entity->path['pathauto']) && empty($entity->path['pathauto'])) {
+     return;
+   }
+-
+   // Skip processing if the entity has no pattern.
+   $entity_info = entity_get_info($entity_type);
+   list($id, $vid, $bundle) = entity_extract_ids($entity_type, $entity);
+@@ -86,7 +219,140 @@ function pathauto_entity_update_alias($entity_type, $entity, $op) {
+     return;
+   }
+ 
++  if ($op === 'insert') {
++    // @todo Remove the next line when http://drupal.org/node/1025870 is fixed.
++    unset($entity->uri);
++  }
++
+   module_load_include('inc', 'pathauto');
+   $uri = entity_uri($entity_type, $entity);
+   pathauto_create_alias($entity_type, $op, $uri['path'], array($entity_info['token type'] => $entity), $bundle);
+ }
++
++/**
++ * All modules to add URL Settings to Entity form 
++ */
++function pathauto_entity_alias_settings($entity_type) {
++  $entity_forms = array();
++  
++  // Allow for users to add form_ids
++  drupal_alter('pathauto_entity_alias_settings', $entity_forms);
++  
++  if (empty($entity_forms)) {
++    return FALSE;
++  }
++  
++  return $entity_forms[$entity_type];
++}
++
++/**
++ * Implemtn hook_form_alter().
++ */
++function pathauto_entity_form_alter(&$form, &$form_state, $form_id) {
++  // Show on only entities that have pathauto activated
++  $available = variable_get('pathauto_entity_available_entities');
++  
++  if (!empty($available)) {
++    foreach ($available as $entity_type => $status) {
++      if ($status != '0') {
++        $entity_forms = pathauto_entity_alias_settings($entity_type);
++      
++        if ($entity_forms && $form_id == $entity_forms) {
++          $form_elements = pathauto_entity_alias_form($form, $form_state, $form_id, $entity_type);
++        
++          foreach ($form_elements as $id => $value) {
++            $form[$id] = $value;
++          }
++        }
++      }
++    }
++  }
++}
++
++/**
++ * Uses for elements from the Path module
++ */
++function pathauto_entity_alias_form($form, $form_state, $form_id, $entity_type) {
++  // Set access to pathauto override
++  if (user_access('create url aliases') || user_access('administer url aliases')) {
++      
++    // Add additional settings if they are not alread present
++    if (!isset($form['additional_settings'])) {
++      $form['additional_settings'] = array(
++        '#type' => 'vertical_tabs',
++        '#weight' => 99,
++      );
++    }
++    
++    $path = array();
++	$default_uri = entity_uri($entity_type, $form_state[$entity_type]);
++	$entity_info = entity_get_info($entity_type);
++	
++    if (!empty($form_state[$entity_type]->$entity_info['entity keys']['id'])) {
++      $conditions = array('source' => $default_uri['path']);
++      $langcode = pathauto_entity_language($entity_type, $form_state[$entity_type]);
++      if ($langcode != LANGUAGE_NONE) {
++        $conditions['language'] = $langcode;
++      }
++      $path = path_load($conditions);
++      if ($path === FALSE) {
++        $path = array();
++      }
++    }
++	
++	// Determine if another module already add $form['path']	
++    $path += array(
++      'pid' => NULL,
++      'source' => isset($form_state[$entity_type]->$entity_info['entity keys']['id']) ? $default_uri['path'] : NULL,
++      'alias' => '',
++      'language' => isset($langcode) ? $langcode : LANGUAGE_NONE,
++    );
++      
++    $form['path'] = array(
++      '#type' => 'fieldset',
++      '#title' => t('URL path settings'),
++      '#collapsible' => TRUE,
++      '#collapsed' => empty($path['alias']),
++      '#group' => 'additional_settings',
++      '#attributes' => array(
++        'class' => array('path-form'),
++      ),
++      '#attached' => array(
++        'js' => array(drupal_get_path('module', 'path') . '/path.js'),
++      ),
++      '#access' => user_access('create url aliases') || user_access('administer url aliases'),
++      '#weight' => 30,
++      '#tree' => TRUE,
++      '#element_validate' => array('path_form_element_validate'),
++    );
++    $form['path']['alias'] = array(
++      '#type' => 'textfield',
++      '#title' => t('URL alias'),
++      '#default_value' => $path['alias'],
++      '#maxlength' => 255,
++      '#description' => t('Optionally specify an alternative URL by which this content can be accessed. For example, type "about" when writing an about page. Use a relative path and don\'t add a trailing slash or the URL alias won\'t work.'),
++    );
++    $form['path']['pid'] = array('#type' => 'value', '#value' => $path['pid']);
++    $form['path']['source'] = array('#type' => 'value', '#value' => $path['source']);
++    $form['path']['language'] = array('#type' => 'value', '#value' => $path['language']);
++	  
++	pathauto_field_attach_form($entity_type, $form_state[$entity_type], $form, $form_state, isset($langcode) ? $langcode : LANGUAGE_NONE);
++    
++    $form['#submit'][] = 'pathatuo_entity_alias_form_submit';
++    
++    return $form;
++  }
++}
++
++/**
++ * Add submit callback for profile2
++ */
++function pathatuo_entity_alias_form_submit(&$form, &$form_state) {
++  // Add manually for Profile2
++  if (module_exists('profile2')) {
++    if ($form_state['entity_type'] == 'profile2' && $form_state['op'] == 'edit') {
++      $form_state['profile2']->path = $form_state['values']['path'];
++      pathauto_entity_entity_update($form_state['profile2'], 'profile2');
++    }
++  }
++}
