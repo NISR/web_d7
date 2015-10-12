@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Global features feature.
+ */
+
+include_once 'nisr_features.features.inc';

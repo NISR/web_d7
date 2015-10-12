@@ -1,9 +1,6 @@
 <?php
 
-/**
- * Implements hook_entity_info().
- */
- 
+
 DEFINE('PUB_MODULE_PATH',drupal_get_path('module', 'publication'));
 
 drupal_add_css(PUB_MODULE_PATH. '/publication.css', array('group' => CSS_DEFAULT, 'every_page' => FALSE));
@@ -22,7 +19,7 @@ function publication_block_info(){
 }
 
 /*
- * Implements hook_block_info()
+ * Implements hook_block_view()
  */
 function publication_block_view($delta = ''){
 	if($delta == 'subjects'){
@@ -31,6 +28,7 @@ function publication_block_view($delta = ''){
 	}
 	return $block;
 }
+
 /*
  * Implements hook_entity_info()
  */
