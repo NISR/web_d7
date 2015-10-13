@@ -6,6 +6,7 @@ version = 7.x-1.0-alpha1
 dependencies[] = chosen
 dependencies[] = ckeditor
 dependencies[] = context
+dependencies[] = diff
 dependencies[] = entity
 dependencies[] = features
 dependencies[] = search
