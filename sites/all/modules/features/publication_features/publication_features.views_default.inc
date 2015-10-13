@@ -695,6 +695,17 @@ function publication_features_views_default_views() {
   $handler->display->display_options['fields']['pub_id']['id'] = 'pub_id';
   $handler->display->display_options['fields']['pub_id']['table'] = 'publication';
   $handler->display->display_options['fields']['pub_id']['field'] = 'pub_id';
+  /* Sort criterion: Datasource: Period - end date (field_datasource_period:value2) */
+  $handler->display->display_options['sorts']['field_datasource_period_value2']['id'] = 'field_datasource_period_value2';
+  $handler->display->display_options['sorts']['field_datasource_period_value2']['table'] = 'field_data_field_datasource_period';
+  $handler->display->display_options['sorts']['field_datasource_period_value2']['field'] = 'field_datasource_period_value2';
+  $handler->display->display_options['sorts']['field_datasource_period_value2']['relationship'] = 'field_pub_datasource_target_id';
+  $handler->display->display_options['sorts']['field_datasource_period_value2']['order'] = 'DESC';
+  /* Sort criterion: Datasource: Period -  start date (field_datasource_period) */
+  $handler->display->display_options['sorts']['field_datasource_period_value']['id'] = 'field_datasource_period_value';
+  $handler->display->display_options['sorts']['field_datasource_period_value']['table'] = 'field_data_field_datasource_period';
+  $handler->display->display_options['sorts']['field_datasource_period_value']['field'] = 'field_datasource_period_value';
+  $handler->display->display_options['sorts']['field_datasource_period_value']['relationship'] = 'field_pub_datasource_target_id';
   /* Contextual filter: Datasource: Datasource ID */
   $handler->display->display_options['arguments']['ds_id']['id'] = 'ds_id';
   $handler->display->display_options['arguments']['ds_id']['table'] = 'datasource';

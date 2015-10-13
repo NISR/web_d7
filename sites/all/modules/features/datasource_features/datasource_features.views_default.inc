@@ -131,5 +131,107 @@ function datasource_features_views_default_views() {
   );
   $export['datasources_backoffice'] = $view;
 
+  $view = new view();
+  $view->name = 'datasources_eva';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'datasource';
+  $view->human_name = 'Datasources EVA';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'History';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'view datasource entities';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'ds_id' => 'ds_id',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'ds_id' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  /* Field: Datasource: Datasource ID */
+  $handler->display->display_options['fields']['ds_id']['id'] = 'ds_id';
+  $handler->display->display_options['fields']['ds_id']['table'] = 'datasource';
+  $handler->display->display_options['fields']['ds_id']['field'] = 'ds_id';
+  $handler->display->display_options['fields']['ds_id']['exclude'] = TRUE;
+  /* Field: Datasource: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'datasource';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['path'] = 'datasource/[ds_id]';
+  /* Field: Datasource: Period */
+  $handler->display->display_options['fields']['field_datasource_period']['id'] = 'field_datasource_period';
+  $handler->display->display_options['fields']['field_datasource_period']['table'] = 'field_data_field_datasource_period';
+  $handler->display->display_options['fields']['field_datasource_period']['field'] = 'field_datasource_period';
+  $handler->display->display_options['fields']['field_datasource_period']['settings'] = array(
+    'format_type' => 'f_y',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+    'show_repeat_rule' => 'show',
+  );
+  /* Contextual filter: : field_datasource_entity (field_datasource_entity) */
+  $handler->display->display_options['arguments']['field_datasource_entity_target_id']['id'] = 'field_datasource_entity_target_id';
+  $handler->display->display_options['arguments']['field_datasource_entity_target_id']['table'] = 'field_data_field_datasource_entity';
+  $handler->display->display_options['arguments']['field_datasource_entity_target_id']['field'] = 'field_datasource_entity_target_id';
+  $handler->display->display_options['arguments']['field_datasource_entity_target_id']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['field_datasource_entity_target_id']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_datasource_entity_target_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_datasource_entity_target_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_datasource_entity_target_id']['summary_options']['items_per_page'] = '25';
+  /* Filter criterion: Datasource: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'datasource';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'datasource_incidence' => 'datasource_incidence',
+  );
+
+  /* Display: EVA Field */
+  $handler = $view->new_display('entity_view', 'EVA Field', 'entity_view_1');
+  $handler->display->display_options['entity_type'] = 'datasource';
+  $handler->display->display_options['bundles'] = array(
+    0 => 'datasource_metadata',
+  );
+  $handler->display->display_options['show_title'] = 1;
+  $translatables['datasources_eva'] = array(
+    t('Master'),
+    t('History'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Datasource ID'),
+    t('.'),
+    t(','),
+    t('Title'),
+    t('Period'),
+    t('All'),
+    t('EVA Field'),
+  );
+  $export['datasources_eva'] = $view;
+
   return $export;
 }

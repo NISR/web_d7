@@ -26,15 +26,19 @@ function datasource_features_field_default_field_instances() {
         'weight' => 3,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_default',
+        'weight' => 2,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'trim_length' => 600,
+        ),
+        'type' => 'text_trimmed',
         'weight' => 0,
       ),
     ),
@@ -55,13 +59,13 @@ function datasource_features_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 3,
+      'weight' => 2,
     ),
   );
 
   // Exported field_instance:
-  // 'datasource-datasource_incidence-field_datasource_entity'
-  $field_instances['datasource-datasource_incidence-field_datasource_entity'] = array(
+  // 'datasource-datasource_incidence-field_datasource_parent'
+  $field_instances['datasource-datasource_incidence-field_datasource_parent'] = array(
     'bundle' => 'datasource_incidence',
     'default_value' => NULL,
     'deleted' => 0,
@@ -74,12 +78,15 @@ function datasource_features_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 0,
+        'weight' => 4,
       ),
       'full' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -90,8 +97,8 @@ function datasource_features_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'datasource',
-    'field_name' => 'field_datasource_entity',
-    'label' => 'Type',
+    'field_name' => 'field_datasource_parent',
+    'label' => 'Datasource',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -100,10 +107,10 @@ function datasource_features_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(
-        'apply_chosen' => '',
+        'apply_chosen' => 1,
       ),
       'type' => 'options_select',
-      'weight' => 0,
+      'weight' => 1,
     ),
   );
 
@@ -131,15 +138,24 @@ function datasource_features_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => FALSE,
+          'show_repeat_rule' => 'show',
+        ),
+        'type' => 'date_default',
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'datasource',
@@ -168,7 +184,7 @@ function datasource_features_field_default_field_instances() {
         'year_range' => '1962:+0',
       ),
       'type' => 'date_select',
-      'weight' => 1,
+      'weight' => 3,
     ),
   );
 
@@ -188,7 +204,7 @@ function datasource_features_field_default_field_instances() {
         'weight' => 2,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -270,6 +286,7 @@ function datasource_features_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
+  t('Datasource');
   t('Period');
   t('Type');
 
