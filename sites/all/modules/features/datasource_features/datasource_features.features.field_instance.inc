@@ -25,6 +25,18 @@ function datasource_features_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 3,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'datasource',
     'field_name' => 'field_datasource_body',
@@ -43,7 +55,7 @@ function datasource_features_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 0,
+      'weight' => 3,
     ),
   );
 
@@ -64,6 +76,18 @@ function datasource_features_field_default_field_instances() {
         'type' => 'entityreference_label',
         'weight' => 0,
       ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'datasource',
     'field_name' => 'field_datasource_entity',
@@ -79,7 +103,7 @@ function datasource_features_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => -3,
+      'weight' => 0,
     ),
   );
 
@@ -104,6 +128,18 @@ function datasource_features_field_default_field_instances() {
         ),
         'type' => 'date_default',
         'weight' => 1,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'datasource',
@@ -132,7 +168,7 @@ function datasource_features_field_default_field_instances() {
         'year_range' => '1962:+0',
       ),
       'type' => 'date_select',
-      'weight' => -2,
+      'weight' => 1,
     ),
   );
 
@@ -156,7 +192,7 @@ function datasource_features_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -206,7 +242,7 @@ function datasource_features_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',

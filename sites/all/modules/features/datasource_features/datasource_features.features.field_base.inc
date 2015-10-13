@@ -57,10 +57,10 @@ function datasource_features_field_default_field_bases() {
           'type' => 'property',
         ),
         'target_bundles' => array(
-          'datasource_metadata' => 'datasource_metadata',
+          'survey_metadata' => 'survey_metadata',
         ),
       ),
-      'target_type' => 'datasource',
+      'target_type' => 'survey',
     ),
     'translatable' => 0,
     'type' => 'entityreference',
