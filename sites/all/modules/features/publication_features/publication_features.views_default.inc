@@ -795,6 +795,7 @@ function publication_features_views_default_views() {
   $handler->display->display_options['arguments']['field_pub_subject']['table'] = 'search_api_index_publications';
   $handler->display->display_options['arguments']['field_pub_subject']['field'] = 'field_pub_subject';
   $handler->display->display_options['arguments']['field_pub_subject']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['field_pub_subject']['title_enable'] = TRUE;
   $handler->display->display_options['arguments']['field_pub_subject']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['field_pub_subject']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_pub_subject']['break_phrase'] = 0;
@@ -802,6 +803,23 @@ function publication_features_views_default_views() {
 
   /* Display: Statistical reports */
   $handler = $view->new_display('page', 'Statistical reports', 'statistical_reports');
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Indexed Publication: Subject */
+  $handler->display->display_options['arguments']['field_pub_subject']['id'] = 'field_pub_subject';
+  $handler->display->display_options['arguments']['field_pub_subject']['table'] = 'search_api_index_publications';
+  $handler->display->display_options['arguments']['field_pub_subject']['field'] = 'field_pub_subject';
+  $handler->display->display_options['arguments']['field_pub_subject']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['field_pub_subject']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['field_pub_subject']['title'] = '%1';
+  $handler->display->display_options['arguments']['field_pub_subject']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_pub_subject']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_pub_subject']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['field_pub_subject']['validate']['type'] = 'taxonomy_term';
+  $handler->display->display_options['arguments']['field_pub_subject']['validate_options']['vocabularies'] = array(
+    'subjects' => 'subjects',
+  );
+  $handler->display->display_options['arguments']['field_pub_subject']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['field_pub_subject']['not'] = 0;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Indexed Publication: Type */
@@ -822,6 +840,18 @@ function publication_features_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'entity';
   $handler->display->display_options['row_options']['view_mode'] = 'teaser';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Indexed Publication: Subject */
+  $handler->display->display_options['arguments']['field_pub_subject']['id'] = 'field_pub_subject';
+  $handler->display->display_options['arguments']['field_pub_subject']['table'] = 'search_api_index_publications';
+  $handler->display->display_options['arguments']['field_pub_subject']['field'] = 'field_pub_subject';
+  $handler->display->display_options['arguments']['field_pub_subject']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['field_pub_subject']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['field_pub_subject']['title'] = '%1';
+  $handler->display->display_options['arguments']['field_pub_subject']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_pub_subject']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_pub_subject']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['field_pub_subject']['not'] = 0;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Indexed Publication: Type */
@@ -888,6 +918,8 @@ function publication_features_views_default_views() {
   $handler->display->display_options['arguments']['field_doc_subject']['table'] = 'search_api_index_publications';
   $handler->display->display_options['arguments']['field_doc_subject']['field'] = 'field_doc_subject';
   $handler->display->display_options['arguments']['field_doc_subject']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['field_doc_subject']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['field_doc_subject']['title'] = '%1';
   $handler->display->display_options['arguments']['field_doc_subject']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['field_doc_subject']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_doc_subject']['break_phrase'] = 0;
@@ -922,6 +954,7 @@ function publication_features_views_default_views() {
     t(','),
     t('All'),
     t('Statistical reports'),
+    t('%1'),
     t('Statistical articles'),
     t('Latest Statistical reports'),
     t('Latest Statistical articles'),

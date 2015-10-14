@@ -67,13 +67,13 @@ function publication_features_context_default_contexts() {
         'facetapi-TI4sFfxRmp2Yty6vEF6QDlCkDIpRNqDJ' => array(
           'module' => 'facetapi',
           'delta' => 'TI4sFfxRmp2Yty6vEF6QDlCkDIpRNqDJ',
-          'region' => 'sidebar_first',
+          'region' => 'sidebar_left',
           'weight' => '-10',
         ),
         'facetapi-XJuBAz0WMx58FOka1GAp3HIT9Ys4VLW3' => array(
           'module' => 'facetapi',
           'delta' => 'XJuBAz0WMx58FOka1GAp3HIT9Ys4VLW3',
-          'region' => 'sidebar_first',
+          'region' => 'sidebar_left',
           'weight' => '-9',
         ),
       ),

@@ -528,7 +528,7 @@ function subject_page($term){
 											'items' => array('#markup' => $reports['result'],'#prefix' => "<div class='clearfix'>",'#suffix' => '</div></br>'),
 												);
 			if($reports['count']){
-				$content['reports']['more'] = array('#theme' => 'link','#text' => t('More >>'),'#path' => 'publications/statistical_reports/' . $term->tid ,'#options' => array('attributes' => array('class' => array('input','button','clearfix')),'html' => TRUE));
+				$content['reports']['more'] = array('#theme' => 'link','#text' => t('More >>'),'#path' => 'publications/statistical_reports/' . $term->tid ,'#options' => array('attributes' => array('class' => array('btn','btn-lg','btn-primary')),'html' => TRUE));
 			}	
 					
 			$content['articles'] = array(

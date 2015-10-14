@@ -59,7 +59,7 @@ function datasource_features_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -184,7 +184,7 @@ function datasource_features_field_default_field_instances() {
         'year_range' => '1962:+0',
       ),
       'type' => 'date_select',
-      'weight' => 3,
+      'weight' => 2,
     ),
   );
 
