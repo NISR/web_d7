@@ -86,7 +86,7 @@ function datasource_entity_info_alter(&$entity_info) {
 function datasource_menu() {
   $items = array();
 
-  $items['datasource/add'] = array(
+  $items['admin/content/datasources/add'] = array(
     'title' => 'Add datasource',
     'page callback' => 'datasource_admin_add_page',
     'access arguments' => array('administer datasource entities'),

@@ -39,7 +39,7 @@
 	  </div>
 	  
 	  <?php if (!$page): ?>
-	    <h2<?php print $title_attributes; ?>>
+	    <h4<?php print $title_attributes; ?>>
 	      <?php if ($url): ?>
 	        <div class="publication-item-title">
 	        	<a href="<?php print $url; ?>"><?php print $title; ?></a>
@@ -47,7 +47,7 @@
 	      <?php else: ?>
 	        <?php print $title; ?>
 	      <?php endif; ?>
-	    </h2>
+	    </h4>
 	  <?php endif; ?>
 	</div>
 </div>

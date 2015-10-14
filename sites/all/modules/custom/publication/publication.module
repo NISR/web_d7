@@ -459,8 +459,8 @@ function get_subjects(){
 											  							 'attributes' => array('title' => $value['name'],),
 											  							 'html' => TRUE
 											  							),
-											  '#prefix' => '<h2>',
-											  '#suffix' => '</h2>'
+											  '#prefix' => '<h4>',
+											  '#suffix' => '</h4>'
 											  
 											)
 					 		);		
@@ -533,10 +533,10 @@ function subject_page($term){
 					
 			$content['articles'] = array(
 											'title' => array('#markup' => t('Statistical Articles'),'#prefix' => '<h2><b>','#suffix' => '</b></h2>'),
-											'items' => array('#markup' => $articles['result'],'#prefix' => "<div class='clearfix'>",'#suffix' => '</div></br>'),
+											'items' => array('#markup' => $articles['result'],'#prefix' => "<div class='clearfix'>",'#suffix' => '</div></br>'),  
 												);
 			if($articles['count']){
-				$content['articles']['more'] = array('#theme' => 'link','#text' => t('More >>'),'#path' => 'publications/statistical_articles/' . $term->tid,'#options' => array('attributes' => array('class' => array('input','button','clearfix')),'html' => TRUE));
+				$content['articles']['more'] = array('#theme' => 'link','#text' => t('More >>'),'#path' => 'publications/statistical_articles/' . $term->tid,'#options' => array('attributes' => array('class' => array('btn','btn-lg','btn-primary')),'html' => TRUE));
 			}
 		}	
 		
