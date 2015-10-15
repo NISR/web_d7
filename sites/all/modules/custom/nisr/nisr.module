@@ -180,6 +180,20 @@ function nisr_theme_registry_alter(&$theme_registry) {
     
 }
 
+function twitter_test_twitter_pull_blocks() {
+  return array(
+    0 => (object) array(
+      'delta' => 'twitter_nisr_0',
+      'tweetkey' => 'statisticsrw',
+      'title' => 'Irakli Tweet Feed',
+      'name'  => 'Irakli Tweet Feed',    
+      'number_of_items' => 5,
+      'theme_key' => 'twitter_pull_listing',    
+    )
+  );
+  
+}
+
 
 /*
  * Theme function used to override the file table display to add the download count
