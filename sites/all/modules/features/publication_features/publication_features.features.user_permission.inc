@@ -15,6 +15,7 @@ function publication_features_user_default_permissions() {
     'name' => 'administer publication entities',
     'roles' => array(
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'publication',
   );
@@ -32,6 +33,7 @@ function publication_features_user_default_permissions() {
   $permissions['create publication entities'] = array(
     'name' => 'create publication entities',
     'roles' => array(
+      'Content manager' => 'Content manager',
       'administrator' => 'administrator',
     ),
     'module' => 'publication',
@@ -41,7 +43,9 @@ function publication_features_user_default_permissions() {
   $permissions['edit any publication entities'] = array(
     'name' => 'edit any publication entities',
     'roles' => array(
+      'Content manager' => 'Content manager',
       'administrator' => 'administrator',
+      'manager' => 'manager',
     ),
     'module' => 'publication',
   );
@@ -50,6 +54,7 @@ function publication_features_user_default_permissions() {
   $permissions['edit own publication entities'] = array(
     'name' => 'edit own publication entities',
     'roles' => array(
+      'Data entry clerk' => 'Data entry clerk',
       'administrator' => 'administrator',
     ),
     'module' => 'publication',
@@ -61,6 +66,7 @@ function publication_features_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'publication',
   );

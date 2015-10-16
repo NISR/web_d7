@@ -233,8 +233,11 @@ function publication_menu() {
 }
 
 function publication_menu_alter(&$items) {
+  global $user;
+	
   if (!empty($items['taxonomy/term/%taxonomy_term'])) {
-    $items['taxonomy/term/%taxonomy_term']['page callback'] = 'subject_page';
+		$items['taxonomy/term/%taxonomy_term']['page callback'] = 'subject_page';
+	 	$items['taxonomy/term/%taxonomy_term']['access arguments'] = array('view publication entities');        
   }
 }
 

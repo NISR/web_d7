@@ -29,7 +29,7 @@ function publication_features_taxonomy_default_vocabularies() {
       'name' => 'Subjects',
       'machine_name' => 'subjects',
       'description' => '',
-      'hierarchy' => 1,
+      'hierarchy' => 0,
       'module' => 'taxonomy',
       'weight' => 0,
     ),

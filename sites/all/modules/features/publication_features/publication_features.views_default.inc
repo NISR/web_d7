@@ -865,6 +865,8 @@ function publication_features_views_default_views() {
 
   /* Display: Latest Statistical reports */
   $handler = $view->new_display('embed', 'Latest Statistical reports', 'latest_statistical_reports');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Latest 4 reports';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '4';
@@ -957,6 +959,7 @@ function publication_features_views_default_views() {
     t('%1'),
     t('Statistical articles'),
     t('Latest Statistical reports'),
+    t('Latest 4 reports'),
     t('Latest Statistical articles'),
     t('Documents'),
   );
