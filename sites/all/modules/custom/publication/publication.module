@@ -445,12 +445,12 @@ function get_subjects(){
 		}
 	} 
 
-	$render = array();
+	$render = array("wrapper" => array("#prefix" => "<div class='row featured-boxes'>"));
 	
 	foreach($terms as $key => $value){
-		$render[$key] = array(
-								'#prefix' => "<div class='subject-box'>",
-								'#suffix' => "</div>",
+		$render['wrapper'][$key] = array(
+								'#prefix' => "<div class='col-md-3'><div class='featured-content featured-box'><div class='box-content'>",
+								'#suffix' => "</div></div></div>",
 								'markup' => array(
 											  '#theme' => 'link',
 											  '#text' => strlen($value['name']) > 30 ? substr($value['name'],0,27) . '...' : $value['name'],
@@ -459,14 +459,14 @@ function get_subjects(){
 											  							 'attributes' => array('title' => $value['name'],),
 											  							 'html' => TRUE
 											  							),
-											  '#prefix' => '<h4>',
-											  '#suffix' => '</h4>'
+											  '#prefix' => '<h3>',
+											  '#suffix' => '</h3>'
 											  
 											)
 					 		);		
 		if(count($value['children'])){		
 			foreach($value['children'] as $k => $v){
-				$render[$key]['children'][] = array(
+				$render['wrapper'][$key]['children'][] = array(
 													 '#theme' => 'link',
 												    '#text' => strlen($v) > 30 ? substr($v,0,27) . '...' : $v,
 												    '#path' => drupal_get_path_alias('taxonomy/term/' . $k),
@@ -480,6 +480,8 @@ function get_subjects(){
 			}	
 		}
 	}
+
+	$render['wrapper']['#suffix'] = "</div>";
 	
 	return $render;
 }
@@ -494,22 +496,27 @@ function subject_page($term){
 										'#markup' => $term->description,
 										'#prefix' => "<div class=''>",
 										'#suffix'=> '</div>',
-								),				
+								),	
+								"wrapper" => array(
+										"#prefix" => "<div class='row featured-boxes'>",
+								)			
 					);
+					
 							
 		$children_terms = taxonomy_get_children($term->tid);
+		
 		if(count($children_terms)){
 			foreach($children_terms as $child_term){
 				$children[] = array(
-										"#prefix" => "<div class='subject-box'>",
-										"#suffix" => "</div>",
+										"#prefix" => "<div class='col-md-3'><div class='featured-content featured-box'><div class='box-content'>",
+										"#suffix" => "</div></div></div>",
 										'title' => array(
 															'#theme' => 'link',
 															'#text'  => $child_term->name,
 															'#path'  => drupal_get_path_alias('taxonomy/term/' . $child_term->tid),
 															'#options'=> array('attributes' => array('title' => ''),'html'=>TRUE),
-															'#prefix'=> "<h2>",
-															'#suffix'=> "</h2>",
+															'#prefix'=> "<h3>",
+															'#suffix'=> "</h3>",
 															),
 										
 										'description' => array(
@@ -518,28 +525,32 @@ function subject_page($term){
 																				
 										);	
 				}
-			$content['children'] = $children;
+			$content['wrapper']['children'] = $children;
 		}else{
+	
 			$reports  = get_embed_view('publications_search','latest_statistical_reports',array($term->tid));
 			$articles = get_embed_view('publications_search','latest_statistical_articles',array($term->tid));
 			
-			$content['reports'] = array(
+			$content['wrapper']['item']['reports'] = array(
 											'title' => array('#markup' => t('Statistical Reports'),'#prefix' => '<h2><b>','#suffix' => '</b></h2>'),
 											'items' => array('#markup' => $reports['result'],'#prefix' => "<div class='clearfix'>",'#suffix' => '</div></br>'),
 												);
 			if($reports['count']){
-				$content['reports']['more'] = array('#theme' => 'link','#text' => t('More >>'),'#path' => 'publications/statistical_reports/' . $term->tid ,'#options' => array('attributes' => array('class' => array('btn','btn-lg','btn-primary')),'html' => TRUE));
+				$content['wrapper']['item']['more'] = array('#theme' => 'link','#text' => t('Read more'),'#path' => 'publications/statistical_reports/' . $term->tid ,'#options' => array('attributes' => array('class' => array('btn','btn-lg','btn-primary')),'html' => TRUE));
 			}	
 					
-			$content['articles'] = array(
+			$content['wrapper']['item']['articles'] = array(
 											'title' => array('#markup' => t('Statistical Articles'),'#prefix' => '<h2><b>','#suffix' => '</b></h2>'),
 											'items' => array('#markup' => $articles['result'],'#prefix' => "<div class='clearfix'>",'#suffix' => '</div></br>'),  
 												);
 			if($articles['count']){
-				$content['articles']['more'] = array('#theme' => 'link','#text' => t('More >>'),'#path' => 'publications/statistical_articles/' . $term->tid,'#options' => array('attributes' => array('class' => array('btn','btn-lg','btn-primary')),'html' => TRUE));
+				$content['wrapper']['item']['articles']['more'] = array('#theme' => 'link','#text' => t('Read More'),'#path' => 'publications/statistical_articles/' . $term->tid,'#options' => array('attributes' => array('class' => array('btn','btn-lg','btn-primary')),'html' => TRUE));
 			}
 		}	
 		
+		$content['wrapper']['#suffix'] = "</div>";
+		
+
 		// Set the breadcrumb
 		// In the form  : Home > Statistical publications > Economy > Price and inflation
 		$parent_terms = taxonomy_get_parents_all($term->tid);
