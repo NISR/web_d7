@@ -28,7 +28,7 @@
  * @see template_process()
  */
 ?>
-<div class="publication-item-row">
+<div class="col-md-6" style="margin:10px 0 10px 0;">
 	<div class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 	  <div class="content publication-item-cover-wrapper"<?php print $content_attributes; ?>>
 	  		<div class="publication-item-cover">

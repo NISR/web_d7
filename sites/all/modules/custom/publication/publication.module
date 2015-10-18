@@ -500,15 +500,13 @@ function subject_page($term){
 										'#prefix' => "<div class=''>",
 										'#suffix'=> '</div>',
 								),	
-								"wrapper" => array(
-										"#prefix" => "<div class='row featured-boxes'>",
-								)			
 					);
 					
 							
 		$children_terms = taxonomy_get_children($term->tid);
 		
 		if(count($children_terms)){
+			$content['wrapper'] = array("#prefix" => "<div class='featured-boxes'>");			
 			foreach($children_terms as $child_term){
 				$children[] = array(
 										"#prefix" => "<div class='col-md-3'><div class='featured-content featured-box'><div class='box-content'>",
@@ -530,30 +528,31 @@ function subject_page($term){
 				}
 			$content['wrapper']['children'] = $children;
 		}else{
-	
+			// Show latest reports and articles
+			$content['wrapper'] = array("#prefix" => "<div class='panel-group'>");			
+			module_load_include('inc','nisr','includes/utils');
 			$reports  = get_embed_view('publications_search','latest_statistical_reports',array($term->tid));
 			$articles = get_embed_view('publications_search','latest_statistical_articles',array($term->tid));
 			
 			$content['wrapper']['item']['reports'] = array(
-											'title' => array('#markup' => t('Statistical Reports'),'#prefix' => '<h2><b>','#suffix' => '</b></h2>'),
-											'items' => array('#markup' => $reports['result'],'#prefix' => "<div class='clearfix'>",'#suffix' => '</div></br>'),
+											"title" => array("#markup" => t($reports['title']),"#prefix" => "<div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a>","#suffix" => "</a></h4></div>"),
+											'items' => array('#markup' => $reports['result'],'#prefix' => "<div class='clearfix'>",'#suffix' => '</div>'),
 												);
 			if($reports['count']){
-				$content['wrapper']['item']['more'] = array('#theme' => 'link','#text' => t('Read more'),'#path' => 'publications/statistical_reports/' . $term->tid ,'#options' => array('attributes' => array('class' => array('btn','btn-lg','btn-primary')),'html' => TRUE));
+				$content['wrapper']['item']['more'] = array('#theme' => 'link','#text' => t('Read more'),'#path' => 'publications/statistical_reports/' . $term->tid ,'#options' => array('attributes' => array('class' => array('btn','btn-sm','btn-primary')),'html' => TRUE),'#prefix' =>"<div style='margin:15px;'>",'#suffix' => '</div></div>');
 			}	
 					
 			$content['wrapper']['item']['articles'] = array(
-											'title' => array('#markup' => t('Statistical Articles'),'#prefix' => '<h2><b>','#suffix' => '</b></h2>'),
-											'items' => array('#markup' => $articles['result'],'#prefix' => "<div class='clearfix'>",'#suffix' => '</div></br>'),  
+											'title' => array('#markup' => t($articles['title']),"#prefix" => "<div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a>","#suffix" => "</a></h4></div>"),
+											'items' => array('#markup' => $articles['result'],'#prefix' => "<div class='clearfix'>",'#suffix' => '</div>'),  
 												);
 			if($articles['count']){
-				$content['wrapper']['item']['articles']['more'] = array('#theme' => 'link','#text' => t('Read More'),'#path' => 'publications/statistical_articles/' . $term->tid,'#options' => array('attributes' => array('class' => array('btn','btn-lg','btn-primary')),'html' => TRUE));
+				$content['wrapper']['item']['articles']['more'] = array('#theme' => 'link','#text' => t('Read More'),'#path' => 'publications/statistical_articles/' . $term->tid,'#options' => array('attributes' => array('class' => array('btn','btn-sm','btn-primary')),'html' => TRUE),'#prefix' =>"<div style='margin:15px;'>",'#suffix' => '</div></div>');
 			}
 		}	
 		
 		$content['wrapper']['#suffix'] = "</div>";
 		
-
 		// Set the breadcrumb
 		// In the form  : Home > Statistical publications > Economy > Price and inflation
 		$parent_terms = taxonomy_get_parents_all($term->tid);
@@ -620,32 +619,6 @@ function publication_theme_registry_alter(&$theme_registry) {
             $theme_registry[$key]['type'] = 'module';
         }
     }
-}
-
-
-/*
- * Get a view result with its row count to check 
- * whether one should add a more button under the result list
- *  
- * param
- *		@name : the view name
- *	param
- *		@display : the view display name
- * param
- *		@filters : array of contextual filters
- *	return
- *		array made of view result and view row count
- */
-function get_embed_view($name,$display,$filters){
-	$view = views_get_view($name);
-	
-	$view->set_display($display);
-	$view->set_arguments($filters);
-	
-	//$view->execute();
-	
-	return array('result' => $view->preview(),'count' => count($view->result));
-	
 }
 
 /**

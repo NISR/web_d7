@@ -5,5 +5,7 @@ version = 7.x-1.x
 core = 7.x
 
 files[] = nisr.css
+files[] = includes/utils.inc
+
 
 

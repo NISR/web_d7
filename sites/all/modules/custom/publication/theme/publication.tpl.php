@@ -42,17 +42,13 @@
     </h2>
   <?php endif; ?>
 	<div>
-		<div class="entity-profile">
-			<div class=""><?php print render($content['field_pub_publication_date'])?></div>
+		<div class="col-md-3">
 			<div class=""><?php print render($content['field_pub_cover'])?></div>
+			<div class=""><?php print render($content['field_pub_publication_date'])?></div>
 		</div>
-		<div class="content publication-item-body"<?php print $content_attributes; ?>>
-			<div class="publication-item-label"><?php print t('Summary')?></div>
-	  		<?php	print render($content['field_pub_body']);?>
+		<div class="content col-md-9"<?php print $content_attributes; ?>>
+			<div><?php print render($content)?></div>
 		</div>
 	</div>
-	<div class="clearfix"></div>
-	<div>
-		<?php print render($content)?>	
-	</div>
+
 </div>
