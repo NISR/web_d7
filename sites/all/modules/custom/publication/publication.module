@@ -544,7 +544,7 @@ function subject_page($term){
 					
 			$content['wrapper']['item']['articles'] = array(
 											'title' => array('#markup' => t($articles['title']),"#prefix" => "<div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a>","#suffix" => "</a></h4></div>"),
-											'items' => array('#markup' => $articles['result'],'#prefix' => "<div class='clearfix'>",'#suffix' => '</div>'),  
+											'items' => array('#markup' => $articles['result'],'#prefix' => "<div class='clearfix' style='margin-left:15px;'>",'#suffix' => '</div>'),  
 												);
 			if($articles['count']){
 				$content['wrapper']['item']['articles']['more'] = array('#theme' => 'link','#text' => t('Read More'),'#path' => 'publications/statistical_articles/' . $term->tid,'#options' => array('attributes' => array('class' => array('btn','btn-sm','btn-primary')),'html' => TRUE),'#prefix' =>"<div style='margin:15px;'>",'#suffix' => '</div></div>');
