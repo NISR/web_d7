@@ -45,6 +45,7 @@ function publication_block_view($delta = ''){
 	
 	foreach($subjects as $subject){
 		if($delta == str_replace(' ','_',strtolower($subject->name))){
+			module_load_include('inc','nisr','includes/utils');
 			$view =  get_embed_view('publications_search','documents',array($subject->tid));			
 			$block['title'] = '';
 			$block['content'] = $view['result'];
