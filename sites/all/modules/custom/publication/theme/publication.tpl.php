@@ -43,7 +43,7 @@
   <?php endif; ?>
 	<div>
 		<div class="col-md-3">
-			<div class=""><?php print render($content['field_pub_cover'])?></div>
+			<div class=""><?php print render($content['field_pub_cover'])?></div><br>
 			<div class=""><?php print render($content['field_pub_publication_date'])?></div>
 		</div>
 		<div class="content col-md-9"<?php print $content_attributes; ?>>

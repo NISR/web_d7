@@ -444,7 +444,7 @@ function get_subjects(){
 		if($subject->depth == 0){
 			$terms[$subject->tid] = array('name' => $subject->name,'children' => array());
 		}else{
-			$terms[$subject->parents[0]]['children'][$subject->tid] = $subject->name; 		
+			$terms[$subject->parents[0]]['children']['items'][$subject->tid] = $subject->name; 		
 		}
 	} 
 
@@ -467,9 +467,11 @@ function get_subjects(){
 											  
 											)
 					 		);		
-		if(count($value['children'])){		
-			foreach($value['children'] as $k => $v){
-				$render['wrapper'][$key]['children'][] = array(
+		if(count($value['children']['items'])){
+			$render['wrapper'][$key]['children']['#prefix'] = "<ul class='subject-box-wrapper-items'>";
+			$render['wrapper'][$key]['children']['#suffix'] = "</ul>";			
+			foreach($value['children']['items'] as $k => $v){
+				$render['wrapper'][$key]['children']['items'][] = array(
 													 '#theme' => 'link',
 												    '#text' => strlen($v) > 30 ? substr($v,0,27) . '...' : $v,
 												    '#path' => drupal_get_path_alias('taxonomy/term/' . $k),
@@ -477,8 +479,8 @@ function get_subjects(){
 												    						'attributes' => array('title' => $v),
 												    						'html' => TRUE
 												    					),
-												    '#prefix' => "<div class='subject-box-child'>",
-												    '#suffix' => "</div>",
+												    '#prefix' => "<li class='subject-box-item'>",
+												    '#suffix' => "</li>",
 												  );		
 			}	
 		}

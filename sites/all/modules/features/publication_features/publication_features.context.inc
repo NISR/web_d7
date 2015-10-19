@@ -64,17 +64,23 @@ function publication_features_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'facetapi-XJuBAz0WMx58FOka1GAp3HIT9Ys4VLW3' => array(
+          'module' => 'facetapi',
+          'delta' => 'XJuBAz0WMx58FOka1GAp3HIT9Ys4VLW3',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'system-main' => array(
+          'module' => 'system',
+          'delta' => 'main',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
         'facetapi-TI4sFfxRmp2Yty6vEF6QDlCkDIpRNqDJ' => array(
           'module' => 'facetapi',
           'delta' => 'TI4sFfxRmp2Yty6vEF6QDlCkDIpRNqDJ',
           'region' => 'sidebar_left',
           'weight' => '-10',
-        ),
-        'facetapi-XJuBAz0WMx58FOka1GAp3HIT9Ys4VLW3' => array(
-          'module' => 'facetapi',
-          'delta' => 'XJuBAz0WMx58FOka1GAp3HIT9Ys4VLW3',
-          'region' => 'sidebar_left',
-          'weight' => '-9',
         ),
       ),
     ),

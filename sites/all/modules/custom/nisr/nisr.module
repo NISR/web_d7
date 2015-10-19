@@ -212,7 +212,7 @@ function nisr_file_formatter_table(&$variables){
     );
   }
 
-  return empty($rows) ? '' : theme('table', array('header' => $header, 'rows' => $rows));
+  return empty($rows) ? '' : theme('table', array('header' => $header, 'rows' => $rows,'attributes' => array('class' => array('col-md-12'),'style'=>'margin-bottom:20px;')));
 } 
 
 
