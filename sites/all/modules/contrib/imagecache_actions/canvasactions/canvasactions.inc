@@ -958,7 +958,7 @@ function canvasactions_resizepercent_form(array $data) {
   $form['width'] = array(
     '#type' => 'textfield',
     '#title' => t('Width'),
-    '#default_value' => !empty($data['width']) ? (float) $data['width'] : '',
+    '#default_value' => isset($data['width']) ? (float) $data['width'] : '',
     '#field_suffix' => ' ' . t('percent'),
     '#required' => FALSE,
     '#size' => 10,
@@ -968,7 +968,7 @@ function canvasactions_resizepercent_form(array $data) {
   $form['height'] = array(
     '#type' => 'textfield',
     '#title' => t('Height'),
-    '#default_value' => !empty($data['height']) ? (float) $data['height'] : '',
+    '#default_value' => isset($data['height']) ? (float) $data['height'] : '',
     '#field_suffix' => ' ' . t('percent'),
     '#required' => FALSE,
     '#size' => 10,
@@ -992,27 +992,21 @@ function canvasactions_resizepercent_validate($element, &$form_state) {
   }
 }
 /**
- * Calculate percent based on input, fallback if only one value is provided.
- *
- * @param array $data
- *
- * @return float[]|FALSE
+ * Calculate percent based on input, fallback if only one value is
+ * provided.
  */
-function _canvasactions_resizepercent_calculate_percent(array $data) {
+function _canvasactions_resizepercent_calculate_percent($data) {
   // Fallback if only one value is provided.
-  if (empty($data['height'])) {
-    if (empty($data['width'])) {
-      return FALSE;
-    }
+  if (!$data['height']) {
     $data['height'] = $data['width'];
   }
-  else if (empty($data['width'])) {
+  else if (!$data['width']) {
     $data['width'] = $data['height'];
   }
 
   // Get percentage values in decimal values.
-  $data['width'] = (float) $data['width'] / 100;
-  $data['height'] = (float) $data['height'] / 100;
+  $data['width'] = $data['width'] / 100;
+  $data['height'] = $data['height'] / 100;
 
   return $data;
 }
@@ -1029,15 +1023,13 @@ function _canvasactions_resizepercent_calculate_percent(array $data) {
  * @ingroup themeable
  */
 function theme_canvasactions_resizepercent_summary(array $variables) {
-  $data = _canvasactions_resizepercent_calculate_percent($variables['data']);
-  if (!$data) {
-    return t('Invalid effect data');
-  }
-  if ($data['width'] != $data['height']) {
-    return t('@width%x@height%', array('@width' => 100 * $data['width'], '@height' => 100 * $data['height']));
+  $data = $variables['data'];
+  $is_resize = $data['width'] && $data['height'] && $data['width'] != $data['height'];
+  if ($is_resize) {
+    return t('@width%x@height%', array('@width' => (float) $data['width'], '@height' => (float) $data['height']));
   }
   else {
-    return t('scale to @percent%', array('@percent' => (float) 100 * $data['height']));
+    return t('scale to @percent%', array('@percent' => (float) $data['height']));
   }
 }
 
