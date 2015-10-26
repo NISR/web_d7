@@ -9,10 +9,22 @@ drupal_add_css(PUB_MODULE_PATH. '/publication.css', array('group' => CSS_DEFAULT
  */
 function publication_block_info(){
 	$weight = 100;
+	// Featured publications on homepage
+	$blocks['featured_statistical_reports'] = array(
+		'info' => t('Featured statistical reports'),
+		'weight' => $weight,
+		'cache' => DRUPAL_CACHE_GLOBAL,
+		);
+	$blocks['featured_statistical_articles'] = array(
+		'info' => t('Featured statistical articles'),
+		'weight' => $weight,
+		'cache' => DRUPAL_CACHE_GLOBAL,
+		);
+	// Subjects on statistical page
 	$blocks['subjects'] = array(
 		'info' => t('Subjects/Areas'),
 		'weight' => $weight,
-		'cache' => DRUPAL_NO_CACHE,
+		'cache' => DRUPAL_CACHE_GLOBAL,
 		);
 		
 	// Declare blocks from document subjects vocabulary
@@ -23,7 +35,7 @@ function publication_block_info(){
 		$blocks[str_replace(' ','_',strtolower($subject->name))] =  array(
 			'info' => t($subject->name) . ' documents',
 			//'weight' => ++$weight, 
-			'cache' => DRUPAL_NO_CACHE		
+			'cache' => DRUPAL_CACHE_GLOBAL	
 			);
 	} 
 	
@@ -34,6 +46,19 @@ function publication_block_info(){
  * Implements hook_block_view()
  */
 function publication_block_view($delta = ''){
+	module_load_include('inc','nisr','includes/utils');
+	if($delta == 'featured_statistical_reports'){
+		$block['title'] = t('Featured reports');
+		$view = get_embed_view('featured_publications','statistical_reports',array('831+832+836+833'));
+		$block['content'] = $view['result'];
+	}	
+	
+	if($delta == 'featured_statistical_articles'){
+		$block['title'] = t('Latest news');
+		$view = get_embed_view('featured_publications','statistical_articles',array());
+		$block['content'] = $view['result'];
+	}
+	
 	if($delta == 'subjects'){
 		$block['title'] = '';
 		$block['content'] = get_subjects();
@@ -45,7 +70,6 @@ function publication_block_view($delta = ''){
 	
 	foreach($subjects as $subject){
 		if($delta == str_replace(' ','_',strtolower($subject->name))){
-			module_load_include('inc','nisr','includes/utils');
 			$view =  get_embed_view('publications_search','documents',array($subject->tid));			
 			$block['title'] = '';
 			$block['content'] = $view['result'];
@@ -431,6 +455,8 @@ function publication_views_pre_render(&$view){
 		drupal_set_breadcrumb($breadcrumb);
 	}
 }
+
+
 
 /*
  * Get all Subjects/Areas as a renderable array

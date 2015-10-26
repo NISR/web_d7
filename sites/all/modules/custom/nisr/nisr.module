@@ -101,6 +101,7 @@ function nisr_theme_registry_alter(&$theme_registry) {
     
 }
 
+
 function nisr_twitter_pull_blocks() {
   return array(
     0 => (object) array(
