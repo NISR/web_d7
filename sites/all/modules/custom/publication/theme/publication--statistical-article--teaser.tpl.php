@@ -31,12 +31,12 @@
 ?>
 
 <div class="<?php print $classes; ?> clearfix recent-posts"<?php print $attributes; ?>>
-		<div>
-			<div class="col-md-2 featured-chart">
-					Chart obj.
-			</div>
-		</div>
-		<div class="content col-md-10"<?php print $content_attributes; ?>>
+	  <?php if ($dataset['chart']): ?>
+		  <div class="pull-left ">
+		  		<?php print render($dataset['chart'])?>
+		  </div>
+	 <?php endif; ?>
+		<div class="content col-md-8"<?php print $content_attributes; ?>>
 	  <?php if (!$page): ?>
 	    <h4<?php print $title_attributes; ?>>
 	      <?php if ($url): ?>

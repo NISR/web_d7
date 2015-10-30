@@ -118,6 +118,14 @@ function publication_entity_info() {
           'label' => t('Title + Cover'),
           'custom settings' => FALSE,
         	),
+        'table' => array(
+          'label' => t('Table'),
+          'custom settings' => FALSE,
+        	),        	
+        'chart' => array(
+          'label' => t('Chart'),
+          'custom settings' => FALSE,
+        	),        
       ),
       'label callback' => 'entity_class_label',
       'uri callback' => 'entity_class_uri',
@@ -231,6 +239,8 @@ function publication_menu() {
     'file' => 'publication.admin.inc',
     'type' => MENU_LOCAL_TASK,
     'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+    'theme callback' => 'variable_get',
+    'theme arguments' => array('admin_theme'),
   );
 
   foreach (publication_types() as $type => $info) {
@@ -241,6 +251,8 @@ function publication_menu() {
       'access callback' => 'entity_access',
       'access arguments' => array('create', 'publication', $type),
       'file' => 'publication.admin.inc',
+      'theme callback' => 'variable_get',
+      'theme arguments' => array('admin_theme'),
     );
   }
 
@@ -427,6 +439,22 @@ function publication_pathauto_entity_alias_settings_alter(&$entity_forms) {
   );
 }
 
+/*
+ * Implements hook_preprocess_entity
+ */
+function publication_preprocess_entity(&$vars){
+	$range = null;
+	$elements = $vars['elements'];
+	$view_mode = $vars['view_mode'];
+	if(isset($elements['field_pub_dataset'])){
+		$range = $elements['field_pub_dataset_range']['#items'][0]['safe_value'];
+		if(!is_null($range)) $range = explode(';',$range);
+		//$range = $elements['field_pub_dataset_range'][0][]
+		$vars['dataset']['table'] = '';
+		$vars['dataset']['chart'] = draw_chart($elements['field_pub_dataset']['#items'][0]['target_id'],$view_mode,$range);
+	}
+}
+
 /**
   * Implements hook_views_api().
   */
@@ -455,7 +483,6 @@ function publication_views_pre_render(&$view){
 		drupal_set_breadcrumb($breadcrumb);
 	}
 }
-
 
 
 /*
@@ -630,6 +657,83 @@ function publication_theme($existing, $type, $theme, $path) {
   return $items;
 }
 
+
+function draw_chart($pub_id,$view_mode,$range = array()){
+	$pub = publication_load($pub_id);
+	$wr = entity_metadata_wrapper('publication',$pub);
+	$values = $wr->field_dataset_values->value();
+	$table = $values['tabledata'];
+   $legend = $row = $x_axis = $data = array();
+   
+
+   $legend = array_column($table,0);
+   unset($legend[0]);
+   $legend = array_values($legend);
+
+	foreach($table as &$row){
+		unset($row[0]);
+		$row = array_values($row);
+	}
+   	
+	// Get range positions
+	if(count($range)){
+		$offset = -1;
+		$length = null;
+		foreach($table as &$row){
+			if($offset == -1){ // Initial search
+				$offset = array_search($range[0],$row);
+				if(array_key_exists('1',$range)) $length = (array_search($range[1],$row) - $offset) + 1 ; // !important : for value $to is included
+			}
+			$row = array_slice($row,$offset,$length);
+		}
+	}
+	// First row is time-serie	
+	$x_axis = $table[0];
+	// Remove it
+	unset($table[0]);
+	$data = array_values($table);	
+	
+	
+ 	$chart = array(
+	 		'#type' => 'chart',
+	 		'#chart_type' => $wr->field_dataset_chart_type->value(),
+			'#chart_library' => 'highcharts',
+	 		//'#title' => ($view_mode == 'full') ? $pub->title : '',
+	    	'#legend' => ($view_mode == 'full') ? TRUE : FALSE,
+	    	'#legend_title' => ($view_mode == 'full') ? '' : NULL,
+	    	'#legend_position' => ($view_mode == 'full') ? 'bottom' : 'none',
+	    	'#legend_font_size' => ($view_mode == 'full') ? '' : '0em',
+	    	'#data_labels' => ($view_mode == 'full') ? TRUE : FALSE,
+	    	'#width' => ($view_mode == 'full') ? '' : '250px',
+	    	'#height'=> ($view_mode == 'full') ? '' : '150px',
+	);
+		
+	foreach($legend as $index => $value){
+		$chart[$value] = array(
+			'#type' => 'chart_data',
+			'#title' => $value,
+			'#data' => array_map('floatval',$data[$index]),
+			'#decimal_count' => 1,
+			'#show_in_legend' => ($view_mode == 'full') ? TRUE : FALSE,		
+			'#show_labels' => ($view_mode == 'full') ? TRUE : FALSE,
+		);	
+		if($wr->field_dataset_chart_data_prefix->value()) $chart[$value]['#prefix'] = $wr->field_dataset_chart_data_prefix->value();
+		if($wr->field_dataset_chart_data_suffix->value()) $chart[$value]['#suffix'] = ' ' . $wr->field_dataset_chart_data_suffix->value();
+	}
+	
+	$chart['xaxis'] = array(
+		'#type' => 'chart_xaxis', 
+		'#labels' => $x_axis,
+	);
+	
+	$chart['yaxis'] = array(
+		'#type' => 'chart_yaxis',
+		'#labels' => NULL,
+	);
+
+   return $chart;
+   	
+}
 /**
  * Implements hook_theme_registry_alter().
  */
