@@ -11,7 +11,7 @@ function datasource_features_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance:
-  // 'datasource-datasource_incidence-field_datasource_body'
+  // 'datasource-datasource_incidence-field_datasource_body'.
   $field_instances['datasource-datasource_incidence-field_datasource_body'] = array(
     'bundle' => 'datasource_incidence',
     'default_value' => NULL,
@@ -64,7 +64,7 @@ function datasource_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'datasource-datasource_incidence-field_datasource_parent'
+  // 'datasource-datasource_incidence-field_datasource_parent'.
   $field_instances['datasource-datasource_incidence-field_datasource_parent'] = array(
     'bundle' => 'datasource_incidence',
     'default_value' => NULL,
@@ -115,7 +115,7 @@ function datasource_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'datasource-datasource_incidence-field_datasource_period'
+  // 'datasource-datasource_incidence-field_datasource_period'.
   $field_instances['datasource-datasource_incidence-field_datasource_period'] = array(
     'bundle' => 'datasource_incidence',
     'deleted' => 0,
@@ -189,7 +189,7 @@ function datasource_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'datasource-datasource_metadata-field_datasource_body'
+  // 'datasource-datasource_metadata-field_datasource_body'.
   $field_instances['datasource-datasource_metadata-field_datasource_body'] = array(
     'bundle' => 'datasource_metadata',
     'default_value' => NULL,
@@ -240,7 +240,7 @@ function datasource_features_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'datasource-datasource_metadata-field_datasource_type'
+  // 'datasource-datasource_metadata-field_datasource_type'.
   $field_instances['datasource-datasource_metadata-field_datasource_type'] = array(
     'bundle' => 'datasource_metadata',
     'default_value' => NULL,

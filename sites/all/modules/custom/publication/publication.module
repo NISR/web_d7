@@ -657,7 +657,9 @@ function publication_theme($existing, $type, $theme, $path) {
   return $items;
 }
 
-
+/*
+ * Get a chart definition ready for rendering 
+ */
 function draw_chart($pub_id,$view_mode,$range = array()){
 	$pub = publication_load($pub_id);
 	$wr = entity_metadata_wrapper('publication',$pub);
@@ -704,7 +706,7 @@ function draw_chart($pub_id,$view_mode,$range = array()){
 	    	'#legend_position' => ($view_mode == 'full') ? 'bottom' : 'none',
 	    	'#legend_font_size' => ($view_mode == 'full') ? '' : '0em',
 	    	'#data_labels' => ($view_mode == 'full') ? TRUE : FALSE,
-	    	'#width' => ($view_mode == 'full') ? '' : '250px',
+	    	'#width' => ($view_mode == 'full') ? '' : '315px',
 	    	'#height'=> ($view_mode == 'full') ? '' : '150px',
 	);
 		
@@ -717,8 +719,8 @@ function draw_chart($pub_id,$view_mode,$range = array()){
 			'#show_in_legend' => ($view_mode == 'full') ? TRUE : FALSE,		
 			'#show_labels' => ($view_mode == 'full') ? TRUE : FALSE,
 		);	
-		if($wr->field_dataset_chart_data_prefix->value()) $chart[$value]['#prefix'] = $wr->field_dataset_chart_data_prefix->value();
-		if($wr->field_dataset_chart_data_suffix->value()) $chart[$value]['#suffix'] = ' ' . $wr->field_dataset_chart_data_suffix->value();
+		//if($wr->field_dataset_chart_data_prefix->value()) $chart[$value]['#prefix'] = $wr->field_dataset_chart_data_prefix->value();
+		//if($wr->field_dataset_chart_data_suffix->value()) $chart[$value]['#suffix'] = ' ' . $wr->field_dataset_chart_data_suffix->value();
 	}
 	
 	$chart['xaxis'] = array(

@@ -18,15 +18,13 @@ function nisr_block_info(){
 		'weight' => $weight,
 		'cache' => DRUPAL_NO_CACHE,
 		);
+	$blocks['custom_search'] = array(
+		'info' => t('Custom search box'),
+		'weight' => -99,
+		'cache' => DRUPAL_NO_CACHE,	
+	);
 					
 	return $blocks;	
-}
-
-/*
- * Implements hook_block_configure()
- */
-function nisr_block_configure($delta){
-	
 }
 
 /*
@@ -39,7 +37,9 @@ function nisr_block_view($delta = ''){
 			$block['title'] = '';
 			$block['content'] = _fetch_indicators($url);
 			break;
-		case 'featured_publications':
+		case 'custom_search':
+			$block['title'] = '';
+			$block['content'] = render(drupal_get_form('custom_search_form'));
 			break;
 		default:
 			break;
@@ -62,18 +62,44 @@ function nisr_block_view($delta = ''){
 }
 
 /**
+ * Implementation of hook_context_load_alter()
+ */
+function nisr_context_load_alter(&$context) {
+
+  if($context->name == 'search') {
+    $context->reactions['block']['blocks']['nisr-custom_search']['weight'] = -99;
+  }
+  if($context->name == 'frontpage') {
+    $context->reactions['block']['blocks']['block-ad_banner']['weight'] = -50;
+  }
+}
+
+/**
  * Implements hook_menu().
  */
 function nisr_menu(){
 	$items = array();
 	
-	//Temporary link for data conversion
-	$items['admin/convert'] = array(
-			'title' => 'Nodes to Entitites Conversion',
-			'page callback' => 'convertnodes',
-			'access arguments' => array('administer content'),
-			'type' => MENU_CALLBACK,
-		);
+	// Notices menu	
+  	$items['admin/content/notices/add'] = array(
+    'title' => t('Add notice'),
+    'page callback' => 'node_add',
+    'page arguments' => array('notice'),
+    'access arguments' => array('administer content'),
+    'file path' => drupal_get_path('module', 'node'), 
+    'file' => 'node.pages.inc',
+    'type' => MENU_LOCAL_ACTION,
+  	);
+  	
+  	// Login menu
+	$items['login'] = array(
+		'title' => 'Login',
+    	'page callback' => 'drupal_goto',
+    	'page arguments' => array('user/login'),
+    	'access callback' => 'user_is_anonymous',
+    	'weight' => -20,
+    	'menu_name' => 'user-menu',
+	);
 	
 	return $items;
 }
@@ -154,6 +180,40 @@ function _fetch_indicators($url){
 	return _set_block_content($response);
 }
 
+
+function custom_search_form($form,$form_state){
+	$form = array();
+	
+	$form['wrapper']['search-icon'] = array(
+		'#markup' => "<i class='fa fa-search'></i>",
+	);
+	
+	$form['wrapper']['search'] = array(
+		'#type' => 'textfield',
+		'#size' => 10,
+		'#name' => 'search',
+		'#attributes' => array('class' => array('form-control','input-search')),
+	); 
+	$form['wrapper']['actions']['submit'] = array(
+		'#type' => 'submit',
+		'#value' => '',
+		'#attributes' => array('class' => array('btn-search')),
+		'#prefix' => "<span class='element-invisible'>",
+		'#suffix' => '</span>',
+	);
+	
+	return $form;	
+}
+
+function custom_search_form_validate($form,&$form_state){
+	
+}
+
+function custom_search_form_submit($form,&$form_state){
+	if(module_exists('google_cse')){
+		drupal_goto('search/google/' . $form_state['input']['search']);
+	}
+}
 /*
  * XML response from Prognoz WS parsing function
  * @param

@@ -1,0 +1,110 @@
+diff --git a/entity.info b/entity.info
+index 0cae8cb..619b713 100644
+--- a/entity.info
++++ b/entity.info
+@@ -13,6 +13,7 @@ files[] = includes/entity.wrapper.inc
+ files[] = views/entity.views.inc
+ files[] = views/handlers/entity_views_field_handler_helper.inc
+ files[] = views/handlers/entity_views_handler_area_entity.inc
++files[] = views/handlers/entity_views_handler_field_label.inc
+ files[] = views/handlers/entity_views_handler_field_boolean.inc
+ files[] = views/handlers/entity_views_handler_field_date.inc
+ files[] = views/handlers/entity_views_handler_field_duration.inc
+@@ -24,4 +25,4 @@ files[] = views/handlers/entity_views_handler_field_text.inc
+ files[] = views/handlers/entity_views_handler_field_uri.inc
+ files[] = views/handlers/entity_views_handler_relationship_by_bundle.inc
+ files[] = views/handlers/entity_views_handler_relationship.inc
+-files[] = views/plugins/entity_views_plugin_row_entity_view.inc
+\ No newline at end of file
++files[] = views/plugins/entity_views_plugin_row_entity_view.inc
+diff --git a/views/entity.views.inc b/views/entity.views.inc
+index 56b606b..b3a7652 100644
+--- a/views/entity.views.inc
++++ b/views/entity.views.inc
+@@ -68,6 +68,23 @@ function entity_views_data() {
+         ),
+       );
+     }
++    if (!empty($info['entity keys']['label']) || !empty($info['label callback'])) {
++      // Check if entity_uri is supported for this entity type.
++      $has_uri = !empty($info['uri callback']);
++      if (!$has_uri && is_array($info['bundles'])) {
++        $bundle_info = current($info['bundles']);
++        $has_uri = !empty($bundle_info['uri_callback']);
++      }
++      $data['views_entity_' . $entity_type]['label'] = array(
++        'title' => t('Entity label'),
++        'help' => t('The label of the @entity-type entity.', array('@entity-type' => $info['label'])),
++        'field' => array(
++          'handler' => 'entity_views_handler_field_label',
++          'type' => $entity_type,
++          'has uri' => $has_uri,
++        ),
++      );
++    }
+   }
+ 
+   $data['entity__global']['table']['group'] = t('Entity');
+diff --git a/views/handlers/entity_views_handler_field_label.inc b/views/handlers/entity_views_handler_field_label.inc
+new file mode 100644
+index 0000000..b58d64b
+--- /dev/null
++++ b/views/handlers/entity_views_handler_field_label.inc
+@@ -0,0 +1,57 @@
++<?php
++
++/**
++ * @file
++ * Contains the entity_views_handler_field_label class.
++ */
++
++/**
++ * Field handler to present the label of the entity.
++ *
++ * @ingroup views_field_handlers
++ */
++class entity_views_handler_field_label extends views_handler_field_entity {
++
++  /**
++   * Add a link to entity option.
++   *
++   * @see views_handler_field::option_definition()
++   */
++  function option_definition() {
++    $options = parent::option_definition();
++    $options['link_to_entity'] = array('default' => $this->definition['has uri']);
++    return $options;
++  }
++
++  /**
++   * Add link to entity option to the options form.
++   *
++   * @see views_handler_field::options_form()
++   */
++  function options_form(&$form, &$form_state) {
++    parent::options_form($form, $form_state);
++    if ($this->definition['has uri']) {
++      $form['link_to_entity'] = array(
++        '#title' => t("Link this field to it's entity"),
++        '#description' => t("Enable to override this field's links."),
++        '#type' => 'checkbox',
++        '#default_value' => !empty($this->options['link_to_entity']),
++      );
++    }
++  }
++
++  /**
++   * Render the label using the entity_label() function.
++   *
++   * @see views_handler_field::render()
++   */
++  function render($values) {
++    if (($entity = $this->get_value($values)) && entity_access('view', $this->entity_type, $entity)) {
++      if ($this->definition['has uri'] && $this->options['link_to_entity'] &&  $uri = entity_uri($this->entity_type, $entity)) {
++        $this->options['alter']['path'] = $uri['path'];
++        $this->options['alter']['make_link'] = TRUE;
++      }
++      return entity_label($this->entity_type, $entity);
++    }
++  }
++}

@@ -10,7 +10,7 @@
 function datasource_features_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_datasource_body'
+  // Exported field_base: 'field_datasource_body'.
   $field_bases['field_datasource_body'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -29,7 +29,7 @@ function datasource_features_field_default_field_bases() {
     'type' => 'text_with_summary',
   );
 
-  // Exported field_base: 'field_datasource_entity'
+  // Exported field_base: 'field_datasource_entity'.
   $field_bases['field_datasource_entity'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -66,7 +66,7 @@ function datasource_features_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_datasource_parent'
+  // Exported field_base: 'field_datasource_parent'.
   $field_bases['field_datasource_parent'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -103,7 +103,7 @@ function datasource_features_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_datasource_period'
+  // Exported field_base: 'field_datasource_period'.
   $field_bases['field_datasource_period'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -133,7 +133,7 @@ function datasource_features_field_default_field_bases() {
     'type' => 'date',
   );
 
-  // Exported field_base: 'field_datasource_type'
+  // Exported field_base: 'field_datasource_type'.
   $field_bases['field_datasource_type'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -159,7 +159,7 @@ function datasource_features_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_pub_datasource'
+  // Exported field_base: 'field_pub_datasource'.
   $field_bases['field_pub_datasource'] = array(
     'active' => 1,
     'cardinality' => 1,
