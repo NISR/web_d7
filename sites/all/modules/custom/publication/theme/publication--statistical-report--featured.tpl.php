@@ -45,6 +45,7 @@
 	      <?php endif; ?>
 	    </h4>
 	  <?php endif; ?>
+			<span class="tag"><?php print render($content['field_pub_subject'][0])?></span>	  
 			<div class="body"><?php print render($content['field_pub_body'])?></div>
 		</div>
 	</div>

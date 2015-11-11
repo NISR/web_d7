@@ -30,12 +30,13 @@
 
 ?>
 
-<div class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-	<div>
-		<div class="col-md-1" style="padding-top:7px">
-			<div class="cover"><?php print render($content['field_pub_cover'])?></div>
-		</div>
-		<div class="content col-md-11"<?php print $content_attributes; ?>>
+<div class="<?php print $classes; ?> clearfix recent-posts"<?php print $attributes; ?>>
+	  <?php if ($dataset['chart']): ?>
+		  <div class="pull-left">
+		  		<?php print render($dataset['chart'])?>
+		  </div>
+	 <?php endif; ?>
+		<div class="content col-md-8"<?php print $content_attributes; ?>>
 	  <?php if (!$page): ?>
 	    <h4<?php print $title_attributes; ?>>
 	      <?php if ($url): ?>
@@ -45,7 +46,7 @@
 	      <?php endif; ?>
 	    </h4>
 	  <?php endif; ?>
+			<span class="tag"><?php print render($content['field_pub_subject'][0])?></span>	  
 			<div class="body"><?php print render($content['field_pub_body'])?></div>
 		</div>
-	</div>
 </div>

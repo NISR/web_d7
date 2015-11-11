@@ -8,9 +8,9 @@
 
 .subject-box {width:30%;min-height:120px;float:left;padding-right:5px;border:0 none;}
 .subject-box h4{text-decoration: underline;line-height: 5px;}
-.subject-box-wrapper-items{padding-left: 0px;}
-.subject-box-item  {.fa;.fa-angle-right;font-size:1.2em;margin-left:0px;text-decoration:underline;text-align: left;}
-.subject-description {font-size:1.5em;margin-bottom:5px;border-bottom:1px solid #ccc;  }
+.subject-box-wrapper-items{padding-left: 0px;list-style-type: circle;}
+.subject-box-item  {.fa;.fa-angle-right;font-size:1.2em;margin-left:0px;text-decoration:none;text-align: left;}
+.subject-description {font-size:1.3em;margin-bottom:2em; }
 
 /* Publication page */
 .publication-item-profile{float:right;width:37%;background:#ededed;margin-left:10px;padding:10px 10px 0 10px}

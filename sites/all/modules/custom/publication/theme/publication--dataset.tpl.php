@@ -27,25 +27,22 @@
  * @see template_preprocess_entity()
  * @see template_process()
  */
-
 ?>
-
 <div class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-	<div>
-		<div class="col-md-1" style="padding-top:7px">
-			<div class="cover"><?php print render($content['field_pub_cover'])?></div>
-		</div>
-		<div class="content col-md-11"<?php print $content_attributes; ?>>
-	  <?php if (!$page): ?>
-	    <h4<?php print $title_attributes; ?>>
-	      <?php if ($url): ?>
-	        <a href="<?php print $url; ?>"><?php print $title; ?></a>
-	      <?php else: ?>
-	        <?php print $title; ?>
-	      <?php endif; ?>
-	    </h4>
-	  <?php endif; ?>
-			<div class="body"><?php print render($content['field_pub_body'])?></div>
-		</div>
-	</div>
+
+  <?php if (!$page): ?>
+    <h2<?php print $title_attributes; ?>>
+      <?php if ($url): ?>
+        <a href="<?php print $url; ?>"><?php print $title; ?></a>
+      <?php else: ?>
+        <?php print $title; ?>
+      <?php endif; ?>
+    </h2>
+  <?php endif; ?>
+
+  <div class="content"<?php print $content_attributes; ?>>
+    <?php
+      print render($content);
+    ?>
+  </div>
 </div>

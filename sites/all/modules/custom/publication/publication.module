@@ -110,6 +110,10 @@ function publication_entity_info() {
           'label' => t('Teaser'),
           'custom settings' => FALSE,
         	),
+        'featured' => array(
+          'label' => t('Featured'),
+          'custom settings' => FALSE,
+        	),
         'title_only' => array(
           'label' => t('Title only'),
           'custom settings' => FALSE,
@@ -173,6 +177,81 @@ function publication_entity_info_alter(&$entity_info) {
       ),
     );
   }
+}
+
+/*
+ * Implements hook_entity_update()
+ */
+function publication_entity_update($entity,$type){
+	if($type == 'publication'){
+		$subjects  = array();
+		$subscribers = views_get_view('subscribers');
+		switch($entity->type) {
+			case 'statistical_report':
+			case 'statistical_article':		
+				// Get subjects
+				$subscribers->set_display('statistical_publications');
+				$wr = entity_metadata_wrapper('publication',$entity);
+				foreach($wr->field_pub_subject as $subject){
+					$subjects[] = $subject->tid->value();
+				}
+								
+				break;
+			case 'document':
+				
+				break;
+			case '':
+				break;
+			default:
+				break;
+		}
+		
+		$subscribers->set_arguments($subjects);						
+		$subscribers->pre_execute();
+		$subscribers->execute();
+		
+		foreach($subscribers->result as $subscriber){
+			$recipients[] = $subscriber->profile_uid;
+		}
+		
+		if(count($recipients)) watchdog('nisr','%d email alerts sent',array('%d' => count($recipients)));
+	}
+	elseif($type== 'node' && $entity->type == 'article') {
+		
+	}
+}
+
+/*
+ * Implements hook_entity_view().
+ */
+
+function publication_entity_view($entity, $type, $view_mode, $langcode) {
+  $breadcrumb = array();
+  $breadcrumb[] = l(t('Home'),'<front>');
+  if ($type == 'publication' && $entity->type == 'statistical_report' && $view_mode == 'full' && count($entity->field_pub_subject)){
+ 		$wrapper = entity_metadata_wrapper('publication',$entity);
+ 		$term_id = $wrapper->field_pub_subject[0]->tid->value();
+ 		$term_name = $wrapper->field_pub_subject[0]->name->value();
+ 		 		
+		$parent_terms = taxonomy_get_parents_all($term_id);
+		unset($parent_terms[0]); // Remove the first element including the term object 		
+		
+		// Set breadcrumb in the form
+		// Home > Publications > Statistics > Subject > Reports > Title 
+
+
+		$breadcrumb[] = l(t('Statistical publications'),'statistical_publications');
+	   foreach(array_reverse($parent_terms) as $parent){
+	   	$breadcrumb[] = l(t($parent->name),drupal_get_path_alias('taxonomy/term/' . $parent->tid));
+	   } 
+	   
+		$breadcrumb[] = l(t($term_name),drupal_get_path_alias('taxonomy/term/' . $term_id));
+		$breadcrumb[] = l(t('Statistical reports'),'statistical_publications/' . $term_id . '/reports');
+  	} 
+	
+	$breadcrumb[] = drupal_get_title();
+	
+	drupal_set_breadcrumb($breadcrumb);		
 }
 
 /**
@@ -396,40 +475,6 @@ function publication_form_publication_form_alter(&$form,&$form_state,$form_id){
 	return $form;
 }
  
-
-/*
- * Implements hook_entity_view().
- */
-
-function publication_entity_view($entity, $type, $view_mode, $langcode) {
-  $breadcrumb = array();
-  $breadcrumb[] = l(t('Home'),'<front>');
-  if ($type == 'publication' && $entity->type == 'statistical_report' && $view_mode == 'full' && count($entity->field_pub_subject)){
- 		$wrapper = entity_metadata_wrapper('publication',$entity);
- 		$term_id = $wrapper->field_pub_subject[0]->tid->value();
- 		$term_name = $wrapper->field_pub_subject[0]->name->value();
- 		 		
-		$parent_terms = taxonomy_get_parents_all($term_id);
-		unset($parent_terms[0]); // Remove the first element including the term object 		
-		
-		// Set breadcrumb in the form
-		// Home > Publications > Statistics > Subject > Reports > Title 
-
-
-		$breadcrumb[] = l(t('Statistical publications'),'statistical_publications');
-	   foreach(array_reverse($parent_terms) as $parent){
-	   	$breadcrumb[] = l(t($parent->name),drupal_get_path_alias('taxonomy/term/' . $parent->tid));
-	   } 
-	   
-		$breadcrumb[] = l(t($term_name),drupal_get_path_alias('taxonomy/term/' . $term_id));
-		$breadcrumb[] = l(t('Statistical reports'),'statistical_publications/' . $term_id . '/reports');
-  	} 
-	
-	$breadcrumb[] = drupal_get_title();
-	
-	drupal_set_breadcrumb($breadcrumb);		
-}
-
 /**
  *  Implements hook_pathauto_entity_alias_settings_alter().
  */
@@ -498,12 +543,11 @@ function get_subjects(){
 		if($subject->depth == 0){
 			$terms[$subject->tid] = array('name' => $subject->name,'children' => array());
 		}else{
-			$terms[$subject->parents[0]]['children']['items'][$subject->tid] = $subject->name; 		
+			$terms[$subject->parents[0]]['children'][$subject->tid] = $subject->name; 		
 		}
 	} 
 
 	$render = array("wrapper" => array("#prefix" => "<div class='row featured-boxes'>"));
-	
 	foreach($terms as $key => $value){
 		$render['wrapper'][$key] = array(
 								'#prefix' => "<div class='col-md-3'><div class='featured-content featured-box'><div class='box-content'>",
@@ -521,11 +565,11 @@ function get_subjects(){
 											  
 											)
 					 		);		
-		if(count($value['children']['items'])){
+		if(count($value['children'])){
 			$render['wrapper'][$key]['children']['#prefix'] = "<ul class='subject-box-wrapper-items'>";
 			$render['wrapper'][$key]['children']['#suffix'] = "</ul>";			
-			foreach($value['children']['items'] as $k => $v){
-				$render['wrapper'][$key]['children']['items'][] = array(
+			foreach($value['children'] as $k => $v){
+				$render['wrapper'][$key]['children'][] = array(
 													 '#theme' => 'link',
 												    '#text' => strlen($v) > 30 ? substr($v,0,27) . '...' : $v,
 												    '#path' => drupal_get_path_alias('taxonomy/term/' . $k),
@@ -553,7 +597,7 @@ function subject_page($term){
 		$content = array(
 								'description' => array(
 										'#markup' => $term->description,
-										'#prefix' => "<div class=''>",
+										'#prefix' => "<div class='subject-description'>",
 										'#suffix'=> '</div>',
 								),	
 					);
@@ -585,24 +629,26 @@ function subject_page($term){
 			$content['wrapper']['children'] = $children;
 		}else{
 			// Show latest reports and articles
-			$content['wrapper'] = array("#prefix" => "<div class='panel-group'>");			
+			$content['wrapper'] = array("#prefix" => "<div class=''>");			
 			module_load_include('inc','nisr','includes/utils');
 			$reports  = get_embed_view('publications_search','latest_statistical_reports',array($term->tid));
 			$articles = get_embed_view('publications_search','latest_statistical_articles',array($term->tid));
 			
-			$content['wrapper']['item']['reports'] = array(
-											"title" => array("#markup" => t($reports['title']),"#prefix" => "<div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a>","#suffix" => "</a></h4></div>"),
+			if($reports['count']){
+				$content['wrapper']['item']['reports'] = array(
+											"title" => array("#markup" => t($reports['title']),"#prefix" => "<div class=''><div class=''><h4 class=''>","#suffix" => "</h4></div>"),
 											'items' => array('#markup' => $reports['result'],'#prefix' => "<div class='clearfix'>",'#suffix' => '</div>'),
 												);
-			if($reports['count']){
+
 				$content['wrapper']['item']['more'] = array('#theme' => 'link','#text' => t('Read more'),'#path' => 'publications/statistical_reports/' . $term->tid ,'#options' => array('attributes' => array('class' => array('btn','btn-sm','btn-primary')),'html' => TRUE),'#prefix' =>"<div style='margin:15px;'>",'#suffix' => '</div></div>');
 			}	
 					
-			$content['wrapper']['item']['articles'] = array(
-											'title' => array('#markup' => t($articles['title']),"#prefix" => "<div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a>","#suffix" => "</a></h4></div>"),
+			if($articles['count']){
+				$content['wrapper']['item']['articles'] = array(
+											'title' => array('#markup' => t($articles['title']),"#prefix" => "<div class=''><div class=''><h4 class=''>","#suffix" => "</h4></div>"),
 											'items' => array('#markup' => $articles['result'],'#prefix' => "<div class='clearfix' style='margin-left:15px;'>",'#suffix' => '</div>'),  
 												);
-			if($articles['count']){
+
 				$content['wrapper']['item']['articles']['more'] = array('#theme' => 'link','#text' => t('Read More'),'#path' => 'publications/statistical_articles/' . $term->tid,'#options' => array('attributes' => array('class' => array('btn','btn-sm','btn-primary')),'html' => TRUE),'#prefix' =>"<div style='margin:15px;'>",'#suffix' => '</div></div>');
 			}
 		}	
@@ -699,7 +745,7 @@ function draw_chart($pub_id,$view_mode,$range = array()){
  	$chart = array(
 	 		'#type' => 'chart',
 	 		'#chart_type' => $wr->field_dataset_chart_type->value(),
-			'#chart_library' => 'highcharts',
+			'#chart_library' => 'google',
 	 		//'#title' => ($view_mode == 'full') ? $pub->title : '',
 	    	'#legend' => ($view_mode == 'full') ? TRUE : FALSE,
 	    	'#legend_title' => ($view_mode == 'full') ? '' : NULL,
@@ -736,6 +782,7 @@ function draw_chart($pub_id,$view_mode,$range = array()){
    return $chart;
    	
 }
+
 /**
  * Implements hook_theme_registry_alter().
  */

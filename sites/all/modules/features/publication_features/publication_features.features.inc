@@ -11,6 +11,9 @@ function publication_features_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "context" && $api == "context") {
     return array("version" => "3");
   }
+  if ($module == "field_group" && $api == "field_group") {
+    return array("version" => "1");
+  }
 }
 
 /**
@@ -86,6 +89,14 @@ function publication_features_image_default_styles() {
  */
 function publication_features_default_publication_type() {
   $items = array();
+  $items['dataset'] = entity_import('publication_type', '{
+    "type" : "dataset",
+    "label" : "Dataset",
+    "weight" : "0",
+    "description" : "",
+    "locked" : "0",
+    "data" : null
+  }');
   $items['document'] = entity_import('publication_type', '{
     "type" : "document",
     "label" : "Document",
