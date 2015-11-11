@@ -2,8 +2,8 @@
 sites/*/settings*.php
 
 # Ignore themes folder
-sites/*/themes
-!sites/*/themes/Porto_sub
+sites/*/themes/*
+!sites/*/themes/Porto_sub/
 
 # Ignore paths that contain user-generated content.
 sites/*/files
