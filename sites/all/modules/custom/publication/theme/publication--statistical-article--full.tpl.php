@@ -50,6 +50,7 @@
  <?php endif; ?>
   <div class="content col-md-12"<?php print $content_attributes; ?>>
     <?php
+    	hide($content['field_pub_dataset_range']);
       print render($content);
     ?>
   </div>

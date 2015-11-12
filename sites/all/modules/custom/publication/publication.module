@@ -494,7 +494,6 @@ function publication_preprocess_entity(&$vars){
 	if(isset($elements['field_pub_dataset'])){
 		$range = $elements['field_pub_dataset_range']['#items'][0]['safe_value'];
 		if(!is_null($range)) $range = explode(';',$range);
-		//$range = $elements['field_pub_dataset_range'][0][]
 		$vars['dataset']['table'] = '';
 		$vars['dataset']['chart'] = draw_chart($elements['field_pub_dataset']['#items'][0]['target_id'],$view_mode,$range);
 	}
@@ -705,6 +704,17 @@ function publication_theme($existing, $type, $theme, $path) {
 
 /*
  * Get a chart definition ready for rendering 
+ *
+ * @param
+ *	$pub_id : the publication id
+ * @param
+ *	$view_mode : View mode
+ *	@param
+ *	$range : period interval to extract from the dataset 
+ *	
+ * @return
+ *	renderable array for the charts module
+ *
  */
 function draw_chart($pub_id,$view_mode,$range = array()){
 	$pub = publication_load($pub_id);
