@@ -1,5 +1,61 @@
 <?php
 
+/*
+ * Implements hook_block_info()
+ */
+function datasource_block_info(){
+	$weight = 100;
+	// Featured publications on homepage
+
+	// Datasource types on datasource page
+	$blocks['datasource_types'] = array(
+		'info' => t('Datasource types'),
+		'weight' => $weight,
+		'cache' => DRUPAL_CACHE_GLOBAL,
+		);
+	/*	
+	// Declare blocks from document subjects vocabulary
+	$voc = taxonomy_vocabulary_machine_name_load('document_subjects');	
+	$subjects = taxonomy_get_tree($voc->vid);
+	
+	foreach($subjects as $subject){
+		$blocks[str_replace(' ','_',strtolower($subject->name))] =  array(
+			'info' => t($subject->name) . ' documents',
+			//'weight' => ++$weight, 
+			'cache' => DRUPAL_CACHE_GLOBAL	
+			);
+	} 
+	*/
+	return $blocks;
+}
+
+/*
+ * Implements hook_block_view()
+ */
+function datasource_block_view($delta = ''){
+	module_load_include('inc','nisr','includes/utils');
+
+	if($delta == 'datasource_types'){
+		$block['title'] = '';
+		$block['content'] = get_taxonomy_terms('datasource_types');
+	}
+	/*
+	// Feed the dynamically declared blocks from document subjects vocabulary with view embed display
+	$voc = taxonomy_vocabulary_machine_name_load('document_subjects');	
+	$subjects = taxonomy_get_tree($voc->vid);
+	
+	foreach($subjects as $subject){
+		if($delta == str_replace(' ','_',strtolower($subject->name))){
+			$view =  get_embed_view('publications_search','documents',array($subject->tid));			
+			$block['title'] = '';
+			$block['content'] = $view['result'];
+		}
+	} 	
+	*/
+	
+	return $block;
+}
+
 /**
  * Implements hook_entity_info().
  */
@@ -302,6 +358,8 @@ function datasource_theme_registry_alter(&$theme_registry) {
         }
     }
 }
+
+
 
 /*******************************************************************************
  ********************************* datasource API's **********************************

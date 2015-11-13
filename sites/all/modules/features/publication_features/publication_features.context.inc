@@ -168,7 +168,7 @@ function publication_features_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'subjects';
   $context->description = '';
-  $context->tag = 'Main content';
+  $context->tag = 'Publications';
   $context->conditions = array(
     'path' => array(
       'values' => array(
@@ -198,7 +198,7 @@ function publication_features_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Main content');
+  t('Publications');
   $export['subjects'] = $context;
 
   return $export;

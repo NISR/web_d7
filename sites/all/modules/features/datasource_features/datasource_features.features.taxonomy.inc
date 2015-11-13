@@ -9,9 +9,9 @@
  */
 function datasource_features_taxonomy_default_vocabularies() {
   return array(
-    'datasource_type' => array(
-      'name' => 'Datasource type',
-      'machine_name' => 'datasource_type',
+    'datasource_types' => array(
+      'name' => 'Datasource types',
+      'machine_name' => 'datasource_types',
       'description' => '',
       'hierarchy' => 0,
       'module' => 'taxonomy',

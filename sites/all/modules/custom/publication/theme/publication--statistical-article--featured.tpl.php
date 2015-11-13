@@ -33,7 +33,7 @@
 <div class="<?php print $classes; ?> clearfix recent-posts"<?php print $attributes; ?>>
 	  <?php if ($dataset['chart']): ?>
 		  <div class="pull-left">
-		  		<?php print render($dataset['chart'])?>
+		  		<a href="<?php print $url ?>"><?php print render($dataset['chart'])?></a>
 		  </div>
 	 <?php endif; ?>
 		<div class="content col-md-8"<?php print $content_attributes; ?>>

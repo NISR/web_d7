@@ -244,7 +244,7 @@ function datasource_features_views_default_views() {
   $handler->display->display_options['path'] = 'admin/content/datasources/datasource_metadata';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Datasource metadata';
-  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['weight'] = '-10';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
 

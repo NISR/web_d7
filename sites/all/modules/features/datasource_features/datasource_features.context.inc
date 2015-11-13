@@ -13,6 +13,44 @@ function datasource_features_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'datasource_types';
+  $context->description = '';
+  $context->tag = 'Datasources';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'data_sources' => 'data_sources',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'system-main' => array(
+          'module' => 'system',
+          'delta' => 'main',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'datasource-datasource_types' => array(
+          'module' => 'datasource',
+          'delta' => 'datasource_types',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Datasources');
+  $export['datasource_types'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'datasources';
   $context->description = '';
   $context->tag = 'facets';

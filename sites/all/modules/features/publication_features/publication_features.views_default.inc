@@ -556,7 +556,7 @@ function publication_features_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = 'Operations';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="/publication/[pub_id]/edit?destination=admin/content/publications">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/publication/[pub_id]/delete?destination=admin/content/publications">Delete</a>';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="publication/[pub_id]/edit?destination=admin/content/publications">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="publication/[pub_id]/delete?destination=admin/content/publications">Delete</a>';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Publication: Type */
@@ -856,6 +856,7 @@ function publication_features_views_default_views() {
     t('Page'),
     t('Statistical reports'),
     t('Statistical articles'),
+    t('<a href="publication/[pub_id]/edit?destination=admin/content/publications">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="publication/[pub_id]/delete?destination=admin/content/publications">Delete</a>'),
     t('Documents'),
     t('Datasets'),
   );

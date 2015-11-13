@@ -150,7 +150,7 @@ function datasource_features_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => array(
-          'vocabulary' => 'datasource_type',
+          'vocabulary' => 'datasource_types',
           'parent' => 0,
         ),
       ),
