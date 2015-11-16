@@ -38,12 +38,6 @@ function nisr_features_context_default_contexts() {
           'region' => 'header_top',
           'weight' => '-40',
         ),
-        'block-28' => array(
-          'module' => 'block',
-          'delta' => '28',
-          'region' => 'header_icons',
-          'weight' => '-10',
-        ),
         'system-main-menu' => array(
           'module' => 'system',
           'delta' => 'main-menu',
@@ -66,6 +60,12 @@ function nisr_features_context_default_contexts() {
           'module' => 'block',
           'delta' => '29',
           'region' => 'footer_3',
+          'weight' => '-10',
+        ),
+        'block-28' => array(
+          'module' => 'block',
+          'delta' => '28',
+          'region' => 'footer_4',
           'weight' => '-10',
         ),
       ),
