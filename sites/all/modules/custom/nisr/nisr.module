@@ -39,7 +39,7 @@ function nisr_block_view($delta = ''){
 			break;
 		case 'custom_search':
 			$block['title'] = '';
-			$block['content'] = render(drupal_get_form('custom_search_form'));
+			$block['content'] = drupal_get_form('custom_search_form');
 			break;
 		default:
 			break;
@@ -51,7 +51,7 @@ function nisr_block_view($delta = ''){
 	
 	foreach($subjects as $subject){
 		if($delta == str_replace(' ','_',strtolower($subject->name))){
-			module_load_include('inc','nisr','includes/utils');
+			module_load_include('inc','nisr','utils');
 			$view =  get_embed_view('publications_search','documents',array($subject->tid));			
 			$block['title'] = '';
 			$block['content'] = $view['result'];
@@ -125,6 +125,14 @@ function nisr_menu(){
     	'access callback' => 'user_is_logged_in',
     	'weight' => -10,
     	'menu_name' => 'menu-profile-menu',
+	);	
+	// Terms page override
+	$items['page/term/%'] = array(
+		'title callback' => 'get_taxonomy_term_label',
+		'title arguments' => array(2),
+    	'page callback' => 'term_page',
+    	'page arguments' => array(2),
+    	'access arguments' => array('view content'),
 	);	
 	
 	return $items;
@@ -251,6 +259,85 @@ function custom_search_form_submit($form,&$form_state){
 		drupal_goto('search/google/' . $form_state['input']['search']);
 	}
 }
+
+/*
+ * Get a view result with its row count to check 
+ * whether one should add a more button under the result list
+ *  
+ * @param
+ *		$tid : the term id
+ *
+ *	@return
+ *		array of entity items added by other modules
+ */
+function entities_by_term($tid){
+	$entities = array();
+	
+	drupal_alter('entities_by_term',$entities,$tid);
+	
+	
+	return $entities;
+}
+
+/*
+ * Get children terms and/or various entities classified by a term
+ *
+ * @param
+ *		$term_id : term id
+ *
+ * @return
+ *		renderable array
+ *
+ */
+function term_page($tid){
+	
+	$term = taxonomy_term_load($tid);
+
+	$content = array(
+							'description' => array(
+									'#markup' => $term->description,
+									'#prefix' => "<div class='subject-description'>",
+									'#suffix'=> '</div>',
+							),	
+				);
+				
+						
+	$children_terms = taxonomy_get_children($tid);
+	
+	if(count($children_terms)){
+		$content['wrapper'] = array("#prefix" => "<div class='featured-boxes'>");			
+		foreach($children_terms as $child_term){
+			$children[] = array(
+									"#prefix" => "<div class='col-md-3'><div class='featured-content featured-box'><div class='box-content'>",
+									"#suffix" => "</div></div></div>",
+									'title' => array(
+														'#theme' => 'link',
+														'#text'  => $child_term->name,
+														'#path'  => 'page/term/' . $child_term->tid,
+														'#options'=> array('attributes' => array('title' => ''),'html'=>TRUE),
+														'#prefix'=> "<h3>",
+														'#suffix'=> "</h3>",
+														),
+									
+									'description' => array(
+														'#markup' => text_summary($child_term->description,null,300) . '...',
+														),					
+																			
+									);	
+			}
+		$content['wrapper']['children'] = $children;
+	}else{
+		// Show additional entities associated with this term if any
+		$content['wrapper'] = array("#prefix" => "<div class=''>");	
+		$content['wrapper']['entities'] = entities_by_term($tid);		
+	}	
+	
+	$content['wrapper']['#suffix'] = "</div>";
+	
+		
+	return $content;
+	
+}
 /*
  * XML response from Prognoz WS parsing function
  * @param
@@ -273,3 +360,4 @@ function _profile_view(){
 	
 	return profile2_view($profile);		
 }
+

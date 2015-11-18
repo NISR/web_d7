@@ -46,7 +46,7 @@ function publication_block_info(){
  * Implements hook_block_view()
  */
 function publication_block_view($delta = ''){
-	module_load_include('inc','nisr','includes/utils');
+	module_load_include('inc','nisr','utils');
 	if($delta == 'featured_statistical_reports'){
 		$block['title'] = t('Featured reports');
 		$view = get_embed_view('featured_publications','statistical_reports',array('831+832+836+833'));
@@ -79,6 +79,49 @@ function publication_block_view($delta = ''){
 	return $block;
 }
 
+/*
+ * Implements hook_entities_by_term()
+ */
+function publication_entities_by_term_alter(&$entities,$tid){
+	module_load_include('inc','nisr','utils');
+	$reports  = get_embed_view('publications_search','latest_statistical_reports',array($tid));
+	$articles = get_embed_view('publications_search','latest_statistical_articles',array($tid));
+	
+	if($reports['count']){
+		$entities['reports'] = array(
+									"title" => array("#markup" => t($reports['title']),"#prefix" => "<div class=''><div class=''><h4 class=''>","#suffix" => "</h4></div>"),
+									'items' => array('#markup' => $reports['result'],'#prefix' => "<div class='clearfix'>",'#suffix' => '</div>'),
+										);
+
+		$entities['reports']['more'] = array('#theme' => 'link','#text' => t('Read more'),'#path' => 'publications/statistical_reports/' . $tid ,'#options' => array('attributes' => array('class' => array('btn','btn-sm','btn-primary')),'html' => TRUE),'#prefix' =>"<div style='margin:15px;'>",'#suffix' => '</div></div>');
+	}	
+			
+	if($articles['count']){
+		$entities['articles'] = array(
+									'title' => array('#markup' => t($articles['title']),"#prefix" => "<div class=''><div class=''><h4 class=''>","#suffix" => "</h4></div>"),
+									'items' => array('#markup' => $articles['result'],'#prefix' => "<div class='clearfix' style='margin-left:15px;'>",'#suffix' => '</div>'),  
+										);
+
+		$entities['articles']['more'] = array('#theme' => 'link','#text' => t('Read More'),'#path' => 'publications/statistical_articles/' . $tid,'#options' => array('attributes' => array('class' => array('btn','btn-sm','btn-primary')),'html' => TRUE),'#prefix' =>"<div style='margin:15px;'>",'#suffix' => '</div></div>');
+	}
+	
+	// Set the breadcrumb
+	// In the form  : Home > Statistical publications > Economy > Price and inflation
+	$parent_terms = taxonomy_get_parents_all($tid);
+	unset($parent_terms[0]); // Remove the first element including the term object
+	
+   $breadcrumb = array();
+   
+   $breadcrumb[] = l(t('Home'),'<front>');
+   $breadcrumb[] = l(t('Statistical publications'),'statistical_publications');
+   foreach(array_reverse($parent_terms) as $parent){
+   	$breadcrumb[] = l(t($parent->name),drupal_get_path_alias('page/term/' . $parent->tid));
+   } 
+   
+   $breadcrumb[] = drupal_get_title();
+   drupal_set_breadcrumb($breadcrumb);	
+	
+}
 /*
  * Implements hook_entity_info()
  */
@@ -439,6 +482,7 @@ function publication_entity_property_info_alter(&$info) {
   );
 }
 
+
 /*
  * Implements hook_field_extra_fields()
  */
@@ -569,7 +613,7 @@ function subject_page($term){
 		}else{
 			// Show latest reports and articles
 			$content['wrapper'] = array("#prefix" => "<div class=''>");			
-			module_load_include('inc','nisr','includes/utils');
+			module_load_include('inc','nisr','utils');
 			$reports  = get_embed_view('publications_search','latest_statistical_reports',array($term->tid));
 			$articles = get_embed_view('publications_search','latest_statistical_articles',array($term->tid));
 			

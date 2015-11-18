@@ -37,7 +37,7 @@ function get_taxonomy_terms($vocabulary){
 								'markup' => array(
 											  '#theme' => 'link',
 											  '#text' => strlen($value['name']) > 30 ? substr($value['name'],0,27) . '...' : $value['name'],
-											  '#path' => drupal_get_path_alias('taxonomy/term/' . $key),
+											  '#path' => 'page/term/' . $key,
 											  '#options' => array(
 											  							 'attributes' => array('title' => $value['name'],),
 											  							 'html' => TRUE
@@ -54,7 +54,7 @@ function get_taxonomy_terms($vocabulary){
 				$render['wrapper'][$key]['children'][] = array(
 													 '#theme' => 'link',
 												    '#text' => strlen($v) > 30 ? substr($v,0,27) . '...' : $v,
-												    '#path' => drupal_get_path_alias('taxonomy/term/' . $k),
+												    '#path' => 'page/term/' . $k,
 												    '#options' => array(
 												    						'attributes' => array('title' => $v),
 												    						'html' => TRUE
@@ -70,6 +70,7 @@ function get_taxonomy_terms($vocabulary){
 	
 	return $render;
 }
+
 
 /*
  * Get a view result with its row count to check 
@@ -99,3 +100,19 @@ function get_embed_view($name,$display,$filters){
 					);
 
 }
+/*
+ * Get a term label, just the label not the entire freaking term object
+ *
+ * @param
+ * 	$term_id : the term id
+ * 
+ * @return
+ *		term label
+ */
+function get_taxonomy_term_label($tid){
+	$term = taxonomy_term_load($tid);
+	
+	return $term->name;
+}
+
+

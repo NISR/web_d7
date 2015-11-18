@@ -33,7 +33,7 @@ function datasource_block_info(){
  * Implements hook_block_view()
  */
 function datasource_block_view($delta = ''){
-	module_load_include('inc','nisr','includes/utils');
+	module_load_include('inc','nisr','utils');
 
 	if($delta == 'datasource_types'){
 		$block['title'] = '';
