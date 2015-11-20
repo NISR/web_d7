@@ -105,22 +105,7 @@ function publication_entities_by_term_alter(&$entities,$tid){
 		$entities['articles']['more'] = array('#theme' => 'link','#text' => t('Read More'),'#path' => 'publications/statistical_articles/' . $tid,'#options' => array('attributes' => array('class' => array('btn','btn-sm','btn-primary')),'html' => TRUE),'#prefix' =>"<div style='margin:15px;'>",'#suffix' => '</div></div>');
 	}
 	
-	// Set the breadcrumb
-	// In the form  : Home > Statistical publications > Economy > Price and inflation
-	$parent_terms = taxonomy_get_parents_all($tid);
-	unset($parent_terms[0]); // Remove the first element including the term object
-	
-   $breadcrumb = array();
-   
-   $breadcrumb[] = l(t('Home'),'<front>');
-   $breadcrumb[] = l(t('Statistical publications'),'statistical_publications');
-   foreach(array_reverse($parent_terms) as $parent){
-   	$breadcrumb[] = l(t($parent->name),drupal_get_path_alias('page/term/' . $parent->tid));
-   } 
-   
-   $breadcrumb[] = drupal_get_title();
-   drupal_set_breadcrumb($breadcrumb);	
-	
+		
 }
 /*
  * Implements hook_entity_info()

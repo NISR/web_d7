@@ -132,7 +132,7 @@ function nisr_menu(){
 		'title arguments' => array(2),
     	'page callback' => 'term_page',
     	'page arguments' => array(2),
-    	'access arguments' => array('view content'),
+    	'access arguments' => array('access content'),
 	);	
 	
 	return $items;
@@ -261,8 +261,7 @@ function custom_search_form_submit($form,&$form_state){
 }
 
 /*
- * Get a view result with its row count to check 
- * whether one should add a more button under the result list
+ * Get a entities associated to term 
  *  
  * @param
  *		$tid : the term id
@@ -275,7 +274,6 @@ function entities_by_term($tid){
 	
 	drupal_alter('entities_by_term',$entities,$tid);
 	
-	
 	return $entities;
 }
 
@@ -283,7 +281,7 @@ function entities_by_term($tid){
  * Get children terms and/or various entities classified by a term
  *
  * @param
- *		$term_id : term id
+ *		$tid : term id
  *
  * @return
  *		renderable array
@@ -334,6 +332,21 @@ function term_page($tid){
 	
 	$content['wrapper']['#suffix'] = "</div>";
 	
+	// Set the breadcrumb
+	// In the form  : Home > Statistical publications > Economy > Price and inflation
+	$breadcrumb = array();
+	$parent_terms = taxonomy_get_parents_all($tid);
+	unset($parent_terms[0]); // Remove the first element including the term object
+	   
+   $breadcrumb[] = l(t('Home'),'<front>');
+   //$breadcrumb[] = l(t('Statistical publications'),'statistical_publications');
+   foreach(array_reverse($parent_terms) as $parent){
+   	$breadcrumb[] = l(t($parent->name),drupal_get_path_alias('page/term/' . $parent->tid));
+   } 
+   
+   //$breadcrumb[] = drupal_get_title();
+   dpm($breadcrumb);
+   drupal_set_breadcrumb($breadcrumb);	
 		
 	return $content;
 	
