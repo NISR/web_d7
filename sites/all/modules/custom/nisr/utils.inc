@@ -94,7 +94,7 @@ function get_embed_view($name,$display,$filters){
 	$view->execute();
 
 	return array(
-				'title' => $view->display[$display]->display_options['title'],
+				'title' => !isset($view->display[$display]->display_options['title'])? '' : $view->display[$display]->display_options['title'],
 				'result' => $view->preview(),
 				'count' => count($view->result),
 					);
