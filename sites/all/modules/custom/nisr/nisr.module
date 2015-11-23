@@ -345,8 +345,9 @@ function term_page($tid){
    } 
    
    //$breadcrumb[] = drupal_get_title();
-   dpm($breadcrumb);
-   drupal_set_breadcrumb($breadcrumb);	
+   drupal_set_breadcrumb($breadcrumb);
+   
+   drupal_set_title($term->name);	
 		
 	return $content;
 	
