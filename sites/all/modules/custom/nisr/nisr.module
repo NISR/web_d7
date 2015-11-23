@@ -80,9 +80,20 @@ function nisr_context_load_alter(&$context) {
 function nisr_menu(){
 	$items = array();
 	
+	// Home button
+	$items['home'] = array(
+	 'title' => 'Home',
+ 	 'title callback' => 'get_home_menu_item',	
+ 	 'page callback' => 'drupal_goto',
+ 	 'page arguments' => array('<front>'),
+	 'access callback' => TRUE,
+	 'type' => MENU_NORMAL_ITEM,
+    'menu_name' => 'main-menu',	
+    'weight' => -50,
+	);
 	// Notices menu	
   	$items['admin/content/notices/add'] = array(
-    'title' => t('Add notice'),
+    'title' => 'Add notice',
     'page callback' => 'node_add',
     'page arguments' => array('notice'),
     'access arguments' => array('administer content'),
@@ -276,7 +287,12 @@ function entities_by_term($tid){
 	
 	return $entities;
 }
-
+/*
+ * Callback for the image home menu item
+ */
+function get_home_menu_item(){
+	return "<i class='fa fa-home'></i>";	
+}
 /*
  * Get children terms and/or various entities classified by a term
  *

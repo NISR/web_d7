@@ -59,3 +59,8 @@ function porto_sub_process_field_collection_item(&$variables) {
   }
 }
 
+function porto_sub_link($variables) {
+	$variables['options']['html'] = TRUE;
+   return '<a href="' . check_plain(url($variables['path'], $variables['options'])) . '"' . drupal_attributes($variables['options']['attributes']) . '>' . ($variables['options']['html'] ? $variables['text'] : check_plain($variables['text'])) . '</a>';
+}
+
