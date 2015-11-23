@@ -241,9 +241,9 @@ function custom_search_form($form,$form_state){
 	); 
 	$form['wrapper']['actions']['submit'] = array(
 		'#type' => 'submit',
-		'#value' => '',
+		'#value' => t('Search'),
 		'#attributes' => array('class' => array('btn-search')),
-		'#prefix' => "<span class='element-invisible'>",
+		'#prefix' => "<span class=''>",
 		'#suffix' => '</span>',
 	);
 	

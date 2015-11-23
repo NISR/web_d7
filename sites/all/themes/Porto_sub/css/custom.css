@@ -42,7 +42,7 @@ section.section{
 	border-top : 2px solid #ccc;
 	border-bottom : 2px solid #ccc;
 	margin: 0 0 0px 0;
-	max-height: 50px;
+	max-height: 65px;
 	padding: 5px 0 20px 0;
 	position: relative;
 	text-align: left;
@@ -50,6 +50,7 @@ section.section{
 
 .search-box .input-group {
 	display: block;
+	margin-top: 5px;
 	margin-left: auto;
 	margin-right: auto;
 	width: 65%;
