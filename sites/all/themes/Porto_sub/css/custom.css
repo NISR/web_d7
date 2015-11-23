@@ -8,6 +8,11 @@
 #header .header-logo{
 }
 
+
+#header .header-logo img{
+	margin: 0px;
+}
+
 #header .header-search{
 	float: none;
 }
