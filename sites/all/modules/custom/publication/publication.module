@@ -295,18 +295,7 @@ function publication_menu() {
     'file' => 'publication.admin.inc',
     'type' => MENU_LOCAL_ACTION,
   );
-  	
-	$items['publications/%/%'] = array(
-	  'title callback' => 'get_subject_title',
-	  'title arguments'=> array(1,2),
-	  'page callback'  => 'subject_page',
-	  'page arguments' => array(1,2),	
-	  'access arguments'=> TRUE,
-
-	);
-		
-
-  
+  	  
   $publication_uri = 'publication/%publication';
   $publication_uri_argument_position = 1;
 
@@ -376,6 +365,7 @@ function publication_menu() {
   return $items;
 }
 
+/*
 function publication_menu_alter(&$items) {
   global $user;
 	
@@ -384,7 +374,7 @@ function publication_menu_alter(&$items) {
 	 	$items['taxonomy/term/%taxonomy_term']['access arguments'] = array('view publication entities');        
   }
 }
-
+*/
 
 /**
  * Implements hook_permission().
@@ -547,9 +537,9 @@ function publication_views_pre_render(&$view){
 		count($view->args)? $parents  = taxonomy_get_parents_all($view->args[0]) : $parents = array();		
 		$breadcrumb = array();
 		$breadcrumb[] = l(t('Home'),'<front>');
-		$breadcrumb[] = l(t('Statistical publications'),'statistical_publications');
+		//$breadcrumb[] = l(t('Statistical publications'),'statistical_publications');
 		foreach(array_reverse($parents) as $parent){
-			$breadcrumb[] = l(t($parent->name),drupal_get_path_alias('taxonomy/term/' . $parent->tid));
+			$breadcrumb[] = l(t($parent->name),drupal_get_path_alias('page/term/' . $parent->tid));
 		}
 		
 		if(count($view->args)) $breadcrumb[] = t('Statistical reports');
@@ -557,92 +547,6 @@ function publication_views_pre_render(&$view){
 	}
 }
 
-/*
- * Callback for subjects term 
- */  
-function subject_page($term){
-	if($term->vocabulary_machine_name == 'subjects'){
-		$content = array(
-								'description' => array(
-										'#markup' => $term->description,
-										'#prefix' => "<div class='subject-description'>",
-										'#suffix'=> '</div>',
-								),	
-					);
-					
-							
-		$children_terms = taxonomy_get_children($term->tid);
-		
-		if(count($children_terms)){
-			$content['wrapper'] = array("#prefix" => "<div class='featured-boxes'>");			
-			foreach($children_terms as $child_term){
-				$children[] = array(
-										"#prefix" => "<div class='col-md-3'><div class='featured-content featured-box'><div class='box-content'>",
-										"#suffix" => "</div></div></div>",
-										'title' => array(
-															'#theme' => 'link',
-															'#text'  => $child_term->name,
-															'#path'  => drupal_get_path_alias('taxonomy/term/' . $child_term->tid),
-															'#options'=> array('attributes' => array('title' => ''),'html'=>TRUE),
-															'#prefix'=> "<h3>",
-															'#suffix'=> "</h3>",
-															),
-										
-										'description' => array(
-															'#markup' => text_summary($child_term->description,null,300) . '...',
-															),					
-																				
-										);	
-				}
-			$content['wrapper']['children'] = $children;
-		}else{
-			// Show latest reports and articles
-			$content['wrapper'] = array("#prefix" => "<div class=''>");			
-			module_load_include('inc','nisr','utils');
-			$reports  = get_embed_view('publications_search','latest_statistical_reports',array($term->tid));
-			$articles = get_embed_view('publications_search','latest_statistical_articles',array($term->tid));
-			
-			if($reports['count']){
-				$content['wrapper']['item']['reports'] = array(
-											"title" => array("#markup" => t($reports['title']),"#prefix" => "<div class=''><div class=''><h4 class=''>","#suffix" => "</h4></div>"),
-											'items' => array('#markup' => $reports['result'],'#prefix' => "<div class='clearfix'>",'#suffix' => '</div>'),
-												);
-
-				$content['wrapper']['item']['more'] = array('#theme' => 'link','#text' => t('Read more'),'#path' => 'publications/statistical_reports/' . $term->tid ,'#options' => array('attributes' => array('class' => array('btn','btn-sm','btn-primary')),'html' => TRUE),'#prefix' =>"<div style='margin:15px;'>",'#suffix' => '</div></div>');
-			}	
-					
-			if($articles['count']){
-				$content['wrapper']['item']['articles'] = array(
-											'title' => array('#markup' => t($articles['title']),"#prefix" => "<div class=''><div class=''><h4 class=''>","#suffix" => "</h4></div>"),
-											'items' => array('#markup' => $articles['result'],'#prefix' => "<div class='clearfix' style='margin-left:15px;'>",'#suffix' => '</div>'),  
-												);
-
-				$content['wrapper']['item']['articles']['more'] = array('#theme' => 'link','#text' => t('Read More'),'#path' => 'publications/statistical_articles/' . $term->tid,'#options' => array('attributes' => array('class' => array('btn','btn-sm','btn-primary')),'html' => TRUE),'#prefix' =>"<div style='margin:15px;'>",'#suffix' => '</div></div>');
-			}
-		}	
-		
-		$content['wrapper']['#suffix'] = "</div>";
-		
-		// Set the breadcrumb
-		// In the form  : Home > Statistical publications > Economy > Price and inflation
-		$parent_terms = taxonomy_get_parents_all($term->tid);
-		unset($parent_terms[0]); // Remove the first element including the term object
-		
-	   $breadcrumb = array();
-	   
-	   $breadcrumb[] = l(t('Home'),'<front>');
-	   $breadcrumb[] = l(t('Statistical publications'),'statistical_publications');
-	   foreach(array_reverse($parent_terms) as $parent){
-	   	$breadcrumb[] = l(t($parent->name),drupal_get_path_alias('taxonomy/term/' . $parent->tid));
-	   } 
-	   
-	   $breadcrumb[] = drupal_get_title();
-	   drupal_set_breadcrumb($breadcrumb);		
-		
-		return $content;
-	}
-	return taxonomy_term_page($term);
-}
 
 /**
  * Implements hook_search_api_alter_callback_info().

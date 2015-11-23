@@ -77,6 +77,6 @@ features[variable][] = pathauto_taxonomy_term_vocabulary_3_pattern
 features[variable][] = theme_default
 features[variable][] = theme_porto_sub_settings
 features_exclude[dependencies][publication_features] = publication_features
-features_exclude[variable][pathauto_taxonomy_term_document_subjects_pattern] = pathauto_taxonomy_term_document_subjects_pattern
 features_exclude[taxonomy][articles_subjects] = articles_subjects
+features_exclude[variable][pathauto_taxonomy_term_document_subjects_pattern] = pathauto_taxonomy_term_document_subjects_pattern
 project path = sites/all/modules/features

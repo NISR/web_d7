@@ -98,14 +98,15 @@ section.section{
 	z-index: 3;
 }
 
-.input-search{
+.search-box .input-search{
 	float: left;
-	width: 70%;
+	width: 89%;
 }
 
-.btn-search{
+search-box .btn-search{
 	float: left;
-	width: 30%;	
+	width: 11%;
+	position: absolute;
 }
 
 .search-box .btn-default:hover {
