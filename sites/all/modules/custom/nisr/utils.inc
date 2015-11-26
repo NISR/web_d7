@@ -91,7 +91,10 @@ function get_embed_view($name,$display,$filters){
 	
 	$view->set_display($display);
 	$view->set_arguments($filters);
+	
+	$view->pre_execute();
 	$view->execute();
+	$view->render();
 
 	return array(
 				'title' => !isset($view->display[$display]->display_options['title'])? '' : $view->display[$display]->display_options['title'],
