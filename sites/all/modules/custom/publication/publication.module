@@ -212,7 +212,7 @@ function publication_entity_info_alter(&$entity_info) {
  */
 function publication_entity_update($entity,$type){
 	if($type == 'publication'){
-		$subjects  = array();
+		$subjects  = $recipients = array();
 		$subscribers = views_get_view('subscribers');
 		switch($entity->type) {
 			case 'statistical_report':
