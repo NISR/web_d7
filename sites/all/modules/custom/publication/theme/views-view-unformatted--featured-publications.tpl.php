@@ -14,7 +14,6 @@
   <div<?php if ($classes_array[$id]) { print ' class="' . $classes_array[$id] .'"';  } ?>>
     <?php print $row; ?>
     <?php if(array_key_exists(++$id,$rows)): ?>
-		<hr/>    
     <?php endif; ?>
   </div>
 <?php endforeach; ?>

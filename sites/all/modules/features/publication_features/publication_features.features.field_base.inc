@@ -10,6 +10,49 @@
 function publication_features_field_default_field_bases() {
   $field_bases = array();
 
+  // Exported field_base: 'eq_publication'.
+  $field_bases['eq_publication'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(
+      0 => 'entityqueue_subqueue',
+    ),
+    'field_name' => 'eq_publication',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 1,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'entityqueue',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'entityqueue' => array(
+            'status' => 1,
+          ),
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'direction' => 'DESC',
+          'field' => 'field_pub_publication_date:value',
+          'type' => 'field',
+        ),
+        'target_bundles' => array(
+          'statistical_report' => 'statistical_report',
+        ),
+      ),
+      'profile2_private' => FALSE,
+      'target_type' => 'publication',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
   // Exported field_base: 'field_dataset_chart_data_prefix'.
   $field_bases['field_dataset_chart_data_prefix'] = array(
     'active' => 1,

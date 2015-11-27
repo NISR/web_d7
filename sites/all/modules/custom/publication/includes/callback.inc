@@ -31,7 +31,7 @@ class PublicationAlterAddPeriod extends SearchApiAbstractAlterCallback {
  */
 function set_elapsed_period(&$publication){
 	$pub = entity_metadata_wrapper('publication',$publication);
-	$period = '';
+	$period = $days = '';
 	
 	switch($publication->type){
   			case 'statistical_report':

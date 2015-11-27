@@ -20,18 +20,16 @@
 div.horizontal-menu ul.menu{
 	list-style-type: none;	
 }
+
 div.horizontal-menu ul.menu li.leaf{
 	display: inline-block;
 }
+
 div.horizontal-menu ul.menu li.last{
 
 }
-section.section{
-	margin: 0px;
-	padding: 0px;	
-	border: none;
-	
-}
+
+
 
 /**
  ** Search box
@@ -138,12 +136,17 @@ search-box .btn-search{
 	text-align: center;
 }
 
+section{
+	margin:0;
+	padding:0;	
+}
 
 section.home-intro,
 section.page-header{
 	background-color: #171717;
 	background: url('../../Porto/img/patterns/az_subtle.png');
 	border-top:none;
+	padding: 0px;
 }
 
 section.page-header h1{
@@ -172,7 +175,7 @@ div.box-content h4{
 }
 
 span.tag{
-border: 1px solid #ccc;
+	border: 1px solid #ccc;
 	border-radius: 3px;
 	background: #f4f4f4; 	
 	padding: 0px 5px 0px 5px;
@@ -182,9 +185,30 @@ border: 1px solid #ccc;
 	
 }
 
+.uppercase{
+	text-transform: uppercase;	
+}
+
 .file img{
 	float: left;
 	padding-right: 3px;	
+}
+
+.box-outline{
+	width: 99%;
+	background: url('../../Porto/img/patterns/worn_dots.png');
+	border-top:2px solid #1D2127;
+	border-bottom:1px solid #1D2127;
+}
+
+.textured-worn-dots{
+	padding-left: 7px;
+	padding-right: 7px;
+	min-height: 400px;
+}
+
+.centered-box h2{
+	text-align: center;	
 }
 
 .field-collection-item-field-profile-subscriptions .field-items .field-item{

@@ -635,8 +635,8 @@ function draw_chart($pub_id,$view_mode,$range = array()){
 	    	'#legend_position' => ($view_mode == 'full') ? 'bottom' : 'none',
 	    	'#legend_font_size' => ($view_mode == 'full') ? '' : '0em',
 	    	'#data_labels' => ($view_mode == 'full') ? TRUE : FALSE,
-	    	'#width' => ($view_mode == 'full') ? '' : '315px',
-	    	'#height'=> ($view_mode == 'full') ? '' : '150px',
+	    	'#width' => ($view_mode == 'full') ? '' : '550px',
+	    	'#height'=> ($view_mode == 'full') ? '' : '250px',
 	);
 		
 	foreach($legend as $index => $value){
