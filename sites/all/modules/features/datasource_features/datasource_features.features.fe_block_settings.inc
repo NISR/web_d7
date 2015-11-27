@@ -38,7 +38,7 @@ function datasource_features_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'porto_sub',
-        'weight' => 50,
+        'weight' => -43,
       ),
     ),
     'title' => '<none>',

@@ -11,6 +11,163 @@ function publication_features_views_default_views() {
   $export = array();
 
   $view = new view();
+  $view->name = 'publication_widgets';
+  $view->description = 'Publication blocks : newest items, latest reports, latest articles...';
+  $view->tag = 'default';
+  $view->base_table = 'publication';
+  $view->human_name = 'Publication widgets';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'view publication entities';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_eq_publication_entityqueue_subqueue']['id'] = 'reverse_eq_publication_entityqueue_subqueue';
+  $handler->display->display_options['relationships']['reverse_eq_publication_entityqueue_subqueue']['table'] = 'publication';
+  $handler->display->display_options['relationships']['reverse_eq_publication_entityqueue_subqueue']['field'] = 'reverse_eq_publication_entityqueue_subqueue';
+  /* Field: Publication: Publication ID */
+  $handler->display->display_options['fields']['pub_id']['id'] = 'pub_id';
+  $handler->display->display_options['fields']['pub_id']['table'] = 'publication';
+  $handler->display->display_options['fields']['pub_id']['field'] = 'pub_id';
+  $handler->display->display_options['fields']['pub_id']['label'] = '';
+  $handler->display->display_options['fields']['pub_id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['pub_id']['element_label_colon'] = FALSE;
+  /* Field: Publication: Subject */
+  $handler->display->display_options['fields']['field_pub_subject']['id'] = 'field_pub_subject';
+  $handler->display->display_options['fields']['field_pub_subject']['table'] = 'field_data_field_pub_subject';
+  $handler->display->display_options['fields']['field_pub_subject']['field'] = 'field_pub_subject';
+  $handler->display->display_options['fields']['field_pub_subject']['label'] = '';
+  $handler->display->display_options['fields']['field_pub_subject']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_pub_subject']['element_wrapper_class'] = 'uppercase';
+  $handler->display->display_options['fields']['field_pub_subject']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_pub_subject']['delta_limit'] = '1';
+  $handler->display->display_options['fields']['field_pub_subject']['delta_offset'] = '0';
+  /* Field: Publication: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'publication';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['path'] = 'publication/[pub_id]';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Sort criterion: Publication: Published (field_pub_publication_date) */
+  $handler->display->display_options['sorts']['field_pub_publication_date_value']['id'] = 'field_pub_publication_date_value';
+  $handler->display->display_options['sorts']['field_pub_publication_date_value']['table'] = 'field_data_field_pub_publication_date';
+  $handler->display->display_options['sorts']['field_pub_publication_date_value']['field'] = 'field_pub_publication_date_value';
+  $handler->display->display_options['sorts']['field_pub_publication_date_value']['order'] = 'DESC';
+  /* Filter criterion: Publication: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'publication';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'statistical_article' => 'statistical_article',
+    'statistical_report' => 'statistical_report',
+  );
+
+  /* Display: What's new */
+  $handler = $view->new_display('block', 'What\'s new', 'what_new');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'What\'s new';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Publication: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'publication';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'statistical_article' => 'statistical_article',
+    'statistical_report' => 'statistical_report',
+  );
+  $handler->display->display_options['block_description'] = 'What\'s new';
+
+  /* Display: Featured statistical reports */
+  $handler = $view->new_display('block', 'Featured statistical reports', 'featured_statistical_reports');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Reports';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Entityqueue: Publication Queue Position */
+  $handler->display->display_options['sorts']['entityqueue_relationship']['id'] = 'entityqueue_relationship';
+  $handler->display->display_options['sorts']['entityqueue_relationship']['table'] = 'publication';
+  $handler->display->display_options['sorts']['entityqueue_relationship']['field'] = 'entityqueue_relationship';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Publication: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'publication';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'statistical_report' => 'statistical_report',
+  );
+  /* Filter criterion: Entityqueue: Publication In Queue */
+  $handler->display->display_options['filters']['entityqueue_relationship']['id'] = 'entityqueue_relationship';
+  $handler->display->display_options['filters']['entityqueue_relationship']['table'] = 'publication';
+  $handler->display->display_options['filters']['entityqueue_relationship']['field'] = 'entityqueue_relationship';
+  $handler->display->display_options['filters']['entityqueue_relationship']['value'] = '1';
+  $handler->display->display_options['block_description'] = 'Featured statistical reports';
+
+  /* Display: Featured statistical articles */
+  $handler = $view->new_display('block', 'Featured statistical articles', 'featured_statistical_articles');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Featured articles';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'entity';
+  $handler->display->display_options['row_options']['view_mode'] = 'featured';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Entityqueue: Publication Queue Position */
+  $handler->display->display_options['sorts']['entityqueue_relationship']['id'] = 'entityqueue_relationship';
+  $handler->display->display_options['sorts']['entityqueue_relationship']['table'] = 'publication';
+  $handler->display->display_options['sorts']['entityqueue_relationship']['field'] = 'entityqueue_relationship';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Publication: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'publication';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'statistical_article' => 'statistical_article',
+  );
+  /* Filter criterion: Entityqueue: Publication In Queue */
+  $handler->display->display_options['filters']['entityqueue_relationship']['id'] = 'entityqueue_relationship';
+  $handler->display->display_options['filters']['entityqueue_relationship']['table'] = 'publication';
+  $handler->display->display_options['filters']['entityqueue_relationship']['field'] = 'entityqueue_relationship';
+  $handler->display->display_options['filters']['entityqueue_relationship']['value'] = '1';
+  $handler->display->display_options['block_description'] = 'Featured statistical articles';
+  $translatables['publication_widgets'] = array(
+    t('Master'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Subqueue referencing Publication from eq_publication'),
+    t('.'),
+    t(','),
+    t('What\'s new'),
+    t('Featured statistical reports'),
+    t('Reports'),
+    t('Featured statistical articles'),
+    t('Featured articles'),
+  );
+  $export['publication_widgets'] = $view;
+
+  $view = new view();
   $view->name = 'publications_backoffice';
   $view->description = '';
   $view->tag = 'default';

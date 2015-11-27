@@ -115,6 +115,7 @@ features[user_permission][] = view publication entities
 features[variable][] = pathauto_taxonomy_term_document_subjects_pattern
 features[variable][] = pathauto_taxonomy_term_publication_elapsed_period_pattern
 features[variable][] = pathauto_taxonomy_term_subjects_pattern
+features[views_view][] = publication_widgets
 features[views_view][] = publications_backoffice
 features[views_view][] = publications_er
 features[views_view][] = publications_eva

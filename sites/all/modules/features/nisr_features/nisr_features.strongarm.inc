@@ -68,8 +68,15 @@ function nisr_features_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'jquery_update_jquery_version';
-  $strongarm->value = '1.7';
+  $strongarm->value = '1.10';
   $export['jquery_update_jquery_version'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_articles_subjects_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_articles_subjects_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -77,6 +84,13 @@ function nisr_features_strongarm() {
   $strongarm->name = 'pathauto_taxonomy_term_countries_pattern';
   $strongarm->value = '';
   $export['pathauto_taxonomy_term_countries_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_profile_occupation_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_profile_occupation_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

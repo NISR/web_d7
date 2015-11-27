@@ -9,17 +9,7 @@ drupal_add_css(PUB_MODULE_PATH. '/publication.css', array('group' => CSS_DEFAULT
  */
 function publication_block_info(){
 	$weight = 100;
-	// Featured publications on homepage
-	$blocks['featured_statistical_reports'] = array(
-		'info' => t('Featured statistical reports'),
-		'weight' => $weight,
-		'cache' => DRUPAL_CACHE_GLOBAL,
-		);
-	$blocks['featured_statistical_articles'] = array(
-		'info' => t('Featured statistical articles'),
-		'weight' => $weight,
-		'cache' => DRUPAL_CACHE_GLOBAL,
-		);
+
 	// Subjects on statistical page
 	$blocks['subjects'] = array(
 		'info' => t('Subjects/Areas'),
@@ -47,17 +37,6 @@ function publication_block_info(){
  */
 function publication_block_view($delta = ''){
 	module_load_include('inc','nisr','utils');
-	if($delta == 'featured_statistical_reports'){
-		$block['title'] = t('Featured reports');
-		$view = get_embed_view('featured_publications','statistical_reports',array('831+832+836+833'));
-		$block['content'] = $view['result'];
-	}	
-	
-	if($delta == 'featured_statistical_articles'){
-		$block['title'] = t('Latest news');
-		$view = get_embed_view('featured_publications','statistical_articles',array());
-		$block['content'] = $view['result'];
-	}
 	
 	if($delta == 'subjects'){
 		$block['title'] = '';
