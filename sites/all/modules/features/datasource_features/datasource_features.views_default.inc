@@ -76,7 +76,7 @@ function datasource_features_views_default_views() {
   /* Display: Featured survey incidents */
   $handler = $view->new_display('block', 'Featured survey incidents', 'featured_survey_incidents');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Surveys';
+  $handler->display->display_options['title'] = 'Featured surveys';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Datasource: Type */
@@ -103,7 +103,7 @@ function datasource_features_views_default_views() {
     t('.'),
     t(','),
     t('Featured survey incidents'),
-    t('Surveys'),
+    t('Featured surveys'),
   );
   $export['datasource_widgets'] = $view;
 
