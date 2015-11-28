@@ -46,6 +46,227 @@ function nisr_features_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_admin_name_gcal_events-0';
+  $strongarm->value = 'Block 1';
+  $export['gcal_events_admin_name_gcal_events-0'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_cache';
+  $strongarm->value = 'sites/all/modules/contrib/gcal_events/cache';
+  $export['gcal_events_cache'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_cache_duration';
+  $strongarm->value = '3600';
+  $export['gcal_events_cache_duration'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_calendar_id_gcal_events-0';
+  $strongarm->value = 'ie0qtk0seo5burtsibff5ilso0@group.calendar.google.com';
+  $export['gcal_events_calendar_id_gcal_events-0'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_dateformat';
+  $strongarm->value = 'j F, Y';
+  $export['gcal_events_dateformat'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_dateformat_gcal_events-0';
+  $strongarm->value = '';
+  $export['gcal_events_dateformat_gcal_events-0'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_day_grouping';
+  $strongarm->value = 0;
+  $export['gcal_events_day_grouping'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_debug';
+  $strongarm->value = '0';
+  $export['gcal_events_debug'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_developer_id_gcal_events-0';
+  $strongarm->value = 'AIzaSyBz8kwgAjSd8eYIa0WCFXEmTvchwek1FQI';
+  $export['gcal_events_developer_id_gcal_events-0'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_empty_gcal_events-0';
+  $strongarm->value = 'none';
+  $export['gcal_events_empty_gcal_events-0'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_footer_gcal_events-0';
+  $strongarm->value = '';
+  $export['gcal_events_footer_gcal_events-0'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_heading_other';
+  $strongarm->value = '<b>Other</b><hr />';
+  $export['gcal_events_heading_other'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_heading_thismonth';
+  $strongarm->value = '<b>This Month</b><hr />';
+  $export['gcal_events_heading_thismonth'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_heading_thisweek';
+  $strongarm->value = '<b>This Week</b><hr />';
+  $export['gcal_events_heading_thisweek'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_heading_today';
+  $strongarm->value = '<b>Today</b><hr />';
+  $export['gcal_events_heading_today'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_heading_tomorrow';
+  $strongarm->value = '<b>Tomorrow</b><hr />';
+  $export['gcal_events_heading_tomorrow'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_input_format';
+  $strongarm->value = 'php_code';
+  $export['gcal_events_input_format'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_item_list';
+  $strongarm->value = 0;
+  $export['gcal_events_item_list'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_num_blocks';
+  $strongarm->value = '1';
+  $export['gcal_events_num_blocks'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_num_events_gcal_events-0';
+  $strongarm->value = '5';
+  $export['gcal_events_num_events_gcal_events-0'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_private_id_gcal_events-0';
+  $strongarm->value = '';
+  $export['gcal_events_private_id_gcal_events-0'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_template_date_gcal_events-0';
+  $strongarm->value = '#DATE#';
+  $export['gcal_events_template_date_gcal_events-0'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_template_desc_gcal_events-0';
+  $strongarm->value = '#DESC#';
+  $export['gcal_events_template_desc_gcal_events-0'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_template_event_gcal_events-0';
+  $strongarm->value = '				  <div class="date">
+				    <span class="day"><?php print date(\'d\',strtotime("#DATE#")) ;?></span>
+				    <span class="month"><?php print date(\'M\',strtotime("#DATE#")) ;?></span>
+                                    #TITLE#
+				  </div>';
+  $export['gcal_events_template_event_gcal_events-0'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_template_loc_gcal_events-0';
+  $strongarm->value = '#LOC#';
+  $export['gcal_events_template_loc_gcal_events-0'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_template_time_gcal_events-0';
+  $strongarm->value = '#TIME#<br />';
+  $export['gcal_events_template_time_gcal_events-0'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_template_title_gcal_events-0';
+  $strongarm->value = '<b>#TITLE#</b>';
+  $export['gcal_events_template_title_gcal_events-0'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_timeformat';
+  $strongarm->value = 'g:ia';
+  $export['gcal_events_timeformat'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_timeformat_gcal_events-0';
+  $strongarm->value = '';
+  $export['gcal_events_timeformat_gcal_events-0'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_timezone';
+  $strongarm->value = 'Africa/Kigali';
+  $export['gcal_events_timezone'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'gcal_events_today_only_gcal_events-0';
+  $strongarm->value = 0;
+  $export['gcal_events_today_only_gcal_events-0'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'jquery_update_compression_type';
   $strongarm->value = 'none';
   $export['jquery_update_compression_type'] = $strongarm;

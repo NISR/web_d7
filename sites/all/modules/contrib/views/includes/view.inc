@@ -1396,7 +1396,7 @@ class view extends views_db_object {
     $this->dom_id = !empty($this->dom_id) ? $this->dom_id : md5($this->name . REQUEST_TIME . rand());
 
     // Allow the display handler to set up for execution
-    if(is_object($this->display_handler)) $this->display_handler->pre_execute();
+    if($this->display_handler) $this->display_handler->pre_execute();
   }
 
   /**

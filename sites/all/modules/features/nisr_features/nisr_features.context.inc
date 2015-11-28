@@ -13,6 +13,80 @@ function nisr_features_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'frontpage_content';
+  $context->description = '';
+  $context->tag = 'Front page';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        '<front>' => '<front>',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'block-34' => array(
+          'module' => 'block',
+          'delta' => '34',
+          'region' => 'before_content',
+          'weight' => '-10',
+        ),
+        'views-publication_widgets-new' => array(
+          'module' => 'views',
+          'delta' => 'publication_widgets-new',
+          'region' => 'before_content',
+          'weight' => '-9',
+        ),
+        'views-publication_widgets-fsr' => array(
+          'module' => 'views',
+          'delta' => 'publication_widgets-fsr',
+          'region' => 'before_content',
+          'weight' => '-8',
+        ),
+        'views-7d4e3d62804c492aebfa386f39adeb9d' => array(
+          'module' => 'views',
+          'delta' => '7d4e3d62804c492aebfa386f39adeb9d',
+          'region' => 'before_content',
+          'weight' => '-7',
+        ),
+        'gcal_events-gcal_events-0' => array(
+          'module' => 'gcal_events',
+          'delta' => 'gcal_events-0',
+          'region' => 'before_content',
+          'weight' => '-5',
+        ),
+        'views-publication_widgets-fsa' => array(
+          'module' => 'views',
+          'delta' => 'publication_widgets-fsa',
+          'region' => 'after_content',
+          'weight' => '-10',
+        ),
+        'views-news-latest_news' => array(
+          'module' => 'views',
+          'delta' => 'news-latest_news',
+          'region' => 'after_content',
+          'weight' => '-9',
+        ),
+        'views-twitter_messages-tweets_block' => array(
+          'module' => 'views',
+          'delta' => 'twitter_messages-tweets_block',
+          'region' => 'after_content',
+          'weight' => '-8',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Front page');
+  $export['frontpage_content'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'sitewide';
   $context->description = '';
   $context->tag = '';

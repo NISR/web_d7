@@ -228,7 +228,7 @@ function context_views_pre_view($view, $display) {
     $plugin->execute($view);
   }
   // Support Views overrides of specific entity paths.
-  if (is_object($view->display_handler) && $view->display_handler->has_path()) {
+  if ($view->display_handler->has_path()) {
     switch ($view->display_handler->get_option('path')) {
       case 'taxonomy/term/%':
         if (($term = taxonomy_term_load(arg(2))) && ($plugin = context_get_plugin('condition', 'taxonomy_term'))) {

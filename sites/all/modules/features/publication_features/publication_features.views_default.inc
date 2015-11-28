@@ -77,7 +77,7 @@ function publication_features_views_default_views() {
   );
 
   /* Display: What's new */
-  $handler = $view->new_display('block', 'What\'s new', 'what_new');
+  $handler = $view->new_display('block', 'What\'s new', 'new');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'What\'s new';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
@@ -93,9 +93,9 @@ function publication_features_views_default_views() {
   $handler->display->display_options['block_description'] = 'What\'s new';
 
   /* Display: Featured statistical reports */
-  $handler = $view->new_display('block', 'Featured statistical reports', 'featured_statistical_reports');
+  $handler = $view->new_display('block', 'Featured statistical reports', 'fsr');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Reports';
+  $handler->display->display_options['title'] = 'Featured reports';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Entityqueue: Publication Queue Position */
   $handler->display->display_options['sorts']['entityqueue_relationship']['id'] = 'entityqueue_relationship';
@@ -118,7 +118,7 @@ function publication_features_views_default_views() {
   $handler->display->display_options['block_description'] = 'Featured statistical reports';
 
   /* Display: Featured statistical articles */
-  $handler = $view->new_display('block', 'Featured statistical articles', 'featured_statistical_articles');
+  $handler = $view->new_display('block', 'Featured statistical articles', 'fsa');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Featured articles';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
@@ -161,7 +161,7 @@ function publication_features_views_default_views() {
     t(','),
     t('What\'s new'),
     t('Featured statistical reports'),
-    t('Reports'),
+    t('Featured reports'),
     t('Featured statistical articles'),
     t('Featured articles'),
   );

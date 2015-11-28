@@ -195,16 +195,24 @@ span.tag{
 }
 
 .box-outline{
-	width: 99%;
-	background: url('../../Porto/img/patterns/worn_dots.png');
-	border-top:2px solid #1D2127;
-	border-bottom:1px solid #1D2127;
+	margin-top: 30px;
+	min-height: 400px;
 }
 
-.textured-worn-dots{
-	padding-left: 7px;
-	padding-right: 7px;
-	min-height: 400px;
+.box-outline h2{
+	border-top:0px solid #000;
+	border-left:0px solid #000;
+	border-right:0px solid #000;
+	border-bottom:2px solid #000;
+	margin: 0px;
+	padding-left: 10px
+}
+
+.texture .content{
+	background: url('../../Porto/img/patterns/worn_dots.png');
+	padding:10px;
+	min-height: 330px;
+	border-bottom:1px solid #000;
 }
 
 .centered-box h2{
