@@ -54,12 +54,12 @@ function datasource_features_views_default_views() {
     'show_repeat_rule' => 'show',
   );
   /* Field: Datasource: Datasource ID */
-  $handler->display->display_options['fields']['ds_id_1']['id'] = 'ds_id_1';
-  $handler->display->display_options['fields']['ds_id_1']['table'] = 'datasource';
-  $handler->display->display_options['fields']['ds_id_1']['field'] = 'ds_id';
-  $handler->display->display_options['fields']['ds_id_1']['label'] = '';
-  $handler->display->display_options['fields']['ds_id_1']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['ds_id_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['ds_id']['id'] = 'ds_id';
+  $handler->display->display_options['fields']['ds_id']['table'] = 'datasource';
+  $handler->display->display_options['fields']['ds_id']['field'] = 'ds_id';
+  $handler->display->display_options['fields']['ds_id']['label'] = '';
+  $handler->display->display_options['fields']['ds_id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['ds_id']['element_label_colon'] = FALSE;
   /* Field: Datasource: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'datasource';
