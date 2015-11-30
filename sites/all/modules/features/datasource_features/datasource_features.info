@@ -35,6 +35,7 @@ features[fe_block_boxes][] = featured_indicators
 features[fe_block_settings][] = block-featured_indicators
 features[fe_block_settings][] = views-datasource_widgets-fsi
 features[features_api][] = api:2
+features[field_base][] = eq_datasource
 features[field_base][] = field_datasource_body
 features[field_base][] = field_datasource_entity
 features[field_base][] = field_datasource_parent
