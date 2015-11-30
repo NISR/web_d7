@@ -10,6 +10,48 @@
 function datasource_features_field_default_field_bases() {
   $field_bases = array();
 
+  // Exported field_base: 'eq_datasource'.
+  $field_bases['eq_datasource'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(
+      0 => 'entityqueue_subqueue',
+    ),
+    'field_name' => 'eq_datasource',
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 1,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'entityqueue',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'entityqueue' => array(
+            'status' => 1,
+          ),
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'direction' => 'DESC',
+          'field' => 'field_datasource_period:value2',
+          'type' => 'field',
+        ),
+        'target_bundles' => array(
+          'datasource_incidence' => 'datasource_incidence',
+        ),
+      ),
+      'target_type' => 'datasource',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
   // Exported field_base: 'field_datasource_body'.
   $field_bases['field_datasource_body'] = array(
     'active' => 1,
