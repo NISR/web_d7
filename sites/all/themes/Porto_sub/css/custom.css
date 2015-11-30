@@ -138,7 +138,7 @@ search-box .btn-search{
 
 section.section{
 	margin:0;
-	padding:0px 0px 10px 0px;	
+	padding:0px 0px 25px 0px;	
 }
 
 section.home-intro,
@@ -146,10 +146,6 @@ section.page-header{
 	background-color: #171717;
 	background: url('../../Porto/img/patterns/az_subtle.png');
 	border-top:none;
-}
-
-section.home-intro{
-	padding:0px 0px 10px 0px;	
 }
 
 section.page-header h1{
