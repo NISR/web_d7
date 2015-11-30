@@ -87,6 +87,39 @@ function nisr_features_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'search';
+  $context->description = '';
+  $context->tag = 'Search';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        '~search/*' => '~search/*',
+        '~user/*' => '~user/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'nisr-custom_search' => array(
+          'module' => 'nisr',
+          'delta' => 'custom_search',
+          'region' => 'before_content',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Search');
+  $export['search'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'sitewide';
   $context->description = '';
   $context->tag = '';
