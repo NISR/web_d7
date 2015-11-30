@@ -40,6 +40,7 @@
       <?php endif; ?>
     </h2>
   <?php endif; ?>
+  <strong><?php print render($content['field_pub_publication_date']);?></strong>
   <?php if ($dataset['chart']): ?>
 	  <div class="col-md-12">
 	  		<?php 
