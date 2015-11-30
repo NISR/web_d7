@@ -271,7 +271,7 @@ function nisr_features_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'gcal_events_num_events_gcal_events-0';
-  $strongarm->value = '5';
+  $strongarm->value = '4';
   $export['gcal_events_num_events_gcal_events-0'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -299,11 +299,16 @@ function nisr_features_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'gcal_events_template_event_gcal_events-0';
-  $strongarm->value = '				  <div class="date">
-				    <span class="day"><?php print date(\'d\',strtotime("#DATE#")) ;?></span>
-				    <span class="month"><?php print date(\'M\',strtotime("#DATE#")) ;?></span>
-                                    #TITLE#
-				  </div>';
+  $strongarm->value = '<div class="calendarTable clearfix">
+	<div class="calendarRow">
+		<div class="calendarDateContainer">
+			<span class="day"><?php print date(\'d\',strtotime("#DATE#")) ;?></span>
+			<span class="month"><?php print date(\'M\',strtotime("#DATE#")) ;?></span>
+		</div>
+		<div class="calendarInfo"><div><?php print date(\'d F Y\',strtotime("#DATE#")) ;?></div><div>#TITLE#</div></div>
+	</div>
+</div>
+                       ';
   $export['gcal_events_template_event_gcal_events-0'] = $strongarm;
 
   $strongarm = new stdClass();
