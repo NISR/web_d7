@@ -264,15 +264,18 @@ span.tag{
 	text-align: center;	
 }
 .day{
-	background: #F7F7F7;
+	background: #FFF;
 	display: block;
 	font-size: 18px;
-	font-weight: 500;
 	font-weight: bold;
 	padding: 8px;
+	border-top:1px solid #777;
+	border-left:1px solid #777;
+	border-right:1px solid #777;
+	margin-bottom: -2px;
 }
 .month{
-	background: #CCC;
+	background: #777;
 	border-radius: 0 0 2px 2px;
 	box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.07) inset;
 	color: white;
