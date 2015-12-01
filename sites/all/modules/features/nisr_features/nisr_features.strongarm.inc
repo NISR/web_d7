@@ -166,7 +166,7 @@ function nisr_features_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'gcal_events_dateformat';
-  $strongarm->value = 'j F, Y';
+  $strongarm->value = 'j F Y';
   $export['gcal_events_dateformat'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -305,7 +305,7 @@ function nisr_features_strongarm() {
 			<span class="day"><?php print date(\'d\',strtotime("#DATE#")) ;?></span>
 			<span class="month"><?php print date(\'M\',strtotime("#DATE#")) ;?></span>
 		</div>
-		<div class="calendarInfo"><div><?php print date(\'d F Y\',strtotime("#DATE#")) ;?></div><div>#TITLE#</div></div>
+		<div class="calendarInfo"><div>#DATE#</div><div>#TITLE#</div></div>
 	</div>
 </div>
                        ';
