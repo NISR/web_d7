@@ -45,11 +45,7 @@
  */
 ?>
 <div id="<?php print $block_html_id; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
-<?php if($is_front) :?>
-	<div class="box-outline">
-		<div class="textured-worn-dots">
-<?php endif;?>
-		  <?php print render($title_prefix); ?>
+		<?php print render($title_prefix); ?>
 		<?php if ($block->subject): ?>
 		  <h2<?php print $title_attributes; ?>><?php print $block->subject ?></h2>
 		<?php endif;?>
@@ -58,8 +54,4 @@
 		  <div class="content"<?php print $content_attributes; ?>>
 		    <?php print $content ?>
 		  </div>
-<?php if($is_front) :?>
-		</div>
-	</div>
-<?php endif;?>
 </div>

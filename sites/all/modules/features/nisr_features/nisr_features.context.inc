@@ -59,14 +59,14 @@ function nisr_features_context_default_contexts() {
         'views-publication_widgets-fsa' => array(
           'module' => 'views',
           'delta' => 'publication_widgets-fsa',
-          'region' => 'after_content',
-          'weight' => '-10',
+          'region' => 'content',
+          'weight' => '-43',
         ),
         'views-news-latest_news' => array(
           'module' => 'views',
           'delta' => 'news-latest_news',
-          'region' => 'after_content',
-          'weight' => '-9',
+          'region' => 'content',
+          'weight' => '-42',
         ),
         'views-twitter_messages-tweets_block' => array(
           'module' => 'views',

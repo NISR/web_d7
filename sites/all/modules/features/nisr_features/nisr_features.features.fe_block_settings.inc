@@ -80,7 +80,7 @@ function nisr_features_default_fe_block_settings() {
 
   $export['views-news-latest_news'] = array(
     'cache' => -1,
-    'css_class' => '',
+    'css_class' => 'col-md-6',
     'custom' => 0,
     'delta' => 'news-latest_news',
     'module' => 'views',
