@@ -117,6 +117,14 @@ function publication_features_default_publication_type() {
     "locked" : "0",
     "data" : null
   }');
+  $items['featured_indicator'] = entity_import('publication_type', '{
+    "type" : "featured_indicator",
+    "label" : "Featured indicator",
+    "weight" : "0",
+    "description" : "",
+    "locked" : "0",
+    "data" : null
+  }');
   $items['statistical_article'] = entity_import('publication_type', '{
     "type" : "statistical_article",
     "label" : "Statistical article",

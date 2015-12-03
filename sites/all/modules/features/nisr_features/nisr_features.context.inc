@@ -26,35 +26,41 @@ function nisr_features_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'block-34' => array(
-          'module' => 'block',
-          'delta' => '34',
+        'nodesinblock-0' => array(
+          'module' => 'nodesinblock',
+          'delta' => '0',
           'region' => 'before_content',
           'weight' => '-10',
+        ),
+        'views-publication_widgets-fi' => array(
+          'module' => 'views',
+          'delta' => 'publication_widgets-fi',
+          'region' => 'before_content',
+          'weight' => '-8',
         ),
         'views-publication_widgets-new' => array(
           'module' => 'views',
           'delta' => 'publication_widgets-new',
           'region' => 'before_content',
-          'weight' => '-9',
+          'weight' => '-7',
         ),
         'views-publication_widgets-fsr' => array(
           'module' => 'views',
           'delta' => 'publication_widgets-fsr',
           'region' => 'before_content',
-          'weight' => '-8',
+          'weight' => '-6',
         ),
         'views-datasource_widgets-fsi' => array(
           'module' => 'views',
           'delta' => 'datasource_widgets-fsi',
           'region' => 'before_content',
-          'weight' => '-7',
+          'weight' => '-5',
         ),
         'gcal_events-gcal_events-0' => array(
           'module' => 'gcal_events',
           'delta' => 'gcal_events-0',
           'region' => 'before_content',
-          'weight' => '-6',
+          'weight' => '-4',
         ),
         'views-publication_widgets-fsa' => array(
           'module' => 'views',
@@ -67,6 +73,12 @@ function nisr_features_context_default_contexts() {
           'delta' => 'news-latest_news',
           'region' => 'content',
           'weight' => '-42',
+        ),
+        'nodesinblock-1' => array(
+          'module' => 'nodesinblock',
+          'delta' => '1',
+          'region' => 'content',
+          'weight' => '-10',
         ),
         'views-twitter_messages-tweets_block' => array(
           'module' => 'views',

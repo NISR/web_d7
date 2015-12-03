@@ -39,11 +39,11 @@ function publication_features_field_default_field_bases() {
         ),
         'sort' => array(
           'direction' => 'DESC',
-          'field' => 'field_pub_publication_date:value',
-          'type' => 'field',
+          'property' => 'created',
+          'type' => 'property',
         ),
         'target_bundles' => array(
-          'statistical_report' => 'statistical_report',
+          'featured_indicator' => 'featured_indicator',
         ),
       ),
       'profile2_private' => FALSE,
@@ -213,7 +213,9 @@ function publication_features_field_default_field_bases() {
     ),
     'locked' => 0,
     'module' => 'text',
-    'settings' => array(),
+    'settings' => array(
+      'profile2_private' => FALSE,
+    ),
     'translatable' => 0,
     'type' => 'text_with_summary',
   );
@@ -348,6 +350,50 @@ function publication_features_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'list_boolean',
+  );
+
+  // Exported field_base: 'field_pub_fi_period'.
+  $field_bases['field_pub_fi_period'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_pub_fi_period',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
+  // Exported field_base: 'field_pub_fi_value'.
+  $field_bases['field_pub_fi_value'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_pub_fi_value',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
   );
 
   // Exported field_base: 'field_pub_files'.
@@ -538,6 +584,7 @@ function publication_features_field_default_field_bases() {
           'parent' => 0,
         ),
       ),
+      'profile2_private' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'taxonomy_term_reference',

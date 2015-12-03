@@ -65,12 +65,11 @@ function nisr_block_view($delta = ''){
  * Implementation of hook_context_load_alter()
  */
 function nisr_context_load_alter(&$context) {
-
   if($context->name == 'search') {
     $context->reactions['block']['blocks']['nisr-custom_search']['weight'] = -99;
   }
-  if($context->name == 'frontpage') {
-    $context->reactions['block']['blocks']['block-ad_banner']['weight'] = -50;
+  if($context->name == 'frontpage_content') {
+    $context->reactions['block']['blocks']['nodesinblock-0']['weight'] = -100;
   }
 }
 

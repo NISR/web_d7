@@ -153,6 +153,24 @@ section.page-header h1{
 }
 
 /**
+ ** Ads
+ **/
+.ad-primary .content .node .content img{
+	margin-left: auto;
+	margin-right: auto;		
+}
+.ad-primary,
+.ad-secondary{
+	border:1px solid #F3F3F3;	
+}
+
+.ad-primary{
+	background: #d4d4d4;
+	padding : 8px 0px 8px 0px;
+	border-top : 1px solid #CCC;
+}
+
+/**
  ** Tweets
  **/
 div.tweet-authorphoto {

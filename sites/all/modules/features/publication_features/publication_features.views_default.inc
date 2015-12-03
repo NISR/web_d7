@@ -148,6 +148,67 @@ function publication_features_views_default_views() {
   $handler->display->display_options['filters']['entityqueue_relationship']['field'] = 'entityqueue_relationship';
   $handler->display->display_options['filters']['entityqueue_relationship']['value'] = '1';
   $handler->display->display_options['block_description'] = 'Featured statistical articles';
+
+  /* Display: Featured indicators */
+  $handler = $view->new_display('block', 'Featured indicators', 'fi');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'entity';
+  $handler->display->display_options['row_options']['view_mode'] = 'featured';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Publication: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'publication';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['path'] = 'publication/[pub_id]';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_wrapper_type'] = 'h4';
+  /* Field: Publication: Value */
+  $handler->display->display_options['fields']['field_pub_fi_value']['id'] = 'field_pub_fi_value';
+  $handler->display->display_options['fields']['field_pub_fi_value']['table'] = 'field_data_field_pub_fi_value';
+  $handler->display->display_options['fields']['field_pub_fi_value']['field'] = 'field_pub_fi_value';
+  $handler->display->display_options['fields']['field_pub_fi_value']['label'] = '';
+  $handler->display->display_options['fields']['field_pub_fi_value']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_pub_fi_value']['element_wrapper_type'] = 'h1';
+  /* Field: Publication: Period */
+  $handler->display->display_options['fields']['field_pub_fi_period']['id'] = 'field_pub_fi_period';
+  $handler->display->display_options['fields']['field_pub_fi_period']['table'] = 'field_data_field_pub_fi_period';
+  $handler->display->display_options['fields']['field_pub_fi_period']['field'] = 'field_pub_fi_period';
+  $handler->display->display_options['fields']['field_pub_fi_period']['label'] = '';
+  $handler->display->display_options['fields']['field_pub_fi_period']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_pub_fi_period']['element_wrapper_type'] = 'h5';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Entityqueue: Publication Queue Position */
+  $handler->display->display_options['sorts']['entityqueue_relationship']['id'] = 'entityqueue_relationship';
+  $handler->display->display_options['sorts']['entityqueue_relationship']['table'] = 'publication';
+  $handler->display->display_options['sorts']['entityqueue_relationship']['field'] = 'entityqueue_relationship';
+  /* Sort criterion: Publication: Published (field_pub_publication_date) */
+  $handler->display->display_options['sorts']['field_pub_publication_date_value']['id'] = 'field_pub_publication_date_value';
+  $handler->display->display_options['sorts']['field_pub_publication_date_value']['table'] = 'field_data_field_pub_publication_date';
+  $handler->display->display_options['sorts']['field_pub_publication_date_value']['field'] = 'field_pub_publication_date_value';
+  $handler->display->display_options['sorts']['field_pub_publication_date_value']['order'] = 'DESC';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Entityqueue: Publication In Queue */
+  $handler->display->display_options['filters']['entityqueue_relationship']['id'] = 'entityqueue_relationship';
+  $handler->display->display_options['filters']['entityqueue_relationship']['table'] = 'publication';
+  $handler->display->display_options['filters']['entityqueue_relationship']['field'] = 'entityqueue_relationship';
+  $handler->display->display_options['filters']['entityqueue_relationship']['value'] = '1';
+  /* Filter criterion: Publication: Type */
+  $handler->display->display_options['filters']['type_1']['id'] = 'type_1';
+  $handler->display->display_options['filters']['type_1']['table'] = 'publication';
+  $handler->display->display_options['filters']['type_1']['field'] = 'type';
+  $handler->display->display_options['filters']['type_1']['value'] = array(
+    'featured_indicator' => 'featured_indicator',
+  );
+  $handler->display->display_options['block_description'] = 'Featured indicators';
   $translatables['publication_widgets'] = array(
     t('Master'),
     t('more'),
@@ -164,6 +225,7 @@ function publication_features_views_default_views() {
     t('Featured reports'),
     t('Featured statistical articles'),
     t('Featured articles'),
+    t('Featured indicators'),
   );
   $export['publication_widgets'] = $view;
 
