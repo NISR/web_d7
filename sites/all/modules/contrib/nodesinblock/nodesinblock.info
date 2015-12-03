@@ -1,0 +1,16 @@
+name = Nodes in block
+description = "Use nodes as content in one or more regions."
+core = 7.x
+version = VERSION
+dependencies[] = block
+files[] = nodesinblock.module 
+files[] = nodesinblock.install
+files[] = nodesinblock.admin.inc
+files[] = nodesinblock.test
+
+; Information added by drupal.org packaging script on 2013-10-01
+version = "7.x-1.0+5-dev"
+core = "7.x"
+project = "nodesinblock"
+datestamp = "1380593665"
+
