@@ -191,6 +191,14 @@ div.tweet-authorphoto img {
 /**
  ** Contents
  **/
+.home-intro .featured-box:hover{
+	background: #f7f7f7;
+}
+
+.home-intro .featured-box .box-content:hover{
+	border-top-color: #ccc;
+}
+ 
 div.box-content h4{
 	min-height: 3em;	
 }
