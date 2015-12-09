@@ -1,0 +1,15 @@
+name = NISR Application
+description = This module handles NISR application entities.
+package = NISR
+version = 7.x-1.x
+core = 7.x
+
+dependencies[] = entity
+dependencies[] = uuid
+dependencies[] = nisr
+
+files[] = nisr_application.module
+files[] = nisr_application.install
+files[] = nisr_application.controller.inc
+files[] = nisr_application.admin.inc
+files[] = nisr_application.pages.inc
