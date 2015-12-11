@@ -164,7 +164,7 @@ function nisr_features_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 1,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'field_collection_item',
@@ -179,7 +179,7 @@ function nisr_features_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
@@ -196,7 +196,7 @@ function nisr_features_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 2,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'field_collection_item',
@@ -211,13 +211,47 @@ function nisr_features_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_profile_subscriptions-field_subscriptions_sp'.
-  $field_instances['field_collection_item-field_profile_subscriptions-field_subscriptions_sp'] = array(
+  // 'field_collection_item-field_profile_subscriptions-field_subscriptions_pub_sa'.
+  $field_instances['field_collection_item-field_profile_subscriptions-field_subscriptions_pub_sa'] = array(
+    'bundle' => 'field_profile_subscriptions',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_subscriptions_pub_sa',
+    'label' => 'Statistical articles',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'field_collection_item-field_profile_subscriptions-field_subscriptions_pub_sr'.
+  $field_instances['field_collection_item-field_profile_subscriptions-field_subscriptions_pub_sr'] = array(
     'bundle' => 'field_profile_subscriptions',
     'default_value' => NULL,
     'deleted' => 0,
@@ -234,8 +268,8 @@ function nisr_features_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'field_collection_item',
-    'field_name' => 'field_subscriptions_sp',
-    'label' => 'Statistical publications',
+    'field_name' => 'field_subscriptions_pub_sr',
+    'label' => 'Statistical reports',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -299,7 +333,7 @@ function nisr_features_field_default_field_instances() {
         'settings' => array(
           'add' => 'Add',
           'delete' => 'Delete',
-          'description' => TRUE,
+          'description' => 0,
           'edit' => 'Edit',
           'view_mode' => 'full',
         ),
@@ -333,7 +367,8 @@ function nisr_features_field_default_field_instances() {
   t('Occupation');
   t('Personal Information');
   t('Salutation');
-  t('Statistical publications');
+  t('Statistical articles');
+  t('Statistical reports');
   t('Subscriptions');
 
   return $field_instances;

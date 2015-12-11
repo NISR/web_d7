@@ -13,6 +13,39 @@ function nisr_features_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'about_us';
+  $context->description = '';
+  $context->tag = 'About us';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'about-us' => 'about-us',
+        'about-us/*' => 'about-us/*',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'menu-menu-about-us' => array(
+          'module' => 'menu',
+          'delta' => 'menu-about-us',
+          'region' => 'sidebar_left',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('About us');
+  $export['about_us'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'frontpage_content';
   $context->description = '';
   $context->tag = 'Front page';
