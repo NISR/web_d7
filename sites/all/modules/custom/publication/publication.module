@@ -189,26 +189,31 @@ function publication_entity_info_alter(&$entity_info) {
 /*
  * Implements hook_entity_update()
  */
-function publication_entity_update($entity,$type){
+function publication_entity_insert($entity,$type){
+	$subjects  = $recipients = array();
+	$subscribers = views_get_view('subscribers');	
+
 	if($type == 'publication'){
-		$subjects  = $recipients = array();
-		$subscribers = views_get_view('subscribers');
+		$pub = entity_metadata_wrapper('publication',$entity);
 		switch($entity->type) {
 			case 'statistical_report':
-			case 'statistical_article':		
-				// Get subjects
-				$subscribers->set_display('statistical_publications');
-				$wr = entity_metadata_wrapper('publication',$entity);
-				foreach($wr->field_pub_subject as $subject){
+				$subscribers->set_display('statistical_reports');
+				foreach($pub->field_pub_subject as $subject){
 					$subjects[] = $subject->tid->value();
 				}
 								
 				break;
+			case 'statistical_article':		
+				// Get subjects
+				$subscribers->set_display('statistical_articles');
+				foreach($pub->field_pub_subject as $subject){
+					$subjects[] = $subject->tid->value();
+				}								
+				break;
 			case 'document':
 				
 				break;
-			case '':
-				break;
+				
 			default:
 				break;
 		}
@@ -221,7 +226,7 @@ function publication_entity_update($entity,$type){
 			$recipients[] = $subscriber->profile_uid;
 		}
 		
-		if(count($recipients)) watchdog('nisr','%d email alerts sent',array('%d' => count($recipients)));
+		if(count($recipients)) watchdog('nisr','%d email notifications sent',array('%d' => count($recipients)));
 	}
 	elseif($type== 'node' && $entity->type == 'article') {
 		

@@ -89,7 +89,7 @@ function nisr_application_menu() {
   $items['nisr_application/add'] = array(
     'title' => 'Add NISR application',
     'page callback' => 'nisr_application_admin_add_page',
-    'access arguments' => array('administer nisr_application entities'),
+    'access arguments' => array('create nisr_application entities'),
     'file' => 'nisr_application.admin.inc',
     'type' => MENU_LOCAL_ACTION,
     'tab_parent' => 'nisr_application',
@@ -192,12 +192,12 @@ function nisr_application_permission() {
       'restrict access' => FALSE,
     ),
     'edit any nisr_application entities' => array(
-      'title' => t('Edit any nisr_applications'),
+      'title' => t('Edit any NISR applications'),
       'description' => t('Allows users to edit any NISR applications.'),
       'restrict access' => TRUE,
     ),
     'edit own nisr_application entities' => array(
-      'title' => t('Edit own nisr_applications'),
+      'title' => t('Edit own NISR applications'),
       'description' => t('Allows users to edit own NISR applications.'),
       'restrict access' => FALSE,
     ),
