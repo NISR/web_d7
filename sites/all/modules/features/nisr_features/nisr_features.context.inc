@@ -63,7 +63,7 @@ function nisr_features_context_default_contexts() {
           'module' => 'nodesinblock',
           'delta' => '0',
           'region' => 'before_content',
-          'weight' => '-10',
+          'weight' => -100,
         ),
         'views-publication_widgets-fi' => array(
           'module' => 'views',
@@ -150,7 +150,7 @@ function nisr_features_context_default_contexts() {
           'module' => 'nisr',
           'delta' => 'custom_search',
           'region' => 'before_content',
-          'weight' => '-10',
+          'weight' => -99,
         ),
       ),
     ),
@@ -178,12 +178,6 @@ function nisr_features_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'menu-menu-profile-menu' => array(
-          'module' => 'menu',
-          'delta' => 'menu-profile-menu',
-          'region' => 'header_top',
-          'weight' => '-41',
-        ),
         'menu-menu-topmenu' => array(
           'module' => 'menu',
           'delta' => 'menu-topmenu',
