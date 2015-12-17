@@ -20,6 +20,7 @@ dependencies[] = lineage
 dependencies[] = list
 dependencies[] = menu
 dependencies[] = menu_block
+dependencies[] = menu_block_export
 dependencies[] = nisr
 dependencies[] = options
 dependencies[] = profile2
