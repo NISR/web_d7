@@ -47,7 +47,7 @@ function publication_features_default_fe_block_settings() {
 
   $export['views-publication_widgets-fsa'] = array(
     'cache' => -1,
-    'css_class' => 'centered-box',
+    'css_class' => 'col-md-6',
     'custom' => 0,
     'delta' => 'publication_widgets-fsa',
     'module' => 'views',

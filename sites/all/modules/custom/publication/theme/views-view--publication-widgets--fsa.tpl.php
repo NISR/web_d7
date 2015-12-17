@@ -28,7 +28,7 @@
  */
 ?>
 
-	<div class="container" style="margin-top:20px">
+	<div class="container" style="width:100%">
 		<?php if ($header): ?>
 		  <div class="view-header">
 		    <?php print $header; ?>

@@ -32,11 +32,11 @@
 
 <div class="<?php print $classes; ?> clearfix recent-posts"<?php print $attributes; ?>>
 	  <?php if (isset($dataset) && $dataset['chart']): ?>
-		  <div class="pull-left col-md-5" style="">
+		  <div class="">
 		  		<?php print render($dataset['chart'])?>
 		  </div>
 	 <?php endif; ?>
-		<div class="content col-md-7"<?php print $content_attributes; ?> style="margin-top:40px;">
+	 <div class="content clearfix"<?php print $content_attributes; ?> style="margin-top:40px;">
 	  <?php if (!$page): ?>
 	    <h4<?php print $title_attributes; ?>>
 	      <?php if ($url): ?>
@@ -45,8 +45,7 @@
 	        <?php print $title; ?>
 	      <?php endif; ?>
 	    </h4>
-	  <?php endif; ?>
-			<span class="tag"><?php print render($content['field_pub_subject'][0])?></span>	  
+	  <?php endif; ?>  
 			<div class="body"><?php print render($content['field_pub_body'])?></div>
-		</div>
+	 </div>
 </div>

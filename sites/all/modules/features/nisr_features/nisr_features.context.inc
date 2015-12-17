@@ -196,9 +196,9 @@ function nisr_features_context_default_contexts() {
           'region' => 'header_menu',
           'weight' => '-10',
         ),
-        'menu-menu-about-us' => array(
-          'module' => 'menu',
-          'delta' => 'menu-about-us',
+        'menu_block-6' => array(
+          'module' => 'menu_block',
+          'delta' => '6',
           'region' => 'footer_1',
           'weight' => '-10',
         ),

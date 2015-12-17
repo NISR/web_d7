@@ -130,6 +130,22 @@ search-box .btn-search{
 }
 
 /**
+ ** Menu in general
+ **/
+ul.menu,
+ul.facetapi-facetapi-checkbox-links{
+	margin:0;
+	padding:0;	
+}
+
+ul.menu li,
+ul.facetapi-facetapi-checkbox-links li{
+	list-style-type: none;
+	list-style-image: none;	
+}
+
+
+/**
  ** Blocks
  **/
 .featured-block h2{
@@ -191,18 +207,25 @@ div.tweet-authorphoto img {
 /**
  ** Contents
  **/
-.home-intro .featured-box:hover{
+.featured-box{
+	cursor: pointer;	
+}
+.featured-box:hover{
 	background: #f7f7f7;
 }
 
-.home-intro .featured-box .box-content:hover{
+.featured-box .box-content:hover{
 	border-top-color: #ccc;
 }
  
-div.box-content h4{
+.featured-box .box-content h4{
 	min-height: 3em;	
 }
 
+.featured-box .box-content a{
+	text-decoration: none;	
+	color: none;
+}
 span.tag{
 	border: 1px solid #ccc;
 	border-radius: 3px;
@@ -302,7 +325,7 @@ span.tag{
 	border-top:1px solid #777;
 	border-left:1px solid #777;
 	border-right:1px solid #777;
-	margin-bottom: -2px;
+	margin-bottom: -5px;
 }
 .month{
 	background: #777;
@@ -314,4 +337,11 @@ span.tag{
 }
 .calendarInfo{
 	padding-top: 10px;	
+}
+
+/**
+ ** Form elements
+ **/
+input[type="checkbox"]{
+	margin-right: 10px; 	
 }

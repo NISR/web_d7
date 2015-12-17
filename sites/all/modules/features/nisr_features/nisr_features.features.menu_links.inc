@@ -155,7 +155,7 @@ function nisr_features_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -50,
     'customized' => 1,
     'parent_identifier' => 'menu-about-us_office-of-the-head-of-corporate-services:node/136',
   );
@@ -199,64 +199,70 @@ function nisr_features_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -49,
     'customized' => 1,
     'parent_identifier' => 'menu-about-us_office-of-the-head-of-corporate-services:node/136',
   );
-  // Exported menu link: menu-about-us_infographic-competition-2012:http://statistics.gov.rw/about-us/competition/infographic-competition-2012.
-  $menu_links['menu-about-us_infographic-competition-2012:http://statistics.gov.rw/about-us/competition/infographic-competition-2012'] = array(
+  // Exported menu link: menu-about-us_infographic-competition-2012:node/927.
+  $menu_links['menu-about-us_infographic-competition-2012:node/927'] = array(
     'menu_name' => 'menu-about-us',
-    'link_path' => 'http://statistics.gov.rw/about-us/competition/infographic-competition-2012',
-    'router_path' => '',
+    'link_path' => 'node/927',
+    'router_path' => 'node/%',
     'link_title' => 'Infographic competition 2012',
     'options' => array(
-      'attributes' => array(),
+      'attributes' => array(
+        'title' => '',
+      ),
       'alter' => TRUE,
-      'identifier' => 'menu-about-us_infographic-competition-2012:http://statistics.gov.rw/about-us/competition/infographic-competition-2012',
+      'identifier' => 'menu-about-us_infographic-competition-2012:node/927',
     ),
     'module' => 'menu',
     'hidden' => 0,
-    'external' => 1,
+    'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
     'weight' => -50,
     'customized' => 1,
     'parent_identifier' => 'menu-about-us_competition:node/682',
   );
-  // Exported menu link: menu-about-us_infographic-competition-2013:http://statistics.gov.rw/about-us/competition/infographic-competition-2013.
-  $menu_links['menu-about-us_infographic-competition-2013:http://statistics.gov.rw/about-us/competition/infographic-competition-2013'] = array(
+  // Exported menu link: menu-about-us_infographic-competition-2013:node/928.
+  $menu_links['menu-about-us_infographic-competition-2013:node/928'] = array(
     'menu_name' => 'menu-about-us',
-    'link_path' => 'http://statistics.gov.rw/about-us/competition/infographic-competition-2013',
-    'router_path' => '',
+    'link_path' => 'node/928',
+    'router_path' => 'node/%',
     'link_title' => 'Infographic competition 2013',
     'options' => array(
-      'attributes' => array(),
+      'attributes' => array(
+        'title' => '',
+      ),
       'alter' => TRUE,
-      'identifier' => 'menu-about-us_infographic-competition-2013:http://statistics.gov.rw/about-us/competition/infographic-competition-2013',
+      'identifier' => 'menu-about-us_infographic-competition-2013:node/928',
     ),
     'module' => 'menu',
     'hidden' => 0,
-    'external' => 1,
+    'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
     'weight' => -49,
     'customized' => 1,
     'parent_identifier' => 'menu-about-us_competition:node/682',
   );
-  // Exported menu link: menu-about-us_infographic-competition-2014:http://www.statistics.gov.rw/about-us/competition/infographic-competition-2014.
-  $menu_links['menu-about-us_infographic-competition-2014:http://www.statistics.gov.rw/about-us/competition/infographic-competition-2014'] = array(
+  // Exported menu link: menu-about-us_infographic-competition-2014:node/1194.
+  $menu_links['menu-about-us_infographic-competition-2014:node/1194'] = array(
     'menu_name' => 'menu-about-us',
-    'link_path' => 'http://www.statistics.gov.rw/about-us/competition/infographic-competition-2014',
-    'router_path' => '',
+    'link_path' => 'node/1194',
+    'router_path' => 'node/%',
     'link_title' => 'Infographic competition 2014',
     'options' => array(
-      'attributes' => array(),
+      'attributes' => array(
+        'title' => '',
+      ),
       'alter' => TRUE,
-      'identifier' => 'menu-about-us_infographic-competition-2014:http://www.statistics.gov.rw/about-us/competition/infographic-competition-2014',
+      'identifier' => 'menu-about-us_infographic-competition-2014:node/1194',
     ),
     'module' => 'menu',
     'hidden' => 0,
-    'external' => 1,
+    'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
     'weight' => -48,
@@ -285,20 +291,22 @@ function nisr_features_menu_default_menu_links() {
     'customized' => 1,
     'parent_identifier' => 'menu-about-us_office-of-deputy-director-general:node/137',
   );
-  // Exported menu link: menu-about-us_national-statistical-system:http://www.statistics.gov.rw/about-us/national-statistical-system.
-  $menu_links['menu-about-us_national-statistical-system:http://www.statistics.gov.rw/about-us/national-statistical-system'] = array(
+  // Exported menu link: menu-about-us_national-statistical-system:node/970.
+  $menu_links['menu-about-us_national-statistical-system:node/970'] = array(
     'menu_name' => 'menu-about-us',
-    'link_path' => 'http://www.statistics.gov.rw/about-us/national-statistical-system',
-    'router_path' => '',
+    'link_path' => 'node/970',
+    'router_path' => 'node/%',
     'link_title' => 'National Statistical System',
     'options' => array(
-      'attributes' => array(),
+      'attributes' => array(
+        'title' => '',
+      ),
       'alter' => TRUE,
-      'identifier' => 'menu-about-us_national-statistical-system:http://www.statistics.gov.rw/about-us/national-statistical-system',
+      'identifier' => 'menu-about-us_national-statistical-system:node/970',
     ),
     'module' => 'menu',
     'hidden' => 0,
-    'external' => 1,
+    'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
     'weight' => -47,
@@ -343,9 +351,9 @@ function nisr_features_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 1,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -50,
     'customized' => 1,
-    'parent_identifier' => 'menu-about-us_organizational-structure:node/61',
+    'parent_identifier' => 'menu-about-us_office-of-the-director-general:node/60',
   );
   // Exported menu link: menu-about-us_office-of-the-director-general:node/60.
   $menu_links['menu-about-us_office-of-the-director-general:node/60'] = array(
@@ -361,7 +369,7 @@ function nisr_features_menu_default_menu_links() {
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
-    'has_children' => 0,
+    'has_children' => 1,
     'expanded' => 0,
     'weight' => -47,
     'customized' => 1,
@@ -385,31 +393,31 @@ function nisr_features_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 1,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -49,
     'customized' => 1,
-    'parent_identifier' => 'menu-about-us_organizational-structure:node/61',
+    'parent_identifier' => 'menu-about-us_office-of-the-director-general:node/60',
   );
-  // Exported menu link: menu-about-us_office-of-the-spiu-coordinator:http://statistics.gov.rw/about-us/organizational-structure/spiu-coordinator.
-  $menu_links['menu-about-us_office-of-the-spiu-coordinator:http://statistics.gov.rw/about-us/organizational-structure/spiu-coordinator'] = array(
+  // Exported menu link: menu-about-us_office-of-the-spiu-coordinator:node/1258.
+  $menu_links['menu-about-us_office-of-the-spiu-coordinator:node/1258'] = array(
     'menu_name' => 'menu-about-us',
-    'link_path' => 'http://statistics.gov.rw/about-us/organizational-structure/spiu-coordinator',
-    'router_path' => '',
+    'link_path' => 'node/1258',
+    'router_path' => 'node/%',
     'link_title' => 'Office of the SPIU Coordinator',
     'options' => array(
       'attributes' => array(
         'title' => 'Office of the SPIU Coordinator',
       ),
       'alter' => TRUE,
-      'identifier' => 'menu-about-us_office-of-the-spiu-coordinator:http://statistics.gov.rw/about-us/organizational-structure/spiu-coordinator',
+      'identifier' => 'menu-about-us_office-of-the-spiu-coordinator:node/1258',
     ),
     'module' => 'menu',
     'hidden' => 0,
-    'external' => 1,
+    'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -48,
     'customized' => 1,
-    'parent_identifier' => 'menu-about-us_organizational-structure:node/61',
+    'parent_identifier' => 'menu-about-us_office-of-the-director-general:node/60',
   );
   // Exported menu link: menu-about-us_organizational-structure:node/61.
   $menu_links['menu-about-us_organizational-structure:node/61'] = array(
@@ -470,25 +478,25 @@ function nisr_features_menu_default_menu_links() {
     'weight' => -48,
     'customized' => 1,
   );
-  // Exported menu link: menu-about-us_procurement:http://statistics.gov.rw/about-us/organizational-structure/office-deputy-director-general-corporate-services/procurement.
-  $menu_links['menu-about-us_procurement:http://statistics.gov.rw/about-us/organizational-structure/office-deputy-director-general-corporate-services/procurement'] = array(
+  // Exported menu link: menu-about-us_procurement:node/1266.
+  $menu_links['menu-about-us_procurement:node/1266'] = array(
     'menu_name' => 'menu-about-us',
-    'link_path' => 'http://statistics.gov.rw/about-us/organizational-structure/office-deputy-director-general-corporate-services/procurement',
-    'router_path' => '',
+    'link_path' => 'node/1266',
+    'router_path' => 'node/%',
     'link_title' => 'Procurement',
     'options' => array(
       'attributes' => array(
         'title' => 'Procurement',
       ),
       'alter' => TRUE,
-      'identifier' => 'menu-about-us_procurement:http://statistics.gov.rw/about-us/organizational-structure/office-deputy-director-general-corporate-services/procurement',
+      'identifier' => 'menu-about-us_procurement:node/1266',
     ),
     'module' => 'menu',
     'hidden' => 0,
-    'external' => 1,
+    'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -48,
     'customized' => 1,
     'parent_identifier' => 'menu-about-us_office-of-the-head-of-corporate-services:node/136',
   );

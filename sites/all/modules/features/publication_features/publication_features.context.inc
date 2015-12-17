@@ -19,7 +19,7 @@ function publication_features_context_default_contexts() {
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'standards-and-methods' => 'standards-and-methods',
+        'standards_and_methods' => 'standards_and_methods',
       ),
     ),
   );

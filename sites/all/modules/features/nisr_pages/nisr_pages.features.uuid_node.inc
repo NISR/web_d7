@@ -11,7 +11,7 @@ function nisr_pages_uuid_features_default_content() {
   $nodes = array();
 
   $nodes[] = array(
-  'title' => 'Overview',
+  'title' => 'About us',
   'log' => '',
   'status' => 1,
   'comment' => 0,
@@ -26,66 +26,17 @@ function nisr_pages_uuid_features_default_content() {
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => '<p class="rtejustify">
-	&nbsp;</p>
-<table border="0" cellpadding="1" cellspacing="1" style="width: 100%;">
-	<tbody>
-		<tr>
-			<td class="rtejustify" rowspan="2" valign="top" width="60%">
-				The National Institute of Statistics of Rwanda (NISR) was created in October 2005 as an independent institution out of the former Department of Statistics in the Ministry of Finance and Economic Planning (MINECOFIN) and the National Service of Census.<br />
-				<br />
-				<strong><a href="http://www.statistics.gov.rw/sites/default/files/user_uploads/files/instruction-manuals/law_NISR.pdf" target="_blank">Law N&deg; 53bis/2013 of 28/06/2013</a></strong> is the new law adopted after reviewing the Organic Law N&deg; 09/2005 of 14/07/2005 &ndash; the law establishing the National Institute of Statistics of Rwanda. (Source: Official Gazette n&deg; 30 bis of 29/07/2013).<br />
-				<br />
-				<strong><a href="http://www.statistics.gov.rw/sites/default/files/user_uploads/files/miscellaneous/Official_Gazette_no_Special_of_16.06.2013.pdf" target="_blank">Organic Law N&ordm; 45/2013 of 16/06/2013</a></strong> is the new law on the organisation of Statistical Activities in Rwanda. The Organic Law repealing the Organic Law N&ordm; 01/2005 of 14/02/2005 is N&ordm; 05/2013/OL of 16/06/2013. (Source: Official Gazette no Special of 16/06/2013).<br />
-				<br />
-				As the primary data producer, NISR produces mandatory statistics such as the Gross Domestic Product (GDP), Consumer Price Index (CPI), Producers Price Index (PPI), External Trade figures, Population Statistics and other special purpose-statistics from surveys such as the Demographic and Health Survey (DHS), Household Living Conditions Survey (Enquete Integrale sur les Condition de vie des m&eacute;nages or EICV in French), Census and others. It also conducts specific joint surveys such as Agriculture Survey, Service Provision Assessment Survey in partnership with the relevant institutions.</td>
-			<td style="font-size: 1.2em;" valign="top" width="50%">
-				<table border="0" style="width: 100%;">
-					<tbody>
-						<tr>
-							<td style="background: none repeat scroll 0% 0% rgb(197, 216, 240); padding: 5px;">
-								<h4 class="rtejustify">
-									<strong>NISR Mission Statement</strong><br />
-									<br />
-									<span class="Apple-style-span" style="color: rgb(0, 0, 0); font-size: 14px; line-height: 18px;">To assume the leading role in improving capacity to use information for evidence based decision-making by coordinating national effort to collect and archive reliable data, to analyze, document and disseminate data within an integrated and sustainable framework.</span></h4>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								&nbsp;</td>
-						</tr>
-						<tr>
-							<td style="padding: 5px; background-color: rgb(255, 204, 153);">
-								<h4>
-									<strong>NISR Vision Statement</strong></h4>
-								<div class="rtejustify">
-									To develop and sustain a culture of excellence in statistical production and management of national development</div>
-							</td>
-						</tr>
-						<tr>
-							<td style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; ">
-								&nbsp;</td>
-						</tr>
-						<tr>
-							<td style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; background-color: rgb(204, 204, 204); ">
-								<img alt="" src="http://statistics.gov.rw/sites/default/files/user_uploads/images/complex1.jpg" style="width: 330px; height: 142px;" /></td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-	</tbody>
-</table>
-<p>
-	&nbsp;</p>
-<br />
-',
-        'summary' => NULL,
+        'value' => '<p class="rtejustify">&nbsp;</p><table border="0" cellpadding="1" cellspacing="1" style="width: 100%;"><tbody><tr><td class="rtejustify" rowspan="2" valign="top" width="60%">The National Institute of Statistics of Rwanda (NISR) was created in October 2005 as an independent institution out of the former Department of Statistics in the Ministry of Finance and Economic Planning (MINECOFIN) and the National Service of Census.<br><br><strong><a href="http://www.statistics.gov.rw/sites/default/files/user_uploads/files/instruction-manuals/law_NISR.pdf" target="_blank">Law N° 53bis/2013 of 28/06/2013</a></strong> is the new law adopted after reviewing the Organic Law N° 09/2005 of 14/07/2005 – the law establishing the National Institute of Statistics of Rwanda. (Source: Official Gazette n° 30 bis of 29/07/2013).<br><br><strong><a href="http://www.statistics.gov.rw/sites/default/files/user_uploads/files/miscellaneous/Official_Gazette_no_Special_of_16.06.2013.pdf" target="_blank">Organic Law Nº 45/2013 of 16/06/2013</a></strong> is the new law on the organisation of Statistical Activities in Rwanda. The Organic Law repealing the Organic Law Nº 01/2005 of 14/02/2005 is Nº 05/2013/OL of 16/06/2013. (Source: Official Gazette no Special of 16/06/2013).<br><br>As the primary data producer, NISR produces mandatory statistics such as the Gross Domestic Product (GDP), Consumer Price Index (CPI), Producers Price Index (PPI), External Trade figures, Population Statistics and other special purpose-statistics from surveys such as the Demographic and Health Survey (DHS), Household Living Conditions Survey (Enquete Integrale sur les Condition de vie des ménages or EICV in French), Census and others. It also conducts specific joint surveys such as Agriculture Survey, Service Provision Assessment Survey in partnership with the relevant institutions.</td><td style="font-size: 1.2em;" valign="top" width="50%"><table border="0" style="width: 100%;"><tbody><tr><td style="background: none repeat scroll 0% 0% rgb(197, 216, 240); padding: 5px;"><h4 class="rtejustify"><strong>NISR Mission Statement</strong><br><br>To assume the leading role in improving capacity to use information for evidence based decision-making by coordinating national effort to collect and archive reliable data, to analyze, document and disseminate data within an integrated and sustainable framework.</h4></td></tr><tr><td>&nbsp;</td></tr><tr><td style="padding: 5px; background-color: rgb(255, 204, 153);"><h4><strong>NISR Vision Statement</strong></h4><div class="rtejustify">To develop and sustain a culture of excellence in statistical production and management of national development</div></td></tr><tr><td style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; ">&nbsp;</td></tr><tr><td style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; background-color: rgb(204, 204, 204); "><img alt="" src="http://statistics.gov.rw/sites/default/files/user_uploads/images/complex1.jpg" style="width: 330px; height: 142px;"></td></tr></tbody></table></td></tr></tbody></table><p>&nbsp;</p><p>&nbsp;</p>',
+        'summary' => '',
         'format' => 2,
         'safe_summary' => '',
       ),
     ),
   ),
+  'path' => array(
+    'pathauto' => 0,
+  ),
+  'pathauto_perform_alias' => FALSE,
   'date' => '2011-05-24 14:03:46 +0300',
   'user_uuid' => '0ba20103-dd5e-4a28-ba96-a90ee7bf92be',
 );
@@ -541,74 +492,17 @@ The default front page is a listing of all content marked as <q>Promoted to fron
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => '<br />
-<table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;">
-	<tbody>
-		<tr>
-			<td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">
-					The Head of Corporate Services is responsible for assisting the Office of the Director General (DG) in the management of human, financial and&nbsp; non financial resources; in the planning and budgeting of the Institute&rsquo;s activities; in management oversight and supervision of the departments under direct supervision; and follow up relations with ministries, institutions, and development partners regarding financial and administration matters.<br />
-					<br />
-					To accomplish its mission, the Office of the Head of Corporate Services, is divided into the following units and staff:</p>
-				<strong><u>Units</u>:</strong><br />
-				<br />
-				<ul>
-					<li class="rtejustify">
-						<a href="http://statistics.gov.rw/about-us/organizational-structure/office-deputy-director-general-corporate-services/administration" target="_parent"><strong>Human Resources &amp; Administration unit</strong></a></li>
-					<li class="rtejustify">
-						<a href="http://statistics.gov.rw/about-us/organizational-structure/office-deputy-director-general-corporate-services/finance" target="_parent"><strong>Finance unit</strong></a></li>
-					<li class="rtejustify">
-						<a href="http://statistics.gov.rw/about-us/organizational-structure/office-deputy-director-general-corporate-services/procurement" target="_parent"><strong>Procurement unit</strong></a></li>
-				</ul>
-				<p>
-					<strong><u>Staff</u>:</strong></p>
-				-&nbsp; Administrative assistant (1)<br />
-				<br />
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-			<td rowspan="3" style="vertical-align: top;" width="20px">
-				&nbsp;</td>
-			<td bgcolor="" valign="top">
-				<table height="100%" width="100%">
-					<tbody>
-						<tr>
-							<td bgcolor="#f0f5f7">
-								<strong>Head of Corporate Services (HCS):</strong><br />
-								Mr David Nkusi</td>
-						</tr>
-						<tr>
-							<td bgcolor="#f0f5f7" class="rtecenter" valign="top">
-								<img alt="" src="/sites/default/files/user_uploads/hcs_david_nkusi_resize.jpg" style="width: 160px; height: 160px; border-width: 1px; border-style: solid;" /></td>
-						</tr>
-						<tr>
-							<td bgcolor="#f0f5f7" valign="top">
-								<br />
-								&nbsp;</td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				&nbsp;</td>
-		</tr>
-	</tbody>
-</table>
-<br />
-',
-        'summary' => '<br />
-<table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;">
-	<tbody>
-		<tr>
-			<td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">',
+        'value' => '<p>&nbsp;</p><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify">The Head of Corporate Services is responsible for assisting the Office of the Director General (DG) in the management of human, financial and&nbsp; non financial resources; in the planning and budgeting of the Institute’s activities; in management oversight and supervision of the departments under direct supervision; and follow up relations with ministries, institutions, and development partners regarding financial and administration matters.<br><br>To accomplish its mission, the Office of the Head of Corporate Services, is divided into the following units and staff:</p><strong><u>Units</u>:</strong><br>&nbsp;<ul><li class="rtejustify"><a href="about-us/organizational-structure/odg/ohcs//administration" target="_parent"><strong>Human Resources &amp; Administration unit</strong></a></li><li class="rtejustify"><a href="about-us/organizational-structure/odg/ohcs//finance" target="_parent"><strong>Finance unit</strong></a></li><li class="rtejustify"><a href="about-us/organizational-structure/odg/ohcs/procurement" target="_parent"><strong>Procurement unit</strong></a></li></ul><p><strong><u>Staff</u>:</strong></p> -&nbsp; Administrative assistant (1)<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td rowspan="3" style="vertical-align: top;" width="20px">&nbsp;</td><td bgcolor="" valign="top"><table height="100%" width="100%"><tbody><tr><td bgcolor="#f0f5f7"><strong>Head of Corporate Services (HCS):</strong><br>Mr David Nkusi</td></tr><tr><td bgcolor="#f0f5f7" class="rtecenter" valign="top"><img alt="" src="/sites/default/files/user_uploads/hcs_david_nkusi_resize.jpg" style="width: 160px; height: 160px; border-width: 1px; border-style: solid;"></td></tr><tr><td bgcolor="#f0f5f7" valign="top"><br>&nbsp;</td></tr></tbody></table></td></tr><tr><td>&nbsp;</td></tr></tbody></table><p>&nbsp;</p>',
+        'summary' => '<p>&nbsp;</p><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify">&nbsp;</p></td></tr></tbody></table><p>&nbsp;</p>',
         'format' => 2,
-        'safe_summary' => '<br /><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">
-</p></td></tr></tbody></table>',
+        'safe_summary' => '<p> </p><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify"> </p></td></tr></tbody></table><p> </p>',
       ),
     ),
   ),
+  'path' => array(
+    'pathauto' => 0,
+  ),
+  'pathauto_perform_alias' => FALSE,
   'date' => '2011-09-15 14:18:30 +0300',
   'user_uuid' => '0ba20103-dd5e-4a28-ba96-a90ee7bf92be',
 );
@@ -628,85 +522,17 @@ The default front page is a listing of all content marked as <q>Promoted to fron
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => '<br />
-<table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;">
-	<tbody>
-		<tr>
-			<td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">
-					The Office of the Director General provides direction to all departments; ensures the daily management of the Institute; serves as legal representative of the Institute; prepares the Board meetings; implements the decisions of the Board of Directors; prepares and submits to the Board of Directors the annual budget proposal of the Institute; manages external relations with MINECOFIN and all Govt. of Rwanda institutions; manages relations with International agencies, East African Community (EAC) statistical offices; and overall coordination of National Strategy for the Development of Statistics (NSDS) activities and coordination of the National Statistical System (NSS).&nbsp;</p>
-				<p class="rtejustify">
-					To accomplish its mission, the Office of the Director General is assisted by three other offices:</p>
-				<ul>
-					<li>
-						<strong><a href="http://statistics.gov.rw/about-us/organizational-structure/office-deputy-director-general-corporate-services" target="_parent">Office of the Head of Corporate Services</a></strong></li>
-					<li>
-						<strong><a href="http://statistics.gov.rw/about-us/organizational-structure/office-deputy-director-general-studies-programs" target="_parent">Office of the Deputy Director General</a></strong></li>
-					<li>
-						<strong><a href="http://statistics.gov.rw/about-us/organizational-structure/spiu-coordinator" target="_parent">Office of the SPIU Coordinator</a></strong></li>
-				</ul>
-				The following list of staff are under the Office of the Director General:<br />
-				<br />
-				<ul>
-					<li class="rtejustify">
-						<strong>Administration Assistant (1)</strong></li>
-					<li class="rtejustify">
-						<strong>Planning Officer (2)</strong></li>
-					<li class="rtejustify">
-						<strong>Public Relation &amp; Communication Officer (1)</strong></li>
-					<li class="rtejustify">
-						<strong>Internal Auditor (1)</strong></li>
-					<li class="rtejustify">
-						<strong>Legal Advisor (1)</strong></li>
-					<li class="rtejustify">
-						<strong>Liaison Administrative Assistant (1)</strong><br />
-						&nbsp;</li>
-				</ul>
-			</td>
-			<td rowspan="3" style="vertical-align: top;" width="20px">
-				&nbsp;</td>
-			<td bgcolor="" valign="top">
-				<table height="100%" width="100%">
-					<tbody>
-						<tr>
-							<td bgcolor="#f0f5f7">
-								<strong>Director General: </strong><br />
-								Mr.&nbsp;Yusuf Murangwa</td>
-						</tr>
-						<tr>
-							<td bgcolor="#f0f5f7" class="rtecenter" valign="top">
-								<img alt="" src="/sites/default/files/user_uploads/images/yusuf.jpg" style="width: 160px; height: 160px; border-width: 1px; border-style: solid;" /></td>
-						</tr>
-						<tr>
-							<td bgcolor="#f0f5f7" valign="top">
-								<br />
-								&nbsp;</td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				&nbsp;</td>
-		</tr>
-	</tbody>
-</table>
-<br />
-',
-        'summary' => '<br />
-<table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;">
-	<tbody>
-		<tr>
-			<td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">',
+        'value' => '<p>&nbsp;</p><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify">The Office of the Director General provides direction to all departments; ensures the daily management of the Institute; serves as legal representative of the Institute; prepares the Board meetings; implements the decisions of the Board of Directors; prepares and submits to the Board of Directors the annual budget proposal of the Institute; manages external relations with MINECOFIN and all Govt. of Rwanda institutions; manages relations with International agencies, East African Community (EAC) statistical offices; and overall coordination of National Strategy for the Development of Statistics (NSDS) activities and coordination of the National Statistical System (NSS).&nbsp;</p><p class="rtejustify">To accomplish its mission, the Office of the Director General is assisted by three other offices:</p><ul><li><strong><a href="about-us/organizational-structure/odg/ohcs" target="_parent">Office of the Head of Corporate Services</a></strong></li><li><strong><a href="about-us/organizational-structure/odg/oddg" target="_parent">Office of the Deputy Director General</a></strong></li><li><strong><a href="about-us/organizational-structure/odg/ospiu" target="_parent">Office of the SPIU Coordinator</a></strong></li></ul>The following list of staff are under the Office of the Director General:<br>&nbsp;<ul><li class="rtejustify"><strong>Administration Assistant (1)</strong></li><li class="rtejustify"><strong>Planning Officer (2)</strong></li><li class="rtejustify"><strong>Public Relation &amp; Communication Officer (1)</strong></li><li class="rtejustify"><strong>Internal Auditor (1)</strong></li><li class="rtejustify"><strong>Legal Advisor (1)</strong></li><li class="rtejustify"><strong>Liaison Administrative Assistant (1)</strong><br>&nbsp;</li></ul></td><td rowspan="3" style="vertical-align: top;" width="20px">&nbsp;</td><td bgcolor="" valign="top"><table height="100%" width="100%"><tbody><tr><td bgcolor="#f0f5f7"><strong>Director General: </strong><br>Mr.&nbsp;Yusuf Murangwa</td></tr><tr><td bgcolor="#f0f5f7" class="rtecenter" valign="top"><img alt="" src="/sites/default/files/user_uploads/images/yusuf.jpg" style="width: 160px; height: 160px; border-width: 1px; border-style: solid;"></td></tr><tr><td bgcolor="#f0f5f7" valign="top"><br>&nbsp;</td></tr></tbody></table></td></tr><tr><td>&nbsp;</td></tr></tbody></table><p>&nbsp;</p>',
+        'summary' => '<p>&nbsp;</p><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify">&nbsp;</p></td></tr></tbody></table><p>&nbsp;</p>',
         'format' => 2,
-        'safe_summary' => '<br /><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">
-</p></td></tr></tbody></table>',
+        'safe_summary' => '<p> </p><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify"> </p></td></tr></tbody></table><p> </p>',
       ),
     ),
   ),
+  'path' => array(
+    'pathauto' => 0,
+  ),
+  'pathauto_perform_alias' => FALSE,
   'date' => '2011-06-03 14:46:00 +0300',
   'user_uuid' => 'abebcbee-8aa6-47c1-b12b-9d9def5900d3',
 );
@@ -726,81 +552,17 @@ The default front page is a listing of all content marked as <q>Promoted to fron
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => '<br />
-<table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;">
-	<tbody>
-		<tr>
-			<td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">
-					The Human Resources and Administration Department prepares and promotes the Internal Policy and Procedures on Human Resources; coordinates and implements the Annual Training and Development Plan; implements Performance Management System; manages Recruitment and Selection Procedures; manages the transport requirements for the Institute;&nbsp; plans and provides required logistical support to all the Departments; manages and maintains the asset of the institute; coordinates all activities concerned with the administration duties of the central secretariat; assess needs and update the stock of office supplies of the Institute; and manages the one stop information center at the institute.<br />
-					<br />
-					To accomplish its mission, the Human Resources and Administration Department is headed by a director and is&nbsp;organized into the following staff:</p>
-				<ul>
-					<li>
-						HR Officer in charge of Administrative Issues (1)</li>
-					<li>
-						HR Officer in Charge of Recruitment, CB &amp; Development (1)</li>
-					<li>
-						HR Officer in charge of Salaries &amp; Benefits (1)</li>
-					<li>
-						Logistics Officer&nbsp; in charge of Assets Management (1)</li>
-					<li>
-						Logistics Officer in charge of Fleets Management (1)</li>
-					<li>
-						Logistics Officer in charge of Field Management (1)</li>
-					<li>
-						One Stop Statistical Center Officer (1)</li>
-					<li>
-						Head of Central Secretariat (1)</li>
-					<li>
-						Secretary in Central Secretariat (1)</li>
-					<li>
-						Printing &amp; Distribution Officer (1)</li>
-				</ul>
-			</td>
-			<td rowspan="3" style="vertical-align: top;" width="20px">
-				&nbsp;</td>
-			<td valign="top">
-				<table cellspacing="2" height="100%" width="100%">
-					<tbody>
-						<tr>
-							<td bgcolor="#f0f5f7">
-								<strong>Director a.i: </strong><br />
-								Mrs Jocelyne UWAMAHORO</td>
-						</tr>
-						<tr>
-							<td bgcolor="#f0f5f7" class="rtecenter" valign="top">
-								&nbsp;</td>
-						</tr>
-						<tr>
-							<td bgcolor="#f0f5f7" valign="top">
-								&nbsp;</td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				&nbsp;</td>
-		</tr>
-	</tbody>
-</table>
-<br />
-',
-        'summary' => '<br />
-<table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;">
-	<tbody>
-		<tr>
-			<td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">',
+        'value' => '<p>&nbsp;</p><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify">The Human Resources and Administration Department prepares and promotes the Internal Policy and Procedures on Human Resources; coordinates and implements the Annual Training and Development Plan; implements Performance Management System; manages Recruitment and Selection Procedures; manages the transport requirements for the Institute;&nbsp; plans and provides required logistical support to all the Departments; manages and maintains the asset of the institute; coordinates all activities concerned with the administration duties of the central secretariat; assess needs and update the stock of office supplies of the Institute; and manages the one stop information center at the institute.<br><br>To accomplish its mission, the Human Resources and Administration Department is headed by a director and is&nbsp;organized into the following staff:</p><ul><li>HR Officer in charge of Administrative Issues (1)</li><li>HR Officer in Charge of Recruitment, CB &amp; Development (1)</li><li>HR Officer in charge of Salaries &amp; Benefits (1)</li><li>Logistics Officer&nbsp; in charge of Assets Management (1)</li><li>Logistics Officer in charge of Fleets Management (1)</li><li>Logistics Officer in charge of Field Management (1)</li><li>One Stop Statistical Center Officer (1)</li><li>Head of Central Secretariat (1)</li><li>Secretary in Central Secretariat (1)</li><li>Printing &amp; Distribution Officer (1)</li></ul></td><td rowspan="3" style="vertical-align: top;" width="20px">&nbsp;</td><td valign="top"><table cellspacing="2" height="100%" width="100%"><tbody><tr><td bgcolor="#f0f5f7"><strong>Director a.i: </strong><br>Mrs Jocelyne UWAMAHORO</td></tr><tr><td bgcolor="#f0f5f7" class="rtecenter" valign="top">&nbsp;</td></tr><tr><td bgcolor="#f0f5f7" valign="top">&nbsp;</td></tr></tbody></table></td></tr><tr><td>&nbsp;</td></tr></tbody></table><p>&nbsp;</p>',
+        'summary' => '<p>&nbsp;</p><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify">&nbsp;</p></td></tr></tbody></table><p>&nbsp;</p>',
         'format' => 2,
-        'safe_summary' => '<br /><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">
-</p></td></tr></tbody></table>',
+        'safe_summary' => '<p> </p><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify"> </p></td></tr></tbody></table><p> </p>',
       ),
     ),
   ),
+  'path' => array(
+    'pathauto' => 0,
+  ),
+  'pathauto_perform_alias' => FALSE,
   'date' => '2011-09-15 14:27:03 +0300',
   'user_uuid' => 'abebcbee-8aa6-47c1-b12b-9d9def5900d3',
 );
@@ -820,88 +582,17 @@ The default front page is a listing of all content marked as <q>Promoted to fron
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => '<br />
-<table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;">
-	<tbody>
-		<tr>
-			<td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">
-					The Social and Demographic Statistics Department is responsible for collecting data and/or producing statistics in a wide range of areas such as education, health, gender, environment, labor market, living conditions, and demographic characteristics of Rwanda&rsquo;s population.&nbsp;The Department is also in charge of the implementation of the periodic Health and Demographic Surveys (DHS) as well as Service Provision Assessment Surveys (SPA). Detailed and in-depth policy analysis of the demographic surveys and population censuses is the responsibility of this Department too, which, in addition, carries out population projections (national, sub-national and sectoral) and produces regular vital statistics.&nbsp;The department also carries out periodic surveys on Labor Market (labor demand), Labor Force (labor supply), and Living Conditions (EICV).&nbsp;<br />
-					<br />
-					To accomplish its mission, the Social and Demographic Statistics Department is headed by a director and&nbsp;is organized into the following three sections:</p>
-				<ul>
-					<li>
-						<strong>Vital Statistics and</strong> <strong>Cross-cutting Social Statistics</strong> <strong>(5)</strong>:</li>
-				</ul>
-				<p class="rteindent1">
-					-Vital Statistics &amp; Cross Cutting Social Statistics Team Leader (1)<br />
-					-Vital Statistics Data Collection &amp; Analysis Statistician (1)<br />
-					-Youth &amp; Gender Statistician (1)<br />
-					-Justice &amp; Human Rights Statistics (1)</p>
-				<ul>
-					<li>
-						<strong>Labor Statistical Research (4)</strong>:</li>
-				</ul>
-				<p class="rteindent1">
-					-Labor Statistical Research Statistician Team Leader (1)<br />
-					-Public Sector Labor Statistician (1)<br />
-					-Formal Private Sector Labor Statistician (1)<br />
-					-Informal Private Sector Labor Statistician (1)</p>
-				<ul>
-					<li>
-						<strong>Demographic, Social Statistics and Surveys (7):</strong></li>
-				</ul>
-				<p class="rteindent1">
-					- Demographic, Social Statistics &amp; Surveys Team Leader (1)<br />
-					- Health Statistician (1)<br />
-					- Primary &amp; Secondary Education Statistician (1)<br />
-					- Vocational, Technical &amp; Tertiary Education Statistician (1)<br />
-					- Household Surveys &amp; Poverty Statistician (2)<br />
-					- MDGs &amp; EDPRS Monitoring Statistician (1)</p>
-			</td>
-			<td rowspan="3" style="vertical-align: top;" width="20px">
-				&nbsp;</td>
-			<td valign="top">
-				<table cellspacing="2" height="100%" width="100%">
-					<tbody>
-						<tr>
-							<td bgcolor="#f0f5f7">
-								<strong>Director : </strong><br />
-								Mr. Michel NDAKIZE RUGAMBWA</td>
-						</tr>
-						<tr>
-							<td bgcolor="#f0f5f7" class="rtecenter" valign="top">
-								<img alt="" src="/sites/default/files/user_uploads/michel_ndakize.jpg" style="width: 160px; height: 158px; border-width: 1px; border-style: solid;" /></td>
-						</tr>
-						<tr>
-							<td bgcolor="#f0f5f7" valign="top">
-								&nbsp;</td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				&nbsp;</td>
-		</tr>
-	</tbody>
-</table>
-<br />
-',
-        'summary' => '<br />
-<table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;">
-	<tbody>
-		<tr>
-			<td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">',
+        'value' => '<p>&nbsp;</p><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify">The Social and Demographic Statistics Department is responsible for collecting data and/or producing statistics in a wide range of areas such as education, health, gender, environment, labor market, living conditions, and demographic characteristics of Rwanda’s population.&nbsp;The Department is also in charge of the implementation of the periodic Health and Demographic Surveys (DHS) as well as Service Provision Assessment Surveys (SPA). Detailed and in-depth policy analysis of the demographic surveys and population censuses is the responsibility of this Department too, which, in addition, carries out population projections (national, sub-national and sectoral) and produces regular vital statistics.&nbsp;The department also carries out periodic surveys on Labor Market (labor demand), Labor Force (labor supply), and Living Conditions (EICV).&nbsp;<br><br>To accomplish its mission, the Social and Demographic Statistics Department is headed by a director and&nbsp;is organized into the following three sections:</p><ul><li><strong>Vital Statistics and</strong> <strong>Cross-cutting Social Statistics</strong> <strong>(5)</strong>:</li></ul><p class="rteindent1">-Vital Statistics &amp; Cross Cutting Social Statistics Team Leader (1)<br>-Vital Statistics Data Collection &amp; Analysis Statistician (1)<br>-Youth &amp; Gender Statistician (1)<br>-Justice &amp; Human Rights Statistics (1)</p><ul><li><strong>Labor Statistical Research (4)</strong>:</li></ul><p class="rteindent1">-Labor Statistical Research Statistician Team Leader (1)<br>-Public Sector Labor Statistician (1)<br>-Formal Private Sector Labor Statistician (1)<br>-Informal Private Sector Labor Statistician (1)</p><ul><li><strong>Demographic, Social Statistics and Surveys (7):</strong></li></ul><p class="rteindent1">- Demographic, Social Statistics &amp; Surveys Team Leader (1)<br>- Health Statistician (1)<br>- Primary &amp; Secondary Education Statistician (1)<br>- Vocational, Technical &amp; Tertiary Education Statistician (1)<br>- Household Surveys &amp; Poverty Statistician (2)<br>- MDGs &amp; EDPRS Monitoring Statistician (1)</p></td><td rowspan="3" style="vertical-align: top;" width="20px">&nbsp;</td><td valign="top"><table cellspacing="2" height="100%" width="100%"><tbody><tr><td bgcolor="#f0f5f7"><strong>Director : </strong><br>Mr. Michel NDAKIZE RUGAMBWA</td></tr><tr><td bgcolor="#f0f5f7" class="rtecenter" valign="top"><img alt="" src="/sites/default/files/user_uploads/michel_ndakize.jpg" style="width: 160px; height: 158px; border-width: 1px; border-style: solid;"></td></tr><tr><td bgcolor="#f0f5f7" valign="top">&nbsp;</td></tr></tbody></table></td></tr><tr><td>&nbsp;</td></tr></tbody></table><p>&nbsp;</p>',
+        'summary' => '<p>&nbsp;</p><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify">&nbsp;</p></td></tr></tbody></table><p>&nbsp;</p>',
         'format' => 2,
-        'safe_summary' => '<br /><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">
-</p></td></tr></tbody></table>',
+        'safe_summary' => '<p> </p><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify"> </p></td></tr></tbody></table><p> </p>',
       ),
     ),
   ),
+  'path' => array(
+    'pathauto' => 0,
+  ),
+  'pathauto_perform_alias' => FALSE,
   'date' => '2011-09-15 14:39:50 +0300',
   'user_uuid' => '0ba20103-dd5e-4a28-ba96-a90ee7bf92be',
 );
@@ -983,13 +674,17 @@ The default front page is a listing of all content marked as <q>Promoted to fron
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
+        'value' => '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>',
         'summary' => '',
         'format' => 2,
         'safe_summary' => '',
       ),
     ),
   ),
+  'path' => array(
+    'pathauto' => 0,
+  ),
+  'pathauto_perform_alias' => FALSE,
   'date' => '2015-09-29 18:05:16 +0300',
   'user_uuid' => '0ba20103-dd5e-4a28-ba96-a90ee7bf92be',
 );
@@ -1009,254 +704,17 @@ The default front page is a listing of all content marked as <q>Promoted to fron
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => '<br />
-<table align="right" border="1" cellpadding="1" cellspacing="1" style="width: 100%;">
-	<tbody>
-		<tr>
-			<td class="rtecenter" colspan="3" style="background-color: rgb(134, 0, 0);">
-				<p>
-					<span style="color: rgb(255, 255, 255);"><span style="font-size: 36px;"><span style="font-family: arial, helvetica, sans-serif;"><strong>NISR INFOGRAPHIC COMPETITION, 2012</strong></span></span></span></p>
-				<p>
-					<br />
-					<span style="color: rgb(255, 140, 0);"><span style="font-size: 26px;"><span style="font-family: arial, helvetica, sans-serif;"><em>Discovering brilliance in data visualization</em></span></span></span></p>
-			</td>
-		</tr>
-		<tr>
-			<td class="rtecenter" colspan="3">
-				<h1 style="font-size: 30px; line-height: 30px;">
-					<br />
-					WE HAVE THE WINNERS!</h1>
-			</td>
-		</tr>
-		<tr>
-			<td class="rtecenter">
-				1st Place</td>
-			<td class="rtecenter">
-				2nd Place</td>
-			<td class="rtecenter">
-				3rd Place</td>
-		</tr>
-		<tr>
-			<td class="rtecenter">
-				<a href="http://statistics.gov.rw/sites/default/files/webform/Flamingo.jpg" target="_blank"><img alt="" src="http://statistics.gov.rw/sites/default/files/webform/Flamingo.jpg" style="width: 250px; height: 753px;" /></a></td>
-			<td class="rtecenter" style="vertical-align: top;">
-				<a href="http://statistics.gov.rw/sites/default/files/webform/Infant%20and%20Child%20Mortality%20in%20Rwanda%20Infographic.png" target="_blank"><img alt="" src="http://statistics.gov.rw/sites/default/files/webform/Infant and Child Mortality in Rwanda Infographic.png" style="width: 250px; height: 317px; margin-top: 0px; margin-bottom: 0px;" /></a></td>
-			<td class="rtecenter" style="vertical-align: top;">
-				<a href="http://statistics.gov.rw/sites/default/files/webform/ines%20statisticans2.jpg" target="_blank"><img alt="" src="http://statistics.gov.rw/sites/default/files/webform/ines statisticans2.jpg" style="width: 250px; height: 363px;" /></a></td>
-		</tr>
-		<tr>
-			<td class="rtecenter">
-				<a href="http://statistics.gov.rw/sites/default/files/webform/Flamingo.jpg" target="_blank">View high resolution file</a></td>
-			<td class="rtecenter">
-				<a href="http://statistics.gov.rw/sites/default/files/webform/Infant%20and%20Child%20Mortality%20in%20Rwanda%20Infographic.png" target="_blank">View high resolution file</a></td>
-			<td class="rtecenter">
-				<a href="http://statistics.gov.rw/sites/default/files/webform/ines%20statisticans2.jpg" target="_blank">View high resolution file</a></td>
-		</tr>
-		<tr>
-			<td class="rtecenter" colspan="3">
-				<div>
-					&nbsp;</div>
-				<div>
-					<table align="center" border="0" cellpadding="1" cellspacing="1" style="width: 100%;">
-						<tbody>
-							<tr>
-								<td>
-									<div>
-										TEAM NAME: Flamingo</div>
-								</td>
-								<td>
-									<div>
-										TEAM NAME: TIMUH &nbsp; &nbsp;</div>
-								</td>
-								<td>
-									<div>
-										TEAM NAME: INES STATISTICIANS</div>
-								</td>
-							</tr>
-							<tr>
-								<td style="vertical-align: top;">
-									TEAM MEMBERS:<br />
-									<br />
-									Muneza Derrick M,<br />
-									Cyamani Aziza, and<br />
-									Mugenzi Emma<br />
-									&nbsp;</td>
-								<td style="vertical-align: top;">
-									TEAM MEMBERS:<br />
-									<br />
-									Andrew Kinai, and<br />
-									Kevin &nbsp;Rudahinduka</td>
-								<td style="vertical-align: top;">
-									TEAM MEMBERS:&nbsp;<br />
-									<br />
-									UWURUKUNDO&nbsp;Ange Marius,<br />
-									NIYONGIRA Fabrice, and<br />
-									KAREKEZI Gertrude</td>
-							</tr>
-							<tr>
-								<td style="vertical-align: top;">
-									Bachelor of Science in Creative Design</td>
-								<td style="vertical-align: top;">
-									Master of Science in Information Technology&nbsp;</td>
-								<td style="vertical-align: top;">
-									Statistics Applied to Economy (UG)</td>
-							</tr>
-							<tr>
-								<td style="vertical-align: top;">
-									INSTITUTION:<br />
-									<a href="http://www.kist.ac.rw/" target="_blank">Kigali Institute of Science&nbsp;and&nbsp;Technology</a></td>
-								<td style="vertical-align: top;">
-									INSTITUTION:<br />
-									<a href="http://www.cmu.edu/rwanda/index.html" target="_blank">Carnegie Mellon University, Rwanda</a></td>
-								<td>
-									INSTITUTION:<br />
-									<a href="http://www.ines.ac.rw/index.html" target="_blank">Ruhengeri Institute of&nbsp;Higher Education<br />
-									(INES- RUHENGERI)</a></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td class="rtecenter" colspan="3" style="background-color: rgb(204, 204, 204);">
-				<br />
-				<br />
-				Other teams selected for the exhibition and their entries (Team name, Team leader&#39;s name, Institution):</td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<div>
-					<br />
-					<br />
-					<table align="center" border="1" cellpadding="1" cellspacing="1" style="width: 99%;">
-						<tbody>
-							<tr>
-								<td>
-									THE WINNING TEAM, MUSHIMIRE FIACRE,&nbsp;CMU</td>
-								<td>
-									<a href="http://statistics.gov.rw/sites/default/files/webform/family%20planning%20%26%20impact.jpg" target="_blank">Entry</a></td>
-							</tr>
-							<tr>
-								<td>
-									BELIEVERS, IKIBARUTA IRENEE, NUR</td>
-								<td>
-									<a href="http://statistics.gov.rw/sites/default/files/webform/design_Believers%201.jpg" target="_blank">Entry</a></td>
-							</tr>
-							<tr>
-								<td>
-									CHANGEPLUS, TWAGIRIMANA BONAVENTURE, CMU</td>
-								<td>
-									<a href="http://statistics.gov.rw/sites/default/files/webform/infographic--Bona-T%26Clement.jpg" target="_blank">Entry</a></td>
-							</tr>
-							<tr>
-								<td>
-									EPG, HAGENIMANA PATRICE, NUR</td>
-								<td>
-									<a href="http://statistics.gov.rw/sites/default/files/webform/EPG%20WORK.jpg" target="_blank">Entry</a></td>
-							</tr>
-							<tr>
-								<td>
-									VICTORY, NYIRANZEYIMANA JOSEPHINE, CMU</td>
-								<td>
-									<a href="http://statistics.gov.rw/sites/default/files/webform/VICTORY%20.jpg" target="_blank">Entry</a></td>
-							</tr>
-							<tr>
-								<td>
-									PEERS, NIYODUSENGA JEAN PIERRE, CMU</td>
-								<td>
-									<a href="http://statistics.gov.rw/sites/default/files/webform/INFOGRAPHIC.jpg" target="_blank">Entry</a></td>
-							</tr>
-							<tr>
-								<td>
-									HOPE, ABAYISENGA AIMABLE, NUR</td>
-								<td>
-									<a href="http://statistics.gov.rw/sites/default/files/webform/HOPE_0.jpg" target="_blank">Entry</a></td>
-							</tr>
-							<tr>
-								<td>
-									VISION TEAM, IRAGUHA DAVID, SFB</td>
-								<td>
-									<a href="http://statistics.gov.rw/sites/default/files/webform/INFOGRAPHIC%20COMPETITION.png" target="_blank">Entry</a></td>
-							</tr>
-							<tr>
-								<td>
-									FEC HOPE, MUKANTAGANDA ESPERANCE, CUR</td>
-								<td>
-									<a href="http://statistics.gov.rw/sites/default/files/webform/INFOGRAPHC%20HIV.AIDS_.jpg" target="_blank">Entry</a></td>
-							</tr>
-							<tr>
-								<td>
-									IWACU TEAM, SHIMA GISELE, NUR</td>
-								<td>
-									<a href="http://statistics.gov.rw/sites/default/files/webform/Iwacu_Team.jpg" target="_blank">Entry</a></td>
-							</tr>
-							<tr>
-								<td>
-									FIS HARDWORKERS, HAGENIMANA FELIX, NUR</td>
-								<td>
-									<a href="http://statistics.gov.rw/sites/default/files/webform/INFOGRAPHIC%20FAMILY%20PLANNING.jpg" target="_blank">Entry</a></td>
-							</tr>
-							<tr>
-								<td>
-									REAL STATISTICIANS, INGABIRE N. M. LOUISE B, NUR</td>
-								<td>
-									<a href="http://statistics.gov.rw/sites/default/files/webform/INFO%20FINAL%20photo%201.png" target="_blank">Entry</a></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div>
-					<br />
-					<br />
-					<div class="rtejustify">
-						&nbsp;</div>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<h3>
-					<span style="text-align: justify;">Congratulations to all the winners!</span><br style="text-align: justify;" />
-					&nbsp;</h3>
-				<h3 class="rtejustify">
-					<span style="text-align: justify;">We would like to thank all the participants for making this competition a success! 148 students, out of which 36% were female, participated in 56 teams from various institutions in Rwanda. We at NISR are thrilled to see exemplary talent from students across the country. We hope to have more such events to involve students and researchers with our work, so stay tuned.</span></h3>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<a class="twitter-share-button" href="https://twitter.com/share">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<a href="/sites/default/files/user_uploads/files/press-releases/Infographic_Low%20Res.pdf">Competition announcement&nbsp;</a></td>
-		</tr>
-	</tbody>
-</table>
-<br />
-<br />
-<div id="disqus_thread">
-	&nbsp;</div>
-<script type="text/javascript">
-            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-            var disqus_shortname = \'nisr\'; // required: replace example with your forum shortname
-
-            /* * * DON\'T EDIT BELOW THIS LINE * * */
-            (function() {
-                var dsq = document.createElement(\'script\'); dsq.type = \'text/javascript\'; dsq.async = true;
-                dsq.src = \'http://\' + disqus_shortname + \'.disqus.com/embed.js\';
-                (document.getElementsByTagName(\'head\')[0] || document.getElementsByTagName(\'body\')[0]).appendChild(dsq);
-            })();
-        </script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><p>
-	<a class="dsq-brlink" href="http://disqus.com">comments powered by <span class="logo-disqus">Disqus</span></a></p>
-<br />
-',
-        'summary' => NULL,
+        'value' => '<p>&nbsp;</p><table align="right" border="1" cellpadding="1" cellspacing="1" style="width: 100%;"><tbody><tr><td class="rtecenter" colspan="3" style="background-color: rgb(134, 0, 0);"><p><span style="color: rgb(255, 255, 255);"><span style="font-size: 36px;"><span style="font-family: arial, helvetica, sans-serif;"><strong>NISR INFOGRAPHIC COMPETITION, 2012</strong></span></span></span></p><p><br><span style="color: rgb(255, 140, 0);"><span style="font-size: 26px;"><span style="font-family: arial, helvetica, sans-serif;"><em>Discovering brilliance in data visualization</em></span></span></span></p></td></tr><tr><td class="rtecenter" colspan="3"><h1 style="font-size: 30px; line-height: 30px;"><br>WE HAVE THE WINNERS!</h1></td></tr><tr><td class="rtecenter">1st Place</td><td class="rtecenter">2nd Place</td><td class="rtecenter">3rd Place</td></tr><tr><td class="rtecenter"><a href="http://statistics.gov.rw/sites/default/files/webform/Flamingo.jpg" target="_blank"><img alt="" src="http://statistics.gov.rw/sites/default/files/webform/Flamingo.jpg" style="width: 250px; height: 753px;"></a></td><td class="rtecenter" style="vertical-align: top;"><a href="http://statistics.gov.rw/sites/default/files/webform/Infant%20and%20Child%20Mortality%20in%20Rwanda%20Infographic.png" target="_blank"><img alt="" src="http://statistics.gov.rw/sites/default/files/webform/Infant and Child Mortality in Rwanda Infographic.png" style="width: 250px; height: 317px; margin-top: 0px; margin-bottom: 0px;"></a></td><td class="rtecenter" style="vertical-align: top;"><a href="http://statistics.gov.rw/sites/default/files/webform/ines%20statisticans2.jpg" target="_blank"><img alt="" src="http://statistics.gov.rw/sites/default/files/webform/ines statisticans2.jpg" style="width: 250px; height: 363px;"></a></td></tr><tr><td class="rtecenter"><a href="http://statistics.gov.rw/sites/default/files/webform/Flamingo.jpg" target="_blank">View high resolution file</a></td><td class="rtecenter"><a href="http://statistics.gov.rw/sites/default/files/webform/Infant%20and%20Child%20Mortality%20in%20Rwanda%20Infographic.png" target="_blank">View high resolution file</a></td><td class="rtecenter"><a href="http://statistics.gov.rw/sites/default/files/webform/ines%20statisticans2.jpg" target="_blank">View high resolution file</a></td></tr><tr><td class="rtecenter" colspan="3"><div>&nbsp;</div><div><table align="center" border="0" cellpadding="1" cellspacing="1" style="width: 100%;"><tbody><tr><td><div>TEAM NAME: Flamingo</div></td><td><div>TEAM NAME: TIMUH &nbsp; &nbsp;</div></td><td><div>TEAM NAME: INES STATISTICIANS</div></td></tr><tr><td style="vertical-align: top;">TEAM MEMBERS:<br><br>Muneza Derrick M,<br>Cyamani Aziza, and<br>Mugenzi Emma<br>&nbsp;</td><td style="vertical-align: top;">TEAM MEMBERS:<br><br>Andrew Kinai, and<br>Kevin &nbsp;Rudahinduka</td><td style="vertical-align: top;">TEAM MEMBERS:&nbsp;<br><br>UWURUKUNDO&nbsp;Ange Marius,<br>NIYONGIRA Fabrice, and<br>KAREKEZI Gertrude</td></tr><tr><td style="vertical-align: top;">Bachelor of Science in Creative Design</td><td style="vertical-align: top;">Master of Science in Information Technology&nbsp;</td><td style="vertical-align: top;">Statistics Applied to Economy (UG)</td></tr><tr><td style="vertical-align: top;">INSTITUTION:<br><a href="http://www.kist.ac.rw/" target="_blank">Kigali Institute of Science&nbsp;and&nbsp;Technology</a></td><td style="vertical-align: top;">INSTITUTION:<br><a href="http://www.cmu.edu/rwanda/index.html" target="_blank">Carnegie Mellon University, Rwanda</a></td><td>INSTITUTION:<br><a href="http://www.ines.ac.rw/index.html" target="_blank">Ruhengeri Institute of&nbsp;Higher Education<br>(INES- RUHENGERI)</a></td></tr></tbody></table></div></td></tr><tr><td class="rtecenter" colspan="3" style="background-color: rgb(204, 204, 204);"><br><br>Other teams selected for the exhibition and their entries (Team name, Team leader\'s name, Institution):</td></tr><tr><td colspan="3"><div>&nbsp;<table align="center" border="1" cellpadding="1" cellspacing="1" style="width: 99%;"><tbody><tr><td>THE WINNING TEAM, MUSHIMIRE FIACRE,&nbsp;CMU</td><td><a href="http://statistics.gov.rw/sites/default/files/webform/family%20planning%20%26%20impact.jpg" target="_blank">Entry</a></td></tr><tr><td>BELIEVERS, IKIBARUTA IRENEE, NUR</td><td><a href="http://statistics.gov.rw/sites/default/files/webform/design_Believers%201.jpg" target="_blank">Entry</a></td></tr><tr><td>CHANGEPLUS, TWAGIRIMANA BONAVENTURE, CMU</td><td><a href="http://statistics.gov.rw/sites/default/files/webform/infographic--Bona-T%26Clement.jpg" target="_blank">Entry</a></td></tr><tr><td>EPG, HAGENIMANA PATRICE, NUR</td><td><a href="http://statistics.gov.rw/sites/default/files/webform/EPG%20WORK.jpg" target="_blank">Entry</a></td></tr><tr><td>VICTORY, NYIRANZEYIMANA JOSEPHINE, CMU</td><td><a href="http://statistics.gov.rw/sites/default/files/webform/VICTORY%20.jpg" target="_blank">Entry</a></td></tr><tr><td>PEERS, NIYODUSENGA JEAN PIERRE, CMU</td><td><a href="http://statistics.gov.rw/sites/default/files/webform/INFOGRAPHIC.jpg" target="_blank">Entry</a></td></tr><tr><td>HOPE, ABAYISENGA AIMABLE, NUR</td><td><a href="http://statistics.gov.rw/sites/default/files/webform/HOPE_0.jpg" target="_blank">Entry</a></td></tr><tr><td>VISION TEAM, IRAGUHA DAVID, SFB</td><td><a href="http://statistics.gov.rw/sites/default/files/webform/INFOGRAPHIC%20COMPETITION.png" target="_blank">Entry</a></td></tr><tr><td>FEC HOPE, MUKANTAGANDA ESPERANCE, CUR</td><td><a href="http://statistics.gov.rw/sites/default/files/webform/INFOGRAPHC%20HIV.AIDS_.jpg" target="_blank">Entry</a></td></tr><tr><td>IWACU TEAM, SHIMA GISELE, NUR</td><td><a href="http://statistics.gov.rw/sites/default/files/webform/Iwacu_Team.jpg" target="_blank">Entry</a></td></tr><tr><td>FIS HARDWORKERS, HAGENIMANA FELIX, NUR</td><td><a href="http://statistics.gov.rw/sites/default/files/webform/INFOGRAPHIC%20FAMILY%20PLANNING.jpg" target="_blank">Entry</a></td></tr><tr><td>REAL STATISTICIANS, INGABIRE N. M. LOUISE B, NUR</td><td><a href="http://statistics.gov.rw/sites/default/files/webform/INFO%20FINAL%20photo%201.png" target="_blank">Entry</a></td></tr></tbody></table></div><div>&nbsp;<div class="rtejustify">&nbsp;</div></div></td></tr><tr><td colspan="3"><h3><span style="text-align: justify;">Congratulations to all the winners!</span><br style="text-align: justify;">&nbsp;</h3><h3 class="rtejustify"><span style="text-align: justify;">We would like to thank all the participants for making this competition a success! 148 students, out of which 36% were female, participated in 56 teams from various institutions in Rwanda. We at NISR are thrilled to see exemplary talent from students across the country. We hope to have more such events to involve students and researchers with our work, so stay tuned.</span></h3></td></tr><tr><td colspan="3"><a class="twitter-share-button" href="https://twitter.com/share">Tweet</a></td></tr><tr><td colspan="3"><a href="/sites/default/files/user_uploads/files/press-releases/Infographic_Low%20Res.pdf">Competition announcement&nbsp;</a></td></tr></tbody></table><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><div id="disqus_thread">&nbsp;</div><noscript>Please enable JavaScript to view the &amp;lt;a href="http://disqus.com/?ref_noscript"&amp;gt;comments powered by Disqus.&amp;lt;/a&amp;gt;</noscript><p>&nbsp;</p><p>&nbsp;</p><p><a class="dsq-brlink" href="http://disqus.com">comments powered by <span class="logo-disqus">Disqus</span></a></p><p>&nbsp;</p>',
+        'summary' => '',
         'format' => 2,
         'safe_summary' => '',
       ),
     ),
   ),
+  'path' => array(
+    'pathauto' => 0,
+  ),
+  'pathauto_perform_alias' => FALSE,
   'date' => '2013-10-15 19:31:20 +0300',
   'user_uuid' => 'abebcbee-8aa6-47c1-b12b-9d9def5900d3',
 );
@@ -1468,75 +926,17 @@ The default front page is a listing of all content marked as <q>Promoted to fron
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => '<br />
-<table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;">
-	<tbody>
-		<tr>
-			<td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">
-					The essential functions of the Census Department are to carry out population and economic censuses, such as Population and Housing Census, Agricultural Census, and Establishment Census, etc. The Department also implements special-purpose censuses such as Civil Servant Censuses and School Censuses.&nbsp;The department keeps track with the administrative structure and divisions of Rwanda and records whatever official changes that may have been taken place (e.g. a rural area has been changed to urban, new community has been established or demolished, etc.).&nbsp;The Department is also in-charge of updating the business registry.<br />
-					<br />
-					To accomplish its mission, the Census Department is headed by a director and&nbsp;is organized into the following two sections:</p>
-				<ul>
-					<li>
-						<strong>Population Censuses Research (4)</strong>:</li>
-				</ul>
-				<p class="rteindent1">
-					- Population Censuses Research Statistician Team Leader (1)<br />
-					- Census Methodology Statistician (1)<br />
-					- Population Censuses Analysis Statistician (1)<br />
-					-Training &amp; Filed Operation Statistician (1)</p>
-				<ul>
-					<li>
-						<strong>Economic Censuses (5):</strong></li>
-				</ul>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Economics Censuses Statistician Team Leader (1)<br />
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Agriculture Census Statistician (1)<br />
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Formal Sector Census Statistician (1)<br />
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Informal Sector Census Statistician (2)</td>
-			<td rowspan="3" style="vertical-align: top;" width="20px">
-				&nbsp;</td>
-			<td valign="top">
-				<table cellspacing="2" height="100%" width="100%">
-					<tbody>
-						<tr>
-							<td bgcolor="#f0f5f7">
-								<strong>Director:</strong></td>
-						</tr>
-						<tr>
-							<td bgcolor="#f0f5f7" valign="top">
-								<strong>Vacant</strong></td>
-						</tr>
-						<tr>
-							<td bgcolor="#f0f5f7" valign="top">
-								<br />
-								&nbsp;</td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				&nbsp;</td>
-		</tr>
-	</tbody>
-</table>
-<br />
-',
-        'summary' => '<br />
-<table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;">
-	<tbody>
-		<tr>
-			<td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">',
+        'value' => '<p>&nbsp;</p><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify">The essential functions of the Census Department are to carry out population and economic censuses, such as Population and Housing Census, Agricultural Census, and Establishment Census, etc. The Department also implements special-purpose censuses such as Civil Servant Censuses and School Censuses.&nbsp;The department keeps track with the administrative structure and divisions of Rwanda and records whatever official changes that may have been taken place (e.g. a rural area has been changed to urban, new community has been established or demolished, etc.).&nbsp;The Department is also in-charge of updating the business registry.<br><br>To accomplish its mission, the Census Department is headed by a director and&nbsp;is organized into the following two sections:</p><ul><li><strong>Population Censuses Research (4)</strong>:</li></ul><p class="rteindent1">- Population Censuses Research Statistician Team Leader (1)<br>- Census Methodology Statistician (1)<br>- Population Censuses Analysis Statistician (1)<br>-Training &amp; Filed Operation Statistician (1)</p><ul><li><strong>Economic Censuses (5):</strong></li></ul>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Economics Censuses Statistician Team Leader (1)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Agriculture Census Statistician (1)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Formal Sector Census Statistician (1)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Informal Sector Census Statistician (2)</td><td rowspan="3" style="vertical-align: top;" width="20px">&nbsp;</td><td valign="top"><table cellspacing="2" height="100%" width="100%"><tbody><tr><td bgcolor="#f0f5f7"><strong>Director:</strong></td></tr><tr><td bgcolor="#f0f5f7" valign="top"><strong>Vacant</strong></td></tr><tr><td bgcolor="#f0f5f7" valign="top"><br>&nbsp;</td></tr></tbody></table></td></tr><tr><td>&nbsp;</td></tr></tbody></table><p>&nbsp;</p>',
+        'summary' => '<p>&nbsp;</p><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify">&nbsp;</p></td></tr></tbody></table><p>&nbsp;</p>',
         'format' => 2,
-        'safe_summary' => '<br /><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">
-</p></td></tr></tbody></table>',
+        'safe_summary' => '<p> </p><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify"> </p></td></tr></tbody></table><p> </p>',
       ),
     ),
   ),
+  'path' => array(
+    'pathauto' => 0,
+  ),
+  'pathauto_perform_alias' => FALSE,
   'date' => '2011-09-15 14:36:44 +0300',
   'user_uuid' => '0ba20103-dd5e-4a28-ba96-a90ee7bf92be',
 );
@@ -1650,49 +1050,17 @@ $("a",$("#primary-menu-inner li.leaf")).addClass("active");
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => 'Data portals are standalone web-based applications, each with a dedicated database system – suited for the specific data types (microdata, aggregate data and geo-spatial data etc.) - providing the functionality of discovery and access of data and metadata in varied formats from the National Institute of Statistics of Rwanda through distinct user interfaces. Some data portals provide additional features, such as Application Programme Interface (API) and Web Services for automated data sharing.
-
-<div class="row featured-boxes">
-    <div class="col-md-3">
-      <div class="featured-box featured-box-primary">
-        <div class="box-content">
-          <h4>NADA</h4>
-          <p>Survey documentation (in DDI – Data Documentation Initiative and RDF - Resource Description Framework) + Microdata (in SPSS or other formats)</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="featured-box featured-box-secondary">
-        <div class="box-content">
-          <h4>DevInfo</h4>
-          <p>Aggregate data/indicators/time-series </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="featured-box featured-box-tertiary">
-        <div class="box-content">
-          <h4>Prognoz</h4>
-          <p>Aggregate data/indicators/time-series </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="featured-box featured-box-quaternary">
-        <div class="box-content">
-          <h4>GeoData</h4>
-          <p>Maps + data in maps</p>
-        </div>
-      </div>
-    </div>
-  </div>
-',
+        'value' => '<p>Following data portals are Rwanda specific adaptations of specific web-based data platforms. Each of these, has a dedicated database system, modeled for specific data types (microdata, aggregate data and geo-spatial data etc.) it contains. Providing interactive access, data and metadata in these data portals are directly populated by the National Institute of Statistics of Rwanda (NISR). Some data portals provide additional features, such as Application Programme Interface (API) and Web Services for automated data sharing.</p><div class="row featured-boxes"><div class="col-md-3"><div class="featured-box featured-box-primary"><div class="box-content"><h4><a href="microdata.statistics.gov.rw">NADA</a></h4><p><a href="microdata.statistics.gov.rw">Dispenses metadata [survey documentation – questionnaires, technical documents and reports describing the surveys etc.; survey description – sampling frames and data collection information etc.; and data description – variables and counts etc.] and anonymized microdata of surveys (studies). Documentation and the file description for each study are available also in DDI (XML) and in Dublin Core (.rdf) respectively. </a></p></div></div></div><div class="col-md-3"><div class="featured-box featured-box-secondary"><div class="box-content"><h4><a href="http://devinfo.statistics.gov.rw/di7web/libraries/aspx/Home.aspx">DevInfo</a></h4><p><a href="http://devinfo.statistics.gov.rw/di7web/libraries/aspx/Home.aspx">Offers aggregate data in tables, graphs and maps organized in the structure of indicators, units of measurement, subgroups [gender (male/female), location (urban/rural), age groups and others], time periods, sources and geographic areas (national and sub-national levels). The Data Query Service - allows generating API calls, facilitating third-party applications to communicate directly with DevInfo to make queries and retrieve data in various formats. The Registry (SDMX) facilitates access to various web services function</a></p></div></div></div><div class="col-md-3"><div class="featured-box featured-box-tertiary"><div class="box-content"><h4><a href="http://indicators.statistics.gov.rw">Knoema</a></h4><p><a href="http://indicators.statistics.gov.rw">Delivers visual discovery and advanced analytics utilizing aggregate data. The time series analysis, allows users to utilize a variety of advanced statistical functions.&nbsp; The dashboard designer facilitates creation of customized dashboards. Data, visualizations (including the maps) could be delivered via email and exported to various file formats including Excel, PDF and HTML.</a></p></div></div></div><div class="col-md-3"><div class="featured-box featured-box-quaternary"><div class="box-content"><h4><a href="http://agol.statistics.gov.rw">AGOL</a></h4><p><a href="http://agol.statistics.gov.rw">Adaptation of ArcGIS Online, this data portal offers statistics in the form of maps and location data. Maps can be viewed in native browser environment, downloaded in various formats and shared either through links or embedding in a website or blog. These maps contain documentation with details regarding the source, providing metadata that allows the users to understand how they were created.</a></p></div></div></div></div>',
         'summary' => '',
         'format' => 2,
         'safe_summary' => '',
       ),
     ),
   ),
+  'path' => array(
+    'pathauto' => 0,
+  ),
+  'pathauto_perform_alias' => FALSE,
   'date' => '2015-09-29 18:08:22 +0300',
   'user_uuid' => '0ba20103-dd5e-4a28-ba96-a90ee7bf92be',
 );
@@ -1827,108 +1195,17 @@ $("a",$("#primary-menu-inner li.leaf")).addClass("active");
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => 'The National Institute of Statistics of Rwanda (NISR) relies on vast array of partners in its mission to assume the leading role in improving capacity to use evidence-based information for decision-making by coordinating national effort to collect and archive reliable data, to analyze, document and disseminate data within an integrated and sustainable framework.<br />
-<br />
-By working in partnership, NISR improves its efficiency and effectiveness.<br />
-<br />
-<table border="0" cellpadding="4" cellspacing="1" style="width: 100%;">
-	<tbody>
-		<tr>
-			<td>
-				<table border="0" cellpadding="1" cellspacing="1" style="width: 185px; background: none repeat scroll 0% 0% rgb(237, 237, 237); height: 330px;">
-					<tbody>
-						<tr>
-							<td style="font-size:1.2em;vertical-align:top;font-weight:bold;background:#ccc;padding-top:10px;height:30px;">
-								Development Partners<br />
-								&nbsp;</td>
-						</tr>
-						<tr>
-							<td valign="top">
-								NISR receives both technical and financial support through many multilateral and bi-lateral development partners. The wide ranging collaborations with development partners spans from supporting regular activities of NISR to specific activities such as surveys, and censuses.</td>
-						</tr>
-						<tr>
-							<td valign="bottom">
-								<a href="http://statistics.gov.rw/about-us/partnerships/development-partners">More...</a></td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-			<td>
-				<table border="0" cellpadding="1" cellspacing="1" style="width: 185px; background: none repeat scroll 0% 0% rgb(237, 237, 237); height: 330px;">
-					<tbody>
-						<tr>
-							<td style="font-size:1.2em;vertical-align:top;font-weight:bold;background:#ccc;padding-top:10px;height:30px;">
-								Educational &amp; Research Institutions</td>
-						</tr>
-						<tr>
-							<td valign="top">
-								The collaboration between NISR and educational &amp; research institutions provides an opportunity for strengthening institutionalizing of statistical education, developing curriculum in the statistical domain and research collaborations.&nbsp;</td>
-						</tr>
-						<tr>
-							<td valign="bottom">
-								<a href="statistics.gov.rw/about-us/partnerships/government-partners">More...</a></td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-			<td>
-				<table border="0" cellpadding="1" cellspacing="1" style="width: 185px; background: none repeat scroll 0% 0% rgb(237, 237, 237); height: 330px;">
-					<tbody>
-						<tr>
-							<td style="font-size:1.2em;vertical-align:top;font-weight:bold;background:#ccc;padding-top:10px;height:30px;">
-								Goverment Partners<br />
-								&nbsp;</td>
-						</tr>
-						<tr>
-							<td valign="top">
-								NISR partners with Government institutions in order to produce collaborative statistics. Also, as the coordinator of the National Statistical System (NSS) in Rwanda, NISR works with members of the NSS to develop capacities and strengthens interagency cooperation to improve administrative-based statistics such as vital statistics from the civil registration system, ICT indicators, education, and health statistics.</td>
-						</tr>
-						<tr>
-							<td valign="bottom">
-								<a href="http://statistics.gov.rw/about-us/partnerships/government-partners">More...</a></td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-			<td>
-				<table border="0" cellpadding="1" cellspacing="1" style="width: 185px; background: none repeat scroll 0% 0% rgb(237, 237, 237); height: 330px;">
-					<tbody>
-						<tr>
-							<td style="font-size:1.2em;vertical-align:top;font-weight:bold;background:#ccc;padding-top:10px;height:30px;">
-								Statistical Institutions<br />
-								&nbsp;</td>
-						</tr>
-						<tr>
-							<td valign="top">
-								NISR cultivates dynamic and innovative collaboration with statistical institutions that share its vision of excellence in statistical production. Through a variety of unique and mutually beneficial programs, the partner statistical institutions support NISR&rsquo;s work with seamless knowledge transfers.</td>
-						</tr>
-						<tr>
-							<td valign="bottom">
-								<a href="http://statistics.gov.rw/about-us/partnerships/statistical-institutions">More...</a></td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-	</tbody>
-</table>
-<br />
-',
-        'summary' => 'The National Institute of Statistics of Rwanda (NISR) relies on vast array of partners in its mission to assume the leading role in improving capacity to use evidence-based information for decision-making by coordinating national effort to collect and archive reliable data, to analyze, document and disseminate data within an integrated and sustainable framework.<br />
-<br />
-By working in partnership, NISR improves its efficiency and effectiveness.<br />
-<br />
-<table border="0" cellpadding="4" cellspacing="1" style="width: 100%;">
-	<tbody>
-		<tr>
-			<td>',
+        'value' => '<p>The National Institute of Statistics of Rwanda (NISR) relies on vast array of partners in its mission to assume the leading role in improving capacity to use evidence-based information for decision-making by coordinating national effort to collect and archive reliable data, to analyze, document and disseminate data within an integrated and sustainable framework.<br><br>By working in partnership, NISR improves its efficiency and effectiveness.<br>&nbsp;</p><table border="0" cellpadding="4" cellspacing="1" style="width: 100%;"><tbody><tr><td><table border="0" cellpadding="1" cellspacing="1" style="width: 185px; background: none repeat scroll 0% 0% rgb(237, 237, 237); height: 330px;"><tbody><tr><td style="font-size:1.2em;vertical-align:top;font-weight:bold;background:#ccc;padding-top:10px;height:30px;">Development Partners<br>&nbsp;</td></tr><tr><td valign="top">NISR receives both technical and financial support through many multilateral and bi-lateral development partners. The wide ranging collaborations with development partners spans from supporting regular activities of NISR to specific activities such as surveys, and censuses.</td></tr><tr><td valign="bottom"><a href="http://statistics.gov.rw/about-us/partnerships/development-partners">More...</a></td></tr></tbody></table></td><td><table border="0" cellpadding="1" cellspacing="1" style="width: 185px; background: none repeat scroll 0% 0% rgb(237, 237, 237); height: 330px;"><tbody><tr><td style="font-size:1.2em;vertical-align:top;font-weight:bold;background:#ccc;padding-top:10px;height:30px;">Educational &amp; Research Institutions</td></tr><tr><td valign="top">The collaboration between NISR and educational &amp; research institutions provides an opportunity for strengthening institutionalizing of statistical education, developing curriculum in the statistical domain and research collaborations.&nbsp;</td></tr><tr><td valign="bottom"><a href="statistics.gov.rw/about-us/partnerships/government-partners">More...</a></td></tr></tbody></table></td><td><table border="0" cellpadding="1" cellspacing="1" style="width: 185px; background: none repeat scroll 0% 0% rgb(237, 237, 237); height: 330px;"><tbody><tr><td style="font-size:1.2em;vertical-align:top;font-weight:bold;background:#ccc;padding-top:10px;height:30px;">Goverment Partners<br>&nbsp;</td></tr><tr><td valign="top">NISR partners with Government institutions in order to produce collaborative statistics. Also, as the coordinator of the National Statistical System (NSS) in Rwanda, NISR works with members of the NSS to develop capacities and strengthens interagency cooperation to improve administrative-based statistics such as vital statistics from the civil registration system, ICT indicators, education, and health statistics.</td></tr><tr><td valign="bottom"><a href="http://statistics.gov.rw/about-us/partnerships/government-partners">More...</a></td></tr></tbody></table></td><td><table border="0" cellpadding="1" cellspacing="1" style="width: 185px; background: none repeat scroll 0% 0% rgb(237, 237, 237); height: 330px;"><tbody><tr><td style="font-size:1.2em;vertical-align:top;font-weight:bold;background:#ccc;padding-top:10px;height:30px;">Statistical Institutions<br>&nbsp;</td></tr><tr><td valign="top">NISR cultivates dynamic and innovative collaboration with statistical institutions that share its vision of excellence in statistical production. Through a variety of unique and mutually beneficial programs, the partner statistical institutions support NISR’s work with seamless knowledge transfers.</td></tr><tr><td valign="bottom"><a href="http://statistics.gov.rw/about-us/partnerships/statistical-institutions">More...</a></td></tr></tbody></table></td></tr></tbody></table><p>&nbsp;</p>',
+        'summary' => '<p>The National Institute of Statistics of Rwanda (NISR) relies on vast array of partners in its mission to assume the leading role in improving capacity to use evidence-based information for decision-making by coordinating national effort to collect and archive reliable data, to analyze, document and disseminate data within an integrated and sustainable framework.<br><br>By working in partnership, NISR improves its efficiency and effectiveness.<br>&nbsp;</p><table border="0" cellpadding="4" cellspacing="1" style="width: 100%;"><tbody><tr><td>&nbsp;</td></tr></tbody></table>',
         'format' => 2,
-        'safe_summary' => 'The National Institute of Statistics of Rwanda (NISR) relies on vast array of partners in its mission to assume the leading role in improving capacity to use evidence-based information for decision-making by coordinating national effort to collect and archive reliable data, to analyze, document and disseminate data within an integrated and sustainable framework.<br /><br />
-By working in partnership, NISR improves its efficiency and effectiveness.<br /><br /><table border="0" cellpadding="4" cellspacing="1" style="width: 100%;"><tbody><tr><td>
-</td></tr></tbody></table>',
+        'safe_summary' => '<p>The National Institute of Statistics of Rwanda (NISR) relies on vast array of partners in its mission to assume the leading role in improving capacity to use evidence-based information for decision-making by coordinating national effort to collect and archive reliable data, to analyze, document and disseminate data within an integrated and sustainable framework.<br /><br />By working in partnership, NISR improves its efficiency and effectiveness.<br /> </p><table border="0" cellpadding="4" cellspacing="1" style="width: 100%;"><tbody><tr><td> </td></tr></tbody></table>',
       ),
     ),
   ),
+  'path' => array(
+    'pathauto' => 0,
+  ),
+  'pathauto_perform_alias' => FALSE,
   'date' => '2011-06-19 19:06:56 +0300',
   'user_uuid' => '0ba20103-dd5e-4a28-ba96-a90ee7bf92be',
 );
@@ -1978,61 +1255,17 @@ By working in partnership, NISR improves its efficiency and effectiveness.<br />
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => '<hr h3="" />
-<br />
-<h3 style="font-size: 20px; line-height: 20px; ">
-	<strong>Visa</strong></h3>
-<p align="justify">
-	Under the law <strong><a href="/sites/default/files/Official_Gazette_no_Special_of_16.06.2013.pdf" target="_blank">N&deg; 45/2013 of 16/06/2013 (Chapter 3)</a></strong>, on the ORGANIZATION OF STATISTICAL ACTIVITIES IN RWANDA, statistical surveys that are nationwide or covering at least one whole province, should have a prior approval from the NISR.</p>
-<p align="justify">
-	The review and approval of NISR is focused on the necessity and quality of the methodologies to be used. The purpose of the review is to ensure the accuracy of the data to be generated from the survey following statistical standards. Likewise, the review intends to avoid duplication that will lead to undue response burden to the households or institutions and waste of resources.</p>
-<p align="justify">
-	Government agencies and private entities are advised to submit the survey proposals and questionnaires to the NISR at least two (2) months before the data collection.</p>
-<table align="left" border="1" cellpadding="1" cellspacing="1" height="46" width="534">
-	<tbody>
-		<tr>
-			<td class="rtecenter">
-				<strong><a href="../publications/visa-instruction-manual" style="color: rgb(119, 144, 159); text-align: justify; ">Visa instruction manual</a></strong></td>
-			<td class="rtecenter">
-				<a href="http://statistics.gov.rw/form/form-requesting-visa-conduct-survey"><strong style="text-align: center; ">Apply online for visa request</strong></a></td>
-			<td class="rtecenter">
-				<a href="http://statistics.gov.rw/publications/visas-issued-nisr" target="_parent"><strong style="text-align: center; ">List of visas issued by NISR</strong></a></td>
-			<td class="rtecenter">
-				<a href="http://statistics.gov.rw/publications/all/Standards%20and%20method" target="_parent"><strong style="text-align: center; ">Standards and methods</strong></a></td>
-		</tr>
-	</tbody>
-</table>
-<table align="left" border="0">
-	<tbody>
-		<tr>
-			<td>
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<hr />
-				<h3 style="font-size: 20px; line-height: 20px; ">
-					<strong>NISR Service Charter</strong></h3>
-				<p class="rtejustify">
-					<span style="font-size: 12px; line-height: 18px; ">The NISR service charter spells out the role of NISR, and highlights the services offered and requirements therein. It lists the service centers at which our services can be accessed and the guiding legal instruments.</span></p>
-				<h3>
-					<a href="http://statistics.gov.rw/publications/nisr-service-charter" style="font-size: 12px; line-height: 18px; text-align: justify; " target="_parent">NISR Service Charter</a></h3>
-			</td>
-		</tr>
-	</tbody>
-</table>
-<br />
-<br />
-',
-        'summary' => NULL,
+        'value' => '<hr h3=""><p>&nbsp;</p><h3 style="font-size: 20px; line-height: 20px; "><strong>Visa</strong></h3><p>&nbsp;</p><p align="justify">Under the law <strong><a href="/sites/default/files/Official_Gazette_no_Special_of_16.06.2013.pdf" target="_blank">N° 45/2013 of 16/06/2013 (Chapter 3)</a></strong>, on the ORGANIZATION OF STATISTICAL ACTIVITIES IN RWANDA, statistical surveys that are nationwide or covering at least one whole province, should have a prior approval from the NISR.</p><p align="justify">The review and approval of NISR is focused on the necessity and quality of the methodologies to be used. The purpose of the review is to ensure the accuracy of the data to be generated from the survey following statistical standards. Likewise, the review intends to avoid duplication that will lead to undue response burden to the households or institutions and waste of resources.</p><p align="justify">Government agencies and private entities are advised to submit the survey proposals and questionnaires to the NISR at least two (2) months before the data collection.</p><table align="left" border="1" cellpadding="1" cellspacing="1" height="46" width="534"><tbody><tr><td class="rtecenter"><strong><a href="../publications/visa-instruction-manual" style="color: rgb(119, 144, 159); text-align: justify; ">Visa instruction manual</a></strong></td><td class="rtecenter"><a href="http://statistics.gov.rw/form/form-requesting-visa-conduct-survey"><strong style="text-align: center; ">Apply online for visa request</strong></a></td><td class="rtecenter"><a href="http://statistics.gov.rw/publications/visas-issued-nisr" target="_parent"><strong style="text-align: center; ">List of visas issued by NISR</strong></a></td><td class="rtecenter"><a href="http://statistics.gov.rw/publications/all/Standards%20and%20method" target="_parent"><strong style="text-align: center; ">Standards and methods</strong></a></td></tr></tbody></table><table align="left" border="0"><tbody><tr><td><br><br><br><br><br><br>&nbsp;<hr><h3 style="font-size: 20px; line-height: 20px; "><strong>NISR Service Charter</strong></h3><p class="rtejustify"><span style="font-size: 12px; line-height: 18px; ">The NISR service charter spells out the role of NISR, and highlights the services offered and requirements therein. It lists the service centers at which our services can be accessed and the guiding legal instruments.</span></p><h3><a href="http://statistics.gov.rw/publications/nisr-service-charter" style="font-size: 12px; line-height: 18px; text-align: justify; " target="_parent">NISR Service Charter</a></h3></td></tr></tbody></table><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>',
+        'summary' => '',
         'format' => 2,
         'safe_summary' => '',
       ),
     ),
   ),
+  'path' => array(
+    'pathauto' => 0,
+  ),
+  'pathauto_perform_alias' => FALSE,
   'date' => '2011-08-16 06:47:10 +0300',
   'user_uuid' => '0ba20103-dd5e-4a28-ba96-a90ee7bf92be',
 );
@@ -2166,67 +1399,17 @@ By working in partnership, NISR improves its efficiency and effectiveness.<br />
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => '<br />
-<table border="0" cellpadding="3" cellspacing="1" style="width: 100%;">
-	<tbody>
-		<tr>
-			<td rowspan="2" valign="top" width="60%">
-				<div class="rtejustify">
-					The Board of Directors is the supreme organ of the Institute in management and decision making for the achievement of the Institute&rsquo;s mission.&nbsp;It is particularly responsible for the following:
-					<p class="rtejustify">
-						To approve the internal rules and regulations of the Institute; to propose to the competent authority senior candidates to be appointed; to approve permanent members of staff not mentioned in point 2&deg;&nbsp; of this article; to prepare a draft of the organic framework and the organizational chart or eventual modifications and&nbsp; thereafter to be approved by competent authority; to approve the action plan of the national statistical system and determine the priorities of the Institute in&nbsp; conformity with the national priorities; to approve the annual budget proposal to be submitted to the supervising Ministry which in turn submits it to Cabinet for final approval; to approve the development plan of the Institute and ensure its implementation; to approve the quarterly and annual administrative and financial reports of the Institute; and to examine any matter worth of value to the Institute.&nbsp;</p>
-					<p class="rtejustify">
-						The Board of Directors is composed of seven members including the Chairperson. The Prime Minister, appoints members of the Board of Directors and its Chairperson upon proposal by the Minister having general Statistics in his or her attributions. Such members are selected from the specialists in statistics, information and communication technology, economics or other related fields. The Director of the Institute is the secretary to the Board meetings. The members of the Board are appointed for a period of three years, which may be renewable only once.</p>
-				</div>
-			</td>
-			<td rowspan="2" style="vertical-align: top; width: 10px;">
-				&nbsp;</td>
-			<td style="background-color: rgb(255, 153, 51); border-color: rgb(255, 153, 0);">
-				<p class="rtecenter">
-					<strong>Current Board Members</strong></p>
-			</td>
-		</tr>
-		<tr>
-			<td style="background-color: rgb(204, 204, 204); border-color: rgb(255, 153, 0);">
-				<u>Chairperson:</u><br />
-				<br />
-				1. Mrs. Monique NSANZABAGANWA,<br />
-				&nbsp;&nbsp;&nbsp;&nbsp;<br />
-				<u>Members:</u><br />
-				<br />
-				2. Hon. Tony NSANGANIRA (Vice- Chairperson)<br />
-				<br />
-				3. Mrs. Amina RWAKUNDA<br />
-				&nbsp;&nbsp;&nbsp;<br />
-				4.&nbsp; Mr. Pascal NYAMURINDA,<br />
-				&nbsp;&nbsp;&nbsp;<br />
-				5.&nbsp; Mrs. C&eacute;line NUWAMAHORO ,<br />
-				&nbsp;&nbsp;&nbsp;&nbsp;<br />
-				6.&nbsp; Mr. Callixte KAYIGAMBA<br />
-				&nbsp;&nbsp;&nbsp;<br />
-				7.&nbsp; Mrs. Denise MUREBWAYIRE</td>
-		</tr>
-	</tbody>
-</table>
-<br />
-',
-        'summary' => '<br />
-<table border="0" cellpadding="3" cellspacing="1" style="width: 100%;">
-	<tbody>
-		<tr>
-			<td rowspan="2" valign="top" width="60%">
-				<div class="rtejustify">
-					The Board of Directors is the supreme organ of the Institute in management and decision making for the achievement of the Institute&rsquo;s mission.&nbsp;It is particularly responsible for the following:
-					<p class="rtejustify">',
+        'value' => '<p>&nbsp;</p><table border="0" cellpadding="3" cellspacing="1" style="width: 100%;"><tbody><tr><td rowspan="2" valign="top" width="60%"><div class="rtejustify">The Board of Directors is the supreme organ of the Institute in management and decision making for the achievement of the Institute’s mission.&nbsp;It is particularly responsible for the following:<p class="rtejustify">To approve the internal rules and regulations of the Institute; to propose to the competent authority senior candidates to be appointed; to approve permanent members of staff not mentioned in point 2°&nbsp; of this article; to prepare a draft of the organic framework and the organizational chart or eventual modifications and&nbsp; thereafter to be approved by competent authority; to approve the action plan of the national statistical system and determine the priorities of the Institute in&nbsp; conformity with the national priorities; to approve the annual budget proposal to be submitted to the supervising Ministry which in turn submits it to Cabinet for final approval; to approve the development plan of the Institute and ensure its implementation; to approve the quarterly and annual administrative and financial reports of the Institute; and to examine any matter worth of value to the Institute.&nbsp;</p><p class="rtejustify">The Board of Directors is composed of seven members including the Chairperson. The Prime Minister, appoints members of the Board of Directors and its Chairperson upon proposal by the Minister having general Statistics in his or her attributions. Such members are selected from the specialists in statistics, information and communication technology, economics or other related fields. The Director of the Institute is the secretary to the Board meetings. The members of the Board are appointed for a period of three years, which may be renewable only once.</p></div></td><td rowspan="2" style="vertical-align: top; width: 10px;">&nbsp;</td><td style="background-color: rgb(255, 153, 51); border-color: rgb(255, 153, 0);"><p class="rtecenter"><strong>Current Board Members</strong></p></td></tr><tr><td style="background-color: rgb(204, 204, 204); border-color: rgb(255, 153, 0);"><u>Chairperson:</u><br><br>1. Mrs. Monique NSANZABAGANWA,<br>&nbsp;&nbsp;&nbsp;&nbsp;<br><u>Members:</u><br><br>2. Hon. Tony NSANGANIRA (Vice- Chairperson)<br><br>3. Mrs. Amina RWAKUNDA<br>&nbsp;&nbsp;&nbsp;<br>4.&nbsp; Mr. Pascal NYAMURINDA,<br>&nbsp;&nbsp;&nbsp;<br>5.&nbsp; Mrs. Céline NUWAMAHORO ,<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>6.&nbsp; Mr. Callixte KAYIGAMBA<br>&nbsp;&nbsp;&nbsp;<br>7.&nbsp; Mrs. Denise MUREBWAYIRE</td></tr></tbody></table><p>&nbsp;</p>',
+        'summary' => '<p>&nbsp;</p><table border="0" cellpadding="3" cellspacing="1" style="width: 100%;"><tbody><tr><td rowspan="2" valign="top" width="60%"><div class="rtejustify">The Board of Directors is the supreme organ of the Institute in management and decision making for the achievement of the Institute’s mission.&nbsp;It is particularly responsible for the following:<p class="rtejustify">&nbsp;</p></div></td></tr></tbody></table><p>&nbsp;</p>',
         'format' => 2,
-        'safe_summary' => '<br /><table border="0" cellpadding="3" cellspacing="1" style="width: 100%;"><tbody><tr><td rowspan="2" valign="top" width="60%">
-				<div class="rtejustify">
-					The Board of Directors is the supreme organ of the Institute in management and decision making for the achievement of the Institute’s mission. It is particularly responsible for the following:
-					<p class="rtejustify">
-</p></div></td></tr></tbody></table>',
+        'safe_summary' => '<p> </p><table border="0" cellpadding="3" cellspacing="1" style="width: 100%;"><tbody><tr><td rowspan="2" valign="top" width="60%"><div class="rtejustify">The Board of Directors is the supreme organ of the Institute in management and decision making for the achievement of the Institute’s mission. It is particularly responsible for the following:<p class="rtejustify"> </p></div></td></tr></tbody></table><p> </p>',
       ),
     ),
   ),
+  'path' => array(
+    'pathauto' => 0,
+  ),
+  'pathauto_perform_alias' => FALSE,
   'date' => '2011-09-15 17:32:02 +0300',
   'user_uuid' => '0ba20103-dd5e-4a28-ba96-a90ee7bf92be',
 );
@@ -2318,90 +1501,17 @@ By working in partnership, NISR improves its efficiency and effectiveness.<br />
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => '<br />
-<table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;">
-	<tbody>
-		<tr>
-			<td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">
-					The Information and Communication Technology (ICT) Department is responsible for data processing of surveys and censuses carried out, the Local Area Network (LAN), Hardware, Software, Internet, External Web Site, Intranet, Security, Backup,&nbsp; Digitized maps, Documentation, Archiving, Data-bases and ICT Training etc.<br />
-					<br />
-					To accomplish its mission, the ICT Department is headed by a director and&nbsp;is organized into the following three sections:</p>
-				<ul>
-					<li>
-						<strong>Data Processing (7) :</strong></li>
-				</ul>
-				<p class="rteindent1">
-					-&nbsp; Data Processing Team Leader&nbsp; (1)<br />
-					- Censuses &ndash; Population &amp; Economics Data Processing Officer (1)<br />
-					- Household Poverty Surveys Data Processing Officer (1)<br />
-					- Household Social &amp; Demographic Surveys Data Processing Officer (1)<br />
-					- Food Security &amp; Agriculture Surveys Data Processing Officer (1)<br />
-					- Microdata Database Administrator (1)<br />
-					- Indicators Database Administrator (1)</p>
-				<ul>
-					<li>
-						<strong>Geographic Information Systems (5):</strong></li>
-				</ul>
-				<p class="rteindent1">
-					- Geographic Information Systems Team Leader (1)<br />
-					- Sampling Frames Cartographer Officer(1)<br />
-					- Fieldwork Organization Cartographer Officer (1)<br />
-					- Map Design &amp; Production Geometrician Officer (1)<br />
-					- Spatial Databases Geometrician Officer (1)</p>
-				<ul>
-					<li>
-						<strong>IT Systems Administration (4):</strong></li>
-				</ul>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - IT System Administration Team Leader (1)<br />
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Application Development Administrator (1)<br />
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp; Support &amp; Helpdesk&nbsp; (1)<br />
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - LAN Administrator (1)</td>
-			<td rowspan="3" style="vertical-align: top;" width="20px">
-				&nbsp;</td>
-			<td valign="top">
-				<table cellspacing="2" height="273" width="288">
-					<tbody>
-						<tr>
-							<td bgcolor="#f0f5f7">
-								<strong>Director : </strong><br />
-								Mr. Jimmy Mukasa</td>
-						</tr>
-						<tr>
-							<td bgcolor="#f0f5f7" class="rtecenter" valign="top">
-								<img alt="" src="/sites/default/files/user_uploads/images/ict_jimmy_nisr.png" style="width: 160px; height: 182px;" /></td>
-						</tr>
-						<tr>
-							<td bgcolor="#f0f5f7" valign="top">
-								&nbsp;</td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				&nbsp;</td>
-		</tr>
-	</tbody>
-</table>
-<br />
-',
-        'summary' => '<br />
-<table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;">
-	<tbody>
-		<tr>
-			<td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">
-					The Information and Communication Technology (ICT) Department is responsible for data processing of surveys and censuses carried out, the Local Area Network (LAN), Hardware, Software, Internet, External Web Site, Intranet, Security, Backup,&nbsp; Digitized maps, Documentation, Archiving, Data-bases and ICT Training etc.<br />
-					<br />',
+        'value' => '<p>&nbsp;</p><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify">The Information and Communication Technology (ICT) Department is responsible for data processing of surveys and censuses carried out, the Local Area Network (LAN), Hardware, Software, Internet, External Web Site, Intranet, Security, Backup,&nbsp; Digitized maps, Documentation, Archiving, Data-bases and ICT Training etc.<br><br>To accomplish its mission, the ICT Department is headed by a director and&nbsp;is organized into the following three sections:</p><ul><li><strong>Data Processing (7) :</strong></li></ul><p class="rteindent1">-&nbsp; Data Processing Team Leader&nbsp; (1)<br>- Censuses – Population &amp; Economics Data Processing Officer (1)<br>- Household Poverty Surveys Data Processing Officer (1)<br>- Household Social &amp; Demographic Surveys Data Processing Officer (1)<br>- Food Security &amp; Agriculture Surveys Data Processing Officer (1)<br>- Microdata Database Administrator (1)<br>- Indicators Database Administrator (1)</p><ul><li><strong>Geographic Information Systems (5):</strong></li></ul><p class="rteindent1">- Geographic Information Systems Team Leader (1)<br>- Sampling Frames Cartographer Officer(1)<br>- Fieldwork Organization Cartographer Officer (1)<br>- Map Design &amp; Production Geometrician Officer (1)<br>- Spatial Databases Geometrician Officer (1)</p><ul><li><strong>IT Systems Administration (4):</strong></li></ul>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - IT System Administration Team Leader (1)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Application Development Administrator (1)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp; Support &amp; Helpdesk&nbsp; (1)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - LAN Administrator (1)</td><td rowspan="3" style="vertical-align: top;" width="20px">&nbsp;</td><td valign="top"><table cellspacing="2" height="273" width="288"><tbody><tr><td bgcolor="#f0f5f7"><strong>Director : </strong><br>Mr. Jimmy Mukasa</td></tr><tr><td bgcolor="#f0f5f7" class="rtecenter" valign="top"><img alt="" src="/sites/default/files/user_uploads/images/ict_jimmy_nisr.png" style="width: 160px; height: 182px;"></td></tr><tr><td bgcolor="#f0f5f7" valign="top">&nbsp;</td></tr></tbody></table></td></tr><tr><td>&nbsp;</td></tr></tbody></table><p>&nbsp;</p>',
+        'summary' => '<p>&nbsp;</p><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify">The Information and Communication Technology (ICT) Department is responsible for data processing of surveys and censuses carried out, the Local Area Network (LAN), Hardware, Software, Internet, External Web Site, Intranet, Security, Backup,&nbsp; Digitized maps, Documentation, Archiving, Data-bases and ICT Training etc.<br>&nbsp;</p></td></tr></tbody></table><p>&nbsp;</p>',
         'format' => 2,
-        'safe_summary' => '<br /><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">
-					The Information and Communication Technology (ICT) Department is responsible for data processing of surveys and censuses carried out, the Local Area Network (LAN), Hardware, Software, Internet, External Web Site, Intranet, Security, Backup,  Digitized maps, Documentation, Archiving, Data-bases and ICT Training etc.<br /><br /></p></td></tr></tbody></table>',
+        'safe_summary' => '<p> </p><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify">The Information and Communication Technology (ICT) Department is responsible for data processing of surveys and censuses carried out, the Local Area Network (LAN), Hardware, Software, Internet, External Web Site, Intranet, Security, Backup,  Digitized maps, Documentation, Archiving, Data-bases and ICT Training etc.<br /> </p></td></tr></tbody></table><p> </p>',
       ),
     ),
   ),
+  'path' => array(
+    'pathauto' => 0,
+  ),
+  'pathauto_perform_alias' => FALSE,
   'date' => '2011-09-15 14:31:51 +0300',
   'user_uuid' => '0ba20103-dd5e-4a28-ba96-a90ee7bf92be',
 );
@@ -2421,225 +1531,17 @@ By working in partnership, NISR improves its efficiency and effectiveness.<br />
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => '<table align="right" border="1" cellpadding="1" cellspacing="1" height="900" width="819">
-	<tbody>
-		<tr>
-			<td class="rtecenter" colspan="4">
-				<img alt="" height="90" src="/sites/default/files/user_uploads/images/infographic_banner.jpg" valign="top" width="760" /></td>
-		</tr>
-		<tr>
-			<td class="rtecenter" colspan="4">
-				<h1>
-					WE HAVE THE WINNERS!</h1>
-			</td>
-		</tr>
-		<tr>
-			<td class="rtecenter">
-				1st Place</td>
-			<td valign="top">
-				&nbsp;</td>
-			<td class="rtecenter">
-				2nd Place</td>
-			<td class="rtecenter">
-				3rd Place</td>
-		</tr>
-		<tr>
-			<td valign="top">
-				<img alt="" height="543" src="/sites/default/files/user_uploads/engineers_reals.jpg" valign="top" width="237" /><br />
-				<p>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>AWARD:</strong> MacBook</p>
-			</td>
-			<td valign="top">
-				&nbsp;</td>
-			<td class="rtecenter" style="vertical-align: top;">
-				<br />
-				<img alt="" src="/sites/default/files/user_uploads/Creanova_2.jpg" style="width: 250px; height: 500px;" /><br />
-				<br />
-				<p>
-					<strong>AWARD:</strong> Apple Ipad</p>
-			</td>
-			<td class="rtecenter" style="vertical-align: top;">
-				<img alt="" src="/sites/default/files/user_uploads/icyizere_3.jpg" style="width: 250px; height: 375px;" /><br />
-				<strong>AWARD:</strong> HP Computer
-				<p>
-					&nbsp;</p>
-			</td>
-		</tr>
-		<tr>
-			<td class="rtecenter">
-				<a href="/sites/default/files/user_uploads/Real%20Engineers.png" target="_blank">View high resolution file</a></td>
-			<td valign="top">
-				&nbsp;</td>
-			<td class="rtecenter">
-				<a href="/sites/default/files/user_uploads/Creanova.jpg" target="_blank">View high resolution file</a></td>
-			<td class="rtecenter">
-				<a href="/sites/default/files/user_uploads/Icyizere.jpg" target="_blank">View high resolution file</a></td>
-		</tr>
-		<tr>
-			<td class="rtecenter" colspan="4">
-				<div>
-					<table align="center" border="0" cellpadding="1" cellspacing="1" height="330" width="862">
-						<tbody>
-							<tr>
-								<td>
-									<div>
-										<strong>TEAM NAME</strong>: REAL ENGINEERS</div>
-								</td>
-								<td>
-									<div>
-										<strong>TEAM NAME</strong>: CREANOVA&nbsp;</div>
-								</td>
-								<td>
-									<div>
-										<strong>TEAM NAME</strong>: ICYIZERE</div>
-								</td>
-							</tr>
-							<tr>
-								<td style="vertical-align: top;">
-									<br />
-									<strong>TEAM MEMBERS:</strong><br />
-									<br />
-									Jean Claude&nbsp;&nbsp; &nbsp;MUNYANEZA<br />
-									Precieuse&nbsp;&nbsp; &nbsp;UMUHOZA<br />
-									<br />
-									<br />
-									&nbsp;</td>
-								<td style="vertical-align: top;">
-									<br />
-									<strong>TEAM MEMBERS:</strong><br />
-									<br />
-									Roland Christian HABIMANA<br />
-									Cedric&nbsp;&nbsp; &nbsp;KAGIMBANYI<br />
-									Jennifer MUDAHOGORA</td>
-								<td style="vertical-align: top;">
-									<br />
-									<strong>TEAM MEMBERS:&nbsp;</strong><br />
-									<br />
-									Lynn KIRABO<br />
-									Patient BARAKA<br />
-									Lambert SENDEGEYA</td>
-							</tr>
-							<tr>
-								<td style="vertical-align: top;">
-									<strong>Faculty</strong>: Civil Engineering</td>
-								<td style="vertical-align: top;">
-									<strong>Faculty</strong>: Creative Design</td>
-								<td style="vertical-align: top;">
-									<strong>Faculty</strong>: Master of Science in Information Technology</td>
-							</tr>
-							<tr>
-								<td style="vertical-align: top;">
-									INSTITUTION:<br />
-									<a href="http://www.iprckigali.ac.rw/" target="_blank">IPRC Kigali / Kicukiro College of Technology</a></td>
-								<td style="vertical-align: top;">
-									INSTITUTION:<br />
-									<a href="http://www.kist.ac.rw/" target="_blank">UNIVERSITY OF RWANDA /<br />
-									College of Science and Technology</a><br />
-									&nbsp;</td>
-								<td>
-									INSTITUTION:<br />
-									<a href="http://www.cmu.edu/rwanda/" target="_blank">Carnegie Mellon University Rwanda</a><br />
-									&nbsp;</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td class="rtecenter" colspan="4" style="background-color: rgb(204, 204, 204);">
-				Other teams selected for the awards and their entries ( Names of Team&#39;s members, Institution):</td>
-			<td colspan="4">
-				&nbsp;</td>
-		</tr>
-		<tr>
-		</tr>
-	</tbody>
-</table>
-<table align="center" border="1" cellpadding="1" cellspacing="1" height="151" width="855">
-	<tbody>
-		<tr>
-			<td>
-				<strong>THE 4th WINNING TEAM</strong>: COMMUNICATION DESIGN<br />
-				<strong>Members</strong>: Alain Patrick Mwizerwa, Janvier Maniraguha, Ange Nsabimana (<strong>AWARD</strong>: Smart phones(S3)<br />
-				<strong>Institution</strong>: UR-KIGALI CAMPUS (FORMER KIST) - <strong>Faculty</strong>: Creative Design</td>
-			<td>
-				<a href="/sites/default/files/user_uploads/COMMUNICATION%20DESIGN.jpg" target="_blank">Entry</a></td>
-		</tr>
-		<tr>
-			<td>
-				<strong>THE 5th WINNING TEAM</strong>:&nbsp; THE GRAPHIC ARCHITECTS<br />
-				<strong>Members</strong>: Emmanuel Nyirinkindi, Alain Yves Twizeyimana, Flavia Gwiza (<strong>AWARD</strong>: External hard disk)<br />
-				<strong>Institution</strong>: UR-KIGALI CAMPUS (FORMER KIST) - <strong>Faculty</strong>: Bachelor of Architecture</td>
-			<td>
-				<a href="/sites/default/files/user_uploads/images/architects_new_0.jpg" target="_blank">Entry</a></td>
-		</tr>
-	</tbody>
-</table>
-<div>
-	&nbsp;</div>
-<h1>
-	&nbsp;<br />
-	<span style="text-align: justify;">&nbsp;Congratulations to all the winners!</span></h1>
-<a class="twitter-share-button" href="https://twitter.com/share">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script><a href="http://statistics.gov.rw/about-us/news/nisr-infographic-competition-2013">Competition announcement&nbsp;</a><br />
-<br />
-<div id="disqus_thread">
-	&nbsp;</div>
-<script type="text/javascript">
-            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-            var disqus_shortname = \'nisr\'; // required: replace example with your forum shortname
-
-            /* * * DON\'T EDIT BELOW THIS LINE * * */
-            (function() {
-                var dsq = document.createElement(\'script\'); dsq.type = \'text/javascript\'; dsq.async = true;
-                dsq.src = \'http://\' + disqus_shortname + \'.disqus.com/embed.js\';
-                (document.getElementsByTagName(\'head\')[0] || document.getElementsByTagName(\'body\')[0]).appendChild(dsq);
-            })();
-        </script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><p>
-	<a class="dsq-brlink" href="http://disqus.com">comments powered by <span class="logo-disqus">Disqus</span></a></p>
-<br />
-',
-        'summary' => '<table align="right" border="1" cellpadding="1" cellspacing="1" height="900" width="819">
-	<tbody>
-		<tr>
-			<td class="rtecenter" colspan="4">
-				<img alt="" height="90" src="/sites/default/files/user_uploads/images/infographic_banner.jpg" valign="top" width="760" /></td>
-		</tr>
-		<tr>
-			<td class="rtecenter" colspan="4">
-				<h1>
-					WE HAVE THE WINNERS!</h1>
-			</td>
-		</tr>
-		<tr>
-			<td class="rtecenter">
-				1st Place</td>
-			<td valign="top">
-				&nbsp;</td>
-			<td class="rtecenter">
-				2nd Place</td>
-			<td class="rtecenter">
-				3rd Place</td>
-		</tr>',
+        'value' => '<table align="right" border="1" cellpadding="1" cellspacing="1" height="900" width="819"><tbody><tr><td class="rtecenter" colspan="4"><img alt="" height="90" src="/sites/default/files/user_uploads/images/infographic_banner.jpg" valign="top" width="760"></td></tr><tr><td class="rtecenter" colspan="4"><h1>WE HAVE THE WINNERS!</h1></td></tr><tr><td class="rtecenter">1st Place</td><td valign="top">&nbsp;</td><td class="rtecenter">2nd Place</td><td class="rtecenter">3rd Place</td></tr><tr><td valign="top"><img alt="" height="543" src="/sites/default/files/user_uploads/engineers_reals.jpg" valign="top" width="237"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>AWARD:</strong> MacBook</p></td><td valign="top">&nbsp;</td><td class="rtecenter" style="vertical-align: top;"><br><img alt="" src="/sites/default/files/user_uploads/Creanova_2.jpg" style="width: 250px; height: 500px;"><br>&nbsp;<p><strong>AWARD:</strong> Apple Ipad</p></td><td class="rtecenter" style="vertical-align: top;"><img alt="" src="/sites/default/files/user_uploads/icyizere_3.jpg" style="width: 250px; height: 375px;"><br><strong>AWARD:</strong> HP Computer<p>&nbsp;</p></td></tr><tr><td class="rtecenter"><a href="/sites/default/files/user_uploads/Real%20Engineers.png" target="_blank">View high resolution file</a></td><td valign="top">&nbsp;</td><td class="rtecenter"><a href="/sites/default/files/user_uploads/Creanova.jpg" target="_blank">View high resolution file</a></td><td class="rtecenter"><a href="/sites/default/files/user_uploads/Icyizere.jpg" target="_blank">View high resolution file</a></td></tr><tr><td class="rtecenter" colspan="4"><div><table align="center" border="0" cellpadding="1" cellspacing="1" height="330" width="862"><tbody><tr><td><div><strong>TEAM NAME</strong>: REAL ENGINEERS</div></td><td><div><strong>TEAM NAME</strong>: CREANOVA&nbsp;</div></td><td><div><strong>TEAM NAME</strong>: ICYIZERE</div></td></tr><tr><td style="vertical-align: top;"><br><strong>TEAM MEMBERS:</strong><br><br>Jean Claude&nbsp;&nbsp; &nbsp;MUNYANEZA<br>Precieuse&nbsp;&nbsp; &nbsp;UMUHOZA<br><br><br>&nbsp;</td><td style="vertical-align: top;"><br><strong>TEAM MEMBERS:</strong><br><br>Roland Christian HABIMANA<br>Cedric&nbsp;&nbsp; &nbsp;KAGIMBANYI<br>Jennifer MUDAHOGORA</td><td style="vertical-align: top;"><br><strong>TEAM MEMBERS:&nbsp;</strong><br><br>Lynn KIRABO<br>Patient BARAKA<br>Lambert SENDEGEYA</td></tr><tr><td style="vertical-align: top;"><strong>Faculty</strong>: Civil Engineering</td><td style="vertical-align: top;"><strong>Faculty</strong>: Creative Design</td><td style="vertical-align: top;"><strong>Faculty</strong>: Master of Science in Information Technology</td></tr><tr><td style="vertical-align: top;">INSTITUTION:<br><a href="http://www.iprckigali.ac.rw/" target="_blank">IPRC Kigali / Kicukiro College of Technology</a></td><td style="vertical-align: top;">INSTITUTION:<br><a href="http://www.kist.ac.rw/" target="_blank">UNIVERSITY OF RWANDA /<br>College of Science and Technology</a><br>&nbsp;</td><td>INSTITUTION:<br><a href="http://www.cmu.edu/rwanda/" target="_blank">Carnegie Mellon University Rwanda</a><br>&nbsp;</td></tr></tbody></table></div></td></tr><tr><td class="rtecenter" colspan="4" style="background-color: rgb(204, 204, 204);">Other teams selected for the awards and their entries ( Names of Team\'s members, Institution):</td><td colspan="4">&nbsp;</td></tr><tr></tr></tbody></table><table align="center" border="1" cellpadding="1" cellspacing="1" height="151" width="855"><tbody><tr><td><strong>THE 4th WINNING TEAM</strong>: COMMUNICATION DESIGN<br><strong>Members</strong>: Alain Patrick Mwizerwa, Janvier Maniraguha, Ange Nsabimana (<strong>AWARD</strong>: Smart phones(S3)<br><strong>Institution</strong>: UR-KIGALI CAMPUS (FORMER KIST) - <strong>Faculty</strong>: Creative Design</td><td><a href="/sites/default/files/user_uploads/COMMUNICATION%20DESIGN.jpg" target="_blank">Entry</a></td></tr><tr><td><strong>THE 5th WINNING TEAM</strong>:&nbsp; THE GRAPHIC ARCHITECTS<br><strong>Members</strong>: Emmanuel Nyirinkindi, Alain Yves Twizeyimana, Flavia Gwiza (<strong>AWARD</strong>: External hard disk)<br><strong>Institution</strong>: UR-KIGALI CAMPUS (FORMER KIST) - <strong>Faculty</strong>: Bachelor of Architecture</td><td><a href="/sites/default/files/user_uploads/images/architects_new_0.jpg" target="_blank">Entry</a></td></tr></tbody></table><div>&nbsp;</div><h1>&nbsp;<br><span style="text-align: justify;">&nbsp;Congratulations to all the winners!</span></h1><p><a class="twitter-share-button" href="https://twitter.com/share">Tweet</a> <a href="http://statistics.gov.rw/about-us/news/nisr-infographic-competition-2013">Competition announcement&nbsp;</a></p><p>&nbsp;</p><p>&nbsp;</p><div id="disqus_thread">&nbsp;</div><noscript>Please enable JavaScript to view the &lt;a href="http://disqus.com/?ref_noscript"&gt;comments powered by Disqus.&lt;/a&gt;</noscript><p>&nbsp;</p><p>&nbsp;</p><p><a class="dsq-brlink" href="http://disqus.com">comments powered by <span class="logo-disqus">Disqus</span></a></p><p>&nbsp;</p>',
+        'summary' => '<table align="right" border="1" cellpadding="1" cellspacing="1" height="900" width="819"><tbody><tr><td class="rtecenter" colspan="4"><img alt="" height="90" src="/sites/default/files/user_uploads/images/infographic_banner.jpg" valign="top" width="760"></td></tr><tr><td class="rtecenter" colspan="4"><h1>WE HAVE THE WINNERS!</h1></td></tr><tr><td class="rtecenter">1st Place</td><td valign="top">&nbsp;</td><td class="rtecenter">2nd Place</td><td class="rtecenter">3rd Place</td></tr></tbody></table>',
         'format' => 2,
-        'safe_summary' => '<table align="right" border="1" cellpadding="1" cellspacing="1" height="900" width="819"><tbody><tr><td class="rtecenter" colspan="4">
-				<img alt="" height="90" src="/sites/default/files/user_uploads/images/infographic_banner.jpg" valign="top" width="760" /></td>
-		</tr><tr><td class="rtecenter" colspan="4">
-				<h1>
-					WE HAVE THE WINNERS!</h1>
-			</td>
-		</tr><tr><td class="rtecenter">
-				1st Place</td>
-			<td valign="top">
-				 </td>
-			<td class="rtecenter">
-				2nd Place</td>
-			<td class="rtecenter">
-				3rd Place</td>
-		</tr></tbody></table>',
+        'safe_summary' => '<table align="right" border="1" cellpadding="1" cellspacing="1" height="900" width="819"><tbody><tr><td class="rtecenter" colspan="4"><img alt="" height="90" src="/sites/default/files/user_uploads/images/infographic_banner.jpg" valign="top" width="760" /></td></tr><tr><td class="rtecenter" colspan="4"><h1>WE HAVE THE WINNERS!</h1></td></tr><tr><td class="rtecenter">1st Place</td><td valign="top"> </td><td class="rtecenter">2nd Place</td><td class="rtecenter">3rd Place</td></tr></tbody></table>',
       ),
     ),
   ),
+  'path' => array(
+    'pathauto' => 0,
+  ),
+  'pathauto_perform_alias' => FALSE,
   'date' => '2013-10-15 19:36:13 +0300',
   'user_uuid' => 'abebcbee-8aa6-47c1-b12b-9d9def5900d3',
 );
@@ -2657,6 +1559,10 @@ By working in partnership, NISR improves its efficiency and effectiveness.<br />
   'translate' => 0,
   'uuid' => '7b28ed56-1e36-4349-bcff-6e7363b8e5d9',
   'body' => array(),
+  'path' => array(
+    'pathauto' => 0,
+  ),
+  'pathauto_perform_alias' => FALSE,
   'date' => '2015-10-14 13:54:26 +0300',
   'user_uuid' => '0ba20103-dd5e-4a28-ba96-a90ee7bf92be',
 );
@@ -2676,48 +1582,17 @@ By working in partnership, NISR improves its efficiency and effectiveness.<br />
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => '<p class="rtejustify">
-	The&nbsp; National Institute of Statistics of Rwanda (NISR) comprises the following organs:&nbsp; The Board of Directors&nbsp; and The Management of the Institute. Collectively, the organisational structure of the institute serves to maximize its effectiveness and quality of its operations.&nbsp;The structure also facilitates NISR&#39;s National Statistical System (NSS) wide coordination activities and projects.</p>
-<p class="rtecenter">
-	<img alt="" height="87" src="/sites/default/files/user_uploads/images/minecofin_arrow.png" width="167" /></p>
-<table align="center" border="0" cellpadding="1" cellspacing="1" height="306" width="806">
-	<tbody>
-		<tr>
-			<td class="rtecenter">
-				<a href="../about-us/organizational-structure/board-directors"><img alt="" height="92" src="http://www.statistics.gov.rw/sites/default/files/images/structure-bd.png" width="643" /></a></td>
-		</tr>
-		<tr>
-			<td class="rtecenter">
-				<a href="../about-us/organizational-structure/office-director-general"><img alt="" height="102" src="http://www.statistics.gov.rw/sites/default/files/images/structure-dg.png" width="643" /></a></td>
-		</tr>
-		<tr>
-			<td>
-				<table height="100" width="865">
-					<tbody>
-						<tr>
-							<td class="rtecenter" valign="top">
-								<a href="../about-us/organizational-structure/spiu-coordinator"><img alt="" height="76" src="http://www.statistics.gov.rw/sites/default/files/images/structure-spiu.png" width="132" /></a></td>
-							<td class="rtecenter" valign="top">
-								<a href="../about-us/organizational-structure/office-deputy-director-general-corporate-services"><img alt="" height="76" src="http://www.statistics.gov.rw/sites/default/files/images/structure-ddgc.png" width="132" /></a><br />
-								<a href="../about-us/organizational-structure/office-deputy-director-general-corporate-services/administration"><img alt="" height="76" src="http://www.statistics.gov.rw/sites/default/files/images/structure-admin.png" width="69" /></a><a href="../about-us/organizational-structure/office-deputy-director-general-corporate-services/procurement"><img alt="" height="78" src="http://www.statistics.gov.rw/sites/default/files/images/procurement.png" width="69" /></a><a href="../../about-us/organizational-structure/office-deputy-director-general-corporate-services/finance"><img alt="" height="78" src="http://www.statistics.gov.rw/sites/default/files/images/structure-finance.png" width="69" /></a></td>
-							<td class="rtecenter" valign="top">
-								<a href="../about-us/organizational-structure/office-deputy-director-general-studies-programs"><img alt="" height="79" src="http://www.statistics.gov.rw/sites/default/files/images/structure-ddgs.png" width="254" /></a><br />
-								<a href="../about-us/organizational-structure/office-deputy-director-general-studies-programs/information-communication-technology"><img alt="" height="82" src="http://www.statistics.gov.rw/sites/default/files/images/structure-ict.png" width="74" /></a><a href="../about-us/organizational-structure/office-deputy-director-general-studies-programs/statistical-methods"><img alt="" height="83" src="http://www.statistics.gov.rw/sites/default/files/images/structure-smrp.png" width="71" /></a><a href="../about-us/organizational-structure/office-deputy-director-general-studies-programs/census"><img alt="" height="83" src="http://www.statistics.gov.rw/sites/default/files/images/structure-census2.png" width="71" /></a><a href="../about-us/organizational-structure/office-deputy-director-general-studies-programs/social-demographic-statistics"><img alt="" height="84" src="http://statistics.gov.rw/sites/default/files/images/structure-sds2.png" width="70" /></a><a href="../about-us/organizational-structure/office-deputy-director-general-studies-programs/economic-statistics"><img alt="" height="86" src="http://statistics.gov.rw/sites/default/files/images/structure-econ.png" width="74" /></a></td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-	</tbody>
-</table>
-<br />
-',
-        'summary' => NULL,
+        'value' => '<p class="rtejustify">The&nbsp; National Institute of Statistics of Rwanda (NISR) comprises the following organs:&nbsp; The Board of Directors&nbsp; and The Management of the Institute. Collectively, the organisational structure of the institute serves to maximize its effectiveness and quality of its operations.&nbsp;The structure also facilitates NISR\'s National Statistical System (NSS) wide coordination activities and projects.</p><div class="col-md-12"><p class="rtecenter"><img alt="" src="/sites/default/files/images/structure/minecofin_arrow.png"></p></div><div class="col-md-12"><img alt="" src="/sites/default/files/images/structure/bd.png"></div><div class="col-md-12"><img alt="" src="/sites/default/files/images/structure/odg.png"></div><div class="col-md-4"><div class="col-md-12"><a href="about-us/organizational-structure/odg/ospiu"><img alt="" src="/sites/default/files/images/structure/spiu.png"></a></div></div><div class="col-md-4"><div class="col-md-12"><a href="about-us/organizational-structure/odg/ohcs"><img alt="" src="/sites/default/files/images/structure/ohcs.png"></a></div><div class="col-md-12"><div class="col-md-3"><a href="about-us/organizational-structure/odg/ohcs/administration"><img alt="" src="/sites/default/files/images/structure/administration.png"></a></div><div class="col-md-3"><a href="about-us/organizational-structure/odg/ohcs/procurement"><img alt="" src="/sites/default/files/images/structure/procurement.png"></a></div><div class="col-md-3"><a href="about-us/organizational-structure/odg/ohcs/finance"><img alt="" src="/sites/default/files/images/structure/finance.png"></a></div></div></div><div class="col-md-4"><div class="col-md-12"><a href="about-us/organizational-structure/odg/oddg"><img alt="" src="/sites/default/files/images/structure/oddg.png" style="width: 155px; "></a></div><div class="col-md-12"><div class="col-md-3"><a href="about-us/organizational-structure/odg/oddg/ict"><img alt="" src="/sites/default/files/images/structure/ict.png"></a></div><div class="col-md-3"><a href="about-us/organizational-structure/odg/oddg/smrp"><img alt="" src="/sites/default/files/images/structure/smrp.png"></a></div><div class="col-md-3"><a href="about-us/organizational-structure/odg/oddg/census"><img alt="" src="/sites/default/files/images/structure/census.png"></a></div><div class="col-md-3"><a href="about-us/organizational-structure/odg/oddg/sds"><img alt="" src="/sites/default/files/images/structure/sds.png"></a></div></div></div>',
+        'summary' => '',
         'format' => 2,
         'safe_summary' => '',
       ),
     ),
   ),
+  'path' => array(
+    'pathauto' => 0,
+  ),
+  'pathauto_perform_alias' => FALSE,
   'date' => '2011-06-03 14:46:41 +0300',
   'user_uuid' => 'abebcbee-8aa6-47c1-b12b-9d9def5900d3',
 );
@@ -3086,72 +1961,17 @@ $("a",$("#primary-menu-inner li.leaf")).addClass("active");
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => '<br />
-<table border="0" cellpadding="5" cellspacing="0" height="178" style="margin: 1px;" width="891">
-	<tbody>
-		<tr>
-			<td rowspan="2" valign="top" width="60%">
-				Procurement section &nbsp;&nbsp;&nbsp;</td>
-			<td rowspan="3" style="vertical-align: top;" width="20px">
-				&nbsp;</td>
-			<td bgcolor="" valign="top">
-				<table height="100%" width="100%">
-					<tbody>
-						<tr>
-							<td bgcolor="#f0f5f7">
-								&nbsp;</td>
-						</tr>
-						<tr>
-							<td bgcolor="#f0f5f7" class="rtecenter" valign="top">
-								<img alt="" src="/sites/default/files/user_uploads/images/avatar.png" style="width: 160px; height: 160px;" /></td>
-						</tr>
-						<tr>
-							<td bgcolor="#f0f5f7" valign="top">
-								<br />
-								&nbsp;</td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				&nbsp;</td>
-		</tr>
-	</tbody>
-</table>
-<br />
-',
-        'summary' => '<br />
-<table border="0" cellpadding="5" cellspacing="0" height="178" style="margin: 1px;" width="891">
-	<tbody>
-		<tr>
-			<td rowspan="2" valign="top" width="60%">
-				Procurement section &nbsp;&nbsp;&nbsp;</td>
-			<td rowspan="3" style="vertical-align: top;" width="20px">
-				&nbsp;</td>
-			<td bgcolor="" valign="top">
-				<table height="100%" width="100%">
-					<tbody>
-						<tr>
-							<td bgcolor="#f0f5f7">
-								&nbsp;</td>
-						</tr>
-						<tr>
-							<td bgcolor="#f0f5f7" class="rtecenter" valign="top">',
+        'value' => '<p>&nbsp;</p><table border="0" cellpadding="5" cellspacing="0" height="178" style="margin: 1px;" width="891"><tbody><tr><td rowspan="2" valign="top" width="60%">Procurement section &nbsp;&nbsp;&nbsp;</td><td rowspan="3" style="vertical-align: top;" width="20px">&nbsp;</td><td bgcolor="" valign="top"><table height="100%" width="100%"><tbody><tr><td bgcolor="#f0f5f7">&nbsp;</td></tr><tr><td bgcolor="#f0f5f7" class="rtecenter" valign="top"><img alt="" src="/sites/default/files/user_uploads/images/avatar.png" style="width: 160px; height: 160px;"></td></tr><tr><td bgcolor="#f0f5f7" valign="top"><br>&nbsp;</td></tr></tbody></table></td></tr><tr><td>&nbsp;</td></tr></tbody></table><p>&nbsp;</p>',
+        'summary' => '<p>&nbsp;</p><table border="0" cellpadding="5" cellspacing="0" height="178" style="margin: 1px;" width="891"><tbody><tr><td rowspan="2" valign="top" width="60%">Procurement section &nbsp;&nbsp;&nbsp;</td><td rowspan="3" style="vertical-align: top;" width="20px">&nbsp;</td><td bgcolor="" valign="top"><table height="100%" width="100%"><tbody><tr><td bgcolor="#f0f5f7">&nbsp;</td></tr><tr><td bgcolor="#f0f5f7" class="rtecenter" valign="top">&nbsp;</td></tr></tbody></table></td></tr></tbody></table><p>&nbsp;</p>',
         'format' => 2,
-        'safe_summary' => '<br /><table border="0" cellpadding="5" cellspacing="0" height="178" style="margin: 1px;" width="891"><tbody><tr><td rowspan="2" valign="top" width="60%">
-				Procurement section    </td>
-			<td rowspan="3" style="vertical-align: top;" width="20px">
-				 </td>
-			<td bgcolor="" valign="top">
-				<table height="100%" width="100%"><tbody><tr><td bgcolor="#f0f5f7">
-								 </td>
-						</tr><tr><td bgcolor="#f0f5f7" class="rtecenter" valign="top">
-</td></tr></tbody></table></td></tr></tbody></table>',
+        'safe_summary' => '<p> </p><table border="0" cellpadding="5" cellspacing="0" height="178" style="margin: 1px;" width="891"><tbody><tr><td rowspan="2" valign="top" width="60%">Procurement section    </td><td rowspan="3" style="vertical-align: top;" width="20px"> </td><td bgcolor="" valign="top"><table height="100%" width="100%"><tbody><tr><td bgcolor="#f0f5f7"> </td></tr><tr><td bgcolor="#f0f5f7" class="rtecenter" valign="top"> </td></tr></tbody></table></td></tr></tbody></table><p> </p>',
       ),
     ),
   ),
+  'path' => array(
+    'pathauto' => 0,
+  ),
+  'pathauto_perform_alias' => FALSE,
   'date' => '2015-02-06 09:03:17 +0200',
   'user_uuid' => '0ba20103-dd5e-4a28-ba96-a90ee7bf92be',
 );
@@ -3197,113 +2017,17 @@ $("a",$("#primary-menu-inner li.leaf")).addClass("active");
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => '<br />
-<table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;">
-	<tbody>
-		<tr>
-			<td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">
-					The Economic Statistics Department is mandated to collect data and produce statistics and information in various economic areas, including: Industrial (manufacturing, mining and quarrying) and agricultural statistics; trade (domestic and international trade), infrastructure as well as services sectors; price Statistics (CPI and PPI) and National Accounts ( Input Output table and annual bench marking, Quarterly national accounts, Balance of payments, Flow of funds accounts).&nbsp;In addition, the Department is in charge of establishing and maintaining a business registry.&nbsp;<br />
-					<br />
-					To accomplish its mission, the Economic Statistics Department is headed by a director and&nbsp;is organized into the following five sections:</p>
-				<ul>
-					<li>
-						<strong>Price Statistics Research Statistician</strong> <strong>(24)</strong>:</li>
-				</ul>
-				<p class="rteindent1">
-					- Price Statistics Research Statistician Team Leader (1)<br />
-					- Urban Consumer Price Index Statistician (1)<br />
-					- Rural Consumer Price Index Statistician (1)<br />
-					-International Comparison Program Statistician (1)<br />
-					-Trade Price Indices Statistician (1)<br />
-					- Producer Price Index Manufacturing Statistician (1)<br />
-					- Producer Price Index Services Statistician (1)<br />
-					- Regional Price &amp; Economic Data Collectors Officer (18)</p>
-				<ul>
-					<li>
-						<strong>Agriculture &amp; Environmental Statistician (5)</strong>:</li>
-				</ul>
-				<p class="rteindent1">
-					- Agriculture &amp; Environmental Statistician Team Leader (1)<br />
-					- Seasonal Crop Production Statistician (1)<br />
-					- Perennial Crop Production &amp; Horticulture Statistician (1)<br />
-					- Livestock &amp; Fisheries Production Statistics (1)<br />
-					- Forestry &amp; Environmental Statistics (1)</p>
-				<ul>
-					<li>
-						<strong>National Account Research&nbsp; Statistician</strong> <strong>(6)</strong>:</li>
-				</ul>
-				<p class="rteindent1">
-					- National Account Research Statistician Team Leader (1)<br />
-					- Formal Sector Quarterly National Accounts Statistics (1)<br />
-					- Informal Sector Quarterly National Accounts Statistics (1)<br />
-					- Formal Sector Annual National Accounts Statistics (1)<br />
-					- Informal Sector Annual National Accounts Statistics (1)<br />
-					- Investment &amp; Government Financial Statistician (1)</p>
-				<ul>
-					<li>
-						<strong>Trade &amp; Services Statistics (4)</strong>:</li>
-				</ul>
-				<p class="rteindent1">
-					-Trade &amp; Services Statistics Team Leader (1)<br />
-					-Formal Trade Statistician (1)<br />
-					-Informal Trade Statistician (1)<br />
-					-Financial Account Portofolio Statistician (1)</p>
-				<ul>
-					<li>
-						<strong>Infrastructure &amp; Industry Statistics (4):</strong></li>
-				</ul>
-				<p class="rteindent1">
-					- Infrastructure &amp; Industry Statistics Team Leader (1)<br />
-					- Mining &amp; Quarrying Statistician (1)<br />
-					- Manufacturing Statistician (1)<br />
-					- Construction &amp; Real Estate Statistician (1)</p>
-				<br />
-				&nbsp;</td>
-			<td rowspan="3" style="vertical-align: top;" width="20px">
-				&nbsp;</td>
-			<td valign="top">
-				<table cellspacing="2" height="100%" width="100%">
-					<tbody>
-						<tr>
-							<td bgcolor="#f0f5f7">
-								<strong>Director: </strong><br />
-								Mr. Sebastian MANZI</td>
-						</tr>
-						<tr>
-							<td bgcolor="#f0f5f7" class="rtecenter" valign="top">
-								<img alt="" src="/sites/default/files/user_uploads/Manzi1.JPG" style="width: 160px; height: 160px; border-width: 1px; border-style: solid;" /></td>
-						</tr>
-						<tr>
-							<td bgcolor="#f0f5f7" valign="top">
-								<br />
-								&nbsp;</td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				&nbsp;</td>
-		</tr>
-	</tbody>
-</table>
-<br />
-',
-        'summary' => '<br />
-<table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;">
-	<tbody>
-		<tr>
-			<td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">',
+        'value' => '<p>&nbsp;</p><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify">The Economic Statistics Department is mandated to collect data and produce statistics and information in various economic areas, including: Industrial (manufacturing, mining and quarrying) and agricultural statistics; trade (domestic and international trade), infrastructure as well as services sectors; price Statistics (CPI and PPI) and National Accounts ( Input Output table and annual bench marking, Quarterly national accounts, Balance of payments, Flow of funds accounts).&nbsp;In addition, the Department is in charge of establishing and maintaining a business registry.&nbsp;<br><br>To accomplish its mission, the Economic Statistics Department is headed by a director and&nbsp;is organized into the following five sections:</p><ul><li><strong>Price Statistics Research Statistician</strong> <strong>(24)</strong>:</li></ul><p class="rteindent1">- Price Statistics Research Statistician Team Leader (1)<br>- Urban Consumer Price Index Statistician (1)<br>- Rural Consumer Price Index Statistician (1)<br>-International Comparison Program Statistician (1)<br>-Trade Price Indices Statistician (1)<br>- Producer Price Index Manufacturing Statistician (1)<br>- Producer Price Index Services Statistician (1)<br>- Regional Price &amp; Economic Data Collectors Officer (18)</p><ul><li><strong>Agriculture &amp; Environmental Statistician (5)</strong>:</li></ul><p class="rteindent1">- Agriculture &amp; Environmental Statistician Team Leader (1)<br>- Seasonal Crop Production Statistician (1)<br>- Perennial Crop Production &amp; Horticulture Statistician (1)<br>- Livestock &amp; Fisheries Production Statistics (1)<br>- Forestry &amp; Environmental Statistics (1)</p><ul><li><strong>National Account Research&nbsp; Statistician</strong> <strong>(6)</strong>:</li></ul><p class="rteindent1">- National Account Research Statistician Team Leader (1)<br>- Formal Sector Quarterly National Accounts Statistics (1)<br>- Informal Sector Quarterly National Accounts Statistics (1)<br>- Formal Sector Annual National Accounts Statistics (1)<br>- Informal Sector Annual National Accounts Statistics (1)<br>- Investment &amp; Government Financial Statistician (1)</p><ul><li><strong>Trade &amp; Services Statistics (4)</strong>:</li></ul><p class="rteindent1">-Trade &amp; Services Statistics Team Leader (1)<br>-Formal Trade Statistician (1)<br>-Informal Trade Statistician (1)<br>-Financial Account Portofolio Statistician (1)</p><ul><li><strong>Infrastructure &amp; Industry Statistics (4):</strong></li></ul><p class="rteindent1">- Infrastructure &amp; Industry Statistics Team Leader (1)<br>- Mining &amp; Quarrying Statistician (1)<br>- Manufacturing Statistician (1)<br>- Construction &amp; Real Estate Statistician (1)</p><br>&nbsp;</td><td rowspan="3" style="vertical-align: top;" width="20px">&nbsp;</td><td valign="top"><table cellspacing="2" height="100%" width="100%"><tbody><tr><td bgcolor="#f0f5f7"><strong>Director: </strong><br>Mr. Sebastian MANZI</td></tr><tr><td bgcolor="#f0f5f7" class="rtecenter" valign="top"><img alt="" src="/sites/default/files/user_uploads/Manzi1.JPG" style="width: 160px; height: 160px; border-width: 1px; border-style: solid;"></td></tr><tr><td bgcolor="#f0f5f7" valign="top"><br>&nbsp;</td></tr></tbody></table></td></tr><tr><td>&nbsp;</td></tr></tbody></table><p>&nbsp;</p>',
+        'summary' => '<p>&nbsp;</p><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify">&nbsp;</p></td></tr></tbody></table><p>&nbsp;</p>',
         'format' => 2,
-        'safe_summary' => '<br /><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">
-</p></td></tr></tbody></table>',
+        'safe_summary' => '<p> </p><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify"> </p></td></tr></tbody></table><p> </p>',
       ),
     ),
   ),
+  'path' => array(
+    'pathauto' => 0,
+  ),
+  'pathauto_perform_alias' => FALSE,
   'date' => '2011-09-15 14:38:00 +0300',
   'user_uuid' => '0ba20103-dd5e-4a28-ba96-a90ee7bf92be',
 );
@@ -3323,69 +2047,17 @@ $("a",$("#primary-menu-inner li.leaf")).addClass("active");
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => '<br />
-<table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;">
-	<tbody>
-		<tr>
-			<td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">
-					The Finance Department is responsible for preparation of the Budget and Financial Reports; liaising with Directors of other departments for budget planning and execution; monthly financial reporting including bank reconciliation; cash and credit transactions for the Institute on a daily basis; monthly financial reports to the Ministry; management accounts;&nbsp; maintaining special accounting procedures (e.g. Inventory register); establishing and maintaining contracting and procurement management procedures; coordinating with Directors for departments&rsquo; procurement needs; providing projections for future procurement needs for the Institute; ensuring value for money in all NISR financial transactions;&nbsp; ensuring all procurement rules are respected; and monitoring all external contracts for the Institute in conjunction with the Legal Officer of the institute.<br />
-					<br />
-					To accomplish its mission, the Finance Department is headed by a director and is organized into the following three sections:</p>
-				<ul>
-					<li>
-						<strong>Accounting (3)</strong><br />
-						&nbsp;</li>
-					<li>
-						<strong>Budget Management</strong> <strong>(1)</strong><br />
-						&nbsp;</li>
-					<li>
-						<strong>Secretary in Finance Unit (1)</strong></li>
-				</ul>
-			</td>
-			<td rowspan="3" style="vertical-align: top;" width="20px">
-				&nbsp;</td>
-			<td valign="top">
-				<table cellspacing="2" height="100%" width="100%">
-					<tbody>
-						<tr>
-							<td bgcolor="#f0f5f7">
-								<strong>Director : </strong><br />
-								Mr. Silas&nbsp; MUNYEMANA</td>
-						</tr>
-						<tr>
-							<td bgcolor="#f0f5f7" class="rtecenter" valign="top">
-								<img alt="" src="/sites/default/files/user_uploads/images/finance_silas_nisr.png" style="width: 160px; height: 160px;" /></td>
-						</tr>
-						<tr>
-							<td bgcolor="#f0f5f7" valign="top">
-								&nbsp;</td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				&nbsp;</td>
-		</tr>
-	</tbody>
-</table>
-<br />
-',
-        'summary' => '<br />
-<table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;">
-	<tbody>
-		<tr>
-			<td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">',
+        'value' => '<p>&nbsp;</p><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify">The Finance Department is responsible for preparation of the Budget and Financial Reports; liaising with Directors of other departments for budget planning and execution; monthly financial reporting including bank reconciliation; cash and credit transactions for the Institute on a daily basis; monthly financial reports to the Ministry; management accounts;&nbsp; maintaining special accounting procedures (e.g. Inventory register); establishing and maintaining contracting and procurement management procedures; coordinating with Directors for departments’ procurement needs; providing projections for future procurement needs for the Institute; ensuring value for money in all NISR financial transactions;&nbsp; ensuring all procurement rules are respected; and monitoring all external contracts for the Institute in conjunction with the Legal Officer of the institute.<br><br>To accomplish its mission, the Finance Department is headed by a director and is organized into the following three sections:</p><ul><li><strong>Accounting (3)</strong><br>&nbsp;</li><li><strong>Budget Management</strong> <strong>(1)</strong><br>&nbsp;</li><li><strong>Secretary in Finance Unit (1)</strong></li></ul></td><td rowspan="3" style="vertical-align: top;" width="20px">&nbsp;</td><td valign="top"><table cellspacing="2" height="100%" width="100%"><tbody><tr><td bgcolor="#f0f5f7"><strong>Director : </strong><br>Mr. Silas&nbsp; MUNYEMANA</td></tr><tr><td bgcolor="#f0f5f7" class="rtecenter" valign="top"><img alt="" src="/sites/default/files/user_uploads/images/finance_silas_nisr.png" style="width: 160px; height: 160px;"></td></tr><tr><td bgcolor="#f0f5f7" valign="top">&nbsp;</td></tr></tbody></table></td></tr><tr><td>&nbsp;</td></tr></tbody></table><p>&nbsp;</p>',
+        'summary' => '<p>&nbsp;</p><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify">&nbsp;</p></td></tr></tbody></table><p>&nbsp;</p>',
         'format' => 2,
-        'safe_summary' => '<br /><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">
-</p></td></tr></tbody></table>',
+        'safe_summary' => '<p> </p><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify"> </p></td></tr></tbody></table><p> </p>',
       ),
     ),
   ),
+  'path' => array(
+    'pathauto' => 0,
+  ),
+  'pathauto_perform_alias' => FALSE,
   'date' => '2011-09-15 14:28:58 +0300',
   'user_uuid' => 'abebcbee-8aa6-47c1-b12b-9d9def5900d3',
 );
@@ -3405,61 +2077,17 @@ $("a",$("#primary-menu-inner li.leaf")).addClass("active");
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => '<p>
-	The National Statistical System (NSS) in Rwanda is the ensemble of statistical organizations and units within Rwanda that jointly collect, process and &nbsp;disseminate official statistics on behalf of the Government of Rwanda.</p>
-<!--break-->
-<table border="0" cellpadding="1" cellspacing="1" style="width: 100%;">
-	<tbody>
-		<tr>
-			<td rowspan="2" valign="top" width="60%">
-				<div class="rtejustify">
-					Specifically, it is composed of five main components: The National Institute of Statistics of Rwanda (NISR); various State institutions that provide statistical information. Such statistical data constitute the official statistics; organs which use statistical information; organs that provide statistical information, including public and private institutions, non-governmental organizations, households and the population; and institutions of research and training including institutions of higher learning.<br />
-					<br />
-					Vide <a href="http://statistics.gov.rw/sites/default/files/user_uploads/files/miscellaneous/Official_Gazette_no_Special_of_16.06.2013.pdf" target="_blank">Organic Law N&ordm; 45/2013 of 16/06/2013</a> &ndash; the law on the organization of statistical activities in Rwanda (replacing the old Organic Law N&ordm; 01/2005 of 14/02/2000), NISR is designated as the coordinator of NSS.<br />
-					<br />
-					To serve its purpose effectively, NSS requires strategic and coherent planning, bringing together various stakeholders towards achieving the shared goal of better statistics. Articulating this, a comprehensive strategy document, aimed at development of statistics in the national context, identified also as the National Strategy for the Development of Statistics (NSDS) has proven to be of critical importance in this background.<br />
-					<br />
-					The first National Strategy for the Development of Statistics (<a href="http://statistics.gov.rw/publications/first-national-strategy-development-statistics-2009-2014" target="_parent">NSDS1</a>) in Rwanda, was designed and developed to serve as a framework for the programs, projects and activities of the National Statistical System (NSS) during the period 2009-2014 with the aim of providing relevant, quality, timely and accessible statistics, in a more efficient and coherent manner, needed for evidence-based policy and decision-making.</div>
-				<div class="rtejustify">
-					With successful implementation of NSDS1 coming to its completion, the second NSDS (<a href="http://www.statistics.gov.rw/publications/second-national-strategy-development-statistics-2014-2018" target="_parent">NSDS2</a>) will cover the period of five years from 2014/2015 to 2018/2019.<br />
-					<br />
-					It therefore, builds upon the work done under <a href="http://statistics.gov.rw/publications/first-national-strategy-development-statistics-2009-2014" target="_parent">NSDS1</a> and aims at continuing the development of the National Statistical System (NSS), towards preparing it to respond to the statistical requirements anticipated for a typical middle-income country by 2020.<br />
-					<br />
-					This will enable NSS to further present a comprehensive and accurate picture of the Rwandan socio-economic and environmental fabric, improve the implementation of evidence-based policy-making and contribute to the promotion of dialogue and scientific research.<br />
-					<br />
-					The strategy will help to ensure that produced statistical data are reliable, coherent, and effective in monitoring variables, measuring trends and producing indicators.</div>
-			</td>
-			<td style="font-size: 1.2em;" valign="top" width="20%">
-				<table border="0" style="width: 100%;">
-					<tbody>
-						<tr>
-							<td style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; background-color: rgb(204, 204, 204); ">
-								<a href="http://statistics.gov.rw/publications/first-national-strategy-development-statistics-2009-2014" target="_parent"><img alt="" src="/sites/default/files/user_uploads/NSDS1.jpg" style="float: right; width: 225px; height: 300px" /></a></td>
-						</tr>
-						<tr>
-							<td style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; ">
-								&nbsp;</td>
-						</tr>
-						<tr>
-							<td class="rteright" style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; background-color: rgb(204, 204, 204); ">
-								<img alt="" src="/sites/default/files/nsds_cover_new_0.png" style="width: 225px; height: 300px;" /></td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-	</tbody>
-</table>
-<p>
-	&nbsp;</p>
-<br />
-',
-        'summary' => NULL,
+        'value' => '<p>The National Statistical System (NSS) in Rwanda is the ensemble of statistical organizations and units within Rwanda that jointly collect, process and &nbsp;disseminate official statistics on behalf of the Government of Rwanda.</p><p><!--break--></p><table border="0" cellpadding="1" cellspacing="1" style="width: 100%;"><tbody><tr><td rowspan="2" valign="top" width="60%"><div class="rtejustify">Specifically, it is composed of five main components: The National Institute of Statistics of Rwanda (NISR); various State institutions that provide statistical information. Such statistical data constitute the official statistics; organs which use statistical information; organs that provide statistical information, including public and private institutions, non-governmental organizations, households and the population; and institutions of research and training including institutions of higher learning.<br><br>Vide <a href="http://statistics.gov.rw/sites/default/files/user_uploads/files/miscellaneous/Official_Gazette_no_Special_of_16.06.2013.pdf" target="_blank">Organic Law Nº 45/2013 of 16/06/2013</a> – the law on the organization of statistical activities in Rwanda (replacing the old Organic Law Nº 01/2005 of 14/02/2000), NISR is designated as the coordinator of NSS.<br><br>To serve its purpose effectively, NSS requires strategic and coherent planning, bringing together various stakeholders towards achieving the shared goal of better statistics. Articulating this, a comprehensive strategy document, aimed at development of statistics in the national context, identified also as the National Strategy for the Development of Statistics (NSDS) has proven to be of critical importance in this background.<br><br>The first National Strategy for the Development of Statistics (<a href="http://statistics.gov.rw/publications/first-national-strategy-development-statistics-2009-2014" target="_parent">NSDS1</a>) in Rwanda, was designed and developed to serve as a framework for the programs, projects and activities of the National Statistical System (NSS) during the period 2009-2014 with the aim of providing relevant, quality, timely and accessible statistics, in a more efficient and coherent manner, needed for evidence-based policy and decision-making.</div><div class="rtejustify">With successful implementation of NSDS1 coming to its completion, the second NSDS (<a href="http://www.statistics.gov.rw/publications/second-national-strategy-development-statistics-2014-2018" target="_parent">NSDS2</a>) will cover the period of five years from 2014/2015 to 2018/2019.<br><br>It therefore, builds upon the work done under <a href="http://statistics.gov.rw/publications/first-national-strategy-development-statistics-2009-2014" target="_parent">NSDS1</a> and aims at continuing the development of the National Statistical System (NSS), towards preparing it to respond to the statistical requirements anticipated for a typical middle-income country by 2020.<br><br>This will enable NSS to further present a comprehensive and accurate picture of the Rwandan socio-economic and environmental fabric, improve the implementation of evidence-based policy-making and contribute to the promotion of dialogue and scientific research.<br><br>The strategy will help to ensure that produced statistical data are reliable, coherent, and effective in monitoring variables, measuring trends and producing indicators.</div></td><td style="font-size: 1.2em;" valign="top" width="20%"><table border="0" style="width: 100%;"><tbody><tr><td style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; background-color: rgb(204, 204, 204); "><a href="http://statistics.gov.rw/publications/first-national-strategy-development-statistics-2009-2014" target="_parent"><img alt="" src="/sites/default/files/user_uploads/NSDS1.jpg" style="float: right; width: 225px; height: 300px"></a></td></tr><tr><td style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; ">&nbsp;</td></tr><tr><td class="rteright" style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; background-color: rgb(204, 204, 204); "><img alt="" src="/sites/default/files/nsds_cover_new_0.png" style="width: 225px; height: 300px;"></td></tr></tbody></table></td></tr></tbody></table><p>&nbsp;</p><p>&nbsp;</p>',
+        'summary' => '',
         'format' => 2,
         'safe_summary' => '',
       ),
     ),
   ),
+  'path' => array(
+    'pathauto' => 0,
+  ),
+  'pathauto_perform_alias' => FALSE,
   'date' => '2013-11-25 12:52:24 +0200',
   'user_uuid' => 'abebcbee-8aa6-47c1-b12b-9d9def5900d3',
 );
@@ -3882,244 +2510,17 @@ Three winning teams will be determined. The Judges will review the entries and j
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => '<br />
-<table align="right" border="1" cellpadding="1" cellspacing="1" height="1946" width="843">
-	<tbody>
-		<tr>
-			<td class="rtecenter" colspan="3" style="background-color: rgb(255,255,255);">
-				<p>
-					<img alt="" height="118" src="/sites/default/files/user_uploads/infographic_banner_2014.png" width="757" /></p>
-			</td>
-		</tr>
-		<tr>
-			<td class="rtecenter" colspan="3">
-				<h1 style="font-size: 30px; line-height: 30px;">
-					WE HAVE THE WINNERS!</h1>
-			</td>
-		</tr>
-		<tr>
-			<td class="rtecenter">
-				1st Place</td>
-			<td class="rtecenter">
-				2nd Place</td>
-			<td class="rtecenter">
-				3rd Place</td>
-		</tr>
-		<tr>
-			<td class="rtecenter" style=" vertical-align: top;">
-				<img alt="" height="655" src="/sites/default/files/user_uploads/impressive.png" width="247" /></td>
-			<td class="rtecenter" style="vertical-align: top;">
-				<img alt="" src="/sites/default/files/user_uploads/artists.png" style="width: 242px; height: 600px;" /></td>
-			<td class="rtecenter" style="vertical-align: top;">
-				<img alt="" height="374" src="/sites/default/files/user_uploads/artists_correct.png" width="262" /></td>
-		</tr>
-		<tr>
-			<td class="rtecenter">
-				<a href="/sites/default/files/user_uploads/Impressive.pdf" target="_blank">View high resolution file</a></td>
-			<td class="rtecenter">
-				<a href="/sites/default/files/user_uploads/Vision%20Statisticians.%20print.pdf" target="_blank">View high resolution file</a></td>
-			<td class="rtecenter">
-				<a href="/sites/default/files/user_uploads/The%20Artist%20Infographic.pdf" target="_blank">View high resolution file</a></td>
-		</tr>
-		<tr>
-			<td class="rtecenter" colspan="3">
-				<div>
-					&nbsp;</div>
-				<div>
-					<table align="center" border="0" cellpadding="1" cellspacing="1" style="width: 100%;">
-						<tbody>
-							<tr>
-								<td>
-									<div>
-										TEAM NAME: IMPRESSIVE</div>
-								</td>
-								<td>
-									<div>
-										TEAM NAME: VISION STATISTICIANS</div>
-								</td>
-								<td>
-									<div>
-										TEAM NAME: THE ARTISTS</div>
-								</td>
-							</tr>
-							<tr>
-								<td style="vertical-align: top;">
-									TEAM MEMBERS:<br />
-									<br />
-									John MUTAKUBWA<br />
-									Christopher Njuguna<br />
-									Lynn Kirabo<br />
-									&nbsp;</td>
-								<td style="vertical-align: top;">
-									TEAM MEMBERS:<br />
-									<br />
-									Ephraim RUTAGARAMA<br />
-									Raissa KAMARIZA<br />
-									Valens NDAGIJIMANA</td>
-								<td style="vertical-align: top;">
-									TEAM MEMBERS:&nbsp;<br />
-									<br />
-									Danny HABAMWABO<br />
-									Steven MANZI<br />
-									Jean Baptiste UWIMINSI</td>
-							</tr>
-							<tr>
-								<td style="vertical-align: top;">
-									&nbsp;</td>
-								<td style="vertical-align: top;">
-									&nbsp;</td>
-								<td style="vertical-align: top;">
-									&nbsp;</td>
-							</tr>
-							<tr>
-								<td style="vertical-align: top;">
-									INSTITUTION:<br />
-									<a href="http://www.cmu.edu/rwanda/index.html" target="_blank">Carnegie Mellon University, Rwanda</a></td>
-								<td style="vertical-align: top;">
-									INSTITUTION:<br />
-									<a href="http://www.cbe.ur.ac.rw/" target="_blank">UR/CBE-Huye Campus</a></td>
-								<td>
-									INSTITUTION:<br />
-									<a href="http://www.cmu.edu/rwanda/index.html" target="_blank">Carnegie Mellon University, Rwanda</a></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td class="rtecenter" colspan="3" style="background-color: rgb(204, 204, 204);">
-				<br />
-				<br />
-				Other teams selected for the exhibition and their entries (Team name, Team leader&#39;s name, Institution):</td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<div>
-					<br />
-					<br />
-					<table align="center" border="1" cellpadding="1" cellspacing="1" style="width: 99%;">
-						<tbody>
-							<tr>
-								<td>
-									<strong>4th.</strong> SO FAR CREATIVE, UR-CST</td>
-								<td>
-									<a href="/sites/default/files/user_uploads/files/notices/SO%20FAR%20CREATIVE.png" target="_blank">Entry</a></td>
-							</tr>
-							<tr>
-								<td>
-									<strong>5th.</strong> ZODIAC, CMU-Rwanda</td>
-								<td>
-									<a href="/sites/default/files/user_uploads/files/notices/Zodiac.png" target="_blank">Entry</a></td>
-							</tr>
-							<tr>
-								<td>
-									<strong>6th.</strong> CREATIVE ANGELS, UR-CST</td>
-								<td>
-									<a href="http://statistics.gov.rw/sites/default/files/user_uploads/files/books/SO%20FAR%20CREATIVE.png" target="_blank">Entry</a></td>
-							</tr>
-							<tr>
-								<td>
-									<strong>7th.</strong> INOVAGRAPHIC, IPRC-KICUKIRO</td>
-								<td>
-									<a href="http://statistics.gov.rw/sites/default/files/user_uploads/files/books/Inovagraphics.jpg" target="_blank">Entry</a></td>
-							</tr>
-							<tr>
-								<td>
-									<strong>8th. </strong>DATA NERDS, CMU-Rwanda</td>
-								<td>
-									<a href="http://statistics.gov.rw/sites/default/files/user_uploads/files/books/Data%20Nerds.jpg" target="_blank">Entry</a></td>
-							</tr>
-							<tr>
-								<td>
-									<strong>9th. </strong>SMART STATISTICS ANALYZERS, UR/CBE-Mburabuturo</td>
-								<td>
-									<a href="http://statistics.gov.rw/sites/default/files/user_uploads/files/books/Smart%20Statistics%20Analyzers.png" target="_blank">Entry</a></td>
-							</tr>
-							<tr>
-								<td>
-									<strong>10th.</strong> IMBONI, CMU-Rwanda</td>
-								<td>
-									<a href="http://statistics.gov.rw/sites/default/files/user_uploads/files/books/Imboni.jpg" target="_blank">Entry</a></td>
-							</tr>
-							<tr>
-								<td>
-									<strong>11th. </strong>THE WITNESSES, UR-CST</td>
-								<td>
-									<a href="http://statistics.gov.rw/sites/default/files/user_uploads/files/books/The%20Witnesses%20Team.png" target="_blank">Entry</a></td>
-							</tr>
-							<tr>
-								<td>
-									<strong>12th.</strong> BITS &amp; BYTES, CMU-Rwanda</td>
-								<td>
-									<a href="http://statistics.gov.rw/sites/default/files/user_uploads/files/books/Bits%20and%20Bytes.jpg" target="_blank">Entry</a></td>
-							</tr>
-							<tr>
-								<td>
-									<strong>13th.</strong> FUTURE ARCHITECTS, UR-CST</td>
-								<td>
-									<a href="http://statistics.gov.rw/sites/default/files/user_uploads/files/books/FUTURE%20ARCHITECTS.png" target="_blank">Entry</a></td>
-							</tr>
-							<tr>
-								<td>
-									<strong>14th.</strong> IMPACTINFO, CMU-Rwanda</td>
-								<td>
-									<a href="http://statistics.gov.rw/sites/default/files/user_uploads/files/books/IMPactInf0.jpg" target="_blank">Entry</a></td>
-							</tr>
-							<tr>
-								<td>
-									<strong>15th.</strong> HOLISTIC STATICIANS, UR/CBE-Mburabuturo</td>
-								<td>
-									<a href="/sites/default/files/user_uploads/files/books/Holistic%20Staticians.png" target="_blank">Entry</a></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div>
-					<br />
-					&nbsp;</div>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<h3>
-					<span style="text-align: justify;">Congratulations to all the winners!</span></h3>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<a class="twitter-share-button" href="https://twitter.com/share">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<a href="http://www.statistics.gov.rw/sites/default/files/user_uploads/NISR_Infographic%20competition2014n.pdf" target="_blank">Competition announcement&nbsp;</a></td>
-		</tr>
-	</tbody>
-</table>
-<br />
-<br />
-<div id="disqus_thread">
-	&nbsp;</div>
-<script type="text/javascript">
-            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-            var disqus_shortname = \'nisr\'; // required: replace example with your forum shortname
-
-            /* * * DON\'T EDIT BELOW THIS LINE * * */
-            (function() {
-                var dsq = document.createElement(\'script\'); dsq.type = \'text/javascript\'; dsq.async = true;
-                dsq.src = \'http://\' + disqus_shortname + \'.disqus.com/embed.js\';
-                (document.getElementsByTagName(\'head\')[0] || document.getElementsByTagName(\'body\')[0]).appendChild(dsq);
-            })();
-        </script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><p>
-	<a class="dsq-brlink" href="http://disqus.com">comments powered by <span class="logo-disqus">Disqus</span></a></p>
-<br />
-',
-        'summary' => NULL,
+        'value' => '<p>&nbsp;</p><table align="right" border="1" cellpadding="1" cellspacing="1" height="1946" width="843"><tbody><tr><td class="rtecenter" colspan="3" style="background-color: rgb(255,255,255);"><p><img alt="" height="118" src="/sites/default/files/user_uploads/infographic_banner_2014.png" width="757"></p></td></tr><tr><td class="rtecenter" colspan="3"><h1 style="font-size: 30px; line-height: 30px;">WE HAVE THE WINNERS!</h1></td></tr><tr><td class="rtecenter">1st Place</td><td class="rtecenter">2nd Place</td><td class="rtecenter">3rd Place</td></tr><tr><td class="rtecenter" style=" vertical-align: top;"><img alt="" height="655" src="/sites/default/files/user_uploads/impressive.png" width="247"></td><td class="rtecenter" style="vertical-align: top;"><img alt="" src="/sites/default/files/user_uploads/artists.png" style="width: 242px; height: 600px;"></td><td class="rtecenter" style="vertical-align: top;"><img alt="" height="374" src="/sites/default/files/user_uploads/artists_correct.png" width="262"></td></tr><tr><td class="rtecenter"><a href="/sites/default/files/user_uploads/Impressive.pdf" target="_blank">View high resolution file</a></td><td class="rtecenter"><a href="/sites/default/files/user_uploads/Vision%20Statisticians.%20print.pdf" target="_blank">View high resolution file</a></td><td class="rtecenter"><a href="/sites/default/files/user_uploads/The%20Artist%20Infographic.pdf" target="_blank">View high resolution file</a></td></tr><tr><td class="rtecenter" colspan="3"><div>&nbsp;</div><div><table align="center" border="0" cellpadding="1" cellspacing="1" style="width: 100%;"><tbody><tr><td><div>TEAM NAME: IMPRESSIVE</div></td><td><div>TEAM NAME: VISION STATISTICIANS</div></td><td><div>TEAM NAME: THE ARTISTS</div></td></tr><tr><td style="vertical-align: top;">TEAM MEMBERS:<br><br>John MUTAKUBWA<br>Christopher Njuguna<br>Lynn Kirabo<br>&nbsp;</td><td style="vertical-align: top;">TEAM MEMBERS:<br><br>Ephraim RUTAGARAMA<br>Raissa KAMARIZA<br>Valens NDAGIJIMANA</td><td style="vertical-align: top;">TEAM MEMBERS:&nbsp;<br><br>Danny HABAMWABO<br>Steven MANZI<br>Jean Baptiste UWIMINSI</td></tr><tr><td style="vertical-align: top;">&nbsp;</td><td style="vertical-align: top;">&nbsp;</td><td style="vertical-align: top;">&nbsp;</td></tr><tr><td style="vertical-align: top;">INSTITUTION:<br><a href="http://www.cmu.edu/rwanda/index.html" target="_blank">Carnegie Mellon University, Rwanda</a></td><td style="vertical-align: top;">INSTITUTION:<br><a href="http://www.cbe.ur.ac.rw/" target="_blank">UR/CBE-Huye Campus</a></td><td>INSTITUTION:<br><a href="http://www.cmu.edu/rwanda/index.html" target="_blank">Carnegie Mellon University, Rwanda</a></td></tr></tbody></table></div></td></tr><tr><td class="rtecenter" colspan="3" style="background-color: rgb(204, 204, 204);"><br><br>Other teams selected for the exhibition and their entries (Team name, Team leader\'s name, Institution):</td></tr><tr><td colspan="3"><div>&nbsp;<table align="center" border="1" cellpadding="1" cellspacing="1" style="width: 99%;"><tbody><tr><td><strong>4th.</strong> SO FAR CREATIVE, UR-CST</td><td><a href="/sites/default/files/user_uploads/files/notices/SO%20FAR%20CREATIVE.png" target="_blank">Entry</a></td></tr><tr><td><strong>5th.</strong> ZODIAC, CMU-Rwanda</td><td><a href="/sites/default/files/user_uploads/files/notices/Zodiac.png" target="_blank">Entry</a></td></tr><tr><td><strong>6th.</strong> CREATIVE ANGELS, UR-CST</td><td><a href="http://statistics.gov.rw/sites/default/files/user_uploads/files/books/SO%20FAR%20CREATIVE.png" target="_blank">Entry</a></td></tr><tr><td><strong>7th.</strong> INOVAGRAPHIC, IPRC-KICUKIRO</td><td><a href="http://statistics.gov.rw/sites/default/files/user_uploads/files/books/Inovagraphics.jpg" target="_blank">Entry</a></td></tr><tr><td><strong>8th. </strong>DATA NERDS, CMU-Rwanda</td><td><a href="http://statistics.gov.rw/sites/default/files/user_uploads/files/books/Data%20Nerds.jpg" target="_blank">Entry</a></td></tr><tr><td><strong>9th. </strong>SMART STATISTICS ANALYZERS, UR/CBE-Mburabuturo</td><td><a href="http://statistics.gov.rw/sites/default/files/user_uploads/files/books/Smart%20Statistics%20Analyzers.png" target="_blank">Entry</a></td></tr><tr><td><strong>10th.</strong> IMBONI, CMU-Rwanda</td><td><a href="http://statistics.gov.rw/sites/default/files/user_uploads/files/books/Imboni.jpg" target="_blank">Entry</a></td></tr><tr><td><strong>11th. </strong>THE WITNESSES, UR-CST</td><td><a href="http://statistics.gov.rw/sites/default/files/user_uploads/files/books/The%20Witnesses%20Team.png" target="_blank">Entry</a></td></tr><tr><td><strong>12th.</strong> BITS &amp; BYTES, CMU-Rwanda</td><td><a href="http://statistics.gov.rw/sites/default/files/user_uploads/files/books/Bits%20and%20Bytes.jpg" target="_blank">Entry</a></td></tr><tr><td><strong>13th.</strong> FUTURE ARCHITECTS, UR-CST</td><td><a href="http://statistics.gov.rw/sites/default/files/user_uploads/files/books/FUTURE%20ARCHITECTS.png" target="_blank">Entry</a></td></tr><tr><td><strong>14th.</strong> IMPACTINFO, CMU-Rwanda</td><td><a href="http://statistics.gov.rw/sites/default/files/user_uploads/files/books/IMPactInf0.jpg" target="_blank">Entry</a></td></tr><tr><td><strong>15th.</strong> HOLISTIC STATICIANS, UR/CBE-Mburabuturo</td><td><a href="/sites/default/files/user_uploads/files/books/Holistic%20Staticians.png" target="_blank">Entry</a></td></tr></tbody></table></div><div><br>&nbsp;</div></td></tr><tr><td colspan="3"><h3><span style="text-align: justify;">Congratulations to all the winners!</span></h3></td></tr><tr><td colspan="3"><a class="twitter-share-button" href="https://twitter.com/share">Tweet</a> </td></tr><tr><td colspan="3"><a href="http://www.statistics.gov.rw/sites/default/files/user_uploads/NISR_Infographic%20competition2014n.pdf" target="_blank">Competition announcement&nbsp;</a></td></tr></tbody></table><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><div id="disqus_thread">&nbsp;</div><noscript>Please enable JavaScript to view the &lt;a href="http://disqus.com/?ref_noscript"&gt;comments powered by Disqus.&lt;/a&gt;</noscript><p>&nbsp;</p><p>&nbsp;</p><p><a class="dsq-brlink" href="http://disqus.com">comments powered by <span class="logo-disqus">Disqus</span></a></p><p>&nbsp;</p>',
+        'summary' => '',
         'format' => 2,
         'safe_summary' => '',
       ),
     ),
   ),
+  'path' => array(
+    'pathauto' => 0,
+  ),
+  'pathauto_perform_alias' => FALSE,
   'date' => '2014-10-13 11:15:30 +0300',
   'user_uuid' => 'abebcbee-8aa6-47c1-b12b-9d9def5900d3',
 );
@@ -4139,27 +2540,17 @@ Three winning teams will be determined. The Judges will review the entries and j
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => '<div>
-	Every year in November, the African statistical community celebrates the African Statistics Day (ASD) with the objective of raising public awareness about the importance of statistics in the economic and social development of the continent. The decision of celebrating ASD every year was taken since 1990 by the twenty-fifth session of the United Nations Economic for Africa and the Sixteenth Meeting of African ministers responsible for Economic Planning and development.&nbsp;It is in this context that thee National Institute of Statistics of Rwanda (NISR) has been organizing an annual competition intended for University students.<br />
-	<br />
-	This event is conducted by inviting<span style="text-align: justify;">&nbsp;graduate and postgraduate students of educational institutions of higher learning (both public and private) in Rwanda to produce winning static infographics by participating in the NISR Infographic Competition.</span></div>
-<br />
-<ul>
-	<li>
-		<a href="http://statistics.gov.rw/about-us/competition/infographic-competition-2012" target="_blank">Infographic Competition 2012</a></li>
-	<li>
-		<a href="http://statistics.gov.rw/about-us/competition/infographic-competition-2013" target="_blank">Infographic Competition 2013</a></li>
-	<li>
-		<a href="http://www.statistics.gov.rw/about-us/competition/infographic-competition-2014" target="_blank">Infographic Competition 2014</a></li>
-</ul>
-',
-        'summary' => '<div>',
+        'value' => '<div>Every year in November, the African statistical community celebrates the African Statistics Day (ASD) with the objective of raising public awareness about the importance of statistics in the economic and social development of the continent. The decision of celebrating ASD every year was taken since 1990 by the twenty-fifth session of the United Nations Economic for Africa and the Sixteenth Meeting of African ministers responsible for Economic Planning and development.&nbsp;It is in this context that thee National Institute of Statistics of Rwanda (NISR) has been organizing an annual competition intended for University students.<br><br>This event is conducted by inviting<span style="text-align: justify;">&nbsp;graduate and postgraduate students of educational institutions of higher learning (both public and private) in Rwanda to produce winning static infographics by participating in the NISR Infographic Competition.</span></div><p>&nbsp;</p><ul><li><a href="http://statistics.gov.rw/about-us/competition/infographic-competition-2012" target="_blank">Infographic Competition 2012</a></li><li><a href="http://statistics.gov.rw/about-us/competition/infographic-competition-2013" target="_blank">Infographic Competition 2013</a></li><li><a href="http://www.statistics.gov.rw/about-us/competition/infographic-competition-2014" target="_blank">Infographic Competition 2014</a></li></ul><p>&nbsp;</p>',
+        'summary' => '',
         'format' => 2,
-        'safe_summary' => '<div>
-</div>',
+        'safe_summary' => '',
       ),
     ),
   ),
+  'path' => array(
+    'pathauto' => 0,
+  ),
+  'pathauto_perform_alias' => FALSE,
   'date' => '2012-09-28 13:14:46 +0300',
   'user_uuid' => '0e79b96d-57f4-407d-b283-c7b9fd2b403f',
 );
@@ -4179,99 +2570,17 @@ Three winning teams will be determined. The Judges will review the entries and j
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => '<br />
-<table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;">
-	<tbody>
-		<tr>
-			<td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">
-					The Statistical Methods, Research and Publications Department is responsible for promoting the methodologies, norms, and standards of the NISR - internally and externally to other parties of the National Statistical System (NSS); to coordinate the preparation and sound implementation of the NISR strategic plan and to supervise and facilitate the production of the two periodic publications &ldquo;the Statistical yearbook&rdquo; and &ldquo;Rwanda in Figures&rdquo;.<br />
-					<br />
-					To accomplish its mission, the Statistical Methods, Research and Publications Department is headed by a director and&nbsp;is organized into the following four sections :<br />
-					&nbsp;</p>
-				<ul>
-					<li class="rtejustify">
-						<strong>Quality Assurance</strong> <strong>(3)</strong>:</li>
-				</ul>
-				<p class="rteindent1">
-					-Quality Assurance Statistician Team Leader&nbsp; (1)<br />
-					-Data Surveys Quality Assurance Statistician (1)<br />
-					-Administrative Data Quality Assurance Statistician (1)</p>
-				<ul>
-					<li class="rtejustify">
-						<strong>Research, Publication and Documentation (5)</strong>:</li>
-				</ul>
-				<p class="rteindent1">
-					- Research, Publication &amp; Documentation Statistician Team Leader (1)<br />
-					- Demographic Studies Research Statistician (1)<br />
-					- Economics Studies Research Statistician (1)<br />
-					- Publication &amp; Dissemination Officer (1)<br />
-					- Data portals Management Officer (1)</p>
-				<ul>
-					<li class="rtejustify">
-						<strong>Statistical Methods, Sampling and&nbsp; Classification Research (5)</strong>:</li>
-				</ul>
-				<p class="rteindent1">
-					- Statistical Methods, Sampling &amp; Classification Research Statistician Team Leader (1)<br />
-					- Statistical Methods &amp; Sampling of Household Surveys Statistician (1)<br />
-					- Statistical Methods &amp; Sampling of Business Surveys Statistician (1)<br />
-					- Economic Statistics Classification Statistician (1)<br />
-					- Demographic Statistics Classification Statistician (1)</p>
-				<ul>
-					<li class="rtejustify">
-						<strong>NSS Coordination &amp; Statistical Capacity Building (3)</strong>:</li>
-				</ul>
-				<p class="rteindent1">
-					- NSS Coordination &amp; Statistical Capacity Building Statistician Team Leader (1)<br />
-					- NSS Coordination Statistician (1)<br />
-					- NSS Statistical CB Statistician (1)</p>
-				<br />
-				<br />
-				&nbsp;</td>
-			<td rowspan="3" style="vertical-align: top;" width="20px">
-				&nbsp;</td>
-			<td valign="top">
-				<table cellspacing="2" height="100%" width="100%">
-					<tbody>
-						<tr>
-							<td bgcolor="#f0f5f7">
-								<strong>Director: </strong><br />
-								Mr. Dominique HABIMANA</td>
-						</tr>
-						<tr>
-							<td bgcolor="#f0f5f7" class="rtecenter" valign="top">
-								<img alt="" src="/sites/default/files/user_uploads/HABIMANA Dominique1.jpg" style="width: 159px; height: 159px; border-width: 1px; border-style: solid;" /></td>
-						</tr>
-						<tr>
-							<td bgcolor="#f0f5f7" valign="top">
-								<br />
-								&nbsp;</td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				&nbsp;</td>
-		</tr>
-	</tbody>
-</table>
-<br />
-',
-        'summary' => '<br />
-<table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;">
-	<tbody>
-		<tr>
-			<td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">',
+        'value' => '<p>&nbsp;</p><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify">The Statistical Methods, Research and Publications Department is responsible for promoting the methodologies, norms, and standards of the NISR - internally and externally to other parties of the National Statistical System (NSS); to coordinate the preparation and sound implementation of the NISR strategic plan and to supervise and facilitate the production of the two periodic publications “the Statistical yearbook” and “Rwanda in Figures”.<br><br>To accomplish its mission, the Statistical Methods, Research and Publications Department is headed by a director and&nbsp;is organized into the following four sections :<br>&nbsp;</p><ul><li class="rtejustify"><strong>Quality Assurance</strong> <strong>(3)</strong>:</li></ul><p class="rteindent1">-Quality Assurance Statistician Team Leader&nbsp; (1)<br>-Data Surveys Quality Assurance Statistician (1)<br>-Administrative Data Quality Assurance Statistician (1)</p><ul><li class="rtejustify"><strong>Research, Publication and Documentation (5)</strong>:</li></ul><p class="rteindent1">- Research, Publication &amp; Documentation Statistician Team Leader (1)<br>- Demographic Studies Research Statistician (1)<br>- Economics Studies Research Statistician (1)<br>- Publication &amp; Dissemination Officer (1)<br>- Data portals Management Officer (1)</p><ul><li class="rtejustify"><strong>Statistical Methods, Sampling and&nbsp; Classification Research (5)</strong>:</li></ul><p class="rteindent1">- Statistical Methods, Sampling &amp; Classification Research Statistician Team Leader (1)<br>- Statistical Methods &amp; Sampling of Household Surveys Statistician (1)<br>- Statistical Methods &amp; Sampling of Business Surveys Statistician (1)<br>- Economic Statistics Classification Statistician (1)<br>- Demographic Statistics Classification Statistician (1)</p><ul><li class="rtejustify"><strong>NSS Coordination &amp; Statistical Capacity Building (3)</strong>:</li></ul><p class="rteindent1">- NSS Coordination &amp; Statistical Capacity Building Statistician Team Leader (1)<br>- NSS Coordination Statistician (1)<br>- NSS Statistical CB Statistician (1)</p><br><br>&nbsp;</td><td rowspan="3" style="vertical-align: top;" width="20px">&nbsp;</td><td valign="top"><table cellspacing="2" height="100%" width="100%"><tbody><tr><td bgcolor="#f0f5f7"><strong>Director: </strong><br>Mr. Dominique HABIMANA</td></tr><tr><td bgcolor="#f0f5f7" class="rtecenter" valign="top"><img alt="" src="/sites/default/files/user_uploads/HABIMANA Dominique1.jpg" style="width: 159px; height: 159px; border-width: 1px; border-style: solid;"></td></tr><tr><td bgcolor="#f0f5f7" valign="top"><br>&nbsp;</td></tr></tbody></table></td></tr><tr><td>&nbsp;</td></tr></tbody></table><p>&nbsp;</p>',
+        'summary' => '<p>&nbsp;</p><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify">&nbsp;</p></td></tr></tbody></table><p>&nbsp;</p>',
         'format' => 2,
-        'safe_summary' => '<br /><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">
-</p></td></tr></tbody></table>',
+        'safe_summary' => '<p> </p><table border="0" cellpadding="5" cellspacing="0" style="width: 100%; margin: 1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify"> </p></td></tr></tbody></table><p> </p>',
       ),
     ),
   ),
+  'path' => array(
+    'pathauto' => 0,
+  ),
+  'pathauto_perform_alias' => FALSE,
   'date' => '2011-09-15 14:35:12 +0300',
   'user_uuid' => '0ba20103-dd5e-4a28-ba96-a90ee7bf92be',
 );
@@ -4291,13 +2600,17 @@ Three winning teams will be determined. The Judges will review the entries and j
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
+        'value' => '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>',
         'summary' => '',
         'format' => 2,
         'safe_summary' => '',
       ),
     ),
   ),
+  'path' => array(
+    'pathauto' => 0,
+  ),
+  'pathauto_perform_alias' => FALSE,
   'date' => '2015-09-29 18:07:34 +0300',
   'user_uuid' => '0ba20103-dd5e-4a28-ba96-a90ee7bf92be',
 );
@@ -4317,13 +2630,17 @@ Three winning teams will be determined. The Judges will review the entries and j
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
+        'value' => '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>',
         'summary' => '',
         'format' => 2,
         'safe_summary' => '',
       ),
     ),
   ),
+  'path' => array(
+    'pathauto' => 0,
+  ),
+  'pathauto_perform_alias' => FALSE,
   'date' => '2015-09-29 13:13:45 +0300',
   'user_uuid' => '0ba20103-dd5e-4a28-ba96-a90ee7bf92be',
 );
@@ -4383,72 +2700,17 @@ Three winning teams will be determined. The Judges will review the entries and j
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => '<br />
-<table border="0" cellpadding="5" cellspacing="0" style="width:100%;margin:1px;">
-	<tbody>
-		<tr>
-			<td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">
-					The Office of the Deputy Director General is responsible for assisting the Director General (DG) in the implementation of the National Strategy for the Development of Statistics (NSDS) programs and activities; in planning, managing and monitoring the activities of all subject matter departments; in the management of international relations and regional &amp; international statistical integration; in the coordination and monitoring of technical assistance services provided through different development partners; and in dissemination of official statistics.&nbsp;<br />
-					<br />
-					To accomplish its mission, the Office of the Deputy Director General, is organized into the following five units:</p>
-				<ul>
-					<li>
-						<a href="http://statistics.gov.rw/about-us/organizational-structure/office-deputy-director-general-studies-programs/information-communication-technology" target="_parent"><strong>Information and communication Technology</strong> <strong>(ICT) unit</strong></a></li>
-					<li>
-						<a href="http://statistics.gov.rw/about-us/organizational-structure/office-deputy-director-general-studies-programs/statistical-methods" target="_parent"><strong>Statistical Methods, Research and Publications (SMRP) unit</strong></a></li>
-					<li>
-						<a href="http://statistics.gov.rw/about-us/organizational-structure/office-deputy-director-general-studies-programs/census" target="_parent"><strong>Censuses unit </strong></a></li>
-					<li>
-						<a href="http://statistics.gov.rw/about-us/organizational-structure/office-deputy-director-general-studies-programs/social-demographic-statistics" target="_parent"><strong>Demographic and Social Statistics (DSS) unit</strong></a></li>
-					<li>
-						<a href="http://statistics.gov.rw/about-us/organizational-structure/office-deputy-director-general-studies-programs/economic-statistics" target="_parent"><strong>Economic Statistics (ES) unit</strong></a></li>
-				</ul>
-			</td>
-			<td rowspan="3" style="vertical-align: top;" width="20px">
-				&nbsp;</td>
-			<td valign="top">
-				<table cellspacing="2" height="100%" width="100%">
-					<tbody>
-						<tr>
-							<td bgcolor="#f0f5f7">
-								<strong>Director: </strong><br />
-								Vacant</td>
-						</tr>
-						<tr>
-							<td bgcolor="#f0f5f7" class="rtecenter" valign="top">
-								<img alt="" src="/~statgov/sites/default/files/user_uploads/default.jpg" style="width: 160px; height: 160px; " /></td>
-						</tr>
-						<tr>
-							<td bgcolor="#f0f5f7" valign="top">
-								<br />
-								&nbsp;</td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				&nbsp;</td>
-		</tr>
-	</tbody>
-</table>
-<br />
-',
-        'summary' => '<br />
-<table border="0" cellpadding="5" cellspacing="0" style="width:100%;margin:1px;">
-	<tbody>
-		<tr>
-			<td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">',
+        'value' => '<p>&nbsp;</p><table border="0" cellpadding="5" cellspacing="0" style="width:100%;margin:1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify">The Office of the Deputy Director General is responsible for assisting the Director General (DG) in the implementation of the National Strategy for the Development of Statistics (NSDS) programs and activities; in planning, managing and monitoring the activities of all subject matter departments; in the management of international relations and regional &amp; international statistical integration; in the coordination and monitoring of technical assistance services provided through different development partners; and in dissemination of official statistics.&nbsp;<br><br>To accomplish its mission, the Office of the Deputy Director General, is organized into the following five units:</p><ul><li><a href="about-us/organizational-structure/odg/oddg/information-communication-technology" target="_parent"><strong>Information and communication Technology</strong> <strong>(ICT) unit</strong></a></li><li><a href="about-us/organizational-structure/odg/oddg/smrp" target="_parent"><strong>Statistical Methods, Research and Publications (SMRP) unit</strong></a></li><li><a href="about-us/organizational-structure/odg/oddg/census" target="_parent"><strong>Censuses unit </strong></a></li><li><a href="about-us/organizational-structure/odg/oddg/dds" target="_parent"><strong>Demographic and Social Statistics (DSS) unit</strong></a></li><li><a href="about-us/organizational-structure/odg/oddg/es" target="_parent"><strong>Economic Statistics (ES) unit</strong></a></li></ul></td><td rowspan="3" style="vertical-align: top;" width="20px">&nbsp;</td><td valign="top"><table cellspacing="2" height="100%" width="100%"><tbody><tr><td bgcolor="#f0f5f7"><strong>Director: </strong><br>Vacant</td></tr><tr><td bgcolor="#f0f5f7" class="rtecenter" valign="top"><img alt="" src="/~statgov/sites/default/files/user_uploads/default.jpg" style="width: 160px; height: 160px; "></td></tr><tr><td bgcolor="#f0f5f7" valign="top"><br>&nbsp;</td></tr></tbody></table></td></tr><tr><td>&nbsp;</td></tr></tbody></table><p>&nbsp;</p>',
+        'summary' => '<p>&nbsp;</p><table border="0" cellpadding="5" cellspacing="0" style="width:100%;margin:1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify">&nbsp;</p></td></tr></tbody></table><p>&nbsp;</p>',
         'format' => 2,
-        'safe_summary' => '<br /><table border="0" cellpadding="5" cellspacing="0" style="width:100%;margin:1px;"><tbody><tr><td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">
-</p></td></tr></tbody></table>',
+        'safe_summary' => '<p> </p><table border="0" cellpadding="5" cellspacing="0" style="width:100%;margin:1px;"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify"> </p></td></tr></tbody></table><p> </p>',
       ),
     ),
   ),
+  'path' => array(
+    'pathauto' => 0,
+  ),
+  'pathauto_perform_alias' => FALSE,
   'date' => '2011-09-15 14:20:46 +0300',
   'user_uuid' => 'abebcbee-8aa6-47c1-b12b-9d9def5900d3',
 );
@@ -5774,69 +4036,17 @@ hfhfhfghgfh f,hkfmhk hmf hlf lh fl hlkfnhfslnhh dfhlalbhbnhkansh shldb hklbhbnhh
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => '<br />
-<table border="0" cellpadding="5" cellspacing="0" height="178" style="margin: 1px;" width="891">
-	<tbody>
-		<tr>
-			<td rowspan="2" valign="top" width="60%">
-				<p class="rtejustify">
-					To accomplish its mission, the Office of the Single Project Implementation Unit (SPIU) is divided into the following staff:</p>
-				<ul>
-					<li>
-						Administrative Assistant (1)</li>
-					<li>
-						Census and Survey Coordinator (1)</li>
-					<li>
-						M&amp;E Specialist (1)</li>
-					<li>
-						Financial Management Specialist (1)</li>
-					<li>
-						Accountant (2)</li>
-					<li>
-						Planning Specialist (1)</li>
-					<li>
-						Procurement Specialist (1)</li>
-					<li>
-						Procurement Assistant (1)</li>
-				</ul>
-				<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></td>
-			<td rowspan="3" style="vertical-align: top;" width="20px">
-				&nbsp;</td>
-			<td bgcolor="" valign="top">
-				<table height="100%" width="100%">
-					<tbody>
-						<tr>
-							<td bgcolor="#f0f5f7">
-								<strong>Coordinator of SPIU:</strong><br />
-								Vacant</td>
-						</tr>
-						<tr>
-							<td bgcolor="#f0f5f7" class="rtecenter" valign="top">
-								<img alt="" src="/sites/default/files/user_uploads/images/avatar.png" style="width: 160px; height: 160px;" /></td>
-						</tr>
-						<tr>
-							<td bgcolor="#f0f5f7" valign="top">
-								<br />
-								&nbsp;</td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				&nbsp;</td>
-		</tr>
-	</tbody>
-</table>
-<br />
-',
-        'summary' => NULL,
+        'value' => '<p>&nbsp;</p><table border="0" cellpadding="5" cellspacing="0" height="178" style="margin: 1px;" width="891"><tbody><tr><td rowspan="2" valign="top" width="60%"><p class="rtejustify">To accomplish its mission, the Office of the Single Project Implementation Unit (SPIU) is divided into the following staff:</p><ul><li>Administrative Assistant (1)</li><li>Census and Survey Coordinator (1)</li><li>M&amp;E Specialist (1)</li><li>Financial Management Specialist (1)</li><li>Accountant (2)</li><li>Planning Specialist (1)</li><li>Procurement Specialist (1)</li><li>Procurement Assistant (1)</li></ul><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></td><td rowspan="3" style="vertical-align: top;" width="20px">&nbsp;</td><td bgcolor="" valign="top"><table height="100%" width="100%"><tbody><tr><td bgcolor="#f0f5f7"><strong>Coordinator of SPIU:</strong><br>Vacant</td></tr><tr><td bgcolor="#f0f5f7" class="rtecenter" valign="top"><img alt="" src="/sites/default/files/user_uploads/images/avatar.png" style="width: 160px; height: 160px;"></td></tr><tr><td bgcolor="#f0f5f7" valign="top"><br>&nbsp;</td></tr></tbody></table></td></tr><tr><td>&nbsp;</td></tr></tbody></table><p>&nbsp;</p>',
+        'summary' => '',
         'format' => 2,
         'safe_summary' => '',
       ),
     ),
   ),
+  'path' => array(
+    'pathauto' => 0,
+  ),
+  'pathauto_perform_alias' => FALSE,
   'date' => '2015-02-05 18:40:46 +0200',
   'user_uuid' => 'abebcbee-8aa6-47c1-b12b-9d9def5900d3',
 );
