@@ -13,7 +13,7 @@
   <h3><?php print $title; ?></h3>
 <?php endif; ?>
 <?php foreach ($rows as $id => $row): ?>
-	<div class="col-md-12">
+	<div class="col-md-3">
 		<div<?php if ($classes_array[$id]) { print ' class="' . $classes_array[$id] .' featured-box '. $featured_box[$index++] .' "';  } ?> style="cursor:pointer">
 			<div class="box-content">
 				<?php print $row; ?>

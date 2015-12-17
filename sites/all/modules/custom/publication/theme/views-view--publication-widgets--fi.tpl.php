@@ -28,15 +28,15 @@
  */
 ?>
 <section class="section home-intro mb-none">
-	<div class="container" style="margin-top:0px;margin-bottom:-20px">
+	<div class="container" style="margin-top:0px;margin-bottom:px">
 		<?php if ($header): ?>
 		  <div class="view-header">
 		    <?php print $header; ?>
 		  </div>
 		<?php endif; ?>
 		
-		<div class="row featured-boxes counters" style="margin-top:20px;">
-			<div class="owl-carousel" data-plugin-options='{"items": 4, "autoplay": false, "autoplayTimeout": 3000, "loop": false}'>
+		<div class="row featured-boxes counters" style="margin-top:px;">
+			<!-- <div class="owl-carousel" data-plugin-options='{"items": 4, "autoplay": false, "autoplayTimeout": 3000, "loop": false}'> -->
 				<?php print render($title_prefix); ?>
 				<?php if ($title): ?>
 					<?php print $title; ?>
@@ -91,6 +91,6 @@
 					</div>
 				<?php endif; ?>
 			</div>
-		</div><?php /* class view */ ?>
+		<!-- </div> --><?php /* class view */ ?>
 	</div>
 </section>
