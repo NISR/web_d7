@@ -10,14 +10,7 @@
 function nisr_features_uuid_features_default_terms() {
   $terms = array();
 
-  $terms[] = array(
-    'name' => 'Procurement plan',
-    'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
-    'format' => NULL,
-    'weight' => 0,
-    'uuid' => '04bb4185-5873-47e9-9fe3-e8a08821decf',
-    'vocabulary_machine_name' => 'document_subjects',
-  );
+
   $terms[] = array(
     'name' => 'Season C',
     'description' => NULL,
@@ -58,14 +51,7 @@ function nisr_features_uuid_features_default_terms() {
     'uuid' => '2e9098ab-8da3-4905-b746-c1abd0a6320d',
     'vocabulary_machine_name' => 'tags',
   );
-  $terms[] = array(
-    'name' => 'Documentation',
-    'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
-    'format' => NULL,
-    'weight' => 0,
-    'uuid' => '33511fc8-4be0-4a5f-a206-3a7a4fcce8af',
-    'vocabulary_machine_name' => 'document_subjects',
-  );
+
   $terms[] = array(
     'name' => 'Analyst',
     'description' => NULL,
@@ -82,14 +68,8 @@ function nisr_features_uuid_features_default_terms() {
     'uuid' => '52ea29dc-ff25-4757-91b2-9e1cc8992984',
     'vocabulary_machine_name' => 'tags',
   );
-  $terms[] = array(
-    'name' => 'Annual reports',
-    'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
-    'format' => NULL,
-    'weight' => 0,
-    'uuid' => '5814a811-587a-4822-aa37-1e41dfda3972',
-    'vocabulary_machine_name' => 'document_subjects',
-  );
+
+
   $terms[] = array(
     'name' => 'Season B',
     'description' => NULL,
@@ -106,14 +86,8 @@ function nisr_features_uuid_features_default_terms() {
     'uuid' => '75cb847b-8784-46f3-b716-4016b2ef1d54',
     'vocabulary_machine_name' => 'profile_occupation',
   );
-  $terms[] = array(
-    'name' => 'NSDS',
-    'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
-    'format' => NULL,
-    'weight' => 0,
-    'uuid' => '79b88af7-a447-43e7-a22b-960b36f33fec',
-    'vocabulary_machine_name' => 'document_subjects',
-  );
+
+
   $terms[] = array(
     'name' => 'Quarter',
     'description' => NULL,
@@ -138,22 +112,9 @@ function nisr_features_uuid_features_default_terms() {
     'uuid' => '98af1e1a-4666-439c-920a-5cfd3c2014ba',
     'vocabulary_machine_name' => 'story_topics',
   );
-  $terms[] = array(
-    'name' => 'Standards and Methods',
-    'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
-    'format' => NULL,
-    'weight' => 0,
-    'uuid' => 'a213b5c7-dd0b-4dc5-bf0b-c10069d24b0a',
-    'vocabulary_machine_name' => 'document_subjects',
-  );
-  $terms[] = array(
-    'name' => 'Maps',
-    'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
-    'format' => NULL,
-    'weight' => 0,
-    'uuid' => 'af312d4c-2edb-4326-9580-548212350db7',
-    'vocabulary_machine_name' => 'document_subjects',
-  );
+
+
+
   $terms[] = array(
     'name' => 'Right middle',
     'description' => 'Ads to be shown on the middle of the right sidebar',
@@ -170,14 +131,8 @@ function nisr_features_uuid_features_default_terms() {
     'uuid' => 'c32a9a06-230f-4ef7-954f-46ba7d43e62e',
     'vocabulary_machine_name' => 'vocabulary_3',
   );
-  $terms[] = array(
-    'name' => 'Rwanda in figures',
-    'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
-    'format' => NULL,
-    'weight' => 0,
-    'uuid' => 'c897224e-d223-4fd2-94d2-2f3b3df0d9c4',
-    'vocabulary_machine_name' => 'document_subjects',
-  );
+
+
   $terms[] = array(
     'name' => 'Tender',
     'description' => NULL,
