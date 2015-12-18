@@ -169,6 +169,15 @@ section.page-header h1{
 	color: #777;
 }
 
+section.section.section-footer{
+	margin-bottom: 0px;	
+}
+
+#block-views-twitter-messages-tweets-block{
+	padding-left:0px;
+	padding-right: 0px;	
+}
+
 /**
  ** Ads
  **/
