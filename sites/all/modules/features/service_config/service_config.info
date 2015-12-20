@@ -1,0 +1,16 @@
+name = Service config
+core = 7.x
+package = NISR
+version = 7.x-1.0-alpha1
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = menu
+dependencies[] = nisr_features
+dependencies[] = strongarm
+dependencies[] = uuid_features
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[menu_links][] = menu-topmenu_services:node/1383
+features[uuid_node][] = 5d05d664-5ee1-473f-a02e-b2a67b15f803
+features[uuid_node][] = ca639900-0dbb-4634-9cac-3883a9de57f1
+features_exclude[dependencies][about_us_features] = about_us_features
