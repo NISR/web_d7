@@ -19,7 +19,9 @@ function datasource_features_context_default_contexts() {
   $context->conditions = array(
     'path' => array(
       'values' => array(
+        'datasources' => 'datasources',
         'data_sources' => 'data_sources',
+        'data-sources' => 'data-sources',
       ),
     ),
   );

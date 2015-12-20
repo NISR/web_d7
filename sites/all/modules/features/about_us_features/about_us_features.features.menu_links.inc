@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * nisr_features.features.menu_links.inc
+ * about_us_features.features.menu_links.inc
  */
 
 /**
  * Implements hook_menu_default_menu_links().
  */
-function nisr_features_menu_default_menu_links() {
+function about_us_features_menu_default_menu_links() {
   $menu_links = array();
 
   // Exported menu link: menu-about-us_board-of-directors:node/145.

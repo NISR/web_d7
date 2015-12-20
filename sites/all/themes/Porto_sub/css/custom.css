@@ -17,6 +17,14 @@
 	float: none;
 }
 
+#header .header-body{
+	border-bottom : 2px solid #EDEDED;
+}
+
+#header .header-nav.header-nav-push-top{
+	margin-top: -46px;		
+}
+
 div.horizontal-menu ul.menu{
 	list-style-type: none;	
 }

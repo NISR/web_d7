@@ -23,6 +23,11 @@ function nisr_block_info(){
 		'weight' => -99,
 		'cache' => DRUPAL_NO_CACHE,	
 	);
+	
+	$blocks['contact_form'] = array(
+		'info' => t('Contact form'),
+		'cache' => DRUPAL_NO_CACHE,	
+	);
 					
 	return $blocks;	
 }
@@ -41,6 +46,10 @@ function nisr_block_view($delta = ''){
 			$block['title'] = '';
 			$block['content'] = drupal_get_form('custom_search_form');
 			break;
+		case 'contact_form' :
+			module_load_include('inc','contact','contact.pages');
+			$block['title'] = '';
+			$block['content'] = drupal_get_form('contact_site_form');
 		default:
 			break;
 	}

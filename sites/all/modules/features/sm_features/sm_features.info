@@ -1,0 +1,15 @@
+name = Standard and methods features
+core = 7.x
+package = NISR
+version = 7.x-1.0-alpha1
+dependencies[] = about_us_features
+dependencies[] = features
+dependencies[] = menu
+dependencies[] = nisr_features
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[menu_links][] = main-menu_standards-and-methods:node/1376
+features[uuid_node][] = b08ef557-1ad2-4b6f-ba7b-c073f0a85550
+features_exclude[dependencies][nisr_pages] = nisr_pages
+features_exclude[menu_custom][main-menu] = main-menu
+project path = sites/all/modules/features

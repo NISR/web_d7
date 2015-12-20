@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * nisr_pages.features.inc
+ * about_us_features.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function nisr_pages_ctools_plugin_api($module = NULL, $api = NULL) {
+function about_us_features_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "context" && $api == "context") {
     return array("version" => "3");
   }
@@ -19,7 +19,7 @@ function nisr_pages_ctools_plugin_api($module = NULL, $api = NULL) {
 /**
  * Implements hook_node_info().
  */
-function nisr_pages_node_info() {
+function about_us_features_node_info() {
   $items = array(
     'page' => array(
       'name' => t('Page'),

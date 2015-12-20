@@ -17,6 +17,14 @@ function nisr_features_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => 0,
     ),
+    'document_subjects' => array(
+      'name' => 'Document subjects',
+      'machine_name' => 'document_subjects',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+    ),
     'profile_occupation' => array(
       'name' => 'Profile occupation',
       'machine_name' => 'profile_occupation',

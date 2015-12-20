@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Contact config feature.
+ */
+
+include_once 'contact_config.features.inc';
