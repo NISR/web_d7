@@ -1,0 +1,168 @@
+<?php
+
+/**
+ * @file
+ * Service module suite
+ */
+
+/*
+ *	Implements hook_menu()
+ */
+function nisr_service_menu(){
+	$items = array();
+	
+	$items['services/%']	= array(
+		'page callback' => 'nisr_service_router',
+		'page arguments' => array(1),
+		'access callback' => TRUE,
+		'type' => MENU_CALLBACK,	
+	);
+		
+	return $items;	
+}
+
+/* 
+ * Service router menu callback
+ */
+function nisr_service_router($service){
+	$services = array('visa','internship','community');
+	$output = '';
+
+	if(user_is_logged_in()){
+		if(in_array($service,$services)){
+			drupal_goto($service);	
+		}else{
+		   // if login or register then go to profile page
+			if(in_array($service,array('login','register'))){
+				drupal_goto('profile');
+			}else{
+				$output = 'Non-existant service 1';	
+			}	
+		}	
+	}else{
+		if(in_array($service,$services)){
+			$output = drupal_get_form('nisr_service_login_form',$service);
+		}else{
+		   //if login or register then get the relevant form page
+			if(in_array($service,array('login','register'))){
+				$output = drupal_get_form('nisr_service_' . $service . '_form');
+			}else{
+				$output = 'Non-existant service 2';	
+			}	
+		}
+	}
+	
+	return $output;
+}
+
+/*
+ * Login page
+ */
+function nisr_service_login_form($form,&$form_state,$service){
+	
+	$form['username'] = array(
+		'#type' => 'textfield',
+		'#required' => TRUE,
+		'#title' => t('Username'),
+	);	
+	
+	$form['password'] = array(
+		'#type' => 'password',
+		'#required' => TRUE,
+		'#title' => t('Password'),
+	);	
+	
+	$form['service'] = array(
+		'#type' => 'hidden',
+		'#value' => $service,
+	);	
+	
+	$form['actions']['submit'] = array(
+		'#type' => 'submit',
+		'#value' => t('Connect'),	
+	);
+	
+	$form['new_user_register'] = array(
+		'#markup'=> "New user,register <a href='/services/register'>here</a>",
+	);	
+	
+	return $form;
+}
+
+/*
+ * Register form 
+ */
+function nisr_service_register_form($form,&$form_state){
+	// Personal info
+	$form['pi'] = array(
+		'#type' => 'fieldset',
+		'#collapsible' => TRUE,
+		'#title' => t('Personal information'),
+	);
+	
+	$form['pi']['salutation'] = array(
+		'#type' => 'select',
+		'#required' => TRUE,
+		'#options' => array(0 => t('Mr.'), 1 => t('Ms.'), 2 => t('Mrs.')),
+		'#title' => t('Salutation'),
+	);	
+	
+	$form['pi']['firstname'] = array(
+		'#type' => 'textfield',
+		'#required' => TRUE,
+		'#title' => t('Firsttname'),
+	);	
+	
+	$form['pi']['lastname'] = array(
+		'#type' => 'textfield',
+		'#required' => TRUE,
+		'#title' => t('Lastname'),
+	);	
+		
+	// Account info
+	$form['account'] = array(
+		'#type' => 'fieldset',
+		'#collapsible' => TRUE,
+		'#title' => t('Account information'),
+	);
+	
+	$form['account']['username'] = array(
+		'#type' => 'textfield',
+		'#required' => TRUE,
+		'#title' => t('Username'),
+	);	
+	
+	$form['account']['password'] = array(
+		'#type' => 'password',
+		'#required' => TRUE,
+		'#title' => t('Password'),
+	);	
+
+	$form['account']['password_confirm'] = array(
+		'#type' => 'password_confirm',
+		'#required' => TRUE,
+		'#title' => t('Confirm password'),
+	);	
+	
+	$form['actions']['submit'] = array(
+		'#type' => 'submit',
+		'#value' => t('Register'),	
+	);
+	
+	
+	return $form;	
+}
+
+/*
+ * Login form submit handler
+ */
+function nisr_service_login_form_submit($form,&$form_state){
+
+}
+
+/*
+ * Register form submit handler
+ */
+function nisr_service_register_form_submit($form,&$form_state){
+	
+}
