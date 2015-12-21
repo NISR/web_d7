@@ -11,52 +11,41 @@
 function nisr_service_menu(){
 	$items = array();
 	
-	$items['services/%']	= array(
-		'page callback' => 'nisr_service_router',
-		'page arguments' => array(1),
+	$items['service/login/%']	= array(
+		'page callback' => 'nisr_service_login',
+		'page arguments' => array(2),
 		'access callback' => TRUE,
 		'type' => MENU_CALLBACK,	
 	);
-		
+	$items['service/register/%']	= array(
+		'page callback' => 'nisr_service_register',
+		'page arguments' => array(2),
+		'access callback' => TRUE,
+		'type' => MENU_CALLBACK,	
+	);		
+	$items['service/%']	= array(
+		'page callback' => 'nisr_service_gateway',
+		'page arguments' => array(1),
+		'access callback' => TRUE,
+		'type' => MENU_CALLBACK,	
+	);		
+	
+			
 	return $items;	
 }
 
 /* 
- * Service router menu callback
+ * Service login menu callback
  */
-function nisr_service_router($service){
-	$services = array('visa','internship','community');
-	$output = '';
+function nisr_service_login($service){
 
-	if(user_is_logged_in()){
-		if(in_array($service,$services)){
-			drupal_goto($service);	
-		}else{
-		   // if login or register then go to profile page
-			if(in_array($service,array('login','register'))){
-				drupal_goto('profile');
-			}else{
-				$output = 'Non-existant service 1';	
-			}	
-		}	
-	}else{
-		if(in_array($service,$services)){
-			$output = drupal_get_form('nisr_service_login_form',$service);
-		}else{
-		   //if login or register then get the relevant form page
-			if(in_array($service,array('login','register'))){
-				$output = drupal_get_form('nisr_service_' . $service . '_form');
-			}else{
-				$output = 'Non-existant service 2';	
-			}	
-		}
-	}
+	if(user_is_logged_in()) drupal_goto('service/' . $service);	
 	
-	return $output;
+	return drupal_get_form('nisr_service_login_form',$service);
 }
 
 /*
- * Login page
+ * Login form
  */
 function nisr_service_login_form($form,&$form_state,$service){
 	
@@ -83,16 +72,26 @@ function nisr_service_login_form($form,&$form_state,$service){
 	);
 	
 	$form['new_user_register'] = array(
-		'#markup'=> "New user,register <a href='/services/register'>here</a>",
+		'#markup'=> "New user,register <a href='/service/register/" . $service . "'>here</a>",
 	);	
 	
 	return $form;
 }
 
+/* 
+ * Service login menu callback
+ */
+function nisr_service_register($service){
+
+	if(user_is_logged_in()) drupal_goto('service/' . $service);	
+	
+	return drupal_get_form('nisr_service_register_form',$service);
+}
+
 /*
  * Register form 
  */
-function nisr_service_register_form($form,&$form_state){
+function nisr_service_register_form($form,&$form_state,$service){
 	// Personal info
 	$form['pi'] = array(
 		'#type' => 'fieldset',
@@ -165,4 +164,17 @@ function nisr_service_login_form_submit($form,&$form_state){
  */
 function nisr_service_register_form_submit($form,&$form_state){
 	
+}
+
+/*
+ * Service gateway
+ */
+function nisr_service_gateway($service){
+	// Authenticate
+	if(!user_is_logged_in()){
+		drupal_goto('service/login/' . $service);
+	}else{
+	// Render console
+		views_embed_view('service_' . $service);
+	}
 }
