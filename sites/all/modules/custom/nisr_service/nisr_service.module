@@ -132,15 +132,8 @@ function nisr_service_register_form($form,&$form_state,$service){
 	);	
 	
 	$form['account']['password'] = array(
-		'#type' => 'password',
-		'#required' => TRUE,
-		'#title' => t('Password'),
-	);	
-
-	$form['account']['password_confirm'] = array(
 		'#type' => 'password_confirm',
 		'#required' => TRUE,
-		'#title' => t('Confirm password'),
 	);	
 	
 	$form['actions']['submit'] = array(
