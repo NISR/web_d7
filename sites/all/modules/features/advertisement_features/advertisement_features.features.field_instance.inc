@@ -115,8 +115,9 @@ function advertisement_features_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
+        'module' => 'link',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'link_default',
         'weight' => 0,
       ),
     ),

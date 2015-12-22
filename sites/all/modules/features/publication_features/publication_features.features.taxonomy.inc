@@ -9,6 +9,14 @@
  */
 function publication_features_taxonomy_default_vocabularies() {
   return array(
+    'publication_elapsed_period' => array(
+      'name' => 'Publication elapsed period',
+      'machine_name' => 'publication_elapsed_period',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+    ),
     'subjects' => array(
       'name' => 'Subjects',
       'machine_name' => 'subjects',

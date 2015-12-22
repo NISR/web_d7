@@ -39,7 +39,7 @@ function nisr_features_uuid_features_default_content() {
       ),
     ),
   ),
-  'date' => '2012-09-22 16:51:47 +0300',
+  'date' => '2012-09-22 15:51:47 +0200',
   'user_uuid' => '0e79b96d-57f4-407d-b283-c7b9fd2b403f',
 );
   $nodes[] = array(
@@ -70,7 +70,7 @@ function nisr_features_uuid_features_default_content() {
       ),
     ),
   ),
-  'date' => '2011-10-28 11:55:07 +0300',
+  'date' => '2011-10-28 10:55:07 +0200',
   'user_uuid' => '0ba20103-dd5e-4a28-ba96-a90ee7bf92be',
 );
   return $nodes;

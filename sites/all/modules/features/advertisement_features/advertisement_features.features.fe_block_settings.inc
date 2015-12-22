@@ -52,7 +52,7 @@ function advertisement_features_default_fe_block_settings() {
     'delta' => 1,
     'module' => 'nodesinblock',
     'node_types' => array(),
-    'pages' => '*',
+    'pages' => '',
     'roles' => array(),
     'themes' => array(
       'bartik' => array(

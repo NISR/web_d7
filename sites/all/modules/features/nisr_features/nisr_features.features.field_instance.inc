@@ -283,6 +283,85 @@ function nisr_features_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'field_collection_item-field_profile_subscriptions-field_subscriptions_sp'.
+  $field_instances['field_collection_item-field_profile_subscriptions-field_subscriptions_sp'] = array(
+    'bundle' => 'field_profile_subscriptions',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_subscriptions_sp',
+    'label' => 'Statistical publications',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 0,
+    ),
+  );
+
+  // Exported field_instance: 'node-page-body'.
+  $field_instances['node-page-body'] = array(
+    'bundle' => 'page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'A <em>page</em>, similar in form to a <em>story</em>, is a simple method for creating and displaying information that rarely changes, such as an "About us" section of a website. By default, a <em>page</em> entry does not allow visitor comments and is not featured on the site\'s initial home page.',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'trim_length' => 600,
+        ),
+        'trim_length' => 600,
+        'type' => 'text_summary_or_trimmed',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'body',
+    'label' => 'Body',
+    'required' => 0,
+    'settings' => array(
+      'display_summary' => TRUE,
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 20,
+        'summary_rows' => 5,
+      ),
+      'type' => 'text_textarea_with_summary',
+      'weight' => 0,
+    ),
+  );
+
   // Exported field_instance: 'profile2-main-field_profile_pi'.
   $field_instances['profile2-main-field_profile_pi'] = array(
     'bundle' => 'main',
@@ -359,6 +438,8 @@ function nisr_features_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('A <em>page</em>, similar in form to a <em>story</em>, is a simple method for creating and displaying information that rarely changes, such as an "About us" section of a website. By default, a <em>page</em> entry does not allow visitor comments and is not featured on the site\'s initial home page.');
+  t('Body');
   t('Documents');
   t('Firstname');
   t('Get notified by an email alert wherever items of the following types are created');
@@ -368,6 +449,7 @@ function nisr_features_field_default_field_instances() {
   t('Personal Information');
   t('Salutation');
   t('Statistical articles');
+  t('Statistical publications');
   t('Statistical reports');
   t('Subscriptions');
 
