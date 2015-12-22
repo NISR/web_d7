@@ -37,7 +37,7 @@ function contact_config_uuid_features_default_content() {
     'pathauto' => 0,
   ),
   'pathauto_perform_alias' => FALSE,
-  'date' => '2011-07-15 10:54:09 +0200',
+  'date' => '2011-07-15 11:54:09 +0300',
   'user_uuid' => '0ba20103-dd5e-4a28-ba96-a90ee7bf92be',
 );
   return $nodes;

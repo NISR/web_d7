@@ -202,9 +202,9 @@ function nisr_features_context_default_contexts() {
           'region' => 'footer_2',
           'weight' => '-10',
         ),
-        'block-35' => array(
+        'block-37' => array(
           'module' => 'block',
-          'delta' => '35',
+          'delta' => '37',
           'region' => 'footer_3',
           'weight' => '-10',
         ),

@@ -20,6 +20,7 @@ function publication_features_context_default_contexts() {
     'path' => array(
       'values' => array(
         'standards_and_methods' => 'standards_and_methods',
+        'standards-and-methods' => 'standards-and-methods',
       ),
     ),
   );
