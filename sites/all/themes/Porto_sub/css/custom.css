@@ -37,6 +37,16 @@ div.horizontal-menu ul.menu li.last{
 
 }
 
+.region-sidebar-left{
+	background: #F4F4F4;
+	padding: 10px;	
+}
+
+.region-sidebar-left h4{
+	border-bottom: 1px solid #CCC;
+	padding-bottom: 5px;	
+}
+
 
 
 /**
