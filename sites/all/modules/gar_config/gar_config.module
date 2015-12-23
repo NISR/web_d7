@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Google Analytics Reports config feature.
+ */
+
+include_once 'gar_config.features.inc';
