@@ -52,4 +52,5 @@ features[taxonomy][] = datasource_types
 features[views_view][] = datasource_widgets
 features[views_view][] = datasources_backoffice
 features[views_view][] = datasources_eva
+features[views_view][] = datasources_search
 project path = sites/all/modules/features

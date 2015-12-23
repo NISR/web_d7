@@ -594,5 +594,75 @@ function datasource_features_views_default_views() {
   );
   $export['datasources_eva'] = $view;
 
+  $view = new view();
+  $view->name = 'datasources_search';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'search_api_index_datasources';
+  $view->human_name = 'Datasources search';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'view datasource entities';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Indexed Datasource: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_datasources';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_wrapper_type'] = 'h4';
+  $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
+  /* Sort criterion: Indexed Datasource: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'search_api_index_datasources';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  /* Contextual filter: Indexed Datasource: Type */
+  $handler->display->display_options['arguments']['field_datasource_type']['id'] = 'field_datasource_type';
+  $handler->display->display_options['arguments']['field_datasource_type']['table'] = 'search_api_index_datasources';
+  $handler->display->display_options['arguments']['field_datasource_type']['field'] = 'field_datasource_type';
+  $handler->display->display_options['arguments']['field_datasource_type']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_datasource_type']['summary']['format'] = 'default_summary';
+
+  /* Display: Datasources */
+  $handler = $view->new_display('block', 'Datasources', 'datasources');
+  $handler->display->display_options['block_description'] = 'Datasources';
+
+  /* Display: Metadata */
+  $handler = $view->new_display('embed', 'Metadata', 'metadata');
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Indexed Datasource: Type */
+  $handler->display->display_options['arguments']['field_datasource_type']['id'] = 'field_datasource_type';
+  $handler->display->display_options['arguments']['field_datasource_type']['table'] = 'search_api_index_datasources';
+  $handler->display->display_options['arguments']['field_datasource_type']['field'] = 'field_datasource_type';
+  $handler->display->display_options['arguments']['field_datasource_type']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_datasource_type']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_datasource_type']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['field_datasource_type']['not'] = 0;
+  $translatables['datasources_search'] = array(
+    t('Master'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('All'),
+    t('Datasources'),
+    t('Metadata'),
+  );
+  $export['datasources_search'] = $view;
+
   return $export;
 }
