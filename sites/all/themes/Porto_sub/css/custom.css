@@ -242,14 +242,27 @@ div.tweet-authorphoto img {
 	background: #f7f7f7;
 }
 
+.featured-box .box-content {
+	text-align: justify;
+}
+
+.featured-box .box-content h3{
+	text-align: center;
+
+}
+
+.featured-box .box-content h4{
+	min-height: 2.9em;		
+}
+
+.featured-box .box-content p{
+	color: #1D2127;	
+}
+
 .featured-box .box-content:hover{
 	border-top-color: #ccc;
 }
  
-.featured-box .box-content h4{
-	min-height: 3em;	
-}
-
 .featured-box .box-content a{
 	text-decoration: none;	
 	color: none;

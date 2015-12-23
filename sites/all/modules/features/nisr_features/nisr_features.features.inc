@@ -404,6 +404,12 @@ function nisr_features_default_search_api_server() {
             "column" : "search_api_language",
             "type" : "string",
             "boost" : "1.0"
+          },
+          "field_datasource_type" : {
+            "table" : "search_api_db_datasources",
+            "column" : "field_datasource_type",
+            "type" : "integer",
+            "boost" : "1.0"
           }
         }
       }

@@ -37,7 +37,7 @@ function datasource_block_view($delta = ''){
 
 	if($delta == 'datasource_types'){
 		$block['title'] = '';
-		$block['content'] = get_taxonomy_terms('datasource_types');
+		$block['content'] = get_taxonomy_terms('datasource_types','datasources');
 	}
 	/*
 	// Feed the dynamically declared blocks from document subjects vocabulary with view embed display
@@ -54,6 +54,21 @@ function datasource_block_view($delta = ''){
 	*/
 	
 	return $block;
+}
+
+/*
+ * Implements hook_entities_by_term()
+ */
+function datasource_entities_by_term_alter(&$entities,$tid){
+	module_load_include('inc','nisr','utils');
+	$view = get_embed_view('datasources_search','metadata',array($tid));
+	
+	if($view['count']){
+		$entities = array(
+								'items' => array('#markup' => $view['result'],'#prefix' => "<div class='clearfix'>",'#suffix' => '</div>'),
+							  );
+	}	
+
 }
 
 /**
@@ -191,6 +206,8 @@ function datasource_menu() {
     'file' => 'datasource.admin.inc',
     'type' => MENU_LOCAL_TASK,
     'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+    'theme callback' => 'variable_get',
+    'theme arguments' => array('admin_theme'),
   );
 
   foreach (datasource_types() as $type => $info) {
@@ -214,6 +231,26 @@ function datasource_menu() {
     'file' => 'datasource.admin.inc',
   );
 
+	// 
+	$items['datasources/%'] = array(
+		'title callback' => 'get_taxonomy_term_label',
+		'title arguments' => array(1),
+    	'page callback' => 'term_page',
+    	'page arguments' => array(1),
+    	'access arguments' => array('access content'),
+	);	
+  	$items['datasources/%/view'] = array(
+    	'title' => 'View',
+    	'type' => MENU_DEFAULT_LOCAL_TASK,
+  	);
+	$items['datasources/%/edit'] = array(
+		'title' => 'Edit',
+    	'page callback' => 'term_goto',
+    	'page arguments' => array(1),
+    	'access arguments' => array('administer datasources entities'),
+    	'type' => MENU_LOCAL_TASK,
+		'weight' => 10,
+	);	
   return $items;
 }
 
@@ -384,6 +421,8 @@ function datasource_access($op, $datasource = NULL, $account = NULL, $entity_typ
       return user_access('administer datasource entities', $account)
           || user_access('view datasource entities', $account);
     case 'edit':
+    case 'delete' :
+    case 'update' :
       return user_access('administer datasource entities')
           || user_access('edit any datasource entities')
           || (user_access('edit own datasource entities') && ($datasource->uid == $account->uid));

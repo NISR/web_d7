@@ -2415,9 +2415,10 @@ Leave empty for no range
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-subjects-field_pub_dataset'.
-  $field_instances['taxonomy_term-subjects-field_pub_dataset'] = array(
-    'bundle' => 'subjects',
+  // Exported field_instance:
+  // 'taxonomy_term-statistical_publications_types-field_pub_dataset'.
+  $field_instances['taxonomy_term-statistical_publications_types-field_pub_dataset'] = array(
+    'bundle' => 'statistical_publications_types',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',

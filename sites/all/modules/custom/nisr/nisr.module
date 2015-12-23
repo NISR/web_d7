@@ -144,19 +144,20 @@ function nisr_menu(){
     	'access callback' => 'user_is_logged_in',
     	'weight' => -10,
     	'menu_name' => 'menu-profile-menu',
-	);	
-	// Terms page override
-	$items['page/term/%'] = array(
-		'title callback' => 'get_taxonomy_term_label',
-		'title arguments' => array(2),
-    	'page callback' => 'term_page',
-    	'page arguments' => array(2),
-    	'access arguments' => array('access content'),
-	);	
-	
+	);		
+
 	return $items;
 }
 
+/*
+ * Implements hook_menu_alter()
+ */
+function nisr_menu_alter(&$items) {
+  // Re-order messages admin menu item
+  if (!empty($items['admin/content/message'])) $items['admin/content/message']['weight'] = 99;
+  // Re-order scheduler admin menu item
+  if (!empty($items['admin/content/scheduler'])) $items['admin/content/scheduler']['weight'] = 100;
+}
 
 /**
  * Implements hook_theme_registry_alter().
@@ -295,12 +296,21 @@ function entities_by_term($tid){
 	
 	return $entities;
 }
+
 /*
  * Callback for the image home menu item
  */
 function get_home_menu_item(){
 	return "<i class='fa fa-home'></i>";	
 }
+
+/*
+ * Callback for area edit menu item
+ */
+function term_goto($term_id){
+	drupal_goto("taxonomy/term/$term_id/edit",array('query' => array('destination' => "area/$term_id")));
+}
+
 /*
  * Get children terms and/or various entities classified by a term
  *
@@ -314,7 +324,8 @@ function get_home_menu_item(){
 function term_page($tid){
 	
 	$term = taxonomy_term_load($tid);
-
+	
+	$path = explode('/',request_path());	
 	$content = array(
 							'description' => array(
 									'#markup' => $term->description,
@@ -330,12 +341,12 @@ function term_page($tid){
 		$content['wrapper'] = array("#prefix" => "<div class='featured-boxes'>");			
 		foreach($children_terms as $child_term){
 			$children[] = array(
-									"#prefix" => "<div class='col-md-3'><div class='featured-content featured-box'><div class='box-content'>",
+									"#prefix" => "<div onclick=javascript:window.location.href='/" . $path[0] . "/" . $child_term->tid . "' class='col-md-3'><div class='featured-content featured-box'><div class='box-content'>",
 									"#suffix" => "</div></div></div>",
 									'title' => array(
 														'#theme' => 'link',
 														'#text'  => $child_term->name,
-														'#path'  => 'page/term/' . $child_term->tid,
+														'#path'  => "$path[0]/$child_term->tid",
 														'#options'=> array('attributes' => array('title' => ''),'html'=>TRUE),
 														'#prefix'=> "<h3>",
 														'#suffix'=> "</h3>",
@@ -365,7 +376,7 @@ function term_page($tid){
    $breadcrumb[] = l(t('Home'),'<front>');
    //$breadcrumb[] = l(t('Statistical publications'),'statistical_publications');
    foreach(array_reverse($parent_terms) as $parent){
-   	$breadcrumb[] = l(t($parent->name),drupal_get_path_alias('page/term/' . $parent->tid));
+   	$breadcrumb[] = l(t($parent->name),drupal_get_path_alias('area/' . $parent->tid));
    } 
    
    //$breadcrumb[] = drupal_get_title();

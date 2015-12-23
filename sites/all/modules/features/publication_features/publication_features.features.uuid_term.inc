@@ -16,7 +16,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 34,
     'uuid' => '04a628ba-db1a-49c1-a584-7e8535379ff4',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
   );
@@ -44,7 +44,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 1,
     'uuid' => '0bc67f28-f303-4f78-bd39-f573c6e66fac',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
     'parent' => array(
@@ -57,7 +57,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 0,
     'uuid' => '0da99027-9621-4dc9-b083-fc722f17eac1',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
     'parent' => array(
@@ -70,7 +70,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 35,
     'uuid' => '1083d244-be02-4485-920d-41b57bfa1e3a',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
   );
@@ -80,7 +80,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 29,
     'uuid' => '1b225b7c-18c4-47bd-83c7-16ee98a3f1d8',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
   );
@@ -90,7 +90,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 1,
     'uuid' => '1badb282-01ee-4efa-92e0-fca5d98eb93d',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
     'parent' => array(
@@ -103,7 +103,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 1,
     'uuid' => '1bef5d88-0f55-443e-89d4-39e7e79d7734',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
     'parent' => array(
@@ -116,7 +116,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 0,
     'uuid' => '1c62d515-d5c9-451e-bcaa-084407670feb',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
     'parent' => array(
@@ -129,7 +129,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 1,
     'uuid' => '1cc3e0e0-7cec-4636-ac8c-eb6ce84a9abf',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
     'parent' => array(
@@ -142,7 +142,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 0,
     'uuid' => '21680279-7f54-4df6-ada4-1705ffc99f0e',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
     'parent' => array(
@@ -155,7 +155,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 0,
     'uuid' => '26f09f42-8f87-4408-939d-c1abd9a4be01',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
     'parent' => array(
@@ -168,7 +168,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => 2,
     'weight' => 0,
     'uuid' => '2bfba38b-194b-41c8-b5df-a83b109b2c64',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
     'parent' => array(
@@ -199,7 +199,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => 2,
     'weight' => 0,
     'uuid' => '347ba22c-aa4f-4ed0-a049-0ed722b22f4c',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
     'parent' => array(
@@ -212,7 +212,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 1,
     'uuid' => '3bd03c20-4d4b-41e9-8f96-9fd41b034ada',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
     'parent' => array(
@@ -225,7 +225,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => 2,
     'weight' => 1,
     'uuid' => '3e46f685-b844-458e-b1ae-cb3ca32223b5',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
     'parent' => array(
@@ -281,7 +281,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => 2,
     'weight' => 0,
     'uuid' => '60cf69df-43be-4a7b-9a30-471bec1de8a8',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
     'parent' => array(
@@ -310,7 +310,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 2,
     'uuid' => '6dd5e1c8-a23d-4d69-a007-f1097253828f',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
     'parent' => array(
@@ -323,7 +323,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 1,
     'uuid' => '75dcf979-4963-4ef2-8639-b3965827362e',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
     'parent' => array(
@@ -345,7 +345,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 0,
     'uuid' => '7a9058cf-ef17-489d-a0c0-fb8718a99747',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
     'parent' => array(
@@ -367,7 +367,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 31,
     'uuid' => '8a42cfdd-9006-452b-ab01-06286ba7d18c',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
   );
@@ -377,7 +377,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 0,
     'uuid' => '8f1e5020-a6fe-40da-b35e-eddaaf83a348',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
     'parent' => array(
@@ -399,7 +399,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => 2,
     'weight' => 7,
     'uuid' => '9155d45e-3486-48f9-abe7-d0ced1a253ec',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'path' => array(
       'pathauto' => 0,
@@ -412,7 +412,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 37,
     'uuid' => '91eb5da4-0e98-4e01-9b7f-a212657214b9',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
   );
@@ -422,7 +422,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 32,
     'uuid' => '934b5c82-21f5-4adf-ad2c-ce202c44f27a',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
   );
@@ -432,7 +432,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => 2,
     'weight' => 25,
     'uuid' => 'a05d0dda-fad9-4c04-8604-a8b1103a3291',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
   );
@@ -467,7 +467,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 1,
     'uuid' => 'acef122a-56bf-49f7-a1ac-d5dd052d939c',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
     'parent' => array(
@@ -489,7 +489,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 2,
     'uuid' => 'afc36930-1ad2-41ae-b01f-df5ea5c8ddf0',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
     'parent' => array(
@@ -502,7 +502,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 33,
     'uuid' => 'b2261077-6ed6-4c12-a7a3-7b9de9a0d2ce',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
   );
@@ -512,7 +512,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 2,
     'uuid' => 'bd2a4590-f5d8-45da-bc7e-1c9a723a8316',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
     'parent' => array(
@@ -525,7 +525,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 30,
     'uuid' => 'bf644e93-c957-4f13-a423-3900d26830d1',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
   );
@@ -560,7 +560,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 1,
     'uuid' => 'd738e745-21bc-4e60-ba26-d43b49076d71',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
     'parent' => array(
@@ -573,7 +573,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 36,
     'uuid' => 'dc774b28-3700-4235-b993-39db95712112',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
   );
@@ -583,7 +583,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 1,
     'uuid' => 'de8b7fb6-978a-48fe-a72c-c9272f178d44',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
     'parent' => array(
@@ -596,7 +596,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 0,
     'uuid' => 'e0a955c0-5c2a-44ae-962c-dfe71bead392',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
     'parent' => array(
@@ -609,7 +609,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => 2,
     'weight' => 38,
     'uuid' => 'e1037847-5722-462f-8a73-a2d39854e651',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'path' => array(
       'pathauto' => 0,
@@ -622,7 +622,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 0,
     'uuid' => 'e570f152-83a3-4b87-afae-8a52b1b2cf7c',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
     'parent' => array(
@@ -635,7 +635,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 0,
     'uuid' => 'ef8c4185-b9a1-418b-83cf-78ffefa63b45',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
     'parent' => array(
@@ -648,7 +648,7 @@ function publication_features_uuid_features_default_terms() {
     'format' => NULL,
     'weight' => 2,
     'uuid' => 'fb8fcc0b-1feb-43e4-852d-29588e5ccea9',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
     'parent' => array(
@@ -662,7 +662,7 @@ This section contains economic indicators which cover statistical data that can 
     'format' => 2,
     'weight' => 20,
     'uuid' => 'fbc7423e-9f9c-407d-9da4-06dc9aae3e95',
-    'vocabulary_machine_name' => 'subjects',
+    'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
     'url_alias' => array(),
   );

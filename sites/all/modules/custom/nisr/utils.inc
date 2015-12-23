@@ -15,7 +15,7 @@
  *		renderable array of terms
  *
  */
-function get_taxonomy_terms($vocabulary){
+function get_taxonomy_terms($vocabulary,$path){
 	$voc = taxonomy_vocabulary_machine_name_load($vocabulary);	
 	$subjects = taxonomy_get_tree($voc->vid,0,2); // stop to 2-level
 	
@@ -31,13 +31,13 @@ function get_taxonomy_terms($vocabulary){
 
 	$render = array("wrapper" => array("#prefix" => "<div class='row featured-boxes'>"));
 	foreach($terms as $key => $value){
-		$render['wrapper'][$key] = array(
-								'#prefix' => "<div class='col-md-3'><div class='featured-content featured-box'><div class='box-content'>",
+		$content = array(
+								'#prefix' => "<div onclick=javascript:window.open('$path/$key','_self') class='col-md-3'><div class='featured-content featured-box'><div class='box-content'>",
 								'#suffix' => "</div></div></div>",
-								'markup' => array(
+								'title' => array(
 											  '#theme' => 'link',
 											  '#text' => strlen($value['name']) > 30 ? substr($value['name'],0,27) . '...' : $value['name'],
-											  '#path' => 'page/term/' . $key,
+											  '#path' => "$path/$key",
 											  '#options' => array(
 											  							 'attributes' => array('title' => $value['name'],),
 											  							 'html' => TRUE
@@ -45,8 +45,12 @@ function get_taxonomy_terms($vocabulary){
 											  '#prefix' => '<h3>',
 											  '#suffix' => '</h3>'
 											  
-											)
-					 		);		
+														)
+					 		 );	
+
+		$render['wrapper'][$key] = $content;
+			
+					 
 		if(count($value['children'])){
 			$render['wrapper'][$key]['children']['#prefix'] = "<ul class='subject-box-wrapper-items'>";
 			$render['wrapper'][$key]['children']['#suffix'] = "</ul>";			
@@ -54,7 +58,7 @@ function get_taxonomy_terms($vocabulary){
 				$render['wrapper'][$key]['children'][] = array(
 													 '#theme' => 'link',
 												    '#text' => strlen($v) > 30 ? substr($v,0,27) . '...' : $v,
-												    '#path' => 'page/term/' . $k,
+												    '#path' => "$path/$k",
 												    '#options' => array(
 												    						'attributes' => array('title' => $v),
 												    						'html' => TRUE
@@ -88,7 +92,6 @@ function get_taxonomy_terms($vocabulary){
  
 function get_embed_view($name,$display,$filters){
 	$view = views_get_view($name);
-	
 	$view->set_display($display);
 	$view->set_arguments($filters);
 	

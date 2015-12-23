@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Data portals config feature.
+ */
+
+include_once 'nisr_data_portals_config.features.inc';

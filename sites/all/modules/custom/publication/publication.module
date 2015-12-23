@@ -11,8 +11,8 @@ function publication_block_info(){
 	$weight = 100;
 
 	// Subjects on statistical page
-	$blocks['subjects'] = array(
-		'info' => t('Subjects/Areas'),
+	$blocks['statistical_publication_types'] = array(
+		'info' => t('Statistical publication types'),
 		'weight' => $weight,
 		'cache' => DRUPAL_CACHE_GLOBAL,
 		);
@@ -38,9 +38,9 @@ function publication_block_info(){
 function publication_block_view($delta = ''){
 	module_load_include('inc','nisr','utils');
 	
-	if($delta == 'subjects'){
+	if($delta == 'statistical_publication_types'){
 		$block['title'] = '';
-		$block['content'] = get_taxonomy_terms('subjects');
+		$block['content'] = get_taxonomy_terms('statistical_publications_types','statistical-publications');
 	}
 	
 	// Feed the dynamically declared blocks from document subjects vocabulary with view embed display
@@ -346,6 +346,27 @@ function publication_menu() {
     'file' => 'publication.admin.inc',
   );
   
+	// Statistical publications
+	$items['statistical-publications/%'] = array(
+		'title callback' => 'get_taxonomy_term_label',
+		'title arguments' => array(1),
+    	'page callback' => 'term_page',
+    	'page arguments' => array(1),
+    	'access arguments' => array('access content'),
+	);	
+  	$items['statistical-publications/%/view'] = array(
+    	'title' => 'View',
+    	'type' => MENU_DEFAULT_LOCAL_TASK,
+  	);
+	$items['statistical-publications/%/edit'] = array(
+		'title' => 'Edit',
+    	'page callback' => 'term_goto',
+    	'page arguments' => array(1),
+    	'access arguments' => array('administer publication entities'),
+    	'type' => MENU_LOCAL_TASK,
+		'weight' => 10,
+	);		
+	
   return $items;
 }
 

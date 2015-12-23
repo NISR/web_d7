@@ -130,6 +130,63 @@ function datasource_features_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '50';
   $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'views_bulk_operations' => 'views_bulk_operations',
+    'ds_id' => 'ds_id',
+    'title' => 'title',
+    'type' => 'type',
+    'name' => 'name',
+    'changed' => 'changed',
+    'nothing' => 'nothing',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'views_bulk_operations' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'ds_id' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'type' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'changed' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'nothing' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
@@ -243,7 +300,7 @@ function datasource_features_views_default_views() {
   $handler->display->display_options['menu']['context_only_inline'] = 0;
 
   /* Display: Metadata */
-  $handler = $view->new_display('page', 'Metadata', 'page_1');
+  $handler = $view->new_display('page', 'Metadata', 'metadata');
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Bulk operations: Datasource */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
@@ -310,7 +367,7 @@ function datasource_features_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = 'Operations';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="/datasource/[ds_id]/edit?destination=admin/content/datasources">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/datasource/[ds_id]/delete?destination=admin/content/datasources">Delete</a>';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="/datasource/[ds_id]/edit?destination=admin/content/datasources/metadata">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/datasource/[ds_id]/delete?destination=admin/content/datasources/metadata">Delete</a>';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Datasource: Title */
@@ -340,13 +397,13 @@ function datasource_features_views_default_views() {
   );
   $handler->display->display_options['path'] = 'admin/content/datasources/datasource_metadata';
   $handler->display->display_options['menu']['type'] = 'tab';
-  $handler->display->display_options['menu']['title'] = 'Datasource metadata';
+  $handler->display->display_options['menu']['title'] = 'Metadata';
   $handler->display->display_options['menu']['weight'] = '-10';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
 
   /* Display: Incidences */
-  $handler = $view->new_display('page', 'Incidences', 'page_2');
+  $handler = $view->new_display('page', 'Incidences', 'incidence');
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Datasource: Title */
@@ -375,6 +432,11 @@ function datasource_features_views_default_views() {
     'datasource_incidence' => 'datasource_incidence',
   );
   $handler->display->display_options['path'] = 'admin/content/datasources/datasource_incidences';
+  $handler->display->display_options['menu']['type'] = 'tab';
+  $handler->display->display_options['menu']['title'] = 'Incidences';
+  $handler->display->display_options['menu']['weight'] = '-9';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
   $translatables['datasources_backoffice'] = array(
     t('Master'),
     t('Datasources'),
@@ -406,6 +468,7 @@ function datasource_features_views_default_views() {
     t('Page'),
     t('Metadata'),
     t('Name'),
+    t('<a href="/datasource/[ds_id]/edit?destination=admin/content/datasources/metadata">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/datasource/[ds_id]/delete?destination=admin/content/datasources/metadata">Delete</a>'),
     t('Incidences'),
   );
   $export['datasources_backoffice'] = $view;
@@ -429,8 +492,10 @@ function datasource_features_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['type'] = 'mini';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '12';
   $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'ds_id' => 'ds_id',
@@ -469,6 +534,16 @@ function datasource_features_views_default_views() {
     'show_remaining_days' => 0,
     'show_repeat_rule' => 'show',
   );
+  /* Sort criterion: Datasource: Period - end date (field_datasource_period:value2) */
+  $handler->display->display_options['sorts']['field_datasource_period_value2']['id'] = 'field_datasource_period_value2';
+  $handler->display->display_options['sorts']['field_datasource_period_value2']['table'] = 'field_data_field_datasource_period';
+  $handler->display->display_options['sorts']['field_datasource_period_value2']['field'] = 'field_datasource_period_value2';
+  $handler->display->display_options['sorts']['field_datasource_period_value2']['order'] = 'DESC';
+  /* Sort criterion: Datasource: Period -  start date (field_datasource_period) */
+  $handler->display->display_options['sorts']['field_datasource_period_value']['id'] = 'field_datasource_period_value';
+  $handler->display->display_options['sorts']['field_datasource_period_value']['table'] = 'field_data_field_datasource_period';
+  $handler->display->display_options['sorts']['field_datasource_period_value']['field'] = 'field_datasource_period_value';
+  $handler->display->display_options['sorts']['field_datasource_period_value']['order'] = 'DESC';
   /* Contextual filter: Datasource: Datasource (field_datasource_parent) */
   $handler->display->display_options['arguments']['field_datasource_parent_target_id']['id'] = 'field_datasource_parent_target_id';
   $handler->display->display_options['arguments']['field_datasource_parent_target_id']['table'] = 'field_data_field_datasource_parent';
@@ -502,6 +577,13 @@ function datasource_features_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
     t('Datasource ID'),
     t('.'),
     t(','),

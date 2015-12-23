@@ -1,0 +1,13 @@
+name = Data portals config
+core = 7.x
+package = NISR
+version = 7.x-1.0-alpha1
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = nisr_features
+dependencies[] = strongarm
+dependencies[] = uuid_features
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[uuid_node][] = 40c5c4a3-4746-4b6b-b875-8bebdc90b46c
+features_exclude[dependencies][service_config] = service_config
