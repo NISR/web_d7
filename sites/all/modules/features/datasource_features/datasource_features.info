@@ -47,6 +47,7 @@ features[field_instance][] = datasource-datasource_incidence-field_datasource_pa
 features[field_instance][] = datasource-datasource_incidence-field_datasource_period
 features[field_instance][] = datasource-datasource_metadata-field_datasource_body
 features[field_instance][] = datasource-datasource_metadata-field_datasource_type
+features[search_api_index][] = datasources
 features[taxonomy][] = datasource_types
 features[views_view][] = datasource_widgets
 features[views_view][] = datasources_backoffice

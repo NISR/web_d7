@@ -58,3 +58,38 @@ function datasource_features_default_datasource_type() {
   }');
   return $items;
 }
+
+/**
+ * Implements hook_default_search_api_index().
+ */
+function datasource_features_default_search_api_index() {
+  $items = array();
+  $items['datasources'] = entity_import('search_api_index', '{
+    "name" : "Datasources",
+    "machine_name" : "datasources",
+    "description" : null,
+    "server" : "db_index_server",
+    "item_type" : "datasource",
+    "options" : {
+      "datasource" : { "bundles" : [ "datasource_metadata" ] },
+      "index_directly" : 0,
+      "cron_limit" : "50",
+      "fields" : {
+        "changed" : { "type" : "date" },
+        "created" : { "type" : "date" },
+        "ds_id" : { "type" : "integer" },
+        "field_datasource_type" : { "type" : "integer", "entity_type" : "taxonomy_term" },
+        "old_nid" : { "type" : "integer" },
+        "search_api_language" : { "type" : "string" },
+        "title" : { "type" : "string" },
+        "type" : { "type" : "string" },
+        "uid" : { "type" : "integer", "entity_type" : "user" },
+        "url" : { "type" : "uri" },
+        "uuid" : { "type" : "string" }
+      }
+    },
+    "enabled" : "1",
+    "read_only" : "0"
+  }');
+  return $items;
+}
