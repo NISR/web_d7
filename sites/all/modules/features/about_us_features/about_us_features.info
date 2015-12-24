@@ -10,6 +10,7 @@ dependencies[] = menu_block
 dependencies[] = nisr_features
 dependencies[] = strongarm
 dependencies[] = uuid_features
+features[context][] = about_us_first_level
 features[context][] = about_us_org_struct
 features[context][] = about_us_org_struct_ddg
 features[ctools][] = context:context:3
