@@ -256,15 +256,21 @@ function publication_features_views_default_views() {
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
+    'views_bulk_operations' => 'views_bulk_operations',
     'pub_id' => 'pub_id',
     'title' => 'title',
     'type' => 'type',
     'name' => 'name',
-    'created' => 'created',
     'changed' => 'changed',
+    'nothing' => 'nothing',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
+    'views_bulk_operations' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
     'pub_id' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
@@ -273,7 +279,7 @@ function publication_features_views_default_views() {
       'empty_column' => 0,
     ),
     'title' => array(
-      'sortable' => 0,
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
@@ -293,16 +299,14 @@ function publication_features_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
-    'created' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
+    'changed' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'desc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
-    'changed' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'desc',
+    'nothing' => array(
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -574,6 +578,7 @@ function publication_features_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'statistical_report' => 'statistical_report',
   );
+  $handler->display->display_options['filters']['type']['group'] = 1;
   $handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
   $handler->display->display_options['filters']['type']['expose']['label'] = 'Publication type';
   $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
@@ -589,6 +594,7 @@ function publication_features_views_default_views() {
   $handler->display->display_options['filters']['title']['table'] = 'publication';
   $handler->display->display_options['filters']['title']['field'] = 'title';
   $handler->display->display_options['filters']['title']['operator'] = 'contains';
+  $handler->display->display_options['filters']['title']['group'] = 1;
   $handler->display->display_options['filters']['title']['exposed'] = TRUE;
   $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
   $handler->display->display_options['filters']['title']['expose']['label'] = 'Title';
@@ -602,6 +608,38 @@ function publication_features_views_default_views() {
     6 => 0,
     5 => 0,
   );
+  /* Filter criterion: Publication: Subject (field_pub_subject) */
+  $handler->display->display_options['filters']['field_pub_subject_tid']['id'] = 'field_pub_subject_tid';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['table'] = 'field_data_field_pub_subject';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['field'] = 'field_pub_subject_tid';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['operator'] = 'empty';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_pub_subject_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['operator_id'] = 'field_pub_subject_tid_op';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['label'] = 'Subject';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['use_operator'] = TRUE;
+  $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['operator_label'] = 'Empty(or NOT)';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['operator'] = 'field_pub_subject_tid_op';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['identifier'] = 'field_pub_subject_tid';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    6 => 0,
+    5 => 0,
+  );
+  $handler->display->display_options['filters']['field_pub_subject_tid']['group_info']['label'] = 'Subject (field_pub_subject)';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['group_info']['identifier'] = 'field_pub_subject_tid';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['group_info']['remember'] = FALSE;
+  $handler->display->display_options['filters']['field_pub_subject_tid']['group_info']['group_items'] = array(
+    1 => array(),
+    2 => array(),
+    3 => array(),
+  );
+  $handler->display->display_options['filters']['field_pub_subject_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['vocabulary'] = 'statistical_publications_types';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['hierarchy'] = 1;
   $handler->display->display_options['path'] = 'admin/content/publications/statistical_reports';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Statistical reports';
@@ -723,6 +761,26 @@ function publication_features_views_default_views() {
     6 => 0,
     5 => 0,
   );
+  /* Filter criterion: Publication: Subject (field_pub_subject) */
+  $handler->display->display_options['filters']['field_pub_subject_tid']['id'] = 'field_pub_subject_tid';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['table'] = 'field_data_field_pub_subject';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['field'] = 'field_pub_subject_tid';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['operator_id'] = 'field_pub_subject_tid_op';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['label'] = 'Subject';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['use_operator'] = TRUE;
+  $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['operator'] = 'field_pub_subject_tid_op';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['identifier'] = 'field_pub_subject_tid';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    6 => 0,
+    5 => 0,
+  );
+  $handler->display->display_options['filters']['field_pub_subject_tid']['vocabulary'] = 'statistical_publications_types';
   $handler->display->display_options['path'] = 'admin/content/publications/statistical_articles';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Statistical articles';
@@ -842,6 +900,28 @@ function publication_features_views_default_views() {
     6 => 0,
     5 => 0,
   );
+  /* Filter criterion: Publication: Subject (field_doc_subject) */
+  $handler->display->display_options['filters']['field_doc_subject_tid']['id'] = 'field_doc_subject_tid';
+  $handler->display->display_options['filters']['field_doc_subject_tid']['table'] = 'field_data_field_doc_subject';
+  $handler->display->display_options['filters']['field_doc_subject_tid']['field'] = 'field_doc_subject_tid';
+  $handler->display->display_options['filters']['field_doc_subject_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_doc_subject_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_doc_subject_tid']['expose']['operator_id'] = 'field_doc_subject_tid_op';
+  $handler->display->display_options['filters']['field_doc_subject_tid']['expose']['label'] = 'Subject';
+  $handler->display->display_options['filters']['field_doc_subject_tid']['expose']['use_operator'] = TRUE;
+  $handler->display->display_options['filters']['field_doc_subject_tid']['expose']['operator'] = 'field_doc_subject_tid_op';
+  $handler->display->display_options['filters']['field_doc_subject_tid']['expose']['identifier'] = 'field_doc_subject_tid';
+  $handler->display->display_options['filters']['field_doc_subject_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    6 => 0,
+    5 => 0,
+  );
+  $handler->display->display_options['filters']['field_doc_subject_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_doc_subject_tid']['vocabulary'] = 'document_subjects';
+  $handler->display->display_options['filters']['field_doc_subject_tid']['hierarchy'] = 1;
   $handler->display->display_options['path'] = 'admin/content/publications/documents';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Documents';
@@ -984,6 +1064,9 @@ function publication_features_views_default_views() {
     t('<a href="/publication/[pub_id]/edit?destination=admin/content/publications">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/publication/[pub_id]/delete?destination=admin/content/publications">Delete</a>'),
     t('Page'),
     t('Statistical reports'),
+    t('Subject'),
+    t('Empty(or NOT)'),
+    t('Subject (field_pub_subject)'),
     t('Statistical articles'),
     t('<a href="publication/[pub_id]/edit?destination=admin/content/publications">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="publication/[pub_id]/delete?destination=admin/content/publications">Delete</a>'),
     t('Documents'),
