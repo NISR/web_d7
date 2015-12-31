@@ -252,7 +252,10 @@ div.tweet-authorphoto img {
 }
 
 .featured-box .box-content h4{
-	min-height: 2.9em;		
+	min-height: 3.2em;
+	font-size: 1.2em;
+	text-align: center;
+	text-transform: uppercase;		
 }
 
 .featured-box .box-content p{

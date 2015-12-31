@@ -42,8 +42,8 @@ function get_taxonomy_terms($vocabulary,$path){
 											  							 'attributes' => array('title' => $value['name'],),
 											  							 'html' => TRUE
 											  							),
-											  '#prefix' => '<h3>',
-											  '#suffix' => '</h3>'
+											  '#prefix' => '<h4>',
+											  '#suffix' => '</h4>'
 											  
 														)
 					 		 );	

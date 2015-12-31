@@ -150,6 +150,15 @@ function nisr_menu(){
 }
 
 /*
+ * Implements hook_form_FORM_ID_alter()
+ */
+function nisr_form_taxonomy_form_term_alter(&$form,&$form_state,$form_id){
+	//Disable Wysiwyg editor
+	$form['description']['#wysiwyg'] = FALSE;
+	return $form;	
+}
+
+/*
  * Implements hook_menu_alter()
  */
 function nisr_menu_alter(&$items) {
@@ -308,7 +317,8 @@ function get_home_menu_item(){
  * Callback for area edit menu item
  */
 function term_goto($term_id){
-	drupal_goto("taxonomy/term/$term_id/edit",array('query' => array('destination' => "area/$term_id")));
+   $path = explode('/',request_path());	
+	drupal_goto("taxonomy/term/$term_id/edit",array('query' => array('destination' => $path[0] .'/' . $term_id)));
 }
 
 /*
@@ -338,18 +348,20 @@ function term_page($tid){
 	$children_terms = taxonomy_get_children($tid);
 	
 	if(count($children_terms)){
+		//Adjust box width dynamically
+		(12 / count($children_terms)) >= 3 ? $width = 'col-md-' . (12 / count($children_terms)) : $width = 'col-md-3'; 
 		$content['wrapper'] = array("#prefix" => "<div class='featured-boxes'>");			
 		foreach($children_terms as $child_term){
 			$children[] = array(
-									"#prefix" => "<div onclick=javascript:window.location.href='/" . $path[0] . "/" . $child_term->tid . "' class='col-md-3'><div class='featured-content featured-box'><div class='box-content'>",
+									"#prefix" => "<div onclick=javascript:window.location.href='/" . $path[0] . "/" . $child_term->tid . "' class='" . $width ."'><div class='featured-content featured-box'><div class='box-content'>",
 									"#suffix" => "</div></div></div>",
 									'title' => array(
 														'#theme' => 'link',
 														'#text'  => $child_term->name,
 														'#path'  => "$path[0]/$child_term->tid",
 														'#options'=> array('attributes' => array('title' => ''),'html'=>TRUE),
-														'#prefix'=> "<h3>",
-														'#suffix'=> "</h3>",
+														'#prefix'=> "<h4>",
+														'#suffix'=> "</h4>",
 														),
 									
 									'description' => array(
@@ -376,7 +388,7 @@ function term_page($tid){
    $breadcrumb[] = l(t('Home'),'<front>');
    //$breadcrumb[] = l(t('Statistical publications'),'statistical_publications');
    foreach(array_reverse($parent_terms) as $parent){
-   	$breadcrumb[] = l(t($parent->name),drupal_get_path_alias('area/' . $parent->tid));
+   	$breadcrumb[] = l(t($parent->name),drupal_get_path_alias("$path[0]/$parent->tid"));
    } 
    
    //$breadcrumb[] = drupal_get_title();
