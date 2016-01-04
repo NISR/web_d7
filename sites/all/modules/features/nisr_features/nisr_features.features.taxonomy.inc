@@ -49,13 +49,5 @@ function nisr_features_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => 0,
     ),
-    'vocabulary_3' => array(
-      'name' => 'Ad groups',
-      'machine_name' => 'vocabulary_3',
-      'description' => '',
-      'hierarchy' => 0,
-      'module' => 'ad',
-      'weight' => 0,
-    ),
   );
 }

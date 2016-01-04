@@ -37,7 +37,7 @@ function publication_features_uuid_features_default_content() {
     'pathauto' => 0,
   ),
   'pathauto_perform_alias' => FALSE,
-  'date' => '2015-09-29 12:13:45 +0200',
+  'date' => '2015-09-29 13:13:45 +0300',
   'user_uuid' => '0ba20103-dd5e-4a28-ba96-a90ee7bf92be',
 );
   return $nodes;

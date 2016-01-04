@@ -35,6 +35,7 @@ function set_elapsed_period(&$publication){
 	
 	switch($publication->type){
   			case 'statistical_report':
+  			case 'statistical_article' :
   				if(count($publication->field_pub_datasource)){
   					$period = $pub->field_pub_datasource->field_datasource_period->value2->value();		
 				}
@@ -56,12 +57,9 @@ function set_elapsed_period(&$publication){
 				}
 								
 				$pub->field_pub_elapsed_periods->set($terms);
-				
-
 					
-  				break;	
-  			case 'article':
   				break;
+  				
   			default:
   				break;
   	  }	
