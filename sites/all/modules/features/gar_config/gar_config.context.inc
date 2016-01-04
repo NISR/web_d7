@@ -32,11 +32,23 @@ function gar_config_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
-        'views-ga_reports-new_session' => array(
+        'views-ga_reports-visits' => array(
           'module' => 'views',
-          'delta' => 'ga_reports-new_session',
+          'delta' => 'ga_reports-visits',
           'region' => 'content',
           'weight' => '-9',
+        ),
+        'views-ga_reports-platform' => array(
+          'module' => 'views',
+          'delta' => 'ga_reports-platform',
+          'region' => 'content',
+          'weight' => '-8',
+        ),
+        'views-ga_reports-browser' => array(
+          'module' => 'views',
+          'delta' => 'ga_reports-browser',
+          'region' => 'content',
+          'weight' => '-7',
         ),
       ),
     ),

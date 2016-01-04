@@ -14,7 +14,7 @@ function gar_config_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'google_analytics_reports_api_access_token';
-  $strongarm->value = 'ya29.UwJyVv0ynvo30fNTIAvepy0oDcRr5_unUpmAq9h7EA3tJXznDACy53qs4mIRD948YNAZGg';
+  $strongarm->value = 'ya29.WwLQN3SZq_tjqcJdWsEpjXO8q_GlIRqi6hnfhVv2YJUlPRsZvcIiUx4tzBQltdrghuZrdg';
   $export['google_analytics_reports_api_access_token'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -49,14 +49,14 @@ function gar_config_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'google_analytics_reports_api_expires_at';
-  $strongarm->value = 1450916670;
+  $strongarm->value = 1451558913;
   $export['google_analytics_reports_api_expires_at'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'google_analytics_reports_api_profile_id';
-  $strongarm->value = '56681705';
+  $strongarm->value = '113807344';
   $export['google_analytics_reports_api_profile_id'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -77,7 +77,7 @@ function gar_config_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'google_analytics_reports_metadata_last_time';
-  $strongarm->value = 1450778184;
+  $strongarm->value = 1450947497;
   $export['google_analytics_reports_metadata_last_time'] = $strongarm;
 
   return $export;
