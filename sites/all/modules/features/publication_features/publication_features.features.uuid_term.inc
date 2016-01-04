@@ -434,6 +434,9 @@ function publication_features_uuid_features_default_terms() {
     'uuid' => 'a05d0dda-fad9-4c04-8604-a8b1103a3291',
     'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
+    'path' => array(
+      'pathauto' => 0,
+    ),
     'url_alias' => array(),
   );
   $terms[] = array(

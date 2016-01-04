@@ -31,13 +31,14 @@ function get_taxonomy_terms($vocabulary,$path){
 
 	$render = array("wrapper" => array("#prefix" => "<div class='row featured-boxes'>"));
 	foreach($terms as $key => $value){
+		$term_name = get_label_dashed($value['name']);
 		$content = array(
-								'#prefix' => "<div onclick=javascript:window.open('$path/$key','_self') class='col-md-3'><div class='featured-content featured-box'><div class='box-content'>",
+								'#prefix' => "<div onclick=javascript:window.open('$path/$term_name','_self') class='col-md-3'><div class='featured-content featured-box'><div class='box-content'>",
 								'#suffix' => "</div></div></div>",
 								'title' => array(
 											  '#theme' => 'link',
 											  '#text' => strlen($value['name']) > 30 ? substr($value['name'],0,27) . '...' : $value['name'],
-											  '#path' => "$path/$key",
+											  '#path' => "$path/$term_name",
 											  '#options' => array(
 											  							 'attributes' => array('title' => $value['name'],),
 											  							 'html' => TRUE
@@ -55,10 +56,11 @@ function get_taxonomy_terms($vocabulary,$path){
 			$render['wrapper'][$key]['children']['#prefix'] = "<ul class='subject-box-wrapper-items'>";
 			$render['wrapper'][$key]['children']['#suffix'] = "</ul>";			
 			foreach($value['children'] as $k => $v){
+				$term_name = str_replace(' ','-',strtolower($v));
 				$render['wrapper'][$key]['children'][] = array(
 													 '#theme' => 'link',
 												    '#text' => strlen($v) > 30 ? substr($v,0,27) . '...' : $v,
-												    '#path' => "$path/$k",
+												    '#path' => "$path/$term_name",
 												    '#options' => array(
 												    						'attributes' => array('title' => $v),
 												    						'html' => TRUE
@@ -107,18 +109,32 @@ function get_embed_view($name,$display,$filters){
 
 }
 /*
- * Get a term label, just the label not the entire freaking term object
+ * Get an ordinary label from a dashed one
  *
  * @param
- * 	$term_id : the term id
+ * 	$label: the label passed into the url
  * 
  * @return
- *		term label
+ *		string dashed label
  */
-function get_taxonomy_term_label($tid){
-	$term = taxonomy_term_load($tid);
+function get_label_formal($label){
 	
-	return $term->name;
+	return ucfirst(str_replace('-',' ',$label));
+	
 }
+/*
+ * Get a label, lowercased with dashes in lieu of spaces
+ * @param
+ * 	string $label
+ * 
+ * @return
+ *		Dashed formatted label
+ */
+function get_label_dashed($label){
+	
+	return str_replace(' ','-',strtolower($label));
+	
+}
+
 
 

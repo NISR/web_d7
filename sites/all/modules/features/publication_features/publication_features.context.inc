@@ -93,23 +93,17 @@ function publication_features_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'statistical_reports';
   $context->description = '';
-  $context->tag = 'facets';
+  $context->tag = 'Publications';
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'publications/statistical_reports/*' => 'publications/statistical_reports/*',
+        'statistical-publications/*/reports' => 'statistical-publications/*/reports',
       ),
     ),
   );
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'facetapi-XJuBAz0WMx58FOka1GAp3HIT9Ys4VLW3' => array(
-          'module' => 'facetapi',
-          'delta' => 'XJuBAz0WMx58FOka1GAp3HIT9Ys4VLW3',
-          'region' => 'content',
-          'weight' => '-10',
-        ),
         'system-main' => array(
           'module' => 'system',
           'delta' => 'main',
@@ -122,6 +116,12 @@ function publication_features_context_default_contexts() {
           'region' => 'sidebar_left',
           'weight' => '-10',
         ),
+        'facetapi-XJuBAz0WMx58FOka1GAp3HIT9Ys4VLW3' => array(
+          'module' => 'facetapi',
+          'delta' => 'XJuBAz0WMx58FOka1GAp3HIT9Ys4VLW3',
+          'region' => 'sidebar_left',
+          'weight' => '-9',
+        ),
       ),
     ),
   );
@@ -129,7 +129,7 @@ function publication_features_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('facets');
+  t('Publications');
   $export['statistical_reports'] = $context;
 
   return $export;

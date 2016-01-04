@@ -8,6 +8,8 @@ DEFINE('NISR_MODULE_PATH',drupal_get_path('module', 'nisr'));
 
 drupal_add_css(NISR_MODULE_PATH. '/nisr.css', array('group' => CSS_THEME, 'weight' => '9999','every_page' => FALSE));
 
+module_load_include('inc','nisr','utils');
+
 /*
  * Implements hook_block_info()
  */
@@ -293,15 +295,15 @@ function custom_search_form_submit($form,&$form_state){
  * Get a entities associated to term 
  *  
  * @param
- *		$tid : the term id
+ *		$term : the term name
  *
  *	@return
  *		array of entity items added by other modules
  */
-function entities_by_term($tid){
+function entities_by_term($term){
 	$entities = array();
 	
-	drupal_alter('entities_by_term',$entities,$tid);
+	drupal_alter('entities_by_term',$entities,$term);
 	
 	return $entities;
 }
@@ -331,10 +333,12 @@ function term_goto($term_id){
  *		renderable array
  *
  */
-function term_page($tid){
+function term_page($term_name){
 	
-	$term = taxonomy_term_load($tid);
+	$terms = taxonomy_get_term_by_name(str_replace('-',' ',$term_name));
 	
+	$term = current($terms);
+	 
 	$path = explode('/',request_path());	
 	$content = array(
 							'description' => array(
@@ -345,27 +349,28 @@ function term_page($tid){
 				);
 				
 						
-	$children_terms = taxonomy_get_children($tid);
+	$children_terms = taxonomy_get_children($term->tid);
 	
 	if(count($children_terms)){
 		//Adjust box width dynamically
 		(12 / count($children_terms)) >= 3 ? $width = 'col-md-' . (12 / count($children_terms)) : $width = 'col-md-3'; 
 		$content['wrapper'] = array("#prefix" => "<div class='featured-boxes'>");			
 		foreach($children_terms as $child_term){
+			$child_term_name = get_label_dashed($child_term->name);
 			$children[] = array(
-									"#prefix" => "<div onclick=javascript:window.location.href='/" . $path[0] . "/" . $child_term->tid . "' class='" . $width ."'><div class='featured-content featured-box'><div class='box-content'>",
+									"#prefix" => "<div onclick=javascript:window.location.href='/" . $path[0] . "/" . $child_term_name . "' class='" . $width ."'><div class='featured-content featured-box'><div class='box-content'>",
 									"#suffix" => "</div></div></div>",
 									'title' => array(
 														'#theme' => 'link',
 														'#text'  => $child_term->name,
-														'#path'  => "$path[0]/$child_term->tid",
+														'#path'  => "$path[0]/$child_term_name",
 														'#options'=> array('attributes' => array('title' => ''),'html'=>TRUE),
 														'#prefix'=> "<h4>",
 														'#suffix'=> "</h4>",
 														),
 									
 									'description' => array(
-														'#markup' => text_summary($child_term->description,null,300) . '...',
+														'#markup' => text_summary($child_term->description,null,300),
 														),					
 																			
 									);	
@@ -374,7 +379,7 @@ function term_page($tid){
 	}else{
 		// Show additional entities associated with this term if any
 		$content['wrapper'] = array("#prefix" => "<div class=''>");	
-		$content['wrapper']['entities'] = entities_by_term($tid);		
+		$content['wrapper']['entities'] = entities_by_term($term_name);		
 	}	
 	
 	$content['wrapper']['#suffix'] = "</div>";
@@ -382,16 +387,17 @@ function term_page($tid){
 	// Set the breadcrumb
 	// In the form  : Home > Statistical publications > Economy > Price and inflation
 	$breadcrumb = array();
-	$parent_terms = taxonomy_get_parents_all($tid);
+	$parent_terms = taxonomy_get_parents_all($term->tid);
 	unset($parent_terms[0]); // Remove the first element including the term object
 	   
    $breadcrumb[] = l(t('Home'),'<front>');
-   //$breadcrumb[] = l(t('Statistical publications'),'statistical_publications');
+   $breadcrumb[] = l(get_label_formal($path[0]),$path[0]);
    foreach(array_reverse($parent_terms) as $parent){
-   	$breadcrumb[] = l(t($parent->name),drupal_get_path_alias("$path[0]/$parent->tid"));
+   	$breadcrumb[] = l(t($parent->name),"$path[0]/" . get_label_dashed($parent->name));
    } 
    
-   //$breadcrumb[] = drupal_get_title();
+   $breadcrumb[] = $term->name;
+
    drupal_set_breadcrumb($breadcrumb);
    
    drupal_set_title($term->name);	

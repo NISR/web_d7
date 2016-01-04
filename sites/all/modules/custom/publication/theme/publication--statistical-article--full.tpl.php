@@ -41,14 +41,14 @@
     </h2>
   <?php endif; ?>
   <strong><?php print render($content['field_pub_publication_date']);?></strong>
-  <?php if ($dataset['chart']): ?>
+	<?php if (isset($dataset) && $dataset['chart']): ?>
 	  <div class="col-md-12">
 	  		<?php 
 	  			print render($dataset['chart']);
 	  			unset($content['field_pub_dataset']);
 	  		?>
 	  </div>
- <?php endif; ?>
+	<?php endif; ?>
   <div class="content col-md-12"<?php print $content_attributes; ?>>
     <?php
     	hide($content['field_pub_dataset_range']);
