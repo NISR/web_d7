@@ -414,6 +414,7 @@ function publication_features_field_default_field_bases() {
     'settings' => array(
       'display_default' => 0,
       'display_field' => 0,
+      'profile2_private' => FALSE,
       'uri_scheme' => 'public',
     ),
     'translatable' => 0,
@@ -444,6 +445,7 @@ function publication_features_field_default_field_bases() {
         'second' => 0,
         'year' => 'year',
       ),
+      'profile2_private' => FALSE,
       'repeat' => 0,
       'timezone_db' => '',
       'todate' => 'required',
@@ -477,6 +479,7 @@ function publication_features_field_default_field_bases() {
         'second' => 0,
         'year' => 'year',
       ),
+      'profile2_private' => FALSE,
       'repeat' => 0,
       'timezone_db' => '',
       'todate' => '',
