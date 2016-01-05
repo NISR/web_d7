@@ -571,7 +571,7 @@ function publication_features_field_default_field_instances() {
     'label' => 'Files',
     'required' => 0,
     'settings' => array(
-      'description_field' => 0,
+      'description_field' => 1,
       'file_directory' => '',
       'file_extensions' => 'txt xls pdf rtf xml sav por tab htm mdb accdb doc docx ps xlsx ppt pptx',
       'filefield_paths' => array(
@@ -607,82 +607,6 @@ function publication_features_field_default_field_instances() {
       ),
       'type' => 'file_generic',
       'weight' => 6,
-    ),
-  );
-
-  // Exported field_instance: 'publication-document-field_pub_period'.
-  $field_instances['publication-document-field_pub_period'] = array(
-    'bundle' => 'document',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-          'show_remaining_days' => FALSE,
-          'show_repeat_rule' => 'show',
-        ),
-        'type' => 'date_default',
-        'weight' => 2,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 4,
-      ),
-      'title_cover' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 3,
-      ),
-      'title_only' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 2,
-      ),
-    ),
-    'entity_type' => 'publication',
-    'field_name' => 'field_pub_period',
-    'label' => 'Period',
-    'required' => 0,
-    'settings' => array(
-      'default_value' => 'now',
-      'default_value2' => 'same',
-      'default_value_code' => '',
-      'default_value_code2' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'date',
-      'settings' => array(
-        'display_all_day' => 0,
-        'increment' => 15,
-        'input_format' => 'm/d/Y - H:i:s',
-        'input_format_custom' => '',
-        'label_position' => 'above',
-        'no_fieldset' => 0,
-        'repeat_collapsed' => 0,
-        'text_parts' => array(),
-        'year_range' => '1962:+0',
-      ),
-      'type' => 'date_select',
-      'weight' => 4,
     ),
   );
 
@@ -746,7 +670,7 @@ function publication_features_field_default_field_instances() {
     'label' => 'Published',
     'required' => 0,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -2113,7 +2037,7 @@ Leave empty for no range
     'label' => 'Period',
     'required' => 0,
     'settings' => array(
-      'default_value' => 'strtotime',
+      'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '-365 days',
       'default_value_code2' => '',
@@ -2205,7 +2129,7 @@ Leave empty for no range
     'label' => 'Published',
     'required' => 0,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',

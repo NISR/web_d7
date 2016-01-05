@@ -84,7 +84,6 @@ features[field_instance][] = publication-document-field_pub_body
 features[field_instance][] = publication-document-field_pub_cover
 features[field_instance][] = publication-document-field_pub_featured
 features[field_instance][] = publication-document-field_pub_files
-features[field_instance][] = publication-document-field_pub_period
 features[field_instance][] = publication-document-field_pub_publication_date
 features[field_instance][] = publication-document-field_pub_related
 features[field_instance][] = publication-featured_indicator-field_pub_body
