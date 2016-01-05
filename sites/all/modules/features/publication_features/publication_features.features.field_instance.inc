@@ -464,69 +464,6 @@ function publication_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'publication-document-field_pub_featured'.
-  $field_instances['publication-document-field_pub_featured'] = array(
-    'bundle' => 'document',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'default_value_function' => '',
-    'default_value_php' => '',
-    'deleted' => 0,
-    'description' => 'Determine if this item will be added to the featured publications listed on the front page',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 8,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 7,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 7,
-      ),
-      'title_cover' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'title_only' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'publication',
-    'field_name' => 'field_pub_featured',
-    'label' => 'Featured on front page',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 1,
-      ),
-      'type' => 'options_onoff',
-      'weight' => 8,
-    ),
-  );
-
   // Exported field_instance: 'publication-document-field_pub_files'.
   $field_instances['publication-document-field_pub_files'] = array(
     'bundle' => 'document',
@@ -2448,10 +2385,8 @@ Leave empty for no range
   t('Data suffix');
   t('Dataset');
   t('Days');
-  t('Determine if this item will be added to the featured publications listed on the front page');
   t('Double click on the select box to choose from the list a subject/area');
   t('Elapsed periods');
-  t('Featured on front page');
   t('Files');
   t('Number of days elapsed');
   t('Period');
