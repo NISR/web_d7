@@ -119,7 +119,7 @@ function publication_features_default_publication_type() {
   }');
   $items['featured_indicator'] = entity_import('publication_type', '{
     "type" : "featured_indicator",
-    "label" : "Featured indicator",
+    "label" : "Indicator",
     "weight" : "0",
     "description" : "",
     "locked" : "0",

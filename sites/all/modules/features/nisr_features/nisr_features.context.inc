@@ -202,15 +202,15 @@ function nisr_features_context_default_contexts() {
           'region' => 'footer_2',
           'weight' => '-10',
         ),
-        'block-37' => array(
-          'module' => 'block',
-          'delta' => '37',
+        'menu-menu-useful-links' => array(
+          'module' => 'menu',
+          'delta' => 'menu-useful-links',
           'region' => 'footer_3',
           'weight' => '-10',
         ),
-        'block-28' => array(
-          'module' => 'block',
-          'delta' => '28',
+        'menu-menu-follow-us' => array(
+          'module' => 'menu',
+          'delta' => 'menu-follow-us',
           'region' => 'footer_4',
           'weight' => '-10',
         ),

@@ -13,7 +13,7 @@ function publication_features_uuid_features_default_terms() {
   $terms[] = array(
     'name' => 'Justice and Human Rights',
     'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
-    'format' => NULL,
+    'format' => 2,
     'weight' => 34,
     'uuid' => '04a628ba-db1a-49c1-a584-7e8535379ff4',
     'vocabulary_machine_name' => 'statistical_publications_types',
@@ -482,11 +482,14 @@ function publication_features_uuid_features_default_terms() {
   $terms[] = array(
     'name' => 'Inflation and price indices',
     'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
-    'format' => NULL,
+    'format' => 2,
     'weight' => 1,
     'uuid' => 'acef122a-56bf-49f7-a1ac-d5dd052d939c',
     'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
+    'path' => array(
+      'pathauto' => 0,
+    ),
     'parent' => array(
       0 => 'a05d0dda-fad9-4c04-8604-a8b1103a3291',
     ),

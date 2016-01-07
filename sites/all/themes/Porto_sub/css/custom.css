@@ -255,9 +255,16 @@ div.tweet-authorphoto img {
 	min-height: 3.2em;
 	font-size: 1.2em;
 	text-align: center;
-	text-transform: uppercase;		
+	text-transform: uppercase;
+	font-weight: bold;	
 }
 
+.featured-box-primary .box-content h4,
+.featured-box-secondary .box-content h4,
+.featured-box-tertiary .box-content h4,
+.featured-box-quaternary .box-content h4 {
+	font-weight: normal;	
+} 
 .featured-box .box-content p{
 	color: #1D2127;	
 }

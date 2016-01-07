@@ -72,7 +72,7 @@ function nisr_features_views_default_views() {
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '6';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '3';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
@@ -98,6 +98,17 @@ function nisr_features_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['element_wrapper_class'] = 'clearfix';
+  /* Field: Content: Image cover */
+  $handler->display->display_options['fields']['field_image_cover']['id'] = 'field_image_cover';
+  $handler->display->display_options['fields']['field_image_cover']['table'] = 'field_data_field_image_cover';
+  $handler->display->display_options['fields']['field_image_cover']['field'] = 'field_image_cover';
+  $handler->display->display_options['fields']['field_image_cover']['label'] = '';
+  $handler->display->display_options['fields']['field_image_cover']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_image_cover']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_image_cover']['type'] = 'file_rendered';
+  $handler->display->display_options['fields']['field_image_cover']['settings'] = array(
+    'file_view_mode' => 'default',
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page_1');
@@ -106,7 +117,7 @@ function nisr_features_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['pager']['options']['quantity'] = '2';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -124,6 +135,15 @@ function nisr_features_views_default_views() {
   $handler->display->display_options['fields']['body']['type'] = 'text_summary_or_trimmed';
   $handler->display->display_options['fields']['body']['settings'] = array(
     'trim_length' => '600',
+  );
+  /* Field: Content: Image cover */
+  $handler->display->display_options['fields']['field_image_cover']['id'] = 'field_image_cover';
+  $handler->display->display_options['fields']['field_image_cover']['table'] = 'field_data_field_image_cover';
+  $handler->display->display_options['fields']['field_image_cover']['field'] = 'field_image_cover';
+  $handler->display->display_options['fields']['field_image_cover']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_image_cover']['settings'] = array(
+    'image_style' => 'thumbnail',
+    'image_link' => '',
   );
   $handler->display->display_options['path'] = 'about-us/newsroom';
   $translatables['news'] = array(
@@ -145,6 +165,7 @@ function nisr_features_views_default_views() {
     t('Broken handler node_revision.teaser'),
     t('Block'),
     t('Page'),
+    t('Image cover'),
   );
   $export['news'] = $view;
 

@@ -22,9 +22,9 @@ function publication_features_entityqueue_default_queues() {
     'target_bundles' => array(
       'featured_indicator' => 'featured_indicator',
     ),
-    'min_size' => '0',
-    'max_size' => '0',
-    'act_as_queue' => 0,
+    'min_size' => '4',
+    'max_size' => '4',
+    'act_as_queue' => 1,
   );
   $export['featured_indicators'] = $queue;
 
@@ -40,9 +40,9 @@ function publication_features_entityqueue_default_queues() {
     'target_bundles' => array(
       'statistical_article' => 'statistical_article',
     ),
-    'min_size' => '0',
-    'max_size' => '0',
-    'act_as_queue' => 0,
+    'min_size' => '2',
+    'max_size' => '4',
+    'act_as_queue' => 1,
   );
   $export['featured_statistical_articles'] = $queue;
 

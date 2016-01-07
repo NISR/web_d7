@@ -1,0 +1,11 @@
+name = Application config
+description = Visa/Internship applications configuration
+core = 7.x
+package = NISR
+version = 7.x-1.0-alpha
+dependencies[] = application
+dependencies[] = entity
+features[application_type][] = internship
+features[application_type][] = visa
+features[features_api][] = api:2
+project path = sites/all/modules/features

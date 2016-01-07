@@ -101,7 +101,30 @@ function nisr_menu(){
     'menu_name' => 'main-menu',	
     'weight' => -50,
 	);
-	// Notices menu	
+	// Custom Administration menu items
+	// Advertisements
+  	$items['admin/content/advertisements/add'] = array(
+    'title' => 'Add Advertisement',
+    'page callback' => 'node_add',
+    'page arguments' => array('advertisement'),
+    'access arguments' => array('administer content'),
+    'weight' => 10,
+    'file path' => drupal_get_path('module', 'node'), 
+    'file' => 'node.pages.inc',
+    'type' => MENU_LOCAL_ACTION,
+    'menu_name' => 'management',
+  	);	
+  	$items['admin/content/news/add'] = array(
+    'title' => 'Add News article',
+    'page callback' => 'node_add',
+    'page arguments' => array('story'),
+    'access arguments' => array('administer content'),
+    'file path' => drupal_get_path('module', 'node'), 
+    'file' => 'node.pages.inc',
+    'type' => MENU_LOCAL_ACTION,
+   
+  	);	
+	// Notices	
   	$items['admin/content/notices/add'] = array(
     'title' => 'Add notice',
     'page callback' => 'node_add',
@@ -165,9 +188,11 @@ function nisr_form_taxonomy_form_term_alter(&$form,&$form_state,$form_id){
  */
 function nisr_menu_alter(&$items) {
   // Re-order messages admin menu item
-  if (!empty($items['admin/content/message'])) $items['admin/content/message']['weight'] = 99;
+  if (!empty($items['admin/content/message'])) $items['admin/content/message']['weight'] = 48;
   // Re-order scheduler admin menu item
-  if (!empty($items['admin/content/scheduler'])) $items['admin/content/scheduler']['weight'] = 100;
+  if (!empty($items['admin/content/scheduler'])) $items['admin/content/scheduler']['weight'] = 49;
+  // Content admin menu item
+  if (!empty($items['admin/content'])) $items['admin/content']['weight'] = 50;
 }
 
 /**
@@ -318,9 +343,13 @@ function get_home_menu_item(){
 /*
  * Callback for area edit menu item
  */
-function term_goto($term_id){
+function term_goto($term_name){
+	$terms = taxonomy_get_term_by_name(str_replace('-',' ',$term_name));
+	$term = current($terms);
+	
    $path = explode('/',request_path());	
-	drupal_goto("taxonomy/term/$term_id/edit",array('query' => array('destination' => $path[0] .'/' . $term_id)));
+	drupal_goto("taxonomy/term/$term->tid/edit",array('query' => array('destination' => $path[0] .'/' . $term_name)));
+	
 }
 
 /*
