@@ -1,4 +1,4 @@
-name = Application
+name = NISR Application
 description = This module handles NISR application entities.
 package = NISR
 version = 7.x-1.x

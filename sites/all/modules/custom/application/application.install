@@ -18,6 +18,8 @@ function application_uninstall() {
   foreach ($types as $type => $info) {
     field_attach_delete_bundle('application', $type);
   }
+  
+  drupal_uninstall_schema('application');
 }
 
 /**
@@ -27,23 +29,16 @@ function application_schema() {
   $schema = array();
   
   $schema['application'] = array(
-    'description' => 'The base table for applications.',
+    'description' => 'The base table for NISR applications.',
     'fields' => array(
       'aid' => array(
-        'description' => 'The primary identifier for the application.',
+        'description' => 'The primary identifier for the NISR application.',
         'type' => 'serial',
         'unsigned' => TRUE,
         'not null' => TRUE,
       ),
       'type' => array(
-        'description' => 'The type (bundle) of this application.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-        'default' => '',
-      ),
-      'title' => array(
-        'description' => 'The title of the application.',
+        'description' => 'The type (bundle) of this NISR application.',
         'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,
@@ -56,13 +51,13 @@ function application_schema() {
         
       ),
       'created' => array(
-        'description' => 'The Unix timestamp when the application was created.',
+        'description' => 'The Unix timestamp when the NISR application was created.',
         'type' => 'int',
         'not null' => TRUE,
         'default' => 0,
       ),
       'changed' => array(
-        'description' => 'The Unix timestamp when the application was most recently saved.',
+        'description' => 'The Unix timestamp when the NISR application was most recently saved.',
         'type' => 'int',
         'not null' => TRUE,
         'default' => 0,
@@ -91,12 +86,12 @@ function application_schema() {
   }
 
   $schema['application_type'] = array(
-    'description' => 'Stores information about all defined application types.',
+    'description' => 'Stores information about all defined NISR application types.',
     'fields' => array(
       'id' => array(
         'type' => 'serial',
         'not null' => TRUE,
-        'description' => 'Primary Key: Unique application type ID.',
+        'description' => 'Primary Key: Unique NISR application type ID.',
       ),
       'type' => array(
         'description' => 'The machine-readable name of this type.',
@@ -123,7 +118,7 @@ function application_schema() {
         'not null' => TRUE,
         'default' => 0,
         'size' => 'tiny',
-        'description' => 'The weight of this application type in relation to others.',
+        'description' => 'The weight of this NISR application type in relation to others.',
       ),
       'locked' => array(
         'description' => 'A boolean indicating whether the administrator may delete this type.',
@@ -137,7 +132,7 @@ function application_schema() {
         'not null' => FALSE,
         'size' => 'big',
         'serialize' => TRUE,
-        'description' => 'A serialized array of additional data related to this application type.',
+        'description' => 'A serialized array of additional data related to this NISR application type.',
         'merge' => TRUE,
       ),
       'status' => array(

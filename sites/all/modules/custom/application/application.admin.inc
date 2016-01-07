@@ -14,7 +14,7 @@ function application_type_form($form, &$form_state, $application_type, $op = 'ed
     '#title' => t('Label'),
     '#type' => 'textfield',
     '#default_value' => $application_type->label,
-    '#description' => t('The human-readable name of this application type.'),
+    '#description' => t('The human-readable name of this  application type.'),
     '#required' => TRUE,
     '#size' => 30,
   );
@@ -35,20 +35,20 @@ function application_type_form($form, &$form_state, $application_type, $op = 'ed
   $form['description'] = array(
     '#type' => 'textarea',
     '#default_value' => isset($application_type->description) ? $application_type->description : '',
-    '#description' => t('Description about the application type.'),
+    '#description' => t('Description about the  application type.'),
   );
 
   $form['actions'] = array('#type' => 'actions');
   $form['actions']['submit'] = array(
     '#type' => 'submit',
-    '#value' => t('Save application type'),
+    '#value' => t('Save  application type'),
     '#weight' => 40,
   );
 
   if (!$application_type->isLocked() && $op != 'add' && $op != 'clone') {
     $form['actions']['delete'] = array(
       '#type' => 'submit',
-      '#value' => t('Delete application type'),
+      '#value' => t('Delete  application type'),
       '#weight' => 45,
       '#limit_validation_errors' => array(),
       '#submit' => array('application_type_form_submit_delete')
@@ -81,7 +81,7 @@ function application_type_form_delete_confirm($form, &$form_state, $application_
   // Always provide entity id in the same form key as in the entity edit form.
   $form['application_type_id'] = array('#type' => 'value', '#value' => entity_id('application_type' ,$application_type));
   return confirm_form($form,
-    t('Are you sure you want to delete application type %title?', array('%title' => entity_label('application_type', $application_type))),
+    t('Are you sure you want to delete  application type %title?', array('%title' => entity_label('application_type', $application_type))),
     'application/' . entity_id('application_type' ,$application_type),
     t('This action cannot be undone.'),
     t('Delete'),
@@ -110,7 +110,7 @@ function application_admin_add_page() {
   foreach (application_types() as $application_type_key => $application_type) {
     $items[] = l(entity_label('application_type', $application_type), 'application/add/' . $application_type_key);
   }
-  return array('list' => array('#theme' => 'item_list', '#items' => $items, '#title' => t('Select type of application to create : ')));
+  return array('list' => array('#theme' => 'item_list', '#items' => $items, '#title' => t('Select type of  application to create : ')));
 }
 
 /**
@@ -120,7 +120,7 @@ function application_add($type) {
   $application_type = application_types($type);
 
   $application = entity_create('application', array('type' => $type));
-  drupal_set_title(t('Create @name', array('@name' => entity_label('application_type', $application_type))));
+  drupal_set_title(t('Request a @name', array('@name' => entity_label('application_type', $application_type))));
 
   $output = drupal_get_form('application_form', $application);
   
@@ -133,13 +133,6 @@ function application_add($type) {
 function application_form($form, &$form_state, $application) {
   $form_state['application'] = $application;
   
-  $form['title'] = array(
-    '#type' => 'textfield',
-    '#required' => TRUE,
-    '#title' => t('Title'),
-    '#description' => t('E.g : Visa request to conduct a survey on blablabla'),
-    '#default_value' => $application->title,
-  );
 
   $form['uid'] = array(
     '#type' => 'value',
@@ -196,7 +189,7 @@ function application_form_submit($form, &$form_state) {
 
   $form_state['redirect'] = $application_uri['path'];
 
-  drupal_set_message(t('Application %title saved.', array('%title' => entity_label('application', $application))));
+  drupal_set_message(t('Application saved.'));
 }
 
 function application_form_submit_delete($form, &$form_state) {
@@ -214,7 +207,7 @@ function application_delete_form($form, &$form_state, $application) {
   $form['application_type_id'] = array('#type' => 'value', '#value' => entity_id('application' ,$application));
   $application_uri = entity_uri('application', $application);
   return confirm_form($form,
-    t('Are you sure you want to delete application %title?', array('%title' => entity_label('application', $application))),
+    t('Are you sure you want to delete  application id : %id ?', array('%id' => entity_id('application', $application))),
     $application_uri['path'],
     t('This action cannot be undone.'),
     t('Delete'),
@@ -229,7 +222,7 @@ function application_delete_form_submit($form, &$form_state) {
   $application = $form_state['application'];
   application_delete($application);
 
-  drupal_set_message(t('application %title deleted.', array('%title' => entity_label('application', $application))));
+  drupal_set_message(t(' application %id deleted.', array('%id' => entity_id('application', $application))));
 
-  $form_state['redirect'] = '<front>';
+  $form_state['redirect'] = 'service/' . $application->type;
 }

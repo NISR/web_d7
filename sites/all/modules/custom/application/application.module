@@ -6,7 +6,7 @@
 function application_entity_info() {
   $return = array(
     'application' => array(
-      'label' => t('Application'),
+      'label' => t('NISR Application'),
       'entity class' => 'Application',
       'controller class' => 'ApplicationController',
       'base table' => 'application',
@@ -87,9 +87,9 @@ function application_menu() {
   $items = array();
 
   $items['application/add'] = array(
-    'title' => 'Add application',
+    'title' => 'Add NISR application',
     'page callback' => 'application_admin_add_page',
-    'access arguments' => array('administer application entities'),
+    'access arguments' => array('create application entities'),
     'file' => 'application.admin.inc',
     'type' => MENU_LOCAL_ACTION,
     'tab_parent' => 'application',
@@ -139,7 +139,7 @@ function application_menu() {
 
   foreach (application_types() as $type => $info) {
     $items['application/add/' . $type] = array(
-      'title' => 'Add application',
+      'title' => 'Add NISR application',
       'page callback' => 'application_add',
       'page arguments' => array(2),
       'access callback' => 'entity_access',
@@ -167,33 +167,38 @@ function application_menu() {
 function application_permission() {
   $permissions = array(
     'administer application types' => array(
-      'title' => t('Administer application types'),
-      'description' => t('Allows users to configure application types and their fields.'),
+      'title' => t('Administer NISR application types'),
+      'description' => t('Allows users to configure NISR application types and their fields.'),
       'restrict access' => TRUE,
     ),
     'administer application entities' => array(
-      'title' => t('Administer application entities'),
-      'description' => t('Allows users to administer application entities.'),
+      'title' => t('Administer NISR application entities'),
+      'description' => t('Allows users to administer NISR application entities.'),
       'restrict access' => TRUE,
     ),
     'create application entities' => array(
-      'title' => t('Create applications'),
-      'description' => t('Allows users to create applications.'),
+      'title' => t('Create NISR applications'),
+      'description' => t('Allows users to create NISR applications.'),
       'restrict access' => FALSE,
     ),
-    'view application entities' => array(
-      'title' => t('View applications'),
-      'description' => t('Allows users to view applications.'),
+    'view any application entities' => array(
+      'title' => t('View any NISR applications'),
+      'description' => t('Allows users to view NISR applications.'),
+      'restrict access' => TRUE,
+    ),
+    'view own application entities' => array(
+      'title' => t('View own NISR applications'),
+      'description' => t('Allows users to view own NISR applications.'),
       'restrict access' => FALSE,
     ),
     'edit any application entities' => array(
-      'title' => t('Edit any applications'),
-      'description' => t('Allows users to edit any applications.'),
+      'title' => t('Edit any NISR applications'),
+      'description' => t('Allows users to edit any NISR applications.'),
       'restrict access' => TRUE,
     ),
     'edit own application entities' => array(
-      'title' => t('Edit own applications'),
-      'description' => t('Allows users to edit own applications.'),
+      'title' => t('Edit own NISR applications'),
+      'description' => t('Allows users to edit own NISR applications.'),
       'restrict access' => FALSE,
     ),
   );
@@ -210,7 +215,7 @@ function application_entity_property_info_alter(&$info) {
   $properties['created'] = array(
     'label' => t("Date created"),
     'type' => 'date',
-    'description' => t("The date the application was posted."),
+    'description' => t("The date the NISR application was posted."),
     'setter callback' => 'entity_property_verbatim_set',
     'setter permission' => 'create application entities',
     'schema field' => 'created',
@@ -219,12 +224,12 @@ function application_entity_property_info_alter(&$info) {
     'label' => t("Date changed"),
     'type' => 'date',
     'schema field' => 'changed',
-    'description' => t("The date the node was most recently updated."),
+    'description' => t("The date the NISR application was most recently updated."),
   );
   $properties['uid'] = array(
     'label' => t("Author"),
     'type' => 'user',
-    'description' => t("The author of the application."),
+    'description' => t("The author of the NISR application."),
     'setter callback' => 'entity_property_verbatim_set',
     'setter permission' => 'administer application entities',
     'required' => TRUE,
@@ -265,8 +270,8 @@ function application_entity_view($entity, $type, $view_mode, $langcode){
  */
  
 function application_application_insert(Application $application){
-	if(!is_dir('public://resources/' . $application->uuid)){;
-		drupal_mkdir('public://resources/' . $application->uuid);
+	if(!is_dir('public://applications/' . $application->uuid)){;
+		drupal_mkdir('public://applications/' . $application->uuid);
 	}
 }
 
@@ -292,10 +297,11 @@ function application_access($op, $application = NULL, $account = NULL, $entity_t
           || user_access('create application entities', $account);
     case 'view':
       return user_access('administer application entities', $account)
-          || user_access('view application entities', $account);
+          || user_access('view any application entities',$account)
+          || user_access('view own application entities', $account);
     case 'edit':
-      return user_access('administer application entities')
-          || user_access('edit any application entities')
+      return user_access('administer application entities',$account)
+          || user_access('edit any application entities',$account)
           || (user_access('edit own application entities') && ($application->uid == $account->uid));
   }
 }

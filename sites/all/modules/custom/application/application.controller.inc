@@ -5,8 +5,6 @@ class ApplicationController extends EntityAPIController {
   public function create(array $values = array()) {
     global $user;
     $values += array(
-      'title' => '',
-      'description' => '',
       'created' => REQUEST_TIME,
       'changed' => REQUEST_TIME,
       'uid' => $user->uid,
@@ -40,7 +38,7 @@ class ApplicationController extends EntityAPIController {
   }
 }
 
- class ApplicationTypeController extends EntityAPIControllerExportable {
+class ApplicationTypeController extends EntityAPIControllerExportable {
    public function create(array $values = array()) {
     $values += array(
       'label' => '',
