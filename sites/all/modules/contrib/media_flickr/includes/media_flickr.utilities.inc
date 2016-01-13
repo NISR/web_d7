@@ -48,25 +48,51 @@ function _media_flickr_photo_remote_url($photo_id, $size) {
  *  This is a wrapper for emfield_request_xml that includes flickr's api key.
  *  @param string $method
  *  @param array $args
- *  @param boolean $refresh
- *    Optional; if TRUE, then we'll force a new load of the XML. Otherwise,
- *    a cached version will be retrieved if possible.
+ *
  *  @return object
  *    A fully populated SimpleXML object.
  */
-function _media_flickr_sets_request($method, $args = array(), $refresh = FALSE) {
+function _media_flickr_sets_request($method, $args = array()) {
   // Display an error if we don't have an API key yet.
   if (!_media_flickr_error_check()) {
     return array();
   }
 
-  $args['api_key'] = trim(media_flickr_variable_get('api_key'));
-  if ($secret = trim(media_flickr_variable_get('api_secret'))) {
+  $args['api_key'] = trim(variable_get('media_flickr_api_key', ''));
+  if ($secret = trim(variable_get('media_flickr_api_secret', ''))) {
     $args['secret'] = md5($secret);
   }
   $args['method'] = $method;
 
-  $xml = media_retrieve_xml(MEDIA_FLICKR_RESTPOINT . '?' . drupal_http_build_query($args), user_access('administer site configuration'), $refresh);
+  $request = drupal_http_request(url(MEDIA_FLICKR_RESTPOINT, array('query' => $args)));
+  if (!isset($request->error)) {
+    $entry = simplexml_load_string($request->data);
+  }
+  else {
+    throw new Exception("Error Processing Request. (Error: {$request->code}, {$request->error})");
+
+    // If request wasn't successful, create object for return to avoid errors.
+    $entry = new SimpleXMLElement();
+  }
+
+  return media_flickr_unserialize_xml($entry);
+}
+
+/**
+ * Recursively converts a SimpleXMLElement object into an array.
+ *
+ * @param object $xml
+ *   The original XML object.
+ */
+function media_flickr_unserialize_xml($xml) {
+  if ($xml instanceof SimpleXMLElement) {
+    $xml = (array) $xml;
+  }
+  if (is_array($xml)) {
+    foreach ($xml as $key => $item) {
+      $xml[$key] = media_flickr_unserialize_xml($item);
+    }
+  }
   return $xml;
 }
 
@@ -77,7 +103,7 @@ function _media_flickr_sets_request($method, $args = array(), $refresh = FALSE) 
 function _media_flickr_error_check() {
   static $checked;
   if (is_null($checked)) {
-    if (media_flickr_variable_get('api_key') == '') {
+    if (variable_get('media_flickr_api_key', '') == '') {
       $error = 'You do not yet have a Flickr API key set. You will need to !apply and enter your key at the !settings before Flickr images may be displayed.';
       $arguments = array('!apply' => l(t('apply for a Flickr API key'), MEDIA_FLICKR_API_APPLICATION_URL), '!settings' => l(t('Flickr administration page'), 'admin/config/media/media_flickr'));
       if (user_access('administer site configuration')) {

@@ -37,12 +37,14 @@ div.horizontal-menu ul.menu li.last{
 
 }
 
-.region-sidebar-left{
+.region-sidebar-left,
+.region-sidebar-right{
 	background: #F4F4F4;
 	padding: 10px;	
 }
 
-.region-sidebar-left h4{
+.region-sidebar-left h4,
+.region-sidebar-right h4{
 	border-bottom: 1px solid #CCC;
 	padding-bottom: 5px;	
 }
@@ -292,7 +294,7 @@ span.tag{
 	text-transform: uppercase;	
 }
 
-.file img{
+.file img.file-icon{
 	float: left;
 	padding-right: 3px;	
 }
