@@ -524,7 +524,7 @@ function publication_preprocess_entity(&$vars){
 	$elements = $vars['elements'];
 	$view_mode = $vars['view_mode'];
 	if(isset($elements['field_pub_dataset'])){
-		$range = $elements['field_pub_dataset_range']['#items'][0]['safe_value'];
+		if(isset($elements['field_pub_dataset_range'])) $range = $elements['field_pub_dataset_range']['#items'][0]['safe_value'];
 		if(!is_null($range)) $range = explode(';',$range);
 		$vars['dataset']['table'] = '';
 		$vars['dataset']['chart'] = draw_chart($elements['field_pub_dataset']['#items'][0]['target_id'],$view_mode,$range);
@@ -661,8 +661,8 @@ function draw_chart($pub_id,$view_mode,$range = array()){
 	    	'#legend_position' => ($view_mode == 'full') ? 'bottom' : 'none',
 	    	'#legend_font_size' => ($view_mode == 'full') ? '' : '0em',
 	    	'#data_labels' => ($view_mode == 'full') ? TRUE : FALSE,
-	    	'#width' => ($view_mode == 'full') ? '' : '550px',
-	    	'#height'=> ($view_mode == 'full') ? '' : '250px',
+	    	'#width' => ($view_mode == 'full') ? '750px' : '750px',
+	    	'#height'=> ($view_mode == 'full') ? '350px' : '350px',
 	);
 		
 	foreach($legend as $index => $value){

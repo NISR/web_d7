@@ -35,7 +35,6 @@ function set_elapsed_period(&$publication){
 	
 	switch($publication->type){
   			case 'statistical_report':
-  			case 'statistical_article' :
   				if(count($publication->field_pub_datasource)){
   					$period = $pub->field_pub_datasource->field_datasource_period->value2->value();		
 				}
@@ -49,14 +48,21 @@ function set_elapsed_period(&$publication){
 				$voc = taxonomy_vocabulary_machine_name_load('publication_elapsed_period');
 				$periods = taxonomy_get_tree($voc->vid,0,NULL,TRUE);
 								
-				$terms = array();
+				$tid = 0;
 
 				foreach($periods as $period){
 					$p = entity_metadata_wrapper('taxonomy_term',$period);
-					if($days < $p->field_ep_days->value()) $terms[] = $period->tid;							
+					if($days <= $p->field_ep_days->value()){
+	                $tid = $period->tid;
+	                break;	
+               }					
 				}
+				if(!$tid){ 
+               $period = end($periods);
+               $tid = $period->tid;
+            }			
 								
-				$pub->field_pub_elapsed_periods->set($terms);
+				$pub->field_pub_elapsed_periods->set($tid);
 					
   				break;
   				

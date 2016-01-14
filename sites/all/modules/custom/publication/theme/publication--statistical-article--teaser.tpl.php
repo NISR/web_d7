@@ -31,12 +31,7 @@
 ?>
 
 <div class="<?php print $classes; ?> clearfix recent-posts"<?php print $attributes; ?>>
-	  <?php if (isset($dataset) && $dataset['chart']): ?>
-		  <div class="pull-left col-md-5">
-		  		<?php print render($dataset['chart'])?>
-		  </div>
-	 <?php endif; ?>
-		<div class="content col-md-7"<?php print $content_attributes; ?>>
+		<div class="content col-md-12"<?php print $content_attributes; ?>>
 	  <?php if (!$page): ?>
 	    <h4<?php print $title_attributes; ?>>
 	      <?php if ($url): ?>

@@ -59,9 +59,9 @@ function datasource_block_view($delta = ''){
 /*
  * Implements hook_entities_by_term()
  */
-function datasource_entities_by_term_alter(&$entities,$tid){
+function datasource_entities_by_term_alter(&$entities,$term){
 	module_load_include('inc','nisr','utils');
-	$view = get_embed_view('datasources_search','metadata',array($tid));
+	$view = get_embed_view('datasources_search','metadata',array($term));
 	
 	if($view['count']){
 		$entities = array(

@@ -358,6 +358,10 @@ span.tag{
 	min-height: 80px;
 }
 
+.chart-box{
+	margin-left: -75px;	
+}
+
 /**
  ** Calendar
  **/
@@ -397,4 +401,8 @@ span.tag{
  **/
 input[type="checkbox"]{
 	margin-right: 10px; 	
+}
+
+.news-thumbnail{
+	margin-right: 10px;	
 }
