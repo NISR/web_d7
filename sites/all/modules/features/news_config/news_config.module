@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the News config feature.
- */
-
-include_once 'news_config.features.inc';

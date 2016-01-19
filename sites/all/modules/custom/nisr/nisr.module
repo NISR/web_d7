@@ -114,16 +114,27 @@ function nisr_menu(){
     'type' => MENU_LOCAL_ACTION,
     'menu_name' => 'management',
   	);	
-  	$items['admin/content/news/add'] = array(
-    'title' => 'Add News article',
+  	
+  	// Press items
+  	$items['admin/content/press/news/add'] = array(
+    'title' => 'Add News story',
     'page callback' => 'node_add',
     'page arguments' => array('story'),
     'access arguments' => array('administer content'),
     'file path' => drupal_get_path('module', 'node'), 
     'file' => 'node.pages.inc',
     'type' => MENU_LOCAL_ACTION,
-   
   	);	
+  	$items['admin/content/press/press-release/add'] = array(
+    'title' => 'Add Press release',
+    'page callback' => 'node_add',
+    'page arguments' => array('press_release'),
+    'access arguments' => array('administer content'),
+    'file path' => drupal_get_path('module', 'node'), 
+    'file' => 'node.pages.inc',
+    'type' => MENU_LOCAL_ACTION,
+  	);	  	
+  	
 	// Notices	
   	$items['admin/content/notices/add'] = array(
     'title' => 'Add notice',
