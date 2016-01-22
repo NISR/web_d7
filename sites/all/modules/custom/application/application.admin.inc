@@ -106,17 +106,29 @@ function application_type_form_delete_confirm_submit($form, &$form_state) {
  * Page to select application Type to add new application.
  */
 function application_admin_add_page() {
-  $items = array();
-  foreach (application_types() as $application_type_key => $application_type) {
-    $items[] = l(entity_label('application_type', $application_type), 'application/add/' . $application_type_key);
-  }
-  return array('list' => array('#theme' => 'item_list', '#items' => $items, '#title' => t('Select type of  application to create : ')));
+	
+	if(!user_is_logged_in()){
+  		module_load_include('inc','application','application.authentication');
+		return drupal_get_form('application_login_form');
+	}
+  
+	$items = array();
+	foreach (application_types() as $application_type_key => $application_type) {
+		$items[] = l(entity_label('application_type', $application_type), 'application/add/' . $application_type_key);
+	}
+	return array('list' => array('#theme' => 'item_list', '#items' => $items, '#title' => t('Select type of  application to create : ')));
+	
 }
 
 /**
  * Add new application page callback.
  */
 function application_add($type) {
+  if(!user_is_logged_in()){
+		module_load_include('inc','application','application.authentication');
+		return drupal_get_form('application_login_form','visa');	
+  }
+  
   $application_type = application_types($type);
 
   $application = entity_create('application', array('type' => $type));
@@ -226,3 +238,6 @@ function application_delete_form_submit($form, &$form_state) {
 
   $form_state['redirect'] = 'service/' . $application->type;
 }
+
+
+

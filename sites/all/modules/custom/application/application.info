@@ -13,3 +13,4 @@ files[] = application.install
 files[] = application.controller.inc
 files[] = application.admin.inc
 files[] = application.pages.inc
+files[] = application.authentication.inc

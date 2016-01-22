@@ -85,7 +85,7 @@ function application_entity_info_alter(&$entity_info) {
  */
 function application_menu() {
   $items = array();
-
+  // Adding
   $items['application/add'] = array(
     'title' => 'Add NISR application',
     'page callback' => 'application_admin_add_page',
@@ -95,7 +95,32 @@ function application_menu() {
     'tab_parent' => 'application',
     'tab_root' => 'application',
   );
-
+    
+  // Login
+  $items['application/login'] = array(
+    'title' => 'Login',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('application_login_form'),
+    'access callback' => TRUE,
+    'file' => 'application.authentication.inc',
+    'type' => MENU_CALLBACK,
+    'theme callback' => 'variable_get',
+    'theme arguments' => array('admin_theme'),
+  );
+  
+  // Register 
+  $items['application/register'] = array(
+    'title' => '',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('application_register_form'),
+    'access callback' => TRUE,
+    'file' => 'application.authentication.inc',
+    'type' => MENU_CALLBACK,
+    'theme callback' => 'variable_get',
+    'theme arguments' => array('admin_theme'),
+  );
+    
+  
   $application_uri = 'application/%application';
   $application_uri_argument_position = 1;
 
@@ -135,16 +160,20 @@ function application_menu() {
     'file' => 'application.admin.inc',
     'type' => MENU_LOCAL_TASK,
     'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+    'theme callback' => 'variable_get',
+    'theme arguments' => array('admin_theme'),
   );
 
   foreach (application_types() as $type => $info) {
     $items['application/add/' . $type] = array(
-      'title' => 'Add NISR application',
+      'title' => 'Add application',
       'page callback' => 'application_add',
       'page arguments' => array(2),
       'access callback' => 'entity_access',
       'access arguments' => array('create', 'application', $type),
       'file' => 'application.admin.inc',
+      'theme callback' => 'variable_get',
+    	'theme arguments' => array('admin_theme'),
     );
   }
 
