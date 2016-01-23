@@ -266,9 +266,10 @@ function application_entity_property_info_alter(&$info) {
   );
 }
 
+
 /*
  * Implements hook_field_extra_fields()
- */
+
 function application_field_extra_fields(){
 	$extra = array();
 	foreach (application_types() as $type => $info) {
@@ -284,6 +285,8 @@ function application_field_extra_fields(){
   	}
   	return $extra;
 }
+
+*/
 
 /*
  * Implements hook_entity_view().
