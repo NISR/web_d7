@@ -108,8 +108,8 @@ function application_type_form_delete_confirm_submit($form, &$form_state) {
 function application_admin_add_page() {
 	
 	if(!user_is_logged_in()){
-  		module_load_include('inc','application','application.authentication');
-		return drupal_get_form('application_login_form');
+  		module_load_include('inc','nisr','nisr.authentication');
+		return drupal_get_form('service_login_form');
 	}
   
 	$items = array();
@@ -125,8 +125,8 @@ function application_admin_add_page() {
  */
 function application_add($type) {
   if(!user_is_logged_in()){
-		module_load_include('inc','application','application.authentication');
-		return drupal_get_form('application_login_form','visa');	
+		module_load_include('inc','nisr','nisr.authentication');
+		return drupal_get_form('service_login_form','visa');	
   }
   
   $application_type = application_types($type);

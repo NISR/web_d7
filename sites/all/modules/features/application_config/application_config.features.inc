@@ -17,6 +17,14 @@ function application_config_default_application_type() {
     "locked" : "0",
     "data" : null
   }');
+  $items['message'] = entity_import('application_type', '{
+    "type" : "message",
+    "label" : "Message",
+    "weight" : "0",
+    "description" : "Message exchanged between service requester and NISR staff",
+    "locked" : "0",
+    "data" : null
+  }');
   $items['visa'] = entity_import('application_type', '{
     "type" : "visa",
     "label" : "Visa",
@@ -35,7 +43,17 @@ function application_config_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
+  if ($module == "file_entity" && $api == "file_type") {
+    return array("version" => "1");
+  }
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function application_config_views_api($module = NULL, $api = NULL) {
+  return array("api" => "3.0");
 }

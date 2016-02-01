@@ -632,24 +632,21 @@ function datasource_features_views_default_views() {
   $handler->display->display_options['arguments']['field_datasource_type']['id'] = 'field_datasource_type';
   $handler->display->display_options['arguments']['field_datasource_type']['table'] = 'search_api_index_datasources';
   $handler->display->display_options['arguments']['field_datasource_type']['field'] = 'field_datasource_type';
+  $handler->display->display_options['arguments']['field_datasource_type']['default_action'] = 'not found';
   $handler->display->display_options['arguments']['field_datasource_type']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['field_datasource_type']['summary']['format'] = 'default_summary';
-
-  /* Display: Datasources */
-  $handler = $view->new_display('block', 'Datasources', 'datasources');
-  $handler->display->display_options['block_description'] = 'Datasources';
+  $handler->display->display_options['arguments']['field_datasource_type']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['field_datasource_type']['validate']['type'] = 'taxonomy_term';
+  $handler->display->display_options['arguments']['field_datasource_type']['validate_options']['vocabularies'] = array(
+    'datasource_types' => 'datasource_types',
+  );
+  $handler->display->display_options['arguments']['field_datasource_type']['validate_options']['type'] = 'convert';
+  $handler->display->display_options['arguments']['field_datasource_type']['validate_options']['transform'] = TRUE;
+  $handler->display->display_options['arguments']['field_datasource_type']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['field_datasource_type']['not'] = 0;
 
   /* Display: Metadata */
   $handler = $view->new_display('embed', 'Metadata', 'metadata');
-  $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Indexed Datasource: Type */
-  $handler->display->display_options['arguments']['field_datasource_type']['id'] = 'field_datasource_type';
-  $handler->display->display_options['arguments']['field_datasource_type']['table'] = 'search_api_index_datasources';
-  $handler->display->display_options['arguments']['field_datasource_type']['field'] = 'field_datasource_type';
-  $handler->display->display_options['arguments']['field_datasource_type']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['field_datasource_type']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_datasource_type']['break_phrase'] = 0;
-  $handler->display->display_options['arguments']['field_datasource_type']['not'] = 0;
   $translatables['datasources_search'] = array(
     t('Master'),
     t('more'),
@@ -659,7 +656,6 @@ function datasource_features_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('All'),
-    t('Datasources'),
     t('Metadata'),
   );
   $export['datasources_search'] = $view;

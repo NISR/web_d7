@@ -49,6 +49,7 @@ features[field_instance][] = datasource-datasource_metadata-field_datasource_bod
 features[field_instance][] = datasource-datasource_metadata-field_datasource_type
 features[search_api_index][] = datasources
 features[taxonomy][] = datasource_types
+features[variable][] = pathauto_taxonomy_term_datasource_types_pattern
 features[views_view][] = datasource_widgets
 features[views_view][] = datasources_backoffice
 features[views_view][] = datasources_eva

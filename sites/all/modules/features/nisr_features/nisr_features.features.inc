@@ -332,9 +332,9 @@ function nisr_features_default_search_api_server() {
             "boost" : "1.0"
           },
           "field_pub_elapsed_periods" : {
-            "table" : "search_api_db_publications_field_pub_elapsed_periods",
-            "column" : "value",
-            "type" : "list\\u003Cinteger\\u003E",
+            "table" : "search_api_db_publications",
+            "column" : "field_pub_elapsed_periods",
+            "type" : "integer",
             "boost" : "1.0"
           },
           "field_pub_tags" : {

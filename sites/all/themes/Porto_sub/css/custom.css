@@ -37,6 +37,12 @@ div.horizontal-menu ul.menu li.last{
 
 }
 
+div.profile-menu{
+	background: #EDEDED;
+	border-radius: 5px;
+	border : 1px solid #ccc;
+}
+
 .region-sidebar-left,
 .region-sidebar-right{
 	background: #F4F4F4;
@@ -405,4 +411,8 @@ input[type="checkbox"]{
 
 .news-thumbnail{
 	margin-right: 10px;	
+}
+
+.form-textarea{
+	min-height: 120px;	
 }

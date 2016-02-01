@@ -111,39 +111,6 @@ function nisr_features_default_fe_block_settings() {
     'visibility' => 0,
   );
 
-  $export['views-news-latest_news'] = array(
-    'cache' => -1,
-    'css_class' => 'col-md-4',
-    'custom' => 0,
-    'delta' => 'news-latest_news',
-    'module' => 'views',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'bartik' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'bartik',
-        'weight' => 0,
-      ),
-      'garland' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'garland',
-        'weight' => 0,
-      ),
-      'porto_sub' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'porto_sub',
-        'weight' => 0,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
   $export['views-twitter_messages-tweets_block'] = array(
     'cache' => -1,
     'css_class' => 'col-md-12',

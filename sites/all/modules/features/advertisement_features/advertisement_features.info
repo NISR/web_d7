@@ -41,5 +41,6 @@ features[variable][] = nodesinblock_nrofblocks
 features[variable][] = nodesinblock_referer
 features[variable][] = nodesinblock_visibility_0
 features[variable][] = nodesinblock_visibility_1
+features[variable][] = pathauto_node_advertisement_pattern
 features[views_view][] = advertisements_backoffice
 project path = sites/all/modules/features

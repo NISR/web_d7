@@ -373,9 +373,9 @@ function nisr_features_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'field_collection',
         'settings' => array(
-          'add' => 'Add',
-          'delete' => 'Delete',
-          'description' => TRUE,
+          'add' => '',
+          'delete' => '',
+          'description' => 1,
           'edit' => 'Edit',
           'view_mode' => 'full',
         ),
@@ -408,15 +408,8 @@ function nisr_features_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'field_collection',
-        'settings' => array(
-          'add' => 'Add',
-          'delete' => 'Delete',
-          'description' => 0,
-          'edit' => 'Edit',
-          'view_mode' => 'full',
-        ),
-        'type' => 'field_collection_view',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 2,
       ),
     ),

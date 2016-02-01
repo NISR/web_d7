@@ -208,7 +208,8 @@ function nisr_features_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'gcal_events_footer_gcal_events-0';
-  $strongarm->value = '';
+  $strongarm->value = '<br/>
+<div class="pull-right"><a class="btn btn-xs btn-primary" target="_blank" href="https://calendar.google.com/calendar/embed?src=ie0qtk0seo5burtsibff5ilso0%40group.calendar.google.com&ctz=Africa/Kigali">View  calendar</a></div>                       ';
   $export['gcal_events_footer_gcal_events-0'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -305,7 +306,7 @@ function nisr_features_strongarm() {
 			<span class="day"><?php print date(\'d\',strtotime("#DATE#")) ;?></span>
 			<span class="month"><?php print date(\'M\',strtotime("#DATE#")) ;?></span>
 		</div>
-		<div class="calendarInfo"><div>#DATE#</div><div>#TITLE#</div></div>
+		<div class="calendarInfo"><div>#DATE#</div><div><a href="#LOC#">#TITLE#</a></div></div>
 	</div>
 </div>
                        ';
@@ -329,7 +330,7 @@ function nisr_features_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'gcal_events_template_title_gcal_events-0';
-  $strongarm->value = '<b>#TITLE#</b>';
+  $strongarm->value = '#TITLE#';
   $export['gcal_events_template_title_gcal_events-0'] = $strongarm;
 
   $strongarm = new stdClass();

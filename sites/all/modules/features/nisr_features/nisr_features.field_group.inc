@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function nisr_features_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -34,7 +34,7 @@ function nisr_features_field_group_info() {
       ),
     ),
   );
-  $export['group_profile_pi|profile2|main|default'] = $field_group;
+  $field_groups['group_profile_pi|profile2|main|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -44,14 +44,14 @@ function nisr_features_field_group_info() {
   $field_group->entity_type = 'profile2';
   $field_group->bundle = 'main';
   $field_group->mode = 'default';
-  $field_group->parent_name = 'group_profile';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Subscriptions',
     'weight' => '2',
     'children' => array(
       0 => 'field_profile_subscriptions',
     ),
-    'format_type' => 'tab',
+    'format_type' => 'hidden',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
@@ -60,7 +60,7 @@ function nisr_features_field_group_info() {
       ),
     ),
   );
-  $export['group_profile_subs|profile2|main|default'] = $field_group;
+  $field_groups['group_profile_subs|profile2|main|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -76,8 +76,6 @@ function nisr_features_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'group_profile_pi',
-      1 => 'group_profile_subs',
-      2 => 'group_profile_app',
     ),
     'format_type' => 'tabs',
     'format_settings' => array(
@@ -87,7 +85,13 @@ function nisr_features_field_group_info() {
       ),
     ),
   );
-  $export['group_profile|profile2|main|default'] = $field_group;
+  $field_groups['group_profile|profile2|main|default'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Personal information');
+  t('Profile');
+  t('Subscriptions');
+
+  return $field_groups;
 }

@@ -35,6 +35,10 @@ function press_config_views_default_views() {
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Footer: Global: Text area */
+  $handler->display->display_options['footer']['area']['id'] = 'area';
+  $handler->display->display_options['footer']['area']['table'] = 'views';
+  $handler->display->display_options['footer']['area']['field'] = 'area';
   /* Field: Content: Media */
   $handler->display->display_options['fields']['field_story_media']['id'] = 'field_story_media';
   $handler->display->display_options['fields']['field_story_media']['table'] = 'field_data_field_story_media';

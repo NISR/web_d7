@@ -63,7 +63,7 @@ function nisr_features_context_default_contexts() {
           'module' => 'nodesinblock',
           'delta' => '0',
           'region' => 'before_content',
-          'weight' => '-10',
+          'weight' => '-52',
         ),
         'views-publication_widgets-fi' => array(
           'module' => 'views',
@@ -99,25 +99,25 @@ function nisr_features_context_default_contexts() {
           'module' => 'views',
           'delta' => 'publication_widgets-fsa',
           'region' => 'after_content',
-          'weight' => '-48',
+          'weight' => '-10',
         ),
-        'views-news-latest_news' => array(
+        'views-press-featured_news' => array(
           'module' => 'views',
-          'delta' => 'news-latest_news',
+          'delta' => 'press-featured_news',
           'region' => 'after_content',
-          'weight' => '-47',
+          'weight' => '-9',
         ),
         'nodesinblock-1' => array(
           'module' => 'nodesinblock',
           'delta' => '1',
           'region' => 'after_content',
-          'weight' => '-46',
+          'weight' => '-8',
         ),
         'views-twitter_messages-tweets_block' => array(
           'module' => 'views',
           'delta' => 'twitter_messages-tweets_block',
           'region' => 'after_content',
-          'weight' => '-45',
+          'weight' => '-7',
         ),
       ),
     ),
@@ -182,7 +182,7 @@ function nisr_features_context_default_contexts() {
           'module' => 'menu',
           'delta' => 'menu-topmenu',
           'region' => 'header_top',
-          'weight' => '-40',
+          'weight' => '-10',
         ),
         'system-main-menu' => array(
           'module' => 'system',
@@ -219,6 +219,34 @@ function nisr_features_context_default_contexts() {
   );
   $context->condition_mode = 0;
   $export['sitewide'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'sitewide_authenticated';
+  $context->description = '';
+  $context->tag = '';
+  $context->conditions = array(
+    'user' => array(
+      'values' => array(
+        'authenticated user' => 'authenticated user',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'menu-menu-profile-menu' => array(
+          'module' => 'menu',
+          'delta' => 'menu-profile-menu',
+          'region' => 'header_top',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+  $export['sitewide_authenticated'] = $context;
 
   return $export;
 }

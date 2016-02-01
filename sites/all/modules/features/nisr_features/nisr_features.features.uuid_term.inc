@@ -51,9 +51,9 @@ function nisr_features_uuid_features_default_terms() {
     'vocabulary_machine_name' => 'tags',
   );
   $terms[] = array(
-    'name' => 'Documentation',
+    'name' => 'Documentation and Manuals',
     'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
-    'format' => NULL,
+    'format' => 2,
     'weight' => 0,
     'uuid' => '33511fc8-4be0-4a5f-a206-3a7a4fcce8af',
     'vocabulary_machine_name' => 'document_subjects',

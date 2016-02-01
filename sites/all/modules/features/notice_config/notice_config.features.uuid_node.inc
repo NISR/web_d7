@@ -26,7 +26,7 @@ function notice_config_uuid_features_default_content() {
   'body' => array(
     'und' => array(
       0 => array(
-        'value' => '<p>If you would like to apply for positions in NISR, please fill out and sign the following form (available in English and French in the links below) and submit it along with supporting document to the NISR – Central Secretariat, by post or in-person, before the indicated deadline.</p><p>[[{"fid":"4213","view_mode":"default","fields":{"format":"default"},"type":"media","link_text":"Application form - English","attributes":{"class":"file media-element file-default"}}]]</p><p>[[{"fid":"4214","view_mode":"default","fields":{"format":"default"},"type":"media","attributes":{"class":"file media-element file-default"},"link_text":"Application form - Français"}]]</p>',
+        'value' => '<p>If you would like to apply for positions in NISR, please fill out and sign the following form (available in English and French in the links below) and submit it along with supporting document to the NISR – Central Secretariat, by post or in-person, before the indicated deadline.</p><p>&nbsp;</p>',
         'summary' => '',
         'format' => 2,
         'safe_summary' => '',

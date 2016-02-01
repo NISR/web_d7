@@ -36,6 +36,14 @@ class ApplicationController extends EntityAPIController {
     */
     return parent::buildContent($entity, $view_mode, $langcode, $content);
   }
+  
+  /**
+   * Save Application Type.
+  */
+  public function save($entity, DatabaseTransaction $transaction = NULL) {
+  	 $entity->changed = REQUEST_TIME;
+    parent::save($entity, $transaction);
+  }
 }
 
 class ApplicationTypeController extends EntityAPIControllerExportable {

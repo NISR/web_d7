@@ -36,61 +36,13 @@ function notice_config_views_default_views() {
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
-    'views_bulk_operations' => 'views_bulk_operations',
     'title' => 'title',
-    'name' => 'name',
-    'changed' => 'changed',
-    'status' => 'status',
-    'edit_node' => 'edit_node',
-    'delete_node' => 'delete_node',
-    'nothing' => 'nothing',
   );
-  $handler->display->display_options['style_options']['default'] = 'changed';
+  $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
-    'views_bulk_operations' => array(
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
     'title' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'name' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'changed' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'desc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'status' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'edit_node' => array(
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'delete_node' => array(
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'nothing' => array(
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -209,25 +161,6 @@ function notice_config_views_default_views() {
     6 => 0,
     5 => 0,
   );
-  /* Filter criterion: Content: Type (field_notice_types) */
-  $handler->display->display_options['filters']['field_notice_types_tid']['id'] = 'field_notice_types_tid';
-  $handler->display->display_options['filters']['field_notice_types_tid']['table'] = 'field_data_field_notice_types';
-  $handler->display->display_options['filters']['field_notice_types_tid']['field'] = 'field_notice_types_tid';
-  $handler->display->display_options['filters']['field_notice_types_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_notice_types_tid']['expose']['operator_id'] = 'field_notice_types_tid_op';
-  $handler->display->display_options['filters']['field_notice_types_tid']['expose']['label'] = 'Type';
-  $handler->display->display_options['filters']['field_notice_types_tid']['expose']['operator'] = 'field_notice_types_tid_op';
-  $handler->display->display_options['filters']['field_notice_types_tid']['expose']['identifier'] = 'field_notice_types_tid';
-  $handler->display->display_options['filters']['field_notice_types_tid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    6 => 0,
-    5 => 0,
-  );
-  $handler->display->display_options['filters']['field_notice_types_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_notice_types_tid']['vocabulary'] = 'notice_types';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -264,7 +197,6 @@ function notice_config_views_default_views() {
     t('Delete'),
     t('Operations'),
     t('[edit_node] [delete_node]'),
-    t('Type'),
     t('Page'),
   );
   $export['notices_backoffice'] = $view;
@@ -281,6 +213,7 @@ function notice_config_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Notices';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -293,36 +226,60 @@ function notice_config_views_default_views() {
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Header: Global: Text area */
-  $handler->display->display_options['header']['area']['id'] = 'area';
-  $handler->display->display_options['header']['area']['table'] = 'views';
-  $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = '<hr>';
-  $handler->display->display_options['header']['area']['format'] = '2';
+  /* Relationship: Content: Tags (field_notice_tags) */
+  $handler->display->display_options['relationships']['field_notice_tags_tid']['id'] = 'field_notice_tags_tid';
+  $handler->display->display_options['relationships']['field_notice_tags_tid']['table'] = 'field_data_field_notice_tags';
+  $handler->display->display_options['relationships']['field_notice_tags_tid']['field'] = 'field_notice_tags_tid';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['text'] = '<h3>[title]</h3>';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_wrapper_type'] = 'h4';
-  /* Field: Content: File attachments */
-  $handler->display->display_options['fields']['upload']['id'] = 'upload';
-  $handler->display->display_options['fields']['upload']['table'] = 'field_data_upload';
-  $handler->display->display_options['fields']['upload']['field'] = 'upload';
-  $handler->display->display_options['fields']['upload']['label'] = '';
-  $handler->display->display_options['fields']['upload']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['upload']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['upload']['type'] = 'file_table';
-  $handler->display->display_options['fields']['upload']['delta_offset'] = '0';
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['body']['type'] = 'text_summary_or_trimmed';
+  $handler->display->display_options['fields']['body']['settings'] = array(
+    'trim_length' => '600',
+  );
+  /* Field: Content: Link */
+  $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['label'] = '';
+  $handler->display->display_options['fields']['view_node']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['view_node']['alter']['text'] = '<div class="btn btn-sm btn-primary">[view_node]</div><hr/>';
+  $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['view_node']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['view_node']['text'] = 'Read more';
   /* Sort criterion: Content: Updated date */
   $handler->display->display_options['sorts']['changed']['id'] = 'changed';
   $handler->display->display_options['sorts']['changed']['table'] = 'node';
   $handler->display->display_options['sorts']['changed']['field'] = 'changed';
   $handler->display->display_options['sorts']['changed']['order'] = 'DESC';
+  /* Contextual filter: Content: Tags (field_notice_tags) */
+  $handler->display->display_options['arguments']['field_notice_tags_tid']['id'] = 'field_notice_tags_tid';
+  $handler->display->display_options['arguments']['field_notice_tags_tid']['table'] = 'field_data_field_notice_tags';
+  $handler->display->display_options['arguments']['field_notice_tags_tid']['field'] = 'field_notice_tags_tid';
+  $handler->display->display_options['arguments']['field_notice_tags_tid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_notice_tags_tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_notice_tags_tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_notice_tags_tid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_notice_tags_tid']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['field_notice_tags_tid']['validate']['type'] = 'taxonomy_term';
+  $handler->display->display_options['arguments']['field_notice_tags_tid']['validate_options']['vocabularies'] = array(
+    'notices' => 'notices',
+  );
+  $handler->display->display_options['arguments']['field_notice_tags_tid']['validate_options']['type'] = 'convert';
+  $handler->display->display_options['arguments']['field_notice_tags_tid']['validate_options']['transform'] = TRUE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -338,35 +295,12 @@ function notice_config_views_default_views() {
     'notice' => 'notice',
   );
 
-  /* Display: Jobs */
-  $handler = $view->new_display('block', 'Jobs', 'jobs');
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'notice' => 'notice',
-  );
-  /* Filter criterion: Content: Type (field_notice_types) */
-  $handler->display->display_options['filters']['field_notice_types_tid']['id'] = 'field_notice_types_tid';
-  $handler->display->display_options['filters']['field_notice_types_tid']['table'] = 'field_data_field_notice_types';
-  $handler->display->display_options['filters']['field_notice_types_tid']['field'] = 'field_notice_types_tid';
-  $handler->display->display_options['filters']['field_notice_types_tid']['value'] = array(
-    336 => '336',
-  );
-  $handler->display->display_options['filters']['field_notice_types_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_notice_types_tid']['vocabulary'] = 'notice_types';
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'notices';
   $translatables['notices_search'] = array(
     t('Master'),
+    t('Notices'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -380,9 +314,12 @@ function notice_config_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
-    t('<hr>'),
+    t('term from field_notice_tags'),
     t('<h3>[title]</h3>'),
-    t('Jobs'),
+    t('<div class="btn btn-sm btn-primary">[view_node]</div><hr/>'),
+    t('Read more'),
+    t('All'),
+    t('Page'),
   );
   $export['notices_search'] = $view;
 

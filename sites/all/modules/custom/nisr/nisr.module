@@ -181,7 +181,30 @@ function nisr_menu(){
     	'weight' => -10,
     	'menu_name' => 'menu-profile-menu',
 	);		
+	
+	$items['ServiceLogin'] = array(
+		'title' => 'Login',
+		'page callback' => 'serviceLogin',
+		'access callback' => TRUE,	
+	
+	);
 
+	$items['ServiceRegister'] = array(
+		'title' => 'Register',
+		'page callback' => 'serviceRegister',
+		'access callback' => TRUE,	
+	
+	);
+		
+	$items['visa'] = array(
+		'title' => 'My visa requests',
+		'page callback' => 'views_embed_view',
+		'page arguments' => array('visa','embed_1'),
+		'access callback' => 'nisr_user_is_logged_in',
+		'access arguments' => array('visa'),
+    	'type' => MENU_CALLBACK,
+	);
+	
 	return $items;
 }
 
@@ -275,7 +298,38 @@ function nisr_file_formatter_table(&$variables){
   return empty($rows) ? '' : theme('table', array('header' => $header, 'rows' => $rows,'attributes' => array('class' => array('col-md-12'),'style'=>'margin-bottom:20px;')));
 } 
 
+/*
+ * Check if user is logged and redirect to custom login page if not 
+ *
+ * @return 
+ *		Boolean
+ */
+function nisr_user_is_logged_in($service){
+	if(!user_is_logged_in()){
+		drupal_goto('ServiceLogin',array('query' => array('destination'=> $service)));	
+	}
+	return TRUE;
+}
 
+/*
+ * Service login
+ */
+function serviceLogin(){
+	if(!user_is_logged_in()){
+		module_load_include('inc','nisr','nisr.authentication');
+		return drupal_get_form('nisr_login_form');
+	}
+}
+
+/*
+ * Service Register
+ */
+function serviceRegister(){
+	if(!user_is_logged_in()){
+		module_load_include('inc','nisr','nisr.authentication');
+		return drupal_get_form('nisr_register_form');
+	}	
+}
 /*
  * Submit xml request to Prognoz WebAPi service
  * @param

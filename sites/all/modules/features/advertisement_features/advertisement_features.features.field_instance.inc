@@ -76,6 +76,7 @@ function advertisement_features_field_default_field_instances() {
       'filefield_paths_enabled' => 0,
       'max_filesize' => '',
       'max_resolution' => '',
+      'media_library_include_in_library' => FALSE,
       'min_resolution' => '',
       'title_field' => 0,
       'user_register_form' => FALSE,

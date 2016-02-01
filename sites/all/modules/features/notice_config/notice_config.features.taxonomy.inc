@@ -17,5 +17,13 @@ function notice_config_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => 0,
     ),
+    'notices' => array(
+      'name' => 'Notices',
+      'machine_name' => 'notices',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+    ),
   );
 }
