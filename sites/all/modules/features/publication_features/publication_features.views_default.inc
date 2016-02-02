@@ -261,6 +261,7 @@ function publication_features_views_default_views() {
     'title' => 'title',
     'type' => 'type',
     'name' => 'name',
+    'created' => 'created',
     'changed' => 'changed',
     'nothing' => 'nothing',
   );
@@ -295,6 +296,13 @@ function publication_features_views_default_views() {
     'name' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'created' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'desc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -387,6 +395,12 @@ function publication_features_views_default_views() {
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   $handler->display->display_options['fields']['name']['label'] = 'Author';
   $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
+  /* Field: Publication: Date created */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'publication';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['date_format'] = 'short';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   /* Field: Publication: Date changed */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
   $handler->display->display_options['fields']['changed']['table'] = 'publication';
@@ -472,6 +486,12 @@ function publication_features_views_default_views() {
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   $handler->display->display_options['fields']['name']['label'] = 'Author';
   $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
+  /* Field: Publication: Date created */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'publication';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['date_format'] = 'short';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   /* Field: Publication: Date changed */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
   $handler->display->display_options['fields']['changed']['table'] = 'publication';
@@ -557,6 +577,12 @@ function publication_features_views_default_views() {
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   $handler->display->display_options['fields']['name']['label'] = 'Author';
   $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
+  /* Field: Publication: Date created */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'publication';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['date_format'] = 'short';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   /* Field: Publication: Date changed */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
   $handler->display->display_options['fields']['changed']['table'] = 'publication';
@@ -711,6 +737,12 @@ function publication_features_views_default_views() {
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   $handler->display->display_options['fields']['name']['label'] = 'Author';
   $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
+  /* Field: Publication: Date created */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'publication';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['date_format'] = 'short';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   /* Field: Publication: Date changed */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
   $handler->display->display_options['fields']['changed']['table'] = 'publication';
@@ -722,7 +754,7 @@ function publication_features_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = 'Operations';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="publication/[pub_id]/edit?destination=admin/content/publications">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="publication/[pub_id]/delete?destination=admin/content/publications">Delete</a>';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="/publication/[pub_id]/edit?destination=admin/content/publications">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/publication/[pub_id]/delete?destination=admin/content/publications">Delete</a>';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Publication: Type */
@@ -1216,6 +1248,7 @@ function publication_features_views_default_views() {
     t('Title'),
     t('Publication type'),
     t('Author'),
+    t('Date created'),
     t('Date changed'),
     t('Operations'),
     t('<a href="/publication/[pub_id]/edit?destination=admin/content/publications">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/publication/[pub_id]/delete?destination=admin/content/publications">Delete</a>'),
@@ -1225,7 +1258,6 @@ function publication_features_views_default_views() {
     t('Empty(or NOT)'),
     t('Subject (field_pub_subject)'),
     t('Statistical articles'),
-    t('<a href="publication/[pub_id]/edit?destination=admin/content/publications">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="publication/[pub_id]/delete?destination=admin/content/publications">Delete</a>'),
     t('Documents'),
     t('Datasets'),
     t('Indicators'),
@@ -1438,6 +1470,11 @@ function publication_features_views_default_views() {
   $handler->display->display_options['sorts']['period']['id'] = 'period';
   $handler->display->display_options['sorts']['period']['table'] = 'search_api_index_publications';
   $handler->display->display_options['sorts']['period']['field'] = 'period';
+  /* Sort criterion: Indexed Publication: Entity ID */
+  $handler->display->display_options['sorts']['search_api_id']['id'] = 'search_api_id';
+  $handler->display->display_options['sorts']['search_api_id']['table'] = 'search_api_index_publications';
+  $handler->display->display_options['sorts']['search_api_id']['field'] = 'search_api_id';
+  $handler->display->display_options['sorts']['search_api_id']['order'] = 'DESC';
   /* Sort criterion: Indexed Publication: Published */
   $handler->display->display_options['sorts']['field_pub_publication_date']['id'] = 'field_pub_publication_date';
   $handler->display->display_options['sorts']['field_pub_publication_date']['table'] = 'search_api_index_publications';

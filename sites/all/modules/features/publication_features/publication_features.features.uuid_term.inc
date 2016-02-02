@@ -11,18 +11,6 @@ function publication_features_uuid_features_default_terms() {
   $terms = array();
 
   $terms[] = array(
-    'name' => 'Justice and Human Rights',
-    'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
-    'format' => 2,
-    'weight' => 34,
-    'uuid' => '04a628ba-db1a-49c1-a584-7e8535379ff4',
-    'vocabulary_machine_name' => 'statistical_publications_types',
-    'field_pub_dataset' => array(),
-    'path' => array(
-      'pathauto' => 0,
-    ),
-  );
-  $terms[] = array(
     'name' => 'Procurement plan',
     'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
     'format' => NULL,
@@ -93,9 +81,9 @@ function publication_features_uuid_features_default_terms() {
     ),
   );
   $terms[] = array(
-    'name' => 'Yearbook',
+    'name' => 'Statistical Yearbook',
     'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
-    'format' => NULL,
+    'format' => 2,
     'weight' => 1,
     'uuid' => '1badb282-01ee-4efa-92e0-fca5d98eb93d',
     'vocabulary_machine_name' => 'statistical_publications_types',
@@ -139,12 +127,15 @@ function publication_features_uuid_features_default_terms() {
   );
   $terms[] = array(
     'name' => 'PPI',
-    'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
-    'format' => NULL,
+    'description' => 'This is a monthly or quarterly  index that measures the average change in selling prices received by domestic producers of goods and services over time.',
+    'format' => 2,
     'weight' => 1,
     'uuid' => '1cc3e0e0-7cec-4636-ac8c-eb6ce84a9abf',
     'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
+    'path' => array(
+      'pathauto' => 0,
+    ),
     'parent' => array(
       0 => 'acef122a-56bf-49f7-a1ac-d5dd052d939c',
     ),
@@ -165,9 +156,9 @@ function publication_features_uuid_features_default_terms() {
     ),
   );
   $terms[] = array(
-    'name' => 'Regional',
+    'name' => 'District Statistics',
     'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
-    'format' => NULL,
+    'format' => 2,
     'weight' => 0,
     'uuid' => '26f09f42-8f87-4408-939d-c1abd9a4be01',
     'vocabulary_machine_name' => 'statistical_publications_types',
@@ -181,12 +172,15 @@ function publication_features_uuid_features_default_terms() {
   );
   $terms[] = array(
     'name' => 'CPI',
-    'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
+    'description' => 'This a monthly or quarterly price index compiled and published by an official statistical agency that measures changes in the prices of consumption goods and services acquired or used by households. ',
     'format' => 2,
     'weight' => 0,
     'uuid' => '2bfba38b-194b-41c8-b5df-a83b109b2c64',
     'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
+    'path' => array(
+      'pathauto' => 0,
+    ),
     'parent' => array(
       0 => 'acef122a-56bf-49f7-a1ac-d5dd052d939c',
     ),
@@ -200,21 +194,24 @@ function publication_features_uuid_features_default_terms() {
     'vocabulary_machine_name' => 'tags',
   );
   $terms[] = array(
-    'name' => 'Documentation',
+    'name' => 'Documentation and Manuals',
     'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
-    'format' => NULL,
+    'format' => 2,
     'weight' => 0,
     'uuid' => '33511fc8-4be0-4a5f-a206-3a7a4fcce8af',
     'vocabulary_machine_name' => 'document_subjects',
   );
   $terms[] = array(
     'name' => 'Business',
-    'description' => 'Click here to find  statistical reports on a variety of industries and business conditions ',
+    'description' => 'Click here to find  statistical reports on a variety of industries and business conditions. These publications include Industrial and Mining Survey Report , Statistics for entrepreneur.',
     'format' => 2,
     'weight' => 0,
     'uuid' => '347ba22c-aa4f-4ed0-a049-0ed722b22f4c',
     'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
+    'path' => array(
+      'pathauto' => 0,
+    ),
     'parent' => array(
       0 => 'fbc7423e-9f9c-407d-9da4-06dc9aae3e95',
     ),
@@ -236,29 +233,17 @@ function publication_features_uuid_features_default_terms() {
   );
   $terms[] = array(
     'name' => 'Establishment',
-    'description' => 'These publications provides a quantitative profile of all establishments in the country, excluding governmental establishments providing not-for-sale governmental services.',
+    'description' => 'These publications provides a quantitative profile of all establishments in the country, excluding governmental establishments providing not-for-sale governmental services. These publications consist mainly of Establishment Census Reports.',
     'format' => 2,
     'weight' => 1,
     'uuid' => '3e46f685-b844-458e-b1ae-cb3ca32223b5',
     'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
+    'path' => array(
+      'pathauto' => 0,
+    ),
     'parent' => array(
       0 => 'fbc7423e-9f9c-407d-9da4-06dc9aae3e95',
-    ),
-  );
-  $terms[] = array(
-    'name' => 'Last 6 months',
-    'description' => '',
-    'format' => 2,
-    'weight' => 1,
-    'uuid' => '40e9b8cc-99c6-4778-9c1c-1aa9ea76a052',
-    'vocabulary_machine_name' => 'publication_elapsed_period',
-    'field_ep_days' => array(
-      'und' => array(
-        0 => array(
-          'value' => 182,
-        ),
-      ),
     ),
   );
   $terms[] = array(
@@ -287,12 +272,15 @@ function publication_features_uuid_features_default_terms() {
   );
   $terms[] = array(
     'name' => 'Gross Domestic Product',
-    'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
+    'description' => 'Gross domestic product (GDP) is a monetary measure of the value of all final goods and services produced in a period of time (quarterly or yearly). It is  the broadest quantitative measure of a nation\'s total economic activity.',
     'format' => 2,
     'weight' => 0,
     'uuid' => '60cf69df-43be-4a7b-9a30-471bec1de8a8',
     'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
+    'path' => array(
+      'pathauto' => 0,
+    ),
     'parent' => array(
       0 => 'a05d0dda-fad9-4c04-8604-a8b1103a3291',
     ),
@@ -301,7 +289,7 @@ function publication_features_uuid_features_default_terms() {
     'name' => 'Last 12 months',
     'description' => '',
     'format' => 2,
-    'weight' => 2,
+    'weight' => -4,
     'uuid' => '687077ee-8bf3-4aed-9244-4e4eb956e627',
     'vocabulary_machine_name' => 'publication_elapsed_period',
     'field_ep_days' => array(
@@ -374,9 +362,9 @@ function publication_features_uuid_features_default_terms() {
     'vocabulary_machine_name' => 'tags',
   );
   $terms[] = array(
-    'name' => 'Gender',
-    'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
-    'format' => NULL,
+    'name' => 'Gender and Youth',
+    'description' => '<p align=justify>Gender statistics are needed to measure and monitor the realities of the lives of women and men, and of girls and boys. Achieving development for all requires formulation of inclusive policy that recognizes the role of gender equality to determine outcomes for women and men in the community.</p>',
+    'format' => 2,
     'weight' => 31,
     'uuid' => '8a42cfdd-9006-452b-ab01-06286ba7d18c',
     'vocabulary_machine_name' => 'statistical_publications_types',
@@ -409,9 +397,9 @@ function publication_features_uuid_features_default_terms() {
     'vocabulary_machine_name' => 'document_subjects',
   );
   $terms[] = array(
-    'name' => 'Agriculture',
-    'description' => '<p>This section covers the economic situation in agriculture and it presents the main economic and agricultural data at national level</p>',
-    'format' => 2,
+    'name' => 'Agriculture and Environment',
+    'description' => '<p>This section covers the economic situation in agriculture and environment and it presents the main economic and agricultural with environmental statistics at national level. Agricultural statistics are generated from the census of agriculture (which in some countries includes aquaculture and fisheries) and the agricultural surveys subsystem. The latter are exemplified by crops and livestock surveys, survey of prices paid and prices received by farmers, individual commodity cost of production studies/surveys and, in some cases aquaculture and fisheries surveys</p>',
+    'format' => 4,
     'weight' => 7,
     'uuid' => '9155d45e-3486-48f9-abe7-d0ced1a253ec',
     'vocabulary_machine_name' => 'statistical_publications_types',
@@ -446,7 +434,7 @@ function publication_features_uuid_features_default_terms() {
   );
   $terms[] = array(
     'name' => 'Economy',
-    'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
+    'description' => 'This section contains statistical information in various economic areas, including price Statistics (CPI, PPI and TPI) and National Accounts ( Input Output table and annual bench marking, Quarterly national accounts, Balance of payments, Flow of funds accounts).',
     'format' => 2,
     'weight' => 25,
     'uuid' => 'a05d0dda-fad9-4c04-8604-a8b1103a3291',
@@ -465,23 +453,8 @@ function publication_features_uuid_features_default_terms() {
     'vocabulary_machine_name' => 'document_subjects',
   );
   $terms[] = array(
-    'name' => 'Last 30 days',
-    'description' => '',
-    'format' => 2,
-    'weight' => 0,
-    'uuid' => 'ac98fec3-07c0-4c31-9be7-a7ce890e1dea',
-    'vocabulary_machine_name' => 'publication_elapsed_period',
-    'field_ep_days' => array(
-      'und' => array(
-        0 => array(
-          'value' => 30,
-        ),
-      ),
-    ),
-  );
-  $terms[] = array(
     'name' => 'Inflation and price indices',
-    'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
+    'description' => 'Inflation as measured by the consumer price index reflects the annual percentage change in the cost to the average consumer of acquiring a basket of goods and services that may be fixed or changed at specified intervals, such as yearly. The Laspeyres formula is generally used.  Inflation is a sustained increase in the general price level of goods and services in an economy over a period of time',
     'format' => 2,
     'weight' => 1,
     'uuid' => 'acef122a-56bf-49f7-a1ac-d5dd052d939c',
@@ -504,12 +477,15 @@ function publication_features_uuid_features_default_terms() {
   );
   $terms[] = array(
     'name' => 'TPI',
-    'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
-    'format' => NULL,
+    'description' => ' Trade Price Index (TPI) is an indicator of the changes in import and export prices. ',
+    'format' => 2,
     'weight' => 2,
     'uuid' => 'afc36930-1ad2-41ae-b01f-df5ea5c8ddf0',
     'vocabulary_machine_name' => 'statistical_publications_types',
     'field_pub_dataset' => array(),
+    'path' => array(
+      'pathauto' => 0,
+    ),
     'parent' => array(
       0 => 'acef122a-56bf-49f7-a1ac-d5dd052d939c',
     ),
@@ -560,21 +536,6 @@ function publication_features_uuid_features_default_terms() {
     'weight' => 0,
     'uuid' => 'c897224e-d223-4fd2-94d2-2f3b3df0d9c4',
     'vocabulary_machine_name' => 'document_subjects',
-  );
-  $terms[] = array(
-    'name' => 'Last 5 years',
-    'description' => '',
-    'format' => 2,
-    'weight' => 3,
-    'uuid' => 'd6489217-a66f-43cc-9f67-dac326987fdc',
-    'vocabulary_machine_name' => 'publication_elapsed_period',
-    'field_ep_days' => array(
-      'und' => array(
-        0 => array(
-          'value' => 745,
-        ),
-      ),
-    ),
   );
   $terms[] = array(
     'name' => 'Monitory Poverty',
@@ -662,8 +623,8 @@ function publication_features_uuid_features_default_terms() {
   );
   $terms[] = array(
     'name' => 'DHS',
-    'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
-    'format' => NULL,
+    'description' => '<p align="justify">The Rwanda Demographic and Health Survey (DHS) provides data to monitor the population and health situation in Rwanda. Specifically, the survey collects information on a broad range of demographic, health, and social issues such as household characteristics, maternal and child health, breastfeeding practices, early childhood mortality, maternal mortality, nutritional status of women and young children, fertility levels, marriage, fertility preferences, awareness and use of family planning methods, sexual activity, and awareness and behavior regarding AIDS and other sexually transmitted infections.</p>',
+    'format' => 1,
     'weight' => 0,
     'uuid' => 'ef8c4185-b9a1-418b-83cf-78ffefa63b45',
     'vocabulary_machine_name' => 'statistical_publications_types',

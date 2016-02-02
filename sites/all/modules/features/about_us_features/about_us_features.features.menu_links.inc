@@ -330,7 +330,7 @@ function about_us_features_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -41,
+    'weight' => -43,
     'customized' => 1,
   );
   // Exported menu link: menu-about-us_office-of-deputy-director-general:node/137.
@@ -516,7 +516,7 @@ function about_us_features_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -46,
+    'weight' => -45,
     'customized' => 1,
   );
   // Exported menu link: menu-about-us_social-and-demographic-statistics:node/144.

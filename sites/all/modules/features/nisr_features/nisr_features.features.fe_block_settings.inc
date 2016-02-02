@@ -78,6 +78,39 @@ function nisr_features_default_fe_block_settings() {
     'visibility' => 0,
   );
 
+  $export['menu-menu-profile-menu'] = array(
+    'cache' => -1,
+    'css_class' => 'horizontal-menu pull-right profile-menu',
+    'custom' => 0,
+    'delta' => 'menu-profile-menu',
+    'module' => 'menu',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'bartik' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'bartik',
+        'weight' => 0,
+      ),
+      'garland' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'garland',
+        'weight' => 0,
+      ),
+      'porto_sub' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'porto_sub',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '<none>',
+    'visibility' => 0,
+  );
+
   $export['search-form'] = array(
     'cache' => -1,
     'css_class' => '',

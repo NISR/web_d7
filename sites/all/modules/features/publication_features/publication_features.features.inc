@@ -164,7 +164,7 @@ function publication_features_default_search_api_index() {
         "created" : { "type" : "date" },
         "field_doc_subject" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_pub_datasource" : { "type" : "integer", "entity_type" : "datasource" },
-        "field_pub_elapsed_periods" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_pub_elapsed_periods" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_pub_publication_date" : { "type" : "date" },
         "field_pub_pubsource" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "publication" },
         "field_pub_related" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "publication" },

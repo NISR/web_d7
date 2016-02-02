@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Service config feature.
- */
-
-include_once 'service_config.features.inc';

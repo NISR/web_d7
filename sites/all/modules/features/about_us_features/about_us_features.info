@@ -92,4 +92,5 @@ features[uuid_node][] = fc8bf51d-c96a-4612-a322-79097b7e3ec2
 features[uuid_node][] = ffe86290-f5b6-492f-be7d-90c9715809dc
 features_exclude[dependencies][publication_features] = publication_features
 features_exclude[dependencies][service_config] = service_config
+features_exclude[dependencies][contact_config] = contact_config
 project path = sites/all/modules/features

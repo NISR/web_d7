@@ -95,9 +95,9 @@ function publication_features_context_default_contexts() {
   $context->description = '';
   $context->tag = 'Publications';
   $context->conditions = array(
-    'path' => array(
+    'views' => array(
       'values' => array(
-        'statistical-publications/*/reports' => 'statistical-publications/*/reports',
+        'publications_search' => 'publications_search',
       ),
     ),
   );

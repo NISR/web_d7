@@ -448,6 +448,7 @@ function publication_features_field_default_field_instances() {
       'filefield_paths_enabled' => 1,
       'max_filesize' => '',
       'max_resolution' => '',
+      'media_library_include_in_library' => FALSE,
       'min_resolution' => '',
       'title_field' => 0,
       'user_register_form' => FALSE,
@@ -510,7 +511,7 @@ function publication_features_field_default_field_instances() {
     'settings' => array(
       'description_field' => 1,
       'file_directory' => '',
-      'file_extensions' => 'txt xls pdf rtf xml sav por tab htm mdb accdb doc docx ps xlsx ppt pptx',
+      'file_extensions' => 'txt xls pdf rtf xml sav por tab htm mdb accdb doc docx ps xlsx csv ppt pptx',
       'filefield_paths' => array(
         'active_updating' => 0,
         'file_name' => array(
@@ -534,6 +535,7 @@ function publication_features_field_default_field_instances() {
       ),
       'filefield_paths_enabled' => 1,
       'max_filesize' => '',
+      'media_library_include_in_library' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -619,13 +621,13 @@ function publication_features_field_default_field_instances() {
       'settings' => array(
         'display_all_day' => 0,
         'increment' => 15,
-        'input_format' => 'm/d/Y - H:i:s',
+        'input_format' => 'd.m.Y - H:i:s',
         'input_format_custom' => '',
         'label_position' => 'above',
         'no_fieldset' => 0,
         'repeat_collapsed' => 0,
         'text_parts' => array(),
-        'year_range' => '1962:+0',
+        'year_range' => '-0:1962',
       ),
       'type' => 'date_select',
       'weight' => 3,
@@ -1252,7 +1254,7 @@ Leave empty for no range
     'label' => 'Published',
     'required' => 0,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -1264,13 +1266,13 @@ Leave empty for no range
       'settings' => array(
         'display_all_day' => 0,
         'increment' => 15,
-        'input_format' => 'm/d/Y - H:i:s',
+        'input_format' => 'd.m.Y - H:i:s',
         'input_format_custom' => '',
         'label_position' => 'above',
         'no_fieldset' => 0,
         'repeat_collapsed' => 0,
         'text_parts' => array(),
-        'year_range' => '1962:+0',
+        'year_range' => '-0:1962',
       ),
       'type' => 'date_select',
       'weight' => 3,
@@ -1679,6 +1681,7 @@ Leave empty for no range
       'filefield_paths_enabled' => 1,
       'max_filesize' => '',
       'max_resolution' => '',
+      'media_library_include_in_library' => FALSE,
       'min_resolution' => '',
       'title_field' => 0,
       'user_register_form' => FALSE,
@@ -1880,7 +1883,7 @@ Leave empty for no range
     'settings' => array(
       'description_field' => 1,
       'file_directory' => '',
-      'file_extensions' => 'txt xls pdf rtf xml sav por tab htm mdb accdb doc docx ps xlsx ppt pptx',
+      'file_extensions' => 'txt xls pdf rtf xml sav por tab htm mdb accdb doc docx ps xlsx csv ppt pptx',
       'filefield_paths' => array(
         'active_updating' => 0,
         'file_name' => array(
@@ -1904,6 +1907,7 @@ Leave empty for no range
       ),
       'filefield_paths_enabled' => 1,
       'max_filesize' => '',
+      'media_library_include_in_library' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1992,7 +1996,7 @@ Leave empty for no range
         'no_fieldset' => 0,
         'repeat_collapsed' => 0,
         'text_parts' => array(),
-        'year_range' => '1962:+0',
+        'year_range' => '-0:1962',
       ),
       'type' => 'date_select',
       'weight' => 6,
@@ -2078,13 +2082,13 @@ Leave empty for no range
       'settings' => array(
         'display_all_day' => 0,
         'increment' => 15,
-        'input_format' => 'm/d/Y - H:i:s',
+        'input_format' => 'd.m.Y - H:i:s',
         'input_format_custom' => '',
         'label_position' => 'above',
         'no_fieldset' => 0,
         'repeat_collapsed' => 0,
         'text_parts' => array(),
-        'year_range' => '1962:+0',
+        'year_range' => '-0:1962',
       ),
       'type' => 'date_select',
       'weight' => 4,
