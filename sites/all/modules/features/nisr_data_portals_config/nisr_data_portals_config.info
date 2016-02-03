@@ -9,6 +9,5 @@ dependencies[] = strongarm
 dependencies[] = uuid_features
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
-features[uuid_node][] = 40c5c4a3-4746-4b6b-b875-8bebdc90b46c
 features_exclude[dependencies][service_config] = service_config
 features_exclude[dependencies][contact_config] = contact_config
