@@ -17,6 +17,14 @@ function publication_features_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => 0,
     ),
+    'statistical_publications_r' => array(
+      'name' => 'Statistical publications by region',
+      'machine_name' => 'statistical_publications_r',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+    ),
     'statistical_publications_types' => array(
       'name' => 'Statistical publications types',
       'machine_name' => 'statistical_publications_types',

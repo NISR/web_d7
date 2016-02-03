@@ -14,7 +14,7 @@ function publication_features_default_fe_block_settings() {
 
   $export['views-publication_widgets-fi'] = array(
     'cache' => -1,
-    'css_class' => '',
+    'css_class' => 'col-md-12',
     'custom' => 0,
     'delta' => 'publication_widgets-fi',
     'module' => 'views',

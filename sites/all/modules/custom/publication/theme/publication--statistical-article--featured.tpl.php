@@ -46,6 +46,6 @@
 	      <?php endif; ?>
 	    </h4>
 	  <?php endif; ?>  
-			<!--<div class="body"><?php print render($content['field_pub_body'])?></div>-->
+			<div class="body"><?php print render($content['field_pub_body'])?></div>
 	 </div>
 </div>

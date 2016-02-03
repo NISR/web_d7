@@ -17,7 +17,9 @@ function press_config_menu_default_menu_links() {
     'router_path' => 'press/news',
     'link_title' => 'Press',
     'options' => array(
-      'attributes' => array(),
+      'attributes' => array(
+        'title' => '',
+      ),
       'identifier' => 'menu-about-us_press:press/news',
     ),
     'module' => 'menu',

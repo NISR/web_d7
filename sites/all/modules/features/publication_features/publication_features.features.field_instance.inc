@@ -916,7 +916,7 @@ function publication_features_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(
-          'trim_length' => 600,
+          'trim_length' => 200,
         ),
         'type' => 'text_summary_or_trimmed',
         'weight' => 4,
@@ -2298,6 +2298,70 @@ Leave empty for no range
   );
 
   // Exported field_instance:
+  // 'publication-statistical_report-field_statistical_publications_r'.
+  $field_instances['publication-statistical_report-field_statistical_publications_r'] = array(
+    'bundle' => 'statistical_report',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 16,
+      ),
+      'featured' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title_cover' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'publication',
+    'field_name' => 'field_statistical_publications_r',
+    'label' => 'Statistical publications by region',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance:
   // 'taxonomy_term-publication_elapsed_period-field_ep_days'.
   $field_instances['taxonomy_term-publication_elapsed_period-field_ep_days'] = array(
     'bundle' => 'publication_elapsed_period',
@@ -2398,6 +2462,7 @@ Leave empty for no range
   t('Range');
   t('Related');
   t('Source');
+  t('Statistical publications by region');
   t('Subject');
   t('Summary');
   t('Tags');

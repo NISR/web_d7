@@ -229,7 +229,7 @@ Missing picture
   $handler->display->display_options['footer']['area']['id'] = 'area';
   $handler->display->display_options['footer']['area']['table'] = 'views';
   $handler->display->display_options['footer']['area']['field'] = 'area';
-  $handler->display->display_options['footer']['area']['content'] = '<div class="pull-right"><a href="/press/news" class="btn btn-xs btn-primary">Read more</a></div>';
+  $handler->display->display_options['footer']['area']['content'] = '<div class="pull-right"><a href="/press/news" class="btn btn-sm btn-primary">More articles</a></div>';
   $handler->display->display_options['footer']['area']['format'] = '2';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Media */
@@ -248,25 +248,27 @@ Missing picture
   $handler->display->display_options['fields']['field_story_media']['settings'] = array(
     'file_view_mode' => 'search_result',
   );
-  /* Field: Content: Post date */
-  $handler->display->display_options['fields']['created']['id'] = 'created';
-  $handler->display->display_options['fields']['created']['table'] = 'node';
-  $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['label'] = '';
-  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['created']['element_wrapper_type'] = 'div';
-  $handler->display->display_options['fields']['created']['element_wrapper_class'] = 'uppercase col-md-8 pull-right';
-  $handler->display->display_options['fields']['created']['date_format'] = 'custom';
-  $handler->display->display_options['fields']['created']['custom_date_format'] = 'd F Y';
-  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_wrapper_type'] = 'h4';
-  $handler->display->display_options['fields']['title']['element_wrapper_class'] = 'pull-right col-md-8';
+  $handler->display->display_options['fields']['title']['element_wrapper_type'] = 'h6';
+  $handler->display->display_options['fields']['title']['element_wrapper_class'] = 'col-md-8 pull-right';
+  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['body']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['body']['element_wrapper_class'] = 'pull-right col-md-8';
+  $handler->display->display_options['fields']['body']['type'] = 'text_summary_or_trimmed';
+  $handler->display->display_options['fields']['body']['settings'] = array(
+    'trim_length' => '200',
+  );
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -366,7 +368,7 @@ Missing picture
     t('[title]
 <br/>'),
     t('Featured news block'),
-    t('<div class="pull-right"><a href="/press/news" class="btn btn-xs btn-primary">Read more</a></div>'),
+    t('<div class="pull-right"><a href="/press/news" class="btn btn-sm btn-primary">More articles</a></div>'),
     t('Press releases'),
   );
   $export['press'] = $view;
