@@ -1,4 +1,4 @@
-name = About us features
+name = About Us Config
 core = 7.x
 package = NISR
 version = 7.x-1.0-alpha1
@@ -10,9 +10,6 @@ dependencies[] = menu_block
 dependencies[] = nisr_features
 dependencies[] = strongarm
 dependencies[] = uuid_features
-features[context][] = about_us_first_level
-features[context][] = about_us_org_struct
-features[context][] = about_us_org_struct_ddg
 features[ctools][] = context:context:3
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2

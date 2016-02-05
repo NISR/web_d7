@@ -246,11 +246,11 @@ function publication_entity_view($entity, $type, $view_mode, $langcode) {
   $breadcrumb[] = l(t('Home'),'<front>');
   if ($type == 'publication' && in_array($entity->type,array('statistical_report','statistical_article')) && $view_mode == 'full' && count($entity->field_pub_subject)){
  		$wrapper = entity_metadata_wrapper('publication',$entity);
- 		$term_id = $wrapper->field_pub_subject[0]->tid->value();
- 		$term_name = $wrapper->field_pub_subject[0]->name->value();
+ 		$term_id = $wrapper->field_pub_subject->tid->value();
+ 		$term_name = $wrapper->field_pub_subject->name->value();
  		 		
 		$parent_terms = taxonomy_get_parents_all($term_id);
-		unset($parent_terms[0]); // Remove the first element including the term object 		
+		//unset($parent_terms[0]); // Remove the first element including the term object 		
 		
 		// Set breadcrumb in the form
 		// Home > Publications > Statistics > Subject > Reports > Title 
@@ -501,10 +501,22 @@ function publication_field_extra_fields(){
  * Implements hook_form_FORM_ID_alter()
  */
 function publication_form_publication_form_alter(&$form,&$form_state,$form_id){
+	// Disable parents terms
+	dpm($form['field_pub_subject']);
+	$term_ids = $form['field_pub_subject']['und']['#options'];
+	
+	
 	// Hide the elapsed periods field which is populated automatically during indexing
 	$form['field_pub_elapsed_periods']['#prefix'] = "<div style='visibility:hidden'>";
 	$form['field_pub_elapsed_periods']['#suffix'] = "</div>";
 	return $form;
+}
+
+function publication_form_views_exposed_form_alter(&$form,&$form_state,$form_id){
+	// Enable chosen javascript behaviour on subject view field filter 
+	if($form_state['view']->name == 'publications_backoffice' && $form_state['view']->current_display == 'statistical_reports'){
+		$form['field_pub_subject_tid']['#chosen'] = TRUE;		
+	}
 }
  
 /**

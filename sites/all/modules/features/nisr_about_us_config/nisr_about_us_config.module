@@ -4,4 +4,4 @@
  * Code for the About us feature.
  */
 
-include_once 'about_us_features.features.inc';
+include_once 'nisr_about_us_config.features.inc';

@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * about_us_features.features.inc
+ * nisr_about_us_config.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function about_us_features_ctools_plugin_api($module = NULL, $api = NULL) {
+function nisr_about_us_config_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "context" && $api == "context") {
     return array("version" => "3");
   }

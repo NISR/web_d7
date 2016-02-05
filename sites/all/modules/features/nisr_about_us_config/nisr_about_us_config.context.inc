@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * about_us_features.context.inc
+ * nisr_about_us_config.context.inc
  */
 
 /**
  * Implements hook_context_default_contexts().
  */
-function about_us_features_context_default_contexts() {
+function nisr_about_us_config_context_default_contexts() {
   $export = array();
 
   $context = new stdClass();

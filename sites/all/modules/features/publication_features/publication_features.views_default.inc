@@ -646,6 +646,7 @@ function publication_features_views_default_views() {
   $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['operator_label'] = 'Empty(or NOT)';
   $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['operator'] = 'field_pub_subject_tid_op';
   $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['identifier'] = 'field_pub_subject_tid';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['multiple'] = TRUE;
   $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -1325,6 +1326,36 @@ function publication_features_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'entityreference_fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+
+  /* Display: Subject Term reference field  filter */
+  $handler = $view->new_display('term_reference', 'Subject Term reference field  filter', 'term_reference_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'term_reference_style';
+  $handler->display->display_options['style_options']['search_fields'] = array(
+    'name' => 'name',
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'term_reference_fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Taxonomy vocabulary: Machine name */
+  $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
+  $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
+  $handler->display->display_options['filters']['machine_name']['field'] = 'machine_name';
+  $handler->display->display_options['filters']['machine_name']['value'] = array(
+    'statistical_publications_types' => 'statistical_publications_types',
+  );
+  /* Filter criterion: Taxonomy term: Parent term */
+  $handler->display->display_options['filters']['parent']['id'] = 'parent';
+  $handler->display->display_options['filters']['parent']['table'] = 'taxonomy_term_hierarchy';
+  $handler->display->display_options['filters']['parent']['field'] = 'parent';
+  $handler->display->display_options['filters']['parent']['operator'] = '>';
+  $handler->display->display_options['filters']['parent']['value']['value'] = '0';
   $translatables['publications_er'] = array(
     t('Master'),
     t('more'),
@@ -1341,6 +1372,7 @@ function publication_features_views_default_views() {
     t('next ›'),
     t('last »'),
     t('Entity Reference'),
+    t('Subject Term reference field  filter'),
   );
   $export['publications_er'] = $view;
 

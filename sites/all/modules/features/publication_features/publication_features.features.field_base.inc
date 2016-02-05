@@ -500,6 +500,33 @@ function publication_features_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
+  // Exported field_base: 'field_pub_region'.
+  $field_bases['field_pub_region'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_pub_region',
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'regions',
+          'parent' => 0,
+        ),
+      ),
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
+  );
+
   // Exported field_base: 'field_pub_related'.
   $field_bases['field_pub_related'] = array(
     'active' => 1,
@@ -541,7 +568,7 @@ function publication_features_field_default_field_bases() {
   // Exported field_base: 'field_pub_subject'.
   $field_bases['field_pub_subject'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_pub_subject',
@@ -589,33 +616,6 @@ function publication_features_field_default_field_bases() {
           'parent' => 0,
         ),
       ),
-    ),
-    'translatable' => 0,
-    'type' => 'taxonomy_term_reference',
-  );
-
-  // Exported field_base: 'field_statistical_publications_r'.
-  $field_bases['field_statistical_publications_r'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_statistical_publications_r',
-    'indexes' => array(
-      'tid' => array(
-        0 => 'tid',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'taxonomy',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => 'statistical_publications_r',
-          'parent' => 0,
-        ),
-      ),
-      'profile2_private' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'taxonomy_term_reference',

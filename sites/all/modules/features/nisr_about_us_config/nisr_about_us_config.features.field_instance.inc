@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * about_us_features.features.field_instance.inc
+ * nisr_about_us_config.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function about_us_features_field_default_field_instances() {
+function nisr_about_us_config_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance: 'node-page-body'.

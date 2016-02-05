@@ -17,11 +17,11 @@ function publication_features_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => 0,
     ),
-    'statistical_publications_r' => array(
-      'name' => 'Statistical publications by region',
-      'machine_name' => 'statistical_publications_r',
+    'regions' => array(
+      'name' => 'Regions',
+      'machine_name' => 'regions',
       'description' => '',
-      'hierarchy' => 0,
+      'hierarchy' => 1,
       'module' => 'taxonomy',
       'weight' => 0,
     ),

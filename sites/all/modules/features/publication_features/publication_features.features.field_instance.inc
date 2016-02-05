@@ -1575,7 +1575,7 @@ Leave empty for no range
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -1827,7 +1827,7 @@ Leave empty for no range
         'apply_chosen' => 1,
       ),
       'type' => 'options_select',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -1917,7 +1917,7 @@ Leave empty for no range
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -2095,6 +2095,69 @@ Leave empty for no range
     ),
   );
 
+  // Exported field_instance: 'publication-statistical_report-field_pub_region'.
+  $field_instances['publication-statistical_report-field_pub_region'] = array(
+    'bundle' => 'statistical_report',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Choose one or more items if this publication is particular to specific regions, leave blank for the entire country',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 16,
+      ),
+      'featured' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title_cover' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'publication',
+    'field_name' => 'field_pub_region',
+    'label' => 'Region',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => 1,
+      ),
+      'type' => 'options_select',
+      'weight' => 7,
+    ),
+  );
+
   // Exported field_instance:
   // 'publication-statistical_report-field_pub_related'.
   $field_instances['publication-statistical_report-field_pub_related'] = array(
@@ -2162,7 +2225,7 @@ Leave empty for no range
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -2172,7 +2235,7 @@ Leave empty for no range
     'bundle' => 'statistical_report',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Double click on the select box to choose from the list a subject/area',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2216,15 +2279,22 @@ Leave empty for no range
     'entity_type' => 'publication',
     'field_name' => 'field_pub_subject',
     'label' => 'Subject',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
+    ),
+    'view' => array(
+      'args' => array(),
+      'display_name' => 'term_reference_1',
+      'match_operator' => 'CONTAINS',
+      'size' => '',
+      'view_name' => 'publications_er',
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'options',
       'settings' => array(
-        'apply_chosen' => 1,
+        'apply_chosen' => 0,
       ),
       'type' => 'options_select',
       'weight' => 2,
@@ -2294,70 +2364,6 @@ Leave empty for no range
       ),
       'type' => 'taxonomy_autocomplete',
       'weight' => 3,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'publication-statistical_report-field_statistical_publications_r'.
-  $field_instances['publication-statistical_report-field_statistical_publications_r'] = array(
-    'bundle' => 'statistical_report',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 16,
-      ),
-      'featured' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'title_cover' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'title_only' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'publication',
-    'field_name' => 'field_statistical_publications_r',
-    'label' => 'Statistical publications by region',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => '',
-      ),
-      'type' => 'options_select',
-      'weight' => 13,
     ),
   );
 
@@ -2446,6 +2452,7 @@ Leave empty for no range
   t('Add additional tagging attributes to fine-grain the filter. E.g : Calendar year, Fiscal year etc.<br/>
 <strong>DO NOT</strong> use terms which are already listed in the subject field above');
   t('Body');
+  t('Choose one or more items if this publication is particular to specific regions, leave blank for the entire country');
   t('Cover');
   t('Data');
   t('Data prefix');
@@ -2460,9 +2467,9 @@ Leave empty for no range
   t('Period');
   t('Published');
   t('Range');
+  t('Region');
   t('Related');
   t('Source');
-  t('Statistical publications by region');
   t('Subject');
   t('Summary');
   t('Tags');

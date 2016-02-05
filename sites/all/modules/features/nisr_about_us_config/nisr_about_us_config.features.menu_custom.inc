@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * about_us_features.features.menu_custom.inc
+ * nisr_about_us_config.features.menu_custom.inc
  */
 
 /**
  * Implements hook_menu_default_menu_custom().
  */
-function about_us_features_menu_default_menu_custom() {
+function nisr_about_us_config_menu_default_menu_custom() {
   $menus = array();
 
   // Exported menu: menu-about-us.
