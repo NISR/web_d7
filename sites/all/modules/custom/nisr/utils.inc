@@ -33,7 +33,7 @@ function get_taxonomy_terms($vocabulary,$path){
 	foreach($terms as $key => $value){
 		$term_name = get_label_dashed($value['name']);
 		$content = array(
-								'#prefix' => "<div onclick=javascript:window.open('$path/$term_name','_self') class='col-md-3'><div class='featured-content featured-box'><div class='box-content'>",
+								'#prefix' => "<div onclick=javascript:window.open('$path/$term_name','_self') class='col-md-6'><div class='featured-content featured-box'><div class='box-content'>",
 								'#suffix' => "</div></div></div>",
 								'title' => array(
 											  '#theme' => 'link',

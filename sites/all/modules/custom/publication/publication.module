@@ -500,12 +500,7 @@ function publication_field_extra_fields(){
 /*
  * Implements hook_form_FORM_ID_alter()
  */
-function publication_form_publication_form_alter(&$form,&$form_state,$form_id){
-	// Disable parents terms
-	dpm($form['field_pub_subject']);
-	$term_ids = $form['field_pub_subject']['und']['#options'];
-	
-	
+function publication_form_publication_form_alter(&$form,&$form_state,$form_id){	
 	// Hide the elapsed periods field which is populated automatically during indexing
 	$form['field_pub_elapsed_periods']['#prefix'] = "<div style='visibility:hidden'>";
 	$form['field_pub_elapsed_periods']['#suffix'] = "</div>";

@@ -15,7 +15,6 @@ dependencies[] = features
 dependencies[] = field_collection
 dependencies[] = field_group
 dependencies[] = gcal_events
-dependencies[] = google_cse
 dependencies[] = lineage
 dependencies[] = list
 dependencies[] = menu
