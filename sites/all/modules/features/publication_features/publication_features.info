@@ -16,6 +16,7 @@ dependencies[] = tablefield
 dependencies[] = term_reference_filter_by_views
 features[context][] = standards_and_methods
 features[context][] = statistical_publication_types
+features[context][] = statistical_publications_facets
 features[context][] = statistical_reports
 features[ctools][] = context:context:3
 features[ctools][] = entityqueue:entityqueue_default:1

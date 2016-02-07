@@ -91,6 +91,44 @@ function publication_features_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'statistical_publications_facets';
+  $context->description = '';
+  $context->tag = 'Publications';
+  $context->conditions = array(
+    'views' => array(
+      'values' => array(
+        'publications_search' => 'publications_search',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'system-main' => array(
+          'module' => 'system',
+          'delta' => 'main',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
+        'facetapi-TI4sFfxRmp2Yty6vEF6QDlCkDIpRNqDJ' => array(
+          'module' => 'facetapi',
+          'delta' => 'TI4sFfxRmp2Yty6vEF6QDlCkDIpRNqDJ',
+          'region' => 'sidebar_left',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Publications');
+  $export['statistical_publications_facets'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'statistical_reports';
   $context->description = '';
   $context->tag = 'Publications';
