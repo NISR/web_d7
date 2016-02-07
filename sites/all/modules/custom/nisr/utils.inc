@@ -37,7 +37,7 @@ function get_taxonomy_terms($vocabulary,$path){
 								'#suffix' => "</div></div></div>",
 								'title' => array(
 											  '#theme' => 'link',
-											  '#text' => strlen($value['name']) > 30 ? substr($value['name'],0,27) . '...' : $value['name'],
+											  '#text' => $value['name'],
 											  '#path' => "$path/$term_name",
 											  '#options' => array(
 											  							 'attributes' => array('title' => $value['name'],),
@@ -59,7 +59,7 @@ function get_taxonomy_terms($vocabulary,$path){
 				$term_name = str_replace(' ','-',strtolower($v));
 				$render['wrapper'][$key]['children'][] = array(
 													 '#theme' => 'link',
-												    '#text' => strlen($v) > 30 ? substr($v,0,27) . '...' : $v,
+												    '#text' => $v,
 												    '#path' => "$path/$term_name",
 												    '#options' => array(
 												    						'attributes' => array('title' => $v),
