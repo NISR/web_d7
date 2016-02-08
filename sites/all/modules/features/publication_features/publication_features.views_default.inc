@@ -546,8 +546,8 @@ function publication_features_views_default_views() {
       'settings' => array(
         'show_all_tokens' => 0,
         'display_values' => array(
+          'statistical_report::field_pub_period' => 'statistical_report::field_pub_period',
           'statistical_report::field_pub_subject' => 'statistical_report::field_pub_subject',
-          'statistical_report::field_pub_tags' => 'statistical_report::field_pub_tags',
         ),
       ),
     ),
