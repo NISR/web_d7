@@ -265,12 +265,10 @@ function publication_entity_view($entity, $type, $view_mode, $langcode) {
 		}else{
 			$breadcrumb[] = l(t('Statistical articles'),'statistical-publications/' . get_label_dashed($term_name) . '/articles');				
 		}
+		
+		$breadcrumb[] = drupal_get_title();	
+		drupal_set_breadcrumb($breadcrumb);	
   	} 
-	
-	$breadcrumb[] = drupal_get_title();
-	
-	drupal_set_breadcrumb($breadcrumb);	
-
 		
 }
 

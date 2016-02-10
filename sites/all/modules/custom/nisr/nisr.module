@@ -116,6 +116,13 @@ function nisr_menu(){
   	);	
   	
   	// Press items
+  	$items['press'] = array(
+		'title' => 'Press',
+		'page callback' => 'drupal_goto',
+		'page arguments' => array('press/news'),
+		'access callback' => TRUE,  	
+  	);
+  	
   	$items['admin/content/press/news/add'] = array(
     'title' => 'Add News story',
     'page callback' => 'node_add',
@@ -136,15 +143,25 @@ function nisr_menu(){
   	);	  	
   	
 	// Notices	
-  	$items['admin/content/notices/add'] = array(
-    'title' => 'Add notice',
+
+  	$items['admin/content/notices/job-advert/add'] = array(
+    'title' => 'Add job advertisement',
     'page callback' => 'node_add',
-    'page arguments' => array('notice'),
+    'page arguments' => array('job_advert'),
     'access arguments' => array('administer content'),
     'file path' => drupal_get_path('module', 'node'), 
     'file' => 'node.pages.inc',
     'type' => MENU_LOCAL_ACTION,
   	);
+  	$items['admin/content/notices/tender-advert/add'] = array(
+    'title' => 'Add tender advertisement',
+    'page callback' => 'node_add',
+    'page arguments' => array('tender_advert'),
+    'access arguments' => array('administer content'),
+    'file path' => drupal_get_path('module', 'node'), 
+    'file' => 'node.pages.inc',
+    'type' => MENU_LOCAL_ACTION,
+  	);  	
   	
   	// Profile menu items
 	$items['login'] = array(
@@ -208,6 +225,39 @@ function nisr_menu(){
 	return $items;
 }
 
+/*
+ * Implements hook_entity_view()
+ */
+function nisr_entity_view($entity, $type, $view_mode, $langcode){
+  $breadcrumb = array();
+  $path = explode('/',request_path());	
+  
+  $breadcrumb[] = l(t('Home'),'<front>');
+  
+  if($type == 'node' && $view_mode == 'full'){
+		switch($entity->type) {
+			case 'job_advert' :
+				$breadcrumb[] = l(t('Jobs'),'notices/jobs');	
+				break;
+			case 'tender_advert' :
+				$breadcrumb[] = l(t('Tenders'),'notices/tenders');	
+				break;
+			case 'story' :
+				$breadcrumb[] = l(t('Press'),'press');
+				$breadcrumb[] = l(t('News'),'press/news');
+				break;
+			case 'press_release' :
+				$breadcrumb[] = l(t('Press'),'press');
+				$breadcrumb[] = l(t('Press releases'),'press/press-releases');
+				break;
+			default:
+				break;
+		} 
+		//Finalising...
+		$breadcrumb[] = drupal_get_title();	
+		drupal_set_breadcrumb($breadcrumb);	 	
+  }
+}
 /*
  * Implements hook_form_FORM_ID_alter()
  */

@@ -10,30 +10,49 @@
 function notice_config_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_notice_tags'.
-  $field_bases['field_notice_tags'] = array(
+  // Exported field_base: 'field_notice_body'.
+  $field_bases['field_notice_body'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_notice_body',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'text_with_summary',
+  );
+
+  // Exported field_base: 'field_notice_files'.
+  $field_bases['field_notice_files'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_notice_tags',
+    'field_name' => 'field_notice_files',
     'indexes' => array(
-      'tid' => array(
-        0 => 'tid',
+      'fid' => array(
+        0 => 'fid',
       ),
     ),
     'locked' => 0,
-    'module' => 'taxonomy',
+    'module' => 'file',
     'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => 'notices',
-          'parent' => 0,
-        ),
-      ),
+      'display_default' => 0,
+      'display_field' => 0,
+      'profile2_private' => FALSE,
+      'uri_scheme' => 'public',
     ),
     'translatable' => 0,
-    'type' => 'taxonomy_term_reference',
+    'type' => 'file',
   );
 
   // Exported field_base: 'field_notice_types'.

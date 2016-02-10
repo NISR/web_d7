@@ -417,3 +417,15 @@ input[type="checkbox"]{
 .form-textarea{
 	min-height: 120px;	
 }
+
+
+.notice-date{
+	font-weight: bold;	
+	border:1px solid #dedede;
+	background: #FEFEFE;
+	padding: 5px;
+	margin: -20px 0px 10px 0px;
+	float: left;
+	width: 50%;
+}
+
