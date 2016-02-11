@@ -21,6 +21,8 @@ function nisr_features_context_default_contexts() {
       'values' => array(
         'about-us' => 'about-us',
         'about-us/*' => 'about-us/*',
+        '~about-us/organizational-structure' => '~about-us/organizational-structure',
+        '~about-us/organizational-structure/*' => '~about-us/organizational-structure/*',
       ),
     ),
   );
