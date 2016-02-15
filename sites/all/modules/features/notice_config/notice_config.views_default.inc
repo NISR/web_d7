@@ -57,7 +57,7 @@ function notice_config_views_default_views() {
   $handler->display->display_options['relationships']['reverse_field_notice_files_node']['id'] = 'reverse_field_notice_files_node';
   $handler->display->display_options['relationships']['reverse_field_notice_files_node']['table'] = 'file_managed';
   $handler->display->display_options['relationships']['reverse_field_notice_files_node']['field'] = 'reverse_field_notice_files_node';
-  /* Field: File: Description */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_file_description']['id'] = 'field_file_description';
   $handler->display->display_options['fields']['field_file_description']['table'] = 'field_data_field_file_description';
   $handler->display->display_options['fields']['field_file_description']['field'] = 'field_file_description';

@@ -28,26 +28,10 @@ function notice_config_views_api($module = NULL, $api = NULL) {
  */
 function notice_config_node_info() {
   $items = array(
-    'job_advert' => array(
-      'name' => t('Job advertisement'),
-      'base' => 'node_content',
-      'description' => t('A job advertisement'),
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
     'notice' => array(
       'name' => t('Notice'),
       'base' => 'node_content',
       'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
-    'tender_advert' => array(
-      'name' => t('Tender advertisement'),
-      'base' => 'node_content',
-      'description' => t('A tender advertisement'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',

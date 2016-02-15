@@ -27,12 +27,36 @@ function nisr_features_default_fe_block_boxes() {
   $export['contact_footer'] = $fe_block_boxes;
 
   $fe_block_boxes = new stdClass();
+  $fe_block_boxes->info = 'Copyright';
+  $fe_block_boxes->format = 'php_code';
+  $fe_block_boxes->machine_name = 'copyright';
+  $fe_block_boxes->body = '<p>Copyright © <?php print date(\'Y\')?>&nbsp;National Institute of Statistics Rwanda</p>';
+
+  $export['copyright'] = $fe_block_boxes;
+
+  $fe_block_boxes = new stdClass();
+  $fe_block_boxes->info = 'Creative Commons credits';
+  $fe_block_boxes->format = '2';
+  $fe_block_boxes->machine_name = 'creative_commons_credits';
+  $fe_block_boxes->body = '<div class="col-md-9">Unless otherwise indicated, data and analysis&nbsp;by&nbsp;the National Institute of Statistics of Rwanda (NISR)&nbsp;is licensed under a&nbsp;<a href="http://creativecommons.org/licenses/by/4.0/" rel="license" target="_blank">Creative Commons Attribution 4.0 International License</a>.</div><div class="col-md-3"><a href="http://creativecommons.org/licenses/by/4.0/" rel="license" target="_blank"><img src="https://i.creativecommons.org/l/by/4.0/88x31.png"></a></div>';
+
+  $export['creative_commons_credits'] = $fe_block_boxes;
+
+  $fe_block_boxes = new stdClass();
   $fe_block_boxes->info = 'Google calendar widget';
   $fe_block_boxes->format = '2';
   $fe_block_boxes->machine_name = 'google_calendar_widget';
   $fe_block_boxes->body = '<p><iframe frameborder="0" height="200" scrolling="no" src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;height=200&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=ie0qtk0seo5burtsibff5ilso0%40group.calendar.google.com&amp;color=%236B3304&amp;ctz=Asia%2FJerusalem" style="border:solid 1px #777" width="280"></iframe></p>';
 
   $export['google_calendar_widget'] = $fe_block_boxes;
+
+  $fe_block_boxes = new stdClass();
+  $fe_block_boxes->info = 'Goverment logo';
+  $fe_block_boxes->format = '2';
+  $fe_block_boxes->machine_name = 'gov_logo';
+  $fe_block_boxes->body = '<p><img alt="" src="http://gov.rw/fileadmin/templates/images/toplogonew.png" style="width: 107px; height: 103px; "></p>';
+
+  $export['gov_logo'] = $fe_block_boxes;
 
   return $export;
 }

@@ -192,9 +192,9 @@ function nisr_features_context_default_contexts() {
           'region' => 'footer_1',
           'weight' => '-10',
         ),
-        'menu-menu-services' => array(
+        'menu-menu-press' => array(
           'module' => 'menu',
-          'delta' => 'menu-services',
+          'delta' => 'menu-press',
           'region' => 'footer_2',
           'weight' => '-10',
         ),
@@ -209,6 +209,36 @@ function nisr_features_context_default_contexts() {
           'delta' => 'menu-follow-us',
           'region' => 'footer_4',
           'weight' => '-10',
+        ),
+        'block-41' => array(
+          'module' => 'block',
+          'delta' => '41',
+          'region' => 'footer_bottom_left',
+          'weight' => '-10',
+        ),
+        'menu-menu-footer-extra' => array(
+          'module' => 'menu',
+          'delta' => 'menu-footer-extra',
+          'region' => 'footer_bottom_left',
+          'weight' => '-9',
+        ),
+        'nisr-last_update_date' => array(
+          'module' => 'nisr',
+          'delta' => 'last_update_date',
+          'region' => 'footer_bottom_left',
+          'weight' => '-8',
+        ),
+        'block-40' => array(
+          'module' => 'block',
+          'delta' => '40',
+          'region' => 'footer_bottom_left',
+          'weight' => '-7',
+        ),
+        'block-39' => array(
+          'module' => 'block',
+          'delta' => '39',
+          'region' => 'footer_bottom_right',
+          'weight' => '-9',
         ),
       ),
     ),

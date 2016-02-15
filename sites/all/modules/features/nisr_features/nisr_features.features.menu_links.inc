@@ -60,21 +60,43 @@ function nisr_features_menu_default_menu_links() {
     'weight' => -50,
     'customized' => 1,
   );
-  // Exported menu link: menu-useful-links_ministry-of-finance-and-economic-planning:http://www.mineconfin.gov.rw.
-  $menu_links['menu-useful-links_ministry-of-finance-and-economic-planning:http://www.mineconfin.gov.rw'] = array(
-    'menu_name' => 'menu-useful-links',
-    'link_path' => 'http://www.mineconfin.gov.rw',
-    'router_path' => '',
-    'link_title' => 'Ministry of Finance and Economic Planning',
+  // Exported menu link: menu-footer-extra_terms-of-use:node/1391.
+  $menu_links['menu-footer-extra_terms-of-use:node/1391'] = array(
+    'menu_name' => 'menu-footer-extra',
+    'link_path' => 'node/1391',
+    'router_path' => 'node/%',
+    'link_title' => 'Terms of use',
     'options' => array(
-      'attributes' => array(),
-      'identifier' => 'menu-useful-links_ministry-of-finance-and-economic-planning:http://www.mineconfin.gov.rw',
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-footer-extra_terms-of-use:node/1391',
     ),
     'module' => 'menu',
     'hidden' => 0,
-    'external' => 1,
+    'external' => 0,
     'has_children' => 0,
-    'expanded' => 1,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+  );
+  // Exported menu link: menu-footer-extra_web-analytics:node/1388.
+  $menu_links['menu-footer-extra_web-analytics:node/1388'] = array(
+    'menu_name' => 'menu-footer-extra',
+    'link_path' => 'node/1388',
+    'router_path' => 'node/%',
+    'link_title' => 'Web analytics',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-footer-extra_web-analytics:node/1388',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
     'weight' => 0,
     'customized' => 1,
   );
@@ -100,9 +122,10 @@ function nisr_features_menu_default_menu_links() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Flickr photo galleries');
-  t('Ministry of Finance and Economic Planning');
   t('National Bank of Rwanda');
+  t('Terms of use');
   t('Twitter');
+  t('Web analytics');
 
   return $menu_links;
 }

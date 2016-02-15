@@ -12,6 +12,72 @@ function publication_features_default_fe_block_settings() {
 
   $export['version'] = '2.0';
 
+  $export['facetapi-16HazlL9C05hXRRRjyJZws0kyhUsuYAU'] = array(
+    'cache' => -1,
+    'css_class' => '',
+    'custom' => 0,
+    'delta' => '16HazlL9C05hXRRRjyJZws0kyhUsuYAU',
+    'module' => 'facetapi',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'bartik' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'bartik',
+        'weight' => 0,
+      ),
+      'garland' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'garland',
+        'weight' => 0,
+      ),
+      'porto_sub' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'porto_sub',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
+  $export['facetapi-TI4sFfxRmp2Yty6vEF6QDlCkDIpRNqDJ'] = array(
+    'cache' => -1,
+    'css_class' => '',
+    'custom' => 0,
+    'delta' => 'TI4sFfxRmp2Yty6vEF6QDlCkDIpRNqDJ',
+    'module' => 'facetapi',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'bartik' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'bartik',
+        'weight' => 0,
+      ),
+      'garland' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'garland',
+        'weight' => 0,
+      ),
+      'porto_sub' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'porto_sub',
+        'weight' => 0,
+      ),
+    ),
+    'title' => 'Periods',
+    'visibility' => 0,
+  );
+
   $export['views-publication_widgets-fi'] = array(
     'cache' => -1,
     'css_class' => 'col-md-12',

@@ -116,6 +116,12 @@ function publication_features_context_default_contexts() {
           'region' => 'sidebar_left',
           'weight' => '-10',
         ),
+        'facetapi-16HazlL9C05hXRRRjyJZws0kyhUsuYAU' => array(
+          'module' => 'facetapi',
+          'delta' => '16HazlL9C05hXRRRjyJZws0kyhUsuYAU',
+          'region' => 'sidebar_left',
+          'weight' => '-9',
+        ),
       ),
     ),
   );

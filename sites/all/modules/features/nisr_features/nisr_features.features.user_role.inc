@@ -13,25 +13,19 @@ function nisr_features_user_default_roles() {
   // Exported role: Content manager.
   $roles['Content manager'] = array(
     'name' => 'Content manager',
-    'weight' => 4,
+    'weight' => 3,
   );
 
-  // Exported role: Data entry clerk.
-  $roles['Data entry clerk'] = array(
-    'name' => 'Data entry clerk',
+  // Exported role: Visa manager.
+  $roles['Visa manager'] = array(
+    'name' => 'Visa manager',
     'weight' => 2,
   );
 
   // Exported role: administrator.
   $roles['administrator'] = array(
     'name' => 'administrator',
-    'weight' => 6,
-  );
-
-  // Exported role: manager.
-  $roles['manager'] = array(
-    'name' => 'manager',
-    'weight' => 5,
+    'weight' => 4,
   );
 
   return $roles;

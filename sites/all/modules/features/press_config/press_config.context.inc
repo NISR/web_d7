@@ -59,8 +59,10 @@ function press_config_context_default_contexts() {
   $context->description = '';
   $context->tag = 'Press';
   $context->conditions = array(
-    'path' => array(
+    'menu' => array(
       'values' => array(
+        'node/1396' => 'node/1396',
+        'node/1397' => 'node/1397',
         'press/news' => 'press/news',
         'press/press-releases' => 'press/press-releases',
       ),

@@ -238,9 +238,26 @@ function publication_entity_insert($entity,$type){
 }
 
 /*
+ * Implements hook_entity_presave()
+ */
+function publication_entity_presave($entity, $type){
+	if($type == 'publication' && isset($entity->field_pub_regions)){
+		$pub = entity_metadata_wrapper('publication',$entity);
+		$regions = $pub->field_pub_regions->value();
+		foreach($regions as $region){
+			$parent_regions = taxonomy_get_parents($region->tid);
+			foreach($parent_regions as $key => $value){
+		      if(!isset($valid_parent_regions[$key])) $valid_parent_regions[$key] = $value; 
+			}
+		}
+		$regions = array_merge($regions,$valid_parent_regions);
+		$pub->field_pub_regions->set($regions);
+	}	
+}
+
+/*
  * Implements hook_entity_view().
  */
-
 function publication_entity_view($entity, $type, $view_mode, $langcode) {
   $breadcrumb = array();
   $path = explode('/',request_path());	

@@ -16,6 +16,12 @@ function nisr_features_menu_default_menu_custom() {
     'title' => 'Social Media',
     'description' => 'Social network links',
   );
+  // Exported menu: menu-footer-extra.
+  $menus['menu-footer-extra'] = array(
+    'menu_name' => 'menu-footer-extra',
+    'title' => 'Footer extra',
+    'description' => 'Menu for additional pages',
+  );
   // Exported menu: menu-profile-menu.
   $menus['menu-profile-menu'] = array(
     'menu_name' => 'menu-profile-menu',
@@ -36,7 +42,9 @@ function nisr_features_menu_default_menu_custom() {
   );
   // Translatables
   // Included for use with string extractors like potx.
+  t('Footer extra');
   t('Links to external websites');
+  t('Menu for additional pages');
   t('Profile menu');
   t('Social Media');
   t('Social network links');

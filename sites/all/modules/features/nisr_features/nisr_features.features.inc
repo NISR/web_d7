@@ -342,6 +342,12 @@ function nisr_features_default_search_api_server() {
             "column" : "value",
             "type" : "list\\u003Cinteger\\u003E",
             "boost" : "1.0"
+          },
+          "field_pub_regions" : {
+            "table" : "search_api_db_publications_field_pub_regions",
+            "column" : "value",
+            "type" : "list\\u003Cinteger\\u003E",
+            "boost" : "1.0"
           }
         },
         "datasources" : {

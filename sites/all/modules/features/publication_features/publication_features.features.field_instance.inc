@@ -2095,12 +2095,13 @@ Leave empty for no range
     ),
   );
 
-  // Exported field_instance: 'publication-statistical_report-field_pub_region'.
-  $field_instances['publication-statistical_report-field_pub_region'] = array(
+  // Exported field_instance:
+  // 'publication-statistical_report-field_pub_regions'.
+  $field_instances['publication-statistical_report-field_pub_regions'] = array(
     'bundle' => 'statistical_report',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Choose one or more items if this publication is particular to specific regions, leave blank for the entire country',
+    'description' => 'Choose one or more items if this publication is particular to specific regions; leave <strong>blank</strong> for the entire country',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2141,11 +2142,18 @@ Leave empty for no range
       ),
     ),
     'entity_type' => 'publication',
-    'field_name' => 'field_pub_region',
-    'label' => 'Region',
+    'field_name' => 'field_pub_regions',
+    'label' => 'Regions',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
+    ),
+    'view' => array(
+      'args' => array(),
+      'display_name' => 'term_reference_1',
+      'match_operator' => 'STARTS_WITH',
+      'size' => 60,
+      'view_name' => 'regions_term_references',
     ),
     'widget' => array(
       'active' => 1,
@@ -2452,7 +2460,7 @@ Leave empty for no range
   t('Add additional tagging attributes to fine-grain the filter. E.g : Calendar year, Fiscal year etc.<br/>
 <strong>DO NOT</strong> use terms which are already listed in the subject field above');
   t('Body');
-  t('Choose one or more items if this publication is particular to specific regions, leave blank for the entire country');
+  t('Choose one or more items if this publication is particular to specific regions; leave <strong>blank</strong> for the entire country');
   t('Cover');
   t('Data');
   t('Data prefix');
@@ -2467,7 +2475,7 @@ Leave empty for no range
   t('Period');
   t('Published');
   t('Range');
-  t('Region');
+  t('Regions');
   t('Related');
   t('Source');
   t('Subject');
