@@ -30,6 +30,10 @@ function nisr_block_info(){
 		'info' => t('Contact form'),
 		'cache' => DRUPAL_NO_CACHE,	
 	);
+	$blocks['last_update_date'] = array(
+		'info' => t('Last update Date'),
+		'cache' => DRUPAL_NO_CACHE,	
+	);
 					
 	return $blocks;	
 }
@@ -52,6 +56,10 @@ function nisr_block_view($delta = ''){
 			module_load_include('inc','contact','contact.pages');
 			$block['title'] = '';
 			$block['content'] = drupal_get_form('contact_site_form');
+		case 'last_update_date':
+			$block['title'] = '';
+			$block['content'] = get_lastUpdate_date();
+			break;	
 		default:
 			break;
 	}
@@ -225,6 +233,15 @@ function nisr_menu(){
 	return $items;
 }
 
+
+/*
+ * Implements hook_entity_presave()
+ */
+function nisr_entity_presave($entity,$type){
+	// Save update timestamp
+	variable_set('nisr_last_update_timestamp',REQUEST_TIME);
+}
+
 /*
  * Implements hook_entity_view()
  */
@@ -250,11 +267,24 @@ function nisr_entity_view($entity, $type, $view_mode, $langcode){
 				$breadcrumb[] = l(t('Press'),'press');
 				$breadcrumb[] = l(t('Press releases'),'press/press-releases');
 				break;
+			case 'page' :
+				$paths = explode("/", request_uri());
+				$path_alias = "";
+				//Get rid of first and last /
+				unset($paths[0]);
+				array_pop($paths);
+				foreach($paths as $path){
+					($path_alias) ? $path_alias.= '/' . $path : $path_alias = $path;
+					$normal_path = drupal_get_normal_path($path_alias);
+					$item = menu_get_item($normal_path);
+					$breadcrumb[]  = l($item['title'],$path_alias);
+				}				
+				break;
 			default:
 				break;
 		} 
 		//Finalising...
-		$breadcrumb[] = drupal_get_title();	
+		//$breadcrumb[] = drupal_get_title();	
 		drupal_set_breadcrumb($breadcrumb);	 	
   }
 }
@@ -453,6 +483,17 @@ function entities_by_term($term){
  */
 function get_home_menu_item(){
 	return "<i class='fa fa-home'></i>";	
+}
+
+/*
+ * Get Overall last update date
+ */
+function get_lastUpdate_date(){
+	$date = FALSE;
+	$date = variable_get('nisr_last_update_timestamp');
+	($date) ? $date = date('l j F Y H:i',$date) : $date = FALSE;
+	
+	return "<p>" . t('Last update : ') . $date . "</p>";
 }
 
 /*

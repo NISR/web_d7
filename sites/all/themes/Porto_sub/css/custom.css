@@ -323,7 +323,7 @@ span.tag{
 .texture .content{
 	background: url('../../Porto/img/patterns/worn_dots.png');
 	padding:10px;
-	min-height: 330px;
+	min-height: 350px;
 	border-bottom:1px solid #000;
 }
 
@@ -367,6 +367,7 @@ span.tag{
 
 .chart-box{
 	margin-left: -75px;	
+	margin-top: -35px;
 }
 
 /**

@@ -189,7 +189,7 @@ function publication_entity_info_alter(&$entity_info) {
 }
 
 /*
- * Implements hook_entity_update()
+ * Implements hook_entity_insert()
  */
 function publication_entity_insert($entity,$type){
 	$subjects  = $recipients = array();
@@ -197,8 +197,10 @@ function publication_entity_insert($entity,$type){
 
 	if($type == 'publication'){
 		$pub = entity_metadata_wrapper('publication',$entity);
+		
 		switch($entity->type) {
 			case 'statistical_report':
+				
 				$subscribers->set_display('statistical_reports');
 				foreach($pub->field_pub_subject as $subject){
 					$subjects[] = $subject->tid->value();
@@ -266,7 +268,6 @@ function publication_entity_view($entity, $type, $view_mode, $langcode) {
 			$breadcrumb[] = l(t('Statistical articles'),'statistical-publications/' . get_label_dashed($term_name) . '/articles');				
 		}
 		
-		$breadcrumb[] = drupal_get_title();	
 		drupal_set_breadcrumb($breadcrumb);	
   	} 
 		
@@ -667,7 +668,7 @@ function draw_chart($pub_id,$view_mode,$range = array()){
 	    	'#legend_font_size' => ($view_mode == 'full') ? '' : '0em',
 	    	'#data_labels' => ($view_mode == 'full') ? TRUE : FALSE,
 	    	'#width' => ($view_mode == 'full') ? '750px' : '750px',
-	    	'#height'=> ($view_mode == 'full') ? '350px' : '350px',
+	    	'#height'=> ($view_mode == 'full') ? '385px' : '385px',
 	);
 		
 	foreach($legend as $index => $value){

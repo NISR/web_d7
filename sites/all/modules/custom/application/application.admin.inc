@@ -236,7 +236,7 @@ function application_delete_form_submit($form, &$form_state) {
 
   drupal_set_message(t(' application %id deleted.', array('%id' => entity_id('application', $application))));
 
-  $form_state['redirect'] = 'service/' . $application->type;
+  $form_state['redirect'] = $application->type;
 }
 
 
