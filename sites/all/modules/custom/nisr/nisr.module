@@ -309,6 +309,26 @@ function nisr_menu_alter(&$items) {
   if (!empty($items['admin/content'])) $items['admin/content']['weight'] = 50;
 }
 
+/*
+ * Implements hook_theme()
+ */
+function nisr_theme($existing, $type, $theme, $path){
+	$items['nisr_login_form'] = array(
+        'render element' => 'form',
+        'template' => 'login',
+        'path' => drupal_get_path('module', 'nisr') . '/theme',
+    );
+
+    $items['nisr_register_form'] = array(
+        'render element' => 'form',
+        'template' => 'register',
+        'path' => drupal_get_path('module', 'nisr') . '/theme',
+    );
+
+    return $items;
+	
+}
+
 /**
  * Implements hook_theme_registry_alter().
  */

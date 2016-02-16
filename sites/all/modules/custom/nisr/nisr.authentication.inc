@@ -27,6 +27,8 @@ function nisr_login_form($form,&$form_state){
 		'#markup'=> "<br/>New user,register <a href='/ServiceRegister?destination=" . $service . "'>here</a>",
 	);	
 	
+	$form['#theme'] = 'nisr_login_form';
+	
 	if(isset($_GET['destination'])) $form['#action'] .= '?destination=' . $_GET['destination'];
 
 	drupal_set_title(t('Login'));
