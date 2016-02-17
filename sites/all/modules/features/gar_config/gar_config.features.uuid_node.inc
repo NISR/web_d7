@@ -11,7 +11,7 @@ function gar_config_uuid_features_default_content() {
   $nodes = array();
 
   $nodes[] = array(
-  'title' => 'Analytics',
+  'title' => 'Web analytics',
   'log' => '',
   'status' => 1,
   'comment' => 0,

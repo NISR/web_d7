@@ -192,49 +192,7 @@ function publication_entity_info_alter(&$entity_info) {
  * Implements hook_entity_insert()
  */
 function publication_entity_insert($entity,$type){
-	$subjects  = $recipients = array();
-	$subscribers = views_get_view('subscribers');	
 
-	if($type == 'publication'){
-		$pub = entity_metadata_wrapper('publication',$entity);
-		
-		switch($entity->type) {
-			case 'statistical_report':
-				
-				$subscribers->set_display('statistical_reports');
-				foreach($pub->field_pub_subject as $subject){
-					$subjects[] = $subject->tid->value();
-				}
-								
-				break;
-			case 'statistical_article':		
-				// Get subjects
-				$subscribers->set_display('statistical_articles');
-				foreach($pub->field_pub_subject as $subject){
-					$subjects[] = $subject->tid->value();
-				}								
-				break;
-			case 'document':
-				
-				break;
-				
-			default:
-				break;
-		}
-		
-		$subscribers->set_arguments($subjects);						
-		$subscribers->pre_execute();
-		$subscribers->execute();
-		
-		foreach($subscribers->result as $subscriber){
-			$recipients[] = $subscriber->profile_uid;
-		}
-		
-		if(count($recipients)) watchdog('nisr','%d email notifications sent',array('%d' => count($recipients)));
-	}
-	elseif($type== 'node' && $entity->type == 'article') {
-		
-	}
 }
 
 /*
@@ -376,11 +334,12 @@ function publication_menu() {
 		'title arguments' => array(1),
     	'page callback' => 'term_page',
     	'page arguments' => array(1),
-    	'access arguments' => array('access content'),
+    	'access callback' => TRUE,
 	);	
   	$items['statistical-publications/%/view'] = array(
     	'title' => 'View',
     	'type' => MENU_DEFAULT_LOCAL_TASK,
+    	'access callback' => TRUE,    	
   	);
 	$items['statistical-publications/%/edit'] = array(
 		'title' => 'Edit',
@@ -808,14 +767,14 @@ function publication_load_multiple($pub_ids = array(), $conditions = array(), $r
  * Save Publication.
  */
 function publication_save($publication) {
-  entity_save('publication', $publication);
+  return entity_save('publication', $publication);
 }
 
 /**
  * Delete single Publication.
  */
 function publication_delete($publication) {
-  entity_delete('publication', entity_id('publication' ,$publication));
+  return entity_delete('publication', entity_id('publication' ,$publication));
 }
 
 /**

@@ -64,6 +64,7 @@ function gar_config_views_default_views() {
   $handler->display->display_options['title'] = 'Page visits';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'chart';
+  $handler->display->display_options['style_options']['library'] = 'google';
   $handler->display->display_options['style_options']['type'] = 'area';
   $handler->display->display_options['style_options']['title'] = 'Number of visits over the last seven days';
   $handler->display->display_options['style_options']['tooltips'] = 'TRUE';
@@ -127,6 +128,7 @@ function gar_config_views_default_views() {
       'rendered_strip' => FALSE,
     ),
   );
+  $handler->display->display_options['style_options']['library'] = 'google';
   $handler->display->display_options['style_options']['type'] = 'area';
   $handler->display->display_options['style_options']['title'] = 'Device types used over the last seven days';
   $handler->display->display_options['style_options']['tooltips'] = 'TRUE';
@@ -196,6 +198,7 @@ function gar_config_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'chart';
+  $handler->display->display_options['style_options']['library'] = 'google';
   $handler->display->display_options['style_options']['title'] = 'Top web browsers accessing statistics.gov.rw';
   $handler->display->display_options['style_options']['tooltips'] = 'TRUE';
   $handler->display->display_options['style_options']['legend_position'] = 'bottom';
