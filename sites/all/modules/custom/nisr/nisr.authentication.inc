@@ -6,6 +6,8 @@
  */
 function nisr_login_form($form,&$form_state){
 	
+	isset($_GET['destination'])? $service =  $_GET['destination'] : $service = '';
+	
 	$form['username'] = array(
 		'#type' => 'textfield',
 		'#required' => TRUE,
@@ -29,7 +31,7 @@ function nisr_login_form($form,&$form_state){
 	
 	$form['#theme'] = 'nisr_login_form';
 	
-	if(isset($_GET['destination'])) $form['#action'] .= '?destination=' . $_GET['destination'];
+	$form['#action'] .= '?destination=' . $service;
 
 	drupal_set_title(t('Login'));
 	
@@ -40,18 +42,18 @@ function nisr_login_form($form,&$form_state){
  * Login form validate handler
  */
 function nisr_login_form_validate($form,&$form_state){
-	if(!user_login_credentials($form_state['values']['username'],$form_state['values']['password'])){
-		form_set_error('username');
-		form_set_error('password');
-		drupal_set_message(t('Wrong username or password'),'error');
-	}	
+	
 }
 
 /*
  * Login form submit handler
  */
 function nisr_login_form_submit($form,&$form_state){
-
+	if(!user_login_credentials($form_state['values']['username'],$form_state['values']['password'])){
+		form_set_error('username');
+		form_set_error('password');
+		drupal_set_message(t('Wrong username or password'),'error');
+	}	
 }
 
 
@@ -60,6 +62,8 @@ function nisr_login_form_submit($form,&$form_state){
  * Register form 
  */
 function nisr_register_form($form,&$form_state){
+	
+	isset($_GET['destination']) ? $service =  $_GET['destination'] : $service = '';
 	
 	$zones = system_time_zones();
 	
@@ -126,7 +130,7 @@ function nisr_register_form($form,&$form_state){
 		'#value' => t('Register'),	
 	);
 	
-	if(isset($_GET['destination'])) $form['#action'] .= '?destination=' . $_GET['destination'];
+	$form['#action'] .= '?destination=' . $service;
 		
 	drupal_set_title(t('Register'));
 	
@@ -139,8 +143,6 @@ function nisr_register_form($form,&$form_state){
  */
 function nisr_register_form_validate($form,&$form_state){
 	// We need to make sure that no user with the same account email already exists
-		
-	// Email
 	$account = user_load_by_mail($form_state['values']['mail']);
 	if($account) form_set_error('mail','E-mail account already in use');
 }
@@ -159,6 +161,32 @@ function nisr_register_form_submit($form,&$form_state){
 		drupal_set_message('Registration failed');	
 	}
 }
+
+/**
+ * Helper function to login a user. 
+ * @param
+ * 	string username
+ *		string password
+ * @return 
+ *		boolean
+ */
+function user_login_credentials($username, $password) {
+	print_r($username . '==' . $password);
+	if ($uid = user_authenticate($username, $password)) {
+		$form_state = array('uid' => $uid);
+		user_login_submit(array(),$form_state);
+ 		return true;
+	}
+	else{
+ 		return false;
+	}
+}
+
+/*
+ * Helper function to create a user
+ * @return 
+ *		boolean
+ */
 
 function create_account($form,&$form_state){
 	// Create user object
