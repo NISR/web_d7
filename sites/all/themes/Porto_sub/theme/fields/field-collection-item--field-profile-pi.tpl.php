@@ -46,10 +46,6 @@
         <div class="field-items"><div class="field-item even"><?php print $content['full_name']; ?></div></div>
       </div>
       <div class="field field-name clearfix">
-        <div class="field-label">Username:&nbsp;</div>
-        <div class="field-items"><div class="field-item even"><?php print $content['username']; ?></div></div>
-      </div>
-      <div class="field field-name clearfix">
         <div class="field-label">E-mail:&nbsp;</div>
         <div class="field-items"><div class="field-item even"><?php print $content['usermail']; ?></div></div>
       </div>

@@ -55,8 +55,8 @@ div.profile-menu{
 	padding: 5px;	
 	color: white;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	background-color: #08C;
 	border-color: #08C #08C #069;
+	background-color: #2259A9;
 }
 
 .block-facetapi{
@@ -292,6 +292,16 @@ div.tweet-authorphoto img {
 	text-decoration: none;	
 	color: none;
 }
+
+.authentication-top-menu{
+	background: #dedede;	
+}
+.authentication-box{
+	border: 2px solid #ccc;
+	margin-top: 150px;
+	padding: 30px;
+}
+
 span.tag{
 	border: 1px solid #ccc;
 	border-radius: 3px;

@@ -9,7 +9,7 @@ function nisr_login_form($form,&$form_state){
 	$form['username'] = array(
 		'#type' => 'textfield',
 		'#required' => TRUE,
-		'#title' => t('Username'),
+		'#title' => t('Email'),
 	);	
 	
 	$form['password'] = array(
@@ -60,7 +60,9 @@ function nisr_login_form_submit($form,&$form_state){
  * Register form 
  */
 function nisr_register_form($form,&$form_state){
-
+	
+	$zones = system_time_zones();
+	
 	// Account info
 	$form['account'] = array(
 		'#type' => 'fieldset',
@@ -68,23 +70,26 @@ function nisr_register_form($form,&$form_state){
 		'#title' => t('Account information'),
 	);
 	
-	$form['account']['name'] = array(
-		'#type' => 'textfield',
-		'#required' => TRUE,
-		'#title' => t('Username'),
-	);	
-
 	$form['account']['mail'] = array(
 		'#type' => 'textfield',
 		'#required' => TRUE,
 		'#title' => t('E-mail'),
-	);	
+	);
 		
 	$form['account']['pass'] = array(
 		'#type' => 'password_confirm',
 		'#required' => TRUE,
 	);	
-	
+
+	$form['account']['timezone'] = array(
+       '#type' => 'select',
+       '#required' => TRUE,
+       '#title' => t('Time zone'),
+       '#default_value' => date_default_timezone(),
+       '#options' => $zones,
+       '#description' => t('Select your current local time. Dates and times throughout this site will be displayed using this time zone.'),
+   );
+   	
 	// Personal info
 	$form['pi'] = array(
 		'#type' => 'fieldset',
@@ -133,15 +138,11 @@ function nisr_register_form($form,&$form_state){
  * Register form validate handler
  */
 function nisr_register_form_validate($form,&$form_state){
-	// We need to make sure that no user with the same account name/email already exists
-	
-	// Username
-	$account = user_load_by_name($form_state['values']['name']);
-	if($account) form_set_error('account','Username already taken');
-	
+	// We need to make sure that no user with the same account email already exists
+		
 	// Email
 	$account = user_load_by_mail($form_state['values']['mail']);
-	if($account) form_set_error('mail','E-mail already in use');
+	if($account) form_set_error('mail','E-mail account already in use');
 }
 
 /*
@@ -152,7 +153,7 @@ function nisr_register_form_submit($form,&$form_state){
 	if(create_account($form,$form_state)){
 		drupal_set_message('Registration successsful');	
 		// Automatic Login
-		user_login_credentials($form_state['values']['name'],$form_state['values']['pass']);
+		user_login_credentials($form_state['values']['mail'],$form_state['values']['pass']);
 		 
 	}else{
 		drupal_set_message('Registration failed');	
@@ -162,9 +163,10 @@ function nisr_register_form_submit($form,&$form_state){
 function create_account($form,&$form_state){
 	// Create user object
 	$user_data = array(
-				'name' => $form_state['values']['name'],
+				'name' => $form_state['values']['mail'],
 				'pass' => $form_state['values']['pass'],
 				'mail' => $form_state['values']['mail'],
+				'timezone' => $form_state['values']['timezone'],
 				'init' => $form_state['values']['mail'],
 				'status' => 1,
 				'access' => REQUEST_TIME,
@@ -193,11 +195,8 @@ function create_account($form,&$form_state){
 		return TRUE;
 			
 	}else{
-		
 		return FALSE;	
-
 	}
-	
 }
 
 

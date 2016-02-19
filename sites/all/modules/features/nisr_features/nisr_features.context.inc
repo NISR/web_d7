@@ -146,7 +146,7 @@ function nisr_features_context_default_contexts() {
           'module' => 'nisr',
           'delta' => 'custom_search',
           'region' => 'before_content',
-          'weight' => '-10',
+          'weight' => '-57',
         ),
       ),
     ),
