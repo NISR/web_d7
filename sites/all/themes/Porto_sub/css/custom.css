@@ -453,3 +453,9 @@ input[type="checkbox"]{
 	width: 50%;
 }
 
+/**
+ ** Buttons
+ **/
+.read-more{
+	margin:0 0 15px 0;	
+}

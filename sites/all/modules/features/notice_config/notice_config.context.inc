@@ -38,6 +38,12 @@ function notice_config_context_default_contexts() {
           'region' => 'content',
           'weight' => '-9',
         ),
+        'menu-menu-notices' => array(
+          'module' => 'menu',
+          'delta' => 'menu-notices',
+          'region' => 'sidebar_left',
+          'weight' => '-10',
+        ),
       ),
     ),
   );
@@ -57,9 +63,7 @@ function notice_config_context_default_contexts() {
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'notices' => 'notices',
-        'notices/jobs' => 'notices/jobs',
-        'notices/tenders' => 'notices/tenders',
+        'notices/*' => 'notices/*',
       ),
     ),
   );
@@ -109,6 +113,12 @@ function notice_config_context_default_contexts() {
           'delta' => 'notices_search-tenders',
           'region' => 'content',
           'weight' => '-9',
+        ),
+        'menu-menu-notices' => array(
+          'module' => 'menu',
+          'delta' => 'menu-notices',
+          'region' => 'sidebar_left',
+          'weight' => '-10',
         ),
       ),
     ),

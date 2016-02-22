@@ -496,7 +496,7 @@ function custom_search_form_submit($form,&$form_state){
 }
 
 /*
- * Get a entities associated to term 
+ * Get entities associated to a term 
  *  
  * @param
  *		$term : the term name
@@ -546,15 +546,16 @@ function term_goto($term_name){
  * Get children terms and/or various entities classified by a term
  *
  * @param
- *		$tid : term id
+ *		string term_name
+ *		string vocabulary
  *
  * @return
  *		renderable array
  *
  */
-function term_page($term_name){
+function term_page($term_name,$vocabulary = NULL){
 	
-	$terms = taxonomy_get_term_by_name(str_replace('-',' ',$term_name));
+	$terms = taxonomy_get_term_by_name(str_replace('-',' ',$term_name),$vocabulary);
 	
 	$term = current($terms);
 	 
@@ -615,7 +616,6 @@ function term_page($term_name){
    	$breadcrumb[] = l(t($parent->name),"$path[0]/" . get_label_dashed($parent->name));
    } 
    
-   $breadcrumb[] = $term->name;
 
    drupal_set_breadcrumb($breadcrumb);
    

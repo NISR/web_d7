@@ -12,24 +12,19 @@ module_load_include('inc','nisr','utils');
 function publication_block_info(){
 	$weight = 100;
 
-	// Subjects on statistical page
-	$blocks['statistical_publication_types'] = array(
-		'info' => t('Statistical publication types'),
+	// Statistical publication subjects/themes page
+	$blocks['statistical_publication_subjects'] = array(
+		'info' => t('Statistical publication subjects/themes'),
 		'weight' => $weight,
 		'cache' => DRUPAL_CACHE_GLOBAL,
 		);
 		
-	// Declare blocks from document subjects vocabulary
-	$voc = taxonomy_vocabulary_machine_name_load('document_subjects');	
-	$subjects = taxonomy_get_tree($voc->vid);
-	
-	foreach($subjects as $subject){
-		$blocks[str_replace(' ','_',strtolower($subject->name))] =  array(
-			'info' => t($subject->name) . ' documents',
-			//'weight' => ++$weight, 
-			'cache' => DRUPAL_CACHE_GLOBAL	
-			);
-	} 
+	// Document subjects/themes page
+	$blocks['document_subjects'] = array(
+		'info' => t('Document subjects/themes'),
+		'weight' => $weight,
+		'cache' => DRUPAL_CACHE_GLOBAL,
+		);
 	
 	return $blocks;
 }
@@ -40,23 +35,19 @@ function publication_block_info(){
 function publication_block_view($delta = ''){
 	module_load_include('inc','nisr','utils');
 	
-	if($delta == 'statistical_publication_types'){
-		$block['title'] = '';
-		$block['content'] = get_taxonomy_terms('statistical_publications_types','statistical-publications');
+	switch($delta){
+		case 'statistical_publication_subjects':
+			$block['title'] = '';
+			$block['content'] = get_taxonomy_terms('statistical_publication_subjects','statistical-publications');
+			break;
+		case 'document_subjects':
+			$block['title'] = '';
+			$block['content'] = get_taxonomy_terms('document_subjects','documents');get_taxonomy_terms('statistical_publication_subjects','statistical-publications');
+			break;
+		default:
+			break;
 	}
 	
-	// Feed the dynamically declared blocks from document subjects vocabulary with view embed display
-	$voc = taxonomy_vocabulary_machine_name_load('document_subjects');	
-	$subjects = taxonomy_get_tree($voc->vid);
-	
-	foreach($subjects as $subject){
-		if($delta == str_replace(' ','_',strtolower($subject->name))){
-			$view =  get_embed_view('publications_search','documents',array($subject->tid));			
-			$block['title'] = '';
-			$block['content'] = $view['result'];
-		}
-	} 	
-		
 	return $block;
 }
 
@@ -67,14 +58,15 @@ function publication_entities_by_term_alter(&$entities,$term){
 	module_load_include('inc','nisr','utils');
 	$reports  = get_embed_view('publications_search','latest_statistical_reports',array($term));
 	$articles = get_embed_view('publications_search','latest_statistical_articles',array($term));
-	
+	$documents = get_embed_view('documents_search','documents',array($term));
+		
 	if($reports['count']){
 		$entities['reports'] = array(
 									"title" => array("#markup" => t($reports['title']),"#prefix" => "<div class=''><div class=''><h4 class=''>","#suffix" => "</h4></div>"),
 									'items' => array('#markup' => $reports['result'],'#prefix' => "<div class='clearfix'>",'#suffix' => '</div>'),
 										);
 
-		$entities['reports']['more'] = array('#theme' => 'link','#text' => t('Read more'),'#path' => 'statistical-publications/' . $term . '/reports','#options' => array('attributes' => array('class' => array('btn','btn-sm','btn-primary')),'html' => TRUE),'#prefix' =>"<div style='margin:15px;'>",'#suffix' => '</div></div>');
+		$entities['reports']['more'] = array('#theme' => 'link','#text' => t('Read more'),'#path' => 'statistical-publications/' . $term . '/reports','#options' => array('attributes' => array('class' => array('btn','btn-sm','btn-primary','read-more')),'html' => TRUE),'#prefix' =>"<div>",'#suffix' => '</div></div>');
 	}	
 			
 	if($articles['count']){
@@ -83,9 +75,16 @@ function publication_entities_by_term_alter(&$entities,$term){
 									'items' => array('#markup' => $articles['result'],'#prefix' => "<div class='clearfix' style='margin-left:15px;'>",'#suffix' => '</div>'),  
 										);
 
-		$entities['articles']['more'] = array('#theme' => 'link','#text' => t('Read More'),'#path' => 'statistical-publications/' . $term . '/articles','#options' => array('attributes' => array('class' => array('btn','btn-sm','btn-primary')),'html' => TRUE),'#prefix' =>"<div style='margin:15px;'>",'#suffix' => '</div></div>');
+		$entities['articles']['more'] = array('#theme' => 'link','#text' => t('Read More'),'#path' => 'statistical-publications/' . $term . '/articles','#options' => array('attributes' => array('class' => array('btn','btn-sm','btn-primary','read-more')),'html' => TRUE),'#prefix' =>"<div>",'#suffix' => '</div></div>');
 	}
-	
+
+	if($documents['count']){
+		$entities['documents'] = array(
+									"title" => array("#markup" => t($documents['title']),"#prefix" => "<div class=''><div class=''><h4 class=''>","#suffix" => "</h4></div>"),
+									'items' => array('#markup' => $documents['result'],'#prefix' => "<div class='clearfix'>",'#suffix' => '</div>'),
+										);
+
+	}		
 		
 }
 /*
@@ -333,7 +332,7 @@ function publication_menu() {
 		'title callback' => 'get_label_formal',
 		'title arguments' => array(1),
     	'page callback' => 'term_page',
-    	'page arguments' => array(1),
+    	'page arguments' => array(1,'statistical_publication_subjects'),
     	'access callback' => TRUE,
 	);	
   	$items['statistical-publications/%/view'] = array(
@@ -348,9 +347,60 @@ function publication_menu() {
     	'access arguments' => array('administer publication entities'),
     	'type' => MENU_LOCAL_TASK,
 		'weight' => 10,
-	);		
+	);	
 	
+	// Documents
+	$voc = taxonomy_vocabulary_machine_name_load('document_subjects');	
+	$subjects = taxonomy_get_tree($voc->vid,0);
+	
+	foreach($subjects as $term){	
+		$items['documents/' . get_label_dashed($term->name)] = array(
+			//'title' => $term->name,
+			'title callback' => 'get_label_formal',
+			'title arguments' => array(1),
+			'page callback' => 'term_page',
+			'page arguments' => array(1,'document_subjects'),
+			'access callback' => TRUE,
+			'type' => MENU_NORMAL_ITEM,
+			'menu_name' => 'menu-documents',
+			'weight' => $term->weight,
+    	);	
+    	
+    	$items['documents/' . get_label_dashed($term->name) .'/view'] = array(
+    		'title' => 'View',
+    		'type' => MENU_DEFAULT_LOCAL_TASK,
+    		'access callback' => TRUE,
+    		'weight' => -10,
+  		);
+
+		$items['documents/' . get_label_dashed($term->name) . '/edit'] = array(
+			'title' => 'Edit',
+    		'page callback' => 'term_goto',
+    		'page arguments' => array(1),
+    		'access arguments' => array('administer publication entities'),
+    		'type' => MENU_LOCAL_TASK,
+			'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+		);	
+	}
+  
+   /* 
+	$items['documents/%'] = array(
+			//'title' => $term->name,
+			'title callback' => 'get_label_formal',
+			'title arguments' => array(1),
+			'page callback' => 'term_page',
+			'page arguments' => array(1,'document_subjects'),
+			'access callback' => TRUE,
+			'type' => MENU_NORMAL_ITEM,
+			'menu_name' => 'menu-documents',
+    	);
+	*/
+	
+	
+  
+		
   return $items;
+
 }
 
 /*
@@ -548,7 +598,7 @@ function publication_views_pre_render(&$view){
 		if(count($view->args)) $breadcrumb[] = l(t($term->name),'statistical-publications/' . $view->args[0]);
 		
 		
-	   ($view->display_handler->display->id == 'statistical_reports') ? $breadcrumb[] = t('Statistical reports') : $breadcrumb[] = t('Statistical articles');
+	   //($view->display_handler->display->id == 'statistical_reports') ? $breadcrumb[] = t('Statistical reports') : $breadcrumb[] = t('Statistical articles');
 		
 		drupal_set_breadcrumb($breadcrumb);
 		

@@ -30,22 +30,21 @@
 
 ?>
 
-<div class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-	<div>
-		<div class="col-md-1" style="padding-top:7px">
+<div class="<?php print $classes; ?> clearfix"<?php print $attributes; ?> style="width:100%">
+		<div class="pull-left" style="padding-top:7px;max-width:112px">
 			<div class="cover"><?php print render($content['field_pub_cover'])?></div>
 		</div>
-		<div class="content col-md-11"<?php print $content_attributes; ?>>
-	  <?php if (!$page): ?>
-	    <h4<?php print $title_attributes; ?>>
-	      <?php if ($url): ?>
-	        <a href="<?php print $url; ?>"><?php print $title; ?></a>
-	      <?php else: ?>
-	        <?php print $title; ?>
-	      <?php endif; ?>
-	    </h4>
-	  <?php endif; ?>
+		<div class="pull-right"<?php print $content_attributes; ?> style="width:100% - 112px" >
+	   <?php if (!$page): ?>
+			<h4<?php print $title_attributes; ?>>
+			<?php if ($url): ?>
+			  <a href="<?php print $url; ?>"><?php print $title; ?></a>
+			<?php else: ?>
+			  <?php print $title; ?>
+			<?php endif; ?>
+			</h4>
+	   <?php endif; ?>
 			<div class="body"><?php print render($content['field_pub_body'])?></div>
 		</div>
-	</div>
+
 </div>
