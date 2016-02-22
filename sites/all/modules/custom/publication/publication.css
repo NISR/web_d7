@@ -23,4 +23,5 @@
 .publication-item-body{margin-right: 10px;float: left;width: 55%}
 .publication-item-label{font-size:1.5em;padding-bottom: 5px;}
 
-.entity-publication .body{margin-top:-15px;}
+/*.views-row .entity-publication {margin-left:-30px;}*/
+.views-row .entity-publication .body{margin-top:-5px;}
