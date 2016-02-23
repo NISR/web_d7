@@ -66,7 +66,7 @@ function publication_entities_by_term_alter(&$entities,$term){
 									'items' => array('#markup' => $reports['result'],'#prefix' => "<div class='clearfix'>",'#suffix' => '</div>'),
 										);
 
-		$entities['reports']['more'] = array('#theme' => 'link','#text' => t('Read more'),'#path' => 'statistical-publications/' . $term . '/reports','#options' => array('attributes' => array('class' => array('btn','btn-sm','btn-primary','read-more')),'html' => TRUE),'#prefix' =>"<div>",'#suffix' => '</div></div>');
+		$entities['reports']['more'] = array('#theme' => 'link','#text' => t('More reports'),'#path' => 'statistical-publications/' . $term . '/reports','#options' => array('attributes' => array('class' => array('btn','btn-sm','btn-primary','read-more')),'html' => TRUE),'#prefix' =>"<div>",'#suffix' => '</div></div>');
 	}	
 			
 	if($articles['count']){
@@ -75,7 +75,7 @@ function publication_entities_by_term_alter(&$entities,$term){
 									'items' => array('#markup' => $articles['result'],'#prefix' => "<div class='clearfix' style='margin-left:15px;'>",'#suffix' => '</div>'),  
 										);
 
-		$entities['articles']['more'] = array('#theme' => 'link','#text' => t('Read More'),'#path' => 'statistical-publications/' . $term . '/articles','#options' => array('attributes' => array('class' => array('btn','btn-sm','btn-primary','read-more')),'html' => TRUE),'#prefix' =>"<div>",'#suffix' => '</div></div>');
+		$entities['articles']['more'] = array('#theme' => 'link','#text' => t('More articles'),'#path' => 'statistical-publications/' . $term . '/articles','#options' => array('attributes' => array('class' => array('btn','btn-sm','btn-primary','read-more')),'html' => TRUE),'#prefix' =>"<div>",'#suffix' => '</div></div>');
 	}
 
 	if($documents['count']){
@@ -220,29 +220,36 @@ function publication_entity_view($entity, $type, $view_mode, $langcode) {
   $path = explode('/',request_path());	
   
   $breadcrumb[] = l(t('Home'),'<front>');
-  if ($type == 'publication' && in_array($entity->type,array('statistical_report','statistical_article')) && $view_mode == 'full' && count($entity->field_pub_subject)){
- 		$wrapper = entity_metadata_wrapper('publication',$entity);
- 		$term_id = $wrapper->field_pub_subject->tid->value();
- 		$term_name = $wrapper->field_pub_subject->name->value();
- 		 		
-		$parent_terms = taxonomy_get_parents_all($term_id);
-		//unset($parent_terms[0]); // Remove the first element including the term object 		
-		
-		// Set breadcrumb in the form
-		// Home > Publications > Statistics > Subject > Reports > Title 
-		
-		$breadcrumb[] = l(t('Statistical publications'),'statistical-publications');
-	   foreach(array_reverse($parent_terms) as $parent){
-	   	$breadcrumb[] = l(t($parent->name),"statistical-publications/" . get_label_dashed($parent->name));
-	   } 
-	   
-	   if($entity->type == 'statistical_report'){
-			$breadcrumb[] = l(t('Statistical reports'),'statistical-publications/' . get_label_dashed($term_name) . '/reports');
-		}else{
-			$breadcrumb[] = l(t('Statistical articles'),'statistical-publications/' . get_label_dashed($term_name) . '/articles');				
+  if ($type == 'publication' && $view_mode == 'full'){
+	    switch($entity->type){
+	    	case 'statistical_report':
+	    	case 'statistical_article' :
+	    		if(count($entity->field_pub_subject)){
+			 		$wrapper = entity_metadata_wrapper('publication',$entity);
+			 		$term_id = $wrapper->field_pub_subject->tid->value();
+			 		$term_name = $wrapper->field_pub_subject->name->value();
+			 		 		
+					$parent_terms = taxonomy_get_parents_all($term_id);
+					
+					// Set breadcrumb in the form
+					// Home > Publications > Statistics > Subject > Reports > Title 
+					
+					$breadcrumb[] = l(t('Statistical publications'),'statistical-publications');
+				   foreach(array_reverse($parent_terms) as $parent){
+				   	$breadcrumb[] = l(t($parent->name),"statistical-publications/" . get_label_dashed($parent->name));
+				   } 
+				   
+				   if($entity->type == 'statistical_report'){
+						$breadcrumb[] = l(t('Statistical reports'),'statistical-publications/' . get_label_dashed($term_name) . '/reports');
+					}else{
+						$breadcrumb[] = l(t('Statistical articles'),'statistical-publications/' . get_label_dashed($term_name) . '/articles');				
+					}
+					drupal_set_breadcrumb($breadcrumb);
+				}
+				break;
+			default:
+				break;			
 		}
-		
-		drupal_set_breadcrumb($breadcrumb);	
   	} 
 		
 }

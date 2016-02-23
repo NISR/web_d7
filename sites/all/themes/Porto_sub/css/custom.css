@@ -59,8 +59,19 @@ div.profile-menu{
 	background-color: #2259A9;
 }
 
+/**
+ ** Facets
+ **/
 .block-facetapi{
 	padding-bottom: 25px;
+}
+
+ul.facetapi-facet-field-pub-tags li{
+	float: left;
+	border-radius: 7px;
+	padding: 7px;
+	background-color: #f4f4f4;
+	margin-right:7px;
 }
 
 /**
@@ -457,5 +468,10 @@ input[type="checkbox"]{
  ** Buttons
  **/
 .read-more{
-	margin:0 0 15px 0;	
+	margin:10px 0px 15px 0px;	
+}
+
+a.no-decoration{
+	text-decoration: none;
+	color:#777;	
 }

@@ -231,6 +231,14 @@ function nisr_menu(){
     	'type' => MENU_CALLBACK,
 	);
 	
+	$items['internship'] = array(
+		'title' => 'My internship requests',
+		'page callback' => 'views_embed_view',
+		'page arguments' => array('internship','embed_1'),
+		'access callback' => 'nisr_user_is_logged_in',
+		'access arguments' => array('internship'),
+    	'type' => MENU_CALLBACK,
+	);	
 	return $items;
 }
 
@@ -420,9 +428,10 @@ function nisr_file_formatter_table(&$variables){
  */
 function nisr_user_is_logged_in($service){
 	if(!user_is_logged_in()){
+		return TRUE;
+	}else{
 		drupal_goto('ServiceLogin',array('query' => array('destination'=> $service)));	
 	}
-	return TRUE;
 }
 
 /*
