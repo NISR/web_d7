@@ -3,8 +3,9 @@
  * @file
  * Service Authentication gateway page
  */
+ global $base_url;
 ?>
-<div class="authentication-top-menu"><a href=""><h1><< <?php print t('Back to site');?></h1></a></div> 
+<div class="authentication-top-menu"><a href="<?php print $base_url?>"><h1><< <?php print t('Back to site');?></h1></a></div> 
 
 <div role="main" class="main">
   <div id="content" class="content full col-md-12">

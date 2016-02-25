@@ -81,10 +81,9 @@ ul.facetapi-facet-field-pub-tags li{
 	background-color: #dedede;	
 	background: url('../../Porto/img/patterns/denim.png');
 	border-top : 2px solid #ccc;
-	border-bottom : 2px solid #ccc;
 	margin: 0 0 0px 0;
 	max-height: 65px;
-	padding: 5px 0 20px 0;
+	padding: 7px 0 20px 0;
 	position: relative;
 	text-align: left;
 }
@@ -205,7 +204,8 @@ section.home-intro,
 section.page-header{
 	background-color: #171717;
 	background: url('../../Porto/img/patterns/az_subtle.png');
-	border-top:none;
+	border-bottom: 5px solid #F1F1F1;
+	border-top: 5px solid #F1F1F1;
 }
 
 section.page-header h1{
@@ -328,7 +328,7 @@ span.tag{
 }
 
 .body{
-	
+
 }
 
 .uppercase{

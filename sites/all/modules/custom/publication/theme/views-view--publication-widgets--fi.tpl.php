@@ -26,8 +26,9 @@
  *
  * @ingroup views_templates
  */
+
 ?>
-<section class="section home-intro mb-none">
+
 	<div class="container" style="margin-top:0px;margin-bottom:px">
 		<?php if ($header): ?>
 		  <div class="view-header">
@@ -93,4 +94,3 @@
 			</div>
 		<!-- </div> --><?php /* class view */ ?>
 	</div>
-</section>

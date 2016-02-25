@@ -222,10 +222,10 @@ function nisr_menu(){
 	
 	);
 		
-	$items['service/%'] = array(
-		'title' => 'My visa requests',
+	$items['services/visa'] = array(
+		'title' => 'Visa',
 		'page callback' => 'nisr_user_is_logged_in',
-		'page arguments' => array(1),
+		'page arguments' => array('visa'),
 		'access callback' => TRUE,
     	'type' => MENU_CALLBACK,
 	);
@@ -420,7 +420,7 @@ function nisr_file_formatter_table(&$variables){
  */
 function nisr_user_is_logged_in($service){
 	if(!user_is_logged_in()){
-		drupal_goto('ServiceLogin',array('query' => array('destination'=> 'service/' . $service)));
+		drupal_goto('ServiceLogin',array('query' => array('destination'=> 'services/' . $service)));
 	}else{
 		return views_embed_view($service,'embed_1');
 	}
