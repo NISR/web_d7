@@ -693,15 +693,15 @@ function draw_chart($pub_id,$view_mode,$range = array()){
  	$chart = array(
 	 		'#type' => 'chart',
 	 		'#chart_type' => $wr->field_dataset_chart_type->value(),
-			'#chart_library' => 'google',
+			'#chart_library' => 'highcharts',
 	 		//'#title' => ($view_mode == 'full') ? $pub->title : '',
-	    	'#legend' => ($view_mode == 'full') ? TRUE : FALSE,
-	    	'#legend_title' => ($view_mode == 'full') ? '' : NULL,
-	    	'#legend_position' => ($view_mode == 'full') ? 'bottom' : 'none',
-	    	'#legend_font_size' => ($view_mode == 'full') ? '' : '0em',
-	    	'#data_labels' => ($view_mode == 'full') ? TRUE : FALSE,
-	    	'#width' => ($view_mode == 'full') ? '750px' : '750px',
-	    	'#height'=> ($view_mode == 'full') ? '385px' : '385px',
+	    	'#legend' => TRUE,
+	    	//'#legend_title' => ($view_mode == 'full') ? '' : NULL,
+	    	'#legend_position' => ($view_mode == 'full') ? 'right' : 'top',
+	    	//'#legend_font_size' => ($view_mode == 'full') ? '' : '1em',
+	    	'#data_labels' => FALSE,
+	    	'#width' => ($view_mode == 'full') ? '930px' : '650px',
+	    	'#height'=> ($view_mode == 'full') ? '550px' : '285px',
 	);
 		
 	foreach($legend as $index => $value){
@@ -710,8 +710,8 @@ function draw_chart($pub_id,$view_mode,$range = array()){
 			'#title' => $value,
 			'#data' => array_map('floatval',$data[$index]),
 			'#decimal_count' => 1,
-			'#show_in_legend' => ($view_mode == 'full') ? TRUE : FALSE,		
-			'#show_labels' => ($view_mode == 'full') ? TRUE : FALSE,
+			'#show_in_legend' => TRUE,		
+			'#show_labels' => TRUE,
 		);	
 		//if($wr->field_dataset_chart_data_prefix->value()) $chart[$value]['#prefix'] = $wr->field_dataset_chart_data_prefix->value();
 		//if($wr->field_dataset_chart_data_suffix->value()) $chart[$value]['#suffix'] = ' ' . $wr->field_dataset_chart_data_suffix->value();
@@ -726,7 +726,7 @@ function draw_chart($pub_id,$view_mode,$range = array()){
 		'#type' => 'chart_yaxis',
 		'#labels' => NULL,
 	);
-
+	
    return $chart;
    	
 }
