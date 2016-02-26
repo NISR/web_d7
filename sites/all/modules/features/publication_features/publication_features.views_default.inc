@@ -1524,10 +1524,6 @@ function publication_features_views_default_views() {
   $handler->display->display_options['fields']['pub_id']['id'] = 'pub_id';
   $handler->display->display_options['fields']['pub_id']['table'] = 'search_api_index_publications';
   $handler->display->display_options['fields']['pub_id']['field'] = 'pub_id';
-  /* Sort criterion: Indexed Publication: Period */
-  $handler->display->display_options['sorts']['period']['id'] = 'period';
-  $handler->display->display_options['sorts']['period']['table'] = 'search_api_index_publications';
-  $handler->display->display_options['sorts']['period']['field'] = 'period';
   /* Sort criterion: Indexed Publication: Entity ID */
   $handler->display->display_options['sorts']['search_api_id']['id'] = 'search_api_id';
   $handler->display->display_options['sorts']['search_api_id']['table'] = 'search_api_index_publications';
