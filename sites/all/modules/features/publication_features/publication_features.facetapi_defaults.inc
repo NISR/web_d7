@@ -63,7 +63,7 @@ function publication_features_facetapi_default_facet_settings() {
     'flatten' => '0',
     'individual_parent' => '0',
     'query_type' => 'term',
-    'limit_active_items' => 0,
+    'limit_active_items' => 1,
     'default_true' => '1',
     'facet_search_ids' => array(),
     'exclude' => 0,

@@ -324,8 +324,10 @@ function publication_features_field_default_field_instances() {
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
+        'settings' => array(
+          'trim_length' => 600,
+        ),
+        'type' => 'text_summary_or_trimmed',
         'weight' => 2,
       ),
       'title_cover' => array(
@@ -346,7 +348,7 @@ function publication_features_field_default_field_instances() {
     'label' => 'Summary',
     'required' => 0,
     'settings' => array(
-      'display_summary' => 0,
+      'display_summary' => 1,
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
@@ -1037,7 +1039,7 @@ function publication_features_field_default_field_instances() {
         'apply_chosen' => 1,
       ),
       'type' => 'options_select',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -1101,7 +1103,7 @@ Leave empty for no range
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -1542,7 +1544,7 @@ Leave empty for no range
         'settings' => array(
           'trim_length' => 600,
         ),
-        'type' => 'text_trimmed',
+        'type' => 'text_summary_or_trimmed',
         'weight' => 3,
       ),
       'title_cover' => array(
@@ -2417,9 +2419,9 @@ Leave empty for no range
   );
 
   // Exported field_instance:
-  // 'taxonomy_term-statistical_publications_types-field_pub_dataset'.
-  $field_instances['taxonomy_term-statistical_publications_types-field_pub_dataset'] = array(
-    'bundle' => 'statistical_publications_types',
+  // 'taxonomy_term-statistical_publication_subjects-field_pub_dataset'.
+  $field_instances['taxonomy_term-statistical_publication_subjects-field_pub_dataset'] = array(
+    'bundle' => 'statistical_publication_subjects',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',

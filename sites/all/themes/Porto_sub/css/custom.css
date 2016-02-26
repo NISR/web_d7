@@ -22,7 +22,7 @@
 }
 
 #header .header-nav.header-nav-push-top{
-	margin-top: -46px;		
+
 }
 
 div.horizontal-menu ul.menu{
@@ -278,8 +278,8 @@ div.tweet-authorphoto img {
 }
 
 .featured-box .box-content h4{
-	min-height: 3.2em;
-	font-size: 1.2em;
+	min-height: 6em;
+	font-size: 1em;
 	text-align: center;
 	text-transform: uppercase;
 	font-weight: bold;	

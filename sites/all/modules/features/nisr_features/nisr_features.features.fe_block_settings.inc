@@ -146,7 +146,7 @@ function nisr_features_default_fe_block_settings() {
 
   $export['block-gov_logo'] = array(
     'cache' => -1,
-    'css_class' => 'col-md-3',
+    'css_class' => 'pull-left',
     'custom' => 0,
     'machine_name' => 'gov_logo',
     'module' => 'block',
@@ -245,7 +245,7 @@ function nisr_features_default_fe_block_settings() {
 
   $export['menu-menu-footer-extra'] = array(
     'cache' => -1,
-    'css_class' => 'horizontal-menu col-md-9',
+    'css_class' => 'horizontal-menu col-md-12',
     'custom' => 0,
     'delta' => 'menu-footer-extra',
     'module' => 'menu',

@@ -62,6 +62,8 @@ function press_config_context_default_contexts() {
     'path' => array(
       'values' => array(
         'press/*' => 'press/*',
+        '~press/news/*' => '~press/news/*',
+        '~press/press-releases/*' => '~press/press-releases/*',
       ),
     ),
   );

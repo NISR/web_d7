@@ -30,7 +30,7 @@ function nisr_features_default_fe_block_boxes() {
   $fe_block_boxes->info = 'Copyright';
   $fe_block_boxes->format = 'php_code';
   $fe_block_boxes->machine_name = 'copyright';
-  $fe_block_boxes->body = '<p>Copyright © <?php print date(\'Y\')?>&nbsp;National Institute of Statistics Rwanda</p>';
+  $fe_block_boxes->body = '<p>© <?php print date(\'Y\')?>&nbsp;National Institute of Statistics Rwanda</p>';
 
   $export['copyright'] = $fe_block_boxes;
 

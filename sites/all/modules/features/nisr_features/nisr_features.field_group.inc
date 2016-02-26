@@ -18,20 +18,22 @@ function nisr_features_field_group_info() {
   $field_group->entity_type = 'profile2';
   $field_group->bundle = 'main';
   $field_group->mode = 'default';
-  $field_group->parent_name = 'group_profile';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Personal information',
     'weight' => '1',
     'children' => array(
       0 => 'field_profile_pi',
     ),
-    'format_type' => 'tab',
+    'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Personal information',
       'instance_settings' => array(
-        'description' => '',
+        'id' => '',
         'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'collapsible',
     ),
   );
   $field_groups['group_profile_pi|profile2|main|default'] = $field_group;

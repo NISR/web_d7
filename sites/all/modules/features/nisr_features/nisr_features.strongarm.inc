@@ -451,7 +451,7 @@ function nisr_features_strongarm() {
     'blog_image' => 'full',
     'blog_image_slider' => 1,
     'blog_share' => 1,
-    'skin_color' => '0088cc',
+    'skin_color' => '2258a9',
     'secondary_color' => 'E36159',
     'tertiary_color' => '2BAAB1',
     'quaternary_color' => '383f48',
@@ -464,7 +464,8 @@ function nisr_features_strongarm() {
     'user_css' => '',
     'ribbon' => 0,
     'ribbon_text' => 'Get In Touch',
-    'options__active_tab' => 'edit-general',
+    'options__active_tab' => 'edit-color',
+    'jquery_update_jquery_version' => '',
   );
   $export['theme_porto_sub_settings'] = $strongarm;
 

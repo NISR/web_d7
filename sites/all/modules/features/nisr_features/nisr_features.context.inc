@@ -192,17 +192,23 @@ function nisr_features_context_default_contexts() {
           'region' => 'footer_1',
           'weight' => '-10',
         ),
+        'menu-menu-services' => array(
+          'module' => 'menu',
+          'delta' => 'menu-services',
+          'region' => 'footer_2',
+          'weight' => '-9',
+        ),
         'menu-menu-press' => array(
           'module' => 'menu',
           'delta' => 'menu-press',
-          'region' => 'footer_2',
-          'weight' => '-10',
-        ),
-        'menu-menu-useful-links' => array(
-          'module' => 'menu',
-          'delta' => 'menu-useful-links',
           'region' => 'footer_3',
           'weight' => '-10',
+        ),
+        'menu-menu-notices' => array(
+          'module' => 'menu',
+          'delta' => 'menu-notices',
+          'region' => 'footer_3',
+          'weight' => '-9',
         ),
         'menu-menu-follow-us' => array(
           'module' => 'menu',
@@ -210,35 +216,41 @@ function nisr_features_context_default_contexts() {
           'region' => 'footer_4',
           'weight' => '-10',
         ),
-        'block-41' => array(
-          'module' => 'block',
-          'delta' => '41',
-          'region' => 'footer_bottom_left',
-          'weight' => '-10',
-        ),
-        'menu-menu-footer-extra' => array(
-          'module' => 'menu',
-          'delta' => 'menu-footer-extra',
-          'region' => 'footer_bottom_left',
-          'weight' => '-9',
-        ),
         'nisr-last_update_date' => array(
           'module' => 'nisr',
           'delta' => 'last_update_date',
           'region' => 'footer_bottom_left',
-          'weight' => '-8',
+          'weight' => '-54',
+        ),
+        'block-41' => array(
+          'module' => 'block',
+          'delta' => '41',
+          'region' => 'footer_bottom_left',
+          'weight' => '-53',
         ),
         'block-40' => array(
           'module' => 'block',
           'delta' => '40',
           'region' => 'footer_bottom_left',
-          'weight' => '-7',
+          'weight' => '-52',
+        ),
+        'menu-menu-useful-links' => array(
+          'module' => 'menu',
+          'delta' => 'menu-useful-links',
+          'region' => 'footer_bottom_left',
+          'weight' => '-51',
+        ),
+        'menu-menu-footer-extra' => array(
+          'module' => 'menu',
+          'delta' => 'menu-footer-extra',
+          'region' => 'footer_bottom_right',
+          'weight' => '-9',
         ),
         'block-39' => array(
           'module' => 'block',
           'delta' => '39',
           'region' => 'footer_bottom_right',
-          'weight' => '-9',
+          'weight' => '-8',
         ),
       ),
     ),
@@ -259,18 +271,7 @@ function nisr_features_context_default_contexts() {
       ),
     ),
   );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'menu-menu-profile-menu' => array(
-          'module' => 'menu',
-          'delta' => 'menu-profile-menu',
-          'region' => 'header_top',
-          'weight' => '-10',
-        ),
-      ),
-    ),
-  );
+  $context->reactions = array();
   $context->condition_mode = 0;
   $export['sitewide_authenticated'] = $context;
 

@@ -15,11 +15,11 @@ function gar_config_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'analytics';
   $context->description = '';
-  $context->tag = 'About us';
+  $context->tag = 'Analytics';
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'about-us/analytics' => 'about-us/analytics',
+        'web-analytics' => 'web-analytics',
       ),
     ),
   );
@@ -50,6 +50,12 @@ function gar_config_context_default_contexts() {
           'region' => 'content',
           'weight' => '-7',
         ),
+        'views-ga_reports-countries' => array(
+          'module' => 'views',
+          'delta' => 'ga_reports-countries',
+          'region' => 'content',
+          'weight' => '-6',
+        ),
       ),
     ),
   );
@@ -57,7 +63,7 @@ function gar_config_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('About us');
+  t('Analytics');
   $export['analytics'] = $context;
 
   return $export;

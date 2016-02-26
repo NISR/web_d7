@@ -50,12 +50,12 @@ function nisr_features_node_info() {
 function nisr_features_default_profile2_type() {
   $items = array();
   $items['main'] = entity_import('profile2_type', '{
-    "userCategory" : false,
-    "userView" : false,
+    "userCategory" : true,
+    "userView" : true,
     "type" : "main",
     "label" : "Main profile",
     "weight" : "0",
-    "data" : { "registration" : true, "use_page" : true }
+    "data" : { "registration" : 0, "use_page" : 0 }
   }');
   return $items;
 }

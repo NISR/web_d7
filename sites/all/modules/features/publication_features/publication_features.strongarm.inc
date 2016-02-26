@@ -34,9 +34,9 @@ function publication_features_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_statistical_publications_types_pattern';
+  $strongarm->name = 'pathauto_taxonomy_term_statistical_publication_subjects_pattern';
   $strongarm->value = '';
-  $export['pathauto_taxonomy_term_statistical_publications_types_pattern'] = $strongarm;
+  $export['pathauto_taxonomy_term_statistical_publication_subjects_pattern'] = $strongarm;
 
   return $export;
 }

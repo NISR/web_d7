@@ -585,7 +585,7 @@ function publication_features_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => array(
-          'vocabulary' => 'statistical_publications_types',
+          'vocabulary' => 'statistical_publication_subjects',
           'parent' => 0,
         ),
       ),

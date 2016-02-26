@@ -25,9 +25,9 @@ function publication_features_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => 0,
     ),
-    'statistical_publications_types' => array(
-      'name' => 'Statistical publications types',
-      'machine_name' => 'statistical_publications_types',
+    'statistical_publication_subjects' => array(
+      'name' => 'Statistical publication subjects',
+      'machine_name' => 'statistical_publication_subjects',
       'description' => '',
       'hierarchy' => 0,
       'module' => 'taxonomy',

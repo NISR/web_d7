@@ -15,12 +15,11 @@ function publication_features_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'standards_and_methods';
   $context->description = '';
-  $context->tag = 'Documents';
+  $context->tag = 'Documentation';
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'standards_and_methods' => 'standards_and_methods',
-        'standards-and-methods' => 'standards-and-methods',
+        'documentation/standards-and-methods' => 'documentation/standards-and-methods',
       ),
     ),
   );
@@ -46,7 +45,7 @@ function publication_features_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Documents');
+  t('Documentation');
   $export['standards_and_methods'] = $context;
 
   $context = new stdClass();
@@ -104,6 +103,12 @@ function publication_features_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'facetapi-XJuBAz0WMx58FOka1GAp3HIT9Ys4VLW3' => array(
+          'module' => 'facetapi',
+          'delta' => 'XJuBAz0WMx58FOka1GAp3HIT9Ys4VLW3',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
         'system-main' => array(
           'module' => 'system',
           'delta' => 'main',

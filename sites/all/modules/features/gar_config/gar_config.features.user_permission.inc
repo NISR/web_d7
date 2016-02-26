@@ -23,7 +23,9 @@ function gar_config_user_default_permissions() {
   // Exported permission: 'administer google analytics reports api'.
   $permissions['administer google analytics reports api'] = array(
     'name' => 'administer google analytics reports api',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'google_analytics_reports_api',
   );
 

@@ -14,6 +14,7 @@ function publication_features_user_default_permissions() {
   $permissions['administer publication entities'] = array(
     'name' => 'administer publication entities',
     'roles' => array(
+      'Content manager' => 'Content manager',
       'administrator' => 'administrator',
     ),
     'module' => 'publication',
@@ -52,6 +53,7 @@ function publication_features_user_default_permissions() {
   $permissions['edit own publication entities'] = array(
     'name' => 'edit own publication entities',
     'roles' => array(
+      'Content manager' => 'Content manager',
       'administrator' => 'administrator',
     ),
     'module' => 'publication',
