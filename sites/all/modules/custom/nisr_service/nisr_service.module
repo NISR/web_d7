@@ -10,200 +10,100 @@
  */
 function nisr_service_menu(){
 	$items = array();
-	
-	$items['service--login']	= array(
+		
+	$items['ServiceLogin'] = array(
 		'title' => 'Login',
-		'page callback' => 'nisr_service_login',
-		'page arguments' => array(2),
+		'page callback' => 'serviceLogin',
 		'access callback' => TRUE,
-		'type' => MENU_CALLBACK,	
-    	'theme callback' => 'variable_get',
-    	'theme arguments' => array('admin_theme'),
 	);
-	$items['service--register']	= array(
-	   'title' => 'Register',
-		'page callback' => 'nisr_service_register',
-		'page arguments' => array(2),
-		'access callback' => TRUE,
-		'type' => MENU_CALLBACK,	
-	   'theme callback' => 'variable_get',
-    	'theme arguments' => array('admin_theme'),
-	);		
-	$items['service/%']	= array(
-		'page callback' => 'nisr_service_gateway',
-		'page arguments' => array(1),
-		'access callback' => TRUE,
-		'type' => MENU_CALLBACK,	
-		'theme callback' => 'variable_get',
-    	'theme arguments' => array('admin_theme'),
-	);		
+
+	$items['ServiceRegister'] = array(
+		'title' => 'Register',
+		'page callback' => 'serviceRegister',
+		'access callback' => TRUE,	
 	
+	);
+		
+	$items['service/visa'] = array(
+		'title' => 'Visa',
+		'page callback' => 'nisr_service_user_is_logged_in',
+		'page arguments' => array('visa'),
+		'access callback' => TRUE,
+    	'type' => MENU_NORMAL_ITEM,
+    	'menu_name' => 'menu-services',
+    	'weight' => -50,
+	);
 			
 	return $items;	
 }
 
-/* 
- * Service login menu callback
- */
-function nisr_service_login($service){
-
-	if(user_is_logged_in()) drupal_goto('service/' . $service);	
-	
-	return drupal_get_form('nisr_service_login_form',$service);
-}
 
 /*
- * Login form
+ * Implements hook_preprocess_page()
  */
-function nisr_service_login_form($form,&$form_state,$service){
-	
-	$form['username'] = array(
-		'#type' => 'textfield',
-		'#required' => TRUE,
-		'#title' => t('Username'),
-	);	
-	
-	$form['password'] = array(
-		'#type' => 'password',
-		'#required' => TRUE,
-		'#title' => t('Password'),
-	);	
-	
-	$form['service'] = array(
-		'#type' => 'hidden',
-		'#value' => $service,
-	);	
-	
-	$form['actions']['submit'] = array(
-		'#type' => 'submit',
-		'#value' => t('Connect'),	
-	);
-	
-	$form['new_user_register'] = array(
-		'#markup'=> "<br/>New user,register <a href='/service--register/" . $service . "'>here</a>",
-	);	
-	
-	drupal_set_title(t('Login'));
-	
-	return $form;
-}
-
-/* 
- * Service login menu callback
- */
-function nisr_service_register($service){
-
-	if(user_is_logged_in()) drupal_goto('service/' . $service);	
-	
-	return drupal_get_form('nisr_service_register_form',$service);
-}
-
-/*
- * Register form 
- */
-function nisr_service_register_form($form,&$form_state,$service){
-	// Personal info
-	$form['pi'] = array(
-		'#type' => 'fieldset',
-		'#collapsible' => TRUE,
-		'#title' => t('Personal information'),
-	);
-	
-	$form['pi']['salutation'] = array(
-		'#type' => 'select',
-		'#required' => TRUE,
-		'#options' => array(0 => t('Mr.'), 1 => t('Ms.'), 2 => t('Mrs.')),
-		'#title' => t('Salutation'),
-	);	
-	
-	$form['pi']['firstname'] = array(
-		'#type' => 'textfield',
-		'#required' => TRUE,
-		'#title' => t('Firsttname'),
-	);	
-	
-	$form['pi']['lastname'] = array(
-		'#type' => 'textfield',
-		'#required' => TRUE,
-		'#title' => t('Lastname'),
-	);	
-		
-	// Account info
-	$form['account'] = array(
-		'#type' => 'fieldset',
-		'#collapsible' => TRUE,
-		'#title' => t('Account information'),
-	);
-	
-	$form['account']['username'] = array(
-		'#type' => 'textfield',
-		'#required' => TRUE,
-		'#title' => t('Username'),
-	);	
-	
-	$form['account']['password'] = array(
-		'#type' => 'password_confirm',
-		'#required' => TRUE,
-	);	
-	
-	$form['actions']['submit'] = array(
-		'#type' => 'submit',
-		'#value' => t('Register'),	
-	);
-	
-	drupal_set_title(t('Register'));
-	
-	return $form;	
-}
-
-/*
- * Login form submit handler
- */
-function nisr_service_login_form_submit($form,&$form_state){
-	
-	if(!user_login_credentials($form_state['values']['username'],$form_state['values']['password'])){
-		drupal_set_message(t('Wrong username or password'),'error');
-	}
-	
-}
-
-/*
- * Register form submit handler
- */
-function nisr_service_register_form_submit($form,&$form_state){
-	
-}
-
-/*
- * Service gateway
- */
-function nisr_service_gateway($service){
-	// Authenticate
-	if(!user_is_logged_in()){
-		drupal_goto('service--login',array('query'=>array('destination' => 'service/' . $service)));
-	}else{
-	// Render console
-		return views_embed_view('service_' . $service);
+function nisr_service_preprocess_page(&$variables){
+	$path = arg();
+	if(in_array($path[0],array('ServiceLogin','ServiceRegister'))){
+		$variables['theme_hook_suggestions'][] = 'nisr_service_gateway';
 	}
 }
 
-/**
- * Helper function to login a user. 
- * @param
- * 	string username
- *		string password
+/*
+ * Implements hook_theme()
+ */
+function nisr_service_theme($existing, $type, $theme, $path){
+	$items['nisr_service_gateway'] = array(
+		'render element' => 'page',
+		'template' => 'nisr_service_gateway',
+		'path' => drupal_get_path('module','nisr_service') . '/theme',
+	);
+	$items['nisr_service_login_form'] = array(
+        'render element' => 'form',
+        'template' => 'nisr_service_login',
+        'path' => drupal_get_path('module', 'nisr_service') . '/theme',
+    );
+
+    $items['nisr_service_register_form'] = array(
+        'render element' => 'form',
+        'template' => 'nisr_service_register',
+        'path' => drupal_get_path('module', 'nisr_service') . '/theme',
+    );
+
+    return $items;
+	
+}
+
+/*
+ * Check if user is logged and redirect to custom login page if not 
+ *
  * @return 
- *		boolean
+ *		Boolean
  */
-function user_login_credentials($username, $password) {
-  if ($uid = user_authenticate($username, $password)) {
-    $user_obj = user_load_by_name($username);
-    $form_state = array();
-    $form_state['uid'] = $uid;
-    user_login_submit(array(),$form_state);
-    return true;
-  }
-  else {
-    return false;
-  }
+function nisr_service_user_is_logged_in($service){
+	if(!user_is_logged_in()){
+		drupal_goto('ServiceLogin',array('query' => array('destination'=> 'service/' . $service)));
+	}else{
+		return views_embed_view($service,'embed_1');
+	}
+}
+
+/*
+ * Service login
+ */
+function serviceLogin(){
+	if(!user_is_logged_in()){
+		module_load_include('inc','nisr_service','nisr_service.authentication');
+		drupal_set_message(t('To use any of our services, you need to login first'));
+		return drupal_get_form('nisr_service_login_form');
+	}
+}
+
+/*
+ * Service Register
+ */
+function serviceRegister(){
+	if(!user_is_logged_in()){
+		module_load_include('inc','nisr_service','nisr_service.authentication');
+		return drupal_get_form('nisr_service_register_form');
+	}	
 }

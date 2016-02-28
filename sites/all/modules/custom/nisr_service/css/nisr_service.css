@@ -1,0 +1,37 @@
+.authentication-top-menu{
+	background: #dedede;	
+}
+
+/**
+ ** Authentication forms
+ **/
+ 
+.authentication-box{
+	
+}
+.image-logo{
+	margin-left: auto;
+	margin-right: auto;
+	width: 100px;	
+	border-radius: 30px;
+}
+.login-box{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top:30px;	
+	width: 50%;		
+}
+
+.register-box{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top:0px;	
+	margin-bottom: 100px;
+	width: 70%;	
+	
+}
+
+.wrapper-box{
+	border: 5px solid #F1F1F1;
+	padding: 30px;
+}

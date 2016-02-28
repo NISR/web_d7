@@ -29,30 +29,14 @@
  */
 
 ?>
-<div class="col-md-9 <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-
-  <?php if (!$page): ?>
-    <h2<?php print $title_attributes; ?>>
-      <?php if ($url): ?>
-        <a href="<?php print $url; ?>"><?php print $title; ?></a>
-      <?php else: ?>
-        <?php print $title; ?>
-      <?php endif; ?>
-    </h2>
-  <?php endif; ?>
-  <strong><?php print render($content['field_pub_publication_date']);?></strong>
-	<?php if (isset($dataset) && $dataset['chart']): ?>
-	  <div class="chart-box">
-	  		<?php 
-	  			print render($dataset['chart']);
-	  			unset($content['field_pub_dataset']);
-	  		?>
-	  </div>
-	<?php endif; ?>
-  <div class="content"<?php print $content_attributes; ?>>
-    <?php
-    	hide($content['field_pub_dataset_range']);
-      print render($content);
-    ?>
-  </div>
+<div onclick="javascript:window.open('statistical-publications/all/figures','_self')" class="figure-wrapper <?php print $classes; ?> clearfix recent-posts"<?php print $attributes; ?>>
+	<div class="col-md-8 figure-credentials">
+		<div class="figure-name"><?php print $title ?></div>
+		<div class="figure-unit"><?php print render($content['field_pub_fig_unit'])?></div>	
+		<div class="figure-period"><?php print render($content['field_pub_fig_values']['#items'][0]['tabledata'][0][1])?></div>
+	</div>
+	<div class="col-md-4">
+		<div class="figure-value"><h1><?php print render($content['field_pub_fig_values']['#items'][0]['tabledata'][1][1])?></h1></div>
+	</div>
 </div>
+

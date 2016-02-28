@@ -58,7 +58,9 @@ function publication_entities_by_term_alter(&$entities,$term){
 	module_load_include('inc','nisr','utils');
 	$reports  = get_embed_view('publications_search','latest_statistical_reports',array($term));
 	$articles = get_embed_view('publications_search','latest_statistical_articles',array($term));
+	$infographic_items = get_embed_view('publications_search','latest_infographic_items',array($term));
 	$documents = get_embed_view('documents_search','documents',array($term));
+	
 		
 	if($reports['count']){
 		$entities['reports'] = array(
@@ -78,6 +80,14 @@ function publication_entities_by_term_alter(&$entities,$term){
 		$entities['articles']['more'] = array('#theme' => 'link','#text' => t('More articles'),'#path' => 'statistical-publications/' . $term . '/articles','#options' => array('attributes' => array('class' => array('btn','btn-sm','btn-primary','read-more')),'html' => TRUE),'#prefix' =>"<div>",'#suffix' => '</div></div>');
 	}
 
+	if($infographic_items['count']){
+		$entities['infographic_items'] = array(
+									'title' => array('#markup' => t($infographic_items['title']),"#prefix" => "<div class=''><div class=''><h4 class=''>","#suffix" => "</h4></div>"),
+									'items' => array('#markup' => $infographic_items['result'],'#prefix' => "<div class='clearfix' style='margin-left:15px;'>",'#suffix' => '</div>'),  
+										);
+
+		$entities['infographic_items']['more'] = array('#theme' => 'link','#text' => t('More infographics'),'#path' => 'statistical-publications/' . $term . '/infographics','#options' => array('attributes' => array('class' => array('btn','btn-sm','btn-primary','read-more')),'html' => TRUE),'#prefix' =>"<div>",'#suffix' => '</div></div>');
+	}
 	if($documents['count']){
 		$entities['documents'] = array(
 									"title" => array("#markup" => t($documents['title']),"#prefix" => "<div class=''><div class=''><h4 class=''>","#suffix" => "</h4></div>"),
@@ -224,6 +234,7 @@ function publication_entity_view($entity, $type, $view_mode, $langcode) {
 	    switch($entity->type){
 	    	case 'statistical_report':
 	    	case 'statistical_article' :
+	    	case 'infographic_item':
 	    		if(count($entity->field_pub_subject)){
 			 		$wrapper = entity_metadata_wrapper('publication',$entity);
 			 		$term_id = $wrapper->field_pub_subject->tid->value();
@@ -700,8 +711,8 @@ function draw_chart($pub_id,$view_mode,$range = array()){
 	    	'#legend_position' => ($view_mode == 'full') ? 'right' : 'top',
 	    	//'#legend_font_size' => ($view_mode == 'full') ? '' : '1em',
 	    	'#data_labels' => FALSE,
-	    	'#width' => ($view_mode == 'full') ? '930px' : '650px',
-	    	'#height'=> ($view_mode == 'full') ? '550px' : '285px',
+	    	'#width' => ($view_mode == 'full') ? '730px' : '600px',
+	    	'#height'=> ($view_mode == 'full') ? '350px' : '300px',
 	);
 		
 	foreach($legend as $index => $value){

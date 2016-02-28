@@ -35,7 +35,7 @@
 		  </div>
 		<?php endif; ?>
 		
-		<div class="row" style="margin-top:-30px;">
+		<div class="row">
 			<div class="owl-carousel" data-plugin-options='{"items": 1, "autoplay": false, "autoplayTimeout": 7000, "loop": true}'>
 				<?php print render($title_prefix); ?>
 				<?php if ($title): ?>

@@ -4,6 +4,12 @@ package = NISR
 version = 7.x-1.x
 core = 7.x
 
+dependencies[] = nisr
+
+files[] = includes/nisr_service.authentication.inc
+
+stylesheets[all][] = css/nisr_service.css
+
 
 
 

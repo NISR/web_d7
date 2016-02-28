@@ -304,22 +304,6 @@ div.tweet-authorphoto img {
 	color: none;
 }
 
-.authentication-top-menu{
-	background: #dedede;	
-}
-
-.login-box{
-	margin-left: auto;
-	margin-right:auto;	
-	width: 50%;
-}
-
-.wrapper-box{
-	border: 2px solid #ccc;
-	padding: 30px;
-	margin-top:120px;	
-}
-
 span.tag{
 	border: 1px solid #ccc;
 	border-radius: 3px;
@@ -340,12 +324,45 @@ span.tag{
 	padding-right: 3px;	
 }
 
-.box-outline{
+.region-before-content .box-outline {
+	background: #f1f1f1;	
+	min-height: 510px;
+}
+
+.region-before-content .box-outline h2{
+	margin: 0 0 10px 0;	
+}
+
+.region-before-content .box-title{
+	cursor:pointer;
+	padding:10px 10px 0 10px;
+	max-height: 110px;
+}
+
+.region-before-content .owl-theme .owl-controls{
+	margin-top:-3px;
+}
+.region-before-content .owl-theme .owl-dots{
+	background: #2258A9;	
+	border-bottom-left-radius:.7em;
+	border-bottom-right-radius:.7em;
+}
+.region-before-content .owl-theme .owl-dots .owl-dot.active span, 
+.region-before-content .owl-theme .owl-dots .owl-dot:hover span {
+	background: #fff;	
+}
+
+.region-before-content .btn-primary a,
+.region-before-content .btn-primary p{
+	color: #fff;	
+}
+.region-after-content .box-outline{
 	margin-top: 30px;
 	min-height: 400px;
 }
 
-.box-outline h2{
+
+.region-after-content .box-outline h2{
 	border-top:0px solid #000;
 	border-left:0px solid #000;
 	border-right:0px solid #000;
@@ -354,7 +371,7 @@ span.tag{
 	padding-left: 10px
 }
 
-.texture .content{
+.region-after-content .texture .content{
 	background: url('../../Porto/img/patterns/worn_dots.png');
 	padding:10px;
 	min-height: 350px;
@@ -400,7 +417,10 @@ span.tag{
 }
 
 .chart-box{
-
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 730px;
+	background: #fff !important;
 }
 
 /**
