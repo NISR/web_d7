@@ -41,8 +41,21 @@
 	  <h2><?php print render($content['field_pub_fig_values']['#items'][0]['tabledata'][1][1])?></h2>
 	  <?php print render($content['field_pub_fig_values']['#items'][0]['tabledata'][0][1])?>
 	</div>	
+	<?php
+		$actual_value = floatval(str_replace(",","",$content['field_pub_fig_values']['#items'][0]['tabledata'][1][1]));
+		$previous_value = floatval(str_replace(",","",$content['field_pub_fig_values']['#items'][0]['tabledata'][1][0]));
+		$change = $actual_value - $previous_value;
+		if(is_numeric($change)){
+			($change > 0) ? $class = 'fa fa-arrow-circle-up fa-3x text-success' : $class = 'fa fa-arrow-circle-down fa-3x text-danger' ;
+			$change = number_format(($change / $previous_value) * 100,'2') . " %";	
+		}else{
+			$change = '...';	
+		}
+	
+	?>
 	<div class="col-md-3">
-	  <h2><?php print render($content['field_pub_fig_values']['#items'][0]['tabledata'][1][0])?></h2>
-	  <div><?php print t('from corresponding previous year')?></div>
+	  <div style="float:right"><i class="<?php print $class;?>"></i></div>
+	  <div><h2><?php print $change ?></h2></div>
+	  <div><?php print t('from the corresponding previous year')?></div>
 	</div>
 </div>
