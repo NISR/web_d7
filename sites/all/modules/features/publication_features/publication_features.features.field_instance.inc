@@ -1261,7 +1261,7 @@ E.g : February 2014 = 100, current prices,Billions USD etc',
     'entity_type' => 'publication',
     'field_name' => 'field_pub_pubsource',
     'label' => 'Source',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -1273,65 +1273,6 @@ E.g : February 2014 = 100, current prices,Billions USD etc',
       ),
       'type' => 'options_select',
       'weight' => 4,
-    ),
-  );
-
-  // Exported field_instance: 'publication-infographic_item-field_pub_subject'.
-  $field_instances['publication-infographic_item-field_pub_subject'] = array(
-    'bundle' => 'infographic_item',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 1,
-      ),
-      'title_only' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 1,
-      ),
-    ),
-    'entity_type' => 'publication',
-    'field_name' => 'field_pub_subject',
-    'label' => 'Subjects / Themes',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'view' => array(
-      'args' => array(),
-      'display_name' => '',
-      'match_operator' => 'CONTAINS',
-      'size' => '',
-      'view_name' => '',
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => 1,
-      ),
-      'type' => 'options_select',
-      'weight' => 1,
     ),
   );
 
@@ -1789,7 +1730,7 @@ Leave empty for no range
     'entity_type' => 'publication',
     'field_name' => 'field_pub_pubsource',
     'label' => 'Source',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -1801,87 +1742,6 @@ Leave empty for no range
       ),
       'type' => 'options_select',
       'weight' => 5,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'publication-statistical_article-field_pub_subject'.
-  $field_instances['publication-statistical_article-field_pub_subject'] = array(
-    'bundle' => 'statistical_article',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Double click on the select box to choose from the list a subject/area',
-    'display' => array(
-      'chart' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 0,
-      ),
-      'featured' => array(
-        'label' => 'hidden',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 3,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 6,
-      ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 2,
-      ),
-      'title_cover' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 0,
-      ),
-      'title_only' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 4,
-      ),
-    ),
-    'entity_type' => 'publication',
-    'field_name' => 'field_pub_subject',
-    'label' => 'Subject',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'view' => array(
-      'args' => array(),
-      'display_name' => '',
-      'match_operator' => 'CONTAINS',
-      'size' => '',
-      'view_name' => '',
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => 1,
-      ),
-      'type' => 'options_select',
-      'weight' => 1,
     ),
   );
 
@@ -2919,7 +2779,6 @@ Leave empty for no range
   t('Data suffix');
   t('Dataset');
   t('Days');
-  t('Double click on the select box to choose from the list a subject/area');
   t('Elapsed periods');
   t('File');
   t('Files');
@@ -2932,7 +2791,6 @@ Leave empty for no range
   t('Related');
   t('Source');
   t('Subject');
-  t('Subjects / Themes');
   t('Summary');
   t('Tags');
   t('The period range evaluated in format <i>period1;period2</i>. E.g: <i>Feb-14;Oct-14</i> or <i>2005;2008</i>. They have to exactly conform the values that are stored in the dataset entity above.<br/>

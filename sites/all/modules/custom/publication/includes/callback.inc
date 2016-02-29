@@ -8,24 +8,25 @@
 class PublicationAlterAddPeriod extends SearchApiAbstractAlterCallback {
 
   public function alterItems(array &$items){
-  		$period = array();
-	  	foreach($items as &$item){
+  		$days = '';
+  		$publication = NULL;
+  		
+  		foreach($items as &$item){
 	  		switch($item->type) {
-	  			case 'statistical_article':
-	  			case 'infographic_item':
-	  				if(isset($item->field_pub_pubsource) && count($item->field_pub_pubsource)){
-						$publication = $item->field_pub_pubsource[0];			
-				}
 	  			case 'statistical_report':
 	  				$publication = $item;
+	  				break; 			  				
+	  			default:
+	  				if(isset($item->field_pub_pubsource) && count($item->field_pub_pubsource)){
+						$publication = $item->field_pub_pubsource[0];			
+					}
 	  				break;	
 	  		}
 	  		
-	  		$period = get_elapsed_period($publication);
+	  		if(!is_null($publication)) $days = get_elapsed_period($publication);
 	  		
-	  		if(!empty($period)){
-	  			$item->period_days_number = $period['days'];
-	  			$item->period_time_ago = $period['time_ago'];
+	  		if($days){
+	  			$item->period_days_number = $days;
 	  		}
 	  	}
   }
@@ -36,11 +37,6 @@ class PublicationAlterAddPeriod extends SearchApiAbstractAlterCallback {
         'label' => t('Period/Days'),
         'description' => t('The number of days between today and the period for which data from this report was collected.'),
         'type' => 'integer',
-      ),
-      'period_time_ago' => array(
-      	'label' => t('Period/Time ago'),
-      	'description' => t('The time which has passed between today and the from the date data collection expressed in litteral form'),
-			'type' => 'string',      
       ),
     );
   }
@@ -72,18 +68,10 @@ function get_elapsed_period(&$publication){
 
 	foreach($periods as $period){
 		$p = entity_metadata_wrapper('taxonomy_term',$period);
-		if($days <= $p->field_ep_days->value()){
-          $tid = $period->tid;
-          $time_ago = $period->name;
-          break;	
-      }					
-	}
-	if(!$tid){ 
-      $period = end($periods);
       $tid = $period->tid;
-      $time_ago = $period->name;
-   }			
-								 
-	return array('days' => (int)$days,'time_ago' => $time_ago);
+		if($days <= $p->field_ep_days->value()) break;	
+	}
+										 
+	return (int)$days;
 
 }

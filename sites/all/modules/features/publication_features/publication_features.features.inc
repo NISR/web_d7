@@ -181,8 +181,9 @@ function publication_features_default_search_api_index() {
       "fields" : {
         "changed" : { "type" : "date" },
         "created" : { "type" : "date" },
-        "field_pub_datasource" : { "type" : "integer", "entity_type" : "datasource" },
+        "field_pub_elapsed_periods" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_pub_publication_date" : { "type" : "date" },
+        "field_pub_pubsource:field_pub_elapsed_periods" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_pub_pubsource:field_pub_subject" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_pub_regions" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_pub_related" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "publication" },
@@ -190,7 +191,6 @@ function publication_features_default_search_api_index() {
         "field_pub_tags" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "old_nid" : { "type" : "integer" },
         "period_days_number" : { "type" : "integer" },
-        "period_time_ago" : { "type" : "string" },
         "pub_id" : { "type" : "integer" },
         "search_api_language" : { "type" : "string" },
         "title" : { "type" : "string" },

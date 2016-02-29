@@ -64,5 +64,23 @@ function publication_features_entityqueue_default_queues() {
   );
   $export['featured_statistical_reports'] = $queue;
 
+  $queue = new EntityQueue();
+  $queue->disabled = FALSE; /* Edit this to true to make a default queue disabled initially */
+  $queue->api_version = 1;
+  $queue->name = 'key_figures';
+  $queue->label = 'Key figures';
+  $queue->language = 'en';
+  $queue->handler = 'simple';
+  $queue->target_type = 'publication';
+  $queue->settings = array(
+    'target_bundles' => array(
+      'figure' => 'figure',
+    ),
+    'min_size' => '0',
+    'max_size' => '0',
+    'act_as_queue' => 0,
+  );
+  $export['key_figures'] = $queue;
+
   return $export;
 }

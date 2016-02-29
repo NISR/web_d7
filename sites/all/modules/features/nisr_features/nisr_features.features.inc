@@ -283,12 +283,6 @@ function nisr_features_default_search_api_server() {
             "type" : "uri",
             "boost" : "1.0"
           },
-          "field_pub_subject" : {
-            "table" : "search_api_db_publications",
-            "column" : "field_pub_subject",
-            "type" : "integer",
-            "boost" : "1.0"
-          },
           "field_pub_publication_date" : {
             "table" : "search_api_db_publications",
             "column" : "field_pub_publication_date",
@@ -299,12 +293,6 @@ function nisr_features_default_search_api_server() {
             "table" : "search_api_db_publications_field_pub_related",
             "column" : "value",
             "type" : "list\\u003Cinteger\\u003E",
-            "boost" : "1.0"
-          },
-          "field_pub_datasource" : {
-            "table" : "search_api_db_publications",
-            "column" : "field_pub_datasource",
-            "type" : "integer",
             "boost" : "1.0"
           },
           "search_api_language" : {
@@ -331,15 +319,27 @@ function nisr_features_default_search_api_server() {
             "type" : "integer",
             "boost" : "1.0"
           },
-          "period_time_ago" : {
-            "table" : "search_api_db_publications",
-            "column" : "period_time_ago",
-            "type" : "string",
-            "boost" : "1.0"
-          },
           "field_pub_pubsource:field_pub_subject" : {
             "table" : "search_api_db_publications",
             "column" : "field_pub_pubsource_field_pub_subject",
+            "type" : "integer",
+            "boost" : "1.0"
+          },
+          "field_pub_subject" : {
+            "table" : "search_api_db_publications",
+            "column" : "field_pub_subject",
+            "type" : "integer",
+            "boost" : "1.0"
+          },
+          "field_pub_elapsed_periods" : {
+            "table" : "search_api_db_publications",
+            "column" : "field_pub_elapsed_periods",
+            "type" : "integer",
+            "boost" : "1.0"
+          },
+          "field_pub_pubsource:field_pub_elapsed_periods" : {
+            "table" : "search_api_db_publications",
+            "column" : "field_pub_pubsource_field_pub_elapsed_periods",
             "type" : "integer",
             "boost" : "1.0"
           }

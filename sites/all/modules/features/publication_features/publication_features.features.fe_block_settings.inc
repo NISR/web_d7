@@ -45,6 +45,39 @@ function publication_features_default_fe_block_settings() {
     'visibility' => 0,
   );
 
+  $export['facetapi-XJuBAz0WMx58FOka1GAp3HIT9Ys4VLW3'] = array(
+    'cache' => -1,
+    'css_class' => 'clearfix',
+    'custom' => 0,
+    'delta' => 'XJuBAz0WMx58FOka1GAp3HIT9Ys4VLW3',
+    'module' => 'facetapi',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'bartik' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'bartik',
+        'weight' => 0,
+      ),
+      'garland' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'garland',
+        'weight' => 0,
+      ),
+      'porto_sub' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'porto_sub',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '<none>',
+    'visibility' => 0,
+  );
+
   $export['views-publication_widgets-fi'] = array(
     'cache' => -1,
     'css_class' => 'col-md-12',
