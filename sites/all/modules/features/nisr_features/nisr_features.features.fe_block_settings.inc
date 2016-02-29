@@ -47,7 +47,7 @@ function nisr_features_default_fe_block_settings() {
 
   $export['block-copyright'] = array(
     'cache' => -1,
-    'css_class' => 'col-md-9',
+    'css_class' => '',
     'custom' => 0,
     'machine_name' => 'copyright',
     'module' => 'block',

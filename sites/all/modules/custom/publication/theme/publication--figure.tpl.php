@@ -27,16 +27,22 @@
  * @see template_preprocess_entity()
  * @see template_process()
  */
-
 ?>
-<div onclick="javascript:window.open('statistical-publications/<?php print $subject_parameter?>/figures','_self')" class="figure-wrapper <?php print $classes; ?> clearfix recent-posts"<?php print $attributes; ?>>
-	<div class="col-md-8 figure-credentials">
-		<div class="figure-name"><?php print $title ?></div>
-		<div class="figure-unit"><?php print render($content['field_pub_fig_unit'])?></div>	
-		<div class="figure-period"><?php print render($content['field_pub_fig_values']['#items'][0]['tabledata'][0][1])?></div>
+<div class="col-md-12 <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+	<div class="col-md-6">
+	  <?php if (!$page): ?>
+	    <h2<?php print $title_attributes; ?>>
+	        <?php print $title; ?>
+	    </h2>
+	  <?php endif; ?>
+	  <?php print render($content['field_pub_fig_unit'])?>
 	</div>
-	<div class="col-md-4">
-		<div class="figure-value"><h1><?php print render($content['field_pub_fig_values']['#items'][0]['tabledata'][1][1])?></h1></div>
+	<div class="col-md-3">
+	  <h2><?php print render($content['field_pub_fig_values']['#items'][0]['tabledata'][1][1])?></h2>
+	  <?php print render($content['field_pub_fig_values']['#items'][0]['tabledata'][0][1])?>
+	</div>	
+	<div class="col-md-3">
+	  <h2><?php print render($content['field_pub_fig_values']['#items'][0]['tabledata'][1][0])?></h2>
+	  <div><?php print t('from corresponding previous year')?></div>
 	</div>
 </div>
-

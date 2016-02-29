@@ -313,30 +313,6 @@ function nisr_features_default_search_api_server() {
             "type" : "string",
             "boost" : "1.0"
           },
-          "field_doc_subject" : {
-            "table" : "search_api_db_publications_field_doc_subject",
-            "column" : "value",
-            "type" : "list\\u003Cinteger\\u003E",
-            "boost" : "1.0"
-          },
-          "field_pub_pubsource" : {
-            "table" : "search_api_db_publications_field_pub_pubsource",
-            "column" : "value",
-            "type" : "list\\u003Cinteger\\u003E",
-            "boost" : "1.0"
-          },
-          "period" : {
-            "table" : "search_api_db_publications",
-            "column" : "period",
-            "type" : "integer",
-            "boost" : "1.0"
-          },
-          "field_pub_elapsed_periods" : {
-            "table" : "search_api_db_publications",
-            "column" : "field_pub_elapsed_periods",
-            "type" : "integer",
-            "boost" : "1.0"
-          },
           "field_pub_tags" : {
             "table" : "search_api_db_publications_field_pub_tags",
             "column" : "value",
@@ -347,6 +323,24 @@ function nisr_features_default_search_api_server() {
             "table" : "search_api_db_publications_field_pub_regions",
             "column" : "value",
             "type" : "list\\u003Cinteger\\u003E",
+            "boost" : "1.0"
+          },
+          "period_days_number" : {
+            "table" : "search_api_db_publications",
+            "column" : "period_days_number",
+            "type" : "integer",
+            "boost" : "1.0"
+          },
+          "period_time_ago" : {
+            "table" : "search_api_db_publications",
+            "column" : "period_time_ago",
+            "type" : "string",
+            "boost" : "1.0"
+          },
+          "field_pub_pubsource:field_pub_subject" : {
+            "table" : "search_api_db_publications",
+            "column" : "field_pub_pubsource_field_pub_subject",
+            "type" : "integer",
             "boost" : "1.0"
           }
         },

@@ -372,10 +372,9 @@ span.tag{
 }
 
 .region-after-content .texture .content{
-	background: url('../../Porto/img/patterns/worn_dots.png');
+	background: #F4F4F4 ;/*url('../../Porto/img/patterns/worn_dots.png');*/
 	padding:10px;
 	min-height: 350px;
-	border-bottom:1px solid #000;
 }
 
 .centered-box h2{

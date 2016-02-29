@@ -579,6 +579,13 @@ function publication_preprocess_entity(&$vars){
 		$vars['dataset']['table'] = '';
 		$vars['dataset']['chart'] = draw_chart($elements['field_pub_dataset']['#items'][0]['target_id'],$view_mode,$range);
 	}
+	
+	if($view_mode == 'featured' && $vars['publication']->type == 'figure'){
+		$pub_id = $vars['publication']->field_pub_pubsource['und'][0]['target_id'];
+		$pub_source = publication_load($pub_id);
+		$term = taxonomy_term_load($pub_source->field_pub_subject['und'][0]['tid']);
+		$vars['subject_parameter'] = get_label_dashed($term->name);
+	}
 }
 
 /**
@@ -711,7 +718,7 @@ function draw_chart($pub_id,$view_mode,$range = array()){
 	    	'#legend_position' => ($view_mode == 'full') ? 'right' : 'top',
 	    	//'#legend_font_size' => ($view_mode == 'full') ? '' : '1em',
 	    	'#data_labels' => FALSE,
-	    	'#width' => ($view_mode == 'full') ? '730px' : '600px',
+	    	'#width' => ($view_mode == 'full') ? '730px' : '630px',
 	    	'#height'=> ($view_mode == 'full') ? '350px' : '300px',
 	);
 		

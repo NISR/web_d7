@@ -893,6 +893,448 @@ function publication_features_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'publication-figure-field_pub_fig_unit'.
+  $field_instances['publication-figure-field_pub_fig_unit'] = array(
+    'bundle' => 'figure',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'The unit by which this figure is expressed.<br>
+E.g : February 2014 = 100, current prices,Billions USD etc',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'featured' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'publication',
+    'field_name' => 'field_pub_fig_unit',
+    'label' => 'Unit',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'publication-figure-field_pub_fig_values'.
+  $field_instances['publication-figure-field_pub_fig_values'] = array(
+    'bundle' => 'figure',
+    'default_value' => array(
+      0 => array(
+        'tablefield' => array(
+          'cell_0_0' => '',
+          'cell_0_1' => '',
+          'cell_1_0' => '',
+          'cell_1_1' => '',
+          'import' => array(
+            'file' => '',
+            'import' => 'Upload CSV',
+          ),
+          'rebuild' => array(
+            'count_cols' => 2,
+            'count_rows' => 2,
+            'rebuild' => 'Rebuild Table',
+          ),
+        ),
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Period value matrix on which you should set the periods on the first row. E.g : March 14 and March 15 to be followed by the respective values on the second row.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'tablefield',
+        'settings' => array(
+          'trim_trailing_cols' => FALSE,
+          'trim_trailing_rows' => FALSE,
+        ),
+        'type' => 'tablefield_default',
+        'weight' => 2,
+      ),
+      'featured' => array(
+        'label' => 'hidden',
+        'module' => 'tablefield',
+        'settings' => array(
+          'trim_trailing_cols' => FALSE,
+          'trim_trailing_rows' => FALSE,
+        ),
+        'type' => 'tablefield_default',
+        'weight' => 3,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'tablefield',
+        'settings' => array(
+          'trim_trailing_cols' => FALSE,
+          'trim_trailing_rows' => FALSE,
+        ),
+        'type' => 'tablefield_default',
+        'weight' => 3,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'module' => 'tablefield',
+        'settings' => array(
+          'trim_trailing_cols' => FALSE,
+          'trim_trailing_rows' => FALSE,
+        ),
+        'type' => 'tablefield_default',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'publication',
+    'field_name' => 'field_pub_fig_values',
+    'label' => 'Values',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'tablefield',
+      'settings' => array(),
+      'type' => 'tablefield',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'publication-figure-field_pub_pubsource'.
+  $field_instances['publication-figure-field_pub_pubsource'] = array(
+    'bundle' => 'figure',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'The source report publication',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 0,
+      ),
+      'featured' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => 1,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'publication',
+    'field_name' => 'field_pub_pubsource',
+    'label' => 'Source',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => 1,
+      ),
+      'type' => 'options_select',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'publication-infographic_item-field_pub_body'.
+  $field_instances['publication-infographic_item-field_pub_body'] = array(
+    'bundle' => 'infographic_item',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'publication',
+    'field_name' => 'field_pub_body',
+    'label' => 'Body',
+    'required' => 0,
+    'settings' => array(
+      'display_summary' => 1,
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 20,
+        'summary_rows' => 5,
+      ),
+      'type' => 'text_textarea_with_summary',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'publication-infographic_item-field_pub_files'.
+  $field_instances['publication-infographic_item-field_pub_files'] = array(
+    'bundle' => 'infographic_item',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 1,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
+      'title_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'publication',
+    'field_name' => 'field_pub_files',
+    'label' => 'File',
+    'required' => 0,
+    'settings' => array(
+      'description_field' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'pdf jpeg jpg png gif tiff bmp',
+      'filefield_paths' => array(
+        'active_updating' => 0,
+        'file_name' => array(
+          'options' => array(
+            'pathauto' => 0,
+            'slashes' => 0,
+            'transliterate' => 0,
+          ),
+          'value' => '[file:ffp-name-only-original].[file:ffp-extension-original]',
+        ),
+        'file_path' => array(
+          'options' => array(
+            'pathauto' => 0,
+            'slashes' => 0,
+            'transliterate' => 0,
+          ),
+          'value' => 'publications/[publication:uuid]',
+        ),
+        'redirect' => FALSE,
+        'retroactive_update' => 0,
+      ),
+      'filefield_paths_enabled' => 1,
+      'max_filesize' => '',
+      'media_library_include_in_library' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'file',
+      'settings' => array(
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'file_generic',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'publication-infographic_item-field_pub_pubsource'.
+  $field_instances['publication-infographic_item-field_pub_pubsource'] = array(
+    'bundle' => 'infographic_item',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 2,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+      'title_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'publication',
+    'field_name' => 'field_pub_pubsource',
+    'label' => 'Source',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => 1,
+      ),
+      'type' => 'options_select',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'publication-infographic_item-field_pub_subject'.
+  $field_instances['publication-infographic_item-field_pub_subject'] = array(
+    'bundle' => 'infographic_item',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
+      ),
+      'title_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'publication',
+    'field_name' => 'field_pub_subject',
+    'label' => 'Subjects / Themes',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'view' => array(
+      'args' => array(),
+      'display_name' => '',
+      'match_operator' => 'CONTAINS',
+      'size' => '',
+      'view_name' => '',
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => 1,
+      ),
+      'type' => 'options_select',
+      'weight' => 1,
+    ),
+  );
+
   // Exported field_instance: 'publication-statistical_article-field_pub_body'.
   $field_instances['publication-statistical_article-field_pub_body'] = array(
     'bundle' => 'statistical_article',
@@ -1425,6 +1867,13 @@ Leave empty for no range
     'settings' => array(
       'user_register_form' => FALSE,
     ),
+    'view' => array(
+      'args' => array(),
+      'display_name' => '',
+      'match_operator' => 'CONTAINS',
+      'size' => '',
+      'view_name' => '',
+    ),
     'widget' => array(
       'active' => 1,
       'module' => 'options',
@@ -1562,10 +2011,10 @@ Leave empty for no range
     ),
     'entity_type' => 'publication',
     'field_name' => 'field_pub_body',
-    'label' => 'Summary',
+    'label' => 'Body',
     'required' => 0,
     'settings' => array(
-      'display_summary' => 0,
+      'display_summary' => 1,
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
@@ -1909,7 +2358,7 @@ Leave empty for no range
       ),
       'filefield_paths_enabled' => 1,
       'max_filesize' => '',
-      'media_library_include_in_library' => FALSE,
+      'media_library_include_in_library' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2472,21 +2921,28 @@ Leave empty for no range
   t('Days');
   t('Double click on the select box to choose from the list a subject/area');
   t('Elapsed periods');
+  t('File');
   t('Files');
   t('Number of days elapsed');
   t('Period');
+  t('Period value matrix on which you should set the periods on the first row. E.g : March 14 and March 15 to be followed by the respective values on the second row.');
   t('Published');
   t('Range');
   t('Regions');
   t('Related');
   t('Source');
   t('Subject');
+  t('Subjects / Themes');
   t('Summary');
   t('Tags');
   t('The period range evaluated in format <i>period1;period2</i>. E.g: <i>Feb-14;Oct-14</i> or <i>2005;2008</i>. They have to exactly conform the values that are stored in the dataset entity above.<br/>
 Leave empty for no range
 ');
+  t('The source report publication');
+  t('The unit by which this figure is expressed.<br>
+E.g : February 2014 = 100, current prices,Billions USD etc');
   t('Type');
+  t('Unit');
   t('Use only if this report is not deducted from a datasource(survey,compilation) incidence, otherwise leave blank');
   t('Value');
   t('Values');

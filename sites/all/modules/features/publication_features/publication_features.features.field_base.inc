@@ -371,10 +371,53 @@ function publication_features_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_pub_fig_unit'.
+  $field_bases['field_pub_fig_unit'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_pub_fig_unit',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
+  // Exported field_base: 'field_pub_fig_values'.
+  $field_bases['field_pub_fig_values'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_pub_fig_values',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'tablefield',
+    'settings' => array(
+      'cell_processing' => 0,
+      'export' => 0,
+      'lock_values' => 1,
+      'profile2_private' => FALSE,
+      'restrict_rebuild' => 1,
+    ),
+    'translatable' => 0,
+    'type' => 'tablefield',
+  );
+
   // Exported field_base: 'field_pub_files'.
   $field_bases['field_pub_files'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_pub_files',
@@ -466,7 +509,7 @@ function publication_features_field_default_field_bases() {
   // Exported field_base: 'field_pub_pubsource'.
   $field_bases['field_pub_pubsource'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_pub_pubsource',
@@ -481,6 +524,9 @@ function publication_features_field_default_field_bases() {
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
+          'entityqueue' => array(
+            'status' => 0,
+          ),
           'views-select-list' => array(
             'status' => 0,
           ),
@@ -494,6 +540,7 @@ function publication_features_field_default_field_bases() {
           'statistical_report' => 'statistical_report',
         ),
       ),
+      'profile2_private' => FALSE,
       'target_type' => 'publication',
     ),
     'translatable' => 0,

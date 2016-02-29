@@ -45,39 +45,6 @@ function publication_features_default_fe_block_settings() {
     'visibility' => 0,
   );
 
-  $export['facetapi-TI4sFfxRmp2Yty6vEF6QDlCkDIpRNqDJ'] = array(
-    'cache' => -1,
-    'css_class' => '',
-    'custom' => 0,
-    'delta' => 'TI4sFfxRmp2Yty6vEF6QDlCkDIpRNqDJ',
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'bartik' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'bartik',
-        'weight' => 0,
-      ),
-      'garland' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'garland',
-        'weight' => 0,
-      ),
-      'porto_sub' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'porto_sub',
-        'weight' => 0,
-      ),
-    ),
-    'title' => 'Periods',
-    'visibility' => 0,
-  );
-
   $export['views-publication_widgets-fi'] = array(
     'cache' => -1,
     'css_class' => 'col-md-12',
@@ -113,7 +80,7 @@ function publication_features_default_fe_block_settings() {
 
   $export['views-publication_widgets-fsa'] = array(
     'cache' => -1,
-    'css_class' => 'col-md-6',
+    'css_class' => 'col-md-6 box-outline texture',
     'custom' => 0,
     'delta' => 'publication_widgets-fsa',
     'module' => 'views',

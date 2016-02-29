@@ -65,7 +65,7 @@ function nisr_features_context_default_contexts() {
           'module' => 'nodesinblock',
           'delta' => '0',
           'region' => 'before_content',
-          'weight' => '-10',
+          'weight' => '-56',
         ),
         'views-publication_widgets-fsa' => array(
           'module' => 'views',
@@ -73,9 +73,9 @@ function nisr_features_context_default_contexts() {
           'region' => 'before_content',
           'weight' => '-9',
         ),
-        'views-press-featured_news' => array(
+        'views-publication_widgets-key_figures' => array(
           'module' => 'views',
-          'delta' => 'press-featured_news',
+          'delta' => 'publication_widgets-key_figures',
           'region' => 'before_content',
           'weight' => '-8',
         ),
@@ -102,12 +102,6 @@ function nisr_features_context_default_contexts() {
           'delta' => 'gcal_events-0',
           'region' => 'after_content',
           'weight' => '-49',
-        ),
-        'views-publication_widgets-fi' => array(
-          'module' => 'views',
-          'delta' => 'publication_widgets-fi',
-          'region' => 'after_content',
-          'weight' => '-48',
         ),
         'views-twitter_messages-tweets_block' => array(
           'module' => 'views',
@@ -222,15 +216,15 @@ function nisr_features_context_default_contexts() {
           'region' => 'footer_bottom_left',
           'weight' => '-54',
         ),
-        'block-41' => array(
-          'module' => 'block',
-          'delta' => '41',
-          'region' => 'footer_bottom_left',
-          'weight' => '-53',
-        ),
         'block-40' => array(
           'module' => 'block',
           'delta' => '40',
+          'region' => 'footer_bottom_left',
+          'weight' => '-53',
+        ),
+        'block-41' => array(
+          'module' => 'block',
+          'delta' => '41',
           'region' => 'footer_bottom_left',
           'weight' => '-52',
         ),

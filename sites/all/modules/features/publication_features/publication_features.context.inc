@@ -96,7 +96,9 @@ function publication_features_context_default_contexts() {
   $context->conditions = array(
     'views' => array(
       'values' => array(
-        'publications_search' => 'publications_search',
+        'publications_search:infographic_items' => 'publications_search:infographic_items',
+        'publications_search:statistical_articles' => 'publications_search:statistical_articles',
+        'publications_search:statistical_reports' => 'publications_search:statistical_reports',
       ),
     ),
   );
@@ -115,9 +117,9 @@ function publication_features_context_default_contexts() {
           'region' => 'content',
           'weight' => '-9',
         ),
-        'facetapi-TI4sFfxRmp2Yty6vEF6QDlCkDIpRNqDJ' => array(
+        'facetapi-6vFYYYYX2eramUum0nugXJVQr3BFRGM1' => array(
           'module' => 'facetapi',
-          'delta' => 'TI4sFfxRmp2Yty6vEF6QDlCkDIpRNqDJ',
+          'delta' => '6vFYYYYX2eramUum0nugXJVQr3BFRGM1',
           'region' => 'sidebar_left',
           'weight' => '-10',
         ),
