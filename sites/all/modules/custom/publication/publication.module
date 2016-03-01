@@ -580,11 +580,17 @@ function publication_preprocess_entity(&$vars){
 		$vars['dataset']['chart'] = draw_chart($elements['field_pub_dataset']['#items'][0]['target_id'],$view_mode,$range);
 	}
 	
+	//Figures
 	if($view_mode == 'featured' && $vars['publication']->type == 'figure'){
 		$pub_id = $vars['publication']->field_pub_pubsource['und'][0]['target_id'];
 		$pub_source = publication_load($pub_id);
 		$term = taxonomy_term_load($pub_source->field_pub_subject['und'][0]['tid']);
 		$vars['subject_parameter'] = get_label_dashed($term->name);
+	}
+	
+	// Infographics
+	if($vars['publication']->type == 'infographic_item'){
+		isset($vars['publication']->field_pub_files['und'][0]['uri']) ? $vars['file_url'] = file_create_url($vars['publication']->field_pub_files['und'][0]['uri']) : $file_url;
 	}
 }
 

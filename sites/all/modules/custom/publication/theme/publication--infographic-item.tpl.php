@@ -34,13 +34,8 @@
 		<div class="content col-md-12"<?php print $content_attributes; ?>>
 	  <?php if (!$page): ?>
 	    <h4<?php print $title_attributes; ?>>
-	      <?php if ($url): ?>
-	        <a href="<?php print $url; ?>"><?php print $title; ?></a>
-	      <?php else: ?>
-	        <?php print $title; ?>
-	      <?php endif; ?>
+	        <a href="<?php print $file_url ?>"><?php print $title; ?></a>
 	    </h4>
 	  <?php endif; ?>
-			<div class="body"><?php print render($content['field_pub_body'])?></div>
 		</div>
 </div>
