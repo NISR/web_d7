@@ -1957,6 +1957,16 @@ function publication_features_views_default_views() {
   $handler->display->display_options['fields']['title']['element_wrapper_type'] = 'h4';
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Indexed Publication: Period/Days */
+  $handler->display->display_options['sorts']['period_days_number']['id'] = 'period_days_number';
+  $handler->display->display_options['sorts']['period_days_number']['table'] = 'search_api_index_publications';
+  $handler->display->display_options['sorts']['period_days_number']['field'] = 'period_days_number';
+  /* Sort criterion: Indexed Publication: Entity ID */
+  $handler->display->display_options['sorts']['search_api_id']['id'] = 'search_api_id';
+  $handler->display->display_options['sorts']['search_api_id']['table'] = 'search_api_index_publications';
+  $handler->display->display_options['sorts']['search_api_id']['field'] = 'search_api_id';
+  $handler->display->display_options['sorts']['search_api_id']['order'] = 'DESC';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Indexed Publication: Type */

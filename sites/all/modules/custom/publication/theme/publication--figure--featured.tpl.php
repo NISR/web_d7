@@ -28,8 +28,10 @@
  * @see template_process()
  */
 
+// statistical-publications/<?php print $subject_parameter/figures
+
 ?>
-<div onclick="javascript:window.open('statistical-publications/<?php print $subject_parameter?>/figures','_self')" class="figure-wrapper <?php print $classes; ?> clearfix recent-posts"<?php print $attributes; ?>>
+<div onclick="javascript:window.open('<?php print $url;?>','_self')" class="figure-wrapper <?php print $classes; ?> clearfix recent-posts"<?php print $attributes; ?>>
 	<div class="col-md-8 figure-credentials">
 		<div class="figure-name"><?php print $title ?></div>
 		<div class="figure-unit"><?php print render($content['field_pub_fig_unit'])?></div>	

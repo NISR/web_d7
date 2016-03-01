@@ -29,7 +29,7 @@
  */
 
 ?>
-<div class="col-md-12 <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+<div class="col-md-9 <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 	<div class="col-md-6">
     <h2<?php print $title_attributes; ?>>
         <?php print $title; ?>

@@ -1243,11 +1243,8 @@ E.g : February 2014 = 100, current prices,Billions USD etc',
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => 1,
-        ),
-        'type' => 'entityreference_label',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 1,
       ),
       'title_only' => array(

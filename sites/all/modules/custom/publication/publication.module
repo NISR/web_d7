@@ -65,7 +65,7 @@ function publication_entities_by_term_alter(&$entities,$term){
 		
 	if($reports['count']){
 		$entities['reports'] = array(
-									"title" => array("#markup" => t($reports['title']),"#prefix" => "<div class=''><div class=''><h4 class=''>","#suffix" => "</h4></div>"),
+									"title" => array("#markup" => t($reports['title']),"#prefix" => "<div class=''><div class=''><h1 class=''>","#suffix" => "</h1></div>"),
 									'items' => array('#markup' => $reports['result'],'#prefix' => "<div class='clearfix'>",'#suffix' => '</div>'),
 										);
 
@@ -74,7 +74,7 @@ function publication_entities_by_term_alter(&$entities,$term){
 			
 	if($articles['count']){
 		$entities['articles'] = array(
-									'title' => array('#markup' => t($articles['title']),"#prefix" => "<div class=''><div class=''><h4 class=''>","#suffix" => "</h4></div>"),
+									'title' => array('#markup' => t($articles['title']),"#prefix" => "<div class=''><div class=''><h1 class=''>","#suffix" => "</h1></div>"),
 									'items' => array('#markup' => $articles['result'],'#prefix' => "<div class='clearfix' style='margin-left:15px;'>",'#suffix' => '</div>'),  
 										);
 
@@ -83,7 +83,7 @@ function publication_entities_by_term_alter(&$entities,$term){
 
 	if($infographic_items['count']){
 		$entities['infographic_items'] = array(
-									'title' => array('#markup' => t($infographic_items['title']),"#prefix" => "<div class=''><div class=''><h4 class=''>","#suffix" => "</h4></div>"),
+									'title' => array('#markup' => t($infographic_items['title']),"#prefix" => "<div class=''><div class=''><h1 class=''>","#suffix" => "</h1></div>"),
 									'items' => array('#markup' => $infographic_items['result'],'#prefix' => "<div class='clearfix' style='margin-left:15px;'>",'#suffix' => '</div>'),  
 										);
 
@@ -92,7 +92,7 @@ function publication_entities_by_term_alter(&$entities,$term){
 
 	if($figures['count']){
 		$entities['figures'] = array(
-									"title" => array("#markup" => t($figures['title']),"#prefix" => "<div class=''><div class=''><h4 class=''>","#suffix" => "</h4></div>"),
+									"title" => array("#markup" => t($figures['title']),"#prefix" => "<div class=''><div class=''><h1 class=''>","#suffix" => "</h1></div>"),
 									'items' => array('#markup' => $figures['result'],'#prefix' => "<div class='clearfix'>",'#suffix' => '</div>'),
 										);
 
@@ -100,7 +100,7 @@ function publication_entities_by_term_alter(&$entities,$term){
 		
 	if($documents['count']){
 		$entities['documents'] = array(
-									"title" => array("#markup" => t($documents['title']),"#prefix" => "<div class=''><div class=''><h4 class=''>","#suffix" => "</h4></div>"),
+									"title" => array("#markup" => t($documents['title']),"#prefix" => "<div class=''><div class=''><h1 class=''>","#suffix" => "</h1></div>"),
 									'items' => array('#markup' => $documents['result'],'#prefix' => "<div class='clearfix'>",'#suffix' => '</div>'),
 										);
 
