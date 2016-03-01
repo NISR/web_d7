@@ -17,7 +17,7 @@
 .publication-item-cover-wrapper{float:left;}
 .publication-item-row{float:left;width:50%;padding:1em;}
 .publication-item-cover{border:0px;margin-top:0px;margin-right: 15px;}
-.publication-item-title{display: table-cell;vertical-align: middle;padding-right: 5px;}
+.publication-item-title{display: table-cell;vertical-align: middle;padding-right: 5px}
 .publication-item-sheet{font-size:1em; border:0 none;width: 100%}
 .publication-item-sheet-row{padding-bottom:2px;border: 1px solid #ccc;}
 .publication-item-body{margin-right: 10px;float: left;width: 55%}

@@ -33,7 +33,7 @@
 	<div class="col-md-6">
 	  <?php if (!$page): ?>
 	    <h2<?php print $title_attributes; ?>>
-	        <?php print $title; ?>
+	        <?php print "<a href='" . $url . "'>" . $title . "</a>"; ?>
 	    </h2>
 	  <?php endif; ?>
 	  <?php print render($content['field_pub_fig_unit'])?>
@@ -60,9 +60,4 @@
 	  <div><?php print t('from the corresponding previous year') . ' (' . $content['field_pub_fig_values']['#items'][0]['tabledata'][0][0] . ')' ?></div>
 	</div>
 </div>
-<div class="content"<?php print $content_attributes; ?>>
-  <?php 
-    	hide($content['field_pub_fig_values']);  
-  		print render($content);
-  ?>
-</div>
+

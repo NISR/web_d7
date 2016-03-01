@@ -14,6 +14,7 @@ function nisr_features_user_default_permissions() {
   $permissions['access content'] = array(
     'name' => 'access content',
     'roles' => array(
+      'Content manager' => 'Content manager',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
     ),

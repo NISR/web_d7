@@ -31,11 +31,9 @@
 ?>
 <div class="col-md-12 <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 	<div class="col-md-6">
-	  <?php if (!$page): ?>
-	    <h2<?php print $title_attributes; ?>>
-	        <?php print $title; ?>
-	    </h2>
-	  <?php endif; ?>
+    <h2<?php print $title_attributes; ?>>
+        <?php print $title; ?>
+    </h2>
 	  <?php print render($content['field_pub_fig_unit'])?>
 	</div>
 	<div class="col-md-3">

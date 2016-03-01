@@ -59,6 +59,7 @@ function publication_entities_by_term_alter(&$entities,$term){
 	$reports  = get_embed_view('publications_search','latest_statistical_reports',array($term));
 	$articles = get_embed_view('publications_search','latest_statistical_articles',array($term));
 	$infographic_items = get_embed_view('publications_search','latest_infographic_items',array($term));
+	$figures = get_embed_view('publications_search','figures',array($term));
 	$documents = get_embed_view('documents_search','documents',array($term));
 	
 		
@@ -88,6 +89,15 @@ function publication_entities_by_term_alter(&$entities,$term){
 
 		$entities['infographic_items']['more'] = array('#theme' => 'link','#text' => t('More infographics'),'#path' => 'statistical-publications/' . $term . '/infographics','#options' => array('attributes' => array('class' => array('btn','btn-sm','btn-primary','read-more')),'html' => TRUE),'#prefix' =>"<div>",'#suffix' => '</div></div>');
 	}
+
+	if($figures['count']){
+		$entities['figures'] = array(
+									"title" => array("#markup" => t($figures['title']),"#prefix" => "<div class=''><div class=''><h4 class=''>","#suffix" => "</h4></div>"),
+									'items' => array('#markup' => $figures['result'],'#prefix' => "<div class='clearfix'>",'#suffix' => '</div>'),
+										);
+
+	}		
+		
 	if($documents['count']){
 		$entities['documents'] = array(
 									"title" => array("#markup" => t($documents['title']),"#prefix" => "<div class=''><div class=''><h4 class=''>","#suffix" => "</h4></div>"),
@@ -235,6 +245,7 @@ function publication_entity_view($entity, $type, $view_mode, $langcode) {
 	    	case 'statistical_report':
 	    	case 'statistical_article' :
 	    	case 'infographic_item':
+	    	case 'figure':
 	    		if(count($entity->field_pub_subject)){
 			 		$wrapper = entity_metadata_wrapper('publication',$entity);
 			 		$term_id = $wrapper->field_pub_subject->tid->value();
@@ -595,6 +606,19 @@ function publication_preprocess_entity(&$vars){
 }
 
 /**
+ ** Implements hook_preprocess_page
+ **/
+function publication_preprocess_page(&$variables){
+	$variables['bundle_label'] = '';
+	$publication = NULL;
+	if(isset($variables['page']['content']['system_main']['publication'])){		
+		 $entity_info = entity_get_info('publication');
+		 $publication = current($variables['page']['content']['system_main']['publication']);
+		 $variables['bundle_label'] = $entity_info['bundles'][$publication['#bundle']]['label'];
+	}
+}
+
+/**
   * Implements hook_views_api().
   */
 function publication_views_api() {
@@ -721,11 +745,11 @@ function draw_chart($pub_id,$view_mode,$range = array()){
 	 		//'#title' => ($view_mode == 'full') ? $pub->title : '',
 	    	'#legend' => TRUE,
 	    	//'#legend_title' => ($view_mode == 'full') ? '' : NULL,
-	    	'#legend_position' => ($view_mode == 'full') ? 'right' : 'top',
+	    	'#legend_position' => 'top',
 	    	//'#legend_font_size' => ($view_mode == 'full') ? '' : '1em',
 	    	'#data_labels' => FALSE,
-	    	'#width' => ($view_mode == 'full') ? '730px' : '630px',
-	    	'#height'=> ($view_mode == 'full') ? '350px' : '300px',
+	    	'#width' => '630px',
+	    	'#height'=> '300px',
 	);
 		
 	foreach($legend as $index => $value){

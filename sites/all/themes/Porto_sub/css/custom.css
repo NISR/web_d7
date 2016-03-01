@@ -311,6 +311,18 @@ span.tag{
 	padding: 0px 5px 0px 5px;
 }
 
+span.gold{
+	background : #ffd700;	
+}
+
+span.silver{
+	background: #c0c0c0;
+}
+
+span.bronze{
+	background: #cd7f32;	
+}
+
 .body{
 
 }

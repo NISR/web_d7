@@ -29,7 +29,7 @@
  */
 
 ?>
-<div class="col-md-9 <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+<div class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 
   <?php if (!$page): ?>
     <h2<?php print $title_attributes; ?>>
@@ -40,7 +40,8 @@
       <?php endif; ?>
     </h2>
   <?php endif; ?>
-  <strong><?php print render($content['field_pub_publication_date']);?></strong>
+   <strong><?php print render($content['field_pub_publication_date']);?></strong>
+   <h4><?php print $title; ?></h4>
 	<?php if (isset($dataset) && $dataset['chart']): ?>
 	  <div class="chart-box">
 	  		<?php 
@@ -49,6 +50,7 @@
 	  		?>
 	  </div>
 	<?php endif; ?>
+
   <div class="content"<?php print $content_attributes; ?>>
     <?php
     	hide($content['field_pub_dataset_range']);

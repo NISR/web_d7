@@ -65,7 +65,7 @@ function press_config_field_default_field_instances() {
   $field_instances['node-job_advert-field_notice_files'] = array(
     'bundle' => 'job_advert',
     'deleted' => 0,
-    'description' => 'Here goe the files related to this advertisement. E.g : The original advert, the written exam result list etc',
+    'description' => 'Here go the files related to this advertisement. E.g : The original advert, the written exam result list etc',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -92,7 +92,7 @@ function press_config_field_default_field_instances() {
     'label' => 'Files',
     'required' => 0,
     'settings' => array(
-      'description_field' => 0,
+      'description_field' => 1,
       'file_directory' => '',
       'file_extensions' => 'txt xls pdf rtf xml sav por tab htm mdb accdb doc docx ps xlsx csv ppt pptx',
       'filefield_paths' => array(
@@ -123,30 +123,11 @@ function press_config_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'file',
       'settings' => array(
-        'allowed_schemes' => array(
-          'flickr' => 0,
-          'public' => 'public',
-          'vimeo' => 0,
-          'youtube' => 0,
-        ),
-        'allowed_types' => array(
-          'application' => 0,
-          'audio' => 0,
-          'document' => 'document',
-          'image' => 0,
-          'video' => 0,
-        ),
-        'browser_plugins' => array(
-          'media_default--media_browser_1' => 0,
-          'media_default--media_browser_2' => 0,
-          'media_default--media_browser_my_files' => 0,
-          'media_internet' => 0,
-          'upload' => 'upload',
-        ),
+        'progress_indicator' => 'throbber',
       ),
-      'type' => 'media_generic',
+      'type' => 'file_generic',
       'weight' => 3,
     ),
   );
@@ -516,7 +497,7 @@ function press_config_field_default_field_instances() {
     'label' => 'Files',
     'required' => 0,
     'settings' => array(
-      'description_field' => 0,
+      'description_field' => 1,
       'file_directory' => '',
       'file_extensions' => 'txt xls pdf rtf xml sav por tab htm mdb accdb doc docx ps xlsx csv ppt pptx',
       'filefield_paths' => array(
@@ -547,30 +528,11 @@ function press_config_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'file',
       'settings' => array(
-        'allowed_schemes' => array(
-          'flickr' => 0,
-          'public' => 'public',
-          'vimeo' => 0,
-          'youtube' => 0,
-        ),
-        'allowed_types' => array(
-          'application' => 0,
-          'audio' => 0,
-          'document' => 'document',
-          'image' => 0,
-          'video' => 0,
-        ),
-        'browser_plugins' => array(
-          'media_default--media_browser_1' => 0,
-          'media_default--media_browser_2' => 0,
-          'media_default--media_browser_my_files' => 0,
-          'media_internet' => 0,
-          'upload' => 'upload',
-        ),
+        'progress_indicator' => 'throbber',
       ),
-      'type' => 'media_generic',
+      'type' => 'file_generic',
       'weight' => 3,
     ),
   );
@@ -580,7 +542,7 @@ function press_config_field_default_field_instances() {
   t('A <em>story</em>, similar in form to a <em>page</em>, is ideal for creating and displaying content that informs or engages website visitors. Press releases, site announcements, and informal blog-like entries may all be created with a <em>story</em> entry. By default, a <em>story</em> entry is automatically featured on the site\'s initial home page, and provides the ability to post comments.');
   t('Body');
   t('Files');
-  t('Here goe the files related to this advertisement. E.g : The original advert, the written exam result list etc');
+  t('Here go the files related to this advertisement. E.g : The original advert, the written exam result list etc');
   t('Media');
   t('Related Item(s)');
   t('Use this field to upload new media assets or re-use already present ones on the web server. You can also attach media assets from external sources like : Youtube, Vimeo or Flickr');

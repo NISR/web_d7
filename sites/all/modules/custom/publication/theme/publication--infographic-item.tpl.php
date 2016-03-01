@@ -38,4 +38,5 @@
 	    </h4>
 	  <?php endif; ?>
 		</div>
+		<?php print render($content)?>
 </div>

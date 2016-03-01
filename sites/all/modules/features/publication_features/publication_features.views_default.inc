@@ -1836,7 +1836,7 @@ function publication_features_views_default_views() {
   $handler->display->display_options['fields']['pub_id']['id'] = 'pub_id';
   $handler->display->display_options['fields']['pub_id']['table'] = 'search_api_index_publications';
   $handler->display->display_options['fields']['pub_id']['field'] = 'pub_id';
-  /* Field: Indexed Publication: File */
+  /* Field: Indexed Publication: Files */
   $handler->display->display_options['fields']['field_pub_files']['id'] = 'field_pub_files';
   $handler->display->display_options['fields']['field_pub_files']['table'] = 'search_api_index_publications';
   $handler->display->display_options['fields']['field_pub_files']['field'] = 'field_pub_files';
@@ -1867,6 +1867,9 @@ function publication_features_views_default_views() {
   $handler = $view->new_display('page', 'Figures', 'figures');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Figures';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Source: Subject (indexed) */
   $handler->display->display_options['arguments']['field_pub_pubsource_field_pub_subject']['id'] = 'field_pub_pubsource_field_pub_subject';
@@ -1976,8 +1979,7 @@ function publication_features_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'entity';
-  $handler->display->display_options['row_options']['view_mode'] = 'teaser';
+  $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Indexed Publication: Title */
@@ -1987,6 +1989,7 @@ function publication_features_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['element_wrapper_type'] = 'h4';
+  $handler->display->display_options['fields']['title']['element_wrapper_class'] = 'col-md-12';
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
