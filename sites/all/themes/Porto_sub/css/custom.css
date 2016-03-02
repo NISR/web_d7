@@ -195,10 +195,6 @@ ul.facetapi-facetapi-checkbox-links li{
 	text-align: center;
 }
 
-section.section{
-	margin:0;
-	padding:0px 0px 25px 0px;	
-}
 
 section.home-intro,
 section.page-header{
@@ -212,14 +208,20 @@ section.page-header h1{
 	color: #777;
 }
 
-section.section.section-footer{
+section.section-footer{
 	margin-bottom: 0px;	
+	margin-top:0px;
 }
 
 #block-views-publication-widgets-fi,
 #block-views-twitter-messages-tweets-block{
-	padding-left:0px;
-	padding-right: 0px;	
+	background: #F4F4F4;
+	margin-top: 30px;
+}
+
+.row-separator{
+	border-bottom: 1px solid ;
+	padding-bottom: 3px;	
 }
 
 /**
@@ -390,9 +392,14 @@ span.bronze{
 
 .region-after-content .box-highlighted h2{
 	border:none;
-	border-bottom:2px solid #000;
+	border-bottom:2px solid #fff;
+	border-left: 2px solid #2258A9; 
+	border-right: 2px solid #2258A9;
+	border-top: 2px solid #2258A9;	
 	margin: 0px;
-	padding-left: 10px
+	padding-left: 10px;
+	background: #33ABED;
+	color: #FFF;
 }
 
 .region-after-content .box-normal .content,
@@ -408,7 +415,10 @@ span.bronze{
 	border-bottom:1px solid #2258a9;
 	border-left:1px solid #2258a9;
 	border-right:1px solid #2258a9;	
-	background: #2258A9;
+	background: #33ABED;
+	border-bottom : 2px solid #2258A9;
+	border-left : 2px solid #2258A9; 
+	border-right : 2px solid #2258A9;
 }
 
 .region-after-content .box-highlighted .content,
@@ -416,13 +426,6 @@ span.bronze{
 .region-after-content .box-highlighted .content a:hover{
 	color:#FFF;	
 }
-
-.region-after-content .box-highlighted .content a,
-.region-after-content .box-highlighted .content a:hover{
-	text-decoration: underline;
-}
-
-
 
 .region-after-content .texture-grey .content{
 	background: #F4F4F4 ;/*url('../../Porto/img/patterns/worn_dots.png');*/

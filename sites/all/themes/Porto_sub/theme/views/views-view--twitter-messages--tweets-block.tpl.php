@@ -28,9 +28,9 @@
  */
 ?>
 <section class="section section-default section-footer">	
-	<div class="container">
-		<div class="icon-title"><i class="icon icon-featured fa-twitter"></i></div>
-		<div class="<?php print $classes; ?>">
+	<div class="container col-md-12">
+		<div class="icon-title col-md-2"><i class="icon icon-featured fa fa-5x fa-twitter"></i></div>
+		<div class="<?php print $classes; ?> col-md-10">
 		  <?php print render($title_prefix); ?>
 		  <?php if ($title): ?>
 		    <?php print $title; ?>
