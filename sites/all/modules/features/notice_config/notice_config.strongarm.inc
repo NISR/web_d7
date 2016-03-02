@@ -107,11 +107,11 @@ function notice_config_strongarm() {
       'display' => array(
         'notice_files_entity_view_1' => array(
           'default' => array(
-            'weight' => '10',
+            'weight' => '3',
             'visible' => TRUE,
           ),
           'full' => array(
-            'weight' => '10',
+            'weight' => '2',
             'visible' => TRUE,
           ),
           'teaser' => array(

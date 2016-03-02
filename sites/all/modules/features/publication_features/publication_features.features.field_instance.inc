@@ -1487,6 +1487,64 @@ Leave empty for no range
   );
 
   // Exported field_instance:
+  // 'publication-statistical_article-field_pub_elapsed_periods'.
+  $field_instances['publication-statistical_article-field_pub_elapsed_periods'] = array(
+    'bundle' => 'statistical_article',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 7,
+      ),
+      'featured' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'publication',
+    'field_name' => 'field_pub_elapsed_periods',
+    'label' => 'Elapsed periods',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance:
   // 'publication-statistical_article-field_pub_publication_date'.
   $field_instances['publication-statistical_article-field_pub_publication_date'] = array(
     'bundle' => 'statistical_article',

@@ -47,7 +47,7 @@ function datasource_features_default_fe_block_settings() {
 
   $export['views-datasource_widgets-fsi'] = array(
     'cache' => -1,
-    'css_class' => 'col-md-3 box-outline texture',
+    'css_class' => 'col-md-3 box-normal texture-grey',
     'custom' => 0,
     'delta' => 'datasource_widgets-fsi',
     'module' => 'views',

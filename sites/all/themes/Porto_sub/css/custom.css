@@ -346,10 +346,14 @@ span.bronze{
 }
 
 .region-before-content .box-title{
-	cursor:pointer;
 	padding:10px 10px 0 10px;
 	max-height: 110px;
 }
+
+.region-before-content .box-title a{
+	text-decoration: underline;
+}
+
 
 .region-before-content .owl-theme .owl-controls{
 	margin-top:-3px;
@@ -368,13 +372,14 @@ span.bronze{
 .region-before-content .btn-primary p{
 	color: #fff;	
 }
-.region-after-content .box-outline{
-	margin-top: 30px;
+
+.region-after-content .box-normal,
+.region-after-content .box-highlighted{
 	min-height: 400px;
 }
 
 
-.region-after-content .box-outline h2{
+.region-after-content .box-normal h2{
 	border-top:0px solid #000;
 	border-left:0px solid #000;
 	border-right:0px solid #000;
@@ -383,10 +388,44 @@ span.bronze{
 	padding-left: 10px
 }
 
-.region-after-content .texture .content{
-	background: #F4F4F4 ;/*url('../../Porto/img/patterns/worn_dots.png');*/
+.region-after-content .box-highlighted h2{
+	border:none;
+	border-bottom:2px solid #000;
+	margin: 0px;
+	padding-left: 10px
+}
+
+.region-after-content .box-normal .content,
+.region-after-content .box-highlighted .content{	
 	padding:10px;
 	min-height: 350px;
+	border-bottom-left-radius:.7em;
+	border-bottom-right-radius:.7em;
+}
+
+.region-after-content .box-highlighted .content{
+	border:none;
+	border-bottom:1px solid #2258a9;
+	border-left:1px solid #2258a9;
+	border-right:1px solid #2258a9;	
+	background: #2258A9;
+}
+
+.region-after-content .box-highlighted .content,
+.region-after-content .box-highlighted .content a,
+.region-after-content .box-highlighted .content a:hover{
+	color:#FFF;	
+}
+
+.region-after-content .box-highlighted .content a,
+.region-after-content .box-highlighted .content a:hover{
+	text-decoration: underline;
+}
+
+
+
+.region-after-content .texture-grey .content{
+	background: #F4F4F4 ;/*url('../../Porto/img/patterns/worn_dots.png');*/
 }
 
 .centered-box h2{

@@ -146,7 +146,7 @@ function publication_features_default_fe_block_settings() {
 
   $export['views-publication_widgets-fsr'] = array(
     'cache' => -1,
-    'css_class' => 'col-md-3 box-outline texture',
+    'css_class' => 'col-md-3 box-normal texture-grey',
     'custom' => 0,
     'delta' => 'publication_widgets-fsr',
     'module' => 'views',
@@ -179,7 +179,7 @@ function publication_features_default_fe_block_settings() {
 
   $export['views-publication_widgets-new'] = array(
     'cache' => -1,
-    'css_class' => 'col-md-3 box-outline texture',
+    'css_class' => 'col-md-3 box-highlighted',
     'custom' => 0,
     'delta' => 'publication_widgets-new',
     'module' => 'views',
