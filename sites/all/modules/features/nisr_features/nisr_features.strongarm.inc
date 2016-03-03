@@ -208,7 +208,7 @@ function nisr_features_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'gcal_events_footer_gcal_events-0';
-  $strongarm->value = '<div class="pull-right"><a class="btn btn-xs btn-primary" target="_blank" href="">Download PDF</a></div>                       ';
+  $strongarm->value = '<div class="pull-right"><a class="btn btn-xs btn-primary" target="_blank" href="">Learn more</a></div>                       ';
   $export['gcal_events_footer_gcal_events-0'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -271,7 +271,7 @@ function nisr_features_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'gcal_events_num_events_gcal_events-0';
-  $strongarm->value = '1';
+  $strongarm->value = '3';
   $export['gcal_events_num_events_gcal_events-0'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -299,17 +299,8 @@ function nisr_features_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'gcal_events_template_event_gcal_events-0';
-  $strongarm->value = '<iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;height=200&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=ie0qtk0seo5burtsibff5ilso0%40group.calendar.google.com&amp;color=%236B3304&amp;ctz=Asia%2FJerusalem" style="border:solid 1px #777" width="280" height="200" frameborder="0" scrolling="no"></iframe>
-<div class="calendarTable clearfix">
-	<div class="calendarRow">
-		<div class="calendarDateContainer">
-			<span class="day"><?php print date(\'d\',strtotime("#DATE#")) ;?></span>
-			<span class="month"><?php print date(\'M\',strtotime("#DATE#")) ;?></span>
-		</div>
-		<div class="calendarInfo"><div>UPCOMING RELEASE</div><div><a href="#LOC#">#TITLE#</a></div></div>
-	</div>
-</div>
-                       ';
+  $strongarm->value = '<div class=\'uppercase\'><?php print date(\'d M Y\',strtotime("#DATE#")) ;?></div>
+<div><a href="#LOC#">#TITLE#</a></div>';
   $export['gcal_events_template_event_gcal_events-0'] = $strongarm;
 
   $strongarm = new stdClass();

@@ -158,7 +158,7 @@ function publication_features_field_default_field_bases() {
   // Exported field_base: 'field_doc_subject'.
   $field_bases['field_doc_subject'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_doc_subject',
@@ -176,6 +176,7 @@ function publication_features_field_default_field_bases() {
           'parent' => 0,
         ),
       ),
+      'profile2_private' => FALSE,
     ),
     'translatable' => 0,
     'type' => 'taxonomy_term_reference',

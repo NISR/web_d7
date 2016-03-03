@@ -263,6 +263,12 @@ div.tweet-authorphoto img {
 /**
  ** Contents
  **/
+.btn-special{
+	font-size: 38px;
+	text-align: center;
+	margin-top: 10px;	
+}
+
 .featured-box{
 	cursor: pointer;	
 }
@@ -375,12 +381,8 @@ span.bronze{
 	color: #fff;	
 }
 
-.region-after-content .box-normal,
-.region-after-content .box-highlighted{
-	min-height: 400px;
-}
 
-
+.region-after-content .box-mini h2,
 .region-after-content .box-normal h2{
 	border-top:0px solid #000;
 	border-left:0px solid #000;
@@ -402,10 +404,19 @@ span.bronze{
 	color: #FFF;
 }
 
+.region-after-content .box-mini .content{
+	min-height: 180px;
+}
+
+.region-after-content .box-normal .content,
+.region-after-content .box-highlighted .content{	
+	min-height: 350px;
+}
+
+.region-after-content .box-mini .content,
 .region-after-content .box-normal .content,
 .region-after-content .box-highlighted .content{	
 	padding:10px;
-	min-height: 350px;
 	border-bottom-left-radius:.7em;
 	border-bottom-right-radius:.7em;
 }
@@ -473,7 +484,10 @@ span.bronze{
 	margin-left: auto;
 	margin-right: auto;
 	max-width: 730px;
+	max-height: 300px;;
 	background: #fff !important;
+	height: 100%;
+	width: 100%;
 }
 
 /**

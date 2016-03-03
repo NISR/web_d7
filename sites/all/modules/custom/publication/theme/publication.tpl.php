@@ -47,7 +47,7 @@
 			<div class=""><?php print render($content['field_pub_publication_date'])?></div>
 		</div>
 		<div class="content col-md-9"<?php print $content_attributes; ?>>
-         <h4><?php print $title; ?></h4>
+         <h1><?php print $title; ?></h1>
 			<div><?php print render($content)?></div>
 		</div>
 	</div>

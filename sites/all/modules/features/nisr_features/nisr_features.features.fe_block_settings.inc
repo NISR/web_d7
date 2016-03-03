@@ -177,6 +177,72 @@ function nisr_features_default_fe_block_settings() {
     'visibility' => 0,
   );
 
+  $export['block-nsds_button'] = array(
+    'cache' => -1,
+    'css_class' => 'col-md-3 box-mini',
+    'custom' => 0,
+    'machine_name' => 'nsds_button',
+    'module' => 'block',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'bartik' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'bartik',
+        'weight' => 0,
+      ),
+      'garland' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'garland',
+        'weight' => 0,
+      ),
+      'porto_sub' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'porto_sub',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '<none>',
+    'visibility' => 0,
+  );
+
+  $export['block-visa_button'] = array(
+    'cache' => -1,
+    'css_class' => 'col-md-3',
+    'custom' => 0,
+    'machine_name' => 'visa_button',
+    'module' => 'block',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'bartik' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'bartik',
+        'weight' => 0,
+      ),
+      'garland' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'garland',
+        'weight' => 0,
+      ),
+      'porto_sub' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'porto_sub',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '<none>',
+    'visibility' => 0,
+  );
+
   $export['calendar-calendar_legend'] = array(
     'cache' => 1,
     'css_class' => '',

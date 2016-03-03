@@ -238,42 +238,46 @@ function publication_entity_presave($entity, $type){
 function publication_entity_view($entity, $type, $view_mode, $langcode) {
   $breadcrumb = array();
   $path = explode('/',request_path());	
+  $term_id = $term_name = $root = '';
   
   $breadcrumb[] = l(t('Home'),'<front>');
-  if ($type == 'publication' && $view_mode == 'full'){
-	    switch($entity->type){
-	    	case 'statistical_report':
+  if ($type == 'publication' && $view_mode == 'full'){		
+		switch($entity->type){
 	    	case 'statistical_article' :
 	    	case 'infographic_item':
 	    	case 'figure':
-	    		if(count($entity->field_pub_subject)){
-			 		$wrapper = entity_metadata_wrapper('publication',$entity);
-			 		$term_id = $wrapper->field_pub_subject->tid->value();
-			 		$term_name = $wrapper->field_pub_subject->name->value();
-			 		 		
-					$parent_terms = taxonomy_get_parents_all($term_id);
-					
-					// Set breadcrumb in the form
-					// Home > Publications > Statistics > Subject > Reports > Title 
-					
-					$breadcrumb[] = l(t('Statistical publications'),'statistical-publications');
-				   foreach(array_reverse($parent_terms) as $parent){
-				   	$breadcrumb[] = l(t($parent->name),"statistical-publications/" . get_label_dashed($parent->name));
-				   } 
-				   
-				   if($entity->type == 'statistical_report'){
-						$breadcrumb[] = l(t('Statistical reports'),'statistical-publications/' . get_label_dashed($term_name) . '/reports');
-					}else{
-						$breadcrumb[] = l(t('Statistical articles'),'statistical-publications/' . get_label_dashed($term_name) . '/articles');				
-					}
-					drupal_set_breadcrumb($breadcrumb);
-				}
-				break;
+	    		$wrapper = entity_metadata_wrapper('publication',$entity);
+				$term_id = $wrapper->field_pub_pubsource->field_pub_subject->tid->value();
+			 	$term_name = $wrapper->field_pub_pubsource->field_pub_subject->name->value();	  
+		 		$root = array('name' => t('Statistical publications'),'path' => 'statistical-publications');
+			 	break;  		
+	    	case 'statistical_report':
+		 		$wrapper = entity_metadata_wrapper('publication',$entity);
+		 		$term_id = $wrapper->field_pub_subject->tid->value();
+		 		$term_name = $wrapper->field_pub_subject->name->value();
+		 		$root = array('name' => t('Statistical publications'),'path' => 'statistical-publications');
+		 		break; 
+		 	case 'document':
+		 		$wrapper = entity_metadata_wrapper('publication',$entity);
+		 		$term_id = $wrapper->field_doc_subject->tid->value();
+		 		$term_name = $wrapper->field_doc_subject->name->value();
+		 		$root = array('name' => t('Documents'),'path' => 'documents');
+		 		break;	
 			default:
 				break;			
 		}
-  	} 
 		
+		// Breadcrumb building...
+		$breadcrumb[] = l($root['name'],$root['path']);	
+
+		if($term_id){
+			$parent_terms = taxonomy_get_parents_all($term_id);
+		   foreach(array_reverse($parent_terms) as $parent){
+		   	$breadcrumb[] = l(t($parent->name), $root . '/' . get_label_dashed($parent->name));
+		   } 	   
+			drupal_set_breadcrumb($breadcrumb);
+		}	
+  	} 		
 }
 
 /**
@@ -748,7 +752,7 @@ function draw_chart($pub_id,$view_mode,$range = array()){
 	    	'#legend_position' => 'top',
 	    	//'#legend_font_size' => ($view_mode == 'full') ? '' : '1em',
 	    	'#data_labels' => FALSE,
-	    	'#width' => '630px',
+	    	//'#width' => '100pc',
 	    	'#height'=> '300px',
 	);
 		

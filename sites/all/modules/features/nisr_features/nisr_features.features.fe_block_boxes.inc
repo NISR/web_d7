@@ -58,5 +58,21 @@ function nisr_features_default_fe_block_boxes() {
 
   $export['gov_logo'] = $fe_block_boxes;
 
+  $fe_block_boxes = new stdClass();
+  $fe_block_boxes->info = 'NSDS document link on the frontpage';
+  $fe_block_boxes->format = '2';
+  $fe_block_boxes->machine_name = 'nsds_button';
+  $fe_block_boxes->body = '<p>&nbsp;</p><p>&nbsp;</p>';
+
+  $export['nsds_button'] = $fe_block_boxes;
+
+  $fe_block_boxes = new stdClass();
+  $fe_block_boxes->info = 'Visa button on the frontpage';
+  $fe_block_boxes->format = '2';
+  $fe_block_boxes->machine_name = 'visa_button';
+  $fe_block_boxes->body = '<p><a class="btn btn-lg btn-primary btn-special" href="service/visa">Apply for a visa</a></p><p>&nbsp;</p>';
+
+  $export['visa_button'] = $fe_block_boxes;
+
   return $export;
 }

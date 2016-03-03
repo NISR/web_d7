@@ -289,6 +289,13 @@ function publication_features_field_default_field_instances() {
     'settings' => array(
       'user_register_form' => FALSE,
     ),
+    'view' => array(
+      'args' => array(),
+      'display_name' => '',
+      'match_operator' => 'CONTAINS',
+      'size' => '',
+      'view_name' => '',
+    ),
     'widget' => array(
       'active' => 1,
       'module' => 'options',
