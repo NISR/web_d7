@@ -273,7 +273,7 @@ function publication_entity_view($entity, $type, $view_mode, $langcode) {
 		if($term_id){
 			$parent_terms = taxonomy_get_parents_all($term_id);
 		   foreach(array_reverse($parent_terms) as $parent){
-		   	$breadcrumb[] = l(t($parent->name), $root . '/' . get_label_dashed($parent->name));
+		   	$breadcrumb[] = l(t($parent->name), $root['path'] . '/' . get_label_dashed($parent->name));
 		   } 	   
 			drupal_set_breadcrumb($breadcrumb);
 		}	
