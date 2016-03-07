@@ -157,7 +157,9 @@ search-box .btn-search{
 /**
  ** Main menu
  **/
-
+i.home-menu{
+	margin-top: -10px;	
+}
 
 
 /**

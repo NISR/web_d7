@@ -18,22 +18,24 @@ function application_config_field_group_info() {
   $field_group->entity_type = 'application';
   $field_group->bundle = 'visa';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_vertical_tab_group_1';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Scheduling',
-    'weight' => '6',
+    'weight' => '5',
     'children' => array(
-      0 => 'field_visa_runtime',
-      1 => 'field_visa_report_deadline',
+      0 => 'field_visa_report_deadline',
+      1 => 'field_visa_runtime',
     ),
-    'format_type' => 'tab',
+    'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Scheduling',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-app-scheduling field-group-tab',
         'required_fields' => 1,
+        'id' => '',
+        'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $field_groups['group_app_scheduling|application|visa|form'] = $field_group;
@@ -77,24 +79,26 @@ function application_config_field_group_info() {
   $field_group->entity_type = 'application';
   $field_group->bundle = 'visa';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_vertical_tab_group_1';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contact information',
     'weight' => '3',
     'children' => array(
-      0 => 'field_visa_contact_firstname',
-      1 => 'field_visa_contact_lastname',
-      2 => 'field_visa_contact_email',
+      0 => 'field_visa_contact_email',
+      1 => 'field_visa_contact_firstname',
+      2 => 'field_visa_contact_lastname',
       3 => 'field_visa_contact_salutation',
     ),
-    'format_type' => 'tab',
+    'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Contact information',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
         'required_fields' => 1,
+        'id' => '',
+        'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $field_groups['group_contact_info|application|visa|form'] = $field_group;
@@ -107,7 +111,7 @@ function application_config_field_group_info() {
   $field_group->entity_type = 'application';
   $field_group->bundle = 'visa';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_vertical_tab_group_1';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Documentation',
     'weight' => '4',
@@ -116,15 +120,16 @@ function application_config_field_group_info() {
       1 => 'field_visa_proposal',
       2 => 'field_visa_reports',
     ),
-    'format_type' => 'tab',
+    'format_type' => 'fieldset',
     'format_settings' => array(
       'label' => 'Documentation',
       'instance_settings' => array(
         'required_fields' => 1,
+        'id' => '',
         'classes' => '',
         'description' => '',
       ),
-      'formatter' => 'closed',
+      'formatter' => 'collapsed',
     ),
   );
   $field_groups['group_documents|application|visa|form'] = $field_group;
@@ -167,23 +172,26 @@ function application_config_field_group_info() {
   $field_group->entity_type = 'application';
   $field_group->bundle = 'visa';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_vertical_tab_group_1';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Organization information',
     'weight' => '2',
     'children' => array(
       0 => 'field_visa_org_address',
-      1 => 'field_visa_org_pobox',
-      2 => 'field_visa_org_website',
+      1 => 'field_visa_org_name',
+      2 => 'field_visa_org_pobox',
+      3 => 'field_visa_org_website',
     ),
-    'format_type' => 'tab',
+    'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Organization information',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
         'required_fields' => 1,
+        'id' => '',
+        'classes' => 'group-organization-information field-group-fieldset',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $field_groups['group_organization_information|application|visa|form'] = $field_group;

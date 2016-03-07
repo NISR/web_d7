@@ -80,6 +80,10 @@ function application_entity_info_alter(&$entity_info) {
   }
 }
 
+function application_form_alter($form,&$form_state,$form_id){
+
+}
+
 /**
  * Implements hook_menu().
  */
@@ -458,4 +462,22 @@ function application_views_api() {
     'api' => 3,
     'path' => drupal_get_path('module', 'application'),
   );
+}
+
+/*
+ * function used to fill the status field of the visa entity form 
+ *
+ * @return
+ *		array
+ */
+function get_visa_request_statuses(){
+	$statuses = array(
+		'-1' => t('Processing request'),	
+		'0' => t('Request rejected'),
+		'1' => t('Visa granted, waiting for report'),
+		'2' => t('Visa granted, report due'),
+		'3' => t('Visa granted, report submitted'),
+	);
+	
+	return $statuses;
 }

@@ -307,7 +307,7 @@ function application_config_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 2,
+      'weight' => 1,
     ),
   );
 
@@ -416,7 +416,7 @@ function application_config_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 6,
+      'weight' => 2,
     ),
   );
 
@@ -444,7 +444,7 @@ function application_config_field_default_field_instances() {
     ),
     'entity_type' => 'application',
     'field_name' => 'field_visa_org_name',
-    'label' => 'Organization',
+    'label' => 'Name',
     'required' => 1,
     'settings' => array(
       'text_processing' => 0,
@@ -457,7 +457,7 @@ function application_config_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 0,
+      'weight' => 1,
     ),
   );
 
@@ -498,7 +498,7 @@ function application_config_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 7,
+      'weight' => 3,
     ),
   );
 
@@ -539,7 +539,7 @@ function application_config_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 10,
+      'weight' => 4,
     ),
   );
 
@@ -831,25 +831,26 @@ m)Field work organization<br>',
     'bundle' => 'visa',
     'default_value' => array(
       0 => array(
-        'tid' => 375,
+        'value' => -1,
       ),
     ),
+    'default_value_function' => '',
+    'default_value_php' => '',
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
+        'module' => 'list',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'list_default',
         'weight' => 18,
       ),
       'full' => array(
-        'label' => 'inline',
-        'module' => 'taxonomy',
+        'label' => 'above',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
-        'weight' => 1,
+        'type' => 'hidden',
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'application',
@@ -863,10 +864,10 @@ m)Field work organization<br>',
       'active' => 1,
       'module' => 'options',
       'settings' => array(
-        'apply_chosen' => '',
+        'apply_chosen' => 0,
       ),
       'type' => 'options_select',
-      'weight' => 1,
+      'weight' => 0,
     ),
   );
 
@@ -882,7 +883,7 @@ m)Field work organization<br>',
   t('Firstname');
   t('Lastname');
   t('Message');
-  t('Organization');
+  t('Name');
   t('POBOX');
   t('Proposal');
   t('Proposal (Preferably in Microsoft Word format) containing the following:<br>

@@ -144,8 +144,7 @@ function application_add($type) {
  */
 function application_form($form, &$form_state, $application) {
   $form_state['application'] = $application;
-  
-
+    
   $form['uid'] = array(
     '#type' => 'value',
     '#value' => $application->uid,
@@ -179,7 +178,7 @@ function application_form($form, &$form_state, $application) {
   }
 
   $form['#validate'][] = 'application_form_validate';
-  
+    
   return $form;
 }
 

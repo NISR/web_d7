@@ -432,7 +432,7 @@ function entities_by_term($term){
  * Callback for the image home menu item
  */
 function get_home_menu_item(){
-	return "<i class='fa fa-home'></i>";	
+	return "<i class='fa fa-home fa-2x home-menu'></i>";	
 }
 
 /*

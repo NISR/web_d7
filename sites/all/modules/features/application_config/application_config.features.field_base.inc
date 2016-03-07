@@ -247,6 +247,9 @@ function application_config_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_visa_org_name',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -427,23 +430,20 @@ function application_config_field_default_field_bases() {
       'type' => 2,
     ),
     'indexes' => array(
-      'tid' => array(
-        0 => 'tid',
+      'value' => array(
+        0 => 'value',
       ),
     ),
     'locked' => 0,
-    'module' => 'taxonomy',
+    'module' => 'list',
     'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => 'visa_status',
-          'parent' => 0,
-        ),
-      ),
+      'allowed_values' => array(),
+      'allowed_values_function' => 'get_visa_request_statuses',
+      'allowed_values_php' => '',
       'profile2_private' => FALSE,
     ),
     'translatable' => 0,
-    'type' => 'taxonomy_term_reference',
+    'type' => 'list_text',
   );
 
   return $field_bases;
