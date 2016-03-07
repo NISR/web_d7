@@ -29,38 +29,41 @@
  */
 
 ?>
-<div class="col-md-9 <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-	<div class="col-md-6">
-    <h2<?php print $title_attributes; ?>>
-        <?php print $title; ?>
-    </h2>
-	  <?php print render($content['field_pub_fig_unit'])?>
+<div class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+	<div class="col-md-8">
+		<div class="col-md-6">
+	    <h2<?php print $title_attributes; ?>>
+	        <?php print $title; ?>
+	    </h2>
+		  <?php print render($content['field_pub_fig_unit'])?>
+		</div>
+		<div class="col-md-3">
+		  <h2><?php print render($content['field_pub_fig_values']['#items'][0]['tabledata'][1][1])?></h2>
+		  <?php print render($content['field_pub_fig_values']['#items'][0]['tabledata'][0][1])?>
+		</div>	
+		<?php
+			$actual_value = floatval(str_replace(",","",$content['field_pub_fig_values']['#items'][0]['tabledata'][1][1]));
+			$previous_value = floatval(str_replace(",","",$content['field_pub_fig_values']['#items'][0]['tabledata'][1][0]));
+			$change = $actual_value - $previous_value;
+			if(is_numeric($change)){
+				($change > 0) ? $class = 'fa fa-arrow-circle-up fa-3x text-success' : $class = 'fa fa-arrow-circle-down fa-3x text-danger' ;
+				$change = number_format(($change / $previous_value) * 100,'2') . " %";	
+			}else{
+				$change = '...';	
+			}
+		
+		?>
+		<div class="col-md-3">
+		  <div style="float:right"><i class="<?php print $class;?>"></i></div>
+		  <div><h2><?php print $change ?></h2></div>
+		  <div><?php print t('from the corresponding previous year') . ' (' . $content['field_pub_fig_values']['#items'][0]['tabledata'][0][0] . ')' ?></div>
+		</div>
 	</div>
-	<div class="col-md-3">
-	  <h2><?php print render($content['field_pub_fig_values']['#items'][0]['tabledata'][1][1])?></h2>
-	  <?php print render($content['field_pub_fig_values']['#items'][0]['tabledata'][0][1])?>
-	</div>	
-	<?php
-		$actual_value = floatval(str_replace(",","",$content['field_pub_fig_values']['#items'][0]['tabledata'][1][1]));
-		$previous_value = floatval(str_replace(",","",$content['field_pub_fig_values']['#items'][0]['tabledata'][1][0]));
-		$change = $actual_value - $previous_value;
-		if(is_numeric($change)){
-			($change > 0) ? $class = 'fa fa-arrow-circle-up fa-3x text-success' : $class = 'fa fa-arrow-circle-down fa-3x text-danger' ;
-			$change = number_format(($change / $previous_value) * 100,'2') . " %";	
-		}else{
-			$change = '...';	
-		}
-	
-	?>
-	<div class="col-md-3">
-	  <div style="float:right"><i class="<?php print $class;?>"></i></div>
-	  <div><h2><?php print $change ?></h2></div>
-	  <div><?php print t('from the corresponding previous year') . ' (' . $content['field_pub_fig_values']['#items'][0]['tabledata'][0][0] . ')' ?></div>
+	<div class="content col-md-12"<?php print $content_attributes; ?>>
+	  <?php 
+	    	hide($content['field_pub_fig_values']);  
+	  		print render($content);
+	  ?>
 	</div>
 </div>
-<div class="content"<?php print $content_attributes; ?>>
-  <?php 
-    	hide($content['field_pub_fig_values']);  
-  		print render($content);
-  ?>
-</div>
+

@@ -802,7 +802,7 @@ function publication_features_views_default_views() {
   $handler->display->display_options['path'] = 'admin/content/publications/statistical_reports';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Statistical reports';
-  $handler->display->display_options['menu']['weight'] = '5';
+  $handler->display->display_options['menu']['weight'] = '-50';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
   $handler->display->display_options['tab_options']['weight'] = '0';
@@ -949,7 +949,7 @@ function publication_features_views_default_views() {
   $handler->display->display_options['path'] = 'admin/content/publications/statistical_articles';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Statistical articles';
-  $handler->display->display_options['menu']['weight'] = '10';
+  $handler->display->display_options['menu']['weight'] = '-40';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
 
@@ -1102,7 +1102,165 @@ function publication_features_views_default_views() {
   $handler->display->display_options['path'] = 'admin/content/publications/infographic_items';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Infographic items';
-  $handler->display->display_options['menu']['weight'] = '15';
+  $handler->display->display_options['menu']['weight'] = '-30';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
+  $handler->display->display_options['tab_options']['weight'] = '0';
+
+  /* Display: Figures */
+  $handler = $view->new_display('page', 'Figures', 'figures');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Figures';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Bulk operations: Publication */
+  $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'publication';
+  $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
+  $handler->display->display_options['fields']['views_bulk_operations']['label'] = '';
+  $handler->display->display_options['fields']['views_bulk_operations']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '0';
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 1;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['row_clickable'] = 1;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['force_single'] = 0;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['entity_load_capacity'] = '10';
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_operations'] = array(
+    'action::views_bulk_operations_delete_item' => array(
+      'selected' => 1,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::views_bulk_operations_modify_action' => array(
+      'selected' => 1,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+      'settings' => array(
+        'show_all_tokens' => 0,
+        'display_values' => array(
+          'statistical_report::field_pub_subject' => 'statistical_report::field_pub_subject',
+          'statistical_report::field_pub_tags' => 'statistical_report::field_pub_tags',
+        ),
+      ),
+    ),
+  );
+  /* Field: Publication: Publication ID */
+  $handler->display->display_options['fields']['pub_id']['id'] = 'pub_id';
+  $handler->display->display_options['fields']['pub_id']['table'] = 'publication';
+  $handler->display->display_options['fields']['pub_id']['field'] = 'pub_id';
+  $handler->display->display_options['fields']['pub_id']['label'] = '';
+  $handler->display->display_options['fields']['pub_id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['pub_id']['element_label_colon'] = FALSE;
+  /* Field: Publication: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'publication';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['path'] = 'publication/[pub_id]';
+  /* Field: Publication: Period */
+  $handler->display->display_options['fields']['field_pub_fi_period']['id'] = 'field_pub_fi_period';
+  $handler->display->display_options['fields']['field_pub_fi_period']['table'] = 'field_data_field_pub_fi_period';
+  $handler->display->display_options['fields']['field_pub_fi_period']['field'] = 'field_pub_fi_period';
+  /* Field: Publication: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'publication';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['label'] = 'Publication type';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = 'Author';
+  $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
+  /* Field: Publication: Date changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'publication';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'short';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = 'Operations';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="/publication/[pub_id]/edit?destination=admin/content/publications">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/publication/[pub_id]/delete?destination=admin/content/publications">Delete</a>';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Publication: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'publication';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'figure' => 'figure',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  $handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['label'] = 'Publication type';
+  $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
+  $handler->display->display_options['filters']['type']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+  );
+  /* Filter criterion: Publication: Title */
+  $handler->display->display_options['filters']['title']['id'] = 'title';
+  $handler->display->display_options['filters']['title']['table'] = 'publication';
+  $handler->display->display_options['filters']['title']['field'] = 'title';
+  $handler->display->display_options['filters']['title']['operator'] = 'contains';
+  $handler->display->display_options['filters']['title']['group'] = 1;
+  $handler->display->display_options['filters']['title']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
+  $handler->display->display_options['filters']['title']['expose']['label'] = 'Title';
+  $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
+  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    3 => 0,
+    6 => 0,
+    5 => 0,
+  );
+  /* Filter criterion: Publication: Subject (field_pub_subject) */
+  $handler->display->display_options['filters']['field_pub_subject_tid']['id'] = 'field_pub_subject_tid';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['table'] = 'field_data_field_pub_subject';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['field'] = 'field_pub_subject_tid';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_pub_subject_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['operator_id'] = 'field_pub_subject_tid_op';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['label'] = 'Subject';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['use_operator'] = TRUE;
+  $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['operator_label'] = 'Empty(or NOT)';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['operator'] = 'field_pub_subject_tid_op';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['identifier'] = 'field_pub_subject_tid';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    6 => 0,
+    5 => 0,
+  );
+  $handler->display->display_options['filters']['field_pub_subject_tid']['group_info']['label'] = 'Subject (field_pub_subject)';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['group_info']['identifier'] = 'field_pub_subject_tid';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['group_info']['remember'] = FALSE;
+  $handler->display->display_options['filters']['field_pub_subject_tid']['group_info']['group_items'] = array(
+    1 => array(),
+    2 => array(),
+    3 => array(),
+  );
+  $handler->display->display_options['filters']['field_pub_subject_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['vocabulary'] = 'statistical_publication_subjects';
+  $handler->display->display_options['filters']['field_pub_subject_tid']['hierarchy'] = 1;
+  $handler->display->display_options['path'] = 'admin/content/publications/figures';
+  $handler->display->display_options['menu']['type'] = 'tab';
+  $handler->display->display_options['menu']['title'] = 'Figures';
+  $handler->display->display_options['menu']['weight'] = '-20';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
   $handler->display->display_options['tab_options']['weight'] = '0';
@@ -1209,167 +1367,9 @@ function publication_features_views_default_views() {
   $handler->display->display_options['path'] = 'admin/content/publications/datasets';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Datasets';
-  $handler->display->display_options['menu']['weight'] = '11';
+  $handler->display->display_options['menu']['weight'] = '-10';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
-
-  /* Display: Indicators */
-  $handler = $view->new_display('page', 'Indicators', 'indicators');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Indicators';
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Bulk operations: Publication */
-  $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'publication';
-  $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['label'] = '';
-  $handler->display->display_options['fields']['views_bulk_operations']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '0';
-  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 1;
-  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['row_clickable'] = 1;
-  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['force_single'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['entity_load_capacity'] = '10';
-  $handler->display->display_options['fields']['views_bulk_operations']['vbo_operations'] = array(
-    'action::views_bulk_operations_delete_item' => array(
-      'selected' => 1,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-    ),
-    'action::views_bulk_operations_modify_action' => array(
-      'selected' => 1,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-      'settings' => array(
-        'show_all_tokens' => 0,
-        'display_values' => array(
-          'statistical_report::field_pub_subject' => 'statistical_report::field_pub_subject',
-          'statistical_report::field_pub_tags' => 'statistical_report::field_pub_tags',
-        ),
-      ),
-    ),
-  );
-  /* Field: Publication: Publication ID */
-  $handler->display->display_options['fields']['pub_id']['id'] = 'pub_id';
-  $handler->display->display_options['fields']['pub_id']['table'] = 'publication';
-  $handler->display->display_options['fields']['pub_id']['field'] = 'pub_id';
-  $handler->display->display_options['fields']['pub_id']['label'] = '';
-  $handler->display->display_options['fields']['pub_id']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['pub_id']['element_label_colon'] = FALSE;
-  /* Field: Publication: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'publication';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['path'] = 'publication/[pub_id]';
-  /* Field: Publication: Period */
-  $handler->display->display_options['fields']['field_pub_fi_period']['id'] = 'field_pub_fi_period';
-  $handler->display->display_options['fields']['field_pub_fi_period']['table'] = 'field_data_field_pub_fi_period';
-  $handler->display->display_options['fields']['field_pub_fi_period']['field'] = 'field_pub_fi_period';
-  /* Field: Publication: Type */
-  $handler->display->display_options['fields']['type']['id'] = 'type';
-  $handler->display->display_options['fields']['type']['table'] = 'publication';
-  $handler->display->display_options['fields']['type']['field'] = 'type';
-  $handler->display->display_options['fields']['type']['label'] = 'Publication type';
-  /* Field: User: Name */
-  $handler->display->display_options['fields']['name']['id'] = 'name';
-  $handler->display->display_options['fields']['name']['table'] = 'users';
-  $handler->display->display_options['fields']['name']['field'] = 'name';
-  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
-  $handler->display->display_options['fields']['name']['label'] = 'Author';
-  $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
-  /* Field: Publication: Date changed */
-  $handler->display->display_options['fields']['changed']['id'] = 'changed';
-  $handler->display->display_options['fields']['changed']['table'] = 'publication';
-  $handler->display->display_options['fields']['changed']['field'] = 'changed';
-  $handler->display->display_options['fields']['changed']['date_format'] = 'short';
-  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
-  /* Field: Global: Custom text */
-  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['label'] = 'Operations';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="/publication/[pub_id]/edit?destination=admin/content/publications">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/publication/[pub_id]/delete?destination=admin/content/publications">Delete</a>';
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Publication: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'publication';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'featured_indicator' => 'featured_indicator',
-  );
-  $handler->display->display_options['filters']['type']['group'] = 1;
-  $handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
-  $handler->display->display_options['filters']['type']['expose']['label'] = 'Publication type';
-  $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
-  $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
-  $handler->display->display_options['filters']['type']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-  );
-  /* Filter criterion: Publication: Title */
-  $handler->display->display_options['filters']['title']['id'] = 'title';
-  $handler->display->display_options['filters']['title']['table'] = 'publication';
-  $handler->display->display_options['filters']['title']['field'] = 'title';
-  $handler->display->display_options['filters']['title']['operator'] = 'contains';
-  $handler->display->display_options['filters']['title']['group'] = 1;
-  $handler->display->display_options['filters']['title']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
-  $handler->display->display_options['filters']['title']['expose']['label'] = 'Title';
-  $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
-  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
-  $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    3 => 0,
-    6 => 0,
-    5 => 0,
-  );
-  /* Filter criterion: Publication: Subject (field_pub_subject) */
-  $handler->display->display_options['filters']['field_pub_subject_tid']['id'] = 'field_pub_subject_tid';
-  $handler->display->display_options['filters']['field_pub_subject_tid']['table'] = 'field_data_field_pub_subject';
-  $handler->display->display_options['filters']['field_pub_subject_tid']['field'] = 'field_pub_subject_tid';
-  $handler->display->display_options['filters']['field_pub_subject_tid']['group'] = 1;
-  $handler->display->display_options['filters']['field_pub_subject_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['operator_id'] = 'field_pub_subject_tid_op';
-  $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['label'] = 'Subject';
-  $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['use_operator'] = TRUE;
-  $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['operator_label'] = 'Empty(or NOT)';
-  $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['operator'] = 'field_pub_subject_tid_op';
-  $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['identifier'] = 'field_pub_subject_tid';
-  $handler->display->display_options['filters']['field_pub_subject_tid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    6 => 0,
-    5 => 0,
-  );
-  $handler->display->display_options['filters']['field_pub_subject_tid']['group_info']['label'] = 'Subject (field_pub_subject)';
-  $handler->display->display_options['filters']['field_pub_subject_tid']['group_info']['identifier'] = 'field_pub_subject_tid';
-  $handler->display->display_options['filters']['field_pub_subject_tid']['group_info']['remember'] = FALSE;
-  $handler->display->display_options['filters']['field_pub_subject_tid']['group_info']['group_items'] = array(
-    1 => array(),
-    2 => array(),
-    3 => array(),
-  );
-  $handler->display->display_options['filters']['field_pub_subject_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_pub_subject_tid']['vocabulary'] = 'statistical_publication_subjects';
-  $handler->display->display_options['filters']['field_pub_subject_tid']['hierarchy'] = 1;
-  $handler->display->display_options['path'] = 'admin/content/publications/indicators';
-  $handler->display->display_options['menu']['type'] = 'tab';
-  $handler->display->display_options['menu']['title'] = 'Indicators';
-  $handler->display->display_options['menu']['weight'] = '20';
-  $handler->display->display_options['menu']['context'] = 0;
-  $handler->display->display_options['menu']['context_only_inline'] = 0;
-  $handler->display->display_options['tab_options']['weight'] = '0';
 
   /* Display: Documents */
   $handler = $view->new_display('page', 'Documents', 'documents');
@@ -1508,7 +1508,7 @@ function publication_features_views_default_views() {
   $handler->display->display_options['path'] = 'admin/content/publications/documents';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Documents';
-  $handler->display->display_options['menu']['weight'] = '10';
+  $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
   $translatables['publications_backoffice'] = array(
@@ -1548,9 +1548,9 @@ function publication_features_views_default_views() {
     t('Tags'),
     t('Statistical articles'),
     t('Infographic items'),
-    t('Datasets'),
-    t('Indicators'),
+    t('Figures'),
     t('Period'),
+    t('Datasets'),
     t('Documents'),
   );
   $export['publications_backoffice'] = $view;

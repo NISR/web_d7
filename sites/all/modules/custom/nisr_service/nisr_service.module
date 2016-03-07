@@ -81,6 +81,7 @@ function nisr_service_theme($existing, $type, $theme, $path){
  */
 function nisr_service_user_is_logged_in($service){
 	if(!user_is_logged_in()){
+		drupal_set_message(t('To use any of our services, you need to login first'));
 		drupal_goto('ServiceLogin',array('query' => array('destination'=> 'service/' . $service)));
 	}else{
 		return views_embed_view($service,'embed_1');
@@ -93,7 +94,6 @@ function nisr_service_user_is_logged_in($service){
 function serviceLogin(){
 	if(!user_is_logged_in()){
 		module_load_include('inc','nisr_service','nisr_service.authentication');
-		drupal_set_message(t('To use any of our services, you need to login first'));
 		return drupal_get_form('nisr_service_login_form');
 	}
 }

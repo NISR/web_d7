@@ -65,7 +65,7 @@ function nisr_features_context_default_contexts() {
           'module' => 'nodesinblock',
           'delta' => '0',
           'region' => 'before_content',
-          'weight' => '-56',
+          'weight' => '-57',
         ),
         'views-publication_widgets-fsa' => array(
           'module' => 'views',
@@ -103,9 +103,9 @@ function nisr_features_context_default_contexts() {
           'region' => 'after_content',
           'weight' => '-7',
         ),
-        'block-42' => array(
+        'block-43' => array(
           'module' => 'block',
-          'delta' => '42',
+          'delta' => '43',
           'region' => 'after_content',
           'weight' => '-6',
         ),
@@ -113,7 +113,7 @@ function nisr_features_context_default_contexts() {
           'module' => 'views',
           'delta' => 'twitter_messages-tweets_block',
           'region' => 'after_content',
-          'weight' => '-5',
+          'weight' => '-4',
         ),
       ),
     ),

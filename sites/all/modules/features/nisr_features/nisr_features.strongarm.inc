@@ -208,7 +208,7 @@ function nisr_features_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'gcal_events_footer_gcal_events-0';
-  $strongarm->value = '<div class="pull-right"><a class="btn btn-xs btn-primary" target="_blank" href="">Learn more</a></div>                       ';
+  $strongarm->value = '<div class="pull-right"><a class="btn btn-xs btn-primary" target="_blank" href="release-calendar">Learn more</a></div>                       ';
   $export['gcal_events_footer_gcal_events-0'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -437,8 +437,8 @@ function nisr_features_strongarm() {
     'favicon_upload' => '',
     'breadcrumbs' => 1,
     'sticky_header' => 1,
-    'logo_height' => '150',
-    'sticky_logo_height' => '100',
+    'logo_height' => '120',
+    'sticky_logo_height' => '80',
     'blog_image' => 'full',
     'blog_image_slider' => 1,
     'blog_share' => 1,
@@ -455,7 +455,7 @@ function nisr_features_strongarm() {
     'user_css' => '',
     'ribbon' => 0,
     'ribbon_text' => 'Get In Touch',
-    'options__active_tab' => 'edit-color',
+    'options__active_tab' => 'edit-general',
     'jquery_update_jquery_version' => '',
   );
   $export['theme_porto_sub_settings'] = $strongarm;
