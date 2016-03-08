@@ -8,32 +8,43 @@ function nisr_service_login_form($form,&$form_state){
 	
 	isset($_GET['destination'])? $service =  $_GET['destination'] : $service = '';
 	
+	$form['welcome_note'] = array(
+		'#markup'=> "<div class='centered'><strong>" . t('To use this service you need to login first') . "</strong></div>",
+	);	
+		
 	$form['username'] = array(
 		'#type' => 'textfield',
+		'#size' => 40,
 		'#required' => TRUE,
 		'#title' => t('Email'),
 	);	
 	
 	$form['password'] = array(
 		'#type' => 'password',
+		'#size' => 40,
 		'#required' => TRUE,
 		'#title' => t('Password'),
 	);	
 		
 	$form['actions']['submit'] = array(
+		'#prefix' => "<div class='centered'>",
+		'#suffix' => "</div>",
 		'#type' => 'submit',
 		'#value' => t('Connect'),	
+		
 	);
 	
-	$form['new_user_register'] = array(
-		'#markup'=> "<br/>New user,register <a href='/ServiceRegister?destination=" . $service . "'>here</a>",
-	);	
+	$form['footer']['#markup']  = "<br><div class='centered'><div style='width:50%;float:left'><a href='/ServiceRegister?destination=" . $service . "'>" . t('Register') ."</a></div>";
+	$form['footer']['#markup'] .= "<div style='width:50%;float:left'><a href='ServiceRecoverPassword'>" . t('Forgot your password'). "?</a></div>";
+	$form['footer']['#markup'] .= "</div>";	
+
 	
 	$form['#theme'] = 'nisr_service_login_form';
 	
 	$form['#action'] .= '?destination=' . $service;
 
 	drupal_set_title(t('Login'));
+	
 	
 	return $form;	
 }
@@ -52,7 +63,7 @@ function nisr_service_login_form_submit($form,&$form_state){
 	if(!user_login_credentials($form_state['values']['username'],$form_state['values']['password'])){
 		form_set_error('username');
 		form_set_error('password');
-		drupal_set_message(t('Wrong username or password'),'error');
+		drupal_set_message(t('Wrong email or password'),'error');
 	}	
 }
 
@@ -66,7 +77,7 @@ function nisr_service_register_form($form,&$form_state){
 	isset($_GET['destination']) ? $service =  $_GET['destination'] : $service = '';
 	
 	$zones = system_time_zones();
-	
+		
 	// Account info
 	$form['account'] = array(
 		'#type' => 'fieldset',
@@ -126,6 +137,8 @@ function nisr_service_register_form($form,&$form_state){
 	);
 			
 	$form['actions']['submit'] = array(
+		'#prefix' => "<div class='centered'>",
+		'#suffix' => "</div>",
 		'#type' => 'submit',
 		'#value' => t('Register'),	
 	);
@@ -161,6 +174,34 @@ function nisr_service_register_form_submit($form,&$form_state){
 	}else{
 		drupal_set_message('Registration failed');	
 	}
+}
+
+/*
+ * Recover password form
+ */
+function nisr_service_recover_password_form(){
+	module_load_include('inc','user','user.pages');
+	$form = user_pass();
+	$form['name']['#size'] = 40;
+	$form['#theme'] = 'nisr_service_recover_password_form';
+	
+	return $form;
+}
+
+/*
+ * Recover password validate handler
+ */
+function nisr_service_recover_password_form_validate($form,&$form_state){
+	module_load_include('inc','user','user.pages');
+	user_pass_validate($form,$form_state);
+}
+
+/*
+ * Recover password submit handler
+ */
+function nisr_service_recover_password_form_submit($form,&$form_state){
+	module_load_include('inc','user','user.pages');
+	user_pass_submit($form,$form_state);
 }
 
 /**

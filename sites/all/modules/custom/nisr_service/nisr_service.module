@@ -23,7 +23,13 @@ function nisr_service_menu(){
 		'access callback' => TRUE,	
 	
 	);
-		
+	
+	$items['ServiceRecoverPassword'] = array(
+		'title' => 'Request new password',
+    	'page callback' => 'serviceRecoverPassword',
+		'access callback' => TRUE,	
+	);
+	
 	$items['service/visa'] = array(
 		'title' => 'Visa',
 		'page callback' => 'nisr_service_user_is_logged_in',
@@ -43,7 +49,7 @@ function nisr_service_menu(){
  */
 function nisr_service_preprocess_page(&$variables){
 	$path = arg();
-	if(in_array($path[0],array('ServiceLogin','ServiceRegister'))){
+	if(in_array($path[0],array('ServiceLogin','ServiceRegister','ServiceRecoverPassword'))){
 		$variables['theme_hook_suggestions'][] = 'nisr_service_gateway';
 	}
 }
@@ -68,7 +74,12 @@ function nisr_service_theme($existing, $type, $theme, $path){
         'template' => 'nisr_service_register',
         'path' => drupal_get_path('module', 'nisr_service') . '/theme',
     );
-
+    
+	$items['nisr_service_recover_password_form'] = array(
+        'render element' => 'form',
+        'template' => 'nisr_service_recover_password',
+        'path' => drupal_get_path('module', 'nisr_service') . '/theme',
+    );
     return $items;
 	
 }
@@ -81,7 +92,6 @@ function nisr_service_theme($existing, $type, $theme, $path){
  */
 function nisr_service_user_is_logged_in($service){
 	if(!user_is_logged_in()){
-		drupal_set_message(t('To use any of our services, you need to login first'));
 		drupal_goto('ServiceLogin',array('query' => array('destination'=> 'service/' . $service)));
 	}else{
 		return views_embed_view($service,'embed_1');
@@ -105,5 +115,15 @@ function serviceRegister(){
 	if(!user_is_logged_in()){
 		module_load_include('inc','nisr_service','nisr_service.authentication');
 		return drupal_get_form('nisr_service_register_form');
+	}	
+}
+
+/*
+ * Recover password
+ */
+function serviceRecoverPassword(){
+	if(!user_is_logged_in()){
+		module_load_include('inc','nisr_service','nisr_service.authentication');
+		return drupal_get_form('nisr_service_recover_password_form');
 	}	
 }

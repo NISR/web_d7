@@ -1,5 +1,10 @@
 .authentication-top-menu{
-	background: #dedede;	
+	background: #2259A9;
+	color: #fff;	
+}
+
+.authentication-top-menu a h1{
+	color: #fff;	
 }
 
 /**
@@ -15,23 +20,24 @@
 	width: 100px;	
 	border-radius: 30px;
 }
-.login-box{
+.login-box,
+.recover-password-box{
 	margin-left: auto;
 	margin-right: auto;
 	margin-top:30px;	
-	width: 50%;		
+	width: 35%;		
+	background: #f1f1f1;
 }
 
 .register-box{
 	margin-left: auto;
 	margin-right: auto;
-	margin-top:0px;	
 	margin-bottom: 100px;
-	width: 70%;	
-	
+	width: 50%;	
+	background: #f1f1f1;
 }
 
 .wrapper-box{
-	border: 5px solid #F1F1F1;
+	border: 5px solid #33ABED;
 	padding: 30px;
 }
