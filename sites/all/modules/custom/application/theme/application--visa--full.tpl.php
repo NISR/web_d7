@@ -45,7 +45,8 @@
    <div class="col-md-5">
    	<div class="">
    		<?php print $message_form;?>
-		</div>   	
+		</div>
+		<br/>   	
    	<div class="panel panel-default">
 	   	<div class="panel-heading">
 		   	<h4 class="panel-title">

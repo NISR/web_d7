@@ -94,7 +94,15 @@ function nisr_service_user_is_logged_in($service){
 	if(!user_is_logged_in()){
 		drupal_goto('ServiceLogin',array('query' => array('destination'=> 'service/' . $service)));
 	}else{
-		return views_embed_view($service,'embed_1');
+		$view = views_get_view($service);
+		$view->set_display('embed_1');
+		$view->pre_execute();
+		$view->execute();
+		if(!count($view->result)){
+			drupal_goto('/application/add/' . $service);
+		}else{
+			return views_embed_view($service,'embed_1');
+		}	
 	}
 }
 

@@ -191,7 +191,7 @@ function application_config_field_group_info() {
         'classes' => 'group-organization-information field-group-fieldset',
         'description' => '',
       ),
-      'formatter' => 'collapsed',
+      'formatter' => 'collapsible',
     ),
   );
   $field_groups['group_organization_information|application|visa|form'] = $field_group;
