@@ -36,7 +36,7 @@
 		  		<?php print render($dataset['chart'])?>
 		  </div>
 	 <?php endif; ?>
-	 <div class="content box-title clearfix btn-primary "<?php print $content_attributes; ?>" onclick="javascript:window.open('<?php print $url; ?>','_self')">
+	 <div class="content box-title clearfix texture-primary "<?php print $content_attributes; ?>" onclick="javascript:window.open('<?php print $url; ?>','_self')">
 	  <?php if (!$page): ?>
 	    <h4<?php print $title_attributes; ?>>
 	      <?php if ($url): ?>

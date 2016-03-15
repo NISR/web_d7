@@ -102,6 +102,10 @@ ul.facetapi-facet-field-pub-tags li{
 	width: 65%;
 }
 
+.search-box i.fa-search{
+	display: none;
+}
+
 .search-box .form-item{
 	margin:0px;	
 }
@@ -122,19 +126,6 @@ ul.facetapi-facet-field-pub-tags li{
 	-webkit-perspective: 1000;
 }
 
-.search-box i.fa-search{
-	position: absolute;
-	float: right;
-	top: 10px;
-	left: 5px;	
-	z-index: 10;
-	visibility: hidden;
-}
-.search-box .input-search {
-	padding-left: 5px;
-	background:;	
-}
-
 .search-box .btn-default {
 	background: transparent;
 	border: 0 none;
@@ -147,7 +138,8 @@ ul.facetapi-facet-field-pub-tags li{
 
 .search-box .input-search{
 	float: left;
-	width: 89%;
+	width: 80%;
+	padding-left: 5px;
 }
 
 search-box .btn-search{
@@ -348,6 +340,16 @@ span.bronze{
 	padding-right: 3px;	
 }
 
+.texture-primary{
+	background: #2258A9;
+	color: #fff;	
+}
+
+.texture-primary a,
+.texture-primary p{
+	color: #fff;
+}
+
 .region-before-content .box-outline {
 	background: #f1f1f1;	
 	min-height: 510px;
@@ -398,7 +400,7 @@ span.bronze{
 
 .region-after-content .box-highlighted h2{
 	border:none;
-	border-bottom:2px solid #fff;
+	border-bottom:1px solid #fff;
 	border-left: 2px solid #2258A9; 
 	border-right: 2px solid #2258A9;
 	border-top: 2px solid #2258A9;	
@@ -409,7 +411,7 @@ span.bronze{
 }
 
 .region-after-content .box-mini .content{
-	min-height: 180px;
+	min-height: 275px;
 }
 
 .region-after-content .box-normal .content,
@@ -444,6 +446,10 @@ span.bronze{
 
 .region-after-content .texture-grey .content{
 	background: #F4F4F4 ;/*url('../../Porto/img/patterns/worn_dots.png');*/
+}
+
+.region-after-content .featured-button{
+	max-height: 5.5em;
 }
 
 .centered-box h2{
@@ -564,4 +570,24 @@ input[type="checkbox"]{
 a.no-decoration{
 	text-decoration: none;
 	color:#777;	
+}
+
+/* Responsive exclusions */
+
+@media (max-width: 600px) {
+	.search-box i.fa-search{
+		display: block;
+		position: absolute;
+		float: right;
+		top: 10px;
+		left: 5px;	
+		z-index: 10;
+	}
+	.search-box .input-search{
+		padding-left: 20px;
+	}
+	.search-box .btn-search {
+		display: none;
+		visibility: hidden;
+	}
 }

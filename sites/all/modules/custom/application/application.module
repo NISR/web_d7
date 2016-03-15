@@ -80,8 +80,26 @@ function application_entity_info_alter(&$entity_info) {
   }
 }
 
-function application_form_alter($form,&$form_state,$form_id){
+/**
+ * Implements hook_forms().
+ *
+ * All application forms share the same form handler.
+ */
+function application_forms() {
+  $forms = array();
+  if ($types = application_types()) {
+    foreach (array_keys($types) as $type) {
+      $forms[$type . '_application_form']['callback'] = 'application_form';
+    }
+  }
+  return $forms;
+}
 
+function application_form_visa_application_form_alter(&$form,&$form_state,$form_id){
+	//Hide Status field
+	$form['field_visa_status']['#prefix'] = "<div class='element-invisible'>";
+	$form['field_visa_status']['#suffix'] = "</div>";
+	return $form;
 }
 
 /**
@@ -473,10 +491,9 @@ function application_views_api() {
 function get_visa_request_statuses(){
 	$statuses = array(
 		'-1' => t('Processing request'),	
-		'0' => t('Request rejected'),
-		'1' => t('Visa granted, waiting for report'),
-		'2' => t('Visa granted, report due'),
-		'3' => t('Visa granted, report submitted'),
+		'0' => t('Visa granted, waiting for report'),
+		'1' => t('Visa granted, report due'),
+		'2' => t('Visa granted, report submitted'),
 	);
 	
 	return $statuses;

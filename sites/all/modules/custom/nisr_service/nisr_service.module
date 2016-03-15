@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Service module suite
+ * NISR Service module
  */
 
 /*
@@ -30,8 +30,19 @@ function nisr_service_menu(){
 		'access callback' => TRUE,	
 	);
 	
-	$items['service/visa'] = array(
-		'title' => 'Visa',
+	$items['admin/apps'] = array(
+		'title' => 'Application forms',
+    	'type' => MENU_NORMAL_ITEM,
+    	'access callback' => 'nisr_service_user_has_role',
+    	'access arguments' => array(array('Visa manager','administrator','Internships manager')),
+    	'description' => 'Application forms(Visa/Internships) management pool',
+    	'menu_name' => 'management',
+    	'weight' => -9,
+	
+	);
+	
+	$items['service/apps/visa'] = array(
+		'title' => 'Apply for a visa/Manage your visa request',
 		'page callback' => 'nisr_service_user_is_logged_in',
 		'page arguments' => array('visa'),
 		'access callback' => TRUE,
@@ -85,6 +96,23 @@ function nisr_service_theme($existing, $type, $theme, $path){
 }
 
 /*
+ * NISR Service Implementation of user_has_role() 
+ *	@param
+ *		string array $roles : roles checked against	
+ * @return 
+ *		Boolean
+ */
+function nisr_service_user_has_role($roles){
+	global $user;
+	$access = FALSE;
+	
+	if(($user->uid == 1) || in_array($user->roles,$roles)) $access = TRUE ;
+	
+	return $access;		
+}
+
+
+/*
  * Check if user is logged and redirect to custom login page if not 
  *
  * @return 
@@ -92,7 +120,7 @@ function nisr_service_theme($existing, $type, $theme, $path){
  */
 function nisr_service_user_is_logged_in($service){
 	if(!user_is_logged_in()){
-		drupal_goto('ServiceLogin',array('query' => array('destination'=> 'service/' . $service)));
+		drupal_goto('ServiceLogin',array('query' => array('destination'=> 'service/apps/' . $service)));
 	}else{
 		$view = views_get_view($service);
 		$view->set_display('embed_1');

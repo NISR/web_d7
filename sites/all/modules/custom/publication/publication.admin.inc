@@ -122,7 +122,7 @@ function publication_add($type) {
   $publication = entity_create('publication', array('type' => $type));
   drupal_set_title(t('Create @name', array('@name' => entity_label('publication_type', $publication_type))));
 
-  $output = drupal_get_form('publication_form', $publication);
+  $output = drupal_get_form($type . '_publication_form', $publication);
   
   return $output;
 }

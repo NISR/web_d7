@@ -125,8 +125,8 @@ function application_admin_add_page() {
  */
 function application_add($type) {
   if(!user_is_logged_in()){
-		module_load_include('inc','nisr','nisr.authentication');
-		return drupal_get_form('service_login_form','visa');	
+		module_load_include('inc','nisr_service','nisr_service.authentication');
+		return drupal_get_form('nisr_service_login_form',$type);	
   }
   
   $application_type = application_types($type);
@@ -134,7 +134,7 @@ function application_add($type) {
   $application = entity_create('application', array('type' => $type));
   drupal_set_title(t('Request a @name', array('@name' => entity_label('application_type', $application_type))));
 
-  $output = drupal_get_form('application_form', $application);
+  $output = drupal_get_form($type . '_application_form', $application);
   
   return $output;
 }
@@ -193,6 +193,7 @@ function application_form_submit($form, &$form_state) {
   $application = $form_state['application'];
 
   entity_form_submit_build_entity('application', $application, $form, $form_state);
+  
 
   application_save($application);
 
@@ -200,7 +201,7 @@ function application_form_submit($form, &$form_state) {
 
   $form_state['redirect'] = $application_uri['path'];
 
-  drupal_set_message(t('Application saved.'));
+  drupal_set_message(t('%bundle_label application saved.',array('%bundle_label' => get_bundle_label('application',$application->type))));
 }
 
 function application_form_submit_delete($form, &$form_state) {
@@ -217,8 +218,9 @@ function application_delete_form($form, &$form_state, $application) {
   // Always provide entity id in the same form key as in the entity edit form.
   $form['application_type_id'] = array('#type' => 'value', '#value' => entity_id('application' ,$application));
   $application_uri = entity_uri('application', $application);
+
   return confirm_form($form,
-    t('Are you sure you want to delete  application id : %id ?', array('%id' => entity_id('application', $application))),
+    t('Are you sure you want to delete %bundle_label application id : %id ?', array('%bundle_label' => get_bundle_label('application',$application->type),'%id' => entity_id('application', $application))),
     $application_uri['path'],
     t('This action cannot be undone.'),
     t('Delete'),
@@ -232,8 +234,8 @@ function application_delete_form($form, &$form_state, $application) {
 function application_delete_form_submit($form, &$form_state) {
   $application = $form_state['application'];
   application_delete($application);
-
-  drupal_set_message(t(' application %id deleted.', array('%id' => entity_id('application', $application))));
+  
+  drupal_set_message(t('%bundle_label application %id deleted.', array('%bundle_label' => get_bundle_label('application',$application->type),'%id' => entity_id('application', $application))));
 
   $form_state['redirect'] = $application->type;
 }

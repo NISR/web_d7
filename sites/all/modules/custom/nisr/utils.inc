@@ -136,4 +136,17 @@ function get_label_dashed($label){
 	
 }
 
+/*
+ * Get the label of a given bundle from an entity type
+ * @param
+ *		string entity_type
+ *		string bundle
+ *
+ *	@return
+ 		string label
+ */
+function get_bundle_label($entity_type,$bundle){
+	$info = entity_get_info($entity_type);	
+	return $info['bundles'][$bundle]['label'];
+}
 
