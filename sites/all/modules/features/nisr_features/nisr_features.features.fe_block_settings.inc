@@ -212,7 +212,7 @@ function nisr_features_default_fe_block_settings() {
 
   $export['block-visa_button'] = array(
     'cache' => -1,
-    'css_class' => 'col-md-3',
+    'css_class' => 'col-md-3 featured-button',
     'custom' => 0,
     'machine_name' => 'visa_button',
     'module' => 'block',
