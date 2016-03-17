@@ -278,7 +278,6 @@ div.tweet-authorphoto img {
 
 .featured-box .box-content h3{
 	text-align: center;
-
 }
 
 .featured-box .box-content h4{
@@ -411,12 +410,12 @@ span.bronze{
 }
 
 .region-after-content .box-mini .content{
-	min-height: 275px;
+	min-height: 225px;
 }
 
 .region-after-content .box-normal .content,
 .region-after-content .box-highlighted .content{	
-	min-height: 350px;
+	min-height: 300px;
 }
 
 .region-after-content .box-mini .content,
