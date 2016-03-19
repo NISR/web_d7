@@ -138,7 +138,7 @@ function application_config_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Visa management';
+  $handler->display->display_options['title'] = 'Visa';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'administer application entities';
@@ -205,7 +205,7 @@ function application_config_views_default_views() {
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'No visa requests';
+  $handler->display->display_options['empty']['area']['content'] = 'The search yielded no result';
   $handler->display->display_options['empty']['area']['format'] = '2';
   /* Field: Application: Application ID */
   $handler->display->display_options['fields']['aid']['id'] = 'aid';
@@ -243,8 +243,8 @@ function application_config_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = 'Operations';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="/application/[aid]?destination=/admin/visa">View messages</a>&nbsp; | &nbsp;
-<a href="/application/[aid]/edit?destination=/admin/visa">Edit</a>';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="/application/[aid]">View</a>&nbsp; | &nbsp;
+<a href="/application/[aid]/edit">Edit</a>';
   /* Sort criterion: Application: Date changed */
   $handler->display->display_options['sorts']['changed']['id'] = 'changed';
   $handler->display->display_options['sorts']['changed']['table'] = 'application';
@@ -296,16 +296,16 @@ function application_config_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'admin/visa';
+  $handler->display->display_options['path'] = 'admin/apps/visa';
   $handler->display->display_options['menu']['type'] = 'normal';
-  $handler->display->display_options['menu']['title'] = 'Visa management';
-  $handler->display->display_options['menu']['weight'] = '-9';
+  $handler->display->display_options['menu']['title'] = 'Visa';
+  $handler->display->display_options['menu']['weight'] = '-50';
   $handler->display->display_options['menu']['name'] = 'management';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
   $translatables['visa_backoffice'] = array(
     t('Master'),
-    t('Visa management'),
+    t('Visa'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -319,7 +319,7 @@ function application_config_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
-    t('No visa requests'),
+    t('The search yielded no result'),
     t('Application ID'),
     t('.'),
     t(','),
@@ -328,8 +328,8 @@ function application_config_views_default_views() {
     t('Created'),
     t('Updated'),
     t('Operations'),
-    t('<a href="/application/[aid]?destination=/admin/visa">View messages</a>&nbsp; | &nbsp;
-<a href="/application/[aid]/edit?destination=/admin/visa">Edit</a>'),
+    t('<a href="/application/[aid]">View</a>&nbsp; | &nbsp;
+<a href="/application/[aid]/edit">Edit</a>'),
     t('Page'),
   );
   $export['visa_backoffice'] = $view;

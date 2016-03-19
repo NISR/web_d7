@@ -77,7 +77,7 @@ function nisr_features_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -50,
     'customized' => 1,
   );
   // Exported menu link: menu-footer-extra_web-analytics:node/1388.
@@ -97,7 +97,7 @@ function nisr_features_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -49,
     'customized' => 1,
   );
   // Exported menu link: menu-useful-links_national-bank-of-rwanda:http://www.bnr.rw.

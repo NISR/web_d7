@@ -208,7 +208,7 @@ function nisr_features_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'gcal_events_footer_gcal_events-0';
-  $strongarm->value = '<div class="pull-right"><a class="btn btn-xs btn-primary" target="_blank" href="release-calendar">Learn more</a></div>                       ';
+  $strongarm->value = '<div class="pull-right"><a class="btn btn-sm btn-primary" target="_blank" href="release-calendar">Learn more</a></div>                       ';
   $export['gcal_events_footer_gcal_events-0'] = $strongarm;
 
   $strongarm = new stdClass();

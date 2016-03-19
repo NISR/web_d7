@@ -32,7 +32,7 @@ function gar_config_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'chart';
   $handler->display->display_options['style_options']['type'] = 'bar';
-  $handler->display->display_options['style_options']['title'] = 'Countries';
+  $handler->display->display_options['style_options']['title'] = 'Top visitors originating countries';
   $handler->display->display_options['style_options']['tooltips'] = 'TRUE';
   $handler->display->display_options['style_options']['label_field'] = 'country';
   $handler->display->display_options['style_options']['data_fields'] = array(
@@ -41,7 +41,7 @@ function gar_config_views_default_views() {
   );
   $handler->display->display_options['style_options']['field_colors'] = array(
     'country' => '#2f7ed8',
-    'sessions' => '#2f7ed8',
+    'sessions' => '#e6494b',
   );
   /* Field: Geo network dimensions: Country / Territory */
   $handler->display->display_options['fields']['country']['id'] = 'country';
@@ -94,7 +94,7 @@ function gar_config_views_default_views() {
   );
   $handler->display->display_options['style_options']['field_colors'] = array(
     'date' => '#2f7ed8',
-    'sessions' => '#16aadc',
+    'sessions' => '#fecd67',
   );
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;

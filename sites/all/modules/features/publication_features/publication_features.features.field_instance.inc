@@ -1162,9 +1162,11 @@ E.g : February 2014 = 100, current prices,Billions USD etc',
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'file',
-        'settings' => array(),
-        'type' => 'file_table',
+        'module' => 'file_entity',
+        'settings' => array(
+          'file_view_mode' => 'full',
+        ),
+        'type' => 'file_rendered',
         'weight' => 1,
       ),
       'teaser' => array(

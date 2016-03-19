@@ -70,7 +70,7 @@ function nisr_features_default_fe_block_boxes() {
   $fe_block_boxes->info = 'Visa button on the frontpage';
   $fe_block_boxes->format = '2';
   $fe_block_boxes->machine_name = 'visa_button';
-  $fe_block_boxes->body = '<p><a class="btn btn-lg btn-primary btn-special" href="service/visa">Apply for a visa</a></p><p>&nbsp;</p>';
+  $fe_block_boxes->body = '<p><a class="btn btn-lg btn-primary btn-special" href="service/apps/visa">Apply for a visa</a></p><p>&nbsp;</p>';
 
   $export['visa_button'] = $fe_block_boxes;
 

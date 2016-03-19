@@ -14,6 +14,7 @@ function gar_config_user_default_permissions() {
   $permissions['access google analytics reports'] = array(
     'name' => 'access google analytics reports',
     'roles' => array(
+      'Content manager' => 'Content manager',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
     ),
