@@ -42,7 +42,7 @@ function nisr_service_menu(){
 	);
 	
 	$items['service/apps/visa'] = array(
-		'title' => 'Apply for a visa/Manage your visa request',
+		'title' => 'Apply for a visa / Manage your visa request',
 		'page callback' => 'nisr_service_user_is_logged_in',
 		'page arguments' => array('visa'),
 		'access callback' => TRUE,

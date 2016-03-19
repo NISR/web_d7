@@ -30,7 +30,7 @@
 
 ?>
 <div class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-	<div class="col-md-8">
+	<div class="col-md-">
 		<div class="col-md-6">
 	    <h2<?php print $title_attributes; ?>>
 	        <?php print $title; ?>

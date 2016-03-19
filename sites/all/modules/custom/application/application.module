@@ -96,9 +96,23 @@ function application_forms() {
 }
 
 function application_form_visa_application_form_alter(&$form,&$form_state,$form_id){
+	global $user;
+	
 	//Hide Status field
 	$form['field_visa_status']['#prefix'] = "<div class='element-invisible'>";
 	$form['field_visa_status']['#suffix'] = "</div>";
+	
+	// Preload Contact information with User profile info
+	$profile = profile2_load_by_user($user,'main');
+	$wrapper = entity_metadata_wrapper('profile2',$profile);
+	
+	// Make sure data is present
+	if(count($profile->field_profile_pi)){
+		$form['field_visa_contact_firstname'][LANGUAGE_NONE][0]['value']['#default_value'] = $wrapper->field_profile_pi->field_pi_firstname->value();
+		$form['field_visa_contact_lastname'][LANGUAGE_NONE][0]['value']['#default_value'] = $wrapper->field_profile_pi->field_pi_lastname->value();
+		$form['field_visa_contact_email'][LANGUAGE_NONE][0]['email']['#default_value'] = $user->mail;	
+	}	
+	
 	return $form;
 }
 

@@ -34,8 +34,8 @@ function nisr_service_login_form($form,&$form_state){
 		
 	);
 	
-	$form['footer']['#markup']  = "<br><div class='centered'><div style='width:50%;float:left'><a href='/ServiceRegister?destination=" . $service . "'>" . t('Register') ."</a></div>";
-	$form['footer']['#markup'] .= "<div style='width:50%;float:left'><a href='ServiceRecoverPassword'>" . t('Forgot your password'). "?</a></div>";
+	$form['footer']['#markup']  = "<br><div class='centered'><div style='width:50%;float:left'><a class='btn btn-xs btn-tertiary' href='/ServiceRegister?destination=" . $service . "'>" . t('Register') ."</a></div>";
+	$form['footer']['#markup'] .= "<div style='width:50%;float:left'><a class='btn btn-xs btn-tertiary' href='ServiceRecoverPassword'>" . t('Forgot your password'). "?</a></div>";
 	$form['footer']['#markup'] .= "</div>";	
 
 	
