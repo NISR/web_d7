@@ -97,6 +97,7 @@ function publication_features_views_default_views() {
   $handler->display->display_options['fields']['pub_id']['label'] = '';
   $handler->display->display_options['fields']['pub_id']['exclude'] = TRUE;
   $handler->display->display_options['fields']['pub_id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['pub_id']['separator'] = '';
   /* Field: Publication: Subject */
   $handler->display->display_options['fields']['field_pub_subject']['id'] = 'field_pub_subject';
   $handler->display->display_options['fields']['field_pub_subject']['table'] = 'field_data_field_pub_subject';
@@ -377,7 +378,7 @@ function publication_features_views_default_views() {
     'changed' => 'changed',
     'nothing' => 'nothing',
   );
-  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['default'] = 'created';
   $handler->display->display_options['style_options']['info'] = array(
     'views_bulk_operations' => array(
       'align' => '',
@@ -580,6 +581,7 @@ function publication_features_views_default_views() {
   $handler->display->display_options['fields']['pub_id']['label'] = '';
   $handler->display->display_options['fields']['pub_id']['exclude'] = TRUE;
   $handler->display->display_options['fields']['pub_id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['pub_id']['separator'] = '';
   /* Field: Publication: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'publication';
@@ -674,6 +676,7 @@ function publication_features_views_default_views() {
   $handler->display->display_options['fields']['pub_id']['label'] = '';
   $handler->display->display_options['fields']['pub_id']['exclude'] = TRUE;
   $handler->display->display_options['fields']['pub_id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['pub_id']['separator'] = '';
   /* Field: Publication: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'publication';
@@ -853,6 +856,7 @@ function publication_features_views_default_views() {
   $handler->display->display_options['fields']['pub_id']['label'] = '';
   $handler->display->display_options['fields']['pub_id']['exclude'] = TRUE;
   $handler->display->display_options['fields']['pub_id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['pub_id']['separator'] = '';
   /* Field: Publication: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'publication';
@@ -999,6 +1003,7 @@ function publication_features_views_default_views() {
   $handler->display->display_options['fields']['pub_id']['label'] = '';
   $handler->display->display_options['fields']['pub_id']['exclude'] = TRUE;
   $handler->display->display_options['fields']['pub_id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['pub_id']['separator'] = '';
   /* Field: Publication: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'publication';
@@ -1153,6 +1158,7 @@ function publication_features_views_default_views() {
   $handler->display->display_options['fields']['pub_id']['label'] = '';
   $handler->display->display_options['fields']['pub_id']['exclude'] = TRUE;
   $handler->display->display_options['fields']['pub_id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['pub_id']['separator'] = '';
   /* Field: Publication: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'publication';
@@ -1297,6 +1303,7 @@ function publication_features_views_default_views() {
   $handler->display->display_options['fields']['pub_id']['label'] = '';
   $handler->display->display_options['fields']['pub_id']['exclude'] = TRUE;
   $handler->display->display_options['fields']['pub_id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['pub_id']['separator'] = '';
   /* Field: Publication: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'publication';
@@ -1416,6 +1423,7 @@ function publication_features_views_default_views() {
   $handler->display->display_options['fields']['pub_id']['label'] = '';
   $handler->display->display_options['fields']['pub_id']['exclude'] = TRUE;
   $handler->display->display_options['fields']['pub_id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['pub_id']['separator'] = '';
   /* Field: Publication: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'publication';
