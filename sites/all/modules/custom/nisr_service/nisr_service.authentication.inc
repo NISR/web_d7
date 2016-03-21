@@ -8,8 +8,10 @@ function nisr_service_login_form($form,&$form_state){
 	
 	isset($_GET['destination'])? $service =  $_GET['destination'] : $service = '';
 	
+	$welcome_note = t("To use this service, you need to login first");
+	
 	$form['welcome_note'] = array(
-		'#markup'=> "<div class='centered'><strong>" . t('To use this service you need to login first') . "</strong></div>",
+		'#markup'=> "<div class='centered'><strong>$welcome_note</strong></div>",
 	);	
 		
 	$form['username'] = array(
@@ -25,7 +27,7 @@ function nisr_service_login_form($form,&$form_state){
 		'#required' => TRUE,
 		'#title' => t('Password'),
 	);	
-		
+			
 	$form['actions']['submit'] = array(
 		'#prefix' => "<div class='centered'>",
 		'#suffix' => "</div>",
@@ -34,8 +36,8 @@ function nisr_service_login_form($form,&$form_state){
 		
 	);
 	
-	$form['footer']['#markup']  = "<br><div class='centered'><div style='width:50%;float:left'><a class='btn btn-xs btn-tertiary' href='/ServiceRegister?destination=" . $service . "'>" . t('Register') ."</a></div>";
-	$form['footer']['#markup'] .= "<div style='width:50%;float:left'><a class='btn btn-xs btn-tertiary' href='ServiceRecoverPassword'>" . t('Forgot your password'). "?</a></div>";
+	$form['footer']['#markup']  = "<br><div class='centered'><div style='width:50%;float:left'><a class='' href='/ServiceRegister?destination=" . $service . "'>" . t('Register') ."</a></div>";
+	$form['footer']['#markup'] .= "<div style='width:50%;float:left'><a class='' href='ServiceRecoverPassword'>" . t('Forgot your password'). "?</a></div>";
 	$form['footer']['#markup'] .= "</div>";	
 
 	
