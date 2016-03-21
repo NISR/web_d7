@@ -411,6 +411,13 @@ function nisr_features_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'realname_pattern';
+  $strongarm->value = '[user:profile-main:field-profile-pi:field-pi-firstname] [user:profile-main:field-profile-pi:field-pi-lastname]';
+  $export['realname_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'theme_default';
   $strongarm->value = 'porto_sub';
   $export['theme_default'] = $strongarm;

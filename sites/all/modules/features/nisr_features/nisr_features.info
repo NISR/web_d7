@@ -175,6 +175,7 @@ features[variable][] = pathauto_taxonomy_term_countries_pattern
 features[variable][] = pathauto_taxonomy_term_profile_occupation_pattern
 features[variable][] = pathauto_taxonomy_term_story_topics_pattern
 features[variable][] = pathauto_taxonomy_term_tags_pattern
+features[variable][] = realname_pattern
 features[variable][] = theme_default
 features[variable][] = theme_porto_sub_settings
 features[views_view][] = news
