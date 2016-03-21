@@ -60,6 +60,26 @@ function nisr_features_menu_default_menu_links() {
     'weight' => -50,
     'customized' => 1,
   );
+  // Exported menu link: menu-footer-extra_access-the-old-website:http://ww1.statistics.gov.rw.
+  $menu_links['menu-footer-extra_access-the-old-website:http://ww1.statistics.gov.rw'] = array(
+    'menu_name' => 'menu-footer-extra',
+    'link_path' => 'http://ww1.statistics.gov.rw',
+    'router_path' => '',
+    'link_title' => 'Access the old website',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-footer-extra_access-the-old-website:http://ww1.statistics.gov.rw',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -48,
+    'customized' => 1,
+  );
   // Exported menu link: menu-footer-extra_terms-of-use:node/1391.
   $menu_links['menu-footer-extra_terms-of-use:node/1391'] = array(
     'menu_name' => 'menu-footer-extra',
@@ -121,6 +141,7 @@ function nisr_features_menu_default_menu_links() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Access the old website');
   t('Flickr photo galleries');
   t('National Bank of Rwanda');
   t('Terms of use');
