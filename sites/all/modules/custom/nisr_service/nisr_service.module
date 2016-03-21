@@ -106,7 +106,16 @@ function nisr_service_user_has_role($roles){
 	global $user;
 	$access = FALSE;
 	
-	if(($user->uid == 1) || in_array($user->roles,$roles)) $access = TRUE ;
+	if ($user->uid != 1){
+		foreach($roles as $role){
+			if(in_array($role,$user->roles){
+				 $access = TRUE ;
+				 break;
+			}	
+		}
+	}else{
+		$access = TRUE;
+	}
 	
 	return $access;		
 }
