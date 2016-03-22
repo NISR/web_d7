@@ -137,11 +137,19 @@ function nisr_service_register_form($form,&$form_state){
 		'#type' => 'submit',
 		'#value' => t('Register'),	
 	);
+	
+	if(module_exists('recaptcha')){
+		$form['captcha'] = array(
+			'#type' => 'captcha',
+			'#captcha_type' => 'recaptcha/reCAPTCHA'
+		);
+	}
 			
 	$form['actions']['submit'] = array(
 		'#prefix' => "<div class='centered'>",
 		'#suffix' => "</div>",
 		'#type' => 'submit',
+		'#weight' => 999,
 		'#value' => t('Register'),	
 	);
 	
