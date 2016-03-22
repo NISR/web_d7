@@ -1800,15 +1800,15 @@ function publication_features_views_default_views() {
   $handler->display->display_options['fields']['pub_id']['id'] = 'pub_id';
   $handler->display->display_options['fields']['pub_id']['table'] = 'search_api_index_publications';
   $handler->display->display_options['fields']['pub_id']['field'] = 'pub_id';
-  /* Sort criterion: Indexed Publication: Period/Days */
-  $handler->display->display_options['sorts']['period_days_number']['id'] = 'period_days_number';
-  $handler->display->display_options['sorts']['period_days_number']['table'] = 'search_api_index_publications';
-  $handler->display->display_options['sorts']['period_days_number']['field'] = 'period_days_number';
   /* Sort criterion: Indexed Publication: Entity ID */
   $handler->display->display_options['sorts']['search_api_id']['id'] = 'search_api_id';
   $handler->display->display_options['sorts']['search_api_id']['table'] = 'search_api_index_publications';
   $handler->display->display_options['sorts']['search_api_id']['field'] = 'search_api_id';
   $handler->display->display_options['sorts']['search_api_id']['order'] = 'DESC';
+  /* Sort criterion: Indexed Publication: Period/Days */
+  $handler->display->display_options['sorts']['period_days_number']['id'] = 'period_days_number';
+  $handler->display->display_options['sorts']['period_days_number']['table'] = 'search_api_index_publications';
+  $handler->display->display_options['sorts']['period_days_number']['field'] = 'period_days_number';
   /* Contextual filter: Source: Subject (indexed) */
   $handler->display->display_options['arguments']['field_pub_pubsource_field_pub_subject']['id'] = 'field_pub_pubsource_field_pub_subject';
   $handler->display->display_options['arguments']['field_pub_pubsource_field_pub_subject']['table'] = 'search_api_index_publications';

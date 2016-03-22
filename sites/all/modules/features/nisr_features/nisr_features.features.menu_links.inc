@@ -60,17 +60,17 @@ function nisr_features_menu_default_menu_links() {
     'weight' => -50,
     'customized' => 1,
   );
-  // Exported menu link: menu-footer-extra_access-the-old-website:http://ww1.statistics.gov.rw.
-  $menu_links['menu-footer-extra_access-the-old-website:http://ww1.statistics.gov.rw'] = array(
+  // Exported menu link: menu-footer-extra_access-the-old-website:http://old.statistics.gov.rw.
+  $menu_links['menu-footer-extra_access-the-old-website:http://old.statistics.gov.rw'] = array(
     'menu_name' => 'menu-footer-extra',
-    'link_path' => 'http://ww1.statistics.gov.rw',
+    'link_path' => 'http://old.statistics.gov.rw',
     'router_path' => '',
     'link_title' => 'Access the old website',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'menu-footer-extra_access-the-old-website:http://ww1.statistics.gov.rw',
+      'identifier' => 'menu-footer-extra_access-the-old-website:http://old.statistics.gov.rw',
     ),
     'module' => 'menu',
     'hidden' => 0,
