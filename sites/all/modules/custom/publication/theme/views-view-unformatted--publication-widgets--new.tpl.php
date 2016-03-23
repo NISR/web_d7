@@ -15,6 +15,8 @@
 		$next_id = $id + 1;
 		if(array_key_exists($next_id,$rows)){
 			$separator = 'row-separator';
+		}else{
+			$separator = "";	
 		}
    ?>
   <div<?php if ($classes_array[$id]) { print ' class="' . $classes_array[$id] . " " . $separator . ' "';  } ?>>
