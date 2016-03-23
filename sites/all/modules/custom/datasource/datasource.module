@@ -353,7 +353,7 @@ function datasource_entity_view($entity, $type, $view_mode, $langcode){
 	if($type == 'datasource'){
 	  // Set breadrumb
 	  $breadcrumb = array();
-	  $breadcrumb[] = l(t('Home'),'</front>');
+	  $breadcrumb[] = l(t('Home'),'<front>');
 	  $breadcrumb[] = l(t('Data sources'),'datasources');
 	  
 	  if($entity->type == 'datasource_incidence'){
