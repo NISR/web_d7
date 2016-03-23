@@ -387,6 +387,10 @@ span.bronze{
 }
 
 
+.region-after-content{
+	padding-top: 30px;	
+}
+
 .region-after-content .box-mini h2,
 .region-after-content .box-normal h2{
 	border-top:0px solid #000;
