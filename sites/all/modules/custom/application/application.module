@@ -276,9 +276,11 @@ function application_permission() {
  * Implements hook_preprocess_entity()
  */
 function application_preprocess_entity(&$variables){
-	module_load_include('inc','application','application.form');
-	$variables['message_form'] = drupal_render(drupal_get_form('application_message_form',$variables['application']->aid));
-	$variables['messages'] = views_embed_view('messages','messages',$variables['application']->aid);
+	if(array_key_exists('application',$variables)){
+		module_load_include('inc','application','application.form');
+		$variables['message_form'] = drupal_render(drupal_get_form('application_message_form',$variables['application']->aid));
+		$variables['messages'] = views_embed_view('messages','messages',$variables['application']->aid);
+	}
 }
 
 /**

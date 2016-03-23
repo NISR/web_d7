@@ -12,7 +12,8 @@
 <?php endif; ?>
 <?php foreach ($rows as $id => $row): ?>
 	<?php 
-		if(array_key_exists(++$id,$rows)){
+		$next_id = $id + 1;
+		if(array_key_exists($next_id,$rows)){
 			$separator = 'row-separator';
 		}
    ?>
