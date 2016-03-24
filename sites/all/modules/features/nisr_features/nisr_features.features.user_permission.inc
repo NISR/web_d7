@@ -24,7 +24,10 @@ function nisr_features_user_default_permissions() {
   // Exported permission: 'download any document files'.
   $permissions['download any document files'] = array(
     'name' => 'download any document files',
-    'roles' => array(),
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
     'module' => 'file_entity',
   );
 

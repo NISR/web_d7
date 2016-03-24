@@ -22,6 +22,7 @@ features[context][] = press_menu
 features[ctools][] = context:context:3
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
+features[fe_block_settings][] = menu-menu-press
 features[features_api][] = api:2
 features[field_base][] = field_notice_files
 features[field_base][] = field_references

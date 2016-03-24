@@ -2168,9 +2168,9 @@ Leave empty for no range
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'file',
+        'module' => 'nisr',
         'settings' => array(),
-        'type' => 'file_table',
+        'type' => 'nisr_download_count',
         'weight' => 5,
       ),
       'teaser' => array(

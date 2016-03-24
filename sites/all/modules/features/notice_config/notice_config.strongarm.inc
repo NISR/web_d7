@@ -54,11 +54,11 @@ function notice_config_strongarm() {
             'visible' => TRUE,
           ),
           'full' => array(
-            'weight' => '10',
-            'visible' => TRUE,
+            'weight' => '2',
+            'visible' => FALSE,
           ),
           'teaser' => array(
-            'weight' => '10',
+            'weight' => '2',
             'visible' => FALSE,
           ),
         ),

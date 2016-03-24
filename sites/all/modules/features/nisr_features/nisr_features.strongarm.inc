@@ -481,8 +481,8 @@ function nisr_features_strongarm() {
     'default_logo' => 0,
     'logo_path' => 'sites/default/files/images/logo.png',
     'logo_upload' => '',
-    'default_favicon' => 1,
-    'favicon_path' => '',
+    'default_favicon' => 0,
+    'favicon_path' => 'sites/default/files/images/favicon.ico',
     'favicon_upload' => '',
     'breadcrumbs' => 1,
     'sticky_header' => 1,
@@ -504,8 +504,8 @@ function nisr_features_strongarm() {
     'user_css' => '',
     'ribbon' => 0,
     'ribbon_text' => 'Get In Touch',
-    'options__active_tab' => 'edit-general',
-    'jquery_update_jquery_version' => '',
+    'options__active_tab' => 'edit-drupal-default-settings',
+    'favicon_mimetype' => 'image/vnd.microsoft.icon',
   );
   $export['theme_porto_sub_settings'] = $strongarm;
 
