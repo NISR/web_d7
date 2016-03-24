@@ -68,12 +68,12 @@ function get_elapsed_period(&$publication){
 	$voc = taxonomy_vocabulary_machine_name_load('publication_elapsed_period');
 	$periods = taxonomy_get_tree($voc->vid,0,NULL,TRUE);
 					
-	$tid = 0;
-
 	foreach($periods as $period){
 		$p = entity_metadata_wrapper('taxonomy_term',$period);
-      $tid = $period->tid;
-		if($days <= $p->field_ep_days->value()) break;	
+		if($days <= $p->field_ep_days->value()){
+			$pub->field_pub_elapsed_periods->set($period->tid) ;
+			break;
+		}	
 	}
 										 
 	return (int)$days;
