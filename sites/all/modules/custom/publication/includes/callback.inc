@@ -49,7 +49,6 @@ function get_elapsed_period(&$publication){
 	$pub = entity_metadata_wrapper('publication',$publication);
 	$period = $days = $time_ago = '';
 	
-
   	if(isset($publication->field_pub_datasource) && count($publication->field_pub_datasource)){
   		$period = $pub->field_pub_datasource->field_datasource_period->value2->value();		
 	}
@@ -57,6 +56,11 @@ function get_elapsed_period(&$publication){
   	if(isset($publication->field_pub_period) && count($publication->field_pub_period)){
   		$period = $pub->field_pub_period->value2->value();		
 	}
+	// If none of the above is used, then fallback on publication date field
+	if(empty($period) && isset($pub->field_pub_publication_date)){	
+		$period = $pub->field_pub_publication_date->value();		
+	}
+
 	// Evaluate Days interval
 	$days = (REQUEST_TIME - $period)/86400 ; 
 	

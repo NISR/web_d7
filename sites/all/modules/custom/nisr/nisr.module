@@ -8,7 +8,8 @@ DEFINE('NISR_MODULE_PATH',drupal_get_path('module', 'nisr'));
 
 drupal_add_css(NISR_MODULE_PATH. '/nisr.css', array('group' => CSS_THEME, 'weight' => '9999','every_page' => FALSE));
 
-module_load_include('inc','nisr','utils');
+module_load_include('inc','nisr','includes/utils');
+module_load_include('inc', 'nisr', 'includes/nisr_download_count.field');
 
 /*
  * Implements hook_block_info()
@@ -288,16 +289,27 @@ function nisr_menu_alter(&$items) {
   if (!empty($items['admin/content'])) $items['admin/content']['weight'] = 50;
 }
 
-
-
-
+/**
+ * Implements hook_theme()
+ */
+function nisr_theme(){
+  $theme = array(
+    'file_download_count_link' => array(
+    	'variables' => array('file' => NULL),
+    	'file' => 'includes/nisr_download_count.field.inc',
+    ),
+  );
+  
+  return $theme;	
+}
 /**
  * Implements hook_theme_registry_alter().
  */
 function nisr_theme_registry_alter(&$theme_registry) {
     // Defined path to the current module.
-    $theme_registry['file_formatter_table']['function'] = 'nisr_file_formatter_table';
     $module_path = drupal_get_path('module', 'nisr');
+	 // Custom callback for file formatter table    
+    //$theme_registry['file_formatter_table']['function'] = 'nisr_file_formatter_table';
     // Find all .tpl.php files in this module's folder recursively.
     $template_file_objects = drupal_find_theme_templates($theme_registry, '.tpl.php', $module_path);
     // Iterate through all found template file objects.
@@ -310,7 +322,6 @@ function nisr_theme_registry_alter(&$theme_registry) {
             $theme_registry[$key]['type'] = 'module';
         }
     }
-    
 }
 
 /**
@@ -342,22 +353,24 @@ function nisr_twitter_pull_blocks() {
 /*
  * Theme function used to override the file table display to add the download count
  * alongside the file name/description 
- */
+ 
 function nisr_file_formatter_table(&$variables){
-  $header = array(t('File'), t('Download count'));
-  $rows = array();
-  foreach ($variables['items'] as $delta => $item) {
-    $result = db_select('download_count','dc')->fields('dc')->condition('fid', $item['fid'], '=')->condition('uid', 1, '<>')->execute();
-    $dc = $result->rowCount();   
+	$header = array(t('File'), t('Download count'));
+	$rows = array();
+	foreach ($variables['items'] as $delta => $item) {
+		$result = db_select('download_count','dc')->fields('dc')->condition('fid', $item['fid'], '=')->condition('uid', 1, '<>')->execute();
+		$dc = $result->rowCount();   
     
-    $rows[] = array(
-      theme('file_link', array('file' => (object) $item)) . ' (' . format_size($item['filesize']) . ')',
-      $dc,
-    );
+		$rows[] = array(
+			theme('file_link', array('file' => (object) $item)) . ' (' . format_size($item['filesize']) . ')',
+      	$dc,
+    	);
   }
 
   return empty($rows) ? '' : theme('table', array('header' => $header, 'rows' => $rows,'attributes' => array('class' => array('col-md-12'),'style'=>'margin-bottom:20px;')));
+
 } 
+*/
 
 
 /*
