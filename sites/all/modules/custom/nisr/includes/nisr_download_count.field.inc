@@ -99,5 +99,5 @@ function theme_file_download_count_link($variables){
 	 	$options['attributes']['title'] = check_plain($file->filename);
 	}
 	
-	return '<span class="file">' . $icon . ' ' . l($link_text, $uri['path'], $uri['options']) . '</span>';
+	return '<span class="file">' . $icon . ' ' . l($link_text, $uri['path'], $uri['options']) . ' (' . format_size($file->filesize) . ')</span>';
 }
