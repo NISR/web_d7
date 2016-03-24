@@ -181,7 +181,7 @@
 		    <?php endif; ?>
 		    
 		    <?php if (render($page['footer_3'])) : ?>
-		    <div class="col-md-4">
+		    <div class="col-md-2">
 				  <?php print render($page['footer_3']); ?>
 		    </div>
 		    <?php endif; ?>
@@ -191,6 +191,12 @@
 				  <?php print render($page['footer_4']); ?>
 		    </div>
 		    <?php endif; ?>
+			 
+			 <?php if (render($page['footer_5'])) : ?>
+		    <div class="col-md-2">
+				  <?php print render($page['footer_5']); ?>
+		    </div>
+		    <?php endif; ?>    
 			    
 			</div>  
 	  </div>	

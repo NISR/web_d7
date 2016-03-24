@@ -207,13 +207,13 @@ function nisr_features_context_default_contexts() {
         'menu-menu-notices' => array(
           'module' => 'menu',
           'delta' => 'menu-notices',
-          'region' => 'footer_3',
-          'weight' => '-9',
+          'region' => 'footer_4',
+          'weight' => '-10',
         ),
         'menu-menu-follow-us' => array(
           'module' => 'menu',
           'delta' => 'menu-follow-us',
-          'region' => 'footer_4',
+          'region' => 'footer_5',
           'weight' => '-10',
         ),
         'nisr-last_update_date' => array(

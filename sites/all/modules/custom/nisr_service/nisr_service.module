@@ -30,7 +30,7 @@ function nisr_service_menu(){
 		'access callback' => TRUE,	
 	);
 	
-	$items['admin/apps'] = array(
+	$items['admin/services'] = array(
 		'title' => 'Application forms',
     	'type' => MENU_NORMAL_ITEM,
     	'access callback' => 'nisr_service_user_has_role',
@@ -41,7 +41,7 @@ function nisr_service_menu(){
 	
 	);
 	
-	$items['service/apps/visa'] = array(
+	$items['service/visa'] = array(
 		'title' => 'Apply for a visa / Manage your visa request',
 		'page callback' => 'nisr_service_user_is_logged_in',
 		'page arguments' => array('visa'),
@@ -114,6 +114,7 @@ function nisr_service_user_has_role($roles){
 			}	
 		}
 	}else{
+		// User 1 rules
 		$access = TRUE;
 	}
 	
@@ -129,7 +130,7 @@ function nisr_service_user_has_role($roles){
  */
 function nisr_service_user_is_logged_in($service){
 	if(!user_is_logged_in()){
-		drupal_goto('ServiceLogin',array('query' => array('destination'=> 'service/apps/' . $service)));
+		drupal_goto('ServiceLogin',array('query' => array('destination'=> 'service/' . $service)));
 	}else{
 		$view = views_get_view($service);
 		$view->set_display('embed_1');

@@ -95,7 +95,11 @@ function application_forms() {
   return $forms;
 }
 
+/*
+ * Implements hook_form_FORM_ID_alter()
+ */
 function application_form_visa_application_form_alter(&$form,&$form_state,$form_id){
+	dpm($form);
 	global $user;
 	
 	//Hide Status field
