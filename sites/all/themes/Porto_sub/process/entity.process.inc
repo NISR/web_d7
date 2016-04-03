@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Implements hook_process().
+ * Implements hook_process_entity().
  */
 function porto_sub_process_entity(&$variables) {
   dpm($variables);

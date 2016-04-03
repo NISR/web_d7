@@ -286,7 +286,11 @@ function nisr_menu_alter(&$items) {
   // Re-order scheduler admin menu item
   if (!empty($items['admin/content/scheduler'])) $items['admin/content/scheduler']['weight'] = 49;
   // Content admin menu item
-  if (!empty($items['admin/content'])) $items['admin/content']['weight'] = 50;
+  if (!empty($items['admin/content'])) $items['admin/content']['weight'] = 50; 
+  // Override user page 
+  $items['user/%user']['page callback'] = 'drupal_goto';
+  $items['user/%user']['page arguments'] = array('profile');
+  
 }
 
 /**

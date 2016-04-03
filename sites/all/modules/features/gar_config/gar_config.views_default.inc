@@ -149,7 +149,8 @@ function gar_config_views_default_views() {
   $handler->display->display_options['style_options']['type'] = 'area';
   $handler->display->display_options['style_options']['title'] = 'Devices used for access over the last seven days';
   $handler->display->display_options['style_options']['tooltips'] = 'TRUE';
-  $handler->display->display_options['style_options']['legend_position'] = 'bottom';
+  $handler->display->display_options['style_options']['legend_position'] = 'right';
+  $handler->display->display_options['style_options']['xaxis_labels_rotation'] = '90';
   $handler->display->display_options['style_options']['label_field'] = 'date';
   $handler->display->display_options['style_options']['data_fields'] = array(
     'deviceCategory' => 'deviceCategory',
@@ -170,7 +171,7 @@ function gar_config_views_default_views() {
   $handler->display->display_options['fields']['date']['table'] = 'google_analytics';
   $handler->display->display_options['fields']['date']['field'] = 'date';
   $handler->display->display_options['fields']['date']['date_format'] = 'custom';
-  $handler->display->display_options['fields']['date']['custom_date_format'] = 'l';
+  $handler->display->display_options['fields']['date']['custom_date_format'] = 'd M';
   $handler->display->display_options['fields']['date']['second_date_format'] = 'long';
   /* Field: Platform or device dimensions: Device Category */
   $handler->display->display_options['fields']['deviceCategory']['id'] = 'deviceCategory';
@@ -194,7 +195,7 @@ function gar_config_views_default_views() {
   $handler->display->display_options['filters']['start_date']['id'] = 'start_date';
   $handler->display->display_options['filters']['start_date']['table'] = 'google_analytics';
   $handler->display->display_options['filters']['start_date']['field'] = 'start_date';
-  $handler->display->display_options['filters']['start_date']['value']['value'] = '-7 day';
+  $handler->display->display_options['filters']['start_date']['value']['value'] = '-7 days';
   $handler->display->display_options['filters']['start_date']['value']['type'] = 'offset';
   $handler->display->display_options['filters']['start_date']['group'] = 1;
   /* Filter criterion: Google Analytics: End date of report */

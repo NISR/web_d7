@@ -7,7 +7,6 @@
 function application_message_form($form,&$form_state,$application_id){
    $form = array();	
 	
-
 	$form['message'] = array(
 		'#type' => 'textarea',
 		'#title' => t('Message'),

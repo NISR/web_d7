@@ -31,7 +31,7 @@ function nisr_service_menu(){
 	);
 	
 	$items['admin/services'] = array(
-		'title' => 'Application forms',
+		'title' => 'Services management',
     	'type' => MENU_NORMAL_ITEM,
     	'access callback' => 'nisr_service_user_has_role',
     	'access arguments' => array(array('Visa manager','administrator','Internships manager')),
@@ -54,6 +54,14 @@ function nisr_service_menu(){
 	return $items;	
 }
 
+/*
+ * Implements hook_menu_alter()
+ */
+function nisr_service_menu_alter(&$items){
+	// Provide top level access to admin menu
+	$items['admin']['access callback'] = 'nisr_service_user_has_role';
+	$items['admin']['access arguments'] = array(array('Visa manager','Internships manager','administrator'));	
+}
 
 /*
  * Implements hook_preprocess_page()

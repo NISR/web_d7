@@ -168,32 +168,30 @@ function application_config_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['content'] = '<div class="pull-right">
-  <a class="btn btn-xs btn-success" href="/application/add/visa"><i class="fa fa-plus"></i> Submit another visa application</a>
+  <a class="btn btn-sm btn-success" href="/application/add/visa"><i class="fa fa-plus"></i> Submit another visa application</a>
 </div>';
   $handler->display->display_options['header']['area']['format'] = '2';
   /* Relationship: Application: Author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'application';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  /* Relationship: Application: Organization information (field_visa_organization) */
+  $handler->display->display_options['relationships']['field_visa_organization_value']['id'] = 'field_visa_organization_value';
+  $handler->display->display_options['relationships']['field_visa_organization_value']['table'] = 'field_data_field_visa_organization';
+  $handler->display->display_options['relationships']['field_visa_organization_value']['field'] = 'field_visa_organization_value';
+  $handler->display->display_options['relationships']['field_visa_organization_value']['delta'] = '-1';
   /* Field: Application: Application ID */
   $handler->display->display_options['fields']['aid']['id'] = 'aid';
   $handler->display->display_options['fields']['aid']['table'] = 'application';
   $handler->display->display_options['fields']['aid']['field'] = 'aid';
   $handler->display->display_options['fields']['aid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['aid']['separator'] = '';
-  /* Field: Application: Name */
+  /* Field: Field collection item: Name */
   $handler->display->display_options['fields']['field_visa_org_name']['id'] = 'field_visa_org_name';
   $handler->display->display_options['fields']['field_visa_org_name']['table'] = 'field_data_field_visa_org_name';
   $handler->display->display_options['fields']['field_visa_org_name']['field'] = 'field_visa_org_name';
+  $handler->display->display_options['fields']['field_visa_org_name']['relationship'] = 'field_visa_organization_value';
   $handler->display->display_options['fields']['field_visa_org_name']['label'] = 'Organization';
-  /* Field: Application: Date changed */
-  $handler->display->display_options['fields']['changed']['id'] = 'changed';
-  $handler->display->display_options['fields']['changed']['table'] = 'application';
-  $handler->display->display_options['fields']['changed']['field'] = 'changed';
-  $handler->display->display_options['fields']['changed']['label'] = 'Updated';
-  $handler->display->display_options['fields']['changed']['date_format'] = 'custom';
-  $handler->display->display_options['fields']['changed']['custom_date_format'] = ' d F Y H:i ';
-  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
   /* Field: Application: Date created */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'application';
@@ -202,6 +200,14 @@ function application_config_views_default_views() {
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'd F Y H:i';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
+  /* Field: Application: Date changed */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'application';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['label'] = 'Updated';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'custom';
+  $handler->display->display_options['fields']['changed']['custom_date_format'] = ' d F Y H:i ';
+  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
@@ -247,14 +253,15 @@ function application_config_views_default_views() {
     t('next ›'),
     t('last »'),
     t('<div class="pull-right">
-  <a class="btn btn-xs btn-success" href="/application/add/visa"><i class="fa fa-plus"></i> Submit another visa application</a>
+  <a class="btn btn-sm btn-success" href="/application/add/visa"><i class="fa fa-plus"></i> Submit another visa application</a>
 </div>'),
     t('User'),
+    t('field collection item from field_visa_organization'),
     t('Application ID'),
     t('.'),
     t('Organization'),
-    t('Updated'),
     t('Created'),
+    t('Updated'),
     t('Operations'),
     t('<a href="/application/[aid]">View</a>&nbsp;&nbsp;
 <a href="/application/[aid]/edit">Edit</a>'),
@@ -343,15 +350,22 @@ function application_config_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'The search yielded no result';
   $handler->display->display_options['empty']['area']['format'] = '2';
+  /* Relationship: Application: Organization information (field_visa_organization) */
+  $handler->display->display_options['relationships']['field_visa_organization_value']['id'] = 'field_visa_organization_value';
+  $handler->display->display_options['relationships']['field_visa_organization_value']['table'] = 'field_data_field_visa_organization';
+  $handler->display->display_options['relationships']['field_visa_organization_value']['field'] = 'field_visa_organization_value';
+  $handler->display->display_options['relationships']['field_visa_organization_value']['required'] = TRUE;
+  $handler->display->display_options['relationships']['field_visa_organization_value']['delta'] = '-1';
   /* Field: Application: Application ID */
   $handler->display->display_options['fields']['aid']['id'] = 'aid';
   $handler->display->display_options['fields']['aid']['table'] = 'application';
   $handler->display->display_options['fields']['aid']['field'] = 'aid';
   $handler->display->display_options['fields']['aid']['exclude'] = TRUE;
-  /* Field: Application: Name */
+  /* Field: Field collection item: Name */
   $handler->display->display_options['fields']['field_visa_org_name']['id'] = 'field_visa_org_name';
   $handler->display->display_options['fields']['field_visa_org_name']['table'] = 'field_data_field_visa_org_name';
   $handler->display->display_options['fields']['field_visa_org_name']['field'] = 'field_visa_org_name';
+  $handler->display->display_options['fields']['field_visa_org_name']['relationship'] = 'field_visa_organization_value';
   $handler->display->display_options['fields']['field_visa_org_name']['label'] = 'Organization';
   /* Field: Application: Status */
   $handler->display->display_options['fields']['field_visa_status']['id'] = 'field_visa_status';
@@ -394,18 +408,19 @@ function application_config_views_default_views() {
     'visa' => 'visa',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Application: Name (field_visa_org_name) */
-  $handler->display->display_options['filters']['field_visa_org_name_value']['id'] = 'field_visa_org_name_value';
-  $handler->display->display_options['filters']['field_visa_org_name_value']['table'] = 'field_data_field_visa_org_name';
-  $handler->display->display_options['filters']['field_visa_org_name_value']['field'] = 'field_visa_org_name_value';
-  $handler->display->display_options['filters']['field_visa_org_name_value']['operator'] = 'contains';
-  $handler->display->display_options['filters']['field_visa_org_name_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_visa_org_name_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_visa_org_name_value']['expose']['operator_id'] = 'field_visa_org_name_value_op';
-  $handler->display->display_options['filters']['field_visa_org_name_value']['expose']['label'] = 'Organization';
-  $handler->display->display_options['filters']['field_visa_org_name_value']['expose']['operator'] = 'field_visa_org_name_value_op';
-  $handler->display->display_options['filters']['field_visa_org_name_value']['expose']['identifier'] = 'field_visa_org_name_value';
-  $handler->display->display_options['filters']['field_visa_org_name_value']['expose']['remember_roles'] = array(
+  /* Filter criterion: Field collection item: Name (field_visa_org_name:format) */
+  $handler->display->display_options['filters']['field_visa_org_name_format']['id'] = 'field_visa_org_name_format';
+  $handler->display->display_options['filters']['field_visa_org_name_format']['table'] = 'field_data_field_visa_org_name';
+  $handler->display->display_options['filters']['field_visa_org_name_format']['field'] = 'field_visa_org_name_format';
+  $handler->display->display_options['filters']['field_visa_org_name_format']['relationship'] = 'field_visa_organization_value';
+  $handler->display->display_options['filters']['field_visa_org_name_format']['operator'] = 'word';
+  $handler->display->display_options['filters']['field_visa_org_name_format']['group'] = 1;
+  $handler->display->display_options['filters']['field_visa_org_name_format']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_visa_org_name_format']['expose']['operator_id'] = 'field_visa_org_name_format_op';
+  $handler->display->display_options['filters']['field_visa_org_name_format']['expose']['label'] = 'Organization';
+  $handler->display->display_options['filters']['field_visa_org_name_format']['expose']['operator'] = 'field_visa_org_name_format_op';
+  $handler->display->display_options['filters']['field_visa_org_name_format']['expose']['identifier'] = 'field_visa_org_name_format';
+  $handler->display->display_options['filters']['field_visa_org_name_format']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     7 => 0,
@@ -432,9 +447,10 @@ function application_config_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'admin/apps/visa';
+  $handler->display->display_options['path'] = 'admin/services/visa';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Visa';
+  $handler->display->display_options['menu']['description'] = 'Visa management';
   $handler->display->display_options['menu']['weight'] = '-50';
   $handler->display->display_options['menu']['name'] = 'management';
   $handler->display->display_options['menu']['context'] = 0;
@@ -456,6 +472,7 @@ function application_config_views_default_views() {
     t('next ›'),
     t('last »'),
     t('The search yielded no result'),
+    t('field collection item from field_visa_organization'),
     t('Application ID'),
     t('.'),
     t(','),

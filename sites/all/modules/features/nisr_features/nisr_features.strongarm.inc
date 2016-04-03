@@ -505,6 +505,7 @@ function nisr_features_strongarm() {
     'ribbon' => 0,
     'ribbon_text' => 'Get In Touch',
     'options__active_tab' => 'edit-drupal-default-settings',
+    'jquery_update_jquery_version' => '',
     'favicon_mimetype' => 'image/vnd.microsoft.icon',
   );
   $export['theme_porto_sub_settings'] = $strongarm;

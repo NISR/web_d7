@@ -623,9 +623,9 @@ function publication_preprocess_entity(&$vars){
 	}
 }
 
-/**
- ** Implements hook_preprocess_page
- **/
+/*
+ * Implements hook_preprocess_page
+ */
 function publication_preprocess_page(&$variables){
 	$variables['bundle_label'] = '';
 	$publication = NULL;
@@ -636,9 +636,10 @@ function publication_preprocess_page(&$variables){
 	}
 }
 
-/**
-  * Implements hook_views_api().
-  */
+
+/*
+ * Implements hook_views_api().
+ */
 function publication_views_api() {
   return array(
     'api' => 3,
@@ -696,13 +697,13 @@ function publication_search_api_alter_callback_info() {
  */
 function publication_theme($existing, $type, $theme, $path) {
 
-  $module_path = drupal_get_path('module','publication');
-  $items = array();
+	$module_path = drupal_get_path('module','publication');
+	$items = array();
 
-  $items['render_publication_subjects']  = array(
+	$items['render_publication_subjects']  = array(
       			'render element' => 'element',
     				);
-  
+    				
   return $items;
 }
 
@@ -797,7 +798,7 @@ function draw_chart($pub_id,$view_mode,$range = array()){
    	
 }
 
-/**
+/*
  * Implements hook_theme_registry_alter().
  */
 function publication_theme_registry_alter(&$theme_registry) {

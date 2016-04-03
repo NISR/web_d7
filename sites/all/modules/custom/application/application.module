@@ -80,6 +80,7 @@ function application_entity_info_alter(&$entity_info) {
   }
 }
 
+
 /**
  * Implements hook_forms().
  *
@@ -99,9 +100,8 @@ function application_forms() {
  * Implements hook_form_FORM_ID_alter()
  */
 function application_form_visa_application_form_alter(&$form,&$form_state,$form_id){
-	dpm($form);
 	global $user;
-	
+		
 	//Hide Status field
 	$form['field_visa_status']['#prefix'] = "<div class='element-invisible'>";
 	$form['field_visa_status']['#suffix'] = "</div>";
@@ -112,9 +112,10 @@ function application_form_visa_application_form_alter(&$form,&$form_state,$form_
 	
 	// Make sure data is present
 	if(count($profile->field_profile_pi)){
-		$form['field_visa_contact_firstname'][LANGUAGE_NONE][0]['value']['#default_value'] = $wrapper->field_profile_pi->field_pi_firstname->value();
-		$form['field_visa_contact_lastname'][LANGUAGE_NONE][0]['value']['#default_value'] = $wrapper->field_profile_pi->field_pi_lastname->value();
-		$form['field_visa_contact_email'][LANGUAGE_NONE][0]['email']['#default_value'] = $user->mail;	
+		$fc = &$form['field_visa_contact'][LANGUAGE_NONE][0];
+		$fc['field_visa_contact_firstname'][LANGUAGE_NONE][0]['value']['#default_value'] = $wrapper->field_profile_pi->field_pi_firstname->value();
+		$fc['field_visa_contact_lastname'][LANGUAGE_NONE][0]['value']['#default_value'] = $wrapper->field_profile_pi->field_pi_lastname->value();
+		$fc['field_visa_contact_email'][LANGUAGE_NONE][0]['email']['#default_value'] = $user->mail;	
 	}	
 	
 	return $form;
@@ -285,7 +286,26 @@ function application_preprocess_entity(&$variables){
 		$variables['message_form'] = drupal_render(drupal_get_form('application_message_form',$variables['application']->aid));
 		$variables['messages'] = views_embed_view('messages','messages',$variables['application']->aid);
 	}
+
+	if ($variables['entity_type'] == 'field_collection_item' && $variables['elements']['#bundle'] == 'field_visa_contact') {
+		global $user;
+		$content = &$variables['content'];
+		$name_fields = array(
+		'field_visa_contact_salutation',
+		'field_visa_contact_firstname',
+		'field_visa_contact_lastname'
+		 );
+		foreach ($name_fields as $name_field) {
+			if (isset($content[$name_field])) {
+			  $name = (empty($name) ? '' : $name . ' ') . $content[$name_field][0]['#markup'];
+			  hide($content[$name_field]);
+			}
+		 }
+		$content['full_name'] = $name; 
+	}
+
 }
+
 
 /**
  * Implements hook_theme_registry_alter().
