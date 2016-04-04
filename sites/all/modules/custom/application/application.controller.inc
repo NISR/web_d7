@@ -87,7 +87,7 @@ class ApplicationTypeUIController extends EntityDefaultUIController {
  */
 class Application extends Entity {
   protected function defaultLabel() {
-    return $this->title;
+    //return $this->title;
   }
 
   protected function defaultUri() {

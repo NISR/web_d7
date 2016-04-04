@@ -125,7 +125,7 @@ function application_config_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -175,7 +175,7 @@ function application_config_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -243,7 +243,7 @@ function application_config_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 1,
+      'weight' => 0,
     ),
   );
 
@@ -293,7 +293,7 @@ function application_config_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
@@ -339,7 +339,7 @@ function application_config_field_default_field_instances() {
         'apply_chosen' => 0,
       ),
       'type' => 'options_select',
-      'weight' => 0,
+      'weight' => 1,
     ),
   );
 
@@ -389,7 +389,7 @@ function application_config_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 11,
+      'weight' => 5,
     ),
   );
 

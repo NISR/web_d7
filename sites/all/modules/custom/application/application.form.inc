@@ -4,22 +4,22 @@
 /*
  * The message form
  */
-function application_message_form($form,&$form_state,$application_id){
+function application_visa_comment_form($form,&$form_state,$visa_id){
    $form = array();	
 	
-	$form['message'] = array(
+	$form['comment'] = array(
 		'#type' => 'textarea',
 		'#title' => t('Message'),
-		'#description' => t('Write your message here'),
+		'#description' => t('Write your comment here'),
 		'#rows' => '10',
 		'#cols' => '40',	
 		'#required' => TRUE,
 		'#resizable' => FALSE,
 	); 
 	
-	$form['application_id'] = array(
+	$form['visa_id'] = array(
 		'#type' => 'hidden',	
-		'#value' => $application_id,
+		'#value' => $visa_id,
 	);
 	
 	$form['actions']['submit'] = array(
@@ -34,19 +34,31 @@ function application_message_form($form,&$form_state,$application_id){
 /*
  * Message form submit handler
  */
-function application_message_form_submit($form,&$form_state){
-	$message = entity_create('application', array('type' => 'message'));
-	$wrapper = entity_metadata_wrapper('application',$message);
+function application_visa_comment_form_submit($form,&$form_state){
+	global $user;
+	$options = array('mail');
 	
-	$wrapper->field_app_message->set($form_state['values']['message']);
-	$wrapper->field_app_instance->set($form_state['values']['application_id']);
+	$comment = message_create('visa_item_comment', array('uid' => $user->uid));
+	$wrapper = entity_metadata_wrapper('message',$comment);
 	
-	$wrapper->save();
-}
-
-/*
- * Message instance creation
- */
-function application_message_create($message,$application_id){
+	$wrapper->field_message_visa->set($form_state['values']['visa_id']);
+	$wrapper->field_message_comment->set($form_state['values']['comment']);
 	
+	// Notify people ...
+	$visa = application_load($form_state['values']['visa_id']);
+	// Check if Comment author is Visa author
+	if($visa->uid == $user->uid){
+		// Send notification to Visa crew
+		foreach(get_users_by_role('Visa manager') as $visa_manager){
+			$options['mail'] .= $visa_manager->mail . ',' ;
+		}	
+		$options['mail'] = substr($options['mail'], 0, -1);
+		
+	}else{
+		// Send notification to Visa author
+		$author = user_load($visa->uid);
+		$options['mail'] = $author->mail;
+	}
+	
+	message_notify_send_message($comment,$options);
 }

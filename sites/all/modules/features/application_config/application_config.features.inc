@@ -17,14 +17,6 @@ function application_config_default_application_type() {
     "locked" : "0",
     "data" : null
   }');
-  $items['message'] = entity_import('application_type', '{
-    "type" : "message",
-    "label" : "Message",
-    "weight" : "0",
-    "description" : "Message exchanged between service requester and NISR staff",
-    "locked" : "0",
-    "data" : null
-  }');
   $items['visa'] = entity_import('application_type', '{
     "type" : "visa",
     "label" : "Visa",

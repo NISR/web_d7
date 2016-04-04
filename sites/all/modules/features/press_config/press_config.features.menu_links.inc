@@ -51,10 +51,13 @@ function press_config_menu_default_menu_links() {
     'router_path' => 'press/news',
     'link_title' => 'Press',
     'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
       'identifier' => 'menu-topmenu_press:press/news',
+      'attributes' => array(),
+      'item_attributes' => array(
+        'id' => '',
+        'class' => 'menu-item-hide-mobile',
+        'style' => '',
+      ),
     ),
     'module' => 'menu',
     'hidden' => 0,

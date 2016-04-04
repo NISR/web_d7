@@ -57,10 +57,13 @@ function notice_config_menu_default_menu_links() {
     'router_path' => 'node/%',
     'link_title' => 'Jobs',
     'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
       'identifier' => 'menu-topmenu_jobs:node/1396',
+      'attributes' => array(),
+      'item_attributes' => array(
+        'id' => '',
+        'class' => 'menu-item-hide-mobile',
+        'style' => '',
+      ),
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -77,10 +80,13 @@ function notice_config_menu_default_menu_links() {
     'router_path' => 'node/%',
     'link_title' => 'Tenders',
     'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
       'identifier' => 'menu-topmenu_tenders:node/1397',
+      'attributes' => array(),
+      'item_attributes' => array(
+        'id' => '',
+        'class' => 'menu-item-hide-mobile',
+        'style' => '',
+      ),
     ),
     'module' => 'menu',
     'hidden' => 0,

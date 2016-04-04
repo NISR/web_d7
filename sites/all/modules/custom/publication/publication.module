@@ -618,7 +618,7 @@ function publication_preprocess_entity(&$vars){
 	}
 	
 	// Infographics
-	if($vars['publication']->type == 'infographic_item'){
+	if(isset($vars['publication']) && $vars['publication']->type == 'infographic_item'){
 		isset($vars['publication']->field_pub_files['und'][0]['uri']) ? $vars['file_url'] = file_create_url($vars['publication']->field_pub_files['und'][0]['uri']) : $file_url;
 	}
 }

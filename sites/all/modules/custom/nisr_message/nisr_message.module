@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * @file
+ * NISR Message module message_type_fields[message_text][en][0][value]
+ */
+
+/*
+ * Implements hook_entity_insert
+ *
+ * Send Various Email message notifications
+ */
+function nisr_message_entity_insert($entity,$type){
+	switch($type) {
+		case 'application':
+			if($entity->type == 'visa'){
+				
+			}
+			break;
+				
+		default:
+		
+	}
+}
+
+/*
+ * Implements hook_form_FORM_ID_alter()
+ */
+function nisr_message_form_message_type_form_alter(&$form,&$form_state,$form_id){
+	$index = 0;
+	$loop = TRUE;
+	while($loop){
+		if(isset($form['message_type_fields']['message_text']['en'][$index])){
+			// Disable the wysiwyg editor
+			$form['message_type_fields']['message_text']['en'][$index]['#wysiwyg'] = FALSE;
+			++$index; 
+		}else{
+			$loop = FALSE;	
+		}
+	}
+}
+

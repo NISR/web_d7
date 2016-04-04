@@ -193,8 +193,7 @@ function application_form_submit($form, &$form_state) {
   $application = $form_state['application'];
 
   entity_form_submit_build_entity('application', $application, $form, $form_state);
-  
-
+    
   application_save($application);
 
   $application_uri = entity_uri('application', $application);

@@ -1,0 +1,14 @@
+name = Message
+description = NISR's sidequick for the message module.
+package = NISR
+version = 7.x-1.x
+core = 7.x
+
+dependencies[] = nisr
+dependencies[] = message
+
+
+
+
+
+

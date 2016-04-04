@@ -44,9 +44,10 @@
   <div class="content"<?php print $content_attributes; ?>>
    <div class="col-md-5">
    	<div class="">
-   		<?php print $message_form;?>
+   		<?php print $comment_form;?>
 		</div>
-		<br/>   	
+		<br/>
+		<?php if($comments):?>
    	<div class="panel panel-default">
 	   	<div class="panel-heading">
 		   	<h4 class="panel-title">
@@ -57,10 +58,11 @@
 		   </div>
 		   <div class="accordion-body collapse in" id="collapse1One" aria-expanded="true" style="">
             <div class="panel-body"> 
-					<?php print $messages;?>               
+					<?php print $comments;?>               
             </div>
          </div>
 		</div>
+		<?php endif;?>
 	</div>
    </div>
 	<div class="col-md-7 pull-right"> 

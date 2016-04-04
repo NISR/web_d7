@@ -593,4 +593,13 @@ a.no-decoration{
 		display: none;
 		visibility: hidden;
 	}
+	
+	li.menu-item-hide-mobile{
+		visibility: hidden;	
+		width: 0px;
+	}
+	
+	.header-logo{
+		height: 90px;	
+	}
 }
