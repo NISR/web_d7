@@ -43,6 +43,7 @@ function application_visa_comment_form_submit($form,&$form_state){
 	
 	$wrapper->field_message_visa->set($form_state['values']['visa_id']);
 	$wrapper->field_message_comment->set($form_state['values']['comment']);
+	$wrapper->save();
 	
 	// Notify people ...
 	$visa = application_load($form_state['values']['visa_id']);

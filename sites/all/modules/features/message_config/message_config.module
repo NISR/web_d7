@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Message config feature.
+ */
+
+include_once 'message_config.features.inc';
