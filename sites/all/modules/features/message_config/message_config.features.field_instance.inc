@@ -25,10 +25,11 @@ function message_config_field_default_field_instances() {
         'weight' => 1,
       ),
       'message_notify_email_body' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 2,
+        'type' => 'text_plain',
+        'weight' => 1,
       ),
       'message_notify_email_subject' => array(
         'label' => 'above',

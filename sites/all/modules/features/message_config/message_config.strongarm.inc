@@ -25,7 +25,7 @@ function message_config_strongarm() {
             'visible' => TRUE,
           ),
           'message_notify_email_body' => array(
-            'weight' => '1',
+            'weight' => '2',
             'visible' => FALSE,
           ),
         ),

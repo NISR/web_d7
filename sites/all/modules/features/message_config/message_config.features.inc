@@ -40,13 +40,13 @@ function message_config_default_message_type() {
     "message_text" : { "en" : [
         {
           "value" : "A comment has been posted on a visa request",
-          "format" : "2",
-          "safe_value" : "A comment has been posted on a visa request"
+          "format" : "4",
+          "safe_value" : "\\u003Cp\\u003EA comment has been posted on a visa request\\u003C\\/p\\u003E\\n"
         },
         {
-          "value" : "A comment has been posted concerning the visa requested on behalf of [message:field-message-visa:field-visa-organization:field-visa-org-name].",
-          "format" : "2",
-          "safe_value" : "A comment has been posted concerning the visa requested on behalf of [message:field-message-visa:field-visa-organization:field-visa-org-name]."
+          "value" : "A comment has been posted concerning the visa you requested on behalf of [message:field-message-visa:field-visa-organization:field-visa-org-name].",
+          "format" : "4",
+          "safe_value" : "\\u003Cp\\u003EA comment has been posted concerning the visa you requested on behalf of [message:field-message-visa:field-visa-organization:field-visa-org-name].\\u003C\\/p\\u003E\\n"
         }
       ]
     }
