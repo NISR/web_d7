@@ -34,11 +34,11 @@ function message_config_flag_default_flags() {
       0 => 'document_subjects',
       1 => 'statistical_publication_subjects',
     ),
-    'flag_short' => 'Follow',
-    'flag_long' => 'Get notified by e-mail with updates',
+    'flag_short' => '<span class="btn btn-default btn-success"><i class=\'fa fa-check\'></i>&nbsp;Follow</span>',
+    'flag_long' => 'Get e-mail updates',
     'flag_message' => 'You\'re following this topic now',
-    'unflag_short' => 'Unfollow',
-    'unflag_long' => 'Stop e-mail notifications',
+    'unflag_short' => '<span class="btn btn-default btn-danger"><i class=\' fa fa-close\'></i>&nbsp;Unfollow</span>',
+    'unflag_long' => 'Stop e-mail updates',
     'unflag_message' => 'You\'re detached',
     'unflag_denied_text' => '',
     'link_type' => 'toggle',
@@ -52,11 +52,11 @@ function message_config_flag_default_flags() {
     'show_on_form' => 0,
     'access_author' => '',
     'show_contextual_link' => 0,
-    'api_version' => 3,
     'module' => 'message_config',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 3,
   );
   return $flags;
 
@@ -86,42 +86,16 @@ function message_config_default_message_type() {
           "safe_value" : "\\u003Cp\\u003EPublication update\\u003C\\/p\\u003E\\n"
         },
         {
-          "value" : "Dear [current-user:name],\\r\\nA new publication has been posted on the website : \\r\\n\\u003Cblockquote\\u003E[message:field-message-publication:title]\\u003C\\/blockquote\\u003E\\r\\n\\r\\nCheers",
+          "value" : "Dear [current-user:name],\\r\\nA new publication has been posted on the website : \\r\\n\\u003Cblockquote\\u003E\\u003Ca href=\\u0022[message:field-message-publication:url]\\u0022\\u003E[message:field-message-publication:title]\\u003C\\/a\\u003E\\u003C\\/blockquote\\u003E\\r\\n\\r\\nCheers",
           "format" : "2",
-          "safe_value" : "Dear [current-user:name],\\nA new publication has been posted on the website : \\n\\u003Cblockquote\\u003E[message:field-message-publication:title]\\u003C\\/blockquote\\u003E\\n\\nCheers"
+          "safe_value" : "Dear [current-user:name],\\nA new publication has been posted on the website : \\n\\u003Cblockquote\\u003E\\u003Ca href=\\u0022[message:field-message-publication:url]\\u0022\\u003E[message:field-message-publication:title]\\u003C\\/a\\u003E\\u003C\\/blockquote\\u003E\\n\\nCheers"
         }
       ]
     }
   }');
-  $items['visa_item_comment'] = entity_import('message_type', '{
-    "name" : "visa_item_comment",
-    "description" : "Visa item comment",
-    "argument_keys" : [],
-    "argument" : [],
-    "category" : "message_type",
-    "data" : {
-      "token options" : { "clear" : 0 },
-      "purge" : { "override" : 0, "enabled" : 0, "quota" : "", "days" : "" }
-    },
-    "language" : "en",
-    "arguments" : null,
-    "message_text" : { "en" : [
-        {
-          "value" : "A comment has been posted on a visa request",
-          "format" : "4",
-          "safe_value" : "\\u003Cp\\u003EA comment has been posted on a visa request\\u003C\\/p\\u003E\\n"
-        },
-        {
-          "value" : "A comment has been posted concerning the visa you requested on behalf of [message:field-message-visa:field-visa-organization:field-visa-org-name].",
-          "format" : "4",
-          "safe_value" : "\\u003Cp\\u003EA comment has been posted concerning the visa you requested on behalf of [message:field-message-visa:field-visa-organization:field-visa-org-name].\\u003C\\/p\\u003E\\n"
-        }
-      ]
-    }
-  }');
-  $items['visa_item_creation'] = entity_import('message_type', '{
-    "name" : "visa_item_creation",
-    "description" : "Visa item creation",
+  $items['visa_new'] = entity_import('message_type', '{
+    "name" : "visa_new",
+    "description" : "Visa - New",
     "argument_keys" : [],
     "argument" : [],
     "category" : "message_type",
@@ -141,6 +115,32 @@ function message_config_default_message_type() {
           "value" : "A visa request on behalf of [message:field-visa:field-visa-organization:field-visa-org-name] has been submitted by [current-user:name]",
           "format" : "2",
           "safe_value" : "A visa request on behalf of [message:field-visa:field-visa-organization:field-visa-org-name] has been submitted by [current-user:name]"
+        }
+      ]
+    }
+  }');
+  $items['visa_new_comment'] = entity_import('message_type', '{
+    "name" : "visa_new_comment",
+    "description" : "Visa - New comment",
+    "argument_keys" : [],
+    "argument" : [],
+    "category" : "message_type",
+    "data" : {
+      "token options" : { "clear" : 0 },
+      "purge" : { "override" : 0, "enabled" : 0, "quota" : "", "days" : "" }
+    },
+    "language" : "en",
+    "arguments" : null,
+    "message_text" : { "en" : [
+        {
+          "value" : "A comment has been posted on your visa request",
+          "format" : "4",
+          "safe_value" : "\\u003Cp\\u003EA comment has been posted on your visa request\\u003C\\/p\\u003E\\n"
+        },
+        {
+          "value" : "A comment has been posted about the visa request you submitted on behalf of [message:field-message-visa:field-visa-organization:field-visa-org-name].",
+          "format" : "4",
+          "safe_value" : "\\u003Cp\\u003EA comment has been posted about the visa request you submitted on behalf of [message:field-message-visa:field-visa-organization:field-visa-org-name].\\u003C\\/p\\u003E\\n"
         }
       ]
     }

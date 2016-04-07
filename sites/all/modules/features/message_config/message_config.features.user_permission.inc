@@ -24,20 +24,6 @@ function message_config_user_default_permissions() {
     'module' => 'message_ui',
   );
 
-  // Exported permission: 'create a visa_item_comment message instance'.
-  $permissions['create a visa_item_comment message instance'] = array(
-    'name' => 'create a visa_item_comment message instance',
-    'roles' => array(),
-    'module' => 'message_ui',
-  );
-
-  // Exported permission: 'create a visa_item_creation message instance'.
-  $permissions['create a visa_item_creation message instance'] = array(
-    'name' => 'create a visa_item_creation message instance',
-    'roles' => array(),
-    'module' => 'message_ui',
-  );
-
   // Exported permission: 'create any message instance'.
   $permissions['create any message instance'] = array(
     'name' => 'create any message instance',
@@ -54,20 +40,6 @@ function message_config_user_default_permissions() {
     'module' => 'message',
   );
 
-  // Exported permission: 'delete a visa_item_comment message instance'.
-  $permissions['delete a visa_item_comment message instance'] = array(
-    'name' => 'delete a visa_item_comment message instance',
-    'roles' => array(),
-    'module' => 'message_ui',
-  );
-
-  // Exported permission: 'delete a visa_item_creation message instance'.
-  $permissions['delete a visa_item_creation message instance'] = array(
-    'name' => 'delete a visa_item_creation message instance',
-    'roles' => array(),
-    'module' => 'message_ui',
-  );
-
   // Exported permission: 'delete any message instance'.
   $permissions['delete any message instance'] = array(
     'name' => 'delete any message instance',
@@ -75,19 +47,6 @@ function message_config_user_default_permissions() {
     'module' => 'message_ui',
   );
 
-  // Exported permission: 'edit a visa_item_comment message instance'.
-  $permissions['edit a visa_item_comment message instance'] = array(
-    'name' => 'edit a visa_item_comment message instance',
-    'roles' => array(),
-    'module' => 'message_ui',
-  );
-
-  // Exported permission: 'edit a visa_item_creation message instance'.
-  $permissions['edit a visa_item_creation message instance'] = array(
-    'name' => 'edit a visa_item_creation message instance',
-    'roles' => array(),
-    'module' => 'message_ui',
-  );
 
   // Exported permission: 'edit any message instance'.
   $permissions['edit any message instance'] = array(
@@ -108,20 +67,6 @@ function message_config_user_default_permissions() {
   // Exported permission: 'update tokens'.
   $permissions['update tokens'] = array(
     'name' => 'update tokens',
-    'roles' => array(),
-    'module' => 'message_ui',
-  );
-
-  // Exported permission: 'view a visa_item_comment message instance'.
-  $permissions['view a visa_item_comment message instance'] = array(
-    'name' => 'view a visa_item_comment message instance',
-    'roles' => array(),
-    'module' => 'message_ui',
-  );
-
-  // Exported permission: 'view a visa_item_creation message instance'.
-  $permissions['view a visa_item_creation message instance'] = array(
-    'name' => 'view a visa_item_creation message instance',
     'roles' => array(),
     'module' => 'message_ui',
   );
