@@ -492,14 +492,27 @@ function term_page($term_name,$vocabulary = NULL){
 	
 	$term = current($terms);
 	 
-	$path = explode('/',request_path());	
-	$content = array(
-							'description' => array(
+	$path = explode('/',request_path());
+	
+	$flag_classes = 'btn btn-large btn-success pull-right';	
+	
+	$flag = flag_create_link('publication_subjects',$term->tid, array('flag_classes' => $flag_classes));
+	
+	if(!user_is_logged_in()){
+		$page = str_replace('/','--',request_path());
+		$flag = l('Follow','/ServiceLogin',array('query' =>  array('destination' => "service/subscribe/publication_subjects/$term->tid/$page"),'attributes' => array('class' => $flag_classes)));
+	}		
+	
+	$content['flag'] = array(
+									'#markup' => $flag,
+									'#prefix' => "<div class='col-md-12'>",
+									'#suffix'=> "</div>",
+									);
+	$content['description'] = array(
 									'#markup' => $term->description,
 									'#prefix' => "<div class='subject-description'>",
 									'#suffix'=> '</div>',
-							),	
-				);
+									);
 				
 						
 	$children_terms = taxonomy_get_children($term->tid);
@@ -553,7 +566,7 @@ function term_page($term_name,$vocabulary = NULL){
    drupal_set_breadcrumb($breadcrumb);
    
    drupal_set_title($term->name);	
-		
+   		
 	return $content;
 	
 }

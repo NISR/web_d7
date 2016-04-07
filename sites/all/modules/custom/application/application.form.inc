@@ -56,7 +56,7 @@ function application_visa_comment_form_submit($form,&$form_state){
 		$options['mail'] = substr($options['mail'], 0, -1);
 		
 	}else{
-		// Send notification to Visa author
+		// Send notification to Visa request's author
 		$author = user_load($visa->uid);
 		$options['mail'] = $author->mail;
 	}

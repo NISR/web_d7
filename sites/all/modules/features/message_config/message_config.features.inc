@@ -21,10 +21,78 @@ function message_config_views_api($module = NULL, $api = NULL) {
 }
 
 /**
+ * Implements hook_flag_default_flags().
+ */
+function message_config_flag_default_flags() {
+  $flags = array();
+  // Exported flag: "Publication subjects".
+  $flags['publication_subjects'] = array(
+    'entity_type' => 'taxonomy_term',
+    'title' => 'Publication subjects',
+    'global' => 0,
+    'types' => array(
+      0 => 'document_subjects',
+      1 => 'statistical_publication_subjects',
+    ),
+    'flag_short' => 'Follow',
+    'flag_long' => 'Get notified by e-mail with updates',
+    'flag_message' => 'You\'re following this topic now',
+    'unflag_short' => 'Unfollow',
+    'unflag_long' => 'Stop e-mail notifications',
+    'unflag_message' => 'You\'re detached',
+    'unflag_denied_text' => '',
+    'link_type' => 'toggle',
+    'weight' => 0,
+    'show_in_links' => array(
+      'full' => 'full',
+      'diff_standard' => 0,
+      'token' => 0,
+    ),
+    'show_as_field' => 0,
+    'show_on_form' => 0,
+    'access_author' => '',
+    'show_contextual_link' => 0,
+    'api_version' => 3,
+    'module' => 'message_config',
+    'locked' => array(
+      0 => 'name',
+    ),
+  );
+  return $flags;
+
+}
+
+/**
  * Implements hook_default_message_type().
  */
 function message_config_default_message_type() {
   $items = array();
+  $items['publication_new'] = entity_import('message_type', '{
+    "name" : "publication_new",
+    "description" : "Publication - New",
+    "argument_keys" : [],
+    "argument" : [],
+    "category" : "message_type",
+    "data" : {
+      "token options" : { "clear" : 0 },
+      "purge" : { "override" : 0, "enabled" : 0, "quota" : "", "days" : "" }
+    },
+    "language" : "en",
+    "arguments" : null,
+    "message_text" : { "en" : [
+        {
+          "value" : "Publication update",
+          "format" : "1",
+          "safe_value" : "\\u003Cp\\u003EPublication update\\u003C\\/p\\u003E\\n"
+        },
+        {
+          "value" : "Dear [current-user:name],\\r\\nA new publication has been posted on the website : \\r\\n\\u003Cblockquote\\u003E[message:field-message-publication:title]\\u003C\\/blockquote\\u003E\\r\\n\\r\\nCheers",
+          "format" : "2",
+          "safe_value" : "Dear [current-user:name],\\nA new publication has been posted on the website : \\n\\u003Cblockquote\\u003E[message:field-message-publication:title]\\u003C\\/blockquote\\u003E\\n\\nCheers"
+        }
+      ]
+    }
+  }');
   $items['visa_item_comment'] = entity_import('message_type', '{
     "name" : "visa_item_comment",
     "description" : "Visa item comment",

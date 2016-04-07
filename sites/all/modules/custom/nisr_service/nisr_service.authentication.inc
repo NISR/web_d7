@@ -6,7 +6,9 @@
  */
 function nisr_service_login_form($form,&$form_state){
 	
-	isset($_GET['destination'])? $service =  $_GET['destination'] : $service = '';
+	$params = drupal_get_query_parameters(); 
+	
+	$qs = isset($params['destination']) ? '?destination=' . $params['destination'] : '' ;
 	
 	$welcome_note = t("To use this service, you need to login first");
 	
@@ -19,7 +21,7 @@ function nisr_service_login_form($form,&$form_state){
 		'#size' => 40,
 		'#required' => TRUE,
 		'#title' => t('Email'),
-	);	
+	);
 	
 	$form['password'] = array(
 		'#type' => 'password',
@@ -36,17 +38,16 @@ function nisr_service_login_form($form,&$form_state){
 		
 	);
 	
-	$form['footer']['#markup']  = "<br><div class='centered'><div style='width:50%;float:left'><a class='' href='/ServiceRegister?destination=" . $service . "'>" . t('Register') ."</a></div>";
+	$form['footer']['#markup']  = "<br><div class='centered'><div style='width:50%;float:left'><a class='' href='/ServiceRegister" . $qs . "'>" . t('Register') ."</a></div>";
 	$form['footer']['#markup'] .= "<div style='width:50%;float:left'><a class='' href='ServiceRecoverPassword'>" . t('Forgot your password'). "?</a></div>";
 	$form['footer']['#markup'] .= "</div>";	
 
+
+	$form['#action'] = $qs;
 	
 	$form['#theme'] = 'nisr_service_login_form';
 	
-	$form['#action'] .= '?destination=' . $service;
-
 	drupal_set_title(t('Login'));
-	
 	
 	return $form;	
 }
@@ -66,7 +67,8 @@ function nisr_service_login_form_submit($form,&$form_state){
 		form_set_error('username');
 		form_set_error('password');
 		drupal_set_message(t('Wrong email or password'),'error');
-	}	
+	}
+
 }
 
 
@@ -226,8 +228,11 @@ function user_login_credentials($username, $password) {
 	if ($uid = user_authenticate($username, $password)) {
 		$form_state = array('uid' => $uid);
 		user_login_submit(array(),$form_state);
+		user_login_finalize($form_state);
  		return TRUE;
-	}else{return FALSE;}
+	}else{
+		return FALSE;
+	}
 
 }
 

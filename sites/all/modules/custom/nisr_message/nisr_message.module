@@ -11,13 +11,29 @@
  * Send Various Email message notifications
  */
 function nisr_message_entity_insert($entity,$type){
+	global $user;
+	
 	switch($type) {
 		case 'application':
 			if($entity->type == 'visa'){
 				
 			}
 			break;
-				
+		case 'publication' :
+			// Notify followers
+			$pub = entity_metadata_wrapper('publication',$entity);
+			$term_id = ($entity->type == 'document') ? $pub->field_doc_subject->tid->value() : $pub->field_pub_subject->tid->value();
+			$subject = taxonomy_term_load($term_id);
+			
+			$message = message_create('statistical_publication_new',array('uid' => $user->uid));	
+			$msg = entity_metadata_wrapper('message',$message);
+	
+			$msg->field_message_publication->set($entity->pub_id);
+			
+			message_subscribe_send_message('taxonomy_term',$subject,$message);
+			
+			break;
+		
 		default:
 		
 	}

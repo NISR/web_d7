@@ -50,7 +50,15 @@ function nisr_service_menu(){
     	'menu_name' => 'menu-services',
     	'weight' => -50,
 	);
-			
+
+	$items['service/subscribe/%/%/%'] = array(
+		'title' => 'Subscribe',
+		'page callback' => 'nisr_service_subscribe',
+		'page arguments' => array(2,3,4),
+		'access callback' => TRUE,
+    	'type' => MENU_CALLBACK,
+	);
+				
 	return $items;	
 }
 
@@ -150,6 +158,23 @@ function nisr_service_user_is_logged_in($service){
 			return views_embed_view($service,'embed_1');
 		}	
 	}
+}
+
+/*
+ * Subscription callback for anonymous user
+ * Once logged in, this routine will create the flag and get back to the requesting page
+ * 
+ */
+function nisr_service_subscribe($flag_type,$entity_id,$page){
+	
+	if(user_is_logged_in()){
+		$flag = flag_get_flag($flag_type);
+		if(!$flag->is_flagged($entity_id)){
+			$flag->flag('flag',$entity_id);
+		}
+	}
+	
+	drupal_goto(str_replace('--','/',$page));
 }
 
 /*

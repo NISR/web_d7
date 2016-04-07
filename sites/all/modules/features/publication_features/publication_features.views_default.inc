@@ -29,7 +29,7 @@ function publication_features_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '4';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
@@ -49,6 +49,8 @@ function publication_features_views_default_views() {
   $handler->display->display_options['fields']['field_pub_subject']['table'] = 'field_data_field_pub_subject';
   $handler->display->display_options['fields']['field_pub_subject']['field'] = 'field_pub_subject';
   $handler->display->display_options['fields']['field_pub_subject']['label'] = '';
+  $handler->display->display_options['fields']['field_pub_subject']['alter']['max_length'] = '30';
+  $handler->display->display_options['fields']['field_pub_subject']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['field_pub_subject']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_pub_subject']['element_wrapper_class'] = 'uppercase';
   $handler->display->display_options['fields']['field_pub_subject']['type'] = 'taxonomy_term_reference_plain';
@@ -103,6 +105,8 @@ function publication_features_views_default_views() {
   $handler->display->display_options['fields']['field_pub_subject']['table'] = 'field_data_field_pub_subject';
   $handler->display->display_options['fields']['field_pub_subject']['field'] = 'field_pub_subject';
   $handler->display->display_options['fields']['field_pub_subject']['label'] = '';
+  $handler->display->display_options['fields']['field_pub_subject']['alter']['max_length'] = '30';
+  $handler->display->display_options['fields']['field_pub_subject']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['field_pub_subject']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_pub_subject']['element_wrapper_class'] = 'uppercase';
   $handler->display->display_options['fields']['field_pub_subject']['type'] = 'taxonomy_term_reference_plain';

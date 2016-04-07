@@ -6,6 +6,9 @@ core = 7.x
 
 dependencies[] = nisr
 dependencies[] = message
+dependencies[] = message_notify
+dependencies[] = message_subscribe
+
 
 
 

@@ -47,13 +47,14 @@
  * NOTE: This template spaces out the <span> tags for clarity only. When doing
  * some advanced theming you may have to remove all the whitespace.
  */
+
 ?>
 <?php if ($needs_wrapping_element): ?>
   <div class="flag-outer flag-outer-<?php print $flag_name_css; ?>">
 <?php endif; ?>
 <span class="<?php print $flag_wrapper_classes; ?>">
   <?php if ($link_href): ?>
-    <a href="<?php print $link_href; ?>" title="<?php print $link_title; ?>" class="<?php print $flag_classes ?>" rel="nofollow"><?php print $link_text; ?></a><span class="flag-throbber">&nbsp;</span>
+    <a href="<?php print $link_href; ?>" title="<?php print $link_title; ?>" class="<?php print $flag_classes?> btn btn-sm btn-success pull-right" rel="nofollow"><?php print $link_text; ?></a><span class="flag-throbber">&nbsp;</span>
   <?php else: ?>
     <span class="<?php print $flag_classes ?>"><?php print $link_text; ?></span>
   <?php endif; ?>
