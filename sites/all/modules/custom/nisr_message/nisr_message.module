@@ -27,6 +27,7 @@ function nisr_message_entity_insert($entity,$type){
 			
 			$message = message_create('publication_new',array('uid' => $user->uid));	
 			$msg = entity_metadata_wrapper('message',$message);
+			$msg->save();
 	
 			$msg->field_message_publication->set($entity->pub_id);
 			

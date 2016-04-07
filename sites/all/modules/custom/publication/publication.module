@@ -221,6 +221,8 @@ function publication_entity_presave($entity, $type){
 	if($type == 'publication' && isset($entity->field_pub_regions)){
 		$pub = entity_metadata_wrapper('publication',$entity);
 		$regions = $pub->field_pub_regions->value();
+		$valid_parent_regions = array();
+		
 		foreach($regions as $region){
 			$parent_regions = taxonomy_get_parents($region->tid);
 			foreach($parent_regions as $key => $value){
