@@ -47,7 +47,6 @@ function message_config_user_default_permissions() {
     'module' => 'message_ui',
   );
 
-
   // Exported permission: 'edit any message instance'.
   $permissions['edit any message instance'] = array(
     'name' => 'edit any message instance',

@@ -25,10 +25,10 @@ function message_config_views_api($module = NULL, $api = NULL) {
  */
 function message_config_flag_default_flags() {
   $flags = array();
-  // Exported flag: "Publication subjects".
-  $flags['publication_subjects'] = array(
+  // Exported flag: "Publication subjects subscription".
+  $flags['subscribe_publication_subjects'] = array(
     'entity_type' => 'taxonomy_term',
-    'title' => 'Publication subjects',
+    'title' => 'Publication subjects subscription',
     'global' => 0,
     'types' => array(
       0 => 'document_subjects',
@@ -52,11 +52,11 @@ function message_config_flag_default_flags() {
     'show_on_form' => 0,
     'access_author' => '',
     'show_contextual_link' => 0,
+    'api_version' => 3,
     'module' => 'message_config',
     'locked' => array(
       0 => 'name',
     ),
-    'api_version' => 3,
   );
   return $flags;
 

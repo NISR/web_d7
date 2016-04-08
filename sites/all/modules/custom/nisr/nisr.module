@@ -496,7 +496,7 @@ function term_page($term_name,$vocabulary = NULL){
 	
 	$flag_classes = 'btn btn-large btn-success pull-right';	
 	
-	$flag = flag_create_link('publication_subjects',$term->tid, array('flag_classes' => $flag_classes));
+	$flag = flag_create_link('subscribe_publication_subjects',$term->tid, array('flag_classes' => $flag_classes));
 	
 	if(!user_is_logged_in()){
 		$page = str_replace('/','--',request_path());
