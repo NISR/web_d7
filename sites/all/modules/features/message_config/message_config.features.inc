@@ -52,11 +52,11 @@ function message_config_flag_default_flags() {
     'show_on_form' => 0,
     'access_author' => '',
     'show_contextual_link' => 0,
-    'api_version' => 3,
     'module' => 'message_config',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 3,
   );
   return $flags;
 
@@ -81,14 +81,14 @@ function message_config_default_message_type() {
     "arguments" : null,
     "message_text" : { "en" : [
         {
-          "value" : "Publication update",
+          "value" : "New publication update",
           "format" : "1",
-          "safe_value" : "\\u003Cp\\u003EPublication update\\u003C\\/p\\u003E\\n"
+          "safe_value" : "\\u003Cp\\u003ENew publication update\\u003C\\/p\\u003E\\n"
         },
         {
-          "value" : "Dear [current-user:name],\\r\\nA new publication has been posted on the website : \\r\\n\\u003Cblockquote\\u003E\\u003Ca href=\\u0022[message:field-message-publication:url]\\u0022\\u003E[message:field-message-publication:title]\\u003C\\/a\\u003E\\u003C\\/blockquote\\u003E\\r\\n\\r\\nCheers",
+          "value" : "Hello,\\r\\nA new publication has been posted on the website : \\r\\n\\u003Cblockquote\\u003E\\u003Ca href=\\u0022[message:field-message-publication:url]\\u0022\\u003E[message:field-message-publication:title]\\u003C\\/a\\u003E\\u003C\\/blockquote\\u003E\\r\\n\\u003Cbr\\u003E\\r\\n\\u003Cbr\\u003E\\r\\nCheers",
           "format" : "2",
-          "safe_value" : "Dear [current-user:name],\\nA new publication has been posted on the website : \\n\\u003Cblockquote\\u003E\\u003Ca href=\\u0022[message:field-message-publication:url]\\u0022\\u003E[message:field-message-publication:title]\\u003C\\/a\\u003E\\u003C\\/blockquote\\u003E\\n\\nCheers"
+          "safe_value" : "Hello,\\nA new publication has been posted on the website : \\n\\u003Cblockquote\\u003E\\u003Ca href=\\u0022[message:field-message-publication:url]\\u0022\\u003E[message:field-message-publication:title]\\u003C\\/a\\u003E\\u003C\\/blockquote\\u003E\\n\\u003Cbr \\/\\u003E\\u003Cbr \\/\\u003E\\nCheers"
         }
       ]
     }
