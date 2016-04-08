@@ -2,42 +2,34 @@
 
 /**
  * @file
- * NISR Message module message_type_fields[message_text][en][0][value]
+ * NISR Message module 
  */
 
 /*
- * Implements hook_entity_insert
+ * Implements hook_publication_insert
  *
  * Send Various Email message notifications
  */
-function nisr_message_entity_insert($entity,$type){
+function nisr_message_publication_insert($publication){
 	global $user;
+
+	// Notify followers
+	$pub = entity_metadata_wrapper('publication',$publication);
+	$term_id = ($entity->type == 'document') ? $pub->field_doc_subject->tid->value() : $pub->field_pub_subject->tid->value();
+	$subject = taxonomy_term_load($term_id);
 	
-	switch($type) {
-		case 'application':
-			if($entity->type == 'visa'){
-				
-			}
-			break;
-		case 'publication' :
-			// Notify followers
-			$pub = entity_metadata_wrapper('publication',$entity);
-			$term_id = ($entity->type == 'document') ? $pub->field_doc_subject->tid->value() : $pub->field_pub_subject->tid->value();
-			$subject = taxonomy_term_load($term_id);
-			
-			$message = message_create('publication_new',array('uid' => $user->uid));	
-			$msg = entity_metadata_wrapper('message',$message);
-			$msg->save();
+	$message = message_create('publication_new',array('uid' => $user->uid));	
+	$msg = entity_metadata_wrapper('message',$message);
+
+	$msg->field_message_publication->set($entity->pub_id);
 	
-			$msg->field_message_publication->set($entity->pub_id);
-			
-			message_subscribe_send_message('taxonomy_term',$subject,$message);
-			
-			break;
-		
-		default:
-		
+	try{
+		message_subscribe_send_message('taxonomy_term',$subject,$message);
 	}
+	catch(Exception $e){
+		watchdog('message_subscribe', $e->getMessage(), WATCHDOG_ERROR);				
+	}
+			
 }
 
 /*
