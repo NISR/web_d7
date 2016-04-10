@@ -10,3 +10,6 @@ sites/all/themes/Porto
 # Ignore paths that contain user-generated content.
 sites/*/files
 sites/*/private
+
+# Stage files on Live Server
+stage
