@@ -20,7 +20,7 @@ function nisr_message_publication_insert($publication){
 	$message = message_create('publication_new',array('uid' => $user->uid));	
 	$msg = entity_metadata_wrapper('message',$message);
 
-	$msg->field_message_publication->set($entity->pub_id);
+	$msg->field_message_publication->set($publication->pub_id);
 	
 	message_subscribe_send_message('taxonomy_term',$subject,$message);
 			

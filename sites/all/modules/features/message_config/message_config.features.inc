@@ -86,9 +86,9 @@ function message_config_default_message_type() {
           "safe_value" : "\\u003Cp\\u003ENew publication update\\u003C\\/p\\u003E\\n"
         },
         {
-          "value" : "Hello,\\r\\nA new publication has been posted on the website : \\r\\n\\u003Cblockquote\\u003E\\u003Ca href=\\u0022[message:field-message-publication:url]\\u0022\\u003E[message:field-message-publication:title]\\u003C\\/a\\u003E\\u003C\\/blockquote\\u003E\\r\\n\\u003Cbr\\u003E\\r\\n\\u003Cbr\\u003E\\r\\nCheers",
+          "value" : "Hello,\\r\\n\\u003Cbr\\u003E\\r\\nA new publication has been posted on the website : \\u003Ca href=\\u0022[message:field-message-publication:url]\\u0022\\u003E[message:field-message-publication:title]\\u003C\\/a\\u003E\\r\\n\\u003Cbr\\u003E\\r\\nCheers",
           "format" : "2",
-          "safe_value" : "Hello,\\nA new publication has been posted on the website : \\n\\u003Cblockquote\\u003E\\u003Ca href=\\u0022[message:field-message-publication:url]\\u0022\\u003E[message:field-message-publication:title]\\u003C\\/a\\u003E\\u003C\\/blockquote\\u003E\\n\\u003Cbr \\/\\u003E\\u003Cbr \\/\\u003E\\nCheers"
+          "safe_value" : "Hello,\\n\\u003Cbr \\/\\u003E\\nA new publication has been posted on the website : \\u003Ca href=\\u0022[message:field-message-publication:url]\\u0022\\u003E[message:field-message-publication:title]\\u003C\\/a\\u003E\\n\\u003Cbr \\/\\u003E\\nCheers"
         }
       ]
     }
