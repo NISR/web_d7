@@ -120,6 +120,7 @@ function application_admin_add_page() {
 	
 }
 
+
 /**
  * Add new application page callback.
  */
@@ -149,7 +150,12 @@ function application_form($form, &$form_state, $application) {
     '#type' => 'value',
     '#value' => $application->uid,
   );
-
+  
+  $form['#attributes']['class'][] = 'application-form';
+  if (!empty($application->type)) {
+    $form['#attributes']['class'][] = 'application-' . $application->type . '-form';
+  }
+  
   field_attach_form('application', $application, $form, $form_state);
 
   $submit = array();
@@ -167,8 +173,17 @@ function application_form($form, &$form_state, $application) {
     '#submit' => $submit + array('application_form_submit'),
   );
 
-  // Show Delete button if we edit application.
+
   $application_id = entity_id('application' ,$application);
+  
+  // Show Cancel button if new application
+  if (empty($application_id) ) {
+    $form['actions']['cancel'] = array(
+    	'#markup' => l(t('Cancel'), '<front>'),
+    );
+  }
+  
+  // Show Delete button if we edit application.
   if (!empty($application_id) && application_access('edit', $application)) {
     $form['actions']['delete'] = array(
       '#type' => 'submit',
@@ -176,10 +191,11 @@ function application_form($form, &$form_state, $application) {
       '#submit' => array('application_form_submit_delete'),
     );
   }
-
+  
   $form['#validate'][] = 'application_form_validate';
     
   return $form;
+
 }
 
 function application_form_validate($form, &$form_state) {
@@ -190,10 +206,59 @@ function application_form_validate($form, &$form_state) {
  * application submit handler.
  */
 function application_form_submit($form, &$form_state) {
-  $application = $form_state['application'];
+  $application = &$form_state['application'];
+  $options = array('mail');
 
+  if($application->type == 'visa'){
+		// Check for visa file
+	  $new_state = count($form_state['values']['field_visa_file']); 
+	  $current_state = count($application->field_visa_file);
+
+	  if(($new_state <> $current_state) && ($new_state > 0)){	
+		    // Visa awarded
+		    // 1. Notify author
+			$message = message_create('visa_visa_awarded', array('uid' => $user->uid));
+			$msg = entity_metadata_wrapper('message',$message);
+			
+			$msg->field_message_visa->set($form_state['values']['visa_id']);
+			$msg->save();
+			
+			$author = user_load($visa->uid);
+			$options['mail'] = $author->mail;
+			
+			message_notify_send_message($message,$options);
+			
+			// 2. Update status
+			// @see get_visa_request_statuses for value set
+			$application->field_visa_status['und'][0]['value'] = 0;
+			
+	  }
+	  
+	  // Checking if report submitted  
+	  $new_state = count($form_state['values']['field_visa_reports']); 
+	  $current_state = count($application->field_visa_reports);
+	  
+	  if(($new_state <> $current_state) && ($new_state > 0)){	
+		    // 1. Report submitted, notify visa crew
+			$message = message_create('visa_report_submitted', array('uid' => $user->uid));
+			$msg = entity_metadata_wrapper('message',$message);
+			
+			$msg->field_message_visa->set($form_state['values']['visa_id']);
+			$msg->save();
+			
+			$author = user_load($visa->uid);
+			$options['mail'] = $author->mail;
+			
+			message_notify_send_message($message,$options);
+			
+			// 2. Update status
+			// @see get_visa_request_statuses for value set
+			$application->field_visa_status['und'][0]['value'] = 2;
+	  }
+  }
+  
   entity_form_submit_build_entity('application', $application, $form, $form_state);
-    
+  
   application_save($application);
 
   $application_uri = entity_uri('application', $application);
@@ -213,18 +278,30 @@ function application_form_submit_delete($form, &$form_state) {
  * Delete confirmation form.
  */
 function application_delete_form($form, &$form_state, $application) {
-  $form_state['application'] = $application;
+  $is_deletable = TRUE;
   // Always provide entity id in the same form key as in the entity edit form.
   $form['application_type_id'] = array('#type' => 'value', '#value' => entity_id('application' ,$application));
   $application_uri = entity_uri('application', $application);
 
-  return confirm_form($form,
-    t('Are you sure you want to delete %bundle_label application id : %id ?', array('%bundle_label' => get_bundle_label('application',$application->type),'%id' => entity_id('application', $application))),
-    $application_uri['path'],
-    t('This action cannot be undone.'),
-    t('Delete'),
-    t('Cancel')
-  );
+  if($application->type == 'visa'){
+		// Do not allow deleting a visa item by the author after visa has been granted
+		if(isset($application->field_visa_file)){
+			$is_deletable = FALSE;
+			drupal_set_message(t('You cannot delete an approved visa application'),'error');
+			drupal_goto($application_uri['path']);
+		}	
+  }
+  if($is_deletable){
+	  $form_state['application'] = $application;
+
+	  return confirm_form($form,
+	    t('Are you sure you want to delete %bundle_label application id : %id ?', array('%bundle_label' => get_bundle_label('application',$application->type),'%id' => entity_id('application', $application))),
+	    $application_uri['path'],
+	    t('This action cannot be undone.'),
+	    t('Delete'),
+	    t('Cancel')
+	  );
+  }
 }
 
 /**
@@ -236,7 +313,7 @@ function application_delete_form_submit($form, &$form_state) {
   
   drupal_set_message(t('%bundle_label application %id deleted.', array('%bundle_label' => get_bundle_label('application',$application->type),'%id' => entity_id('application', $application))));
 
-  $form_state['redirect'] = $application->type;
+  $form_state['redirect'] = 'service/' . $application->type;
 }
 
 

@@ -93,9 +93,9 @@ function message_config_default_message_type() {
       ]
     }
   }');
-  $items['visa_new'] = entity_import('message_type', '{
-    "name" : "visa_new",
-    "description" : "Visa - New",
+  $items['visa_new_application'] = entity_import('message_type', '{
+    "name" : "visa_new_application",
+    "description" : "Visa - New application",
     "argument_keys" : [],
     "argument" : [],
     "category" : "message_type",
@@ -141,6 +141,58 @@ function message_config_default_message_type() {
           "value" : "A comment has been posted about the visa request you submitted on behalf of [message:field-message-visa:field-visa-organization:field-visa-org-name].",
           "format" : "4",
           "safe_value" : "\\u003Cp\\u003EA comment has been posted about the visa request you submitted on behalf of [message:field-message-visa:field-visa-organization:field-visa-org-name].\\u003C\\/p\\u003E\\n"
+        }
+      ]
+    }
+  }');
+  $items['visa_report_reminder'] = entity_import('message_type', '{
+    "name" : "visa_report_reminder",
+    "description" : "Visa - Report submission reminder",
+    "argument_keys" : [],
+    "argument" : [],
+    "category" : "message_type",
+    "data" : {
+      "token options" : { "clear" : 0 },
+      "purge" : { "override" : 0, "enabled" : 0, "quota" : "", "days" : "" }
+    },
+    "language" : "en",
+    "arguments" : null,
+    "message_text" : { "en" : [
+        {
+          "value" : "Survey report submission reminder",
+          "format" : "2",
+          "safe_value" : "Survey report submission reminder"
+        },
+        {
+          "value" : "You are kindly reminded to submit to report(s) related to the survey conducted on behalf of ... from ... to as required by \\u003Ca href=\\u0022http:\\/\\/statistics.gov.rw\\/publication\\/visa-instruction-manual\\u0022\\u003Ethe instruction manual\\u003C\\/a\\u003E.",
+          "format" : "2",
+          "safe_value" : "You are kindly reminded to submit to report(s) related to the survey conducted on behalf of ... from ... to as required by \\u003Ca href=\\u0022http:\\/\\/statistics.gov.rw\\/publication\\/visa-instruction-manual\\u0022\\u003Ethe instruction manual\\u003C\\/a\\u003E."
+        }
+      ]
+    }
+  }');
+  $items['visa_visa_awarded'] = entity_import('message_type', '{
+    "name" : "visa_visa_awarded",
+    "description" : "Visa - Visa awarded",
+    "argument_keys" : [],
+    "argument" : [],
+    "category" : "message_type",
+    "data" : {
+      "token options" : { "clear" : 0 },
+      "purge" : { "override" : 0, "enabled" : 0, "quota" : "", "days" : "" }
+    },
+    "language" : "en",
+    "arguments" : null,
+    "message_text" : { "en" : [
+        {
+          "value" : "Visa awarded",
+          "format" : "4",
+          "safe_value" : "\\u003Cp\\u003EVisa awarded\\u003C\\/p\\u003E\\n"
+        },
+        {
+          "value" : "Dear [message:field-message-visa:field-visa-contact:field-visa-contact-firstname],\\r\\nCongratulations,the visa you applied for on behalf of  [message:field-message-visa:field-visa-organization:field_visa_org_name] has been approved.\\r\\nYou can click \\u003Ca href=\\u0022\\u0022\\u003Ehere\\u003C\\/a\\u003E to automatically log into the website and download it.\\r\\n\\u003Cbr\\u003E\\r\\n\\u003Cbr\\u003E\\r\\nBest\\r\\n\\r\\n",
+          "format" : "2",
+          "safe_value" : "Dear [message:field-message-visa:field-visa-contact:field-visa-contact-firstname],\\nCongratulations,the visa you applied for on behalf of  [message:field-message-visa:field-visa-organization:field_visa_org_name] has been approved.\\nYou can click \\u003Ca href=\\u0022\\u0022\\u003Ehere\\u003C\\/a\\u003E to automatically log into the website and download it.\\n\\u003Cbr \\/\\u003E\\u003Cbr \\/\\u003E\\nBest\\n\\n"
         }
       ]
     }

@@ -500,7 +500,7 @@ function term_page($term_name,$vocabulary = NULL){
 	
 	if(!user_is_logged_in()){
 		$page = str_replace('/','--',request_path());
-		$flag = l('Follow','/ServiceLogin',array('query' =>  array('destination' => "service/subscribe/publication_subjects/$term->tid/$page"),'attributes' => array('class' => $flag_classes)));
+		$flag = l('Follow','/ServiceLogin',array('query' =>  array('destination' => "service/subscribe/subscribe_publication_subjects/$term->tid/$page"),'attributes' => array('class' => $flag_classes)));
 	}		
 	
 	$content['flag'] = array(

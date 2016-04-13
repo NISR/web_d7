@@ -12,18 +12,19 @@
  */
 function nisr_message_publication_insert($publication){
 	global $user;
-
-	$pub = entity_metadata_wrapper('publication',$publication);
-	$term_id = ($publication->type == 'document') ? $pub->field_doc_subject->tid->value() : $pub->field_pub_subject->tid->value();
-	$subject = taxonomy_term_load($term_id);
+	// To do : Remove. Make this configurable via UI
+	if(in_array($publication->type,array('document','statistical_report','statistical_article'))){
+		$pub = entity_metadata_wrapper('publication',$publication);
+		$term_id = ($publication->type == 'document') ? $pub->field_doc_subject->tid->value() : $pub->field_pub_subject->tid->value();
+		$subject = taxonomy_term_load($term_id);
+		
+		$message = message_create('publication_new',array('uid' => $user->uid));	
+		$msg = entity_metadata_wrapper('message',$message);
 	
-	$message = message_create('publication_new',array('uid' => $user->uid));	
-	$msg = entity_metadata_wrapper('message',$message);
-
-	$msg->field_message_publication->set($publication->pub_id);
-	
-	message_subscribe_send_message('taxonomy_term',$subject,$message);
-			
+		$msg->field_message_publication->set($publication->pub_id);
+		
+		message_subscribe_send_message('taxonomy_term',$subject,$message);
+	}
 }
 
 /*
