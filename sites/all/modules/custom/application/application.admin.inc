@@ -198,7 +198,7 @@ function application_form($form, &$form_state, $application) {
 
 }
 
-function application_form_validate($form, &$form_state) {
+function application_form_validate($form, &$form_state){
 
 }
 
@@ -210,51 +210,8 @@ function application_form_submit($form, &$form_state) {
   $options = array('mail');
 
   if($application->type == 'visa'){
-		// Check for visa file
-	  $new_state = count($form_state['values']['field_visa_file']); 
-	  $current_state = count($application->field_visa_file);
-
-	  if(($new_state <> $current_state) && ($new_state > 0)){	
-		    // Visa awarded
-		    // 1. Notify author
-			$message = message_create('visa_visa_awarded', array('uid' => $user->uid));
-			$msg = entity_metadata_wrapper('message',$message);
-			
-			$msg->field_message_visa->set($form_state['values']['visa_id']);
-			$msg->save();
-			
-			$author = user_load($visa->uid);
-			$options['mail'] = $author->mail;
-			
-			message_notify_send_message($message,$options);
-			
-			// 2. Update status
-			// @see get_visa_request_statuses for value set
-			$application->field_visa_status['und'][0]['value'] = 0;
-			
-	  }
-	  
-	  // Checking if report submitted  
-	  $new_state = count($form_state['values']['field_visa_reports']); 
-	  $current_state = count($application->field_visa_reports);
-	  
-	  if(($new_state <> $current_state) && ($new_state > 0)){	
-		    // 1. Report submitted, notify visa crew
-			$message = message_create('visa_report_submitted', array('uid' => $user->uid));
-			$msg = entity_metadata_wrapper('message',$message);
-			
-			$msg->field_message_visa->set($form_state['values']['visa_id']);
-			$msg->save();
-			
-			$author = user_load($visa->uid);
-			$options['mail'] = $author->mail;
-			
-			message_notify_send_message($message,$options);
-			
-			// 2. Update status
-			// @see get_visa_request_statuses for value set
-			$application->field_visa_status['und'][0]['value'] = 2;
-	  }
+  		_visa_file_field_check_update($form_state,'field_visa_file','visa_visa_awarded',1);
+  		//_visa_file_field_check_update($form_state,'field_visa_reports','visa_report_submitted',2);
   }
   
   entity_form_submit_build_entity('application', $application, $form, $form_state);
@@ -316,5 +273,54 @@ function application_delete_form_submit($form, &$form_state) {
   $form_state['redirect'] = 'service/' . $application->type;
 }
 
+/*
+ * Check changes on a given visa file field
+ *	@param
+ *		array $form_state : 
+ *		string $field_name
+ *		string $message_type : 
+ *		integer $message_recipient : 1 for author, 2 for the visa crew
+ *		
+ */
+function _visa_file_field_check_update(&$form_state,$field_name,$message_type,$message_recipient){
 
+	  $new_state = count($form_state['values'][$field_name]); 
+	  $current_state = count($form_state['application']->{$field_name});
+	  
+	  if(($new_state <> $current_state)){	
+	  		if($new_state == 1){
+			    // 1. Notify either author or visa crew
+				$message = message_create($message_type, array('uid' => $user->uid));
+				$msg = entity_metadata_wrapper('message',$message);
+				
+				$msg->field_message_visa->set($form_state['values']['visa_id']);
+				$msg->save();
+				
+				if($message_recipient == 1){
+					// Send notification to Visa request's author
+					$author = user_load($visa->uid);
+					$options['mail'] = $author->mail;					
+				}else{
+					// Send notification to Visa crew
+					foreach(get_users_by_role('Visa manager') as $visa_manager){
+						$options['mail'] .= $visa_manager->mail . ',' ;
+					}	
+					$options['mail'] = substr($options['mail'], 0, -1);
+				}
+				
+				message_notify_send_message($message,$options);
+				
+				// 2. Update status
+				//		Promote Field visa status
+				//		@see get_visa_request_statuses()
+				$form_state['values']['field_visa_status']['und'][0]['value'] = $form_state['values']['field_visa_status']['und'][0]['value'] + 1;		
+			}
+	  }else{
+			if($form_state[$field_name]['und'][0]['value']['fid'] == 0){
+				// File removed for some reason
+				//	Demote Field visa status
+				$form_state['values']['field_visa_status']['und'][0]['value'] = $form_state['values']['field_visa_status']['und'][0]['value'] - 1;		
+			}	
+	  }	
+}
 

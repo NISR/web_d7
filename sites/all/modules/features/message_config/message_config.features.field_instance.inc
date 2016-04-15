@@ -378,6 +378,54 @@ function message_config_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'message-visa_report_submitted-field_message_visa'.
+  $field_instances['message-visa_report_submitted-field_message_visa'] = array(
+    'bundle' => 'visa_report_submitted',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 0,
+      ),
+      'message_notify_email_body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'message_notify_email_subject' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'message',
+    'field_name' => 'field_message_visa',
+    'label' => 'Visa',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 2,
+    ),
+  );
+
   // Exported field_instance: 'message-visa_visa_awarded-field_message_visa'.
   $field_instances['message-visa_visa_awarded-field_message_visa'] = array(
     'bundle' => 'visa_visa_awarded',

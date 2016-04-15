@@ -110,7 +110,7 @@ function application_config_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_view',
-        'weight' => 3,
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'application',
@@ -125,7 +125,7 @@ function application_config_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -160,7 +160,7 @@ function application_config_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_view',
-        'weight' => 4,
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'application',
@@ -175,7 +175,7 @@ function application_config_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -183,7 +183,7 @@ function application_config_field_default_field_instances() {
   $field_instances['application-visa-field_visa_file'] = array(
     'bundle' => 'visa',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Make sure to upload the right file because once uploaded it cannot be deleted',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -193,7 +193,7 @@ function application_config_field_default_field_instances() {
         'weight' => 1,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'file_entity',
         'settings' => array(
           'file_view_mode' => 'default',
@@ -243,7 +243,7 @@ function application_config_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 0,
+      'weight' => 1,
     ),
   );
 
@@ -278,7 +278,7 @@ function application_config_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_view',
-        'weight' => 2,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'application',
@@ -293,6 +293,74 @@ function application_config_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'application-visa-field_visa_reports'.
+  $field_instances['application-visa-field_visa_reports'] = array(
+    'bundle' => 'visa',
+    'deleted' => 0,
+    'description' => 'Make sure to upload the right file because once uploaded it cannot be deleted',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 6,
+      ),
+      'full' => array(
+        'label' => 'inline',
+        'module' => 'file_entity',
+        'settings' => array(
+          'file_view_mode' => 'default',
+        ),
+        'type' => 'file_rendered',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'application',
+    'field_name' => 'field_visa_reports',
+    'label' => 'Report(s)',
+    'required' => 0,
+    'settings' => array(
+      'description_field' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'pdf doc docx odt',
+      'filefield_paths' => array(
+        'active_updating' => 0,
+        'file_name' => array(
+          'options' => array(
+            'pathauto' => 0,
+            'slashes' => 0,
+            'transliterate' => 0,
+          ),
+          'value' => '[file:ffp-name-only-original].[file:ffp-extension-original]',
+        ),
+        'file_path' => array(
+          'options' => array(
+            'pathauto' => 0,
+            'slashes' => 0,
+            'transliterate' => 0,
+          ),
+          'value' => 'applications/[application:uuid]',
+        ),
+        'redirect' => FALSE,
+        'retroactive_update' => 0,
+      ),
+      'filefield_paths_enabled' => 1,
+      'max_filesize' => '',
+      'media_library_include_in_library' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'file',
+      'settings' => array(
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'file_generic',
       'weight' => 2,
     ),
   );
@@ -318,7 +386,7 @@ function application_config_field_default_field_instances() {
         'weight' => 0,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
@@ -339,7 +407,7 @@ function application_config_field_default_field_instances() {
         'apply_chosen' => 0,
       ),
       'type' => 'options_select',
-      'weight' => 1,
+      'weight' => 0,
     ),
   );
 
@@ -374,7 +442,7 @@ function application_config_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_view',
-        'weight' => 5,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'application',
@@ -389,7 +457,7 @@ function application_config_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -604,66 +672,6 @@ function application_config_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_visa_documents-field_visa_doc_file'.
-  $field_instances['field_collection_item-field_visa_documents-field_visa_doc_file'] = array(
-    'bundle' => 'field_visa_documents',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'file',
-        'settings' => array(),
-        'type' => 'file_default',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_visa_doc_file',
-    'label' => 'Visa',
-    'required' => 0,
-    'settings' => array(
-      'description_field' => 0,
-      'file_directory' => '',
-      'file_extensions' => 'pdf png jpeg jpg tiff bmp',
-      'filefield_paths' => array(
-        'active_updating' => 0,
-        'file_name' => array(
-          'options' => array(
-            'pathauto' => 0,
-            'slashes' => 0,
-            'transliterate' => 0,
-          ),
-          'value' => '[file:ffp-name-only-original].[file:ffp-extension-original]',
-        ),
-        'file_path' => array(
-          'options' => array(
-            'pathauto' => 0,
-            'slashes' => 0,
-            'transliterate' => 0,
-          ),
-          'value' => 'applications/[field_collection_item:host:application:uuid]',
-        ),
-        'redirect' => FALSE,
-        'retroactive_update' => 0,
-      ),
-      'filefield_paths_enabled' => 1,
-      'max_filesize' => '',
-      'media_library_include_in_library' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'file',
-      'settings' => array(
-        'progress_indicator' => 'throbber',
-      ),
-      'type' => 'file_generic',
-      'weight' => 2,
-    ),
-  );
-
-  // Exported field_instance:
   // 'field_collection_item-field_visa_documents-field_visa_doc_letter'.
   $field_instances['field_collection_item-field_visa_documents-field_visa_doc_letter'] = array(
     'bundle' => 'field_visa_documents',
@@ -793,66 +801,6 @@ m)Field work organization<br>',
       ),
       'type' => 'file_generic',
       'weight' => 6,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'field_collection_item-field_visa_documents-field_visa_doc_reports'.
-  $field_instances['field_collection_item-field_visa_documents-field_visa_doc_reports'] = array(
-    'bundle' => 'field_visa_documents',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'file',
-        'settings' => array(),
-        'type' => 'file_default',
-        'weight' => 3,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_visa_doc_reports',
-    'label' => 'Report(s)',
-    'required' => 0,
-    'settings' => array(
-      'description_field' => 0,
-      'file_directory' => '',
-      'file_extensions' => 'pdf doc docx odt',
-      'filefield_paths' => array(
-        'active_updating' => 0,
-        'file_name' => array(
-          'options' => array(
-            'pathauto' => 0,
-            'slashes' => 0,
-            'transliterate' => 0,
-          ),
-          'value' => '[file:ffp-name-only-original].[file:ffp-extension-original]',
-        ),
-        'file_path' => array(
-          'options' => array(
-            'pathauto' => 0,
-            'slashes' => 0,
-            'transliterate' => 0,
-          ),
-          'value' => 'applications/[field_collection_item:host:application:uuid]',
-        ),
-        'redirect' => FALSE,
-        'retroactive_update' => 0,
-      ),
-      'filefield_paths_enabled' => 1,
-      'max_filesize' => '',
-      'media_library_include_in_library' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'file',
-      'settings' => array(
-        'progress_indicator' => 'throbber',
-      ),
-      'type' => 'file_generic',
-      'weight' => 8,
     ),
   );
 
@@ -1114,6 +1062,7 @@ m)Field work organization<br>',
   t('E-mail');
   t('Firstname');
   t('Lastname');
+  t('Make sure to upload the right file because once uploaded it cannot be deleted');
   t('Message');
   t('Name');
   t('Organization information');

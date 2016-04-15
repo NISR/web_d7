@@ -85,13 +85,18 @@ function application_form_visa_application_form_alter(&$form,&$form_state,$form_
 			$form['tos'] = array(
 				'#type' => 'checkbox',
 				'#title' => t('I agree to comply with the requirements specified in the ') . l('visa instruction manual','/publication/visa-instruction-manual',array('attributes'=>array('target' => '_blank'))),
-				'#name' => t('tos'),			
+				'#name' => 'tos',			
 				'#weight' => 99,
 				'#required' => TRUE,
 			);
 		}
 	}else{
-		// Disable all fields but reports
+		// Disable reports and visa file fields if not empty && user is not admin(backdoor)
+		if($user->uid != 1){
+			if(count($form_state['application']->field_visa_file)) $form['field_visa_file']['#disabled'] = TRUE;
+			if(count($form_state['application']->field_visa_reports)) $form['field_visa_reports']['#disabled'] = TRUE;
+		}
+		// Disable all info fields
 		$form['field_visa_organization']['#disabled'] = TRUE;	
 		$form['field_visa_contact']['#disabled'] = TRUE;	
 		$form['field_visa_documents']['#disabled'] = TRUE;	

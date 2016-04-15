@@ -332,11 +332,19 @@ function nisr_theme_registry_alter(&$theme_registry) {
  * Implements hook_user_login
  */
 function nisr_user_login(&$edit, $account) {
-	global $user;
-	if(!profile2_load_by_user($user,'main')){
-		$profile = profile2_create(array('type' => 'main','uid' => $user->uid));
+	$profile = profile2_load_by_user($account,'main'); 
+	if(!$profile){
+		$profile = profile2_create(array('type' => 'main','uid' => $account->uid));
 		profile2_save($profile);
 	}
+	// Prepare the minimum personal info field
+ 	if(!count($profile->field_profile_pi)){
+	 	$fc = entity_create('field_collection_item', array('field_name' => 'field_profile_pi'));
+		$fc->setHostEntity('profile2', $profile);
+		entity_save('field_collection_item',$fc);
+		drupal_set_message(t('Please complete your personal information'));	
+		drupal_goto('field-collection/field-profile-pi/' . $fc->item_id .'/edit',array('query' => array('destination' => 'home')));	
+ 	}	
 }
 
 

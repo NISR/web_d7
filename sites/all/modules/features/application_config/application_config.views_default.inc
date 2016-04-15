@@ -55,6 +55,13 @@ function application_config_views_default_views() {
   <a class="btn btn-sm btn-success" href="/application/add/visa"><i class="fa fa-plus"></i> Submit another visa application</a>
 </div>';
   $handler->display->display_options['header']['area']['format'] = '2';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'You have not yet apply for a visa yet, apply <a href="/application/add/visa">here</a>';
+  $handler->display->display_options['empty']['area']['format'] = '2';
   /* Relationship: Application: Author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'application';
@@ -139,6 +146,7 @@ function application_config_views_default_views() {
     t('<div class="pull-right">
   <a class="btn btn-sm btn-success" href="/application/add/visa"><i class="fa fa-plus"></i> Submit another visa application</a>
 </div>'),
+    t('You have not yet apply for a visa yet, apply <a href="/application/add/visa">here</a>'),
     t('User'),
     t('field collection item from field_visa_organization'),
     t('Application ID'),

@@ -145,9 +145,9 @@ function message_config_default_message_type() {
       ]
     }
   }');
-  $items['visa_report_reminder'] = entity_import('message_type', '{
-    "name" : "visa_report_reminder",
-    "description" : "Visa - Report submission reminder",
+  $items['visa_report_submitted'] = entity_import('message_type', '{
+    "name" : "visa_report_submitted",
+    "description" : "Visa - Report submitted",
     "argument_keys" : [],
     "argument" : [],
     "category" : "message_type",
@@ -159,14 +159,14 @@ function message_config_default_message_type() {
     "arguments" : null,
     "message_text" : { "en" : [
         {
-          "value" : "Survey report submission reminder",
+          "value" : "Survey report submitted",
           "format" : "2",
-          "safe_value" : "Survey report submission reminder"
+          "safe_value" : "Survey report submitted"
         },
         {
-          "value" : "You are kindly reminded to submit to report(s) related to the survey conducted on behalf of ... from ... to as required by \\u003Ca href=\\u0022http:\\/\\/statistics.gov.rw\\/publication\\/visa-instruction-manual\\u0022\\u003Ethe instruction manual\\u003C\\/a\\u003E.",
+          "value" : "The organization [message:field-message-visa:field-visa-organization:field_visa_org_name] has submitted the report related to \\u003Ca href=\\u0022[current-user:auto-login-url-token]?destination=[message:field-message-visa:url]\\u0022\\u003Ethis visa application\\u003C\\/a\\u003E.\\r\\n\\u003Cbr\\u003E\\r\\n\\u003Cbr\\u003E\\r\\nBest,",
           "format" : "2",
-          "safe_value" : "You are kindly reminded to submit to report(s) related to the survey conducted on behalf of ... from ... to as required by \\u003Ca href=\\u0022http:\\/\\/statistics.gov.rw\\/publication\\/visa-instruction-manual\\u0022\\u003Ethe instruction manual\\u003C\\/a\\u003E."
+          "safe_value" : "The organization [message:field-message-visa:field-visa-organization:field_visa_org_name] has submitted the report related to \\u003Ca href=\\u0022[current-user:auto-login-url-token]?destination=[message:field-message-visa:url]\\u0022\\u003Ethis visa application\\u003C\\/a\\u003E.\\n\\u003Cbr \\/\\u003E\\u003Cbr \\/\\u003E\\nBest,"
         }
       ]
     }

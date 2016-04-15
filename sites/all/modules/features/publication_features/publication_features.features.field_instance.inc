@@ -489,9 +489,9 @@ function publication_features_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'file',
+        'module' => 'nisr',
         'settings' => array(),
-        'type' => 'file_table',
+        'type' => 'nisr_download_count',
         'weight' => 4,
       ),
       'teaser' => array(
