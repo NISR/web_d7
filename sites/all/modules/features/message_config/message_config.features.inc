@@ -107,14 +107,14 @@ function message_config_default_message_type() {
     "arguments" : null,
     "message_text" : { "en" : [
         {
-          "value" : "A visa request has been submitted",
+          "value" : "A visa application has been submitted",
           "format" : "2",
-          "safe_value" : "A visa request has been submitted"
+          "safe_value" : "A visa application has been submitted"
         },
         {
-          "value" : "A visa request on behalf of [message:field-visa:field-visa-organization:field-visa-org-name] has been submitted by [current-user:name]",
+          "value" : "A visa application on behalf of [message:field-visa:field-visa-organization:field-visa-org-name] has been submitted by [current-user:name]",
           "format" : "2",
-          "safe_value" : "A visa request on behalf of [message:field-visa:field-visa-organization:field-visa-org-name] has been submitted by [current-user:name]"
+          "safe_value" : "A visa application on behalf of [message:field-visa:field-visa-organization:field-visa-org-name] has been submitted by [current-user:name]"
         }
       ]
     }
@@ -133,14 +133,14 @@ function message_config_default_message_type() {
     "arguments" : null,
     "message_text" : { "en" : [
         {
-          "value" : "A comment has been posted on your visa request",
+          "value" : "Visa application update",
           "format" : "4",
-          "safe_value" : "\\u003Cp\\u003EA comment has been posted on your visa request\\u003C\\/p\\u003E\\n"
+          "safe_value" : "\\u003Cp\\u003EVisa application update\\u003C\\/p\\u003E\\n"
         },
         {
-          "value" : "A comment has been posted about the visa request you submitted on behalf of [message:field-message-visa:field-visa-organization:field-visa-org-name].",
+          "value" : "There has been activity on the visa application submitted on behalf of [message:field-message-visa:field-visa-organization:field-visa-org-name].",
           "format" : "4",
-          "safe_value" : "\\u003Cp\\u003EA comment has been posted about the visa request you submitted on behalf of [message:field-message-visa:field-visa-organization:field-visa-org-name].\\u003C\\/p\\u003E\\n"
+          "safe_value" : "\\u003Cp\\u003EThere has been activity on the visa application submitted on behalf of [message:field-message-visa:field-visa-organization:field-visa-org-name].\\u003C\\/p\\u003E\\n"
         }
       ]
     }
@@ -164,9 +164,9 @@ function message_config_default_message_type() {
           "safe_value" : "Survey report submitted"
         },
         {
-          "value" : "The organization [message:field-message-visa:field-visa-organization:field_visa_org_name] has submitted the report related to \\u003Ca href=\\u0022[current-user:auto-login-url-token]?destination=[message:field-message-visa:url]\\u0022\\u003Ethis visa application\\u003C\\/a\\u003E.\\r\\n\\u003Cbr\\u003E\\r\\n\\u003Cbr\\u003E\\r\\nBest,",
+          "value" : "\\u003Cp\\u003EThe organization [message:field-message-visa:field-visa-organization:field_visa_org_name] has submitted the report related to \\u003Ca href=\\u0022[current-user:auto-login-url-token]?destination=[message:field-message-visa:url]\\u0022\\u003Ethis visa application\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\r\\n\\u003Cbr\\u003E\\r\\n\\u003Cbr\\u003E\\r\\nBest,",
           "format" : "2",
-          "safe_value" : "The organization [message:field-message-visa:field-visa-organization:field_visa_org_name] has submitted the report related to \\u003Ca href=\\u0022[current-user:auto-login-url-token]?destination=[message:field-message-visa:url]\\u0022\\u003Ethis visa application\\u003C\\/a\\u003E.\\n\\u003Cbr \\/\\u003E\\u003Cbr \\/\\u003E\\nBest,"
+          "safe_value" : "\\u003Cp\\u003EThe organization [message:field-message-visa:field-visa-organization:field_visa_org_name] has submitted the report related to \\u003Ca href=\\u0022[current-user:auto-login-url-token]?destination=[message:field-message-visa:url]\\u0022\\u003Ethis visa application\\u003C\\/a\\u003E.\\u003C\\/p\\u003E\\n\\u003Cbr \\/\\u003E\\u003Cbr \\/\\u003E\\nBest,"
         }
       ]
     }
@@ -185,14 +185,14 @@ function message_config_default_message_type() {
     "arguments" : null,
     "message_text" : { "en" : [
         {
-          "value" : "Visa awarded",
+          "value" : "Visa application update",
           "format" : "4",
-          "safe_value" : "\\u003Cp\\u003EVisa awarded\\u003C\\/p\\u003E\\n"
+          "safe_value" : "\\u003Cp\\u003EVisa application update\\u003C\\/p\\u003E\\n"
         },
         {
-          "value" : "Dear [message:field-message-visa:field-visa-contact:field-visa-contact-firstname],\\r\\nCongratulations,the visa you applied for on behalf of  [message:field-message-visa:field-visa-organization:field_visa_org_name] has been approved.\\r\\nYou can click \\u003Ca href=\\u0022\\u0022\\u003Ehere\\u003C\\/a\\u003E to automatically log into the website and download it.\\r\\n\\u003Cbr\\u003E\\r\\n\\u003Cbr\\u003E\\r\\nBest\\r\\n\\r\\n",
+          "value" : "Dear [message:field-message-visa:field-visa-contact:field-visa-contact-firstname],\\r\\n\\u003Cp\\u003ECongratulations,the visa you applied for on behalf of  [message:field-message-visa:field-visa-organization:field_visa_org_name] has been approved.\\r\\nYou can click \\u003Ca href=\\u0022[current-user:auto-login-url-token]?destination=[message:field-message-visa:url]\\u0022\\u003Ehere\\u003C\\/a\\u003E to automatically log into the website and download it.\\u003C\\/p\\u003E\\r\\n\\u003Cbr\\u003E\\r\\n\\u003Cbr\\u003E\\r\\nBest\\r\\n\\r\\n",
           "format" : "2",
-          "safe_value" : "Dear [message:field-message-visa:field-visa-contact:field-visa-contact-firstname],\\nCongratulations,the visa you applied for on behalf of  [message:field-message-visa:field-visa-organization:field_visa_org_name] has been approved.\\nYou can click \\u003Ca href=\\u0022\\u0022\\u003Ehere\\u003C\\/a\\u003E to automatically log into the website and download it.\\n\\u003Cbr \\/\\u003E\\u003Cbr \\/\\u003E\\nBest\\n\\n"
+          "safe_value" : "Dear [message:field-message-visa:field-visa-contact:field-visa-contact-firstname],\\n\\u003Cp\\u003ECongratulations,the visa you applied for on behalf of  [message:field-message-visa:field-visa-organization:field_visa_org_name] has been approved.\\nYou can click \\u003Ca href=\\u0022[current-user:auto-login-url-token]?destination=[message:field-message-visa:url]\\u0022\\u003Ehere\\u003C\\/a\\u003E to automatically log into the website and download it.\\u003C\\/p\\u003E\\n\\u003Cbr \\/\\u003E\\u003Cbr \\/\\u003E\\nBest\\n\\n"
         }
       ]
     }
