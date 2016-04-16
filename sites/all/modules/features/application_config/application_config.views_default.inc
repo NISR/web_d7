@@ -51,10 +51,12 @@ function application_config_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = '<div class="pull-right">
-  <a class="btn btn-sm btn-success" href="/application/add/visa"><i class="fa fa-plus"></i> Submit another visa application</a>
+  $handler->display->display_options['header']['area']['content'] = '<?php global $base_url?>
+<div class="pull-right">
+  <a class="btn btn-sm btn-success" href="<?php print $base_url;?>/application/add/visa"><i class="fa fa-plus"></i> Submit another visa application</a>
 </div>';
-  $handler->display->display_options['header']['area']['format'] = '2';
+  $handler->display->display_options['header']['area']['format'] = 'php_code';
+  $handler->display->display_options['header']['area']['tokenize'] = TRUE;
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
@@ -77,6 +79,14 @@ function application_config_views_default_views() {
   $handler->display->display_options['fields']['aid']['field'] = 'aid';
   $handler->display->display_options['fields']['aid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['aid']['separator'] = '';
+  /* Field: Application: URL */
+  $handler->display->display_options['fields']['url']['id'] = 'url';
+  $handler->display->display_options['fields']['url']['table'] = 'views_entity_application';
+  $handler->display->display_options['fields']['url']['field'] = 'url';
+  $handler->display->display_options['fields']['url']['label'] = '';
+  $handler->display->display_options['fields']['url']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
   /* Field: Field collection item: Name */
   $handler->display->display_options['fields']['field_visa_org_name']['id'] = 'field_visa_org_name';
   $handler->display->display_options['fields']['field_visa_org_name']['table'] = 'field_data_field_visa_org_name';
@@ -104,8 +114,8 @@ function application_config_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = 'Operations';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="/application/[aid]">View</a>&nbsp;&nbsp;
-<a href="/application/[aid]/edit">Edit</a>';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="[url]">View</a>&nbsp;&nbsp;
+<a href="[url]/edit">Edit</a>';
   /* Sort criterion: Application: Date created */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'application';
@@ -143,8 +153,9 @@ function application_config_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
-    t('<div class="pull-right">
-  <a class="btn btn-sm btn-success" href="/application/add/visa"><i class="fa fa-plus"></i> Submit another visa application</a>
+    t('<?php global $base_url?>
+<div class="pull-right">
+  <a class="btn btn-sm btn-success" href="<?php print $base_url;?>/application/add/visa"><i class="fa fa-plus"></i> Submit another visa application</a>
 </div>'),
     t('You have not yet apply for a visa yet, apply <a href="/application/add/visa">here</a>'),
     t('User'),
@@ -155,8 +166,8 @@ function application_config_views_default_views() {
     t('Created'),
     t('Updated'),
     t('Operations'),
-    t('<a href="/application/[aid]">View</a>&nbsp;&nbsp;
-<a href="/application/[aid]/edit">Edit</a>'),
+    t('<a href="[url]">View</a>&nbsp;&nbsp;
+<a href="[url]/edit">Edit</a>'),
     t('Embed'),
   );
   $export['visa'] = $view;
