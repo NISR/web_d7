@@ -210,8 +210,8 @@ function application_form_submit($form, &$form_state) {
   $options = array('mail');
 
   if($application->type == 'visa'){
-  		_visa_file_field_check_update($form_state,'field_visa_file','visa_visa_awarded',1);
-  		_visa_file_field_check_update($form_state,'field_visa_reports','visa_report_submitted',2);
+  		_visa_file_field_check_update($form_state,'field_visa_file','visa_visa_awarded','author');
+  		_visa_file_field_check_update($form_state,'field_visa_reports','visa_report_submitted','Visa manager');
   }
   
   entity_form_submit_build_entity('application', $application, $form, $form_state);
@@ -293,19 +293,18 @@ function _visa_file_field_check_update(&$form_state,$field_name,$message_type,$m
 			$message = message_create($message_type, array('uid' => $user->uid));
 			$msg = entity_metadata_wrapper('message',$message);
 			$msg->field_message_visa->set($form_state['application']);
-			
-			if($message_recipient == 1){
+			if($message_recipient == 'author'){
 				// Send notification to Visa application's author
-				$author = user_load($visa->uid);
+				$author = user_load($form_state['application']->uid);
 				$options['mail'] = $author->mail;					
 			}else{
 				// Send notification to Visa crew
-				foreach(get_users_by_role('Visa manager') as $visa_manager){
-					$options['mail'] .= $visa_manager->mail . ',' ;
+				foreach(get_users_by_role($message_recipient) as $recpt){
+					$options['mail'] .= $recpt->mail . ',' ;
 				}	
 				$options['mail'] = substr($options['mail'], 0, -1);
 			}
-			
+			dpm($options);
 			message_notify_send_message($message,$options);
 			
 			// 2. Update status
