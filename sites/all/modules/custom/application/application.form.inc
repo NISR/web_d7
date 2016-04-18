@@ -120,9 +120,9 @@ function application_form_visa_application_form_alter(&$form,&$form_state,$form_
 	// Make sure data is present
 	if(count($profile->field_profile_pi)){
 		$fc = &$form['field_visa_contact'][LANGUAGE_NONE][0];
-		$fc['field_visa_contact_firstname'][LANGUAGE_NONE][0]['value']['#default_value'] = $wrapper->field_profile_pi->field_pi_firstname->value();
-		$fc['field_visa_contact_lastname'][LANGUAGE_NONE][0]['value']['#default_value'] = $wrapper->field_profile_pi->field_pi_lastname->value();
-		$fc['field_visa_contact_email'][LANGUAGE_NONE][0]['email']['#default_value'] = $user->mail;	
+		//$fc['field_visa_contact_firstname'][LANGUAGE_NONE][0]['value']['#default_value'] = $wrapper->field_profile_pi->field_pi_firstname->value();
+		//$fc['field_visa_contact_lastname'][LANGUAGE_NONE][0]['value']['#default_value'] = $wrapper->field_profile_pi->field_pi_lastname->value();
+		//$fc['field_visa_contact_email'][LANGUAGE_NONE][0]['email']['#default_value'] = $user->mail;	
 	}	
 	
 	return $form;

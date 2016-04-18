@@ -292,9 +292,7 @@ function _visa_file_field_check_update(&$form_state,$field_name,$message_type,$m
 			// 1. Notify
 			$message = message_create($message_type, array('uid' => $user->uid));
 			$msg = entity_metadata_wrapper('message',$message);
-			
-			$msg->field_message_visa->set($form_state['values']['visa_id']);
-			$msg->save();
+			$msg->field_message_visa->set($form_state['application']);
 			
 			if($message_recipient == 1){
 				// Send notification to Visa application's author
