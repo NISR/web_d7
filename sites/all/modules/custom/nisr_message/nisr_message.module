@@ -6,6 +6,39 @@
  */
 
 /*
+ * Implements hook_application_insert
+ *
+ * Send Email message notifications on visa creation
+ */
+function nisr_message_application_insert($application){
+	global $user;
+	
+	// To do : Remove. Make this configurable via UI
+	if($application->type == 'visa'){
+		$message = message_create('visa_new_application',array('uid' => $user->uid));	
+		$msg = entity_metadata_wrapper('message',$message);
+	
+		$msg->field_message_visa->set($application->aid);
+
+		if($application->uid == $user->uid){
+			// Send notification to Visa crew
+			foreach(get_users_by_role('Visa manager') as $visa_manager){
+			$options['mail'] .= $visa_manager->mail . ',' ;
+		}	
+		
+		$options['mail'] = substr($options['mail'], 0, -1);
+		
+		}else{
+			// Send notification to Visa request's author
+			$author = user_load($application->uid);
+			$options['mail'] = $author->mail;
+		}
+		
+		message_notify_send_message($message,$options);
+	}
+}
+
+/*
  * Implements hook_publication_insert
  *
  * Send Various Email message notifications
