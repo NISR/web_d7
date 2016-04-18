@@ -43,6 +43,7 @@ function application_visa_comment_form_submit($form,&$form_state){
 	
 	$msg->field_message_visa->set($form_state['values']['visa_id']);
 	$msg->field_message_comment->set($form_state['values']['comment']);
+	
 	$msg->save();
 	
 	// Notify people ...
@@ -60,7 +61,7 @@ function application_visa_comment_form_submit($form,&$form_state){
 		$author = user_load($visa->uid);
 		$options['mail'] = $author->mail;
 	}
-	
+		
 	message_notify_send_message($message,$options);
 }
 
