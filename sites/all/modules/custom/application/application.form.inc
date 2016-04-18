@@ -41,13 +41,11 @@ function application_visa_comment_form_submit($form,&$form_state){
 	$message = message_create('visa_item_comment', array('uid' => $user->uid));
 	$msg = entity_metadata_wrapper('message',$message);
 	
-	$msg->field_message_visa->set($form_state['application']);
+	$msg->field_message_visa->set($form_state['values']['visa_id']);
 	$msg->field_message_comment->set($form_state['values']['comment']);
-	
-	$msg->save();
-	
+		
 	// Notify people ...
-	$visa = $form_state['application'];
+	$visa = application_load($form_state['values']['visa_id']);
 	// Check if Comment author is Visa author
 	if($visa->uid == $user->uid){
 		// Send notification to Visa crew
