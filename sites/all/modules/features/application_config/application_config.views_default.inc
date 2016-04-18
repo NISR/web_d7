@@ -29,10 +29,8 @@ function application_config_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'mini';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'aid' => 'aid',
@@ -86,6 +84,7 @@ function application_config_views_default_views() {
   $handler->display->display_options['fields']['url']['label'] = '';
   $handler->display->display_options['fields']['url']['exclude'] = TRUE;
   $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['url']['display_as_link'] = FALSE;
   $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
   /* Field: Field collection item: Name */
   $handler->display->display_options['fields']['field_visa_org_name']['id'] = 'field_visa_org_name';
@@ -114,8 +113,7 @@ function application_config_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = 'Operations';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="[url]">View</a>&nbsp;&nbsp;
-<a href="[url]/edit">Edit</a>';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="[url]">View</a>';
   /* Sort criterion: Application: Date created */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'application';
@@ -146,13 +144,6 @@ function application_config_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
     t('<?php global $base_url?>
 <div class="pull-right">
   <a class="btn btn-sm btn-success" href="<?php print $base_url;?>/application/add/visa"><i class="fa fa-plus"></i> Submit another visa application</a>
@@ -166,8 +157,7 @@ function application_config_views_default_views() {
     t('Created'),
     t('Updated'),
     t('Operations'),
-    t('<a href="[url]">View</a>&nbsp;&nbsp;
-<a href="[url]/edit">Edit</a>'),
+    t('<a href="[url]">View</a>'),
     t('Embed'),
   );
   $export['visa'] = $view;
@@ -264,6 +254,14 @@ function application_config_views_default_views() {
   $handler->display->display_options['fields']['aid']['table'] = 'application';
   $handler->display->display_options['fields']['aid']['field'] = 'aid';
   $handler->display->display_options['fields']['aid']['exclude'] = TRUE;
+  /* Field: Application: URL */
+  $handler->display->display_options['fields']['url']['id'] = 'url';
+  $handler->display->display_options['fields']['url']['table'] = 'views_entity_application';
+  $handler->display->display_options['fields']['url']['field'] = 'url';
+  $handler->display->display_options['fields']['url']['label'] = '';
+  $handler->display->display_options['fields']['url']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
   /* Field: Field collection item: Name */
   $handler->display->display_options['fields']['field_visa_org_name']['id'] = 'field_visa_org_name';
   $handler->display->display_options['fields']['field_visa_org_name']['table'] = 'field_data_field_visa_org_name';
@@ -296,8 +294,8 @@ function application_config_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = 'Operations';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="/application/[aid]">View</a>&nbsp; | &nbsp;
-<a href="/application/[aid]/edit">Edit</a>';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="/application/[aid]">View</a>
+';
   /* Sort criterion: Application: Date changed */
   $handler->display->display_options['sorts']['changed']['id'] = 'changed';
   $handler->display->display_options['sorts']['changed']['table'] = 'application';
@@ -384,8 +382,8 @@ function application_config_views_default_views() {
     t('Created'),
     t('Updated'),
     t('Operations'),
-    t('<a href="/application/[aid]">View</a>&nbsp; | &nbsp;
-<a href="/application/[aid]/edit">Edit</a>'),
+    t('<a href="/application/[aid]">View</a>
+'),
     t('Page'),
   );
   $export['visa_backoffice'] = $view;

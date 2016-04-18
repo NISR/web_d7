@@ -10,6 +10,7 @@ function application_cron(){
 	// Check every visa applications for :
 	//		1. 
 	//
+	
 }
 /**
  * Implements hook_entity_info().
@@ -279,7 +280,10 @@ function application_preprocess_entity(&$variables){
 	if(array_key_exists('application',$variables)){
 		if($variables['application']->type == 'visa'){
 			$variables['comment_form'] = drupal_render(drupal_get_form('application_visa_comment_form',$variables['application']->aid));
-			$variables['comments'] = views_embed_view('visa_messages','comments',array($variables['application']->aid));
+			$view = get_embed_view('visa_messages','comments',array($variables['application']->aid));
+		
+			$variables['comments'] = $view['count'] ? $view['result'] : '' ;   
+			drupal_set_title(t('Visa application'));
 		}	
 	}
 

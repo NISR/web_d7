@@ -133,7 +133,7 @@ function application_add($type) {
   $application_type = application_types($type);
 
   $application = entity_create('application', array('type' => $type));
-  drupal_set_title(t('Request a @name', array('@name' => entity_label('application_type', $application_type))));
+  drupal_set_title(t('Apply for a @name', array('@name' => entity_label('application_type', $application_type))));
 
   $output = drupal_get_form($type . '_application_form', $application);
   
@@ -210,8 +210,10 @@ function application_form_submit($form, &$form_state) {
   $options = array('mail');
 
   if($application->type == 'visa'){
+
   		_visa_file_field_check_update($form_state,'field_visa_file','visa_visa_awarded',1);
-  		//_visa_file_field_check_update($form_state,'field_visa_reports','visa_report_submitted',2);
+  		_visa_file_field_check_update($form_state,'field_visa_reports','visa_report_submitted',2);
+  		
   }
   
   entity_form_submit_build_entity('application', $application, $form, $form_state);
@@ -242,7 +244,7 @@ function application_delete_form($form, &$form_state, $application) {
 
   if($application->type == 'visa'){
 		// Do not allow deleting a visa item by the author after visa has been granted
-		if(isset($application->field_visa_file)){
+		if($application->field_visa_file['und'][0]['fid']){
 			$is_deletable = FALSE;
 			drupal_set_message(t('You cannot delete an approved visa application'),'error');
 			drupal_goto($application_uri['path']);
@@ -274,7 +276,7 @@ function application_delete_form_submit($form, &$form_state) {
 }
 
 /*
- * Check changes on a given visa file field
+ * Check for a given visa file presence and notify if found
  *	@param
  *		array $form_state : 
  *		string $field_name
@@ -284,43 +286,41 @@ function application_delete_form_submit($form, &$form_state) {
  */
 function _visa_file_field_check_update(&$form_state,$field_name,$message_type,$message_recipient){
 
-	  $new_state = count($form_state['values'][$field_name]); 
-	  $current_state = count($form_state['application']->{$field_name});
-	  
-	  if(($new_state <> $current_state)){	
-	  		if($new_state == 1){
-			    // 1. Notify either author or visa crew
-				$message = message_create($message_type, array('uid' => $user->uid));
-				$msg = entity_metadata_wrapper('message',$message);
-				
-				$msg->field_message_visa->set($form_state['values']['visa_id']);
-				$msg->save();
-				
-				if($message_recipient == 1){
-					// Send notification to Visa request's author
-					$author = user_load($visa->uid);
-					$options['mail'] = $author->mail;					
-				}else{
-					// Send notification to Visa crew
-					foreach(get_users_by_role('Visa manager') as $visa_manager){
-						$options['mail'] .= $visa_manager->mail . ',' ;
-					}	
-					$options['mail'] = substr($options['mail'], 0, -1);
-				}
-				
-				message_notify_send_message($message,$options);
-				
-				// 2. Update status
-				//		Promote Field visa status
-				//		@see get_visa_request_statuses()
-				$form_state['values']['field_visa_status']['und'][0]['value'] = $form_state['values']['field_visa_status']['und'][0]['value'] + 1;		
+  $new_state = (int)$form_state['values'][$field_name]['und'][0]['fid']; 
+  $current_state = $form_state['application']->{$field_name}['und'][0]['fid'];
+  
+  if($new_state != $current_state){	
+		if($current_state == 0){
+			// 1. Notify
+			$message = message_create($message_type, array('uid' => $user->uid));
+			$msg = entity_metadata_wrapper('message',$message);
+			
+			$msg->field_message_visa->set($form_state['values']['visa_id']);
+			$msg->save();
+			
+			if($message_recipient == 1){
+				// Send notification to Visa application's author
+				$author = user_load($visa->uid);
+				$options['mail'] = $author->mail;					
+			}else{
+				// Send notification to Visa crew
+				foreach(get_users_by_role('Visa manager') as $visa_manager){
+					$options['mail'] .= $visa_manager->mail . ',' ;
+				}	
+				$options['mail'] = substr($options['mail'], 0, -1);
 			}
-	  }else{
-			if($form_state[$field_name]['und'][0]['value']['fid'] == 0){
-				// File removed for some reason
-				//	Demote Field visa status
-				$form_state['values']['field_visa_status']['und'][0]['value'] = $form_state['values']['field_visa_status']['und'][0]['value'] - 1;		
-			}	
-	  }	
+			
+			message_notify_send_message($message,$options);
+			
+			// 2. Update status
+			//		Promote Field visa status
+			//		@see get_visa_request_statuses()
+			++$form_state['values']['field_visa_status']['und'][0]['value'];
+		}else{
+			// File removed for some reason
+			//	Demote Field visa status
+			--$form_state['values']['field_visa_status']['und'][0]['value'];	
+		}
+  }
 }
 

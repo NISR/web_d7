@@ -193,12 +193,12 @@ function application_config_field_default_field_instances() {
         'weight' => 1,
       ),
       'full' => array(
-        'label' => 'inline',
+        'label' => 'hidden',
         'module' => 'file_entity',
         'settings' => array(
-          'file_view_mode' => 'default',
+          'text' => 'Download visa',
         ),
-        'type' => 'file_rendered',
+        'type' => 'file_download_link',
         'weight' => 1,
       ),
     ),
@@ -311,12 +311,12 @@ function application_config_field_default_field_instances() {
         'weight' => 6,
       ),
       'full' => array(
-        'label' => 'inline',
+        'label' => 'hidden',
         'module' => 'file_entity',
         'settings' => array(
-          'file_view_mode' => 'default',
+          'text' => 'Download report',
         ),
-        'type' => 'file_rendered',
+        'type' => 'file_download_link',
         'weight' => 2,
       ),
     ),
@@ -470,7 +470,7 @@ function application_config_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'email',
         'settings' => array(),
         'type' => 'email_default',
@@ -511,7 +511,7 @@ function application_config_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -553,7 +553,7 @@ function application_config_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -595,7 +595,7 @@ function application_config_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -639,7 +639,7 @@ function application_config_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
@@ -679,10 +679,12 @@ function application_config_field_default_field_instances() {
     'description' => 'Signed and scanned application letter (preferably in PDF format) addressed to the Director General, NISR',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'file',
-        'settings' => array(),
-        'type' => 'file_default',
+        'label' => 'hidden',
+        'module' => 'file_entity',
+        'settings' => array(
+          'text' => 'Download application letter',
+        ),
+        'type' => 'file_download_link',
         'weight' => 1,
       ),
     ),
@@ -752,10 +754,12 @@ l)The budget detailed to be used in the survey<br>
 m)Field work organization<br>',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'file',
-        'settings' => array(),
-        'type' => 'file_default',
+        'label' => 'hidden',
+        'module' => 'file_entity',
+        'settings' => array(
+          'text' => 'Download proposal',
+        ),
+        'type' => 'file_download_link',
         'weight' => 2,
       ),
     ),
@@ -813,7 +817,7 @@ m)Field work organization<br>',
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -848,7 +852,7 @@ m)Field work organization<br>',
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -883,7 +887,7 @@ m)Field work organization<br>',
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -918,7 +922,7 @@ m)Field work organization<br>',
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -964,7 +968,7 @@ m)Field work organization<br>',
           'show_repeat_rule' => 'show',
         ),
         'type' => 'date_default',
-        'weight' => 0,
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'field_collection_item',
@@ -1017,7 +1021,7 @@ m)Field work organization<br>',
           'show_repeat_rule' => 'show',
         ),
         'type' => 'date_default',
-        'weight' => 1,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'field_collection_item',

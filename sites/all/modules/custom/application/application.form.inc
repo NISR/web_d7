@@ -76,12 +76,16 @@ function application_form_alter(&$form, &$form_state, $form_id){
  * 
  * Desactivate fields on the visa edit form
  */
-function application_form_visa_application_form_alter(&$form,&$form_state,$form_id){
+function application_form_visa_application_form_alter(&$form,&$form_state,$form_id){	
 	global $user;	
+
+	//Hide Status field
+	form_hide_field($form,'field_visa_status');
 
 	// Show terms of use when submitting request
 	if($form['#entity']->is_new){
 		if(isset($form['#entity'])){
+			form_hide_field($form,'field_visa_reports');
 			$form['tos'] = array(
 				'#type' => 'checkbox',
 				'#title' => t('I agree to comply with the requirements specified in the ') . l('visa instruction manual','/publication/visa-instruction-manual',array('attributes'=>array('target' => '_blank'))),
@@ -93,7 +97,12 @@ function application_form_visa_application_form_alter(&$form,&$form_state,$form_
 	}else{
 		// Disable reports and visa file fields if not empty && user is not admin(backdoor)
 		if($user->uid != 1){
-			if(count($form_state['application']->field_visa_file)) $form['field_visa_file']['#disabled'] = TRUE;
+			if(count($form_state['application']->field_visa_file)){
+				$form['field_visa_file']['#disabled'] = TRUE;
+			}else{
+				form_hide_field($form,'field_visa_reports');	
+			}
+			
 			if(count($form_state['application']->field_visa_reports)) $form['field_visa_reports']['#disabled'] = TRUE;
 		}
 		// Disable all info fields
@@ -102,9 +111,6 @@ function application_form_visa_application_form_alter(&$form,&$form_state,$form_
 		$form['field_visa_documents']['#disabled'] = TRUE;	
 		$form['field_visa_survey']['#disabled'] = TRUE;	
 	}
-	//Hide Status field
-	$form['field_visa_status']['#prefix'] = "<div class='element-invisible'>";
-	$form['field_visa_status']['#suffix'] = "</div>";
 	
 	// Preload Contact information with User profile info
 	$profile = profile2_load_by_user($user,'main');
@@ -119,4 +125,17 @@ function application_form_visa_application_form_alter(&$form,&$form_state,$form_
 	}	
 	
 	return $form;
+}
+
+/*
+ * Routine to hide a field on a form with css to preserve its data if any
+ *
+ * @param
+ *		array  form : the form
+ *		string field : the field
+ *		 
+ */
+function form_hide_field(&$form,$field){
+	$form[$field]['#prefix'] = "<div class='element-invisible'>";
+	$form[$field]['#suffix'] = "</div>";
 }
