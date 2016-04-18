@@ -371,7 +371,7 @@ function message_config_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'mimemail_mail';
-  $strongarm->value = 'info@statistics.gov.rw';
+  $strongarm->value = 'no-reply@statistics.gov.rw';
   $export['mimemail_mail'] = $strongarm;
 
   $strongarm = new stdClass();

@@ -471,7 +471,7 @@ function application_config_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_visa_reports',
     'field_permissions' => array(
-      'type' => 0,
+      'type' => 2,
     ),
     'indexes' => array(
       'fid' => array(
