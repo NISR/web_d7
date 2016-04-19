@@ -112,9 +112,9 @@ function message_config_default_message_type() {
           "safe_value" : "Visa application notification"
         },
         {
-          "value" : "\\u003Cp\\u003EDear Visa crew member,\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EA visa application on behalf of \\u003Cstrong\\u003E\\u003Cquote\\u003E[message:field-message-visa:field-visa-organization:field-visa-org-name]\\u003C\\/quote\\u003E\\u003C\\/strong\\u003E has been submitted by [current-user:name].\\u003C\\/p\\u003E\\r\\n\\u003Cbr\\u003E\\r\\nBest,",
+          "value" : "\\u003Cp\\u003EDear Visa crew member,\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EA \\u003Ca href=\\u0022[site:url]ServiceLogin?destination=[message:field-message-visa:url]\\u0022\\u003Evisa application\\u003C\\/a\\u003E on behalf of \\u003Cstrong\\u003E\\u003Cquote\\u003E[message:field-message-visa:field-visa-organization:field-visa-org-name]\\u003C\\/quote\\u003E\\u003C\\/strong\\u003E has been submitted by [current-user:name].\\u003C\\/p\\u003E\\r\\n\\u003Cbr\\u003E\\r\\nBest,",
           "format" : "2",
-          "safe_value" : "\\u003Cp\\u003EDear Visa crew member,\\u003C\\/p\\u003E\\n\\u003Cp\\u003EA visa application on behalf of \\u003Cstrong\\u003E\\u003Cquote\\u003E[message:field-message-visa:field-visa-organization:field-visa-org-name]\\u003C\\/quote\\u003E\\u003C\\/strong\\u003E has been submitted by [current-user:name].\\u003C\\/p\\u003E\\n\\u003Cbr \\/\\u003E\\nBest,"
+          "safe_value" : "\\u003Cp\\u003EDear Visa crew member,\\u003C\\/p\\u003E\\n\\u003Cp\\u003EA \\u003Ca href=\\u0022[site:url]ServiceLogin?destination=[message:field-message-visa:url]\\u0022\\u003Evisa application\\u003C\\/a\\u003E on behalf of \\u003Cstrong\\u003E\\u003Cquote\\u003E[message:field-message-visa:field-visa-organization:field-visa-org-name]\\u003C\\/quote\\u003E\\u003C\\/strong\\u003E has been submitted by [current-user:name].\\u003C\\/p\\u003E\\n\\u003Cbr \\/\\u003E\\nBest,"
         }
       ]
     }
@@ -138,9 +138,9 @@ function message_config_default_message_type() {
           "safe_value" : "Visa application update : New comment"
         },
         {
-          "value" : "\\u003Cp\\u003EThere has been activity on the \\u003Ca href=\\u0022ServiceLogin?destination=[message:field-message-visa:url]\\u0022\\u003Evisa application\\u003C\\/a\\u003E submitted on behalf of \\u003Cstrong\\u003E\\u003Cquote\\u003E[message:field-message-visa:field-visa-organization:field-visa-org-name]\\u003C\\/quote\\u003E\\u003C\\/strong\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E\\u003Cquote\\u003E[message:field-message-comment]\\u003C\\/quote\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cbr\\u003E\\r\\nBest,",
+          "value" : "\\u003Cp\\u003EThere has been activity on the \\u003Ca href=\\u0022[site:url]ServiceLogin?destination=[message:field-message-visa:url]\\u0022\\u003Evisa application\\u003C\\/a\\u003E submitted on behalf of \\u003Cstrong\\u003E\\u003Cquote\\u003E[message:field-message-visa:field-visa-organization:field-visa-org-name]\\u003C\\/quote\\u003E\\u003C\\/strong\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E\\u003Cquote\\u003E[message:field-message-comment]\\u003C\\/quote\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cbr\\u003E\\r\\nBest,",
           "format" : "2",
-          "safe_value" : "\\u003Cp\\u003EThere has been activity on the \\u003Ca href=\\u0022ServiceLogin?destination=[message:field-message-visa:url]\\u0022\\u003Evisa application\\u003C\\/a\\u003E submitted on behalf of \\u003Cstrong\\u003E\\u003Cquote\\u003E[message:field-message-visa:field-visa-organization:field-visa-org-name]\\u003C\\/quote\\u003E\\u003C\\/strong\\u003E\\u003C\\/p\\u003E\\n\\u003Cp\\u003E\\u003Cquote\\u003E[message:field-message-comment]\\u003C\\/quote\\u003E\\u003C\\/p\\u003E\\n\\u003Cbr \\/\\u003E\\nBest,"
+          "safe_value" : "\\u003Cp\\u003EThere has been activity on the \\u003Ca href=\\u0022[site:url]ServiceLogin?destination=[message:field-message-visa:url]\\u0022\\u003Evisa application\\u003C\\/a\\u003E submitted on behalf of \\u003Cstrong\\u003E\\u003Cquote\\u003E[message:field-message-visa:field-visa-organization:field-visa-org-name]\\u003C\\/quote\\u003E\\u003C\\/strong\\u003E\\u003C\\/p\\u003E\\n\\u003Cp\\u003E\\u003Cquote\\u003E[message:field-message-comment]\\u003C\\/quote\\u003E\\u003C\\/p\\u003E\\n\\u003Cbr \\/\\u003E\\nBest,"
         }
       ]
     }
