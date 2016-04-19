@@ -528,7 +528,7 @@ function application_config_field_default_field_instances() {
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_visa_contact_firstname',
     'label' => 'Firstname',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -570,7 +570,7 @@ function application_config_field_default_field_instances() {
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_visa_contact_lastname',
     'label' => 'Lastname',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -656,7 +656,7 @@ function application_config_field_default_field_instances() {
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_visa_contact_salutation',
     'label' => 'Salutation',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
