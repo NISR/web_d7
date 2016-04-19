@@ -133,14 +133,14 @@ function message_config_default_message_type() {
     "arguments" : null,
     "message_text" : { "en" : [
         {
-          "value" : "Visa application update",
+          "value" : "Visa application update : New comment",
           "format" : "4",
-          "safe_value" : "\\u003Cp\\u003EVisa application update\\u003C\\/p\\u003E\\n"
+          "safe_value" : "\\u003Cp\\u003EVisa application update : New comment\\u003C\\/p\\u003E\\n"
         },
         {
-          "value" : "\\u003Cp\\u003EThere has been activity on the \\u003Ca href=\\u0022ServiceLogin?destination=[message:field-message-visa:url]\\u0022\\u003Evisa application\\u003C\\/a\\u003E submitted on behalf of \\u003Cstrong\\u003E\\u003Cquote\\u003E[message:field-message-visa:field-visa-organization:field-visa-org-name]\\u003C\\/quote\\u003E\\u003C\\/strong\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cbr\\u003E\\r\\nBest,",
+          "value" : "\\u003Cp\\u003EThere has been activity on the \\u003Ca href=\\u0022ServiceLogin?destination=[message:field-message-visa:url]\\u0022\\u003Evisa application\\u003C\\/a\\u003E submitted on behalf of \\u003Cstrong\\u003E\\u003Cquote\\u003E[message:field-message-visa:field-visa-organization:field-visa-org-name]\\u003C\\/quote\\u003E\\u003C\\/strong\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E\\u003Cquote\\u003E[message:field-message-comment]\\u003C\\/quote\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cbr\\u003E\\r\\nBest,",
           "format" : "4",
-          "safe_value" : "\\u003Cp\\u003E\\u0026lt;p\\u0026gt;There has been activity on the \\u0026lt;a href=\\u0026quot;ServiceLogin?destination=[message:field-message-visa:url]\\u0026quot;\\u0026gt;visa application\\u0026lt;\\/a\\u0026gt; submitted on behalf of \\u0026lt;strong\\u0026gt;\\u0026lt;quote\\u0026gt;[message:field-message-visa:field-visa-organization:field-visa-org-name]\\u0026lt;\\/quote\\u0026gt;\\u0026lt;\\/strong\\u0026gt;\\u0026lt;\\/p\\u0026gt;\\u003Cbr \\/\\u003E\\n\\u0026lt;br\\u0026gt;\\u003Cbr \\/\\u003E\\nBest,\\u003C\\/p\\u003E\\n"
+          "safe_value" : "\\u003Cp\\u003E\\u0026lt;p\\u0026gt;There has been activity on the \\u0026lt;a href=\\u0026quot;ServiceLogin?destination=[message:field-message-visa:url]\\u0026quot;\\u0026gt;visa application\\u0026lt;\\/a\\u0026gt; submitted on behalf of \\u0026lt;strong\\u0026gt;\\u0026lt;quote\\u0026gt;[message:field-message-visa:field-visa-organization:field-visa-org-name]\\u0026lt;\\/quote\\u0026gt;\\u0026lt;\\/strong\\u0026gt;\\u0026lt;\\/p\\u0026gt;\\u003Cbr \\/\\u003E\\n\\u0026lt;p\\u0026gt;\\u0026lt;quote\\u0026gt;[message:field-message-comment]\\u0026lt;\\/quote\\u0026gt;\\u0026lt;\\/p\\u0026gt;\\u003Cbr \\/\\u003E\\n\\u0026lt;br\\u0026gt;\\u003Cbr \\/\\u003E\\nBest,\\u003C\\/p\\u003E\\n"
         }
       ]
     }
@@ -159,14 +159,14 @@ function message_config_default_message_type() {
     "arguments" : null,
     "message_text" : { "en" : [
         {
-          "value" : "Survey report submitted",
+          "value" : "Visa application update : Report submitted",
           "format" : "2",
-          "safe_value" : "Survey report submitted"
+          "safe_value" : "Visa application update : Report submitted"
         },
         {
-          "value" : "\\u003Cp\\u003E\\r\\nThe organization [message:field-message-visa:field-visa-organization:field_visa_org_name] has submitted the report related to \\u003Ca href=\\u0022ServiceLogin?destination=[message:field-message-visa:url]\\u0022\\u003Ethis visa application\\u003C\\/a\\u003E.\\r\\n\\u003C\\/p\\u003E\\r\\n\\u003Cbr\\u003E\\r\\nBest,",
+          "value" : "\\u003Cp\\u003E\\r\\nThe organization \\u003Cstrong\\u003E\\u003Cquote\\u003E[message:field-message-visa:field-visa-organization:field_visa_org_name]\\u003C\\/quote\\u003E\\u003C\\/strong\\u003E has submitted the report related to \\u003Ca href=\\u0022ServiceLogin?destination=[message:field-message-visa:url]\\u0022\\u003Ethis visa application\\u003C\\/a\\u003E.\\r\\n\\u003C\\/p\\u003E\\r\\n\\u003Cbr\\u003E\\r\\nBest,",
           "format" : "2",
-          "safe_value" : "\\u003Cp\\u003E\\nThe organization [message:field-message-visa:field-visa-organization:field_visa_org_name] has submitted the report related to \\u003Ca href=\\u0022ServiceLogin?destination=[message:field-message-visa:url]\\u0022\\u003Ethis visa application\\u003C\\/a\\u003E.\\n\\u003C\\/p\\u003E\\n\\u003Cbr \\/\\u003E\\nBest,"
+          "safe_value" : "\\u003Cp\\u003E\\nThe organization \\u003Cstrong\\u003E\\u003Cquote\\u003E[message:field-message-visa:field-visa-organization:field_visa_org_name]\\u003C\\/quote\\u003E\\u003C\\/strong\\u003E has submitted the report related to \\u003Ca href=\\u0022ServiceLogin?destination=[message:field-message-visa:url]\\u0022\\u003Ethis visa application\\u003C\\/a\\u003E.\\n\\u003C\\/p\\u003E\\n\\u003Cbr \\/\\u003E\\nBest,"
         }
       ]
     }
@@ -185,9 +185,9 @@ function message_config_default_message_type() {
     "arguments" : null,
     "message_text" : { "en" : [
         {
-          "value" : "Visa application update",
+          "value" : "Visa application update : Visa awarded",
           "format" : "2",
-          "safe_value" : "Visa application update"
+          "safe_value" : "Visa application update : Visa awarded"
         },
         {
           "value" : "\\u003Cp\\u003EDear [message:field-message-visa:field-visa-contact:field-visa-contact-firstname],\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003ECongratulations,the visa you applied for on behalf of  \\u003Cstrong\\u003E\\u003Cquote\\u003E[message:field-message-visa:field-visa-organization:field_visa_org_name]\\u003C\\/quote\\u003E\\u003C\\/strong\\u003E has been approved.\\r\\nYou can click \\u003Ca href=\\u0022ServiceLogin?destination=[message:field-message-visa:url]\\u0022\\u003Ehere\\u003C\\/a\\u003E to automatically log into the website and download it.\\u003C\\/p\\u003E\\r\\n\\u003Cbr\\u003E\\r\\nBest\\r\\n\\r\\n",

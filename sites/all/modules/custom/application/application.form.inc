@@ -10,7 +10,7 @@ function application_visa_comment_form($form,&$form_state,$visa_id){
 	$form['comment'] = array(
 		'#type' => 'textarea',
 		'#title' => t('Message'),
-		'#description' => t('Write your comment here'),
+		'#description' => t('Write your message here'),
 		'#rows' => '10',
 		'#cols' => '40',	
 		'#required' => TRUE,
@@ -36,9 +36,9 @@ function application_visa_comment_form($form,&$form_state,$visa_id){
  */
 function application_visa_comment_form_submit($form,&$form_state){
 	global $user;
-	$options = array('mail');
+	$options['mail'] = '';
 	
-	$message = message_create('visa_item_comment', array('uid' => $user->uid));
+	$message = message_create('visa_new_comment', array('uid' => $user->uid));
 	$msg = entity_metadata_wrapper('message',$message);
 	
 	$msg->field_message_visa->set($form_state['values']['visa_id']);
@@ -59,7 +59,7 @@ function application_visa_comment_form_submit($form,&$form_state){
 		$author = user_load($visa->uid);
 		$options['mail'] = $author->mail;
 	}
-		
+	
 	message_notify_send_message($message,$options);
 }
 

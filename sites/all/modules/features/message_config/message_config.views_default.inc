@@ -104,7 +104,7 @@ function message_config_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'message';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'visa_item_comment' => 'visa_item_comment',
+    'visa_new_comment' => 'visa_new_comment',
   );
   $translatables['visa_messages'] = array(
     t('Master'),

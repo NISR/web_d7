@@ -211,8 +211,8 @@ function message_config_strongarm() {
             'weight' => 0,
           ),
           'message_notify_email_body' => array(
+            'weight' => '0',
             'visible' => FALSE,
-            'weight' => 0,
           ),
         ),
         'message__message_text__1' => array(
@@ -221,8 +221,8 @@ function message_config_strongarm() {
             'weight' => 0,
           ),
           'message_notify_email_body' => array(
+            'weight' => '0',
             'visible' => TRUE,
-            'weight' => 0,
           ),
         ),
       ),

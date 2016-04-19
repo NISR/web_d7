@@ -300,9 +300,8 @@ function message_config_field_default_field_instances() {
       ),
       'message_notify_email_body' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_plain',
+        'type' => 'hidden',
         'weight' => 1,
       ),
       'message_notify_email_subject' => array(
