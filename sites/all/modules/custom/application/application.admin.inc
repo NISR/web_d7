@@ -304,7 +304,7 @@ function _visa_file_field_check_update(&$form_state,$field_name,$message_type,$m
 				}	
 				$options['mail'] = substr($options['mail'], 0, -1);
 			}
-			dpm($options);
+
 			message_notify_send_message($message,$options);
 			
 			// 2. Update status

@@ -141,6 +141,8 @@ function nisr_service_user_has_role($roles){
 /*
  * Check if user is logged and redirect to custom login page if not 
  *
+ * @param
+ *			
  * @return 
  *		Boolean
  */
@@ -184,6 +186,8 @@ function serviceLogin(){
 	if(!user_is_logged_in()){
 		module_load_include('inc','nisr_service','nisr_service.authentication');
 		return drupal_get_form('nisr_service_login_form');
+	}else{
+		isset($_GET['destination']) ? drupal_goto($_GET['destination']) : drupal_goto('<front>');	
 	}
 }
 
@@ -194,7 +198,7 @@ function serviceRegister(){
 	if(!user_is_logged_in()){
 		module_load_include('inc','nisr_service','nisr_service.authentication');
 		return drupal_get_form('nisr_service_register_form');
-	}	
+	}
 }
 
 /*
