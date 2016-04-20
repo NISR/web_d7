@@ -77,14 +77,15 @@ function application_form_alter(&$form, &$form_state, $form_id){
  */
 function application_form_visa_application_form_alter(&$form,&$form_state,$form_id){	
 	global $user;	
-
+	dpm($form);
 	//Hide Status field
 	form_hide_field($form,'field_visa_status');
 
-	// Show terms of use when submitting request
-	if($form['#entity']->is_new){
-		if(isset($form['#entity'])){
+	// On a new visa application
+	if(isset($form['#entity']->is_new) && ($form['#entity']->is_new)){
+			// Hide reports field
 			form_hide_field($form,'field_visa_reports');
+			// Show terms of use when submitting request
 			$form['tos'] = array(
 				'#type' => 'checkbox',
 				'#title' => t('I agree to comply with the requirements specified in the ') . l('visa instruction manual','/publication/visa-instruction-manual',array('attributes'=>array('target' => '_blank'))),
@@ -92,7 +93,17 @@ function application_form_visa_application_form_alter(&$form,&$form_state,$form_
 				'#weight' => 99,
 				'#required' => TRUE,
 			);
-		}
+			// Preload Contact information with User profile info
+			$profile = profile2_load_by_user($user,'main');
+			$wrapper = entity_metadata_wrapper('profile2',$profile);
+			
+			// Make sure data is present
+			if(count($profile->field_profile_pi)){
+				$fc = &$form['field_visa_contact'][LANGUAGE_NONE][0];
+				$fc['field_visa_contact_firstname'][LANGUAGE_NONE][0]['value']['#default_value'] = $wrapper->field_profile_pi->field_pi_firstname->value();
+				$fc['field_visa_contact_lastname'][LANGUAGE_NONE][0]['value']['#default_value'] = $wrapper->field_profile_pi->field_pi_lastname->value();
+				$fc['field_visa_contact_email'][LANGUAGE_NONE][0]['email']['#default_value'] = $user->mail;	
+			}	
 	}else{
 		// Disable reports and visa file fields if not empty && user is not admin(backdoor)
 		if($user->uid != 1){
@@ -111,17 +122,7 @@ function application_form_visa_application_form_alter(&$form,&$form_state,$form_
 		$form['field_visa_survey']['#disabled'] = TRUE;	
 	}
 	
-	// Preload Contact information with User profile info
-	$profile = profile2_load_by_user($user,'main');
-	$wrapper = entity_metadata_wrapper('profile2',$profile);
-	
-	// Make sure data is present
-	if(count($profile->field_profile_pi)){
-		$fc = &$form['field_visa_contact'][LANGUAGE_NONE][0];
-		$fc['field_visa_contact_firstname'][LANGUAGE_NONE][0]['value']['#default_value'] = $wrapper->field_profile_pi->field_pi_firstname->value();
-		$fc['field_visa_contact_lastname'][LANGUAGE_NONE][0]['value']['#default_value'] = $wrapper->field_profile_pi->field_pi_lastname->value();
-		$fc['field_visa_contact_email'][LANGUAGE_NONE][0]['email']['#default_value'] = $user->mail;	
-	}	
+
 	
 	return $form;
 }
