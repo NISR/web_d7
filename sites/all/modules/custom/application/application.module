@@ -4,6 +4,33 @@
  */
 
 /**
+ * Implements hook_admin_menu_output_alter().
+ * 
+ * Add the custom links to account on the admin toolbar
+ *
+ */
+function application_admin_menu_output_alter(&$content) { 
+  // Alter user account link.
+  if (isset($content['account'])) {
+ 	  $content['account']['account']['subscriptions'] = array(
+		 '#title' => t('Subscriptions'),
+		 '#weight' => 99,
+	  	 '#attributes' => array('class' => array('admin-menu-action')),
+	  	 '#href' => 'service/subscriptions/subjects',
+	  	 '#options' => array('html' => TRUE),
+	  	);
+	  	
+	  $content['account']['account']['visa'] = array(
+		 '#title' => t('Visa'),
+		 '#weight' => 100,
+	  	 '#attributes' => array('class' => array('admin-menu-action')),
+	  	 '#href' => 'service/visa',
+	  	 '#options' => array('html' => TRUE),
+	  	);
+  }
+}
+
+/**
  * Implements hook_cron
  */
 function application_cron(){
@@ -226,15 +253,6 @@ function application_menu() {
     'file' => 'application.admin.inc',
   );
   
-  $items['users/%/visa'] = array(
-	 'title' => 'Visa',  
-  	 'page callback' => 'drupal_goto',
-  	 'page arguments' => array('service/visa'),	
-  	 'access callback' => 'user_is_logged_in',
-  	 'type' => MENU_CALLBACK,
-  	 'menu_name' => 'devel',
-  );
-
   return $items;
 }
 

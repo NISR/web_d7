@@ -5,6 +5,7 @@
  * NISR Service module
  */
 
+
 /*
  *	Implements hook_menu()
  */
@@ -51,6 +52,15 @@ function nisr_service_menu(){
     	'weight' => -50,
 	);
 
+	$items['service/subscriptions/subjects'] = array(
+		'title' => 'Subscriptions',
+		'page callback' => 'nisr_service_user_is_logged_in',
+		'page arguments' => array('subscriptions_subjects'),
+		'access callback' => TRUE,
+    	'type' => MENU_NORMAL_ITEM,
+    	'menu_name' => 'menu-services',
+    	'weight' => -49,
+	);
 	$items['service/subscribe/%/%/%'] = array(
 		'title' => 'Subscribe',
 		'page callback' => 'nisr_service_subscribe',
@@ -142,9 +152,9 @@ function nisr_service_user_has_role($roles){
  * Check if user is logged and redirect to custom login page if not 
  *
  * @param
- *			
+ *		string $service 
  * @return 
- *		Boolean
+ *		Boolean 
  */
 function nisr_service_user_is_logged_in($service){
 	if(!user_is_logged_in()){
@@ -154,11 +164,16 @@ function nisr_service_user_is_logged_in($service){
 		$view->set_display('embed_1');
 		$view->pre_execute();
 		$view->execute();
-		if(!count($view->result) && isset($_GET['action']) && $_GET['action'] == 'apply'){
-			drupal_goto('/application/add/' . $service);
-		}else{
-			return views_embed_view($service,'embed_1');
-		}	
+		switch($service) {
+			case 'visa' :
+				if(!count($view->result) && isset($_GET['action']) && $_GET['action'] == 'apply'){
+					drupal_goto('/application/add/' . $service);
+				}
+				break;		
+			default:
+				break;		
+		}		
+		return views_embed_view($service,'embed_1');	
 	}
 }
 

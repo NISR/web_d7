@@ -77,12 +77,14 @@ function application_form_alter(&$form, &$form_state, $form_id){
  */
 function application_form_visa_application_form_alter(&$form,&$form_state,$form_id){	
 	global $user;	
-	dpm($form);
+
 	//Hide Status field
 	form_hide_field($form,'field_visa_status');
 
 	// On a new visa application
 	if(isset($form['#entity']->is_new) && ($form['#entity']->is_new)){
+			// Hide visa field
+			form_hide_field($form,'field_visa_file');
 			// Hide reports field
 			form_hide_field($form,'field_visa_reports');
 			// Show terms of use when submitting request
