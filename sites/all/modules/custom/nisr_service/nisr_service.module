@@ -158,7 +158,7 @@ function nisr_service_user_has_role($roles){
  */
 function nisr_service_user_is_logged_in($service){
 	if(!user_is_logged_in()){
-		drupal_goto('ServiceLogin',array('query' => array('destination'=> 'service/' . $service)));
+		drupal_goto('ServiceLogin',array('query' => array('destination'=> 'service/' . serviceParser($service))));
 	}else{
 		$view = views_get_view($service);
 		$view->set_display('embed_1');
@@ -224,4 +224,19 @@ function serviceRecoverPassword(){
 		module_load_include('inc','nisr_service','nisr_service.authentication');
 		return drupal_get_form('nisr_service_recover_password_form');
 	}	
+}
+
+/*
+ * Utility function replacing backslashes from service path to dashes
+ *	as required per the views module naming display naming limitations
+ *		E.g : service/subscriptions/subjects to subscriptions_subjects
+ *
+ *	@param
+ *		string service : the service's path
+ *		return str_replace('/', '_', $service);;
+ *	@return
+ *		string the parsed service name
+ */
+function serviceParser($service){
+	return str_replace('/', '_', $service);;
 }

@@ -33,7 +33,6 @@
   <div class="content"<?php print $content_attributes; ?>>
     <div class="profile-info clearfix">
       <div class="field field-name clearfix">
-        <div class="field-label">Name:&nbsp;</div>
         <div class="field-items"><div class="field-item even"><?php print render($content['full_name']); ?></div></div>
       </div>
       <div class="field field-name clearfix">
