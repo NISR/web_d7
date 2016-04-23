@@ -69,24 +69,6 @@ function entity_views_data() {
       );
     }
   }
-  if (!empty($info['entity keys']['label']) || !empty($info['label callback'])) {
-      // Check if entity_uri is supported for this entity type.
-      $has_uri = !empty($info['uri callback']);
-      if (!$has_uri && is_array($info['bundles'])) {
-        $bundle_info = current($info['bundles']);
-        $has_uri = !empty($bundle_info['uri_callback']);
-      }
-      $data['views_entity_' . $entity_type]['label'] = array(
-        'title' => t('Entity label'),
-        'help' => t('The label of the @entity-type entity.', array('@entity-type' => $info['label'])),
-        'field' => array(
-          'handler' => 'entity_views_handler_field_label',
-          'type' => $entity_type,
-          'has uri' => $has_uri,
-        ),
-      );
-    }
-  
 
   $data['entity__global']['table']['group'] = t('Entity');
   $data['entity__global']['table']['join'] = array(
