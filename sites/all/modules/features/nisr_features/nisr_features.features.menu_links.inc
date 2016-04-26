@@ -60,17 +60,20 @@ function nisr_features_menu_default_menu_links() {
     'weight' => -50,
     'customized' => 1,
   );
-  // Exported menu link: menu-footer-extra_access-the-old-website:http://old.statistics.gov.rw.
-  $menu_links['menu-footer-extra_access-the-old-website:http://old.statistics.gov.rw'] = array(
+  // Exported menu link: menu-footer-extra_access-the-old-website:http://statistics.gov.rw/old.
+  $menu_links['menu-footer-extra_access-the-old-website:http://statistics.gov.rw/old'] = array(
     'menu_name' => 'menu-footer-extra',
-    'link_path' => 'http://old.statistics.gov.rw',
+    'link_path' => 'http://statistics.gov.rw/old',
     'router_path' => '',
     'link_title' => 'Access the old website',
     'options' => array(
-      'attributes' => array(
-        'title' => '',
+      'identifier' => 'menu-footer-extra_access-the-old-website:http://statistics.gov.rw/old',
+      'attributes' => array(),
+      'item_attributes' => array(
+        'id' => '',
+        'class' => '',
+        'style' => '',
       ),
-      'identifier' => 'menu-footer-extra_access-the-old-website:http://old.statistics.gov.rw',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -87,9 +90,7 @@ function nisr_features_menu_default_menu_links() {
     'router_path' => 'node/%',
     'link_title' => 'Terms of use',
     'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
+      'attributes' => array(),
       'identifier' => 'menu-footer-extra_terms-of-use:node/1391',
     ),
     'module' => 'menu',
@@ -107,9 +108,7 @@ function nisr_features_menu_default_menu_links() {
     'router_path' => 'node/%',
     'link_title' => 'Web analytics',
     'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
+      'attributes' => array(),
       'identifier' => 'menu-footer-extra_web-analytics:node/1388',
     ),
     'module' => 'menu',
