@@ -75,16 +75,6 @@ function nisr_features_filter_default_formats() {
     ),
   );
 
-  // Exported format: GMap macro.
-  $formats[3] = array(
-    'format' => 3,
-    'name' => 'GMap macro',
-    'cache' => 1,
-    'status' => 1,
-    'weight' => 0,
-    'filters' => array(),
-  );
-
   // Exported format: PHP code.
   $formats['php_code'] = array(
     'format' => 'php_code',
