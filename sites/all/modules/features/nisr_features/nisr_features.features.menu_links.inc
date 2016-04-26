@@ -67,7 +67,9 @@ function nisr_features_menu_default_menu_links() {
     'router_path' => '',
     'link_title' => 'Access the old website',
     'options' => array(
-      'attributes' => array(),
+      'attributes' => array(
+        'title' => '',
+      ),
       'identifier' => 'menu-footer-extra_access-the-old-website:http://old.statistics.gov.rw',
     ),
     'module' => 'menu',
@@ -85,7 +87,9 @@ function nisr_features_menu_default_menu_links() {
     'router_path' => 'node/%',
     'link_title' => 'Terms of use',
     'options' => array(
-      'attributes' => array(),
+      'attributes' => array(
+        'title' => '',
+      ),
       'identifier' => 'menu-footer-extra_terms-of-use:node/1391',
     ),
     'module' => 'menu',
@@ -103,7 +107,9 @@ function nisr_features_menu_default_menu_links() {
     'router_path' => 'node/%',
     'link_title' => 'Web analytics',
     'options' => array(
-      'attributes' => array(),
+      'attributes' => array(
+        'title' => '',
+      ),
       'identifier' => 'menu-footer-extra_web-analytics:node/1388',
     ),
     'module' => 'menu',

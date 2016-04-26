@@ -38,9 +38,6 @@ function nisr_features_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_pi_firstname',
-    'field_permissions' => array(
-      'type' => 0,
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -63,9 +60,6 @@ function nisr_features_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_pi_lastname',
-    'field_permissions' => array(
-      'type' => 0,
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -88,9 +82,6 @@ function nisr_features_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_pi_salutation',
-    'field_permissions' => array(
-      'type' => 0,
-    ),
     'indexes' => array(
       'value' => array(
         0 => 'value',
