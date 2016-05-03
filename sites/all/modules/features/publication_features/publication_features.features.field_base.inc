@@ -612,6 +612,9 @@ function publication_features_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_pub_related',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -623,6 +626,9 @@ function publication_features_field_default_field_bases() {
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
+          'entityqueue' => array(
+            'status' => 0,
+          ),
           'views-select-list' => array(
             'status' => 0,
           ),
@@ -633,10 +639,10 @@ function publication_features_field_default_field_bases() {
           'type' => 'property',
         ),
         'target_bundles' => array(
-          'document' => 'document',
           'statistical_report' => 'statistical_report',
         ),
       ),
+      'profile2_private' => FALSE,
       'target_type' => 'publication',
     ),
     'translatable' => 0,
