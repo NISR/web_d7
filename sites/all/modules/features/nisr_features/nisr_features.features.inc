@@ -30,6 +30,30 @@ function nisr_features_views_api($module = NULL, $api = NULL) {
 }
 
 /**
+ * Implements hook_image_default_styles().
+ */
+function nisr_features_image_default_styles() {
+  $styles = array();
+
+  // Exported image style: tiny_60x60.
+  $styles['tiny_60x60'] = array(
+    'label' => 'Tiny 60x60',
+    'effects' => array(
+      13 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 60,
+          'height' => 60,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  return $styles;
+}
+
+/**
  * Implements hook_node_info().
  */
 function nisr_features_node_info() {

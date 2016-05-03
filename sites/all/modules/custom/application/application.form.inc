@@ -17,6 +17,11 @@ function application_visa_comment_form($form,&$form_state,$visa_id){
 		'#resizable' => FALSE,
 	); 
 	
+	$form['file'] = array(
+		'#type' => 'file',	
+		'#title' => t('Attachment'),
+	);
+	
 	$form['visa_id'] = array(
 		'#type' => 'hidden',	
 		'#value' => $visa_id,

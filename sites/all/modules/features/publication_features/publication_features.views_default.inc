@@ -44,6 +44,7 @@ function publication_features_views_default_views() {
   $handler->display->display_options['fields']['pub_id']['label'] = '';
   $handler->display->display_options['fields']['pub_id']['exclude'] = TRUE;
   $handler->display->display_options['fields']['pub_id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['pub_id']['separator'] = '';
   /* Field: Publication: Subject */
   $handler->display->display_options['fields']['field_pub_subject']['id'] = 'field_pub_subject';
   $handler->display->display_options['fields']['field_pub_subject']['table'] = 'field_data_field_pub_subject';
@@ -338,7 +339,6 @@ function publication_features_views_default_views() {
     t('Desc'),
     t('Subqueue referencing Publication from eq_publication'),
     t('.'),
-    t(','),
     t('What\'s new'),
     t('Publication entity referenced from field_pub_pubsource'),
     t('Featured statistical reports'),
@@ -1173,10 +1173,6 @@ function publication_features_views_default_views() {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['path'] = 'publication/[pub_id]';
-  /* Field: Publication: Period */
-  $handler->display->display_options['fields']['field_pub_fi_period']['id'] = 'field_pub_fi_period';
-  $handler->display->display_options['fields']['field_pub_fi_period']['table'] = 'field_data_field_pub_fi_period';
-  $handler->display->display_options['fields']['field_pub_fi_period']['field'] = 'field_pub_fi_period';
   /* Field: Publication: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'publication';
@@ -1565,7 +1561,6 @@ function publication_features_views_default_views() {
     t('Statistical articles'),
     t('Infographic items'),
     t('Figures'),
-    t('Period'),
     t('Datasets'),
     t('Documents'),
   );
