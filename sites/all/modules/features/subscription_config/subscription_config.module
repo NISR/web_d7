@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Subscriptions config feature.
+ */
+
+include_once 'subscription_config.features.inc';
