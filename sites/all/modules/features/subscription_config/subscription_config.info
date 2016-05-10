@@ -1,0 +1,13 @@
+name = Subscriptions config
+description = Subscriptions configuration
+core = 7.x
+package = NISR
+version = 7.x-1.0-alpha
+dependencies[] = nisr_features
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = subscriptions_backoffice
+features[views_view][] = subscriptions_sp_subjects
+features_exclude[dependencies][ctools] = ctools
+project path = sites/all/modules/features

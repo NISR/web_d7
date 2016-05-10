@@ -1,5 +1,5 @@
 name = Message config
-description = Message logging, notification and subscription service configuration
+description = Message logging and notification configuration
 core = 7.x
 package = NISR
 version = 7.x-1.0-alpha1

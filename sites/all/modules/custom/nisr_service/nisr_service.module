@@ -52,10 +52,10 @@ function nisr_service_menu(){
     	'weight' => -50,
 	);
 
-	$items['service/subscriptions/subjects'] = array(
+	$items['service/subscriptions/sp_subjects'] = array(
 		'title' => 'Subscriptions',
 		'page callback' => 'nisr_service_user_is_logged_in',
-		'page arguments' => array('subscriptions_subjects'),
+		'page arguments' => array('subscriptions_sp_subjects'),
 		'access callback' => TRUE,
     	'type' => MENU_NORMAL_ITEM,
     	'menu_name' => 'menu-services',
@@ -158,7 +158,7 @@ function nisr_service_user_has_role($roles){
  */
 function nisr_service_user_is_logged_in($service){
 	if(!user_is_logged_in()){
-		drupal_goto('ServiceLogin',array('query' => array('destination'=> 'service/' . serviceParser($service))));
+		drupal_goto('ServiceLogin',array('query' => array('destination'=> 'service/' . serviceNameParser($service))));
 	}else{
 		$view = views_get_view($service);
 		$view->set_display('embed_1');
@@ -229,14 +229,15 @@ function serviceRecoverPassword(){
 /*
  * Utility function replacing backslashes from service path to dashes
  *	as required per the views module naming display naming limitations
- *		E.g : service/subscriptions/subjects to subscriptions_subjects
+ *		E.g : service/subscriptions/sp_subjects to subscriptions_subjects
  *
  *	@param
- *		string service : the service's path
- *		return str_replace('/', '_', $service);;
+ *		string service 
+ *			The service's path
+ *		
  *	@return
  *		string the parsed service name
  */
-function serviceParser($service){
+function serviceNameParser($service){
 	return str_replace('/', '_', $service);;
 }

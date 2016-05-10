@@ -626,6 +626,9 @@ function publication_features_field_default_field_bases() {
       'handler' => 'base',
       'handler_settings' => array(
         'behaviors' => array(
+          'entityqueue' => array(
+            'status' => 0,
+          ),
           'views-select-list' => array(
             'status' => 0,
           ),
@@ -636,7 +639,6 @@ function publication_features_field_default_field_bases() {
           'type' => 'property',
         ),
         'target_bundles' => array(
-          'document' => 'document',
           'statistical_report' => 'statistical_report',
         ),
       ),
