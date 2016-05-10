@@ -612,6 +612,9 @@ function publication_features_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_pub_related',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -637,6 +640,7 @@ function publication_features_field_default_field_bases() {
           'statistical_report' => 'statistical_report',
         ),
       ),
+      'profile2_private' => FALSE,
       'target_type' => 'publication',
     ),
     'translatable' => 0,

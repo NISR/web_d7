@@ -241,7 +241,7 @@ function publication_entity_view($entity, $type, $view_mode, $langcode) {
   $breadcrumb = array();
   $path = explode('/',request_path());	
   $term_id = $term_name = $root = '';
-  
+    
   $breadcrumb[] = l(t('Home'),'<front>');
   if ($type == 'publication' && $view_mode == 'full'){		
 		switch($entity->type){
