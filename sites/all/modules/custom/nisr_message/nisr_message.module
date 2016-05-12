@@ -45,8 +45,8 @@ function nisr_message_application_insert($application){
  */
 function nisr_message_publication_insert($publication){
 	global $user;
-	// To do : Remove. Make this configurable via UI
-	if(in_array($publication->type,array('document','statistical_report','statistical_article'))){
+	// To do : Remove. Make this condition configurable via UI
+	if(in_array($publication->type,array('document','statistical_report'))){
 		$pub = entity_metadata_wrapper('publication',$publication);
 		$term_id = ($publication->type == 'document') ? $pub->field_doc_subject->tid->value() : $pub->field_pub_subject->tid->value();
 		$subject = taxonomy_term_load($term_id);

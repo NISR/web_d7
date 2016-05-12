@@ -49,28 +49,29 @@ function publication_features_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Chart',
-    'weight' => '6',
+    'label' => 'Chart options',
+    'weight' => '5',
     'children' => array(
       0 => 'field_pub_dataset',
       1 => 'field_pub_dataset_range',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Chart options',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-chart field-group-fieldset',
         'required_fields' => 1,
         'id' => '',
+        'classes' => 'group-chart field-group-fieldset',
+        'description' => '',
       ),
+      'formatter' => 'collapsible',
     ),
   );
   $field_groups['group_chart|publication|statistical_article|form'] = $field_group;
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Chart');
+  t('Chart options');
   t('Chart settings');
 
   return $field_groups;

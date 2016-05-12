@@ -1447,7 +1447,7 @@ E.g : February 2014 = 100, current prices,Billions USD etc',
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 4,
+      'weight' => 3,
     ),
   );
 
@@ -1638,7 +1638,7 @@ Leave empty for no range
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 10,
+      'weight' => 6,
     ),
   );
 
@@ -1733,7 +1733,7 @@ Leave empty for no range
     'label' => 'Published',
     'required' => 0,
     'settings' => array(
-      'default_value' => 'blank',
+      'default_value' => 'now',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -1754,7 +1754,7 @@ Leave empty for no range
         'year_range' => '-0:1962',
       ),
       'type' => 'date_select',
-      'weight' => 3,
+      'weight' => 2,
     ),
   );
 
@@ -1835,7 +1835,7 @@ Leave empty for no range
         'apply_chosen' => 1,
       ),
       'type' => 'options_select',
-      'weight' => 5,
+      'weight' => 4,
     ),
   );
 
@@ -1901,7 +1901,7 @@ Leave empty for no range
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 2,
+      'weight' => 1,
     ),
   );
 

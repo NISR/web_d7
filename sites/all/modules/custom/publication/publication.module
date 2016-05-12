@@ -281,11 +281,12 @@ function publication_entity_view($entity, $type, $view_mode, $langcode) {
 		}	
   	} 		
 }
-/**
+
+/*
  * Implements hook_forms().
  *
  * All publication forms share the same form handler.
- */
+ */ 
 function publication_forms() {
   $forms = array();
   if ($types = publication_types()) {
@@ -295,6 +296,7 @@ function publication_forms() {
   }
   return $forms;
 }
+
 
 /**
  * Implements hook_menu().

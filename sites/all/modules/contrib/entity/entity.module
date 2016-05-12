@@ -283,6 +283,7 @@ function entity_load_multiple_by_name($entity_type, $names = FALSE, $conditions 
  */
 function entity_save($entity_type, $entity) {
   $info = entity_get_info($entity_type);
+
   if (method_exists($entity, 'save')) {
     return $entity->save();
   }

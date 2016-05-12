@@ -120,6 +120,7 @@ function publication_add($type) {
   $publication_type = publication_types($type);
 
   $publication = entity_create('publication', array('type' => $type));
+
   drupal_set_title(t('Create @name', array('@name' => entity_label('publication_type', $publication_type))));
 
   $output = drupal_get_form($type . '_publication_form', $publication);
@@ -147,8 +148,7 @@ function publication_form($form, &$form_state, $publication) {
   );
 
   field_attach_form('publication', $publication, $form, $form_state);
-
-    
+      
   $submit = array();
   if (!empty($form['#submit'])) {
     $submit += $form['#submit'];
@@ -198,6 +198,7 @@ function publication_form_submit($form, &$form_state) {
   $form_state['redirect'] = $publication_uri['path'];
 
   drupal_set_message(t('publication %title saved.', array('%title' => entity_label('publication', $publication))));
+
 }
 
 function publication_form_submit_delete($form, &$form_state) {
