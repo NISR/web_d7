@@ -17,9 +17,7 @@ function notice_config_menu_default_menu_links() {
     'router_path' => 'node/%',
     'link_title' => 'Jobs',
     'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
+      'attributes' => array(),
       'identifier' => 'menu-notices_jobs:node/1396',
     ),
     'module' => 'menu',
@@ -37,9 +35,7 @@ function notice_config_menu_default_menu_links() {
     'router_path' => 'node/%',
     'link_title' => 'Tenders',
     'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
+      'attributes' => array(),
       'identifier' => 'menu-notices_tenders:node/1397',
     ),
     'module' => 'menu',

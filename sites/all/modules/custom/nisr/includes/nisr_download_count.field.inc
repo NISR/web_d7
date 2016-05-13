@@ -28,7 +28,7 @@ function nisr_field_formatter_view($entity_type, $entity, $field, $instance, $la
   $rows = array();  
 
   foreach ($items as $delta => $item) {
-  		// Legacy download counts from back the D6 area 
+  		// Legacy download counts from back the D6 era 
 		$item['downloads'] = db_select('download_count','dc')->fields('dc')->condition('fid', $item['fid'], '=')->condition('uid', 1, '<>')->execute()->rowCount();	 
 		// New kid on the block
 		if(module_exists('file_download_count')){
