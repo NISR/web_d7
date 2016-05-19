@@ -30,8 +30,8 @@
 
 ?>
 
-<div class="<?php print $classes; ?> clearfix recent-posts"<?php print $attributes; ?>>
-		<div class="content col-md-12"<?php print $content_attributes; ?>>
+<div class="<?php print $classes; ?> clearfix recent-posts col-md-12"<?php print $attributes; ?>>
+		<div class="content"<?php print $content_attributes; ?>>
 	  <?php if (!$page): ?>
 	    <h4<?php print $title_attributes; ?>>
 	        <a href="<?php print $url ?>"><?php print $title; ?></a>

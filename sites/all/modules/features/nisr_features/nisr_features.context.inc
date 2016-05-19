@@ -186,6 +186,12 @@ function nisr_features_context_default_contexts() {
           'region' => 'header_menu',
           'weight' => '-10',
         ),
+        'book-navigation' => array(
+          'module' => 'book',
+          'delta' => 'navigation',
+          'region' => 'sidebar_right',
+          'weight' => '-10',
+        ),
         'menu_block-6' => array(
           'module' => 'menu_block',
           'delta' => '6',

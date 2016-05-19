@@ -115,7 +115,7 @@ function notice_config_strongarm() {
             'visible' => TRUE,
           ),
           'teaser' => array(
-            'weight' => '1',
+            'weight' => '10',
             'visible' => FALSE,
           ),
         ),

@@ -38,11 +38,11 @@ function publication_block_view($delta = ''){
 	switch($delta){
 		case 'statistical_publication_subjects':
 			$block['title'] = '';
-			$block['content'] = get_taxonomy_terms('statistical_publication_subjects','statistical-publications');
+			$block['content'] = get_taxonomy_terms('statistical_publication_subjects','statistical-publications/subject');
 			break;
 		case 'document_subjects':
 			$block['title'] = '';
-			$block['content'] = get_taxonomy_terms('document_subjects','documents');get_taxonomy_terms('statistical_publication_subjects','statistical-publications');
+			$block['content'] = get_taxonomy_terms('document_subjects','documents/subject');
 			break;
 		default:
 			break;
@@ -69,7 +69,7 @@ function publication_entities_by_term_alter(&$entities,$term){
 									'items' => array('#markup' => $reports['result'],'#prefix' => "<div class='clearfix'>",'#suffix' => '</div>'),
 										);
 
-		$entities['reports']['more'] = array('#theme' => 'link','#text' => t('More reports'),'#path' => 'statistical-publications/' . $term . '/reports','#options' => array('attributes' => array('class' => array('btn','btn-sm','btn-primary','read-more')),'html' => TRUE),'#prefix' =>"<div>",'#suffix' => '</div></div>');
+		$entities['reports']['more'] = array('#theme' => 'link','#text' => t('More reports'),'#path' => 'statistical-publications/subject/' . $term . '/reports','#options' => array('attributes' => array('class' => array('btn','btn-sm','btn-primary','read-more')),'html' => TRUE),'#prefix' =>"<div>",'#suffix' => '</div></div>');
 	}	
 			
 	if($articles['count']){
@@ -78,7 +78,7 @@ function publication_entities_by_term_alter(&$entities,$term){
 									'items' => array('#markup' => $articles['result'],'#prefix' => "<div class='clearfix' style='margin-left:15px;'>",'#suffix' => '</div>'),  
 										);
 
-		$entities['articles']['more'] = array('#theme' => 'link','#text' => t('More articles'),'#path' => 'statistical-publications/' . $term . '/articles','#options' => array('attributes' => array('class' => array('btn','btn-sm','btn-primary','read-more')),'html' => TRUE),'#prefix' =>"<div>",'#suffix' => '</div></div>');
+		$entities['articles']['more'] = array('#theme' => 'link','#text' => t('More articles'),'#path' => 'statistical-publications/subject/' . $term . '/articles','#options' => array('attributes' => array('class' => array('btn','btn-sm','btn-primary','read-more')),'html' => TRUE),'#prefix' =>"<div>",'#suffix' => '</div></div>');
 	}
 
 	if($infographic_items['count']){
@@ -87,7 +87,7 @@ function publication_entities_by_term_alter(&$entities,$term){
 									'items' => array('#markup' => $infographic_items['result'],'#prefix' => "<div class='clearfix' style='margin-left:15px;'>",'#suffix' => '</div>'),  
 										);
 
-		$entities['infographic_items']['more'] = array('#theme' => 'link','#text' => t('More infographics'),'#path' => 'statistical-publications/' . $term . '/infographics','#options' => array('attributes' => array('class' => array('btn','btn-sm','btn-primary','read-more')),'html' => TRUE),'#prefix' =>"<div>",'#suffix' => '</div></div>');
+		$entities['infographic_items']['more'] = array('#theme' => 'link','#text' => t('More infographics'),'#path' => 'statistical-publications/subject/' . $term . '/infographics','#options' => array('attributes' => array('class' => array('btn','btn-sm','btn-primary','read-more')),'html' => TRUE),'#prefix' =>"<div>",'#suffix' => '</div></div>');
 	}
 
 	if($figures['count']){
@@ -251,13 +251,13 @@ function publication_entity_view($entity, $type, $view_mode, $langcode) {
 	    		$wrapper = entity_metadata_wrapper('publication',$entity);
 				$term_id = $wrapper->field_pub_pubsource->field_pub_subject->tid->value();
 			 	$term_name = $wrapper->field_pub_pubsource->field_pub_subject->name->value();	  
-		 		$root = array('name' => t('Statistical publications'),'path' => 'statistical-publications');
+		 		$root = array('name' => t('Statistical publications'),'path' => 'statistical-publications/subject');
 			 	break;  		
 	    	case 'statistical_report':
 		 		$wrapper = entity_metadata_wrapper('publication',$entity);
 		 		$term_id = $wrapper->field_pub_subject->tid->value();
 		 		$term_name = $wrapper->field_pub_subject->name->value();
-		 		$root = array('name' => t('Statistical publications'),'path' => 'statistical-publications');
+		 		$root = array('name' => t('Statistical publications'),'path' => 'statistical-publications/subject');
 		 		break; 
 		 	case 'document':
 		 		$wrapper = entity_metadata_wrapper('publication',$entity);
@@ -270,7 +270,7 @@ function publication_entity_view($entity, $type, $view_mode, $langcode) {
 		}
 		
 		// Breadcrumb building...
-		$breadcrumb[] = l($root['name'],$root['path']);	
+		//$breadcrumb[] = l($root['name'],$root['path']);	
 
 		if($term_id){
 			$parent_terms = taxonomy_get_parents_all($term_id);
@@ -379,22 +379,22 @@ function publication_menu() {
   );
   
 	// Statistical publications
-	$items['statistical-publications/%'] = array(
+	$items['statistical-publications/subject/%'] = array(
 		'title callback' => 'get_label_formal',
-		'title arguments' => array(1),
+		'title arguments' => array(2),
     	'page callback' => 'term_page',
-    	'page arguments' => array(1,'statistical_publication_subjects'),
+    	'page arguments' => array('statistical-publications/subject',2,'statistical_publication_subjects'),
     	'access callback' => TRUE,
 	);	
-  	$items['statistical-publications/%/view'] = array(
+  	$items['statistical-publications/subject/%/view'] = array(
     	'title' => 'View',
     	'type' => MENU_DEFAULT_LOCAL_TASK,
     	'access callback' => TRUE,    	
   	);
-	$items['statistical-publications/%/edit'] = array(
+	$items['statistical-publications/subject/%/edit'] = array(
 		'title' => 'Edit',
     	'page callback' => 'term_goto',
-    	'page arguments' => array(1),
+    	'page arguments' => array(2),
     	'access arguments' => array('administer publication entities'),
     	'type' => MENU_LOCAL_TASK,
 		'weight' => 10,
@@ -405,29 +405,29 @@ function publication_menu() {
 	$subjects = taxonomy_get_tree($voc->vid,0);
 	
 	foreach($subjects as $term){	
-		$items['documents/' . get_label_dashed($term->name)] = array(
+		$items['documents/subject/' . get_label_dashed($term->name)] = array(
 			//'title' => $term->name,
 			'title callback' => 'get_label_formal',
-			'title arguments' => array(1),
+			'title arguments' => array(2),
 			'page callback' => 'term_page',
-			'page arguments' => array(1,'document_subjects'),
+			'page arguments' => array('documents/subject',2,'document_subjects'),
 			'access callback' => TRUE,
 			'type' => MENU_NORMAL_ITEM,
 			'menu_name' => 'menu-documents',
 			'weight' => $term->weight,
     	);	
     	
-    	$items['documents/' . get_label_dashed($term->name) .'/view'] = array(
+    	$items['documents/subject/' . get_label_dashed($term->name) .'/view'] = array(
     		'title' => 'View',
     		'type' => MENU_DEFAULT_LOCAL_TASK,
     		'access callback' => TRUE,
     		'weight' => -10,
   		);
 
-		$items['documents/' . get_label_dashed($term->name) . '/edit'] = array(
+		$items['documents/subject/' . get_label_dashed($term->name) . '/edit'] = array(
 			'title' => 'Edit',
     		'page callback' => 'term_goto',
-    		'page arguments' => array(1),
+    		'page arguments' => array(2),
     		'access arguments' => array('administer publication entities'),
     		'type' => MENU_LOCAL_TASK,
 			'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
@@ -667,7 +667,7 @@ function publication_views_pre_render(&$view){
 				
 		$breadcrumb = array();
 		$breadcrumb[] = l(t('Home'),'<front>');
-		$breadcrumb[] = l(t('Statistical publications'),'statistical-publications');
+		//$breadcrumb[] = l(t('Statistical publications'),'statistical-publications');
 		
 		foreach(array_reverse($parent_terms) as $parent_term){
 			$breadcrumb[] = l(t($parent_term->name),"statistical-publications/" . get_label_dashed($parent_term->name));

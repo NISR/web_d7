@@ -17,7 +17,8 @@ function publication_views_pre_render(&$view){
 		count($view->args)? $parents  = taxonomy_get_parents_all($view->args[0]) : $parents = array();		
 		$breadcrumb = array();
 		$breadcrumb[] = l(t('Home'),'<front>');
-		$breadcrumb[] = l(t('Statistical publications'),'statistical_publications');
+		//$breadcrumb[] = l(t('Statistical publications'),'statistical_publications');
+		
 		foreach(array_reverse($parents) as $parent){
 			$breadcrumb[] = l(t($parent->name),drupal_get_path_alias('taxonomy/term/' . $parent->tid));
 		}

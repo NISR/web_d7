@@ -479,7 +479,7 @@ function term_goto($term_name){
 	$term = current($terms);
 	
    $path = explode('/',request_path());	
-	drupal_goto("taxonomy/term/$term->tid/edit",array('query' => array('destination' => $path[0] .'/' . $term_name)));
+	drupal_goto("taxonomy/term/$term->tid/edit",array('query' => array('destination' => $root_path .'/' . $term_name)));
 	
 }
 
@@ -487,6 +487,7 @@ function term_goto($term_name){
  * Get children terms and/or various entities classified by a term
  *
  * @param
+ *		string root_path : the top page path 
  *		string term_name
  *		string vocabulary
  *
@@ -494,14 +495,12 @@ function term_goto($term_name){
  *		renderable array
  *
  */
-function term_page($term_name,$vocabulary = NULL){
+function term_page($root_path,$term_name,$vocabulary = NULL){
 	
 	$terms = taxonomy_get_term_by_name(str_replace('-',' ',$term_name),$vocabulary);
 	
 	$term = current($terms);
 	 
-	$path = explode('/',request_path());
-	
 	$flag_classes = 'btn btn-large btn-success pull-right';	
 	
 	$flag = flag_create_link('subscribe_publication_subjects',$term->tid, array('flag_classes' => $flag_classes));
@@ -532,12 +531,12 @@ function term_page($term_name,$vocabulary = NULL){
 		foreach($children_terms as $child_term){
 			$child_term_name = get_label_dashed($child_term->name);
 			$children[] = array(
-									"#prefix" => "<div onclick=javascript:window.location.href='/" . $path[0] . "/" . $child_term_name . "' class='" . $width ."'><div class='featured-content featured-box'><div class='box-content'>",
+									"#prefix" => "<div onclick=javascript:window.location.href='/" . $root_path . "/" . $child_term_name . "' class='" . $width ."'><div class='featured-content featured-box'><div class='box-content'>",
 									"#suffix" => "</div></div></div>",
 									'title' => array(
 														'#theme' => 'link',
 														'#text'  => $child_term->name,
-														'#path'  => "$path[0]/$child_term_name",
+														'#path'  => "$root_path/$child_term_name",
 														'#options'=> array('attributes' => array('title' => ''),'html'=>TRUE),
 														'#prefix'=> "<h4>",
 														'#suffix'=> "</h4>",
@@ -559,15 +558,15 @@ function term_page($term_name,$vocabulary = NULL){
 	$content['wrapper']['#suffix'] = "</div>";
 	
 	// Set the breadcrumb
-	// In the form  : Home > Statistical publications > Economy > Price and inflation
+	// In the form  : Home > Statistical publications > Subject > Economy > Price and inflation
 	$breadcrumb = array();
 	$parent_terms = taxonomy_get_parents_all($term->tid);
 	unset($parent_terms[0]); // Remove the first element including the term object
 	   
    $breadcrumb[] = l(t('Home'),'<front>');
-   $breadcrumb[] = l(get_label_formal($path[0]),$path[0]);
+   //$breadcrumb[] = l(get_label_formal($root_path),$root_path);
    foreach(array_reverse($parent_terms) as $parent){
-   	$breadcrumb[] = l(t($parent->name),"$path[0]/" . get_label_dashed($parent->name));
+   	$breadcrumb[] = l(t($parent->name),"$root_path/" . get_label_dashed($parent->name));
    } 
    
 

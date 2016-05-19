@@ -57,7 +57,7 @@ function publication_features_context_default_contexts() {
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'statistical-publications' => 'statistical-publications',
+        'statistical-publications/subjects' => 'statistical-publications/subjects',
       ),
     ),
   );
@@ -208,6 +208,11 @@ function publication_features_context_default_contexts() {
   $context->description = '';
   $context->tag = 'Publications';
   $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        '~statistical-publications/subject/all/reports' => '~statistical-publications/subject/all/reports',
+      ),
+    ),
     'views' => array(
       'values' => array(
         'publications_search:statistical_reports' => 'publications_search:statistical_reports',

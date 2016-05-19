@@ -1183,59 +1183,6 @@ E.g : February 2014 = 100, current prices,Billions USD etc',
     ),
   );
 
-  // Exported field_instance: 'publication-infographic_item-field_pub_body'.
-  $field_instances['publication-infographic_item-field_pub_body'] = array(
-    'bundle' => 'infographic_item',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 3,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 2,
-      ),
-      'title_only' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'publication',
-    'field_name' => 'field_pub_body',
-    'label' => 'Body',
-    'required' => 0,
-    'settings' => array(
-      'display_summary' => 1,
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 20,
-        'summary_rows' => 5,
-      ),
-      'type' => 'text_textarea_with_summary',
-      'weight' => 2,
-    ),
-  );
-
   // Exported field_instance: 'publication-infographic_item-field_pub_files'.
   $field_instances['publication-infographic_item-field_pub_files'] = array(
     'bundle' => 'infographic_item',
@@ -1259,10 +1206,10 @@ E.g : February 2014 = 100, current prices,Billions USD etc',
         'weight' => 1,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 1,
       ),
       'title_only' => array(
         'label' => 'above',
@@ -1322,7 +1269,7 @@ E.g : February 2014 = 100, current prices,Billions USD etc',
     'bundle' => 'infographic_item',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The report from which data was extracted',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1343,7 +1290,7 @@ E.g : February 2014 = 100, current prices,Billions USD etc',
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 2,
       ),
       'title_only' => array(
         'label' => 'above',
@@ -1764,7 +1711,8 @@ Leave empty for no range
     'bundle' => 'statistical_article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Choose the report(s) this article is originating from.
+<br><strong>Note</strong> : The article will automatically inherits the parent report subject/topics',
     'display' => array(
       'chart' => array(
         'label' => 'above',
@@ -1835,7 +1783,7 @@ Leave empty for no range
         'apply_chosen' => 1,
       ),
       'type' => 'options_select',
-      'weight' => 4,
+      'weight' => 1,
     ),
   );
 
@@ -1844,8 +1792,7 @@ Leave empty for no range
     'bundle' => 'statistical_article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Add additional attributes to this content here to fine-grain the filtering, e.g : calendar year, fiscal year.
-<strong>DO NOT</strong> use terms which are already listed in the subject field above',
+    'description' => 'Add additional attributes to this content here to fine-grain the filtering, e.g : calendar year, fiscal year, EICV, PHS, EDPRS II etc',
     'display' => array(
       'chart' => array(
         'label' => 'above',
@@ -1893,6 +1840,13 @@ Leave empty for no range
     'settings' => array(
       'user_register_form' => FALSE,
     ),
+    'view' => array(
+      'args' => array(),
+      'display_name' => '',
+      'match_operator' => 'CONTAINS',
+      'size' => '',
+      'view_name' => '',
+    ),
     'widget' => array(
       'active' => 0,
       'module' => 'taxonomy',
@@ -1901,7 +1855,7 @@ Leave empty for no range
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 1,
+      'weight' => 5,
     ),
   );
 
@@ -2056,7 +2010,7 @@ Leave empty for no range
     'entity_type' => 'publication',
     'field_name' => 'field_pub_cover',
     'label' => 'Cover',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
@@ -2858,12 +2812,13 @@ Leave empty for no range
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Add additional attributes to this content here to fine-grain the filtering, e.g : calendar year, fiscal year.
-<strong>DO NOT</strong> use terms which are already listed in the subject field above');
+  t('Add additional attributes to this content here to fine-grain the filtering, e.g : calendar year, fiscal year, EICV, PHS, EDPRS II etc');
   t('Add additional tagging attributes to fine-grain the filter. E.g : Calendar year, Fiscal year etc.<br/>
 <strong>DO NOT</strong> use terms which are already listed in the subject field above');
   t('Body');
   t('Choose one or more items if this publication is particular to specific regions; leave <strong>blank</strong> for the entire country');
+  t('Choose the report(s) this article is originating from.
+<br><strong>Note</strong> : The article will automatically inherits the parent report subject/topics');
   t('Cover');
   t('Data');
   t('Data prefix');
@@ -2889,6 +2844,7 @@ Leave empty for no range
   t('The period range evaluated in format <i>period1;period2</i>. E.g: <i>Feb-14;Oct-14</i> or <i>2005;2008</i>. They have to exactly conform the values that are stored in the dataset entity above.<br/>
 Leave empty for no range
 ');
+  t('The report from which data was extracted');
   t('The source report publication');
   t('The unit by which this figure is expressed.<br>
 E.g : February 2014 = 100, current prices,Billions USD etc');

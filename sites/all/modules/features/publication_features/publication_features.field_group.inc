@@ -50,7 +50,7 @@ function publication_features_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Chart options',
-    'weight' => '5',
+    'weight' => '4',
     'children' => array(
       0 => 'field_pub_dataset',
       1 => 'field_pub_dataset_range',

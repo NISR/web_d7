@@ -4,6 +4,7 @@ core = 7.x
 package = NISR
 version = 7.x-1.0-alpha1
 dependencies[] = block
+dependencies[] = book
 dependencies[] = calendar
 dependencies[] = chosen
 dependencies[] = context

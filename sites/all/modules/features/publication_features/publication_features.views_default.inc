@@ -1816,7 +1816,6 @@ function publication_features_views_default_views() {
   $handler->display->display_options['arguments']['field_pub_pubsource_field_pub_subject']['id'] = 'field_pub_pubsource_field_pub_subject';
   $handler->display->display_options['arguments']['field_pub_pubsource_field_pub_subject']['table'] = 'search_api_index_publications';
   $handler->display->display_options['arguments']['field_pub_pubsource_field_pub_subject']['field'] = 'field_pub_pubsource_field_pub_subject';
-  $handler->display->display_options['arguments']['field_pub_pubsource_field_pub_subject']['default_action'] = 'not found';
   $handler->display->display_options['arguments']['field_pub_pubsource_field_pub_subject']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['field_pub_pubsource_field_pub_subject']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_pub_pubsource_field_pub_subject']['specify_validation'] = TRUE;
@@ -1838,7 +1837,6 @@ function publication_features_views_default_views() {
   $handler->display->display_options['arguments']['field_pub_subject']['id'] = 'field_pub_subject';
   $handler->display->display_options['arguments']['field_pub_subject']['table'] = 'search_api_index_publications';
   $handler->display->display_options['arguments']['field_pub_subject']['field'] = 'field_pub_subject';
-  $handler->display->display_options['arguments']['field_pub_subject']['default_action'] = 'not found';
   $handler->display->display_options['arguments']['field_pub_subject']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['field_pub_subject']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_pub_subject']['specify_validation'] = TRUE;
@@ -1859,7 +1857,7 @@ function publication_features_views_default_views() {
   $handler->display->display_options['filters']['type_1']['value'] = array(
     'statistical_report' => 'statistical_report',
   );
-  $handler->display->display_options['path'] = 'statistical-publications/%/reports';
+  $handler->display->display_options['path'] = 'statistical-publications/subject/%/reports';
 
   /* Display: Statistical articles */
   $handler = $view->new_display('page', 'Statistical articles', 'statistical_articles');
@@ -1874,7 +1872,7 @@ function publication_features_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'statistical_article' => 'statistical_article',
   );
-  $handler->display->display_options['path'] = 'statistical-publications/%/articles';
+  $handler->display->display_options['path'] = 'statistical-publications/subject/%/articles';
 
   /* Display: Infographics */
   $handler = $view->new_display('page', 'Infographics', 'infographic_items');
@@ -1917,7 +1915,7 @@ function publication_features_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'infographic_item' => 'infographic_item',
   );
-  $handler->display->display_options['path'] = 'statistical-publications/%/infographics';
+  $handler->display->display_options['path'] = 'statistical-publications/subject/%/infographics';
 
   /* Display: Figures */
   $handler = $view->new_display('page', 'Figures', 'figures');
@@ -1951,7 +1949,7 @@ function publication_features_views_default_views() {
   $handler->display->display_options['filters']['type_1']['value'] = array(
     'figure' => 'figure',
   );
-  $handler->display->display_options['path'] = 'statistical-publications/%/figures';
+  $handler->display->display_options['path'] = 'statistical-publications/subject/%/figures';
 
   /* Display: Latest Statistical reports */
   $handler = $view->new_display('embed', 'Latest Statistical reports', 'latest_statistical_reports');

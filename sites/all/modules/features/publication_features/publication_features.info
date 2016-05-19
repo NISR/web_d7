@@ -107,7 +107,6 @@ features[field_instance][] = publication-figure-field_pub_fig_icon
 features[field_instance][] = publication-figure-field_pub_fig_unit
 features[field_instance][] = publication-figure-field_pub_fig_values
 features[field_instance][] = publication-figure-field_pub_pubsource
-features[field_instance][] = publication-infographic_item-field_pub_body
 features[field_instance][] = publication-infographic_item-field_pub_files
 features[field_instance][] = publication-infographic_item-field_pub_pubsource
 features[field_instance][] = publication-statistical_article-field_pub_body

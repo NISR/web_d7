@@ -41,7 +41,7 @@ function publication_features_entityqueue_default_queues() {
       'statistical_article' => 'statistical_article',
     ),
     'min_size' => '2',
-    'max_size' => '5',
+    'max_size' => '4',
     'act_as_queue' => 1,
   );
   $export['featured_statistical_articles'] = $queue;
