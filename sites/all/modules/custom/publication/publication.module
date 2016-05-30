@@ -383,7 +383,7 @@ function publication_menu() {
 		'title callback' => 'get_label_formal',
 		'title arguments' => array(2),
     	'page callback' => 'term_page',
-    	'page arguments' => array('statistical-publications/subject',2,'statistical_publication_subjects'),
+    	'page arguments' => array('statistical-publications/subject',2,'statistical_publication_subjects','subscribe_publication_subjects'),
     	'access callback' => TRUE,
 	);	
   	$items['statistical-publications/subject/%/view'] = array(

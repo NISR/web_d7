@@ -490,20 +490,22 @@ function term_goto($term_name){
  *		string root_path : the top page path 
  *		string term_name
  *		string vocabulary
+ *		string flag_type : the flag type to subscribe to if applicable
  *
  * @return
  *		renderable array
  *
  */
-function term_page($root_path,$term_name,$vocabulary = NULL){
+function term_page($root_path,$term_name,$vocabulary = NULL,$flag_type = NULL){
 	
 	$terms = taxonomy_get_term_by_name(str_replace('-',' ',$term_name),$vocabulary);
 	
 	$term = current($terms);
-	 
-	$flag_classes = 'btn btn-large btn-success pull-right';	
 	
-	$flag = flag_create_link('subscribe_publication_subjects',$term->tid, array('flag_classes' => $flag_classes));
+	if(!is_null($flag_type)){
+		$flag_classes = 'btn btn-large btn-success pull-right';	
+		$flag = flag_create_link($flag_type,$term->tid, array('flag_classes' => $flag_classes));
+	}
 	
 	if(!user_is_logged_in()){
 		$page = str_replace('/','--',request_path());

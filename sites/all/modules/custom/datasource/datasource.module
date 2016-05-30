@@ -236,7 +236,7 @@ function datasource_menu() {
 		'title callback' => 'get_taxonomy_term_label',
 		'title arguments' => array(1),
     	'page callback' => 'term_page',
-    	'page arguments' => array(1),
+    	'page arguments' => array('datasources',1,'datasource/types'),
     	'access arguments' => array('access content'),
 	);	
   	$items['datasources/%/view'] = array(
