@@ -150,6 +150,7 @@ function publication_features_views_default_views() {
   $handler = $view->new_display('block', 'Featured statistical reports', 'fsr');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Featured reports';
+  $handler->display->display_options['defaults']['footer'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Entityqueue: Publication Queue Position */
   $handler->display->display_options['sorts']['entityqueue_relationship']['id'] = 'entityqueue_relationship';
@@ -182,6 +183,14 @@ function publication_features_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'entity';
   $handler->display->display_options['row_options']['view_mode'] = 'featured';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: Text area */
+  $handler->display->display_options['footer']['area']['id'] = 'area';
+  $handler->display->display_options['footer']['area']['table'] = 'views';
+  $handler->display->display_options['footer']['area']['field'] = 'area';
+  $handler->display->display_options['footer']['area']['content'] = '<div class="pull-right" style="margin-top:-50px;z-index:99;position:absolute;right:20px;">
+<a class="btn-sm btn-default" href="/statistical-publications/subject/all/articles" title="Read more"><i class="fa fa-plus"></i></a></div>';
+  $handler->display->display_options['footer']['area']['format'] = '2';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Entityqueue: Publication Queue Position */
   $handler->display->display_options['sorts']['entityqueue_relationship']['id'] = 'entityqueue_relationship';
@@ -345,6 +354,8 @@ function publication_features_views_default_views() {
     t('Featured reports'),
     t('Featured statistical articles'),
     t('Featured articles'),
+    t('<div class="pull-right" style="margin-top:-50px;z-index:99;position:absolute;right:20px;">
+<a class="btn-sm btn-default" href="/statistical-publications/subject/all/articles" title="Read more"><i class="fa fa-plus"></i></a></div>'),
     t('Featured indicators'),
     t('Key figures'),
   );

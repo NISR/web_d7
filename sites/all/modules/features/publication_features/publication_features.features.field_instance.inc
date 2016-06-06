@@ -1187,7 +1187,7 @@ E.g : February 2014 = 100, current prices,Billions USD etc',
   $field_instances['publication-infographic_item-field_pub_files'] = array(
     'bundle' => 'infographic_item',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The first file should be an high resolution image while an optional second one should be a pdf file for ready for download',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1221,7 +1221,7 @@ E.g : February 2014 = 100, current prices,Billions USD etc',
     'entity_type' => 'publication',
     'field_name' => 'field_pub_files',
     'label' => 'File',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'description_field' => 0,
       'file_directory' => '',
@@ -2841,6 +2841,7 @@ Leave empty for no range
   t('Subject');
   t('Summary');
   t('Tags');
+  t('The first file should be an high resolution image while an optional second one should be a pdf file for ready for download');
   t('The period range evaluated in format <i>period1;period2</i>. E.g: <i>Feb-14;Oct-14</i> or <i>2005;2008</i>. They have to exactly conform the values that are stored in the dataset entity above.<br/>
 Leave empty for no range
 ');
