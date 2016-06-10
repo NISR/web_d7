@@ -55,6 +55,8 @@
     <?php
     	hide($content['field_pub_dataset_range']);
       print render($content);
+      print '<br/>';
+      print views_embed_view('ga_reports','page_views');
     ?>
   </div>
 </div>

@@ -278,6 +278,45 @@ function gar_config_views_default_views() {
   $handler->display->display_options['sorts']['sessions']['order'] = 'DESC';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
+
+  /* Display: Page views */
+  $handler = $view->new_display('embed', 'Page views', 'page_views');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Page tracking dimensions: Page */
+  $handler->display->display_options['fields']['pagePath']['id'] = 'pagePath';
+  $handler->display->display_options['fields']['pagePath']['table'] = 'google_analytics';
+  $handler->display->display_options['fields']['pagePath']['field'] = 'pagePath';
+  $handler->display->display_options['fields']['pagePath']['exclude'] = TRUE;
+  /* Field: Page tracking metrics: Pageviews */
+  $handler->display->display_options['fields']['pageviews']['id'] = 'pageviews';
+  $handler->display->display_options['fields']['pageviews']['table'] = 'google_analytics';
+  $handler->display->display_options['fields']['pageviews']['field'] = 'pageviews';
+  $handler->display->display_options['fields']['pageviews']['label'] = 'Page views';
+  $handler->display->display_options['fields']['pageviews']['precision'] = '0';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Page tracking metrics: Pageviews */
+  $handler->display->display_options['sorts']['pageviews']['id'] = 'pageviews';
+  $handler->display->display_options['sorts']['pageviews']['table'] = 'google_analytics';
+  $handler->display->display_options['sorts']['pageviews']['field'] = 'pageviews';
+  $handler->display->display_options['sorts']['pageviews']['order'] = 'DESC';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Page tracking dimensions: Page */
+  $handler->display->display_options['arguments']['pagePath']['id'] = 'pagePath';
+  $handler->display->display_options['arguments']['pagePath']['table'] = 'google_analytics';
+  $handler->display->display_options['arguments']['pagePath']['field'] = 'pagePath';
+  $handler->display->display_options['arguments']['pagePath']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['pagePath']['default_argument_type'] = 'google_analytics_reports_path';
+  $handler->display->display_options['arguments']['pagePath']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['pagePath']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['pagePath']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
   $translatables['ga_reports'] = array(
     t('Master'),
     t('more'),
@@ -297,6 +336,9 @@ function gar_config_views_default_views() {
     t('Browsers'),
     t('Browser'),
     t('Countries'),
+    t('Page views'),
+    t('Page'),
+    t('All'),
   );
   $export['ga_reports'] = $view;
 

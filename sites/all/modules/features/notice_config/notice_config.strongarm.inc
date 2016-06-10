@@ -211,14 +211,14 @@ function notice_config_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_job_advert_pattern';
-  $strongarm->value = '';
+  $strongarm->value = 'notices/job/[node:title]';
   $export['pathauto_node_job_advert_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_tender_advert_pattern';
-  $strongarm->value = '';
+  $strongarm->value = 'notices/tender/[node:title]';
   $export['pathauto_node_tender_advert_pattern'] = $strongarm;
 
   return $export;
