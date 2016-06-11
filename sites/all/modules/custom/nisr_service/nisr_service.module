@@ -55,7 +55,7 @@ function nisr_service_menu(){
 	$items['service/subscriptions/sp_subjects'] = array(
 		'title' => 'Subscriptions',
 		'page callback' => 'nisr_service_user_is_logged_in',
-		'page arguments' => array('subscriptions_sp_subjects'),
+		'page arguments' => array('subscriptions',array('display' => 'sp_subjects')),
 		'access callback' => TRUE,
     	'type' => MENU_NORMAL_ITEM,
     	'menu_name' => 'menu-services',
@@ -153,17 +153,25 @@ function nisr_service_user_has_role($roles){
  *
  * @param
  *		string $service 
+ *		bool	 $options 
  * @return 
  *		Boolean 
  */
-function nisr_service_user_is_logged_in($service){
+function nisr_service_user_is_logged_in($service,$options = NULL){
 	if(!user_is_logged_in()){
-		drupal_goto('ServiceLogin',array('query' => array('destination'=> 'service/' . serviceNameParser($service))));
+		drupal_goto('ServiceLogin',array('query' => array('destination'=> request_path())));
 	}else{
 		$view = views_get_view($service);
-		$view->set_display('embed_1');
+		$view->set_display('embed_1');		
+		
+		if(!is_null($options)){
+			// Overriding default view's display
+			if($options['display']) $view->set_display($options['display']);
+		}
+		
 		$view->pre_execute();
 		$view->execute();
+		
 		switch($service) {
 			case 'visa' :
 				if(!count($view->result) && isset($_GET['action']) && $_GET['action'] == 'apply'){
@@ -173,7 +181,7 @@ function nisr_service_user_is_logged_in($service){
 			default:
 				break;		
 		}		
-		return views_embed_view($service,'embed_1');	
+		return $view->preview();	
 	}
 }
 
