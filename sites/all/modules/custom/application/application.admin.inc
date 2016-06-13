@@ -210,7 +210,6 @@ function application_form_submit($form, &$form_state) {
   $options = array('mail');
 
   if($application->type == 'visa'){
-  		_visa_file_field_check_update($form_state,'field_visa_file','visa_visa_awarded','author');
   		_visa_file_field_check_update($form_state,'field_visa_reports','visa_report_submitted','Visa manager');
   }
   

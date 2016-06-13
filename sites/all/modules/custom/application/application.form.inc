@@ -16,12 +16,7 @@ function application_visa_comment_form($form,&$form_state,$visa_id){
 		'#required' => TRUE,
 		'#resizable' => FALSE,
 	); 
-	
-	$form['file'] = array(
-		'#type' => 'file',	
-		'#title' => t('Attachment'),
-	);
-	
+		
 	$form['visa_id'] = array(
 		'#type' => 'hidden',	
 		'#value' => $visa_id,
@@ -83,11 +78,13 @@ function application_form_alter(&$form, &$form_state, $form_id){
 function application_form_visa_application_form_alter(&$form,&$form_state,$form_id){	
 	global $user;	
 
-	//Hide Status field
-	form_hide_field($form,'field_visa_status');
-
+	// Hide visa field
+	form_hide_field($form,'field_visa_file');
+	
 	// On a new visa application
 	if(isset($form['#entity']->is_new) && ($form['#entity']->is_new)){
+			// Hide Status field
+			form_hide_field($form,'field_visa_status');		
 			// Hide visa field
 			form_hide_field($form,'field_visa_file');
 			// Hide reports field
@@ -112,25 +109,22 @@ function application_form_visa_application_form_alter(&$form,&$form_state,$form_
 				$fc['field_visa_contact_email'][LANGUAGE_NONE][0]['email']['#default_value'] = $user->mail;	
 			}	
 	}else{
-		// Disable reports and visa file fields if not empty && user is not admin(backdoor)
-		if($user->uid != 1){
-			if(count($form_state['application']->field_visa_file)){
-				$form['field_visa_file']['#disabled'] = TRUE;
-			}else{
-				form_hide_field($form,'field_visa_reports');	
-			}
-			
-			if(count($form_state['application']->field_visa_reports)) $form['field_visa_reports']['#disabled'] = TRUE;
+		// Hide visa status field if user is neither manager nor administrator
+		if(!nisr_service_user_has_role(array('Visa manager','administrator')) && $user->uid != 1){
+			form_hide_field($form,'field_visa_status');
 		}
+		// 
+		form_hide_field($form,'field_visa_file');
+
 		// Disable all info fields
 		$form['field_visa_organization']['#disabled'] = TRUE;	
 		$form['field_visa_contact']['#disabled'] = TRUE;	
 		$form['field_visa_documents']['#disabled'] = TRUE;	
 		$form['field_visa_survey']['#disabled'] = TRUE;	
+		// Change submit button label 
+		$form['actions']['submit']['#value'] = t('Edit');
 	}
-	
-
-	
+		
 	return $form;
 }
 

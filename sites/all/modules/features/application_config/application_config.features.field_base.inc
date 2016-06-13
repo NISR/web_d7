@@ -466,7 +466,7 @@ function application_config_field_default_field_bases() {
   // Exported field_base: 'field_visa_reports'.
   $field_bases['field_visa_reports'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_visa_reports',

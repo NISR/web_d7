@@ -294,8 +294,9 @@ function application_config_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = 'Operations';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="/application/[aid]">View</a>
-';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<a href="/application/[aid]">View</a> | 
+<a href="/application/[aid]/edit?destination=/admin/services/visa">Edit</a> | 
+<a href="/application/[aid]/delete?destination=/admin/services/visa">Delete</a> ';
   /* Sort criterion: Application: Date changed */
   $handler->display->display_options['sorts']['changed']['id'] = 'changed';
   $handler->display->display_options['sorts']['changed']['table'] = 'application';
@@ -309,19 +310,19 @@ function application_config_views_default_views() {
     'visa' => 'visa',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field collection item: Name (field_visa_org_name:format) */
-  $handler->display->display_options['filters']['field_visa_org_name_format']['id'] = 'field_visa_org_name_format';
-  $handler->display->display_options['filters']['field_visa_org_name_format']['table'] = 'field_data_field_visa_org_name';
-  $handler->display->display_options['filters']['field_visa_org_name_format']['field'] = 'field_visa_org_name_format';
-  $handler->display->display_options['filters']['field_visa_org_name_format']['relationship'] = 'field_visa_organization_value';
-  $handler->display->display_options['filters']['field_visa_org_name_format']['operator'] = 'word';
-  $handler->display->display_options['filters']['field_visa_org_name_format']['group'] = 1;
-  $handler->display->display_options['filters']['field_visa_org_name_format']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_visa_org_name_format']['expose']['operator_id'] = 'field_visa_org_name_format_op';
-  $handler->display->display_options['filters']['field_visa_org_name_format']['expose']['label'] = 'Organization';
-  $handler->display->display_options['filters']['field_visa_org_name_format']['expose']['operator'] = 'field_visa_org_name_format_op';
-  $handler->display->display_options['filters']['field_visa_org_name_format']['expose']['identifier'] = 'field_visa_org_name_format';
-  $handler->display->display_options['filters']['field_visa_org_name_format']['expose']['remember_roles'] = array(
+  /* Filter criterion: Field collection item: Name (field_visa_org_name) */
+  $handler->display->display_options['filters']['field_visa_org_name_value']['id'] = 'field_visa_org_name_value';
+  $handler->display->display_options['filters']['field_visa_org_name_value']['table'] = 'field_data_field_visa_org_name';
+  $handler->display->display_options['filters']['field_visa_org_name_value']['field'] = 'field_visa_org_name_value';
+  $handler->display->display_options['filters']['field_visa_org_name_value']['relationship'] = 'field_visa_organization_value';
+  $handler->display->display_options['filters']['field_visa_org_name_value']['operator'] = 'word';
+  $handler->display->display_options['filters']['field_visa_org_name_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_visa_org_name_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_visa_org_name_value']['expose']['operator_id'] = 'field_visa_org_name_value_op';
+  $handler->display->display_options['filters']['field_visa_org_name_value']['expose']['label'] = 'Organization';
+  $handler->display->display_options['filters']['field_visa_org_name_value']['expose']['operator'] = 'field_visa_org_name_value_op';
+  $handler->display->display_options['filters']['field_visa_org_name_value']['expose']['identifier'] = 'field_visa_org_name_value';
+  $handler->display->display_options['filters']['field_visa_org_name_value']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     7 => 0,
@@ -382,8 +383,9 @@ function application_config_views_default_views() {
     t('Created'),
     t('Updated'),
     t('Operations'),
-    t('<a href="/application/[aid]">View</a>
-'),
+    t('<a href="/application/[aid]">View</a> | 
+<a href="/application/[aid]/edit?destination=/admin/services/visa">Edit</a> | 
+<a href="/application/[aid]/delete?destination=/admin/services/visa">Delete</a> '),
     t('Page'),
   );
   $export['visa_backoffice'] = $view;

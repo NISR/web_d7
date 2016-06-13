@@ -301,7 +301,8 @@ function application_config_field_default_field_instances() {
   $field_instances['application-visa-field_visa_reports'] = array(
     'bundle' => 'visa',
     'deleted' => 0,
-    'description' => 'Make sure to upload the right file because once uploaded it cannot be deleted',
+    'description' => 'Use this field to upload any number of reports produced during/after completing the survey.<br>
+',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -376,7 +377,7 @@ function application_config_field_default_field_instances() {
     'default_value_function' => '',
     'default_value_php' => '',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This field determines the request\'s status in the processing workflow. It may be automatically updated by a daily routine used to flag visa request items with delayed report submission',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -396,7 +397,7 @@ function application_config_field_default_field_instances() {
     'entity_type' => 'application',
     'field_name' => 'field_visa_status',
     'label' => 'Status',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -1094,6 +1095,9 @@ m)Field work organization<br>');
   t('Status');
   t('Survey ');
   t('Survey period');
+  t('This field determines the request\'s status in the processing workflow. It may be automatically updated by a daily routine used to flag visa request items with delayed report submission');
+  t('Use this field to upload any number of reports produced during/after completing the survey.<br>
+');
   t('Visa');
   t('Website');
 

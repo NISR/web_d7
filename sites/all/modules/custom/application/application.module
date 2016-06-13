@@ -16,7 +16,7 @@ function application_admin_menu_output_alter(&$content) {
 		 '#title' => t('Subscriptions'),
 		 '#weight' => 99,
 	  	 '#attributes' => array('class' => array('admin-menu-action')),
-	  	 '#href' => 'service/subscriptions/subjects',
+	  	 '#href' => 'service/subscriptions/sp_subjects',
 	  	 '#options' => array('html' => TRUE),
 	  	);
 	  	
@@ -559,9 +559,8 @@ function get_visa_request_statuses(){
 	$statuses = array(
 		'-1' => t('Processing request'),	
 		'0' => t('Visa granted, waiting for report'),
-		'1' => t('Visa granted, report submitted'),
-		'2' => t('Visa granted, report due'),
-		'3' => t('Visa granted, report submitted after delay'),
+		'1' => t('Visa granted, report due'),
+		'2' => t('Visa granted, report submitted'),
 	);
 	
 	return $statuses;
