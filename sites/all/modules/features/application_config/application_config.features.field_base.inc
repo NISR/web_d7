@@ -338,6 +338,33 @@ function application_config_field_default_field_bases() {
     'type' => 'file',
   );
 
+  // Exported field_base: 'field_visa_notif_letter'.
+  $field_bases['field_visa_notif_letter'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_visa_notif_letter',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
+    'indexes' => array(
+      'fid' => array(
+        0 => 'fid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'file',
+    'settings' => array(
+      'display_default' => 0,
+      'display_field' => 0,
+      'profile2_private' => FALSE,
+      'uri_scheme' => 'public',
+    ),
+    'translatable' => 0,
+    'type' => 'file',
+  );
+
   // Exported field_base: 'field_visa_org_address'.
   $field_bases['field_visa_org_address'] = array(
     'active' => 1,

@@ -558,9 +558,8 @@ function application_views_api() {
 function get_visa_request_statuses(){
 	$statuses = array(
 		'-1' => t('Processing request'),	
-		'0' => t('Visa granted, waiting for report'),
-		'1' => t('Visa granted, report due'),
-		'2' => t('Visa granted, report submitted'),
+		'0' => t('Visa denied'),
+		'1' => t('Visa granted')
 	);
 	
 	return $statuses;

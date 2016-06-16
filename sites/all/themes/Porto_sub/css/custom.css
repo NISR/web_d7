@@ -603,3 +603,15 @@ a.no-decoration{
 		height: 90px;	
 	}
 }
+
+/**
+ ** Hot Fixes
+ **/
+.field-name-field-visa-status,
+.field-name-field-visa-notif-letter{
+	font-size: 1.3em;
+	border: 1px solid #CCC;
+	background: #DEDEDE;
+	padding: 5px;	
+	margin-bottom:5px;
+}

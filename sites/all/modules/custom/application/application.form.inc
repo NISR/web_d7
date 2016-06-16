@@ -113,8 +113,8 @@ function application_form_visa_application_form_alter(&$form,&$form_state,$form_
 		if(!nisr_service_user_has_role(array('Visa manager','administrator')) && $user->uid != 1){
 			form_hide_field($form,'field_visa_status');
 		}
-		// 
-		form_hide_field($form,'field_visa_file');
+		
+		//form_hide_field($form,'field_visa_file');
 
 		// Disable all info fields
 		$form['field_visa_organization']['#disabled'] = TRUE;	

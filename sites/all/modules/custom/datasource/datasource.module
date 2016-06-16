@@ -165,6 +165,8 @@ function datasource_menu() {
     'type' => MENU_LOCAL_ACTION,
     'tab_parent' => 'datasource',
     'tab_root' => 'datasource',
+     'theme callback' => 'variable_get',
+    'theme arguments' => array('admin_theme'),
   );
 
   $datasource_uri = 'datasource/%datasource';
@@ -218,6 +220,8 @@ function datasource_menu() {
       'access callback' => 'entity_access',
       'access arguments' => array('create', 'datasource', $type),
       'file' => 'datasource.admin.inc',
+      'theme callback' => 'variable_get',
+    	'theme arguments' => array('admin_theme'),
     );
   }
 
