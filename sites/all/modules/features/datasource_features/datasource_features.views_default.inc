@@ -217,19 +217,6 @@ function datasource_features_views_default_views() {
       'override_label' => 0,
       'label' => '',
     ),
-    'action::views_bulk_operations_modify_action' => array(
-      'selected' => 1,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-      'settings' => array(
-        'show_all_tokens' => 1,
-        'display_values' => array(
-          '_all_' => '_all_',
-        ),
-      ),
-    ),
   );
   /* Field: Datasource: Datasource ID */
   $handler->display->display_options['fields']['ds_id']['id'] = 'ds_id';
@@ -320,19 +307,6 @@ function datasource_features_views_default_views() {
       'skip_confirmation' => 0,
       'override_label' => 0,
       'label' => '',
-    ),
-    'action::views_bulk_operations_modify_action' => array(
-      'selected' => 1,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-      'settings' => array(
-        'show_all_tokens' => 1,
-        'display_values' => array(
-          'datasource_metadata::field_datasource_type' => 'datasource_metadata::field_datasource_type',
-        ),
-      ),
     ),
   );
   /* Field: Datasource: Datasource ID */
