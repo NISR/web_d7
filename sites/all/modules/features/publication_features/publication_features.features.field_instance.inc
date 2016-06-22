@@ -2531,7 +2531,7 @@ Leave empty for no range
     'bundle' => 'statistical_report',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Choose similar reports ',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2817,6 +2817,7 @@ Leave empty for no range
 <strong>DO NOT</strong> use terms which are already listed in the subject field above');
   t('Body');
   t('Choose one or more items if this publication is particular to specific regions; leave <strong>blank</strong> for the entire country');
+  t('Choose similar reports ');
   t('Choose the report(s) this article is originating from.
 <br><strong>Note</strong> : The article will automatically inherits the parent report subject/topics');
   t('Cover');

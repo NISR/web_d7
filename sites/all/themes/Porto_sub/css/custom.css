@@ -552,6 +552,12 @@ input[type="checkbox"]{
 	min-height: 120px;	
 }
 
+.notice-item{
+	border: 1px solid #DEDEDE;	
+	background: #FEFEFE;
+	padding : 10px;
+	margin-right:5px;
+}
 
 .notice-date{
 	font-weight: bold;	

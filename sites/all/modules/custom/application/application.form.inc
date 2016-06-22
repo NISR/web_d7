@@ -119,8 +119,9 @@ function application_form_visa_application_form_alter(&$form,&$form_state,$form_
 		// Disable all info fields
 		$form['field_visa_organization']['#disabled'] = TRUE;	
 		$form['field_visa_contact']['#disabled'] = TRUE;	
-		$form['field_visa_documents']['#disabled'] = TRUE;	
-		$form['field_visa_survey']['#disabled'] = TRUE;	
+		$form['field_visa_documents']['#disabled'] = TRUE;
+		// Allow Visa managers and administrators to edit the report submission date
+		if(!nisr_service_user_has_role(array('Visa manager','administrator'))) $form['field_visa_survey']['#disabled'] = TRUE;	
 		// Change submit button label 
 		$form['actions']['submit']['#value'] = t('Edit');
 	}

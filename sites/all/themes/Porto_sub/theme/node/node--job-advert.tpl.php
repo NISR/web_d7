@@ -89,11 +89,7 @@
 	  <?php if (!$page): ?>
 		<div class=""><h4 <?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h4></div> 
 	  <?php endif; ?>
-	  <?php print render($title_suffix); ?>
-	  <br/>
-	  <div class="notice-date"><?php print t('Posted : ') . date('d F Y H:i',$created) ?></div>
-	  <div class="notice-date"><?php print t('Modified : ') . date('d F Y H:i',$node->changed) ?></div>
-	
+	  <?php print render($title_suffix); ?>	  
 	  <?php if ($display_submitted): ?>
 	    <div class="submitted">
 	      <?php print $submitted; ?>

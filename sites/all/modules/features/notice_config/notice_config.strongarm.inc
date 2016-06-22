@@ -111,11 +111,11 @@ function notice_config_strongarm() {
             'visible' => TRUE,
           ),
           'full' => array(
-            'weight' => '2',
-            'visible' => TRUE,
+            'weight' => '3',
+            'visible' => FALSE,
           ),
           'teaser' => array(
-            'weight' => '10',
+            'weight' => '3',
             'visible' => FALSE,
           ),
         ),
