@@ -343,9 +343,12 @@ function notice_config_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '25';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'entity';
-  $handler->display->display_options['row_options']['view_mode'] = 'teaser';
+  $handler->display->display_options['row_plugin'] = 'fields';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -354,37 +357,8 @@ function notice_config_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_wrapper_type'] = 'h3';
-  /* Field: Content: Post date */
-  $handler->display->display_options['fields']['created']['id'] = 'created';
-  $handler->display->display_options['fields']['created']['table'] = 'node';
-  $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['element_wrapper_type'] = 'div';
-  $handler->display->display_options['fields']['created']['element_wrapper_class'] = 'notice-date';
-  $handler->display->display_options['fields']['created']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['created']['date_format'] = 'custom';
-  $handler->display->display_options['fields']['created']['custom_date_format'] = 'd F Y H:i';
-  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
-  /* Field: Content: Updated date */
-  $handler->display->display_options['fields']['changed']['id'] = 'changed';
-  $handler->display->display_options['fields']['changed']['table'] = 'node';
-  $handler->display->display_options['fields']['changed']['field'] = 'changed';
-  $handler->display->display_options['fields']['changed']['element_wrapper_type'] = 'div';
-  $handler->display->display_options['fields']['changed']['element_wrapper_class'] = 'notice-date';
-  $handler->display->display_options['fields']['changed']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['changed']['date_format'] = 'custom';
-  $handler->display->display_options['fields']['changed']['custom_date_format'] = 'd F Y H:i';
-  $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
-  /* Field: Content: Body */
-  $handler->display->display_options['fields']['field_notice_body']['id'] = 'field_notice_body';
-  $handler->display->display_options['fields']['field_notice_body']['table'] = 'field_data_field_notice_body';
-  $handler->display->display_options['fields']['field_notice_body']['field'] = 'field_notice_body';
-  $handler->display->display_options['fields']['field_notice_body']['label'] = '';
-  $handler->display->display_options['fields']['field_notice_body']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_notice_body']['type'] = 'text_summary_or_trimmed';
-  $handler->display->display_options['fields']['field_notice_body']['settings'] = array(
-    'trim_length' => '600',
-  );
+  $handler->display->display_options['fields']['title']['element_wrapper_type'] = 'h4';
+  $handler->display->display_options['fields']['title']['element_wrapper_class'] = 'col-md-5 notice-item pull-left';
   /* Sort criterion: Content: Updated date */
   $handler->display->display_options['sorts']['changed']['id'] = 'changed';
   $handler->display->display_options['sorts']['changed']['table'] = 'node';
@@ -480,8 +454,6 @@ function notice_config_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
-    t('Post date'),
-    t('Updated date'),
     t('Notices'),
     t('Jobs'),
     t('Tenders'),
