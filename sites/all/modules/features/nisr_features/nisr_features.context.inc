@@ -180,6 +180,12 @@ function nisr_features_context_default_contexts() {
           'region' => 'header_top',
           'weight' => '-10',
         ),
+        'menu-menu-data-portals' => array(
+          'module' => 'menu',
+          'delta' => 'menu-data-portals',
+          'region' => 'branding',
+          'weight' => '-10',
+        ),
         'system-main-menu' => array(
           'module' => 'system',
           'delta' => 'main-menu',
