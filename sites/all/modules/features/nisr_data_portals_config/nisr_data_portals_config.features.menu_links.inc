@@ -10,15 +10,15 @@
 function nisr_data_portals_config_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: menu-data-portals_crvs:http://crvs.statistics.gov.rw.
-  $menu_links['menu-data-portals_crvs:http://crvs.statistics.gov.rw'] = array(
+  // Exported menu link: menu-data-portals_-go-to-the-civil-registration-and-vital-statistics-platform:http://crvs.statistics.gov.rw.
+  $menu_links['menu-data-portals_-go-to-the-civil-registration-and-vital-statistics-platform:http://crvs.statistics.gov.rw'] = array(
     'menu_name' => 'menu-data-portals',
     'link_path' => 'http://crvs.statistics.gov.rw',
     'router_path' => '',
-    'link_title' => 'CRVS',
+    'link_title' => '>> Go to the Civil Registration and Vital Statistics platform',
     'options' => array(
+      'identifier' => 'menu-data-portals_-go-to-the-civil-registration-and-vital-statistics-platform:http://crvs.statistics.gov.rw',
       'attributes' => array(
-        'title' => 'The Civil Registration and Vital Statistics database',
         'target' => '_blank',
       ),
       'item_attributes' => array(
@@ -26,7 +26,6 @@ function nisr_data_portals_config_menu_default_menu_links() {
         'class' => '',
         'style' => '',
       ),
-      'identifier' => 'menu-data-portals_crvs:http://crvs.statistics.gov.rw',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -55,7 +54,7 @@ function nisr_data_portals_config_menu_default_menu_links() {
       'identifier' => 'menu-data-portals_devinfo:http://www.devinfo.statistics.gov.rw/di7web/libraries/aspx/Home.aspx',
     ),
     'module' => 'menu',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 1,
     'has_children' => 0,
     'expanded' => 0,
@@ -81,7 +80,7 @@ function nisr_data_portals_config_menu_default_menu_links() {
       'identifier' => 'menu-data-portals_geodata:http://geodata.nisr.opendata.arcgis.com/',
     ),
     'module' => 'menu',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 1,
     'has_children' => 0,
     'expanded' => 0,
@@ -107,7 +106,7 @@ function nisr_data_portals_config_menu_default_menu_links() {
       'identifier' => 'menu-data-portals_microdata:http://microdata.statistics.gov.rw',
     ),
     'module' => 'menu',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 1,
     'has_children' => 0,
     'expanded' => 0,
@@ -117,7 +116,7 @@ function nisr_data_portals_config_menu_default_menu_links() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('CRVS');
+  t('>> Go to the Civil Registration and Vital Statistics platform');
   t('DevInfo');
   t('GeoData');
   t('Microdata');
