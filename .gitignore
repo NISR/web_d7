@@ -1,18 +1,14 @@
-# Ignore index.php so we show detailed errors only locally 
+# Ignore index file , use for error reporting on local development
 index.php
 
 # Ignore configuration files that may contain sensitive information.
 sites/*/settings*.php
 
-# Apache Directives 
-.htaccess
-
-# Ignore Porto commercial theme
-sites/all/themes/Porto
-
 # Ignore paths that contain user-generated content.
 sites/*/files
 sites/*/private
 
-# Stage files on Live Server
-stage
+# Ignore Commercial theme folder
+sites/*/themes/Porto
+
+
