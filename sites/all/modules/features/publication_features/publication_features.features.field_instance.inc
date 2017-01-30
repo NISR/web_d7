@@ -1273,8 +1273,11 @@ E.g : February 2014 = 100, current prices,Billions USD etc',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
         'weight' => 2,
       ),
       'full' => array(
@@ -1302,17 +1305,20 @@ E.g : February 2014 = 100, current prices,Billions USD etc',
     'entity_type' => 'publication',
     'field_name' => 'field_pub_pubsource',
     'label' => 'Source',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'options',
+      'module' => 'entityreference',
       'settings' => array(
         'apply_chosen' => 1,
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
       ),
-      'type' => 'options_select',
+      'type' => 'entityreference_autocomplete_tags',
       'weight' => 4,
     ),
   );

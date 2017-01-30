@@ -1,6 +1,9 @@
 # Ignore index file , use for error reporting on local development
 index.php
 
+# Ignore .htaccess
+.htaccess
+
 # Ignore configuration files that may contain sensitive information.
 sites/*/settings*.php
 

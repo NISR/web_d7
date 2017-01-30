@@ -38,7 +38,7 @@ function application_config_field_group_info() {
       'formatter' => 'collapsed',
     ),
   );
-  $field_groups['group_app_scheduling|application|visa|form'] = $field_group;
+  $field_groups[''] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -69,7 +69,7 @@ function application_config_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $field_groups['group_contact_information|application|visa|full'] = $field_group;
+  $field_groups[''] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -101,7 +101,7 @@ function application_config_field_group_info() {
       'formatter' => 'collapsed',
     ),
   );
-  $field_groups['group_contact_info|application|visa|form'] = $field_group;
+  $field_groups[''] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -132,7 +132,7 @@ function application_config_field_group_info() {
       'formatter' => 'collapsed',
     ),
   );
-  $field_groups['group_documents|application|visa|form'] = $field_group;
+  $field_groups[''] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -162,7 +162,7 @@ function application_config_field_group_info() {
       'formatter' => 'collapsed',
     ),
   );
-  $field_groups['group_documents|application|visa|full'] = $field_group;
+  $field_groups[''] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -194,7 +194,7 @@ function application_config_field_group_info() {
       'formatter' => 'collapsible',
     ),
   );
-  $field_groups['group_organization_information|application|visa|form'] = $field_group;
+  $field_groups[''] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -225,7 +225,7 @@ function application_config_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $field_groups['group_organization_information|application|visa|full'] = $field_group;
+  $field_groups[''] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -254,7 +254,7 @@ function application_config_field_group_info() {
       'formatter' => 'collapsed',
     ),
   );
-  $field_groups['group_scheduling|application|visa|full'] = $field_group;
+  $field_groups[''] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -283,7 +283,7 @@ function application_config_field_group_info() {
       ),
     ),
   );
-  $field_groups['group_vertical_tab_group_1|application|visa|form'] = $field_group;
+  $field_groups[''] = $field_group;
 
   // Translatables
   // Included for use with string extractors like potx.

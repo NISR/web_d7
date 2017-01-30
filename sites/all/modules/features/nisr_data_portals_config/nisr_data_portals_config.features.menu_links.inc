@@ -28,7 +28,7 @@ function nisr_data_portals_config_menu_default_menu_links() {
       ),
     ),
     'module' => 'menu',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 1,
     'has_children' => 0,
     'expanded' => 0,

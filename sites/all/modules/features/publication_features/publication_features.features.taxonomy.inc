@@ -29,7 +29,7 @@ function publication_features_taxonomy_default_vocabularies() {
       'name' => 'Statistical publication subjects',
       'machine_name' => 'statistical_publication_subjects',
       'description' => '',
-      'hierarchy' => 0,
+      'hierarchy' => 1,
       'module' => 'taxonomy',
       'weight' => 0,
     ),
