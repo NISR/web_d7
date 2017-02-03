@@ -14,5 +14,5 @@ sites/*/private
 # Ignore Commercial theme folder
 sites/*/themes/Porto
 
-
-/nbproject/private/
+# Ignore these whatever
+nbproject/*
