@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Twitter Config feature.
+ */
+
+include_once 'nisr_twitter_config.features.inc';

@@ -47,7 +47,7 @@ function advertisement_features_default_fe_block_settings() {
 
   $export['nodesinblock-1'] = array(
     'cache' => 1,
-    'css_class' => 'col-md-12 ad-box ad-secondary pull-right',
+    'css_class' => 'ad-box ad-secondary pull-right',
     'custom' => 0,
     'delta' => 1,
     'module' => 'nodesinblock',

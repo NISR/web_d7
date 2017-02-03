@@ -65,7 +65,7 @@ function nisr_features_context_default_contexts() {
           'module' => 'nodesinblock',
           'delta' => '0',
           'region' => 'before_content',
-          'weight' => '-57',
+          'weight' => '-59',
         ),
         'views-publication_widgets-fsa' => array(
           'module' => 'views',
@@ -114,6 +114,12 @@ function nisr_features_context_default_contexts() {
           'delta' => 'twitter_messages-tweets_block',
           'region' => 'after_content',
           'weight' => '-4',
+        ),
+        'nodesinblock-1' => array(
+          'module' => 'nodesinblock',
+          'delta' => '1',
+          'region' => 'after_content',
+          'weight' => '-3',
         ),
       ),
     ),
