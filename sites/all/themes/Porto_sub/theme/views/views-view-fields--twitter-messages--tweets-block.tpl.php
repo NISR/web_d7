@@ -23,16 +23,16 @@
  *
  * @ingroup views_templates
  */
+
 ?>
 <div class="col-md-4" style="margin-bottom:20px;">
 	<?php foreach ($fields as $id => $field): ?>
-	  <?php if (!empty($field->separator)): ?>
-	    <?php print $field->separator; ?>
-	  <?php endif; ?>
-	
-	  <?php print $field->wrapper_prefix; ?>
-	    <?php print $field->label_html; ?>
-	    <?php print $field->content; ?>
-	  <?php print $field->wrapper_suffix; ?>
+    <?php if (!empty($field->separator)): ?>
+      <?php print $field->separator; ?>`
+    <?php endif; ?>
+    <?php print $field->wrapper_prefix; ?>
+      <?php print $field->label_html; ?>
+      <?php print $field->content; ?>
+    <?php print $field->wrapper_suffix; ?>
 	<?php endforeach; ?>
 </div>

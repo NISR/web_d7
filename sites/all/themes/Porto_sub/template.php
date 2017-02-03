@@ -127,8 +127,20 @@ function porto_sub_process_field_collection_item(&$variables) {
   }
 }
 
+/*
+ * Implements hook_link
+ */
 function porto_sub_link($variables) {
 	$variables['options']['html'] = TRUE;
    return '<a href="' . check_plain(url($variables['path'], $variables['options'])) . '"' . drupal_attributes($variables['options']['attributes']) . '>' . ($variables['options']['html'] ? $variables['text'] : check_plain($variables['text'])) . '</a>';
 }
 
+/*
+ * Implements hook_preprocess_views_view_formatted
+ */
+function porto_sub_preprocess_views_view_unformatted(&$vars){
+  if($vars['view']->name == 'twitter_messages'){
+    $secondary_ad_block = module_invoke('nodesinblock','block_view',1);
+    $vars['secondary_ad_block'] = trim($secondary_ad_block['content']);
+  }
+}
