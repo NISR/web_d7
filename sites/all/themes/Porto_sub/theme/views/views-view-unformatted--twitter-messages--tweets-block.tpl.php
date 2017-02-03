@@ -23,7 +23,7 @@
   </div>
   <?php ++$counter; ?>  
   <?php if($counter == 2) :?>
-    <?php print "<div class='pull-right'>" . $secondary_ad_block . "</div>"; ?>
+    <?php print "<div class='pull-right col-md-4 clearfix'>" . $secondary_ad_block . "</div>"; ?>
   <?php endif; ?>
 <?php endforeach; ?>
 

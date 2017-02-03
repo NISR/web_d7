@@ -25,7 +25,7 @@
  */
 
 ?>
-<div class="col-md-4" style="margin-bottom:20px;">
+<div class="col-md-4 clearfix" style="margin-bottom:20px;">
 	<?php foreach ($fields as $id => $field): ?>
     <?php if (!empty($field->separator)): ?>
       <?php print $field->separator; ?>`
